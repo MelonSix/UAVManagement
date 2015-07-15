@@ -1,0 +1,25 @@
+## YAML Template.
+## Author: Brighter Agyemang
+
+server:
+  type: simple
+  applicationContextPath: /ms
+  adminContextPath: /admin-ms
+  connector:
+    type: http
+    port: 8089
+logging:
+  level: INFO
+  appenders:
+    - type: console
+    - type: file
+      threshold: DEBUG
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: logs/appLog.log
+      archivedLogFilenamePattern: log/archive/application-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC+8
+      maxFileSize: 10MB
+lwm2mserverAddress: 
+lwm2mserverportnum: 0
+---

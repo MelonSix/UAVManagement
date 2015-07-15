@@ -1,0 +1,332 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.mars.m2m.uavendpoint.uavs;
+
+import java.io.InputStream;
+import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.eclipse.leshan.ResponseCode;
+import org.eclipse.leshan.client.californium.LeshanClient;
+import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
+import org.eclipse.leshan.client.resource.ObjectEnabler;
+import org.eclipse.leshan.client.resource.ObjectsInitializer;
+import org.eclipse.leshan.core.model.LwM2mModel;
+import org.eclipse.leshan.core.model.ObjectLoader;
+import org.eclipse.leshan.core.model.ObjectModel;
+import org.eclipse.leshan.core.node.LwM2mResource;
+import org.eclipse.leshan.core.node.Value;
+import org.eclipse.leshan.core.request.DeregisterRequest;
+import org.eclipse.leshan.core.request.RegisterRequest;
+import org.eclipse.leshan.core.response.LwM2mResponse;
+import org.eclipse.leshan.core.response.RegisterResponse;
+import org.eclipse.leshan.core.response.ValueResponse;
+import org.mars.m2m.Devices.ThreatSensor;
+import org.mars.m2m.apiExtension.LwM2mObjectInitializer;
+import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
+import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
+import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
+import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
+import org.mars.m2m.uavendpoint.omaObjects.Device;
+import org.mars.m2m.uavendpoint.Validation.StarterValidator;
+
+/**
+ *
+ * @author AG BRIGHTER
+ */
+public class MilitaryUAV {
+    
+    /**
+     * The threat sensor device within the UAV
+     * The threat sensor board can be also viewed as consisting of other objects
+     */
+    public static class ThreatSensorDeviceClient
+    {
+        private String localHostName;
+        private int localPort;
+        private String serverHostName;
+        private int serverPort;
+        private String objectModelFilename;
+        AtomicBoolean canDeviceStart = new AtomicBoolean();
+        private boolean deviceStarted = false;
+        private String registrationID;
+        private String endpointName;
+        
+        //Device for this client
+        private final ThreatSensor threatSensor = new ThreatSensor();
+        
+        /**
+         * For setting up a device within the UAV
+         * @param leshanClientDetails 
+         */
+        public ThreatSensorDeviceClient(DeviceStarterDetails leshanClientDetails)
+        {
+            try
+            {
+                if(leshanClientDetails != null)
+                {                    
+                    this.localHostName = leshanClientDetails.getLocalHostName();
+                    this.localPort = leshanClientDetails.getLocalPort();
+                    this.serverHostName = leshanClientDetails.getServerHostName();
+                    this.serverPort = leshanClientDetails.getServerPort();
+                    this.objectModelFilename = leshanClientDetails.getObjectModelFileName();
+                    this.endpointName = leshanClientDetails.getEndPointName();
+                    
+                    StarterValidator.notNull(localHostName);
+                    StarterValidator.notWellKnownPort(localPort);
+                    StarterValidator.notNull(serverHostName);
+                    if(StarterValidator.notPositive(serverPort))
+                        throw new DeviceStarterDetailsException("Specified server port has to be positive");
+                    
+                    canDeviceStart.set(true);
+                }
+                else
+                {
+                    System.out.println("Starter details cannot be null");
+                    throw new DeviceStarterDetailsException("Device starter details error");
+                }
+            }
+            catch(DeviceStarterDetailsException | IllegalArgumentException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+        
+        /**
+         * Starts the device within the UAV
+         */
+        public synchronized void StartDevice()
+        {
+            if(canDeviceStart.getAndSet(false))
+            {
+                /** Monitors the state of the UAV */
+                this.deviceStarted = true;
+            
+                //Gets the model
+                LwM2mModel customModel;
+                customModel = LoadCustomObjectModel(this,this.objectModelFilename);
+
+                // Initialize object list
+                LwM2mObjectInitializer initializer = new LwM2mObjectInitializer(customModel);
+                
+                //attach instance
+                initializer.setInstanceForObject(12202, threatSensor);
+                List<ObjectEnabler> enablers = initializer.create(12202);
+                //initializer.setClassForObject(12200, ThreatSensorDevice.class);
+                //List<ObjectEnabler> enablers = initializer.createMandatory();
+                //enablers.addAll(initializer.create(6));
+
+                // Create client
+                final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
+                final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
+
+                final LeshanClient client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                        enablers));
+
+                // Start the client
+                client.start();
+
+                // register to the server provided
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                
+                /**
+                 * LwM2M client registration
+                 */
+                this.registrationID = register(client, endpointIdentifier);
+
+                // Deregister on shutdown and stop client.
+                Runtime.getRuntime().addShutdownHook(new Thread() {
+                    @Override
+                    public void run() {
+                        if (registrationID != null) {
+                            System.out.println("\tDevice: Deregistering Client '" + registrationID + "'");
+                            client.send(new DeregisterRequest(registrationID));
+                            client.stop();
+                        }
+                    }
+                });
+            }
+            else
+            {
+                this.deviceStarted = false;
+                System.err.append("Device already started");
+            }
+        }        
+        
+        /**
+         * 
+         */
+        public static class ThreatSensorDevice extends Device implements DeviceExecution
+        {
+            float myVal = (float) Math.random();//testing
+            
+            public ThreatSensorDevice() {
+                // TODO Set device informatin here
+                /**E.g
+                 * private final String manufacturelModel = "EclipseCon Tuto Client";
+                private final String modelNumber = "2015";
+                private final String serialNumber = "leshan-client-001";
+                private final BindingMode bindingModel = BindingMode.U;
+                 */
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        fireResourceChange(5700);
+                        myVal = (float) Math.random();
+                    }
+                }, 1000, 1000);
+            }
+
+            @Override
+            public LwM2mResponse execute(int resourceid, byte[] params) {
+                return super.execute(resourceid, params); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public LwM2mResponse write(int resourceid, LwM2mResource value) {
+                return super.write(resourceid, value); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public ValueResponse read(int resourceid) {
+                System.out.println("Read on Device Resource " + resourceid);
+                switch (resourceid) {
+                case 5700:
+                    return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  Value.newFloatValue(myVal)) );
+                case 5500:
+                    boolean even = ((((int)myVal)%2)==0)?true:false;
+                    return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  
+                            Value.newBooleanValue(even) ) );
+                default:
+                    return super.read(resourceid);
+                }
+            }
+            
+
+            @Override
+            public void Reboot(int deviceID) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void FactorReset(int deviceID) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void ResetErrorCode(int deviceID) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            
+            
+        }
+        
+    }
+    
+    /**
+     * 
+     */
+    public static class MissileDispatchClient
+    {
+        
+    }
+    
+    /**
+     * 
+     */
+    public static class TemperatureSensorClient
+    {
+        
+    }
+    
+    /**
+     * 
+     */
+    public static class FlightControlClient
+    {
+        
+    }
+        
+    /**
+     * Registers a LwM2M client with a LwM2M server
+     * @param client The client to be registered
+     * @param endpointIdentifier The endpoint's name
+     * @return The registration ID assigned by the server
+     */
+    public static String register(final LeshanClient client, final String endpointIdentifier) {
+        String registrationID=null;
+        RegisterResponse response = client.send(new RegisterRequest(endpointIdentifier));
+
+        // Report registration response.
+        System.out.println("Device Registration (Success? " + response.getCode() + ")");
+        if (response.getCode() == ResponseCode.CREATED) {
+            System.out.println("\tDevice: Registered Client Location '" + response.getRegistrationID() + "'");
+            registrationID = response.getRegistrationID();
+        } else {
+            // TODO Should we have a error message on response ?
+            // System.err.println("\tDevice Registration Error: " + response.getErrorMessage());
+            System.err.println("\tDevice Registration Error: " + response.getCode());
+            System.err
+                    .println("If you're having issues connecting to the LWM2M endpoint, try using the DTLS port instead");
+        }
+        return registrationID;
+    }
+    
+    /**
+     * Loads the Json file that contains the custom object model
+     * @param client The client that calls this method
+     * @param objectModelStr the filename with its extension e.g. myObjectModel.json
+     * @return The LwM2M model created from the object model file
+     */
+    public static LwM2mModel LoadCustomObjectModel(Object client, String objectModelStr) 
+    {
+        InputStream myJsonStr;
+        myJsonStr = client.getClass().getResourceAsStream(objectModelStr);
+        LwM2mModel customModel;
+        HashMap<Integer, ObjectModel> map = null;
+        if(myJsonStr != null)
+        {
+            List<ObjectModel> objectModels = ObjectLoader.loadJsonStream(myJsonStr);
+            map = new HashMap<>();
+            for (ObjectModel objectModel : objectModels) {
+                map.put(objectModel.id, objectModel);
+            }
+        }
+        else
+        {
+            try {
+                throw new Exception("Error loading json file");
+            } catch (Exception ex) {
+                Logger.getLogger(client.getClass().toString()).log(Level.SEVERE, null, ex);
+            }
+        }
+        customModel = new LwM2mModel(map);
+        return customModel;
+    }
+    
+    /**
+     * Main method
+     * @param args
+     */
+    public static void main(String [] args)
+    {
+        UAVConfiguration uavConfig = new UAVConfiguration();
+        
+        DeviceStarterDetails threatDevDtls;
+        threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                uavConfig.getUavlocalhostPort(), "127.0.0.1", 5683, "/uavObjectModel.json", "Threat sensor", uavConfig);
+        ThreatSensorDeviceClient threatSensorDev = new ThreatSensorDeviceClient(threatDevDtls);
+        threatSensorDev.StartDevice();
+    }
+    
+}
