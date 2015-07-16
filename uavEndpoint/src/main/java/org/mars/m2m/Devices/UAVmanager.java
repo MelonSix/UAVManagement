@@ -358,8 +358,7 @@ public class UAVmanager extends BaseInstanceEnabler
 
     public void setOperatingTemperature_highest(int operatingTemperature_highest) {
         this.operatingTemperature_highest = operatingTemperature_highest;
-    }
-    
+    } 
     
     
 }

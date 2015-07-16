@@ -1,15 +1,15 @@
-INFO   [16:36:47.960] [main] o.e.j.u.log -  Logging initialized @2912ms 
-INFO   [16:36:57.771] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [16:36:58.010] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [16:36:58.010] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [16:36:58.026] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [16:36:58.027] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [16:37:05.343] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [16:37:05.370] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [16:37:05.441] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [16:37:05.551] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@5ae95707{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [16:37:05.558] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [16:37:08.583] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:41:31.434] [main] o.e.j.u.log -  Logging initialized @4328ms 
+INFO   [00:41:32.352] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:41:32.492] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:41:32.492] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:41:32.508] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:41:32.512] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:41:32.741] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:41:32.765] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:41:32.833] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:41:33.077] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@1bdf8190{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:41:33.085] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:41:34.924] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
@@ -23,257 +23,25 @@ INFO   [16:37:08.583] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [16:37:08.588] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6e60f18{/ms,null,AVAILABLE} 
-INFO   [16:37:08.611] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:41:34.932] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@61e3cf4d{/ms,null,AVAILABLE} 
+INFO   [00:41:34.944] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [16:37:08.631] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3b83459e{/admin-ms,null,AVAILABLE} 
-INFO   [16:37:08.731] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@5ae95707{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [16:37:08.731] [main] o.e.j.s.Server -  Started @23685ms 
-INFO   [16:38:37.087] [pool-4-thread-2] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=50099, Token=80691bce, OptionSet={"Uri-Path":"rd", "Uri-Query":"ep=UAV Manager"}, "</>;rt="oma.lwm2m", ".. 30 bytes 
-INFO   [16:38:50.524] [pool-4-thread-3] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=62364, Token=820b7abd, OptionSet={"Uri-Path":"rd", "Uri-Query":"ep=UAV Manager"}, "</>;rt="oma.lwm2m", ".. 30 bytes 
-INFO   [16:38:53.884] [pool-4-thread-3] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=12725, Token=a9141e8a, OptionSet={"Uri-Path":"rd", "Uri-Query":"ep=Threat sensor"}, "</>;rt="oma.lwm2m", ".. 50 bytes 
-ERROR  [16:44:44.486] [dw-40 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 44e768af38bc21e9 
-org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV Manager] returned unexpected response code [4.00]
-	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.handleUnexpectedResponseCode(LwM2mResponseBuilder.java:280) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.visit(LwM2mResponseBuilder.java:110) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.core.request.ReadRequest.accept(ReadRequest.java:79) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$1.buildResponse(CaliforniumLwM2mRequestSender.java:95) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.onResponse(CaliforniumLwM2mRequestSender.java:235) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.californium.core.coap.Request.setResponse(Request.java:377) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverResponse(ServerMessageDeliverer.java:154) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveResponse(CoapStack.java:191) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.ObserveLayer.receiveResponse(ObserveLayer.java:138) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveResponse(BlockwiseLayer.java:285) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.TokenLayer.receiveResponse(TokenLayer.java:79) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveResponse(ReliabilityLayer.java:247) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.CoapStack.receiveResponse(CoapStack.java:138) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:619) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) ~[californium-core-1.0.0-M3.jar:na]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_25]
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_25]
-	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
-INFO   [16:49:21.988] [main] o.e.j.u.log -  Logging initialized @1130ms 
-INFO   [16:49:22.151] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [16:49:22.181] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [16:49:22.181] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [16:49:22.187] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [16:49:22.187] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [16:49:22.208] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [16:49:22.216] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [16:49:22.233] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [16:49:22.271] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [16:49:22.274] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [16:49:22.838] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
- 
-INFO   [16:49:22.841] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@43034809{/ms,null,AVAILABLE} 
-INFO   [16:49:22.846] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [16:49:22.851] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@73ad7e90{/admin-ms,null,AVAILABLE} 
-INFO   [16:49:22.895] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [16:49:22.895] [main] o.e.j.s.Server -  Started @2039ms 
-ERROR  [16:50:04.783] [dw-37 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: ce7710c75b1331e6 
-org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV Manager] returned unexpected response code [4.00]
-	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.handleUnexpectedResponseCode(LwM2mResponseBuilder.java:280) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.visit(LwM2mResponseBuilder.java:110) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.core.request.ReadRequest.accept(ReadRequest.java:79) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$1.buildResponse(CaliforniumLwM2mRequestSender.java:95) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.onResponse(CaliforniumLwM2mRequestSender.java:235) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.californium.core.coap.Request.setResponse(Request.java:377) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverResponse(ServerMessageDeliverer.java:154) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveResponse(CoapStack.java:191) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.ObserveLayer.receiveResponse(ObserveLayer.java:138) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveResponse(BlockwiseLayer.java:285) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.TokenLayer.receiveResponse(TokenLayer.java:79) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveResponse(ReliabilityLayer.java:247) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.CoapStack.receiveResponse(CoapStack.java:138) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:619) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) ~[californium-core-1.0.0-M3.jar:na]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_25]
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_25]
-	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
-INFO   [16:54:33.191] [main] o.e.j.u.log -  Logging initialized @1086ms 
-INFO   [16:54:33.363] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [16:54:33.393] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [16:54:33.393] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [16:54:33.399] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [16:54:33.400] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [16:54:33.419] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [16:54:33.427] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [16:54:33.443] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [16:54:33.478] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [16:54:33.482] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [16:54:34.050] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
- 
-INFO   [16:54:34.053] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@43034809{/ms,null,AVAILABLE} 
-INFO   [16:54:34.058] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [16:54:34.062] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@73ad7e90{/admin-ms,null,AVAILABLE} 
-INFO   [16:54:34.118] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [16:54:34.118] [main] o.e.j.s.Server -  Started @2015ms 
-ERROR  [16:54:57.945] [dw-36 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 55c55f5ea94f96a8 
-org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV Manager] returned unexpected response code [4.00]
-	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.handleUnexpectedResponseCode(LwM2mResponseBuilder.java:280) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.visit(LwM2mResponseBuilder.java:110) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.core.request.ReadRequest.accept(ReadRequest.java:79) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$1.buildResponse(CaliforniumLwM2mRequestSender.java:95) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.onResponse(CaliforniumLwM2mRequestSender.java:235) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.eclipse.californium.core.coap.Request.setResponse(Request.java:377) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverResponse(ServerMessageDeliverer.java:154) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveResponse(CoapStack.java:191) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.ObserveLayer.receiveResponse(ObserveLayer.java:138) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveResponse(BlockwiseLayer.java:285) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.TokenLayer.receiveResponse(TokenLayer.java:79) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveResponse(ReliabilityLayer.java:247) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.stack.CoapStack.receiveResponse(CoapStack.java:138) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:619) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) ~[californium-core-1.0.0-M3.jar:na]
-	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) ~[californium-core-1.0.0-M3.jar:na]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_25]
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_25]
-	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
-INFO   [17:05:45.520] [main] o.e.j.u.log -  Logging initialized @1101ms 
-INFO   [17:05:45.687] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [17:05:45.719] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [17:05:45.719] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [17:05:45.724] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [17:05:45.725] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [17:05:45.745] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [17:05:45.754] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [17:05:45.771] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [17:05:45.807] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [17:05:45.811] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:05:46.370] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
- 
-INFO   [17:05:46.373] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@43034809{/ms,null,AVAILABLE} 
-INFO   [17:05:46.378] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [17:05:46.383] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@73ad7e90{/admin-ms,null,AVAILABLE} 
-INFO   [17:05:46.430] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [17:05:46.431] [main] o.e.j.s.Server -  Started @2012ms 
-INFO   [17:14:44.496] [main] o.e.j.u.log -  Logging initialized @1133ms 
-INFO   [17:14:44.662] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [17:14:44.692] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [17:14:44.692] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [17:14:44.697] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [17:14:44.698] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [17:14:44.724] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [17:14:44.732] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [17:14:44.748] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [17:14:44.783] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [17:14:44.787] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:14:45.381] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
- 
-INFO   [17:14:45.384] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@43034809{/ms,null,AVAILABLE} 
-INFO   [17:14:45.388] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [17:14:45.394] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@73ad7e90{/admin-ms,null,AVAILABLE} 
-INFO   [17:14:45.446] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [17:14:45.446] [main] o.e.j.s.Server -  Started @2084ms 
-ERROR  [17:26:25.363] [dw-36 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: d203dd93c3303124 
+INFO   [00:41:34.956] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@359ff4d9{/admin-ms,null,AVAILABLE} 
+INFO   [00:41:35.108] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1bdf8190{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:41:35.108] [main] o.e.j.s.Server -  Started @8044ms 
+ERROR  [00:46:55.150] [dw-34 - GET /ms/clients/Threat%20sensor/3/0/1] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 71a1d6e26a11539e 
 org.eclipse.leshan.core.request.exception.RequestTimeoutException: Request timed out after 5000 milliseconds
 	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.waitForResponse(CaliforniumLwM2mRequestSender.java:271) ~[leshan-all-0.1.11-M4.jar:na]
 	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender.send(CaliforniumLwM2mRequestSender.java:106) ~[leshan-all-0.1.11-M4.jar:na]
 	at org.eclipse.leshan.server.californium.impl.LeshanServer.send(LeshanServer.java:237) ~[leshan-all-0.1.11-M4.jar:na]
-	at org.mars.m2m.managementserver.resources.ClientsResource.readInstanceResources(ClientsResource.java:134) ~[classes/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_25]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_25]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_25]
-	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_25]
+	at org.mars.m2m.managementserver.resources.ClientsResource.readResource(ClientsResource.java:163) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
 	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81) ~[jersey-server-2.18.jar:na]
 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144) ~[jersey-server-2.18.jar:na]
 	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161) ~[jersey-server-2.18.jar:na]
@@ -325,42 +93,70 @@ org.eclipse.leshan.core.request.exception.RequestTimeoutException: Request timed
 	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
-INFO   [17:43:37.184] [main] o.e.j.u.log -  Logging initialized @1107ms 
-INFO   [17:43:37.350] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [17:43:37.380] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [17:43:37.380] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [17:43:37.385] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [17:43:37.386] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [17:43:37.406] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [17:43:37.416] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [17:43:37.431] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [17:43:37.466] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [17:43:37.469] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:43:38.053] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
-    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
-    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
- 
-INFO   [17:43:38.054] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@43034809{/ms,null,AVAILABLE} 
-INFO   [17:43:38.059] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [17:43:38.065] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@73ad7e90{/admin-ms,null,AVAILABLE} 
-INFO   [17:43:38.114] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@b672aa8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [17:43:38.114] [main] o.e.j.s.Server -  Started @2037ms 
-ERROR  [17:44:33.735] [dw-35 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 7907de1214cdc231 
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+ERROR  [00:52:27.673] [dw-35 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: bc762a81087c5b8a 
+org.eclipse.leshan.core.request.exception.RequestTimeoutException: Request timed out after 5000 milliseconds
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.waitForResponse(CaliforniumLwM2mRequestSender.java:271) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender.send(CaliforniumLwM2mRequestSender.java:106) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LeshanServer.send(LeshanServer.java:237) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.mars.m2m.managementserver.resources.ClientsResource.readInstanceResources(ClientsResource.java:134) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$TypeOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:205) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:308) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:291) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1140) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:403) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:386) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:334) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221) [jersey-container-servlet-core-2.18.jar:na]
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1669) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.UserAgentFilter.doFilter(UserAgentFilter.java:83) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.GzipFilter.doFilter(GzipFilter.java:364) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jetty.BiDiGzipFilter.doFilter(BiDiGzipFilter.java:134) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:29) [dropwizard-servlets-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:43) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:38) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:240) [metrics-jetty9-3.1.2.jar:3.1.2]
+	at io.dropwizard.jetty.ContextRoutingHandler.handle(ContextRoutingHandler.java:38) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:95) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:159) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.handle(Server.java:499) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+ERROR  [00:59:53.153] [dw-34 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: a8e5fc65b25d691c 
 org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV Manager] returned unexpected response code [4.00]
 	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.handleUnexpectedResponseCode(LwM2mResponseBuilder.java:280) ~[leshan-all-0.1.11-M4.jar:na]
 	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.visit(LwM2mResponseBuilder.java:110) ~[leshan-all-0.1.11-M4.jar:na]
@@ -384,10 +180,487 @@ org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV M
 	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) ~[californium-core-1.0.0-M3.jar:na]
 	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) ~[californium-core-1.0.0-M3.jar:na]
 	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) ~[californium-core-1.0.0-M3.jar:na]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_25]
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_25]
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_25]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_25]
-	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+INFO   [01:07:16.286] [main] o.e.j.u.log -  Logging initialized @3550ms 
+INFO   [01:07:16.810] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [01:07:16.900] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [01:07:16.900] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [01:07:16.908] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [01:07:16.909] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [01:07:17.059] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [01:07:17.091] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [01:07:17.140] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [01:07:17.265] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [01:07:17.287] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [01:07:18.470] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [01:07:18.483] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e31c3ec{/ms,null,AVAILABLE} 
+INFO   [01:07:18.495] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [01:07:18.506] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7ae9a33a{/admin-ms,null,AVAILABLE} 
+INFO   [01:07:19.012] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [01:07:19.015] [main] o.e.j.s.Server -  Started @6280ms 
+ERROR  [01:08:03.712] [dw-36 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 4885c224f653767b 
+org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV Manager] returned unexpected response code [4.00]
+	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.handleUnexpectedResponseCode(LwM2mResponseBuilder.java:280) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.visit(LwM2mResponseBuilder.java:110) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.core.request.ReadRequest.accept(ReadRequest.java:79) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$1.buildResponse(CaliforniumLwM2mRequestSender.java:95) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.onResponse(CaliforniumLwM2mRequestSender.java:235) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.californium.core.coap.Request.setResponse(Request.java:377) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverResponse(ServerMessageDeliverer.java:154) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveResponse(CoapStack.java:191) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ObserveLayer.receiveResponse(ObserveLayer.java:138) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveResponse(BlockwiseLayer.java:285) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.TokenLayer.receiveResponse(TokenLayer.java:79) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveResponse(ReliabilityLayer.java:247) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack.receiveResponse(CoapStack.java:138) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:619) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) ~[californium-core-1.0.0-M3.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+INFO   [01:16:51.095] [main] o.e.j.u.log -  Logging initialized @1956ms 
+INFO   [01:16:51.534] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [01:16:51.599] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [01:16:51.600] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [01:16:51.610] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [01:16:51.611] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [01:16:51.650] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [01:16:51.669] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [01:16:51.726] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [01:16:51.817] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [01:16:51.828] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [01:16:53.095] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [01:16:53.103] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e31c3ec{/ms,null,AVAILABLE} 
+INFO   [01:16:53.120] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [01:16:53.135] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7ae9a33a{/admin-ms,null,AVAILABLE} 
+INFO   [01:16:53.286] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [01:16:53.287] [main] o.e.j.s.Server -  Started @4149ms 
+ERROR  [01:17:31.182] [dw-37 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 5ab4718e53673ec7 
+org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV Manager] returned unexpected response code [4.00]
+	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.handleUnexpectedResponseCode(LwM2mResponseBuilder.java:280) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.visit(LwM2mResponseBuilder.java:110) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.core.request.ReadRequest.accept(ReadRequest.java:79) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$1.buildResponse(CaliforniumLwM2mRequestSender.java:95) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.onResponse(CaliforniumLwM2mRequestSender.java:235) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.californium.core.coap.Request.setResponse(Request.java:377) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverResponse(ServerMessageDeliverer.java:154) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveResponse(CoapStack.java:191) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ObserveLayer.receiveResponse(ObserveLayer.java:138) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveResponse(BlockwiseLayer.java:285) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.TokenLayer.receiveResponse(TokenLayer.java:79) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveResponse(ReliabilityLayer.java:247) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack.receiveResponse(CoapStack.java:138) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:619) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) ~[californium-core-1.0.0-M3.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+ERROR  [01:21:13.032] [dw-36 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 49c71eea143eddcc 
+org.eclipse.leshan.core.request.exception.ResourceAccessException: Client [UAV Manager] returned unexpected response code [4.00]
+	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.handleUnexpectedResponseCode(LwM2mResponseBuilder.java:280) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LwM2mResponseBuilder.visit(LwM2mResponseBuilder.java:110) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.core.request.ReadRequest.accept(ReadRequest.java:79) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$1.buildResponse(CaliforniumLwM2mRequestSender.java:95) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.onResponse(CaliforniumLwM2mRequestSender.java:235) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.californium.core.coap.Request.setResponse(Request.java:377) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverResponse(ServerMessageDeliverer.java:154) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveResponse(CoapStack.java:191) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ObserveLayer.receiveResponse(ObserveLayer.java:138) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveResponse(BlockwiseLayer.java:285) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.TokenLayer.receiveResponse(TokenLayer.java:79) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveResponse(ReliabilityLayer.java:247) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveResponse(AbstractLayer.java:98) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack.receiveResponse(CoapStack.java:138) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:619) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) ~[californium-core-1.0.0-M3.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[na:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) ~[na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+ERROR  [01:40:25.550] [dw-36 - GET /ms/clients/0f078756-be5a-4a92-b605-d263d6f9bb76/3/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 79d6bf2436b541b6 
+org.eclipse.leshan.core.request.exception.RequestTimeoutException: Request timed out after 5000 milliseconds
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.waitForResponse(CaliforniumLwM2mRequestSender.java:271) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender.send(CaliforniumLwM2mRequestSender.java:106) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LeshanServer.send(LeshanServer.java:237) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.mars.m2m.managementserver.resources.ClientsResource.readInstanceResources(ClientsResource.java:134) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$TypeOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:205) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:308) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:291) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1140) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:403) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:386) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:334) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221) [jersey-container-servlet-core-2.18.jar:na]
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1669) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.UserAgentFilter.doFilter(UserAgentFilter.java:83) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.GzipFilter.doFilter(GzipFilter.java:364) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jetty.BiDiGzipFilter.doFilter(BiDiGzipFilter.java:134) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:29) [dropwizard-servlets-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:43) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:38) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:240) [metrics-jetty9-3.1.2.jar:3.1.2]
+	at io.dropwizard.jetty.ContextRoutingHandler.handle(ContextRoutingHandler.java:38) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:95) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:159) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.handle(Server.java:499) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+ERROR  [01:51:59.471] [dw-37 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 859cf8563f269467 
+org.eclipse.leshan.core.request.exception.RequestTimeoutException: Request timed out after 5000 milliseconds
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.waitForResponse(CaliforniumLwM2mRequestSender.java:271) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender.send(CaliforniumLwM2mRequestSender.java:106) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LeshanServer.send(LeshanServer.java:237) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.mars.m2m.managementserver.resources.ClientsResource.readInstanceResources(ClientsResource.java:134) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$TypeOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:205) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:308) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:291) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1140) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:403) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:386) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:334) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221) [jersey-container-servlet-core-2.18.jar:na]
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1669) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.UserAgentFilter.doFilter(UserAgentFilter.java:83) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.GzipFilter.doFilter(GzipFilter.java:364) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jetty.BiDiGzipFilter.doFilter(BiDiGzipFilter.java:134) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:29) [dropwizard-servlets-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:43) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:38) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:240) [metrics-jetty9-3.1.2.jar:3.1.2]
+	at io.dropwizard.jetty.ContextRoutingHandler.handle(ContextRoutingHandler.java:38) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:95) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:159) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.handle(Server.java:499) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+INFO   [01:54:58.866] [main] o.e.j.u.log -  Logging initialized @1916ms 
+INFO   [01:54:59.290] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [01:54:59.348] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [01:54:59.349] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [01:54:59.360] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [01:54:59.361] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [01:54:59.409] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [01:54:59.427] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [01:54:59.455] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [01:54:59.532] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [01:54:59.539] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [01:55:00.660] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [01:55:00.669] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e31c3ec{/ms,null,AVAILABLE} 
+INFO   [01:55:00.686] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [01:55:00.706] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7ae9a33a{/admin-ms,null,AVAILABLE} 
+INFO   [01:55:00.860] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [01:55:00.860] [main] o.e.j.s.Server -  Started @3912ms 
+ERROR  [01:55:57.238] [dw-36 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: d2c41cc101db83b5 
+org.eclipse.leshan.core.request.exception.RequestTimeoutException: Request timed out after 5000 milliseconds
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.waitForResponse(CaliforniumLwM2mRequestSender.java:271) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender.send(CaliforniumLwM2mRequestSender.java:106) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LeshanServer.send(LeshanServer.java:237) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.mars.m2m.managementserver.resources.ClientsResource.readInstanceResources(ClientsResource.java:134) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$TypeOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:205) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:308) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:291) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1140) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:403) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:386) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:334) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221) [jersey-container-servlet-core-2.18.jar:na]
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1669) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.UserAgentFilter.doFilter(UserAgentFilter.java:83) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.GzipFilter.doFilter(GzipFilter.java:364) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jetty.BiDiGzipFilter.doFilter(BiDiGzipFilter.java:134) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:29) [dropwizard-servlets-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:43) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:38) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:240) [metrics-jetty9-3.1.2.jar:3.1.2]
+	at io.dropwizard.jetty.ContextRoutingHandler.handle(ContextRoutingHandler.java:38) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:95) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:159) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.handle(Server.java:499) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+ERROR  [02:06:05.913] [dw-36 - GET /ms/clients/UAV%20Manager/12201/0] i.d.j.e.LoggingExceptionMapper -  Error handling a request: 603bdb81d207155d 
+org.eclipse.leshan.core.request.exception.RequestTimeoutException: Request timed out after 5000 milliseconds
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender$SyncRequestObserver.waitForResponse(CaliforniumLwM2mRequestSender.java:271) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.CaliforniumLwM2mRequestSender.send(CaliforniumLwM2mRequestSender.java:106) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.eclipse.leshan.server.californium.impl.LeshanServer.send(LeshanServer.java:237) ~[leshan-all-0.1.11-M4.jar:na]
+	at org.mars.m2m.managementserver.resources.ClientsResource.readInstanceResources(ClientsResource.java:134) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory$1.invoke(ResourceMethodInvocationHandlerFactory.java:81) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:144) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:161) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$TypeOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:205) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:308) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:291) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1140) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:403) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:386) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:334) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221) [jersey-container-servlet-core-2.18.jar:na]
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1669) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.UserAgentFilter.doFilter(UserAgentFilter.java:83) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.GzipFilter.doFilter(GzipFilter.java:364) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jetty.BiDiGzipFilter.doFilter(BiDiGzipFilter.java:134) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:29) [dropwizard-servlets-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:43) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:38) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:240) [metrics-jetty9-3.1.2.jar:3.1.2]
+	at io.dropwizard.jetty.ContextRoutingHandler.handle(ContextRoutingHandler.java:38) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:95) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:159) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.handle(Server.java:499) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
+INFO   [03:26:37.123] [main] o.e.j.u.log -  Logging initialized @1952ms 
+INFO   [03:26:37.471] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [03:26:37.555] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [03:26:37.556] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [03:26:37.567] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [03:26:37.568] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [03:26:37.734] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [03:26:37.755] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [03:26:37.806] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [03:26:37.917] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [03:26:37.923] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [03:26:39.026] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [03:26:39.034] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e31c3ec{/ms,null,AVAILABLE} 
+INFO   [03:26:39.045] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [03:26:39.055] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7ae9a33a{/admin-ms,null,AVAILABLE} 
+INFO   [03:26:39.171] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [03:26:39.172] [main] o.e.j.s.Server -  Started @4002ms 

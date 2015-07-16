@@ -500,13 +500,16 @@ public class MilitaryUAV implements Runnable {
     public static class UAVManagerClient extends AbstractDevice
     {
         UAVmanager uavManager;
+        Device device;
 
         public UAVManagerClient() {
+            this.device = new Device();
             this.uavManager = createUAVmanager();
         }
         
         public UAVManagerClient(DeviceStarterDetails lwm2mClientDetails)
         {
+            this.device = new Device();
             this.uavManager = createUAVmanager();
             try
             {
@@ -557,8 +560,9 @@ public class MilitaryUAV implements Runnable {
                 initializer = new LwM2mObjectInitializer(customModel);
                 
                 //attach instance
-                initializer.setInstanceForObject(12201, uavManager);                
-                List<ObjectEnabler> enablers = initializer.create(12201);
+                initializer.setInstanceForObject(12201, uavManager);   
+                initializer.setInstanceForObject(3, device);
+                List<ObjectEnabler> enablers = initializer.create(12201, 3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);

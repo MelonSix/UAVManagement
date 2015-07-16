@@ -2521,7 +2521,7 @@
   },
   
     {
-        "name":"UAV managment",
+        "name":"UAV management",
         "id":12201,
         "instancetype":"single",
         "mandatory":true,
@@ -2717,11 +2717,11 @@
             },
             {
                "id": 17,
-                "name": "Rate-of-Climb",
+                "name": "Maximum Flight Time",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
-                "type": "float",
+                "type": "integer",
                 "range": "",
                 "units": "m/min",
                 "description": "How fast the UAV rises in altitude" 
