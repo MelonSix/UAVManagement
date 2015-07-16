@@ -5,6 +5,9 @@
  */
 package org.mars.m2m.uavendpoint.UavType;
 
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.core.util.StatusPrinter;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,6 @@ import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.Devices.MissileDispatcher;
 import org.mars.m2m.Devices.TemperatureSensor;
 import org.mars.m2m.Devices.ThreatSensor;
-import org.mars.m2m.apiExtension.LeshanClientExt;
 import org.mars.m2m.apiExtension.LwM2mObjectInitializer;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
@@ -24,12 +26,16 @@ import org.mars.m2m.uavendpoint.Helpers.DeviceHelper;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
 import org.mars.m2m.uavendpoint.omaObjects.Device;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author AG BRIGHTER
  */
 public class MilitaryUAV implements Runnable {
+    
+    public static Logger log = (Logger) LoggerFactory.getLogger(MilitaryUAV.class);
+    
     /**
      * Keeps track of all devices (lwm2m clients) owned by this particular UAV
      */
@@ -375,7 +381,13 @@ public class MilitaryUAV implements Runnable {
      */
     @Override
     public void run()/* throws InterruptedException*/
-    {        
+    { 
+        log.info("Started execution in military uav run method");
+        //StatusPrinter.print((LoggerContext) LoggerFactory.getILoggerFactory());
+        
+        /**
+         * Threat sensor
+         */
         DeviceStarterDetails threatDevDtls;
         threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
                 8080, "127.0.0.1", 5683, "/uavObjectModel.json", "Threat sensor", uavConfig);
@@ -383,24 +395,30 @@ public class MilitaryUAV implements Runnable {
         threatSensorDev.StartDevice();
         //Thread.sleep(10000);
         //DeviceHelper.stopDevice(threatSensorDev);
-        
+        log.info("[{}] Threat sensor started",this.getClass().getName());        
         uavOwnedDevices.add(threatSensorDev);
         
-//        DeviceStarterDetails missileDisDtls;
-//        missileDisDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-//                8092, "127.0.0.1", 5683, "/uavObjectModel.json", "Missile dispatcher", uavConfig);
-//        MissileDispatchClient mislDisClient = new MissileDispatchClient(missileDisDtls);
-//        mislDisClient.StartDevice();
-//        
-//        uavOwnedDevices.add(mislDisClient);
-//        
-//        DeviceStarterDetails tempSenDtls;
-//        tempSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-//                8095, "127.0.0.1", 5683, "/uavObjectModel.json", "IPSO Temperature sensor", uavConfig);
-//        TemperatureSensorClient tempSenClient = new TemperatureSensorClient(tempSenDtls);
-//        tempSenClient.StartDevice();
-//        
-//        uavOwnedDevices.add(tempSenClient);
+        /**
+         * Missile dispatcher
+         */
+        DeviceStarterDetails missileDisDtls;
+        missileDisDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8092, "127.0.0.1", 5683, "/uavObjectModel.json", "Missile dispatcher", uavConfig);
+        MissileDispatchClient mislDisClient = new MissileDispatchClient(missileDisDtls);
+        mislDisClient.StartDevice();
+        log.info("[{}] Missile dispatcher started",this.getClass().getName());
+        uavOwnedDevices.add(mislDisClient);
+        
+        /**
+         * Temperature sensor
+         */
+        DeviceStarterDetails tempSenDtls;
+        tempSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8095, "127.0.0.1", 5683, "/uavObjectModel.json", "IPSO Temperature sensor", uavConfig);
+        TemperatureSensorClient tempSenClient = new TemperatureSensorClient(tempSenDtls);
+        tempSenClient.StartDevice();
+        log.info("[{}] Temperature sensor started",this.getClass().getName());
+        uavOwnedDevices.add(tempSenClient);
     }
     
 }
