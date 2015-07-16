@@ -2521,7 +2521,7 @@
   },
   
     {
-        "name":"UAV properties",
+        "name":"UAV managment",
         "id":12201,
         "instancetype":"single",
         "mandatory":true,
@@ -2732,7 +2732,7 @@
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
-                "type": "integer",
+                "type": "float",
                 "range": "",
                 "units": "m",
                 "description": "" 
@@ -2775,7 +2775,7 @@
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
-                "type": "string",
+                "type": "integer",
                 "range": "",
                 "units": "",
                 "description": "The discovered threat type" 

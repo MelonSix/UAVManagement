@@ -48,6 +48,7 @@ import org.eclipse.leshan.util.Validate;
 import org.mars.m2m.managementserver.core.ResponseManagement;
 import org.mars.m2m.managementserver.json.ConfigGson;
 import org.mars.m2m.managementserver.representations.ObjectResource;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -55,6 +56,7 @@ import org.mars.m2m.managementserver.representations.ObjectResource;
  */
 @Path("/clients")
 public class ClientsResource {
+    private static ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ClientsResource.class);
     
     private final LwM2mServer server;
     
@@ -132,7 +134,7 @@ public class ClientsResource {
                 ValueResponse cResponse = server.send(client, request);
                 processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
             } catch (IOException ex) {
-                Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+                log.error(ex.getMessage());
             }
         } 
         return processedValResponse;        

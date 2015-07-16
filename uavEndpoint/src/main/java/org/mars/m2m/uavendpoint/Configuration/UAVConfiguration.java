@@ -75,7 +75,8 @@ public class UAVConfiguration {
                                   IP_CONNECTIVITY_FAILURE,
                                   PERIPHERAL_MALFUNCTION
     }
-
+    
+    
     /**
      * Instantiates an object of the configuration class
      */

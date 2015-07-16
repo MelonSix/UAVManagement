@@ -5,9 +5,9 @@
  */
 package org.mars.m2m.Devices;
 
+import ch.qos.logback.classic.Logger;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.UUID;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
 import org.eclipse.leshan.core.node.LwM2mResource;
@@ -15,6 +15,7 @@ import org.eclipse.leshan.core.node.Value;
 import org.eclipse.leshan.core.response.LwM2mResponse;
 import org.eclipse.leshan.core.response.ValueResponse;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -22,6 +23,16 @@ import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
  */
 public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
 {
+    private static Logger log = (Logger) LoggerFactory.getLogger(UAVmanager.class);
+    
+    //Resources
+    private int threatType;
+    private int threatPosition_latitude;
+    private int threatPosition_longitude;
+    private String threatMinimumBoundedRectangle;
+    private float threatWidth;
+    private float threatHeight;
+    
     float myVal = (float) Math.random();//testing
 
     /**
@@ -45,9 +56,30 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
         }, 1000, 1000);
     }
 
+    /**
+     *
+     * @param threatType
+     * @param threatPosition_latitude
+     * @param threatPosition_longitude
+     * @param threatMinimumBoundedRectangle
+     * @param threatWidth
+     * @param threatHeight
+     */
+    public ThreatSensor(int threatType, int threatPosition_latitude, 
+            int threatPosition_longitude, String threatMinimumBoundedRectangle, 
+            float threatWidth, float threatHeight) {
+        this.threatType = threatType;
+        this.threatPosition_latitude = threatPosition_latitude;
+        this.threatPosition_longitude = threatPosition_longitude;
+        this.threatMinimumBoundedRectangle = threatMinimumBoundedRectangle;
+        this.threatWidth = threatWidth;
+        this.threatHeight = threatHeight;
+    }   
+    
+    
     @Override
     public LwM2mResponse execute(int resourceid, byte[] params) {
-        System.out.println("Execute on Device resource " + resourceid);
+        log.info("[{}] Execute on Device resource {}", this.getClass().getName() , resourceid);
         if (params != null && params.length != 0)
             System.out.println("\t params " + new String(params));
         return new LwM2mResponse(ResponseCode.CHANGED);
@@ -55,35 +87,31 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
 
     @Override
     public LwM2mResponse write(int resourceid, LwM2mResource value) {
-        System.out.println("Write on Device Resource " + resourceid + " value " + value);
-        switch (resourceid) {
-        case 13:
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 14:            
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 15:
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        default:
-            return super.write(resourceid, value);
-        }
+        return super.write(resourceid, value);
     }
 
     @Override
     public ValueResponse read(int resourceid) {
-        System.out.println("Read on Device Resource " + resourceid);
+        log.info("[{}] Read on resource: {}",this.getClass().getName(),resourceid);
         switch (resourceid) {
         case 0:
-            return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  Value.newStringValue(this.objectModel.name)) );
+            return new ValueResponse(ResponseCode.CONTENT, 
+                        new LwM2mResource(resourceid,  Value.newIntegerValue(this.getThreatType())) );
         case 1:
-            return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  Value.newIntegerValue((int)myVal)) );
+            return new ValueResponse(ResponseCode.CONTENT, 
+                        new LwM2mResource(resourceid,  Value.newIntegerValue(this.getThreatPosition_latitude())) );
         case 2:
-            return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  Value.newIntegerValue((int)myVal)) );
+            return new ValueResponse(ResponseCode.CONTENT, 
+                        new LwM2mResource(resourceid,  Value.newIntegerValue(this.getThreatPosition_longitude())) );
         case 3:
-            return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  Value.newStringValue((UUID.randomUUID().toString()))) );
+            return new ValueResponse(ResponseCode.CONTENT, 
+                        new LwM2mResource(resourceid,  Value.newStringValue(this.getThreatMinimumBoundedRectangle())) );
         case 4:
-            return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  Value.newFloatValue(myVal)) );
+            return new ValueResponse(ResponseCode.CONTENT, 
+                        new LwM2mResource(resourceid,  Value.newFloatValue(this.getThreatWidth())) );
         case 5:
-            return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  Value.newFloatValue(myVal)) );
+            return new ValueResponse(ResponseCode.CONTENT,
+                        new LwM2mResource(resourceid,  Value.newFloatValue(this.getThreatHeight())) );
         default:
             return super.read(resourceid);
         }
@@ -104,4 +132,69 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
         System.out.println("Device error code reset triggered");
     }
 
+    public static Logger getLog() {
+        return log;
+    }
+
+    public static void setLog(Logger log) {
+        ThreatSensor.log = log;
+    }
+
+    public int getThreatType() {
+        return threatType;
+    }
+
+    public void setThreatType(int threatType) {
+        this.threatType = threatType;
+    }
+
+    public int getThreatPosition_latitude() {
+        return threatPosition_latitude;
+    }
+
+    public void setThreatPosition_latitude(int threatPosition_latitude) {
+        this.threatPosition_latitude = threatPosition_latitude;
+    }
+
+    public int getThreatPosition_longitude() {
+        return threatPosition_longitude;
+    }
+
+    public void setThreatPosition_longitude(int threatPosition_longitude) {
+        this.threatPosition_longitude = threatPosition_longitude;
+    }
+
+    public String getThreatMinimumBoundedRectangle() {
+        return threatMinimumBoundedRectangle;
+    }
+
+    public void setThreatMinimumBoundedRectangle(String threatMinimumBoundedRectangle) {
+        this.threatMinimumBoundedRectangle = threatMinimumBoundedRectangle;
+    }
+
+    public float getThreatWidth() {
+        return threatWidth;
+    }
+
+    public void setThreatWidth(float threatWidth) {
+        this.threatWidth = threatWidth;
+    }
+
+    public float getThreatHeight() {
+        return threatHeight;
+    }
+
+    public void setThreatHeight(float threatHeight) {
+        this.threatHeight = threatHeight;
+    }
+
+    public float getMyVal() {
+        return myVal;
+    }
+
+    public void setMyVal(float myVal) {
+        this.myVal = myVal;
+    }
+
+    
 }

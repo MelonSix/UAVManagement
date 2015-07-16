@@ -5,6 +5,7 @@
  */
 package org.mars.m2m.Devices;
 
+import ch.qos.logback.classic.Logger;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
 import org.eclipse.leshan.core.node.LwM2mResource;
@@ -12,6 +13,7 @@ import org.eclipse.leshan.core.node.Value;
 import org.eclipse.leshan.core.response.LwM2mResponse;
 import org.eclipse.leshan.core.response.ValueResponse;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -19,6 +21,8 @@ import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
  */
 public class MissileDispatcher extends BaseInstanceEnabler implements DeviceExecution
 {
+    private static Logger log = (Logger) LoggerFactory.getLogger(UAVmanager.class);
+    
     private int maximumMissiles;
     private int remainingMissiles;
     private int targetLatitude;
@@ -37,7 +41,7 @@ public class MissileDispatcher extends BaseInstanceEnabler implements DeviceExec
     
     @Override
     public LwM2mResponse execute(int resourceid, byte[] params) {
-        System.out.println("Execute on missile dispatcher device");
+        log.info("[{}] Execute on Device resource {}", this.getClass().getName() , resourceid);
         if (params != null && params.length != 0)
             System.out.println("\t params " + new String(params));
         return new LwM2mResponse(ResponseCode.CHANGED);
@@ -45,7 +49,7 @@ public class MissileDispatcher extends BaseInstanceEnabler implements DeviceExec
 
     @Override
     public LwM2mResponse write(int resourceid, LwM2mResource resource) {
-        System.out.println("Write on Missile Resource " + resourceid + " value " + resource);
+        log.info("["+this.getClass().getName()+"] Write on Device Resource [{}]  value[{}] ", resourceid , resource);
         switch(resourceid)
         {
             case 2:
@@ -61,7 +65,7 @@ public class MissileDispatcher extends BaseInstanceEnabler implements DeviceExec
 
     @Override
     public ValueResponse read(int resourceid) {
-        System.out.println("Read on Device Resource " + resourceid);
+        log.info("[{}] Read on resource: {}",this.getClass().getName(),resourceid);
         switch (resourceid) {
         case 0:
             return new ValueResponse(ResponseCode.CONTENT, new LwM2mResource(resourceid,  

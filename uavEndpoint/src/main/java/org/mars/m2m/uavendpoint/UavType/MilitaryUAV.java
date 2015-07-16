@@ -6,8 +6,7 @@
 package org.mars.m2m.uavendpoint.UavType;
 
 import ch.qos.logback.classic.Logger;
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.core.util.StatusPrinter;
+import com.google.gson.Gson;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +14,20 @@ import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.core.model.LwM2mModel;
+import org.mars.m2m.Devices.AltitudeSensor;
+import org.mars.m2m.Devices.FlightControl;
 import org.mars.m2m.Devices.MissileDispatcher;
 import org.mars.m2m.Devices.TemperatureSensor;
 import org.mars.m2m.Devices.ThreatSensor;
+import org.mars.m2m.Devices.UAVmanager;
 import org.mars.m2m.apiExtension.LwM2mObjectInitializer;
+import org.mars.m2m.uavendpoint.Configuration.ThreatType;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Helpers.AbstractDevice;
 import org.mars.m2m.uavendpoint.Helpers.DeviceHelper;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
+import org.mars.m2m.uavendpoint.Model.MinimumBoundingRectangle;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
 import org.mars.m2m.uavendpoint.omaObjects.Device;
 import org.slf4j.LoggerFactory;
@@ -74,7 +78,7 @@ public class MilitaryUAV implements Runnable {
         {
             this(null);
             this.device = new Device();
-            this.threatSensor = new ThreatSensor();
+            this.threatSensor = createThreatSensor();
         }  
         
         /**
@@ -84,7 +88,7 @@ public class MilitaryUAV implements Runnable {
         public ThreatSensorDeviceClient(DeviceStarterDetails lwm2mClientDetails)
         {
             this.device = new Device();
-            this.threatSensor = new ThreatSensor();
+            this.threatSensor = createThreatSensor();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -161,7 +165,16 @@ public class MilitaryUAV implements Runnable {
                 this.deviceStarted = false;
                 System.err.append("Device already started");
             }
-        }                    
+        }        
+        
+        private ThreatSensor createThreatSensor()
+        {
+            MinimumBoundingRectangle mbr = new MinimumBoundingRectangle((System.currentTimeMillis()*100), 
+                    (System.currentTimeMillis()*100/6), (System.currentTimeMillis()*100/3), (System.currentTimeMillis()*100/2));
+            Gson gson = new Gson();
+            return new ThreatSensor(ThreatType.BIOLOGICAL_WEAPON, (int) System.currentTimeMillis()*100, 
+                            (int)System.currentTimeMillis()*160, gson.toJson(mbr), 300, 400);
+        }
         
     }
     
@@ -171,11 +184,13 @@ public class MilitaryUAV implements Runnable {
     public static class MissileDispatchClient extends AbstractDevice
     {
         MissileDispatcher missileDispatch;
+        Device device;
         
         public MissileDispatchClient()
         {
             this(null);
-            this.missileDispatch = new MissileDispatcher();
+            this.device = new Device();
+            this.missileDispatch = createMissileDispatcher();
         }
         
         /**
@@ -184,7 +199,8 @@ public class MilitaryUAV implements Runnable {
          */
         public MissileDispatchClient(DeviceStarterDetails lwm2mClientDetails) 
         {
-            this.missileDispatch = new MissileDispatcher();
+            this.device = new Device();
+            this.missileDispatch = createMissileDispatcher();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -236,7 +252,8 @@ public class MilitaryUAV implements Runnable {
                 
                 //attach instance
                 initializer.setInstanceForObject(12203, missileDispatch);
-                List<ObjectEnabler> enablers = initializer.create(12203);
+                initializer.setInstanceForObject(3, device);
+                List<ObjectEnabler> enablers = initializer.create(12203, 3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
@@ -262,6 +279,12 @@ public class MilitaryUAV implements Runnable {
                 System.err.append("Device already started");
             }
         }
+        
+        private MissileDispatcher createMissileDispatcher()
+        {
+            return new MissileDispatcher((int) (Math.random()*10), (int) (int) (Math.random()*10),
+                    (int) (Math.random()*100), (int) (Math.random()*100));
+        }
     }
     
     /**
@@ -273,6 +296,7 @@ public class MilitaryUAV implements Runnable {
          * Temperature sensor device object for the temperature sensor lwm2m client
          */
         TemperatureSensor tempSensor;
+        Device device;
         
         /**
          * Default constructor
@@ -280,6 +304,7 @@ public class MilitaryUAV implements Runnable {
         public TemperatureSensorClient() 
         {
             this(null);
+            this.device = new Device();
             this.tempSensor = new TemperatureSensor();
         }
         
@@ -289,6 +314,7 @@ public class MilitaryUAV implements Runnable {
          */
         public TemperatureSensorClient(DeviceStarterDetails lwm2mClientDetails)
         {
+            this.device = new Device();
             this.tempSensor = new TemperatureSensor();
             try
             {
@@ -340,7 +366,322 @@ public class MilitaryUAV implements Runnable {
                 
                 //attach instance
                 initializer.setInstanceForObject(3303, tempSensor);
-                List<ObjectEnabler> enablers = initializer.create(3303);
+                initializer.setInstanceForObject(3, device);
+                List<ObjectEnabler> enablers = initializer.create(3303, 3);
+
+                // Create client
+                final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
+                final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
+
+                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                        enablers));
+
+                // Start the client
+                client.start();
+
+                // register to the server provided
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                
+                /**
+                 * LwM2M client registration
+                 */
+                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+            }
+            else
+            {
+                this.deviceStarted = false;
+                System.err.append("Device already started");
+            }
+        }
+        
+        private TemperatureSensor createTemperatureSensor()
+        {
+            return new TemperatureSensor((float)(Math.random()*100/2), (float)(Math.random()*6), 
+                        (float)(Math.random()*10), (float)(Math.random()*100));
+        }
+    }
+    
+    /**
+     * 
+     */
+    public static class FlightControlClient extends AbstractDevice
+    {
+        FlightControl flightControl;
+        Device device;
+
+        public FlightControlClient() {
+            this.device = new Device();
+            this.flightControl = new FlightControl();
+        }
+
+        public FlightControlClient(DeviceStarterDetails lwm2mClientDetails) 
+        {
+            this.device = new Device();
+            this.flightControl = new FlightControl();
+            try
+            {
+                if(lwm2mClientDetails != null)
+                {                    
+                    this.localHostName = lwm2mClientDetails.getLocalHostName();
+                    this.localPort = lwm2mClientDetails.getLocalPort();
+                    this.serverHostName = lwm2mClientDetails.getServerHostName();
+                    this.serverPort = lwm2mClientDetails.getServerPort();
+                    this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
+                    this.endpointName = lwm2mClientDetails.getEndPointName();
+                    
+                    StarterValidator.notNull(localHostName);
+                    StarterValidator.notWellKnownPort(localPort);
+                    StarterValidator.notNull(serverHostName);
+                    if(StarterValidator.notPositive(serverPort))
+                        throw new DeviceStarterDetailsException("Specified server port has to be positive");
+                    
+                    canDeviceStart.set(true);
+                }
+                else
+                {
+                    System.out.println("Starter details cannot be null");
+                    throw new DeviceStarterDetailsException("Device starter details error");
+                }
+            }
+            catch(Exception ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+        
+        /**
+         * Starts the device within the UAV
+         */
+        public synchronized void StartDevice()
+        {
+            if(canDeviceStart.getAndSet(false))
+            {
+                /** Monitors the state of the UAV */
+                this.deviceStarted = true;
+            
+                //Gets the model
+                LwM2mModel customModel;
+                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+
+                LwM2mObjectInitializer initializer;
+                initializer = new LwM2mObjectInitializer(customModel);
+                
+                //attach instance
+                initializer.setInstanceForObject(12205, flightControl);
+                initializer.setInstanceForObject(3, device);
+                List<ObjectEnabler> enablers = initializer.create(12205,3);
+
+                // Create client
+                final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
+                final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
+
+                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                        enablers));
+
+                // Start the client
+                client.start();
+
+                // register to the server provided
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                
+                /**
+                 * LwM2M client registration
+                 */
+                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+            }
+            else
+            {
+                this.deviceStarted = false;
+                log.error("Device already started");
+            }
+        } 
+    }
+    
+    public static class UAVManagerClient extends AbstractDevice
+    {
+        UAVmanager uavManager;
+
+        public UAVManagerClient() {
+            this.uavManager = createUAVmanager();
+        }
+        
+        public UAVManagerClient(DeviceStarterDetails lwm2mClientDetails)
+        {
+            this.uavManager = createUAVmanager();
+            try
+            {
+                if(lwm2mClientDetails != null)
+                {                    
+                    this.localHostName = lwm2mClientDetails.getLocalHostName();
+                    this.localPort = lwm2mClientDetails.getLocalPort();
+                    this.serverHostName = lwm2mClientDetails.getServerHostName();
+                    this.serverPort = lwm2mClientDetails.getServerPort();
+                    this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
+                    this.endpointName = lwm2mClientDetails.getEndPointName();
+                    
+                    StarterValidator.notNull(localHostName);
+                    StarterValidator.notWellKnownPort(localPort);
+                    StarterValidator.notNull(serverHostName);
+                    if(StarterValidator.notPositive(serverPort))
+                        throw new DeviceStarterDetailsException("Specified server port has to be positive");
+                    
+                    canDeviceStart.set(true);
+                }
+                else
+                {
+                    System.out.println("Starter details cannot be null");
+                    throw new DeviceStarterDetailsException("Device starter details error");
+                }
+            }
+            catch(Exception ex)
+            {
+                log.error(ex.getMessage());
+            }
+        }
+        
+        /**
+         * Starts the device within the UAV
+         */
+        public synchronized void StartDevice()
+        {
+            if(canDeviceStart.getAndSet(false))
+            {
+                /** Monitors the state of the UAV */
+                this.deviceStarted = true;
+            
+                //Gets the model
+                LwM2mModel customModel;
+                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+
+                LwM2mObjectInitializer initializer;
+                initializer = new LwM2mObjectInitializer(customModel);
+                
+                //attach instance
+                initializer.setInstanceForObject(12201, uavManager);                
+                List<ObjectEnabler> enablers = initializer.create(12201);
+
+                // Create client
+                final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
+                final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
+
+                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                        enablers));
+
+                // Start the client
+                client.start();
+
+                // register to the server provided
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                
+                /**
+                 * LwM2M client registration
+                 */
+                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+            }
+            else
+            {
+                this.deviceStarted = false;
+                System.err.append("Device already started");
+            }
+        }
+        
+        public UAVmanager createUAVmanager()
+        {
+            String focusModel= "Chengdu Pterodactyl I (Wing Loong)";
+            String origin = "China";
+            String manufacturer = "Chengdu Aircraft Industry Group - China";
+            String initialYearOfService = "2014";
+            float length = 9;
+            float width = 14;//.00f;
+            float height = 2;//.77f;
+            float weight_empty = 0;//.00f;
+            float weight_mtow = 1100;
+            String powerPlant = "1x Conventionally-powered engine driving a three-bladed propeller";
+            float maximumSpeed = 174;
+            float maximumRange = 5000;
+            float serviceCeiling = 16404;
+            float rateOfClimb = 0;
+            float payloadCapability = 99;//.79f;
+            float cruiseSpeed = 300;
+            String launchType = "Catapult launch";
+            int maximumFlightTime = 86400;
+            float wingspan = 100;
+            int operatingTemperature_lowest = 5;
+            int operatingTemperature_highest = 80;
+            
+            return new UAVmanager(focusModel, origin, manufacturer, initialYearOfService, length, width, height, 
+                    weight_empty, weight_mtow, powerPlant, maximumSpeed, maximumRange, serviceCeiling, rateOfClimb, 
+                    payloadCapability, cruiseSpeed, launchType, maximumFlightTime, wingspan, operatingTemperature_lowest, 
+                    operatingTemperature_highest);
+        }
+    }
+    
+    public static class AltitudeSensorClient extends AbstractDevice
+    {
+        AltitudeSensor altitudeSensor;
+        Device device;
+
+        public AltitudeSensorClient() {
+            this.device = new Device();
+            this.altitudeSensor = new AltitudeSensor();
+        }
+        
+        public AltitudeSensorClient(DeviceStarterDetails lwm2mClientDetails)
+        {
+            this.device = new Device();
+            this.altitudeSensor = new AltitudeSensor();
+            try
+            {
+                if(lwm2mClientDetails != null)
+                {                    
+                    this.localHostName = lwm2mClientDetails.getLocalHostName();
+                    this.localPort = lwm2mClientDetails.getLocalPort();
+                    this.serverHostName = lwm2mClientDetails.getServerHostName();
+                    this.serverPort = lwm2mClientDetails.getServerPort();
+                    this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
+                    this.endpointName = lwm2mClientDetails.getEndPointName();
+                    
+                    StarterValidator.notNull(localHostName);
+                    StarterValidator.notWellKnownPort(localPort);
+                    StarterValidator.notNull(serverHostName);
+                    if(StarterValidator.notPositive(serverPort))
+                        throw new DeviceStarterDetailsException("Specified server port has to be positive");
+                    
+                    canDeviceStart.set(true);
+                }
+                else
+                {
+                    System.out.println("Starter details cannot be null");
+                    throw new DeviceStarterDetailsException("Device starter details error");
+                }
+            }
+            catch(Exception ex)
+            {
+                log.error(ex.getMessage());
+            }
+        }
+        
+        /**
+         * Starts the device within the UAV
+         */
+        public synchronized void StartDevice()
+        {
+            if(canDeviceStart.getAndSet(false))
+            {
+                /** Monitors the state of the UAV */
+                this.deviceStarted = true;
+            
+                //Gets the model
+                LwM2mModel customModel;
+                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+
+                LwM2mObjectInitializer initializer;
+                initializer = new LwM2mObjectInitializer(customModel);
+                
+                //attach instance
+                initializer.setInstanceForObject(12205, altitudeSensor);  
+                initializer.setInstanceForObject(3, device);  
+                List<ObjectEnabler> enablers = initializer.create(12205, 3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
@@ -369,14 +710,6 @@ public class MilitaryUAV implements Runnable {
     }
     
     /**
-     * 
-     */
-    public static class FlightControlClient
-    {
-        
-    }
-    
-    /**
      * Main method
      */
     @Override
@@ -386,11 +719,21 @@ public class MilitaryUAV implements Runnable {
         //StatusPrinter.print((LoggerContext) LoggerFactory.getILoggerFactory());
         
         /**
+         * UAV Manager
+         */
+        DeviceStarterDetails UAVmanagerDevDtls;
+        UAVmanagerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8081, "127.0.0.1", 5683, "/uavObjectModel.json", "UAV Manager", uavConfig);
+        UAVManagerClient UAVmanagerDev = new UAVManagerClient(UAVmanagerDevDtls);
+        UAVmanagerDev.StartDevice();
+        log.info("[{}] UAV manager started",this.getClass().getName());
+        
+        /**
          * Threat sensor
          */
         DeviceStarterDetails threatDevDtls;
         threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-                8080, "127.0.0.1", 5683, "/uavObjectModel.json", "Threat sensor", uavConfig);
+                8087, "127.0.0.1", 5683, "/uavObjectModel.json", "Threat sensor", uavConfig);
         ThreatSensorDeviceClient threatSensorDev = new ThreatSensorDeviceClient(threatDevDtls);
         threatSensorDev.StartDevice();
         //Thread.sleep(10000);
