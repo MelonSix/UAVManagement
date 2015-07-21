@@ -28,6 +28,7 @@ public class AltitudeSensor  extends BaseInstanceEnabler implements DeviceExecut
     private float previousAltitude;
     
     public AltitudeSensor() {
+        this(0f,0f);
     }
 
     public AltitudeSensor(float sensorValue, float previousAltitude) {
@@ -42,12 +43,7 @@ public class AltitudeSensor  extends BaseInstanceEnabler implements DeviceExecut
             System.out.println("\t params " + new String(params));
         return new LwM2mResponse(ResponseCode.CHANGED);
     }
-
-    @Override
-    public LwM2mResponse write(int resourceid, LwM2mResource value) {
-        return super.write(resourceid, value); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public ValueResponse read(int resourceid) {
         log.info("[{}] Read on resource: {}",this.getClass().getName(),resourceid);

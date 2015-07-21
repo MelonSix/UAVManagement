@@ -627,13 +627,13 @@ public class MilitaryUAV implements Runnable {
 
         public AltitudeSensorClient() {
             this.device = new Device();
-            this.altitudeSensor = new AltitudeSensor();
+            this.altitudeSensor = creatAltitudeSensor();
         }
         
         public AltitudeSensorClient(DeviceStarterDetails lwm2mClientDetails)
         {
             this.device = new Device();
-            this.altitudeSensor = new AltitudeSensor();
+            this.altitudeSensor = creatAltitudeSensor();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -711,6 +711,11 @@ public class MilitaryUAV implements Runnable {
                 System.err.append("Device already started");
             }
         }
+        
+        private AltitudeSensor creatAltitudeSensor()
+        {
+            return new AltitudeSensor((float)(Math.random()*10), (float)(Math.random()*8));
+        }
     }
     
     /**
@@ -766,6 +771,17 @@ public class MilitaryUAV implements Runnable {
         tempSenClient.StartDevice();
         log.info("[{}] Temperature sensor started",this.getClass().getName());
         uavOwnedDevices.add(tempSenClient);
+        
+        /**
+         * Altitude sensor
+         */
+        DeviceStarterDetails altitudeSenDtls;
+        altitudeSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8096, "127.0.0.1", 5683, "/uavObjectModel.json", "Altitude sensor", uavConfig);
+        AltitudeSensorClient altitudeSenClient = new AltitudeSensorClient(altitudeSenDtls);
+        altitudeSenClient.StartDevice();
+        log.info("[{}] Altitude sensor started",this.getClass().getName());
+        uavOwnedDevices.add(altitudeSenClient);
     }
     
 }

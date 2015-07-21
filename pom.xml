@@ -14,6 +14,7 @@
     <modules>
         <module>uavEndpoint</module>
         <module>ManagementServer</module>
+        <module>ManagmentAdapter</module>
     </modules>
     <developers>
         <developer>
