@@ -261,7 +261,7 @@ public class ClientsResource {
             {
                 System.out.println(new String(IOUtils.toByteArray(req.getInputStream())));
                 ExecuteRequest request = 
-                        new ExecuteRequest(target,IOUtils.toByteArray(new ByteArrayInputStream(("customized").getBytes())),null);
+                        new ExecuteRequest(target,IOUtils.toByteArray(req.getInputStream()),null);
                 LwM2mResponse cResponse = server.send(client, request);
                 processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
             } catch (IOException ex) {
@@ -276,7 +276,6 @@ public class ClientsResource {
      * @param clientEndpoint
      * @param objectid
      * @param instance
-     * @param req
      * @return 
      */
     @POST
