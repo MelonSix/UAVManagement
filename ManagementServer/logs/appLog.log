@@ -205,7 +205,6 @@ INFO   [15:18:19.827] [main] i.d.s.AdminEnvironment -  tasks =
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-<<<<<<< HEAD
 INFO   [15:18:19.842] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@65eabaab{/admin-ms,null,AVAILABLE} 
 INFO   [15:18:19.874] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
 INFO   [15:18:19.874] [main] o.e.j.s.Server -  Started @2221ms 
@@ -245,10 +244,9 @@ INFO   [15:19:02.697] [main] i.d.s.AdminEnvironment -  tasks =
 INFO   [15:19:02.713] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@65eabaab{/admin-ms,null,AVAILABLE} 
 INFO   [15:19:02.759] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
 INFO   [15:19:02.759] [main] o.e.j.s.Server -  Started @2236ms 
+<<<<<<< HEAD
+
 =======
-INFO   [11:35:47.045] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@784c5ef5{/admin-ms,null,AVAILABLE} 
-INFO   [11:35:47.147] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@ec0c838{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:35:47.147] [main] o.e.j.s.Server -  Started @3192ms 
 INFO   [10:23:08.744] [main] o.e.j.u.log -  Logging initialized @2905ms 
 INFO   [10:23:09.312] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
 INFO   [10:23:09.406] [main] o.e.c.c.CoapServer -  Starting server 
