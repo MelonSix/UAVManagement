@@ -205,6 +205,7 @@ INFO   [15:18:19.827] [main] i.d.s.AdminEnvironment -  tasks =
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
+<<<<<<< HEAD
 INFO   [15:18:19.842] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@65eabaab{/admin-ms,null,AVAILABLE} 
 INFO   [15:18:19.874] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
 INFO   [15:18:19.874] [main] o.e.j.s.Server -  Started @2221ms 
@@ -244,3 +245,42 @@ INFO   [15:19:02.697] [main] i.d.s.AdminEnvironment -  tasks =
 INFO   [15:19:02.713] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@65eabaab{/admin-ms,null,AVAILABLE} 
 INFO   [15:19:02.759] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
 INFO   [15:19:02.759] [main] o.e.j.s.Server -  Started @2236ms 
+=======
+INFO   [11:35:47.045] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@784c5ef5{/admin-ms,null,AVAILABLE} 
+INFO   [11:35:47.147] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@ec0c838{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [11:35:47.147] [main] o.e.j.s.Server -  Started @3192ms 
+INFO   [10:23:08.744] [main] o.e.j.u.log -  Logging initialized @2905ms 
+INFO   [10:23:09.312] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [10:23:09.406] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [10:23:09.406] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [10:23:09.484] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [10:23:09.484] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [10:23:09.656] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [10:23:09.688] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [10:23:09.735] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [10:23:09.860] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [10:23:09.876] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:23:11.476] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.ClientsResource)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.ClientsResource)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [10:23:11.491] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e31c3ec{/ms,null,AVAILABLE} 
+INFO   [10:23:11.491] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [10:23:11.507] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7ae9a33a{/admin-ms,null,AVAILABLE} 
+INFO   [10:23:11.804] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@c65a5ef{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [10:23:11.804] [main] o.e.j.s.Server -  Started @5961ms 
+>>>>>>> origin/master
