@@ -1,87 +1,34 @@
-2015-07-16 00:06:09 - Started execution in military uav run method
-2015-07-16 00:06:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 00:06:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 00:06:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 00:06:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 00:21:42 - Started execution in military uav run method
-2015-07-16 00:21:43 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 00:21:43 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 00:21:43 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 00:21:43 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 00:26:21 - Started execution in military uav run method
-2015-07-16 00:26:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 00:26:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 00:26:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 00:26:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 00:28:36 - Started execution in military uav run method
-2015-07-16 00:29:10 - Started execution in military uav run method
-2015-07-16 00:29:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 00:29:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 00:29:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 00:29:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 00:42:58 - Started execution in military uav run method
-2015-07-16 00:42:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 00:42:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 00:42:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 00:42:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 00:59:35 - Started execution in military uav run method
-2015-07-16 00:59:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 00:59:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 00:59:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 00:59:36 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 01:07:27 - Started execution in military uav run method
-2015-07-16 01:07:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 01:07:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 01:07:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 01:07:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 01:17:02 - Started execution in military uav run method
-2015-07-16 01:17:02 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 01:17:02 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 01:17:02 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 01:17:02 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 01:51:15 - Started execution in military uav run method
-2015-07-16 01:51:16 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 01:51:16 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 01:51:16 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 01:51:16 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 01:55:10 - Started execution in military uav run method
-2015-07-16 01:55:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 01:55:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 01:55:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 01:55:10 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 02:05:26 - Started execution in military uav run method
-2015-07-16 02:05:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 02:05:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 02:05:27 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 02:05:27 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 03:26:52 - Started execution in military uav run method
-2015-07-16 03:26:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 03:26:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 03:26:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 03:26:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 03:29:21 - Started execution in military uav run method
-2015-07-16 03:29:21 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 03:29:21 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 03:29:21 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 03:29:21 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-16 03:30:53 - Started execution in military uav run method
-2015-07-16 03:30:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-16 03:30:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-16 03:30:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-16 03:30:53 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-17 11:36:23 - Started execution in military uav run method
-2015-07-17 11:36:23 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-17 11:36:23 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-17 11:36:23 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-17 11:36:23 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-17 11:45:13 - Started execution in military uav run method
-2015-07-17 11:45:13 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-17 11:45:13 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-17 11:45:13 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-17 11:45:13 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-17 11:47:32 - Started execution in military uav run method
-2015-07-17 11:47:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
-2015-07-17 11:47:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
-2015-07-17 11:47:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
-2015-07-17 11:47:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
-2015-07-17 11:47:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 12:02:23 - Started execution in military uav run method
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 14:42:18 - Started execution in military uav run method
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 14:57:08 - Started execution in military uav run method
+2015-07-24 15:03:31 - Started execution in military uav run method
+2015-07-24 15:08:06 - Started execution in military uav run method
+2015-07-24 15:11:03 - Started execution in military uav run method
+2015-07-24 15:11:32 - Started execution in military uav run method
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 15:19:12 - Started execution in military uav run method
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 15:20:45 - Started execution in military uav run method
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started

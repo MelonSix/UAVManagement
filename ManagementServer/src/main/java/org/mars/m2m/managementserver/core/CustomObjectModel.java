@@ -15,6 +15,7 @@ import org.eclipse.leshan.core.model.ObjectLoader;
 import org.eclipse.leshan.core.model.ObjectModel;
 import org.eclipse.leshan.server.client.Client;
 import org.eclipse.leshan.server.model.LwM2mModelProvider;
+import org.mars.m2m.dmcore.Loader.LwM2mModelLoader;
 
 /**
  *
@@ -25,29 +26,9 @@ public class CustomObjectModel  implements LwM2mModelProvider  {
     private final LwM2mModel model;
     public CustomObjectModel()
     {
-    InputStream myJsonStr;
-        myJsonStr = this.getClass().getResourceAsStream("/uavObjectModel.json");
-        LwM2mModel customModel;
-        HashMap<Integer, ObjectModel> map = null;
-        if(myJsonStr != null)
-        {
-            List<ObjectModel> objectModels = ObjectLoader.loadJsonStream(myJsonStr);
-            map = new HashMap<>();
-            for (ObjectModel objectModel : objectModels) {
-                map.put(objectModel.id, objectModel);
-            }
-        }
-        else
-        {
-            try {
-                throw new Exception("Error loading json file");
-            } catch (Exception ex) {
-                java.util.logging.Logger.getLogger(this.getClass().toString()).log(Level.SEVERE, null, ex);
-            }
-        }
-        customModel = new LwM2mModel(map);
-        this.model = customModel;
+        this.model = LwM2mModelLoader.loadCustomObjectModel("/uavObjectModel.json");
     }
+    
     @Override
     public LwM2mModel getObjectModel(Client client) {
         // same model for all clients

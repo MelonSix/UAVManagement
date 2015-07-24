@@ -18,6 +18,7 @@ import org.eclipse.leshan.core.model.ObjectModel;
 import org.eclipse.leshan.core.request.DeregisterRequest;
 import org.eclipse.leshan.core.request.RegisterRequest;
 import org.eclipse.leshan.core.response.RegisterResponse;
+import org.mars.m2m.dmcore.Loader.LwM2mModelLoader;
 
 /**
  *
@@ -41,33 +42,13 @@ public class DeviceHelper {
             
     /**
      * Loads the Json file that contains the custom object model
-     * @param client The client that calls this method
      * @param objectModelStr the filename with its extension e.g. myObjectModel.json
      * @return The LwM2M model created from the object model file
      */
-    public static synchronized LwM2mModel LoadCustomObjectModel(Object client, String objectModelStr) 
+    public static synchronized LwM2mModel getObjectModel(String objectModelStr) 
     {
-        InputStream myJsonStr;
-        myJsonStr = client.getClass().getResourceAsStream(objectModelStr);
-        LwM2mModel customModel;
-        HashMap<Integer, ObjectModel> map = null;
-        if(myJsonStr != null)
-        {
-            List<ObjectModel> objectModels = ObjectLoader.loadJsonStream(myJsonStr);
-            map = new HashMap<>();
-            for (ObjectModel objectModel : objectModels) {
-                map.put(objectModel.id, objectModel);
-            }
-        }
-        else
-        {
-            try {
-                throw new Exception("Error loading json file");
-            } catch (Exception ex) {
-                Logger.getLogger(client.getClass().toString()).log(Level.SEVERE, null, ex);
-            }
-        }
-        customModel = new LwM2mModel(map);
+        LwM2mModel customModel;        
+        customModel = LwM2mModelLoader.loadCustomObjectModel(objectModelStr);
         return customModel;
     }  
         

@@ -276,7 +276,6 @@ public class ClientsResource {
      * @param clientEndpoint
      * @param objectid
      * @param instance
-     * @param req
      * @return 
      */
     @POST
@@ -411,7 +410,7 @@ public class ClientsResource {
      */
     private LwM2mResponse createRequest(Client client, String target, HttpServletRequest req)
             throws IOException {
-        Map<String, String> parameters = new HashMap<String, String>();
+        Map<String, String> parameters = new HashMap<>();
         String contentType = HttpFields.valueParameters(req.getContentType(), parameters);
         
         if ("application/json".equals(contentType)) 

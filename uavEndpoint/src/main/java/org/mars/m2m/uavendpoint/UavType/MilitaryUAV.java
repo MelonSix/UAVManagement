@@ -10,9 +10,11 @@ import com.google.gson.Gson;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
+import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.Devices.AltitudeSensor;
 import org.mars.m2m.Devices.FlightControl;
@@ -132,14 +134,14 @@ public class MilitaryUAV implements Runnable {
             
                 //Gets the model
                 LwM2mModel customModel;
-                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
-                LwM2mObjectInitializer initializer;
-                initializer = new LwM2mObjectInitializer(customModel);
+                ObjectsInitializer initializer;
+                initializer = new ObjectsInitializer(customModel);
                 
                 //attach instance
-                initializer.setInstanceForObject(12202, threatSensor);
-                initializer.setInstanceForObject(3, device);
+                initializer.setInstancesForObject(12202, threatSensor);
+                initializer.setInstancesForObject(3, device);
                 List<ObjectEnabler> enablers = initializer.create(12202,3,0,1);
 
                 // Create client
@@ -153,7 +155,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -245,14 +247,14 @@ public class MilitaryUAV implements Runnable {
             
                 //Gets the model
                 LwM2mModel customModel;
-                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
-                LwM2mObjectInitializer initializer;
-                initializer = new LwM2mObjectInitializer(customModel);
+                ObjectsInitializer initializer;
+                initializer = new ObjectsInitializer(customModel);
                 
                 //attach instance
-                initializer.setInstanceForObject(12203, missileDispatch);
-                initializer.setInstanceForObject(3, device);
+                initializer.setInstancesForObject(12203, missileDispatch);
+                initializer.setInstancesForObject(3, device);
                 List<ObjectEnabler> enablers = initializer.create(12203, 3);
 
                 // Create client
@@ -266,7 +268,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -359,14 +361,14 @@ public class MilitaryUAV implements Runnable {
             
                 //Gets the model
                 LwM2mModel customModel;
-                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
-                LwM2mObjectInitializer initializer;
-                initializer = new LwM2mObjectInitializer(customModel);
+                ObjectsInitializer initializer;
+                initializer = new ObjectsInitializer(customModel);
                 
                 //attach instance
-                initializer.setInstanceForObject(3303, tempSensor);
-                initializer.setInstanceForObject(3, device);
+                initializer.setInstancesForObject(3303, tempSensor);
+                initializer.setInstancesForObject(3, device);
                 List<ObjectEnabler> enablers = initializer.create(3303, 3);
 
                 // Create client
@@ -380,7 +382,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -461,14 +463,14 @@ public class MilitaryUAV implements Runnable {
             
                 //Gets the model
                 LwM2mModel customModel;
-                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
-                LwM2mObjectInitializer initializer;
-                initializer = new LwM2mObjectInitializer(customModel);
+                ObjectsInitializer initializer;
+                initializer = new ObjectsInitializer(customModel);
                 
                 //attach instance
-                initializer.setInstanceForObject(12205, flightControl);
-                initializer.setInstanceForObject(3, device);
+                initializer.setInstancesForObject(12205, flightControl);
+                initializer.setInstancesForObject(3, device);
                 List<ObjectEnabler> enablers = initializer.create(12205,3);
 
                 // Create client
@@ -482,7 +484,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -554,14 +556,14 @@ public class MilitaryUAV implements Runnable {
             
                 //Gets the model
                 LwM2mModel customModel;
-                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
-                LwM2mObjectInitializer initializer;
-                initializer = new LwM2mObjectInitializer(customModel);
+                ObjectsInitializer initializer;
+                initializer = new ObjectsInitializer(customModel);
                 
                 //attach instance
-                initializer.setInstanceForObject(12201, uavManager);   
-                initializer.setInstanceForObject(3, device);
+                initializer.setInstancesForObject(12201, uavManager);   
+                initializer.setInstancesForObject(3, device);
                 List<ObjectEnabler> enablers = initializer.create(12201, 3);
 
                 // Create client
@@ -575,7 +577,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = UUID.randomUUID().toString();// this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -677,14 +679,14 @@ public class MilitaryUAV implements Runnable {
             
                 //Gets the model
                 LwM2mModel customModel;
-                customModel = DeviceHelper.LoadCustomObjectModel(this,this.objectModelFilename);
+                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
-                LwM2mObjectInitializer initializer;
-                initializer = new LwM2mObjectInitializer(customModel);
+                ObjectsInitializer initializer;
+                initializer = new ObjectsInitializer(customModel);
                 
                 //attach instance
-                initializer.setInstanceForObject(12205, altitudeSensor);  
-                initializer.setInstanceForObject(3, device);  
+                initializer.setInstancesForObject(12205, altitudeSensor);  
+                initializer.setInstancesForObject(3, device);  
                 List<ObjectEnabler> enablers = initializer.create(12205, 3);
 
                 // Create client
@@ -698,7 +700,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName;
                 
                 /**
                  * LwM2M client registration

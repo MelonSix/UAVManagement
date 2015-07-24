@@ -184,7 +184,7 @@ public class LwM2mObjectInitializer extends ObjectsInitializer {
      * @param objectModel
      * @return
      */
-    @Override
+    //@Override
     protected LwM2mInstanceEnabler createInstance(ObjectModel objectModel) {
         LwM2mInstanceEnabler instance;
         if (instances.containsKey(objectModel.id)) {

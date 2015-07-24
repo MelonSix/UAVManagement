@@ -15,6 +15,7 @@
         <module>uavEndpoint</module>
         <module>ManagementServer</module>
         <module>ManagmentAdapter</module>
+        <module>DMCore</module>
     </modules>
     <developers>
         <developer>

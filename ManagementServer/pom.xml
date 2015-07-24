@@ -20,5 +20,10 @@
             <version>2.4</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>DMCore</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
