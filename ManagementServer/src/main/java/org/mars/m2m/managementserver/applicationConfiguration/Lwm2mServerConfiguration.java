@@ -6,7 +6,6 @@
 package org.mars.m2m.managementserver.applicationConfiguration;
 
 import io.dropwizard.Configuration;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *

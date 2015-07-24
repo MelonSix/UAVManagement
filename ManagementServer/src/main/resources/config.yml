@@ -3,11 +3,11 @@
 
 server:
   type: simple
-  applicationContextPath: /ms
-  adminContextPath: /admin-ms
+  applicationContextPath: /ma
+  adminContextPath: /admin-ma
   connector:
     type: http
-    port: 8089
+    port: 8010
 logging:
   level: INFO
   appenders:
@@ -20,6 +20,4 @@ logging:
       archivedFileCount: 7
       timeZone: UTC+8
       maxFileSize: 10MB
-lwm2mserverAddress: 
-lwm2mserverportnum: 0
 ---
