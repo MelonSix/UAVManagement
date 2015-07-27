@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "", namespace = "http://www.onem2m.org/xml/protocols", propOrder = {
     "responseStatusCode",
     "requestIdentifier",
     "content",

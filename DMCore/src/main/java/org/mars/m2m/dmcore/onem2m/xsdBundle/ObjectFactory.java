@@ -62,6 +62,7 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link AccessControlRule }
      * 
+     * @return 
      */
     public AccessControlRule createAccessControlRule() {
         return new AccessControlRule();

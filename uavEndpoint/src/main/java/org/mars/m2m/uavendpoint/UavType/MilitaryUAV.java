@@ -6,7 +6,6 @@
 package org.mars.m2m.uavendpoint.UavType;
 
 import ch.qos.logback.classic.Logger;
-import com.google.gson.Gson;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +21,12 @@ import org.mars.m2m.Devices.MissileDispatcher;
 import org.mars.m2m.Devices.TemperatureSensor;
 import org.mars.m2m.Devices.ThreatSensor;
 import org.mars.m2m.Devices.UAVmanager;
-import org.mars.m2m.apiExtension.LwM2mObjectInitializer;
-import org.mars.m2m.uavendpoint.Configuration.ThreatType;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Helpers.AbstractDevice;
 import org.mars.m2m.uavendpoint.Helpers.DeviceHelper;
+import org.mars.m2m.uavendpoint.Helpers.UavObjectFactory;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
-import org.mars.m2m.uavendpoint.Model.MinimumBoundingRectangle;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
 import org.mars.m2m.uavendpoint.omaObjects.Device;
 import org.slf4j.LoggerFactory;
@@ -41,7 +38,7 @@ import org.slf4j.LoggerFactory;
 public class MilitaryUAV implements Runnable {
     
     public static Logger log = (Logger) LoggerFactory.getLogger(MilitaryUAV.class);
-    
+    public static UavObjectFactory uavObjFactory = new UavObjectFactory();
     /**
      * Keeps track of all devices (lwm2m clients) owned by this particular UAV
      */
@@ -80,7 +77,7 @@ public class MilitaryUAV implements Runnable {
         {
             this(null);
             this.device = new Device();
-            this.threatSensor = createThreatSensor();
+            this.threatSensor = uavObjFactory.createThreatSensor();
         }  
         
         /**
@@ -90,7 +87,7 @@ public class MilitaryUAV implements Runnable {
         public ThreatSensorDeviceClient(DeviceStarterDetails lwm2mClientDetails)
         {
             this.device = new Device();
-            this.threatSensor = createThreatSensor();
+            this.threatSensor = uavObjFactory.createThreatSensor();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -169,14 +166,6 @@ public class MilitaryUAV implements Runnable {
             }
         }        
         
-        private ThreatSensor createThreatSensor()
-        {
-            MinimumBoundingRectangle mbr = new MinimumBoundingRectangle((System.currentTimeMillis()*100), 
-                    (System.currentTimeMillis()*100/6), (System.currentTimeMillis()*100/3), (System.currentTimeMillis()*100/2));
-            Gson gson = new Gson();
-            return new ThreatSensor(ThreatType.BIOLOGICAL_WEAPON, (int) System.currentTimeMillis()*100, 
-                            (int)System.currentTimeMillis()*160, gson.toJson(mbr), 300, 400);
-        }
         
     }
     
@@ -192,7 +181,7 @@ public class MilitaryUAV implements Runnable {
         {
             this(null);
             this.device = new Device();
-            this.missileDispatch = createMissileDispatcher();
+            this.missileDispatch = uavObjFactory.createMissileDispatcher();
         }
         
         /**
@@ -202,7 +191,7 @@ public class MilitaryUAV implements Runnable {
         public MissileDispatchClient(DeviceStarterDetails lwm2mClientDetails) 
         {
             this.device = new Device();
-            this.missileDispatch = createMissileDispatcher();
+            this.missileDispatch = uavObjFactory.createMissileDispatcher();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -282,11 +271,6 @@ public class MilitaryUAV implements Runnable {
             }
         }
         
-        private MissileDispatcher createMissileDispatcher()
-        {
-            return new MissileDispatcher((int) (Math.random()*10), (int) (int) (Math.random()*10),
-                    (int) (Math.random()*100), (int) (Math.random()*100));
-        }
     }
     
     /**
@@ -396,11 +380,6 @@ public class MilitaryUAV implements Runnable {
             }
         }
         
-        private TemperatureSensor createTemperatureSensor()
-        {
-            return new TemperatureSensor((float)(Math.random()*100/2), (float)(Math.random()*6), 
-                        (float)(Math.random()*10), (float)(Math.random()*100));
-        }
     }
     
     /**
@@ -506,13 +485,13 @@ public class MilitaryUAV implements Runnable {
 
         public UAVManagerClient() {
             this.device = new Device();
-            this.uavManager = createUAVmanager();
+            this.uavManager = uavObjFactory.createUAVmanager();
         }
         
         public UAVManagerClient(DeviceStarterDetails lwm2mClientDetails)
         {
             this.device = new Device();
-            this.uavManager = createUAVmanager();
+            this.uavManager = uavObjFactory.createUAVmanager();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -591,35 +570,6 @@ public class MilitaryUAV implements Runnable {
             }
         }
         
-        public UAVmanager createUAVmanager()
-        {
-            String focusModel= "Chengdu Pterodactyl I (Wing Loong)";
-            String origin = "China";
-            String manufacturer = "Chengdu Aircraft Industry Group - China";
-            String initialYearOfService = "2014";
-            float length = 9;
-            float width = 14;//.00f;
-            float height = 2;//.77f;
-            float weight_empty = 0;//.00f;
-            float weight_mtow = 1100;
-            String powerPlant = "1x Conventionally-powered engine driving a three-bladed propeller";
-            float maximumSpeed = 174;
-            float maximumRange = 5000;
-            float serviceCeiling = 16404;
-            float rateOfClimb = 0;
-            float payloadCapability = 99;//.79f;
-            float cruiseSpeed = 300;
-            String launchType = "Catapult launch";
-            int maximumFlightTime = 86400;
-            float wingspan = 100;
-            int operatingTemperature_lowest = 5;
-            int operatingTemperature_highest = 80;
-            
-            return new UAVmanager(focusModel, origin, manufacturer, initialYearOfService, length, width, height, 
-                    weight_empty, weight_mtow, powerPlant, maximumSpeed, maximumRange, serviceCeiling, rateOfClimb, 
-                    payloadCapability, cruiseSpeed, launchType, maximumFlightTime, wingspan, operatingTemperature_lowest, 
-                    operatingTemperature_highest);
-        }
     }
     
     public static class AltitudeSensorClient extends AbstractDevice
@@ -629,13 +579,13 @@ public class MilitaryUAV implements Runnable {
 
         public AltitudeSensorClient() {
             this.device = new Device();
-            this.altitudeSensor = creatAltitudeSensor();
+            this.altitudeSensor = uavObjFactory.createAltitudeSensor();
         }
         
         public AltitudeSensorClient(DeviceStarterDetails lwm2mClientDetails)
         {
             this.device = new Device();
-            this.altitudeSensor = creatAltitudeSensor();
+            this.altitudeSensor = uavObjFactory.createAltitudeSensor();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -714,10 +664,6 @@ public class MilitaryUAV implements Runnable {
             }
         }
         
-        private AltitudeSensor creatAltitudeSensor()
-        {
-            return new AltitudeSensor((float)(Math.random()*10), (float)(Math.random()*8));
-        }
     }
     
     /**

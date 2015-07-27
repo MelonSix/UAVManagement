@@ -10,6 +10,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.mars.m2m.managmentadapter.applicationConfiguration.MAdpConfiguration;
+import org.mars.m2m.managmentadapter.resources.ManagementOpsResource;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -22,7 +23,12 @@ public class MAdpApplication extends Application<MAdpConfiguration> {
 
     @Override
     public void run(MAdpConfiguration t, Environment e) throws Exception {
-        logger.info("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        //resources
+        ManagementOpsResource mgmntRes = new ManagementOpsResource();
+        
+        //expose resource
+        e.jersey().register(mgmntRes);
     }
     
     @Override
@@ -30,8 +36,12 @@ public class MAdpApplication extends Application<MAdpConfiguration> {
         // nothing to do yet
     }
     
-    public static void main(String [] args)
+    public static void main(String [] args) throws Exception
     {
+        //ProofOfConcept prCpt = new ProofOfConcept();
+        //prCpt.generateRequestPrimitive();
         //TODO:
+        //System.out.println(OneM2mTimestamp.getTimeStamp());
+        new MAdpApplication().run(args);
     }
 }
