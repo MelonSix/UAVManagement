@@ -1,0 +1,56 @@
+INFO   [12:45:22.063] [main] o.e.j.u.log -  Logging initialized @2078ms 
+INFO   [12:45:22.420] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [12:45:22.445] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [12:45:22.467] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [12:45:22.593] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@18f20260{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [12:45:22.626] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [12:45:23.971] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.ManagementOpsResource)
+ 
+INFO   [12:45:23.976] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1436a7ab{/ma,null,AVAILABLE} 
+INFO   [12:45:23.986] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+WARN   [12:45:23.987] [main] i.d.s.AdminEnvironment -  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+INFO   [12:45:23.996] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@56f71edb{/admin-ma,null,AVAILABLE} 
+INFO   [12:45:24.184] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@18f20260{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [12:45:24.185] [main] o.e.j.s.Server -  Started @4233ms 
+INFO   [13:02:37.839] [main] o.e.j.u.log -  Logging initialized @2298ms 
+INFO   [13:02:38.090] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [13:02:38.105] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [13:02:38.132] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [13:02:38.210] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@18f20260{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:02:38.216] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:02:39.288] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.ManagementOpsResource)
+ 
+INFO   [13:02:39.291] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1436a7ab{/ma,null,AVAILABLE} 
+INFO   [13:02:39.298] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+WARN   [13:02:39.298] [main] i.d.s.AdminEnvironment -  
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+INFO   [13:02:39.305] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@56f71edb{/admin-ma,null,AVAILABLE} 
+INFO   [13:02:39.392] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@18f20260{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:02:39.393] [main] o.e.j.s.Server -  Started @3859ms 
