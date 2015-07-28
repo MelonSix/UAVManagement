@@ -10,6 +10,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.mars.m2m.managmentadapter.applicationConfiguration.MAdpConfiguration;
+import org.mars.m2m.managmentadapter.health.ClientsResourceHealth;
 import org.mars.m2m.managmentadapter.resources.ManagementOpsResource;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +30,9 @@ public class MAdpApplication extends Application<MAdpConfiguration> {
         
         //expose resource
         e.jersey().register(mgmntRes);
+        
+        //healthcheck resources
+        e.healthChecks().register("Clients Resource healthcheck", new ClientsResourceHealth());
     }
     
     @Override
