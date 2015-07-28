@@ -1,0 +1,20 @@
+<request>
+	<resourceType> 12 </resourceType>
+	<resourceID> http://exampleuri.com/resource </resourceID>
+	<parentID> http://exampleuri.com/ </parentID>
+	<creationTime> 19991122T125507 </creationTime>
+	<lastModified> 19991122T125507 </lastModified>
+	<labels> any string as a token </labels>
+	<accessControlPolicyIDs> http://accessPolicyResourceUri.com/acp1 </accessControlPolicyIDs>
+	<expirationTime> 19991122T125711 </expirationTime>
+	<description>resource description here</description>
+	
+	<operation>1-5<!-- Create/Retrieve/Update/Delete/Notify --></operation>
+	<target>http://targetUri.com/resource</target>
+	<originator>http://anyurifortheoriginator.com/resource</originator>
+	<requestID>stringTokenHere</requestID>
+	<metaInformation>
+		<resourceType></resourceType>
+	<metaInformation>
+	
+</request>

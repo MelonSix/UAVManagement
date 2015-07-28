@@ -1,0 +1,86 @@
+<mgmtCmd name="">
+	<resourceType> 12 </resourceType>
+	<resourceID> http://exampleuri.com/resource </resourceID>
+	<parentID> http://exampleuri.com/ </parentID>
+	<creationTime> 19991122T125507 </creationTime>
+	<lastModified> 19991122T125507 </lastModified>
+	<labels> any string as a token </labels>
+	<accessControlPolicyIDs> http://accessPolicyResourceUri.com/acp1 </accessControlPolicyIDs>
+	<expirationTime> 19991122T125711 </expirationTime>
+	<description>resource description here</description>
+	<cmdType>1-7<!-- RESET/REBOOT/UPLOAD/DOWNLOAD/SOFTWARE INSTALL/SOFTWARE UNISTALL/SOFTWARE UPDATE --></cmdType>
+	<execReqArgs>
+		<!-- <xs:choice> -->
+		<reset>
+			<anyArg>
+				<anyArgType>
+					<name> NCName here </name>
+					<value> xs:anyType </value>
+				</anyArgType>
+			</anyArg>
+		</reset>
+		<reboot>
+			<anyArg>
+				<anyArgType>
+					<name> NCName here </name>
+					<value> xs:anyType </value>
+				</anyArgType>
+			</anyArg>
+		</reboot>
+		<upload>
+			<fileType></fileType>
+			<URL>http://anyuri.com/</URL>
+			<username></username>
+			<password></password>
+			<anyArg>
+				<anyArgType>
+					<name> NCName here </name>
+					<value> xs:anyType </value>
+				</anyArgType>
+			</anyArg>
+		</upload>
+		<download>
+			<fileType></fileType>
+			<URL>http://anyuri.com/</URL>
+			<username></username>
+			<password></password>
+			<filesize></filesize>
+			<targetFile></targetFile>
+			<delaySeconds></delaySeconds>
+			<successURL>http://anyuri.com/</successURL>
+			<startTime>timestamp</startTime>
+			<completeTime>timestamp</completeTime>
+			<anyArg>
+				<anyArgType>
+					<name> NCName here </name>
+					<value> xs:anyType </value>
+				</anyArgType>
+			</anyArg>
+		</download>
+		<softwareInstall></softwareInstall>
+		<sotwareUpdate></softwareUpdate>
+		<softwareUnistall></softwareUnistall>
+	</execRegArgs>
+	<execEnable> boolean </execEnable>
+	<execTarget> NodeID </execTarget>
+	<execMode>1-4 <!--IMMEDIATEONCE/IMMEDIATEREPEAT/RANDOMONCE/RANDOMREPEAT --></execMode>
+	<execFrequency> duration type<!-- year, month, day, hour, minute, and second --></execFrequency>
+	<execDelay><!-- year, month, day, hour, minute, and second --></execDelay>
+	<execNumber>0->inf</execNumber>
+	
+	<!-- Child resources -->
+	<!-- xs:choice -->
+	<childResource>
+		<childResourceRef resourceName = "" type="e.g. request/remoteCSE" >
+			
+		</childResourceRef>
+	</childResource>
+	
+	<execInstance>
+		
+	</execInstance>
+	<subscription>
+	</subcription>
+	
+	
+</mgmtCmd>
