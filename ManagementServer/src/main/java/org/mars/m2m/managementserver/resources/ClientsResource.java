@@ -86,7 +86,7 @@ public class ClientsResource {
      * @return 
      */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON})
     public String getAllClients()
     {
         Collection<Client> clients = server.getClientRegistry().allClients();

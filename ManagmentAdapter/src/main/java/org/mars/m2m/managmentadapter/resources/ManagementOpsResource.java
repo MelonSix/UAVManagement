@@ -56,20 +56,23 @@ public class ManagementOpsResource {
         operation = DmCommons.determineOneM2mOperation(request.getOperation());
         OperationService opSvc = new OperationService();
         
-        switch(operation)
-        {
-            case CREATE:
-                break;
-            case RETRIEVE:
-                response = opSvc.retrieve(request);
-                break;
-            case UPDATE:
-                break;
-            case DELETE:
-                break;
-            case NOTIFY:
-                break;
-            default:
+        try {
+            switch (operation) {
+                case CREATE:
+                    break;
+                case RETRIEVE:
+                    response = opSvc.retrieve(request);
+                    break;
+                case UPDATE:
+                    break;
+                case DELETE:
+                    break;
+                case NOTIFY:
+                    break;
+                default:
+            }
+        } catch (Exception e) {
+            logger.error(e.toString());
         }
         
         return response;

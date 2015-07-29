@@ -79,7 +79,7 @@ public class ProofOfConcept
         }
     }
     
-    public String generateResponsePrimitive()
+    public void generateResponsePrimitive()
     {
         try 
         {
@@ -88,12 +88,12 @@ public class ProofOfConcept
             JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.marshal(resp, bt);
-            return new String(bt.toByteArray());
+            jaxbMarshaller.marshal(resp, System.out);
+            //return new String(bt.toByteArray());
             
         } catch (JAXBException ex) {
             ex.printStackTrace();
-            return null;
+            //return null;
         }
     }
 
