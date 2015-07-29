@@ -27,6 +27,6 @@ public enum Operation {
 
     public BigInteger getValue() {
         return value;
-    }    
+    }     
     
 }

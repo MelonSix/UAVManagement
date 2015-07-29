@@ -11,7 +11,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.ResponsePrimitive;
+import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.service.OperationService;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -22,6 +26,7 @@ import org.slf4j.LoggerFactory;
 public class ManagementOpsResource {
     
     Logger logger = (Logger) LoggerFactory.getLogger(ManagementOpsResource.class);
+    Operation operation;
 
     public ManagementOpsResource() {
     }
@@ -34,10 +39,40 @@ public class ManagementOpsResource {
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public RequestPrimitive postRequest(RequestPrimitive requestPrimitive)
+    public ResponsePrimitive postRequest(RequestPrimitive requestPrimitive)
     {
-        String strResponse = null;
-        
-        return requestPrimitive;
+        return processRequest(requestPrimitive);
     }
+    
+    /**
+     * Process the request primitive by selecting the appropriate operation to handle the request
+     * and delivering the response
+     * @param request
+     * @return 
+     */
+    public ResponsePrimitive processRequest(RequestPrimitive request)
+    {
+        ResponsePrimitive response = null;
+        operation = DmCommons.determineOneM2mOperation(request.getOperation());
+        OperationService opSvc = new OperationService();
+        
+        switch(operation)
+        {
+            case CREATE:
+                break;
+            case RETRIEVE:
+                response = opSvc.retrieve(request);
+                break;
+            case UPDATE:
+                break;
+            case DELETE:
+                break;
+            case NOTIFY:
+                break;
+            default:
+        }
+        
+        return response;
+    }
+    
 }
