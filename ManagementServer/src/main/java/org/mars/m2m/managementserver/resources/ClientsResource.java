@@ -7,7 +7,6 @@ package org.mars.m2m.managementserver.resources;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;

@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MissileDispatcher extends BaseInstanceEnabler implements DeviceExecution
 {
-    private static Logger log = (Logger) LoggerFactory.getLogger(UAVmanager.class);
+    private static Logger log = (Logger) LoggerFactory.getLogger(MissileDispatcher.class);
     
     private int maximumMissiles;
     private int remainingMissiles;
@@ -48,18 +48,20 @@ public class MissileDispatcher extends BaseInstanceEnabler implements DeviceExec
     }
 
     @Override
-    public LwM2mResponse write(int resourceid, LwM2mResource resource) {
-        log.info("["+this.getClass().getName()+"] Write on Device Resource [{}]  value[{}] ", resourceid , resource);
+    public LwM2mResponse write(int resourceid, LwM2mResource value){
+        log.info("Write on Device Resource [{}]  value[{}] ", resourceid , value);
         switch(resourceid)
         {
             case 2:
-                this.setTargetLatitude(Integer.parseInt(resource.getValue().value.toString()));
+                this.setTargetLatitude(Integer.parseInt(value.getValue().value.toString()));
+                fireResourceChange(resourceid);
                 return new LwM2mResponse(ResponseCode.CHANGED);
             case 3:
-                this.setTargetLongitude(Integer.parseInt(resource.getValue().value.toString()));
+                this.setTargetLongitude(Integer.parseInt(value.getValue().value.toString()));
+                fireResourceChange(resourceid);
                 return new LwM2mResponse(ResponseCode.CHANGED);
             default:
-                return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
+                return new LwM2mResponse(ResponseCode.BAD_REQUEST);
         }
     }
 

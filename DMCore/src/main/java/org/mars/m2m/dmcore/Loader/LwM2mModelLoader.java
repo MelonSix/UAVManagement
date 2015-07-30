@@ -43,7 +43,7 @@ public class LwM2mModelLoader
             for (ObjectModel objectModel : objectModels) {
                 map.put(objectModel.id, objectModel);
             }
-            log.info("file {} successfully unmarshalled",objectModelStr);
+            log.info("file {} successfully loaded",objectModelStr);
         }
         else
         {

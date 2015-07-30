@@ -7,8 +7,6 @@ package org.mars.m2m.managmentadapter.service;
 
 import ch.qos.logback.classic.Logger;
 import java.math.BigInteger;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 //import com.sun.jersey.core.util.MultivaluedMapImpl;
 import javax.ws.rs.core.Response;
@@ -21,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
-import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResponseStatusCode;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.StdEventCats;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;

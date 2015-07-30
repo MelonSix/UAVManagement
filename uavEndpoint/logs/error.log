@@ -1,3 +1,29 @@
-2015-07-24 14:57:08 - Error loading json file
-2015-07-24 15:03:31 - Error loading json file
-2015-07-24 15:09:43 - Error loading json file
+2015-07-30 15:04:14 - Exception while handling a request on the /12203 resource
+java.lang.IllegalArgumentException: Invalid length for path: 12203/0/3/14
+	at org.eclipse.leshan.core.node.LwM2mPath.<init>(LwM2mPath.java:77) ~[leshan-all-0.1.11-M5.jar:na]
+	at org.eclipse.leshan.core.request.ReadRequest.<init>(ReadRequest.java:65) ~[leshan-all-0.1.11-M5.jar:na]
+	at org.eclipse.leshan.client.californium.impl.ObjectResource.handleGET(ObjectResource.java:118) ~[leshan-all-0.1.11-M5.jar:na]
+	at org.eclipse.californium.core.CoapResource.handleRequest(CoapResource.java:206) ~[californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.leshan.client.californium.impl.ObjectResource.handleRequest(ObjectResource.java:84) ~[leshan-all-0.1.11-M5.jar:na]
+	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverRequest(ServerMessageDeliverer.java:81) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveRequest(CoapStack.java:180) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveRequest(BlockwiseLayer.java:242) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.TokenLayer.receiveRequest(TokenLayer.java:72) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveRequest(ReliabilityLayer.java:221) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack.receiveRequest(CoapStack.java:133) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:594) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) [californium-core-1.0.0-M3.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_45]
