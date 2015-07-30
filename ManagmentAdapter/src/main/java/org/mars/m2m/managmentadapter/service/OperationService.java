@@ -7,20 +7,28 @@ package org.mars.m2m.managmentadapter.service;
 
 import ch.qos.logback.classic.Logger;
 import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 //import com.sun.jersey.core.util.MultivaluedMapImpl;
 import javax.ws.rs.core.Response;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ResponsePrimitive;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ObjectFactory;
-import org.mars.m2m.managmentadapter.client.MgmtSvrSvcConsumer;
+import org.mars.m2m.managmentadapter.client.MgmtServerServiceConsumer;
 import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResponseStatusCode;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.StdEventCats;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
+import org.mars.m2m.dmcore.util.DmCommons;
 import org.mars.m2m.managmentadapter.model.SvcConsumerDetails;
+import org.mars.m2m.managmentadapter.resources.ManagementOpsResource;
 
 
 /**
@@ -32,13 +40,14 @@ public class OperationService
     Logger logger = (Logger) LoggerFactory.getLogger(OperationService.class);
     ResponsePrimitive primitiveResponse;
     ObjectFactory of;
-    MgmtSvrSvcConsumer msConsumer;
+    MgmtServerServiceConsumer msConsumer;
     Map<String, String> headerData;
     Map<String, Object> formData;
     SvcConsumerDetails consumerDtls;
     ContentInstance contentInstance;
     Container container;
     PrimitiveContent primitiveContent;
+    UriInfo uriInfo;
 
     public OperationService() {
         this.of = new ObjectFactory();
@@ -48,7 +57,7 @@ public class OperationService
         this.headerData = new HashMap<>();
         this.formData = new HashMap<>();
         this.primitiveResponse = null;
-        this.msConsumer = new MgmtSvrSvcConsumer();
+        this.msConsumer = new MgmtServerServiceConsumer();
         this.contentInstance = of.createContentInstance();
     }
     
@@ -57,17 +66,92 @@ public class OperationService
         return primitiveResponse;
     }
     
-    public ResponsePrimitive retrieve(RequestPrimitive request)
+    /**
+     *
+     * @param request
+     * @param uriInfo
+     * @return
+     */
+    public ResponsePrimitive retrieve(RequestPrimitive request, UriInfo uriInfo)
     {
         //sets the request details to be sent to the client to consume a service
+        this.uriInfo = uriInfo;
         consumerDtls.setRequest(request);
         consumerDtls.setFormData(formData);
         consumerDtls.setHeaderData(headerData);
                 
         //Gets the response of a consuming client's request
-        Response resp = msConsumer.handleGet(consumerDtls);
-        String strp = resp.readEntity(String.class);
-        //System.out.println(strp);
+        Response serviceResponse = msConsumer.handleGet(consumerDtls);
+        int statusCode = serviceResponse.getStatus();
+        
+        //Sets up the data in a <container> resource
+        prepareContainer(serviceResponse);
+        
+        //resource <responsePrimitive> or <response> 
+        primitiveResponse = prepareRespPrimitive(request, statusCode, container);
+        
+        return primitiveResponse;
+    }
+    
+    public ResponsePrimitive update(RequestPrimitive request, UriInfo uriInfo)
+    {
+        //sets the request details to be sent to the client to consume a service
+        this.uriInfo = uriInfo;
+        consumerDtls.setRequest(request);
+        consumerDtls.setFormData(formData);
+        consumerDtls.setHeaderData(headerData);
+        
+        //Gets the response of a consuming client's request
+        Response serviceResponse = msConsumer.handlePut(consumerDtls);
+        int statusCode = serviceResponse.getStatus();
+        
+         return primitiveResponse;
+    }
+    
+    
+    public ResponsePrimitive delete(RequestPrimitive request)
+    {
+         return primitiveResponse;
+    }
+    
+    
+    public ResponsePrimitive notify(RequestPrimitive request)
+    {
+         return primitiveResponse;
+    }
+    
+    /**
+     * Sets up the &lt;response&gt; or &lt;responsePrimitive&gt; resource to be sent to the originator of the request
+     * @param req The &lt;request&gt; resource or request primitive
+     * @param statusCode The returned status code from the management server
+     * @param container The &lt;container&gt; resource associated with this &lt;resource&gt; resource
+     * @return &ltresponse&gt; resource to be sent to the originator
+     */
+    public ResponsePrimitive prepareRespPrimitive(RequestPrimitive req, int statusCode, Container container)
+    {
+        ResponsePrimitive resp = of.createResponsePrimitive();
+        resp.setResponseStatusCode(DmCommons.getOneM2mStatusCode(statusCode).getValue());
+        resp.setRequestIdentifier(req.getRequestIdentifier());
+        primitiveContent.getAny().add(container);
+        resp.setContent(primitiveContent);
+        resp.setTo(req.getFrom());
+        resp.setFrom(uriInfo.getBaseUriBuilder().path(ManagementOpsResource.class).build().toString());
+        resp.setOriginatingTimestamp(DmCommons.getOneM2mTimeStamp());
+        resp.setResultExpirationTimestamp(DmCommons.setOneM2mTimeStamp(new GregorianCalendar(2015,8,1,0,0,0)));
+        resp.setEventCategory(StdEventCats.DEFAULT.name());
+        return resp;
+    }
+        
+    /**
+     * Sets up the &lt;container&gt; resource which shares the data instances among entities.
+     * <br/>
+     * It is used as a mediator that buffers data exchange
+     * @param resp The response from the exposed management server web service
+     */
+    public void prepareContainer(Response resp) 
+    {
+        //gets returned data as string        
+        String entityAsStringData = resp.readEntity(String.class);
         
         /**
          * Handles Container stuff
@@ -83,46 +167,16 @@ public class OperationService
         container.setCurrentByteSize(BigInteger.valueOf(resp.getLength()));
         container.setLocationID("");
         container.setOntologyRef("");
-            
-            // resource <contentInstance>
-            contentInstance.setStateTag(BigInteger.ZERO);
-            MediaType mediaType = resp.getMediaType();
-            contentInstance.setContentInfo(mediaType.toString());
-            contentInstance.setContentSize(BigInteger.valueOf(resp.getLength()));
-            contentInstance.setOntologyRef("");
-            contentInstance.setContent(strp);
-            
+        
+        // resource <contentInstance>
+        contentInstance.setStateTag(BigInteger.ZERO);
+        MediaType mediaType = resp.getMediaType();
+        contentInstance.setContentInfo(mediaType.toString());
+        contentInstance.setContentSize(BigInteger.valueOf(resp.getLength()));
+        contentInstance.setOntologyRef("");
+        contentInstance.setContent(entityAsStringData);
+        
         container.getContentInstanceOrContainerOrSubscription().add(contentInstance);
-        
-        //resource <responsePrimitive> or <response>
-        
-        /**
-         * Proof of concept
-         * TODO: remove this part
-         */
-        ProofOfConcept pr = new ProofOfConcept();
-        primitiveResponse = pr.getResp();
-        primitiveResponse.setRequestIdentifier(request.getRequestIdentifier());
-        primitiveContent.getAny().add(container);
-        primitiveResponse.setContent(primitiveContent);
-        
-        return primitiveResponse;
     }
     
-    public ResponsePrimitive update(RequestPrimitive request)
-    {
-         return primitiveResponse;
-    }
-    
-    
-    public ResponsePrimitive delete(RequestPrimitive request)
-    {
-         return primitiveResponse;
-    }
-    
-    
-    public ResponsePrimitive notify(RequestPrimitive request)
-    {
-         return primitiveResponse;
-    }
 }

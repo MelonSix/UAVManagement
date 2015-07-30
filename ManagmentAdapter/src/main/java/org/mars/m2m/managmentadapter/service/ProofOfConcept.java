@@ -11,7 +11,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
-import org.mars.m2m.dmcore.onem2m.enumerationTypes.RequestStatusCode;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResponseStatusCode;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceType;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.StdEventCats;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.MgmtResource;
@@ -47,13 +47,13 @@ public class ProofOfConcept
             req.setRequestIdentifier(DmCommons.generateID());
             req.setResourceType(ResourceType.MGMT_OBJ.getValue());
             req.setName("myObjectName");
-            PrimitiveContent primCtnt = new PrimitiveContent();
+            PrimitiveContent primCtnt = of.createPrimitiveContent();
             primCtnt.getAny().add(new MgmtResource());
             req.setContent(primCtnt);
             req.setOriginatingTimestamp(DmCommons.getOneM2mTimeStamp());
             req.setResultExpirationTimestamp(DmCommons.getOneM2mTimeStamp());
             
-            resp.setResponseStatusCode(RequestStatusCode.CHANGED.getValue());
+            resp.setResponseStatusCode(ResponseStatusCode.CHANGED.getValue());
             resp.setRequestIdentifier(DmCommons.generateID());
             resp.setContent(primCtnt);
             resp.setTo("http://127.0.0l.1/resource");

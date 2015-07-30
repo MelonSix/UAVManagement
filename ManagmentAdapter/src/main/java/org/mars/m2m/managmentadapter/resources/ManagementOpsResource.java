@@ -10,7 +10,9 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ResponsePrimitive;
@@ -34,23 +36,25 @@ public class ManagementOpsResource {
     /**
      *Accepts requests that are posted to the management adapter
      * @param requestPrimitive The posted request to be processed by the management adapter
+     * @param uriInfo
      * @return The response associated with this request
      */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public ResponsePrimitive postRequest(RequestPrimitive requestPrimitive)
+    public ResponsePrimitive postRequest(RequestPrimitive requestPrimitive, @Context UriInfo uriInfo)
     {
-        return processRequest(requestPrimitive);
+        return processRequest(requestPrimitive, uriInfo);
     }
     
     /**
      * Process the request primitive by selecting the appropriate operation to handle the request
      * and delivering the response
      * @param request
+     * @param uriInfo
      * @return 
      */
-    public ResponsePrimitive processRequest(RequestPrimitive request)
+    public ResponsePrimitive processRequest(RequestPrimitive request, UriInfo uriInfo)
     {
         ResponsePrimitive response = null;
         operation = DmCommons.determineOneM2mOperation(request.getOperation());
@@ -61,9 +65,10 @@ public class ManagementOpsResource {
                 case CREATE:
                     break;
                 case RETRIEVE:
-                    response = opSvc.retrieve(request);
+                    response = opSvc.retrieve(request, uriInfo);
                     break;
                 case UPDATE:
+                    response = opSvc.update(request, uriInfo);
                     break;
                 case DELETE:
                     break;

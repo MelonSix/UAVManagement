@@ -6,6 +6,7 @@
 package org.mars.m2m.dmcore.util.dateTime;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,14 +31,14 @@ public class GetXmlDateTimeObj
     public GetXmlDateTimeObj() {
     }   
     
-    public XmlDateTimeType prepareXmlDateTime()            
+    public XmlDateTimeType prepareXmlDateTime(GregorianCalendar date)            
     {
         try 
         {
             of = new ObjectFactory();
             xmlDateTime = of.createDateTimeType();
-            now = new GregorianCalendar();
-
+            now = (date != null)? date : new GregorianCalendar();
+            
             df = DatatypeFactory.newInstance();
 
             gcDate = df.newXMLGregorianCalendarDate(

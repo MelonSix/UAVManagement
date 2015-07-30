@@ -6,8 +6,11 @@
 package org.mars.m2m.dmcore.util;
 
 import java.math.BigInteger;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResponseStatusCode;
 import org.mars.m2m.dmcore.util.dateTime.GetXmlDateTimeObj;
 import org.mars.m2m.dmcore.util.dateTime.XmlDateTimeType;
 
@@ -27,7 +30,15 @@ public class DmCommons {
     public static String getOneM2mTimeStamp()
     {
         String timestamp = null;
-        XmlDateTimeType dt = gtXmlObj.prepareXmlDateTime();
+        XmlDateTimeType dt = gtXmlObj.prepareXmlDateTime(null);
+        timestamp = dt.getDate().toString().replace("-", "")+"T"+dt.getTime().toString().replace(":", "");
+        return timestamp;
+    }
+    
+    public static String setOneM2mTimeStamp(GregorianCalendar date)
+    {
+        String timestamp = null;
+        XmlDateTimeType dt = gtXmlObj.prepareXmlDateTime(date);
         timestamp = dt.getDate().toString().replace("-", "")+"T"+dt.getTime().toString().replace(":", "");
         return timestamp;
     }
@@ -63,5 +74,30 @@ public class DmCommons {
     public static String generateID()
     {
         return UUID.randomUUID().toString();
+    }
+    
+    /**
+     * For selecting appropriate OneM2M status code for an HTTP returned status code
+     * @param statusCode The returned HTTP status code
+     * @return  The OneM2M status code
+     */
+    public static ResponseStatusCode getOneM2mStatusCode(int statusCode)
+    {
+        switch(statusCode)
+        {
+            case 200:
+                return ResponseStatusCode.OK;
+            case 201:
+                return ResponseStatusCode.CREATED;
+            case 202:
+                return ResponseStatusCode.ACCEPTED;
+            case 203:
+                return ResponseStatusCode.OK;
+            /**
+             * TODO: Other HTTP status code cases yet to be included
+             */    
+            default:
+                return ResponseStatusCode.BAD_REQUEST;
+        }
     }
 }
