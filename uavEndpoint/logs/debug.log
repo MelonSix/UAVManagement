@@ -551,3 +551,6 @@
 2015-07-31 16:29:02 - Temperature sensor started
 2015-07-31 16:29:02 - file /uavObjectModel.json successfully loaded
 2015-07-31 16:29:02 - Altitude sensor started
+2015-07-31 17:51:40 - [org.mars.m2m.Devices.MissileDispatcher] Execute on Device resource 4
+2015-07-31 17:53:04 - [org.mars.m2m.Devices.MissileDispatcher] Execute on Device resource 4
+2015-07-31 17:54:39 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2

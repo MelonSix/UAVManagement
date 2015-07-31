@@ -64,7 +64,8 @@ public class OperationService
     
     public ResponsePrimitive create(RequestPrimitive request, UriInfo uriInfo)
     {
-        ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println("in responseprimitive method");
+        //ObjectMapper objectMapper = new ObjectMapper();
         String data = extractRequestData(request);
         
         //sets the request details to be sent to the client to consume a service
@@ -192,6 +193,7 @@ public class OperationService
      */
     public void prepareContainer(Response resp) 
     {
+        System.out.println("in prepareContainer method");
         //gets returned data as string        
         String entityAsStringData = resp.readEntity(String.class);
         

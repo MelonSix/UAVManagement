@@ -102,7 +102,7 @@ public class ServiceConsumer
                 invBuilder.header(key, headerData.get(key));
             }
         }
-        System.out.println(data);
+        //System.out.println(data);
         response = invBuilder.post(Entity.entity(data, MediaType.APPLICATION_JSON));
         return response;
     }
