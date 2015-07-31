@@ -22,11 +22,11 @@ import org.slf4j.LoggerFactory;
  *
  * @author BRIGHTER AGYEMANG
  Consumes the various services exposed by the management server
- MgmtServerServiceConsumer => Management Sever Service Consumer
+ ServiceConsumer => Management Sever Service Consumer
  */
-public class MgmtServerServiceConsumer 
+public class ServiceConsumer 
 {
-    Logger logger = (Logger) LoggerFactory.getLogger(MgmtServerServiceConsumer.class);
+    Logger logger = (Logger) LoggerFactory.getLogger(ServiceConsumer.class);
     ObjectFactory of;
     Response response;
     Map<String, String> headerData;
@@ -35,7 +35,7 @@ public class MgmtServerServiceConsumer
     /**
      * Default constructor
      */
-    public MgmtServerServiceConsumer() {
+    public ServiceConsumer() {
         this.of = new ObjectFactory();
         this.response = null;
     }
@@ -69,7 +69,8 @@ public class MgmtServerServiceConsumer
     public Response handlePut(SvcConsumerDetails consumerDtls, String data) 
     {
         Client client = ClientBuilder.newClient();
-        WebTarget webTarget = client.target(consumerDtls.getRequest().getTo());        
+        WebTarget webTarget = client.target(consumerDtls.getRequest().getTo());
+        System.out.println(consumerDtls.getRequest().getTo());
         Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         
         if(headerData != null)

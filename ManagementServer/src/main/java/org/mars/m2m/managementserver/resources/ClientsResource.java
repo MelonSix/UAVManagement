@@ -184,7 +184,7 @@ public class ClientsResource {
     public String updateResource(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
                                 @PathParam("instance") String instance, @PathParam("resourceid") String resourceid, ObjectResource resource)
     {
-        String processedValResponse = null;
+        String processedValResponse = "[]";
         try 
         {
             String target = "/"+objectid+"/"+instance+"/"+resourceid;
@@ -200,7 +200,7 @@ public class ClientsResource {
             
         } catch (Exception ex) 
         {
-            Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+            log.error(ex.toString());
         }
         return processedValResponse;
     }
@@ -231,7 +231,7 @@ public class ClientsResource {
                 LwM2mResponse cResponse = server.send(client, request);
                 processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
             } catch (IOException ex) {
-                Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+                log.error(ex.toString());
             }
         }        
         return processedValResponse;
@@ -365,42 +365,44 @@ public class ClientsResource {
      */
     public LwM2mResource parseData(ObjectResource resource) 
     {
+        String datatype = resource.getDataType();
         try {            
-            switch (resource.getDataType()) {
+            switch (datatype) {
                 case "STRING":
-                    return new LwM2mResource(resource.getId(), Value.newStringValue((String) resource.getValue()));
+                    return new LwM2mResource(resource.getId(), Value.newStringValue(String.valueOf(resource.getValue())));
                     
                 case "INTEGER":
-                    return new LwM2mResource(resource.getId(), Value.newIntegerValue((int) resource.getValue()));
+                    return new LwM2mResource(resource.getId(), Value.newIntegerValue(Integer.valueOf(resource.getValue().toString())));
                     
                 case "LONG":
-                    return new LwM2mResource(resource.getId(), Value.newLongValue((long) resource.getValue()));
+                    return new LwM2mResource(resource.getId(), Value.newLongValue(Long.valueOf(resource.getValue().toString())));
                     
                 case "FLOAT":
-                    return new LwM2mResource(resource.getId(), Value.newFloatValue((float) resource.getValue()));
+                    return new LwM2mResource(resource.getId(), Value.newFloatValue(Float.valueOf(resource.getValue().toString())));
                     
                 case "DOUBLE":
-                    return new LwM2mResource(resource.getId(), Value.newDoubleValue((double) resource.getValue()));
+                    return new LwM2mResource(resource.getId(), Value.newDoubleValue(Double.valueOf(resource.getValue().toString())));
                     
                 case "BOOLEAN":
-                    return new LwM2mResource(resource.getId(), Value.newBooleanValue((boolean) resource.getValue()));
+                    return new LwM2mResource(resource.getId(), Value.newBooleanValue(Boolean.valueOf(resource.getValue().toString())));
                    
                 case "OPAQUE":
-                    return new LwM2mResource(resource.getId(), Value.newBinaryValue((byte[]) resource.getValue()));
+                    return new LwM2mResource(resource.getId(), Value.newBinaryValue(resource.getValue().toString().getBytes()));
                     
-                case "TIME":
+                case "TIME"://ERROR PRONE!! TODO: Find appropriate approach to safely parse date types
                     return new LwM2mResource(resource.getId(), Value.newDateValue((Date) resource.getValue()));
                   
                 default:
                     return null;
             }
         } catch (Exception e) {
+                    log.error(e.toString());
                     return null;
         }
     }
     
     /**
-     * Creats a new node
+     * Creates a new node
      * @param client
      * @param target
      * @param req
