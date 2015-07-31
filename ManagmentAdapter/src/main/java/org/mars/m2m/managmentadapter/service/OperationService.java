@@ -74,7 +74,6 @@ public class OperationService
         //sets the request details to be sent to the client to consume a service
         this.uriInfo = uriInfo;
         consumerDtls.setRequest(request);
-        consumerDtls.setFormData(formData);
         consumerDtls.setHeaderData(headerData);
                 
         //Gets the response of a consuming client's request
@@ -95,11 +94,11 @@ public class OperationService
         //sets the request details to be sent to the client to consume a service
         this.uriInfo = uriInfo;
         consumerDtls.setRequest(request);
-        consumerDtls.setFormData(formData);
+        String requestData = extractRequestData(request);
         consumerDtls.setHeaderData(headerData);
         
         //Gets the response of a consuming client's request
-        Response serviceResponse = msConsumer.handlePut(consumerDtls);
+        Response serviceResponse = msConsumer.handlePut(consumerDtls,requestData);
         int statusCode = serviceResponse.getStatus();
         
          return primitiveResponse;
@@ -137,6 +136,22 @@ public class OperationService
         resp.setResultExpirationTimestamp(DmCommons.setOneM2mTimeStamp(new GregorianCalendar(2015,8,1,0,0,0)));
         resp.setEventCategory(StdEventCats.DEFAULT.name());
         return resp;
+    }
+    
+    /**
+     * Gets the data within a <container> resource's <contentInstance> resource
+     * @param requestPrimitive The request sent by the originator
+     * @return The content/data as string
+     */
+    public String extractRequestData(RequestPrimitive requestPrimitive)
+    {
+        String content = null;
+        
+        container = (Container) requestPrimitive.getContent().getAny().get(0);
+        contentInstance = (ContentInstance) container.getContentInstanceOrContainerOrSubscription().get(0);
+        content = (String) contentInstance.getContent();
+        
+        return content;
     }
         
     /**

@@ -256,3 +256,33 @@
 2015-07-30 20:37:18 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
 2015-07-30 20:37:34 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=411, type=INTEGER]], isMultiInstances=false]] 
 2015-07-30 20:37:37 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 20:55:41 - [org.mars.m2m.Devices.AltitudeSensor] Read on resource: 1
+2015-07-30 22:02:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:08:45 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:18:39 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:22:58 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:23:05 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=8, type=INTEGER]], isMultiInstances=false]] 
+2015-07-30 22:23:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:24:49 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:33:17 - Started execution in military uav run method
+2015-07-30 22:33:18 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:18 - UAV manager started
+2015-07-30 22:33:19 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:20 - Threat sensor started
+2015-07-30 22:33:20 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:20 - Missile dispatcher started
+2015-07-30 22:33:21 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:21 - Temperature sensor started
+2015-07-30 22:33:21 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:21 - Altitude sensor started
+2015-07-30 22:43:14 - Started execution in military uav run method
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - UAV manager started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Threat sensor started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Missile dispatcher started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Temperature sensor started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Altitude sensor started

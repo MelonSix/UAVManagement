@@ -189,7 +189,7 @@ public class ClientsResource {
         {
             String target = "/"+objectid+"/"+instance+"/"+resourceid;
             Client client = server.getClientRegistry().get(clientEndpoint);
-            
+            System.out.println(target+" "+clientEndpoint);
             LwM2mResource resce = parseData(resource);            
             if(resce != null)
             {

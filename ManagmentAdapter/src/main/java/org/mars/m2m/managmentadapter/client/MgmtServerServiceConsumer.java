@@ -9,6 +9,7 @@ import ch.qos.logback.classic.Logger;
 import java.util.Map;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -47,7 +48,6 @@ public class MgmtServerServiceConsumer
     public Response handleGet(SvcConsumerDetails consumerDtls)
     {
         headerData = consumerDtls.getHeaderData();
-        formData = consumerDtls.getFormData();
         
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(consumerDtls.getRequest().getTo());        
@@ -62,20 +62,26 @@ public class MgmtServerServiceConsumer
             }
         }
         
-        if(formData != null)
-        {
-            //HTTP query parameters
-            for (String key : formData.keySet()) {
-                webTarget.queryParam(key, formData.get(key));
-            }
-        }
-        
         response = invBuilder.get();
         return response;
     }
 
-    public Response handlePut(SvcConsumerDetails consumerDtls) 
+    public Response handlePut(SvcConsumerDetails consumerDtls, String data) 
     {
+        Client client = ClientBuilder.newClient();
+        WebTarget webTarget = client.target(consumerDtls.getRequest().getTo());        
+        Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+        
+        if(headerData != null)
+        {
+            //HTTP request header details
+            for(String key : headerData.keySet())
+            {
+                invBuilder.header(key, headerData.get(key));
+            }
+        }
+        System.out.println(data);
+        response = invBuilder.put(Entity.entity(data, MediaType.APPLICATION_JSON));
         return response;
     }
 }
