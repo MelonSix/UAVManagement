@@ -6,6 +6,7 @@
 package org.mars.m2m.managmentadapter.client;
 
 import ch.qos.logback.classic.Logger;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -70,7 +71,7 @@ public class ServiceConsumer
     {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(consumerDtls.getRequest().getTo());
-        System.out.println(consumerDtls.getRequest().getTo());
+        
         Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         
         if(headerData != null)
@@ -83,6 +84,26 @@ public class ServiceConsumer
         }
         System.out.println(data);
         response = invBuilder.put(Entity.entity(data, MediaType.APPLICATION_JSON));
+        return response;
+    }
+    
+    public Response handlePost(SvcConsumerDetails consumerDetails, String data)
+    {
+        Client client = ClientBuilder.newClient();
+        WebTarget webTarget = client.target(consumerDetails.getRequest().getTo());
+        
+        Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+        
+        if(headerData != null)
+        {
+            //HTTP request header details
+            for(String key : headerData.keySet())
+            {
+                invBuilder.header(key, headerData.get(key));
+            }
+        }
+        System.out.println(data);
+        response = invBuilder.post(Entity.entity(data, MediaType.APPLICATION_JSON));
         return response;
     }
 }

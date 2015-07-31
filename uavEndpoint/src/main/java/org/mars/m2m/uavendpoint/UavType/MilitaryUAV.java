@@ -244,7 +244,7 @@ public class MilitaryUAV implements Runnable {
                 //attach instance
                 initializer.setInstancesForObject(12203, missileDispatch);
                 initializer.setInstancesForObject(3, device);
-                List<ObjectEnabler> enablers = initializer.create(12203, 3);
+                List<ObjectEnabler> enablers = initializer.create(0,1,12203, 3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
@@ -257,7 +257,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration

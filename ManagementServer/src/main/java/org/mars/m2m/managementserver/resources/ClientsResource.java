@@ -184,7 +184,7 @@ public class ClientsResource {
     public String updateResource(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
                                 @PathParam("instance") String instance, @PathParam("resourceid") String resourceid, ObjectResource resource)
     {
-        String processedValResponse = "[]";
+        String processedValResponse = null;
         try 
         {
             String target = "/"+objectid+"/"+instance+"/"+resourceid;
@@ -201,6 +201,10 @@ public class ClientsResource {
         } catch (Exception ex) 
         {
             log.error(ex.toString());
+        }
+        if(processedValResponse == null)
+        {
+            processedValResponse = "{\"error\":\"Datatype parsing error\"}";
         }
         return processedValResponse;
     }
@@ -271,7 +275,7 @@ public class ClientsResource {
     }
     
     /**
-     * Creates an instance of an object can have multiple instances in the model
+     * Creates an instance of an object that can have multiple instances in the model
      * @param clientEndpoint
      * @param objectid
      * @param instance
@@ -287,10 +291,14 @@ public class ClientsResource {
         try {
             String target = "/"+objectid+"/"+instance;
             Client client = server.getClientRegistry().get(clientEndpoint);
-            LwM2mResponse cResponse = this.createRequest(client, target, req);
+            LwM2mResponse cResponse = this.processCreateRequest(client, target, req);
             processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
         } catch (IOException ex) {
             Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(processedValResponse == null)
+        {
+            processedValResponse = "{\"error\":\"Datatype parsing error\"}";
         }
         return processedValResponse;
     }
@@ -409,7 +417,7 @@ public class ClientsResource {
      * @return The new LwM2m node
      * @throws IOException 
      */
-    private LwM2mResponse createRequest(Client client, String target, HttpServletRequest req)
+    private LwM2mResponse processCreateRequest(Client client, String target, HttpServletRequest req)
             throws IOException {
         Map<String, String> parameters = new HashMap<>();
         String contentType = HttpFields.valueParameters(req.getContentType(), parameters);

@@ -63,6 +63,7 @@ public class ManagementOpsResource {
         try {
             switch (operation) {
                 case CREATE:
+                    response = opSvc.create(request, uriInfo);
                     break;
                 case RETRIEVE:
                     response = opSvc.retrieve(request, uriInfo);
