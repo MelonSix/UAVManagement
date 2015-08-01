@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  */
 public class TemperatureSensor extends BaseInstanceEnabler implements DeviceExecution
 {
-     private static Logger log = (Logger) LoggerFactory.getLogger(UAVmanager.class);
+     private static Logger log = (Logger) LoggerFactory.getLogger(TemperatureSensor.class);
      
     //demo observe
     float tempVal = 0;

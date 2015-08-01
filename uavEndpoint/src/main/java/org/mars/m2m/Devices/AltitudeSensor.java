@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 public class AltitudeSensor  extends BaseInstanceEnabler implements DeviceExecution 
 {
-    private static Logger log = (Logger) LoggerFactory.getLogger(UAVmanager.class);
+    private static Logger log = (Logger) LoggerFactory.getLogger(AltitudeSensor.class);
     
     //resources
     private float sensorValue;

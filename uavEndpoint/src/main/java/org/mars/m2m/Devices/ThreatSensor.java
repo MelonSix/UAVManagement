@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
 {
-    private static Logger log = (Logger) LoggerFactory.getLogger(UAVmanager.class);
+    private static Logger log = (Logger) LoggerFactory.getLogger(ThreatSensor.class);
     
     //Resources
     private int threatType;

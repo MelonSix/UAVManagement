@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class FlightControl extends BaseInstanceEnabler implements DeviceExecution
 {
-    private static Logger log = (Logger) LoggerFactory.getLogger(UAVmanager.class);
+    private static Logger log = (Logger) LoggerFactory.getLogger(FlightControl.class);
     
 
     public FlightControl() {

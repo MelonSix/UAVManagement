@@ -106,4 +106,9 @@ public class ServiceConsumer
         response = invBuilder.post(Entity.entity(data, MediaType.APPLICATION_JSON));
         return response;
     }
+    
+    public Response handleDelete(SvcConsumerDetails consumerDetails, String data)
+    {
+        return response;
+    }
 }
