@@ -31,11 +31,12 @@ public class ObservationListenerImpl implements ObservationRegistryListener {
         if (LOG.isInfoEnabled()) {
             LOG.info("Received notification from [{}] containing value [{}]", observation.getPath(),
                     value.toString()+", res: "+res.getValue().value.toString());
+            
         }
         String data = new StringBuffer("{\"ep\":\"").append(observation.getClient().getEndpoint())
                 .append("\",\"res\":\"").append(observation.getPath().toString()).append("\",\"val\":")
                 .append(ConfigGson.getCustomGsonConfig().toJson(value)).append("}").toString();
-
+        System.out.println(data);
         //sendEvent(EVENT_NOTIFICATION, data, observation.getClient().getEndpoint());
     }
 

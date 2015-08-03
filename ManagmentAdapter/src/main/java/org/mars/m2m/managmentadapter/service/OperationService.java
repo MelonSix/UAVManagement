@@ -6,8 +6,6 @@
 package org.mars.m2m.managmentadapter.service;
 
 import ch.qos.logback.classic.Logger;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.GregorianCalendar;
 //import com.sun.jersey.core.util.MultivaluedMapImpl;
@@ -19,10 +17,8 @@ import org.mars.m2m.managmentadapter.client.ServiceConsumer;
 import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
-import org.mars.m2m.dmcore.model.ObjectModelInstance;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.StdEventCats;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
@@ -64,7 +60,6 @@ public class OperationService
     
     public ResponsePrimitive create(RequestPrimitive request, UriInfo uriInfo)
     {
-        System.out.println("in responseprimitive method");
         //ObjectMapper objectMapper = new ObjectMapper();
         String data = extractRequestData(request);
         
@@ -136,15 +131,49 @@ public class OperationService
     }
     
     
-    public ResponsePrimitive delete(RequestPrimitive request)
+    public ResponsePrimitive delete(RequestPrimitive request, UriInfo uriInfo)
     {
-         return primitiveResponse;
+        //sets the request details to be sent to the client to consume a service
+        this.uriInfo = uriInfo;
+        consumerDtls.setRequest(request);
+        headerData.put("content-type", MediaType.APPLICATION_JSON);
+        consumerDtls.setHeaderData(headerData);
+        
+        //Gets the response of a consuming client's request
+        Response serviceResponse = msConsumer.handleDelete(consumerDtls);
+        int statusCode = serviceResponse.getStatus();
+        
+        //Sets up the data in a <container> resource
+        prepareContainer(serviceResponse);
+        
+        //resource <responsePrimitive> or <response> 
+        primitiveResponse = prepareRespPrimitive(request, statusCode, container);
+        return primitiveResponse;
     }
     
     
-    public ResponsePrimitive notify(RequestPrimitive request)
+    public ResponsePrimitive notify(RequestPrimitive request, UriInfo uriInfo)
     {
-         return primitiveResponse;
+        String data = null;//extractRequestData(request);
+        
+        request.setTo(request.getTo()+"/observe");
+        //sets the request details to be sent to the client to consume a service
+        this.uriInfo = uriInfo;
+        consumerDtls.setRequest(request);
+        headerData.put("content-type", MediaType.APPLICATION_JSON);
+        consumerDtls.setHeaderData(headerData);
+
+        //Gets the response of a consuming client's request
+        Response serviceResponse = msConsumer.handlePost(consumerDtls, data);
+        int statusCode = serviceResponse.getStatus();
+
+        //Sets up the data in a <container> resource
+        prepareContainer(serviceResponse);
+
+        //resource <responsePrimitive> or <response> 
+        primitiveResponse = prepareRespPrimitive(request, statusCode, container);
+        
+        return primitiveResponse;
     }
     
     /**
@@ -193,7 +222,6 @@ public class OperationService
      */
     public void prepareContainer(Response resp) 
     {
-        System.out.println("in prepareContainer method");
         //gets returned data as string        
         String entityAsStringData = resp.readEntity(String.class);
         

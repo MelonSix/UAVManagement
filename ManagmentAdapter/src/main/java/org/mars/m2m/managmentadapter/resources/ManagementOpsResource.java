@@ -17,6 +17,7 @@ import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ResponsePrimitive;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.resources.subResources.NotificationResource;
 import org.mars.m2m.managmentadapter.service.OperationService;
 import org.slf4j.LoggerFactory;
 
@@ -47,6 +48,12 @@ public class ManagementOpsResource {
         return processRequest(requestPrimitive, uriInfo);
     }
     
+    @Path("/notification")
+    public NotificationResource getNotificationResource()
+    {
+        return new NotificationResource();
+    }
+    
     /**
      * Process the request primitive by selecting the appropriate operation to handle the request
      * and delivering the response
@@ -72,8 +79,10 @@ public class ManagementOpsResource {
                     response = opSvc.update(request, uriInfo);
                     break;
                 case DELETE:
+                    response = opSvc.delete(request, uriInfo);
                     break;
-                case NOTIFY:
+                case NOTIFY:                    
+                    response = opSvc.notify(request, uriInfo);
                     break;
                 default:
             }

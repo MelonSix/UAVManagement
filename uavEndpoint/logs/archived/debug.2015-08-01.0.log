@@ -1,0 +1,556 @@
+2015-07-24 12:02:23 - Started execution in military uav run method
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 12:02:24 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 14:42:18 - Started execution in military uav run method
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 14:42:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 14:57:08 - Started execution in military uav run method
+2015-07-24 15:03:31 - Started execution in military uav run method
+2015-07-24 15:08:06 - Started execution in military uav run method
+2015-07-24 15:11:03 - Started execution in military uav run method
+2015-07-24 15:11:32 - Started execution in military uav run method
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 15:11:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 15:19:12 - Started execution in military uav run method
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 15:19:12 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-24 15:20:45 - Started execution in military uav run method
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-24 15:20:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+<<<<<<< HEAD (dcfee13) - dmcore addition
+
+=======
+2015-07-21 10:23:28 - Started execution in military uav run method
+2015-07-21 10:23:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-21 10:23:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-21 10:23:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-21 10:23:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-21 10:23:28 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+>>>>>>> origin/master (3d07d7e) - UAV manager bu
+2015-07-29 15:42:53 - Started execution in military uav run method
+2015-07-29 15:42:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-29 15:42:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-29 15:42:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-29 15:42:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-29 15:42:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-29 15:53:25 - Started execution in military uav run method
+2015-07-29 15:53:25 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-29 15:53:25 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-29 15:53:25 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-29 15:53:25 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-29 15:53:25 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-29 16:00:22 - Started execution in military uav run method
+2015-07-29 16:00:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-29 16:00:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-29 16:00:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-29 16:00:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-29 16:00:22 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-29 16:03:58 - Started execution in military uav run method
+2015-07-29 16:03:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-29 16:03:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-29 16:03:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-29 16:03:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-29 16:03:58 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-29 16:07:35 - Started execution in military uav run method
+2015-07-29 16:07:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-29 16:07:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-29 16:07:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-29 16:07:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-29 16:07:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-28 18:48:46 - Started execution in military uav run method
+2015-07-28 18:48:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-28 18:48:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-28 18:48:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-28 18:48:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-28 18:48:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-28 19:08:53 - Started execution in military uav run method
+2015-07-28 19:08:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-28 19:08:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-28 19:08:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-28 19:08:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-28 19:08:54 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-28 21:46:33 - Started execution in military uav run method
+2015-07-28 21:46:34 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-28 21:46:34 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-28 21:46:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-28 21:46:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-28 21:46:35 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 12:31:34 - Started execution in military uav run method
+2015-07-30 12:31:34 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 12:31:34 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 12:31:34 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 12:31:34 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 12:31:34 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 11:51:38 - Started execution in military uav run method
+2015-07-30 12:01:19 - Started execution in military uav run method
+2015-07-30 12:01:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 12:01:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 12:01:20 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 12:01:20 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 12:01:20 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 13:14:00 - Started execution in military uav run method
+2015-07-30 13:14:01 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 13:14:01 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 13:14:01 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 13:14:01 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 13:14:01 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 13:21:48 - Started execution in military uav run method
+2015-07-30 13:21:48 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 13:21:48 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 13:21:48 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 13:21:49 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 13:21:49 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 13:29:35 - Started execution in military uav run method
+2015-07-30 13:30:28 - Started execution in military uav run method
+2015-07-30 13:30:29 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 13:30:29 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 13:30:29 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 13:30:29 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 13:30:29 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 14:04:46 - Started execution in military uav run method
+2015-07-30 14:04:46 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 14:04:47 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 14:04:47 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 14:04:47 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 14:04:47 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 14:28:41 - Started execution in military uav run method
+2015-07-30 14:28:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 14:28:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 14:28:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 14:28:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 14:28:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 15:01:32 - Started execution in military uav run method
+2015-07-30 15:01:33 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 15:01:33 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 15:01:33 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 15:01:33 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 15:01:33 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 15:10:30 - Started execution in military uav run method
+2015-07-30 15:10:31 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 15:10:31 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 15:10:31 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 15:10:31 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 15:10:31 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 15:11:07 - Started execution in military uav run method
+2015-07-30 15:12:39 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 15:13:11 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 15:13:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 15:13:47 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 15:13:57 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 15:44:06 - Started execution in military uav run method
+2015-07-30 15:44:06 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 15:44:06 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 15:44:06 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 15:44:06 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 15:44:06 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 16:02:18 - Started execution in military uav run method
+2015-07-30 16:02:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 16:02:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 16:02:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 16:02:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 16:02:19 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 16:14:50 - Started execution in military uav run method
+2015-07-30 16:14:50 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 16:14:50 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 16:14:51 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 16:14:51 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 16:14:51 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 16:28:25 - Started execution in military uav run method
+2015-07-30 16:28:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 16:28:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 16:28:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 16:28:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 16:28:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 16:31:31 - Started execution in military uav run method
+2015-07-30 16:31:31 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 16:31:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 16:31:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 16:31:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 16:31:32 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 16:33:40 - Started execution in military uav run method
+2015-07-30 16:33:40 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 16:33:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 16:33:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 16:33:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 16:33:41 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 16:39:26 - Started execution in military uav run method
+2015-07-30 16:39:26 - file /uavObjectModel.json successfully loaded
+2015-07-30 16:39:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 16:39:26 - file /uavObjectModel.json successfully loaded
+2015-07-30 16:39:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 16:39:26 - file /uavObjectModel.json successfully loaded
+2015-07-30 16:39:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 16:39:26 - file /uavObjectModel.json successfully loaded
+2015-07-30 16:39:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 16:39:26 - file /uavObjectModel.json successfully loaded
+2015-07-30 16:39:26 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 16:40:31 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 16:40:52 - [org.mars.m2m.Devices.MissileDispatcher] Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=411, type=INTEGER]], isMultiInstances=false]] 
+2015-07-30 20:22:01 - Started execution in military uav run method
+2015-07-30 20:22:01 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:22:03 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] UAV manager started
+2015-07-30 20:22:04 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:22:04 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Threat sensor started
+2015-07-30 20:22:04 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:22:04 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Missile dispatcher started
+2015-07-30 20:22:05 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:22:05 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Temperature sensor started
+2015-07-30 20:22:05 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:22:05 - [org.mars.m2m.uavendpoint.UavType.MilitaryUAV] Altitude sensor started
+2015-07-30 20:25:53 - Started execution in military uav run method
+2015-07-30 20:25:53 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:25:53 - UAV manager started
+2015-07-30 20:25:53 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:25:53 - Threat sensor started
+2015-07-30 20:25:53 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:25:53 - Missile dispatcher started
+2015-07-30 20:25:53 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:25:53 - Temperature sensor started
+2015-07-30 20:25:53 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:25:53 - Altitude sensor started
+2015-07-30 20:32:23 - Started execution in military uav run method
+2015-07-30 20:32:23 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:32:24 - UAV manager started
+2015-07-30 20:32:24 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:32:24 - Threat sensor started
+2015-07-30 20:32:24 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:32:24 - Missile dispatcher started
+2015-07-30 20:32:24 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:32:24 - Temperature sensor started
+2015-07-30 20:32:24 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:32:24 - Altitude sensor started
+2015-07-30 20:34:29 - Started execution in military uav run method
+2015-07-30 20:34:29 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:34:29 - UAV manager started
+2015-07-30 20:34:30 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:34:30 - Threat sensor started
+2015-07-30 20:34:30 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:34:30 - Missile dispatcher started
+2015-07-30 20:34:30 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:34:30 - Temperature sensor started
+2015-07-30 20:34:30 - file /uavObjectModel.json successfully loaded
+2015-07-30 20:34:30 - Altitude sensor started
+2015-07-30 20:36:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-07-30 20:36:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
+2015-07-30 20:36:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 20:36:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
+2015-07-30 20:37:14 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-07-30 20:37:14 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
+2015-07-30 20:37:14 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 20:37:14 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
+2015-07-30 20:37:18 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 20:37:34 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=411, type=INTEGER]], isMultiInstances=false]] 
+2015-07-30 20:37:37 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 20:55:41 - [org.mars.m2m.Devices.AltitudeSensor] Read on resource: 1
+2015-07-30 22:02:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:08:45 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:18:39 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:22:58 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:23:05 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=8, type=INTEGER]], isMultiInstances=false]] 
+2015-07-30 22:23:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:24:49 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-30 22:33:17 - Started execution in military uav run method
+2015-07-30 22:33:18 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:18 - UAV manager started
+2015-07-30 22:33:19 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:20 - Threat sensor started
+2015-07-30 22:33:20 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:20 - Missile dispatcher started
+2015-07-30 22:33:21 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:21 - Temperature sensor started
+2015-07-30 22:33:21 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:33:21 - Altitude sensor started
+2015-07-30 22:43:14 - Started execution in military uav run method
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - UAV manager started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Threat sensor started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Missile dispatcher started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Temperature sensor started
+2015-07-30 22:43:14 - file /uavObjectModel.json successfully loaded
+2015-07-30 22:43:14 - Altitude sensor started
+2015-08-01 11:26:43 - Started execution in military uav run method
+2015-08-01 11:26:43 - file /uavObjectModel.json successfully loaded
+2015-08-01 11:26:43 - UAV manager started
+2015-08-01 11:26:43 - file /uavObjectModel.json successfully loaded
+2015-08-01 11:26:43 - Threat sensor started
+2015-08-01 11:26:43 - file /uavObjectModel.json successfully loaded
+2015-08-01 11:26:43 - Missile dispatcher started
+2015-08-01 11:26:43 - file /uavObjectModel.json successfully loaded
+2015-08-01 11:26:43 - Temperature sensor started
+2015-08-01 11:26:43 - file /uavObjectModel.json successfully loaded
+2015-08-01 11:26:43 - Altitude sensor started
+2015-08-01 11:29:06 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-01 11:29:06 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
+2015-08-01 11:29:06 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:29:06 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
+2015-08-01 11:30:15 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:31:05 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=30, type=INTEGER]], isMultiInstances=false]] 
+2015-08-01 11:31:20 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:31:28 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=300, type=INTEGER]], isMultiInstances=false]] 
+2015-08-01 11:31:31 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:38:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-01 11:38:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
+2015-08-01 11:38:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:38:07 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
+2015-08-01 11:38:18 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:39:59 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:40:14 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:40:28 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=9300, type=INTEGER]], isMultiInstances=false]] 
+2015-08-01 11:40:32 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 11:40:41 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 12:25:26 - Started execution in military uav run method
+2015-08-01 12:25:38 - file /uavObjectModel.json successfully loaded
+2015-08-01 12:25:39 - UAV manager started
+2015-08-01 12:25:45 - file /uavObjectModel.json successfully loaded
+2015-08-01 12:25:46 - Threat sensor started
+2015-08-01 12:25:53 - file /uavObjectModel.json successfully loaded
+2015-08-01 12:25:53 - Missile dispatcher started
+2015-08-01 12:26:00 - file /uavObjectModel.json successfully loaded
+2015-08-01 12:26:01 - Temperature sensor started
+2015-08-01 12:26:12 - file /uavObjectModel.json successfully loaded
+2015-08-01 12:26:27 - Altitude sensor started
+2015-08-01 12:29:23 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 12:30:27 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 12:36:00 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 13:03:49 - Started execution in military uav run method
+2015-08-01 13:03:49 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:03:49 - UAV manager started
+2015-08-01 13:03:49 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:03:49 - Threat sensor started
+2015-08-01 13:03:49 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:03:49 - Missile dispatcher started
+2015-08-01 13:03:49 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:03:49 - Temperature sensor started
+2015-08-01 13:03:49 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:03:49 - Altitude sensor started
+2015-08-01 13:05:03 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 13:10:45 - Started execution in military uav run method
+2015-08-01 13:10:45 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:10:45 - UAV manager started
+2015-08-01 13:10:45 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:10:45 - Threat sensor started
+2015-08-01 13:10:45 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:10:45 - Missile dispatcher started
+2015-08-01 13:10:45 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:10:45 - Temperature sensor started
+2015-08-01 13:10:45 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:10:45 - Altitude sensor started
+2015-08-01 13:13:09 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 13:15:41 - Started execution in military uav run method
+2015-08-01 13:15:41 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:15:41 - UAV manager started
+2015-08-01 13:15:41 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:15:41 - Threat sensor started
+2015-08-01 13:15:41 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:15:41 - Missile dispatcher started
+2015-08-01 13:15:41 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:15:41 - Temperature sensor started
+2015-08-01 13:15:41 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:15:41 - Altitude sensor started
+2015-08-01 13:16:39 - Started execution in military uav run method
+2015-08-01 13:16:39 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:16:40 - UAV manager started
+2015-08-01 13:16:40 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:16:40 - Threat sensor started
+2015-08-01 13:16:40 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:16:40 - Missile dispatcher started
+2015-08-01 13:16:40 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:16:40 - Temperature sensor started
+2015-08-01 13:16:40 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:16:40 - Altitude sensor started
+2015-08-01 13:17:40 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 13:18:10 - Started execution in military uav run method
+2015-08-01 13:18:18 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:18:29 - Started execution in military uav run method
+2015-08-01 13:18:36 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:19:45 - Started execution in military uav run method
+2015-08-01 13:19:45 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:19:48 - UAV manager started
+2015-08-01 13:19:48 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:19:55 - Threat sensor started
+2015-08-01 13:19:55 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:20:00 - Missile dispatcher started
+2015-08-01 13:20:00 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:20:07 - Temperature sensor started
+2015-08-01 13:20:07 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:20:09 - Altitude sensor started
+2015-08-01 13:20:57 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 13:26:43 - Started execution in military uav run method
+2015-08-01 13:26:44 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:26:52 - UAV manager started
+2015-08-01 13:26:52 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:26:58 - Threat sensor started
+2015-08-01 13:26:58 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:27:04 - Missile dispatcher started
+2015-08-01 13:27:04 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:27:04 - Temperature sensor started
+2015-08-01 13:27:04 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:27:07 - Altitude sensor started
+2015-08-01 13:30:20 - Started execution in military uav run method
+2015-08-01 13:30:20 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:30:20 - UAV manager started
+2015-08-01 13:30:20 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:30:20 - Threat sensor started
+2015-08-01 13:30:20 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:30:20 - Missile dispatcher started
+2015-08-01 13:30:20 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:30:20 - Temperature sensor started
+2015-08-01 13:30:20 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:30:20 - Altitude sensor started
+2015-08-01 13:39:20 - Started execution in military uav run method
+2015-08-01 13:39:20 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:39:20 - UAV manager started
+2015-08-01 13:39:21 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:39:21 - Threat sensor started
+2015-08-01 13:39:21 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:39:21 - Missile dispatcher started
+2015-08-01 13:39:21 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:39:21 - Temperature sensor started
+2015-08-01 13:39:21 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:39:21 - Altitude sensor started
+2015-08-01 13:41:53 - Started execution in military uav run method
+2015-08-01 13:41:53 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:41:53 - UAV manager started
+2015-08-01 13:41:53 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:41:53 - Threat sensor started
+2015-08-01 13:41:53 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:41:53 - Missile dispatcher started
+2015-08-01 13:41:53 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:41:53 - Temperature sensor started
+2015-08-01 13:41:53 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:41:53 - Altitude sensor started
+2015-08-01 13:43:44 - Started execution in military uav run method
+2015-08-01 13:43:44 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:43:47 - UAV manager started
+2015-08-01 13:43:47 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:43:58 - Threat sensor started
+2015-08-01 13:43:58 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:44:05 - Missile dispatcher started
+2015-08-01 13:44:05 - file /uavObjectModel.json successfully loaded
+2015-08-01 13:59:10 - Started execution in military uav run method
+2015-08-01 13:59:10 - file /uavObjectModel.json successfully loaded
+2015-08-01 14:00:04 - Started execution in military uav run method
+2015-08-01 14:00:04 - file /uavObjectModel.json successfully loaded
+2015-08-01 14:00:04 - UAV manager started
+2015-08-01 14:00:04 - file /uavObjectModel.json successfully loaded
+2015-08-01 14:00:04 - Threat sensor started
+2015-08-01 14:00:04 - file /uavObjectModel.json successfully loaded
+2015-08-01 14:00:04 - Missile dispatcher started
+2015-08-01 14:00:04 - file /uavObjectModel.json successfully loaded
+2015-08-01 14:00:04 - Temperature sensor started
+2015-08-01 14:00:04 - file /uavObjectModel.json successfully loaded
+2015-08-01 14:00:04 - Altitude sensor started
+2015-08-01 14:01:26 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=400, type=INTEGER]], isMultiInstances=false]] 
+2015-08-01 14:01:47 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-01 14:02:30 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=800, type=INTEGER]], isMultiInstances=false]] 
+2015-08-01 14:02:47 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-07-31 14:13:47 - Started execution in military uav run method
+2015-07-31 14:13:47 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:13:47 - UAV manager started
+2015-07-31 14:13:47 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:13:47 - Threat sensor started
+2015-07-31 14:13:47 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:13:47 - Missile dispatcher started
+2015-07-31 14:13:47 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:13:47 - Temperature sensor started
+2015-07-31 14:13:47 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:13:47 - Altitude sensor started
+2015-07-31 14:58:46 - Started execution in military uav run method
+2015-07-31 14:58:46 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:58:46 - UAV manager started
+2015-07-31 14:58:46 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:58:46 - Threat sensor started
+2015-07-31 14:58:46 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:58:46 - Missile dispatcher started
+2015-07-31 14:58:46 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:58:46 - Temperature sensor started
+2015-07-31 14:58:46 - file /uavObjectModel.json successfully loaded
+2015-07-31 14:58:46 - Altitude sensor started
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 0
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 1
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 2
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 3
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 4
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 5
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 6
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 7
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 8
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 9
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 10
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 11
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 12
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 13
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 14
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 15
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 16
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 17
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 18
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 19
+2015-07-31 15:02:28 - [org.mars.m2m.Devices.UAVmanager] Read on resource: 20
+2015-07-31 15:11:53 - Started execution in military uav run method
+2015-07-31 15:11:53 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:11:53 - UAV manager started
+2015-07-31 15:11:53 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:11:53 - Threat sensor started
+2015-07-31 15:11:53 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:11:53 - Missile dispatcher started
+2015-07-31 15:11:53 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:11:53 - Temperature sensor started
+2015-07-31 15:11:53 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:11:53 - Altitude sensor started
+2015-07-31 15:17:07 - Started execution in military uav run method
+2015-07-31 15:17:07 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:17:07 - UAV manager started
+2015-07-31 15:17:07 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:17:07 - Threat sensor started
+2015-07-31 15:17:07 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:17:07 - Missile dispatcher started
+2015-07-31 15:17:07 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:17:07 - Temperature sensor started
+2015-07-31 15:17:07 - file /uavObjectModel.json successfully loaded
+2015-07-31 15:17:07 - Altitude sensor started
+2015-07-31 16:20:10 - Started execution in military uav run method
+2015-07-31 16:20:10 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:20:40 - Started execution in military uav run method
+2015-07-31 16:20:40 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:20:40 - UAV manager started
+2015-07-31 16:20:40 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:20:40 - Threat sensor started
+2015-07-31 16:20:40 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:20:40 - Missile dispatcher started
+2015-07-31 16:20:40 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:20:40 - Temperature sensor started
+2015-07-31 16:20:40 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:20:40 - Altitude sensor started
+2015-07-31 16:29:02 - Started execution in military uav run method
+2015-07-31 16:29:02 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:29:02 - UAV manager started
+2015-07-31 16:29:02 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:29:02 - Threat sensor started
+2015-07-31 16:29:02 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:29:02 - Missile dispatcher started
+2015-07-31 16:29:02 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:29:02 - Temperature sensor started
+2015-07-31 16:29:02 - file /uavObjectModel.json successfully loaded
+2015-07-31 16:29:02 - Altitude sensor started
+2015-07-31 17:51:40 - [org.mars.m2m.Devices.MissileDispatcher] Execute on Device resource 4
+2015-07-31 17:53:04 - [org.mars.m2m.Devices.MissileDispatcher] Execute on Device resource 4
+2015-07-31 17:54:39 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2

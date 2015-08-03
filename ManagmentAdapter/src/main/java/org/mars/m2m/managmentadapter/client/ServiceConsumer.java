@@ -6,7 +6,6 @@
 package org.mars.m2m.managmentadapter.client;
 
 import ch.qos.logback.classic.Logger;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -107,8 +106,23 @@ public class ServiceConsumer
         return response;
     }
     
-    public Response handleDelete(SvcConsumerDetails consumerDetails, String data)
+    public Response handleDelete(SvcConsumerDetails consumerDetails)
     {
+        Client client = ClientBuilder.newClient();
+        WebTarget webTarget = client.target(consumerDetails.getRequest().getTo());
+        
+        Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+        
+        if(headerData != null)
+        {
+            //HTTP request header details
+            for(String key : headerData.keySet())
+            {
+                invBuilder.header(key, headerData.get(key));
+            }
+        }
+        //System.out.println(data);
+        response = invBuilder.delete();      
         return response;
     }
 }
