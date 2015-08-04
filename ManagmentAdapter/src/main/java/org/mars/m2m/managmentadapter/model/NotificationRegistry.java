@@ -8,6 +8,7 @@ package org.mars.m2m.managmentadapter.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.Subscription;
 
 /**
  *
@@ -15,18 +16,19 @@ import java.util.Map;
  */
 public class NotificationRegistry 
 {
-    private static Map<String,List<String>> registry = new HashMap<>();
+    private static Map<String,List<Subscription>> registry = new HashMap<>();
 
     public NotificationRegistry() {
         
     }
 
-    public static Map<String, List<String>> getRegistry() {
+    public static Map<String, List<Subscription>> getRegistry() {
         return registry;
     }
 
-    public static void setRegistry(Map<String, List<String>> registry) {
+    public static void setRegistry(Map<String, List<Subscription>> registry) {
         NotificationRegistry.registry = registry;
-    }    
+    }
+    
     
 }

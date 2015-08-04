@@ -37,7 +37,7 @@ public class ServiceConsumer
         
         Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);        
         
-        Response response = invBuilder.post(Entity.entity(data, MediaType.valueOf(mediaType)));
+        Response response = invBuilder.post(Entity.entity(data, mediaType));
         
         return response;
     }

@@ -9,6 +9,7 @@ import org.eclipse.leshan.core.node.LwM2mNode;
 import org.eclipse.leshan.core.node.LwM2mResource;
 import org.eclipse.leshan.server.observation.Observation;
 import org.eclipse.leshan.server.observation.ObservationRegistryListener;
+import org.mars.m2m.managementserver.core.HandleObservation;
 import org.mars.m2m.managementserver.json.ConfigGson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,19 @@ public class ObservationListenerImpl implements ObservationRegistryListener {
 
     @Override
     public void newValue(Observation observation, LwM2mNode value) {
+        StringBuilder dataBuilder =  new StringBuilder();
+        String data = dataBuilder.append("{").append("\"path\"").append(":\"").append(observation.getPath()).append("\",")
+                        .append("\"content\"")
+                            .append(": [")
+                                .append(ConfigGson.getCustomGsonConfig().toJson(value))
+                            .append("]")
+            .append("}").toString();
+        HandleObservation handleObservation = new HandleObservation(data);
+        Thread t = new Thread(handleObservation);
+        t.start();
+        
+                
+                
         System.out.println("new value in observation");
         LwM2mResource res = (LwM2mResource)value;
         if (LOG.isInfoEnabled()) {
@@ -33,10 +47,10 @@ public class ObservationListenerImpl implements ObservationRegistryListener {
                     value.toString()+", res: "+res.getValue().value.toString());
             
         }
-        String data = new StringBuffer("{\"ep\":\"").append(observation.getClient().getEndpoint())
-                .append("\",\"res\":\"").append(observation.getPath().toString()).append("\",\"val\":")
-                .append(ConfigGson.getCustomGsonConfig().toJson(value)).append("}").toString();
-        System.out.println(data);
+//        String data = new StringBuffer("{\"ep\":\"").append(observation.getClient().getEndpoint())
+//                .append("\",\"res\":\"").append(observation.getPath().toString()).append("\",\"val\":")
+//                .append(ConfigGson.getCustomGsonConfig().toJson(value)).append("}").toString();
+        //System.out.println(data);
         //sendEvent(EVENT_NOTIFICATION, data, observation.getClient().getEndpoint());
     }
 
@@ -44,3 +58,4 @@ public class ObservationListenerImpl implements ObservationRegistryListener {
     public void newObservation(Observation observation) {
     }    
 }
+

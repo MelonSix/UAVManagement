@@ -37,7 +37,14 @@ import org.slf4j.LoggerFactory;
  */
 public class MilitaryUAV implements Runnable {
     
+    /**
+     *
+     */
     public static Logger log = (Logger) LoggerFactory.getLogger(MilitaryUAV.class);
+
+    /**
+     *
+     */
     public static UavObjectFactory uavObjFactory = new UavObjectFactory();
     /**
      * Keeps track of all devices (lwm2m clients) owned by this particular UAV

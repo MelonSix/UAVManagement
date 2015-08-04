@@ -18,6 +18,10 @@ public class Notify
      * Houses all the notification listener implementations
      */
     private ArrayList<NotificationListener> notifyListeners;
+
+    public Notify() {
+    }
+    
     
     /**
      * Constructor for creating an object of this class with existing 
