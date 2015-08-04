@@ -5,13 +5,13 @@
  */
 package org.mars.m2m.managmentadapter.Notification;
 
-import java.awt.event.ActionListener;
+import java.util.EventListener;
 
 /**
  *
  * @author BRIGHTER AGYEMANG
  */
-public interface NotificationListener extends ActionListener
+public interface NotificationListener extends EventListener
 {
     public void sendToOriginator(NotificationObject notificationObject);
 }
