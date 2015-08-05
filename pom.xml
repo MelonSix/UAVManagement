@@ -16,6 +16,7 @@
         <module>ManagementServer</module>
         <module>ManagmentAdapter</module>
         <module>DMCore</module>
+        <module>DeviceMgmntFunctions</module>
     </modules>
     <developers>
         <developer>

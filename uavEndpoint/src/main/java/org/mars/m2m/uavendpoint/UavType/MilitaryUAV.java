@@ -159,7 +159,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -373,7 +373,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -470,7 +470,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -563,7 +563,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = UUID.randomUUID().toString();// this.endpointName ;//UUID.randomUUID().toString();
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration
@@ -657,7 +657,7 @@ public class MilitaryUAV implements Runnable {
                 client.start();
 
                 // register to the server provided
-                final String endpointIdentifier = UUID.randomUUID().toString();//this.endpointName;
+                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
                 /**
                  * LwM2M client registration

@@ -106,6 +106,26 @@ public class ServiceConsumer
         return response;
     }
     
+    public Response handlePost(String to, Object data)
+    {
+        Client client = ClientBuilder.newClient();
+        WebTarget webTarget = client.target(to);
+        
+        Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+        
+        if(headerData != null)
+        {
+            //HTTP request header details
+            for(String key : headerData.keySet())
+            {
+                invBuilder.header(key, headerData.get(key));
+            }
+        }
+        //System.out.println(data);
+        response = invBuilder.post(Entity.entity(data, MediaType.APPLICATION_JSON));
+        return response;
+    }
+    
     public Response handleDelete(SvcConsumerDetails consumerDetails)
     {
         Client client = ClientBuilder.newClient();

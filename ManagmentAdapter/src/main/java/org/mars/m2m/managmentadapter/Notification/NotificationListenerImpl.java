@@ -5,6 +5,9 @@
  */
 package org.mars.m2m.managmentadapter.Notification;
 
+import java.util.ArrayList;
+import java.util.Map;
+import org.mars.m2m.managmentadapter.client.ServiceConsumer;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 
 /**
@@ -13,21 +16,33 @@ import org.mars.m2m.managmentadapter.model.NotificationRegistry;
  */
 public class NotificationListenerImpl implements NotificationListener
 {    
-    Notify notify;
+    Map<String,ArrayList<String>> registry;
     
     public NotificationListenerImpl() {
-        this.notify = new Notify();
-        notify.addNotificationListener(this);
+        //this.notify = new Notify();
+        //notify.addNotificationListener(this);
     }
     
-    public void sendNotification(NotificationRegistry registry)
-    {
-        notify.sendNotification(registry);
-    }
+//    public void sendNotification(NotificationRegistry registry)
+//    {
+//        notify.sendNotification(registry);
+//    }
 
     @Override
-    public void sendToOriginator(NotificationObject notificationObject) {
-        System.out.println("Fired event from sendToOriginator");
+    public void sendToOriginator(NotificationObject notificationObject)
+    {
+        ServiceConsumer sc = new ServiceConsumer();
+        
+        registry = NotificationRegistry.getRegistry();
+        for(String key : registry.keySet())
+        {//Note: key == resource path {objectID}/{instanceID}/{resourceID}
+            ArrayList<String> subscribers = registry.get(key);
+            for(String subscriber : subscribers)
+            {//for each subscriber of a resource, notify the subscriber
+                sc.handlePost(subscriber, notificationObject.getData());
+            }
+        }
+        //System.out.println("Fired event from sendToOriginator, data: "+notificationObject.getData());
     }    
     
 }

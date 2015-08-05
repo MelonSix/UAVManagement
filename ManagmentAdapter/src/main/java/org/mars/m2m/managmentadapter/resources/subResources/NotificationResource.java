@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import org.apache.commons.io.IOUtils;
 import org.mars.m2m.managmentadapter.Notification.NotificationListenerImpl;
+import org.mars.m2m.managmentadapter.Notification.Notify;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +31,8 @@ import org.slf4j.LoggerFactory;
 public class NotificationResource 
 {
     private ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(NotificationResource.class);
+    private Notify notify = new Notify();
+    private NotificationListenerImpl listenerImpl = new NotificationListenerImpl();
     
     public NotificationResource() {
     }
@@ -40,14 +43,22 @@ public class NotificationResource
     public Response processReceivedObservation(@Context HttpServletRequest req, @Context UriInfo uriInfo)
     {
         try 
-        {
-            NotificationListenerImpl listenerImpl = new NotificationListenerImpl();
-            String content = IOUtils.toString(req.getInputStream());
-            listenerImpl.sendNotification(new NotificationRegistry());
-            System.out.println(content);
+        {            
+            String content="[]";
+            try 
+            {
+                content = IOUtils.toString(req.getInputStream());
+            } catch (IOException iOException) {}
+            
+            //registers a callback
+            notify.addNotificationListener(listenerImpl);
+            
+            //triggers a notification event
+            notify.sendNotification(new NotificationRegistry(), content);            
+            
             return Response.ok().build();
         } 
-        catch (IOException ex) 
+        catch (Exception ex) 
         {
            log.error(ex.toString());
            return Response.status(Response.Status.BAD_REQUEST).build();

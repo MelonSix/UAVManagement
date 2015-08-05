@@ -7,6 +7,7 @@ package org.mars.m2m.managmentadapter.service;
 
 import ch.qos.logback.classic.Logger;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 //import com.sun.jersey.core.util.MultivaluedMapImpl;
 import javax.ws.rs.core.Response;
@@ -16,6 +17,7 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.ObjectFactory;
 import org.mars.m2m.managmentadapter.client.ServiceConsumer;
 import org.slf4j.LoggerFactory;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
@@ -24,6 +26,7 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 import org.mars.m2m.managmentadapter.model.SvcConsumerDetails;
 import org.mars.m2m.managmentadapter.resources.ManagementOpsResource;
 
@@ -153,27 +156,59 @@ public class OperationService
     
     
     public ResponsePrimitive notify(RequestPrimitive request, UriInfo uriInfo)
-    {
-        String data = null;//extractRequestData(request);
-        
-        request.setTo(request.getTo()+"/observe");
-        //sets the request details to be sent to the client to consume a service
-        this.uriInfo = uriInfo;
-        consumerDtls.setRequest(request);
-        headerData.put("content-type", MediaType.APPLICATION_JSON);
-        consumerDtls.setHeaderData(headerData);
+    {        
+        if(addToRegistry(request))
+        {
+            String data = null;//extractRequestData(request);
 
-        //Gets the response of a consuming client's request
-        Response serviceResponse = msConsumer.handlePost(consumerDtls, data);
-        int statusCode = serviceResponse.getStatus();
+            request.setTo(request.getTo()+"/observe");
 
-        //Sets up the data in a <container> resource
-        prepareContainer(serviceResponse);
+            //sets the request details to be sent to the client to consume a service
+            this.uriInfo = uriInfo;
+            consumerDtls.setRequest(request);
+            headerData.put("content-type", MediaType.APPLICATION_JSON);
+            consumerDtls.setHeaderData(headerData);
 
-        //resource <responsePrimitive> or <response> 
-        primitiveResponse = prepareRespPrimitive(request, statusCode, container);
+            //Gets the response of a consuming client's request
+            Response serviceResponse = msConsumer.handlePost(consumerDtls, data);
+            int statusCode = serviceResponse.getStatus();
+
+            //Sets up the data in a <container> resource
+            prepareContainer(serviceResponse);
+
+            //resource <responsePrimitive> or <response> 
+            primitiveResponse = prepareRespPrimitive(request, statusCode, container);
+        }
         
         return primitiveResponse;
+    }
+    
+    public boolean addToRegistry(RequestPrimitive request)
+    {                
+        try 
+        {
+            //extract endpoint resource path {objectID}/{instanceID}/{resourceID}
+            String[] endpointTarget = request.getTo().split("/");
+            String resourcePath = endpointTarget[endpointTarget.length - 3] + "/"
+                    + endpointTarget[endpointTarget.length - 2] + "/"
+                    + endpointTarget[endpointTarget.length - 2];
+            String notifyTarget = request.getFrom();
+
+            if (NotificationRegistry.getRegistry().containsKey(resourcePath)) 
+            { //if this resource is already in the registry with its corresponding subscribers
+                ArrayList subscribers = NotificationRegistry.getRegistry().get(resourcePath);
+                subscribers.add(notifyTarget);
+                NotificationRegistry.updateSubscribers(resourcePath, subscribers);
+            } else {//if this resource does not have any entry in the registry
+                ArrayList<String> subscribers = new ArrayList<>();
+                subscribers.add(notifyTarget);
+                NotificationRegistry.setSubscribers(resourcePath, subscribers);
+            }  
+            return true;
+        } catch (Exception e) {
+            logger.error(e.toString());
+            return false;
+        }   
     }
     
     /**

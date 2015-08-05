@@ -20,6 +20,7 @@ public class Notify
     private ArrayList<NotificationListener> notifyListeners;
 
     public Notify() {
+        notifyListeners = new ArrayList<>();
     }
     
     
@@ -61,11 +62,11 @@ public class Notify
      * @param notificationRegistry The object used to access the static registry
      * containing all currently registered subscribers of an observation
      */
-    public void sendNotification(NotificationRegistry notificationRegistry)
+    public void sendNotification(NotificationRegistry notificationRegistry, Object data)
     {
         for(NotificationListener listener : this.notifyListeners)
         {
-            listener.sendToOriginator(new NotificationObject(this, notificationRegistry));
+            listener.sendToOriginator(new NotificationObject(this, notificationRegistry, data));
         }
     }
 }

@@ -5,10 +5,10 @@
  */
 package org.mars.m2m.managmentadapter.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.mars.m2m.dmcore.onem2m.xsdBundle.Subscription;
 
 /**
  *
@@ -16,19 +16,27 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.Subscription;
  */
 public class NotificationRegistry 
 {
-    private static Map<String,List<Subscription>> registry = new HashMap<>();
+    private static Map<String,ArrayList<String>> registry = new HashMap<>();
 
     public NotificationRegistry() {
         
     }
 
-    public static Map<String, List<Subscription>> getRegistry() {
+    public static Map<String, ArrayList<String>> getRegistry() {
         return registry;
     }
 
-    public static void setRegistry(Map<String, List<Subscription>> registry) {
+    public static void setRegistry(Map<String, ArrayList<String>> registry) {
         NotificationRegistry.registry = registry;
     }
     
+    public static void updateSubscribers(String key, ArrayList<String> subscribers)
+    {
+        registry.replace(key, subscribers);
+    }
     
+    public static void setSubscribers(String key, ArrayList<String> subscribers)
+    {
+        registry.put(key, subscribers);
+    }
 }

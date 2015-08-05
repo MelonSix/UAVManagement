@@ -15,15 +15,21 @@ import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 public class NotificationObject extends EventObject
 {
     private final NotificationRegistry notificationRegistry;
+    private final Object data;
 
-    public NotificationObject(Object source, NotificationRegistry notificationRegistry) {
+    public NotificationObject(Object source, NotificationRegistry notificationRegistry, Object data) {
         super(source);
         this.notificationRegistry = notificationRegistry;
+        this.data = data;
     }
 
     public NotificationRegistry getNotificationRegistry() {
         return notificationRegistry;
     }   
+
+    public Object getData() {
+        return data;
+    }
     
     
 }
