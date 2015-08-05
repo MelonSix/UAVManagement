@@ -38,8 +38,6 @@ public class ObservationListenerImpl implements ObservationRegistryListener {
         Thread t = new Thread(handleObservation);
         t.start();
         
-                
-                
 //        System.out.println("new value in observation");
 //        LwM2mResource res = (LwM2mResource)value;
 //        if (LOG.isInfoEnabled()) {

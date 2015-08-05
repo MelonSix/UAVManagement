@@ -26,6 +26,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.leshan.core.node.LwM2mNode;
@@ -309,10 +310,12 @@ public class ClientsResource {
      * @param objectid
      * @param instance
      * @param resourceid 
+     * @return  
      */
     @DELETE
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe")
-    public void deleteObservation(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteObservation(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
                                 @PathParam("instance") String instance, @PathParam("resourceid") String resourceid)
     {
         String target = "/"+objectid+"/"+instance+"/"+resourceid;
@@ -321,16 +324,16 @@ public class ClientsResource {
         if(client != null)
         {
             server.getObservationRegistry().cancelObservation(client, target);
-            resp.setStatus(HttpServletResponse.SC_OK);
+            return Response.ok("{\"Status\":\"CANCELED\"}", MediaType.APPLICATION_JSON).build();
         }
         else
         {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             try {
                 resp.getWriter().format("No registered client with id '%s'", clientEndpoint).flush();
             } catch (IOException ex) {
-                Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+                log.error(ex.toString());
             }
+          return Response.serverError().build();
         }
     }
     

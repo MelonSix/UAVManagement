@@ -275,13 +275,13 @@ public class OperationService
         container.setLocationID("");
         container.setOntologyRef("");
         
-        // resource <contentInstance>
-        contentInstance.setStateTag(BigInteger.ZERO);
-        MediaType mediaType = resp.getMediaType();
-        contentInstance.setContentInfo(mediaType.toString());
-        contentInstance.setContentSize(BigInteger.valueOf(resp.getLength()));
-        contentInstance.setOntologyRef("");
-        contentInstance.setContent(entityAsStringData);
+            // resource <contentInstance>
+            contentInstance.setStateTag(BigInteger.ZERO);
+            MediaType mediaType = resp.getMediaType();
+            contentInstance.setContentInfo(mediaType.toString());
+            contentInstance.setContentSize(BigInteger.valueOf(resp.getLength()));
+            contentInstance.setOntologyRef("");
+            contentInstance.setContent(entityAsStringData);
         
         container.getContentInstanceOrContainerOrSubscription().add(contentInstance);
     }

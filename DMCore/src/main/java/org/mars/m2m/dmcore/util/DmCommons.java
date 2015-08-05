@@ -6,7 +6,6 @@
 package org.mars.m2m.dmcore.util;
 
 import java.math.BigInteger;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.UUID;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
