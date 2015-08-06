@@ -76,6 +76,10 @@ public class UAVConfiguration {
                                   PERIPHERAL_MALFUNCTION
     }
     
+    /**
+     * Object model Json file
+     */
+    public final String objectModelFile = "/uavObjectModel.json";
     
     /**
      * Instantiates an object of the configuration class
@@ -112,6 +116,10 @@ public class UAVConfiguration {
 
     public void setUavlocalhostPort(int uavlocalhostPort) {
         this.uavlocalhostPort = uavlocalhostPort;
+    }
+
+    public String getObjectModelFile() {
+        return objectModelFile;
     }
     
     

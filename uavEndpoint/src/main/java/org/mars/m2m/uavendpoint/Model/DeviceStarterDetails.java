@@ -38,7 +38,6 @@ public class DeviceStarterDetails {
      * @param localPort The CoAP server's port number
      * @param serverHostName The lwm2m server/CoAP client address/name
      * @param serverPort The lwm2m server/CoAP client's port number
-     * @param objectModelFileName The filename of the .json file that contains the object model for the device
      * @param endpointName The name of the device
      * @param uavConfig A configuration object to expose the various global values of the UAV to the device so they can be used where necessary
      */
@@ -46,14 +45,14 @@ public class DeviceStarterDetails {
                                 int localPort, 
                                 String serverHostName, 
                                 int serverPort, 
-                                String objectModelFileName,
+//                                String objectModelFileName,
                                 String endpointName,
                                 UAVConfiguration uavConfig) {
         this.localHostName = localHostName;
         this.localPort = localPort;
         this.serverHostName = serverHostName;
         this.serverPort = serverPort;
-        this.objectModelFileName = objectModelFileName;
+        //this.objectModelFileName = objectModelFileName;
         this.uavConfig = uavConfig;
         this.endPointName = endpointName;
     }

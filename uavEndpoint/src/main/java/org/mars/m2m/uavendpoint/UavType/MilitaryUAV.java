@@ -52,6 +52,11 @@ public class MilitaryUAV implements Runnable {
     ArrayList<AbstractDevice> uavOwnedDevices = new ArrayList<>();
     
     final UAVConfiguration uavConfig;
+       
+    /**
+     * Gets the Lightweight M2M model for this UAV
+     * */
+    public static LwM2mModel uavCustomLwM2mModel;
     
     /**
      * Default constructor
@@ -69,6 +74,11 @@ public class MilitaryUAV implements Runnable {
         this.uavConfig = new UAVConfiguration();
         else
             this.uavConfig = config;
+        
+        /**
+         * Loads the LwM2mModel once for all devices
+         */
+       uavCustomLwM2mModel  = DeviceHelper.getObjectModel(this.uavConfig.getObjectModelFile());
     }    
         
     /**
@@ -136,12 +146,12 @@ public class MilitaryUAV implements Runnable {
                 /** Monitors the state of the UAV */
                 this.deviceStarted = true;
             
-                //Gets the model
-                LwM2mModel customModel;
-                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
+//                //Gets the model
+//                LwM2mModel uavCustomLwM2mModel;
+//                uavCustomLwM2mModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
                 ObjectsInitializer initializer;
-                initializer = new ObjectsInitializer(customModel);
+                initializer = new ObjectsInitializer(uavCustomLwM2mModel);
                 
                 //attach instance
                 initializer.setInstancesForObject(12202, threatSensor);
@@ -241,12 +251,12 @@ public class MilitaryUAV implements Runnable {
                 /** Monitors the state of the UAV */
                 this.deviceStarted = true;
             
-                //Gets the model
-                LwM2mModel customModel;
-                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
+//                //Gets the model
+//                LwM2mModel uavCustomLwM2mModel;
+//                uavCustomLwM2mModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
                 ObjectsInitializer initializer;
-                initializer = new ObjectsInitializer(customModel);
+                initializer = new ObjectsInitializer(uavCustomLwM2mModel);
                 
                 //attach instance
                 initializer.setInstancesForObject(12203, missileDispatch);
@@ -350,12 +360,12 @@ public class MilitaryUAV implements Runnable {
                 /** Monitors the state of the UAV */
                 this.deviceStarted = true;
             
-                //Gets the model
-                LwM2mModel customModel;
-                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
+//                //Gets the model
+//                LwM2mModel uavCustomLwM2mModel;
+//                uavCustomLwM2mModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
                 ObjectsInitializer initializer;
-                initializer = new ObjectsInitializer(customModel);
+                initializer = new ObjectsInitializer(uavCustomLwM2mModel);
                 
                 //attach instance
                 initializer.setInstancesForObject(3303, tempSensor);
@@ -447,12 +457,12 @@ public class MilitaryUAV implements Runnable {
                 /** Monitors the state of the UAV */
                 this.deviceStarted = true;
             
-                //Gets the model
-                LwM2mModel customModel;
-                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
+//                //Gets the model
+//                LwM2mModel uavCustomLwM2mModel;
+//                uavCustomLwM2mModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
                 ObjectsInitializer initializer;
-                initializer = new ObjectsInitializer(customModel);
+                initializer = new ObjectsInitializer(uavCustomLwM2mModel);
                 
                 //attach instance
                 initializer.setInstancesForObject(12205, flightControl);
@@ -540,12 +550,12 @@ public class MilitaryUAV implements Runnable {
                 /** Monitors the state of the UAV */
                 this.deviceStarted = true;
             
-                //Gets the model
-                LwM2mModel customModel;
-                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
+//                //Gets the model
+//                LwM2mModel uavCustomLwM2mModel;
+//                uavCustomLwM2mModel = DeviceHelper.getObjectModel(this.objectModelFilename);
 
                 ObjectsInitializer initializer;
-                initializer = new ObjectsInitializer(customModel);
+                initializer = new ObjectsInitializer(uavCustomLwM2mModel);
                 
                 //attach instance
                 initializer.setInstancesForObject(12201, uavManager);   
@@ -634,12 +644,8 @@ public class MilitaryUAV implements Runnable {
                 /** Monitors the state of the UAV */
                 this.deviceStarted = true;
             
-                //Gets the model
-                LwM2mModel customModel;
-                customModel = DeviceHelper.getObjectModel(this.objectModelFilename);
-
                 ObjectsInitializer initializer;
-                initializer = new ObjectsInitializer(customModel);
+                initializer = new ObjectsInitializer(uavCustomLwM2mModel);
                 
                 //attach instance
                 initializer.setInstancesForObject(12205, altitudeSensor);  
@@ -687,7 +693,7 @@ public class MilitaryUAV implements Runnable {
          */
         DeviceStarterDetails UAVmanagerDevDtls;
         UAVmanagerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-                8081, "127.0.0.1", 5683, "/uavObjectModel.json", "UAV Manager", uavConfig);
+                8081, "127.0.0.1", 5683, "UAV Manager", uavConfig);
         UAVManagerClient UAVmanagerDev = new UAVManagerClient(UAVmanagerDevDtls);
         UAVmanagerDev.StartDevice();
         log.info("UAV manager started");
@@ -697,7 +703,7 @@ public class MilitaryUAV implements Runnable {
          */
         DeviceStarterDetails threatDevDtls;
         threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-                8087, "127.0.0.1", 5683, "/uavObjectModel.json", "Threat sensor", uavConfig);
+                8087, "127.0.0.1", 5683, "Threat sensor", uavConfig);
         ThreatSensorDeviceClient threatSensorDev = new ThreatSensorDeviceClient(threatDevDtls);
         threatSensorDev.StartDevice();
         //Thread.sleep(10000);
@@ -710,7 +716,7 @@ public class MilitaryUAV implements Runnable {
          */
         DeviceStarterDetails missileDisDtls;
         missileDisDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-                8092, "127.0.0.1", 5683, "/uavObjectModel.json", "Missile dispatcher", uavConfig);
+                8092, "127.0.0.1", 5683, "Missile dispatcher", uavConfig);
         MissileDispatchClient mislDisClient = new MissileDispatchClient(missileDisDtls);
         mislDisClient.StartDevice();
         log.info("Missile dispatcher started");
@@ -721,7 +727,7 @@ public class MilitaryUAV implements Runnable {
          */
         DeviceStarterDetails tempSenDtls;
         tempSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-                8095, "127.0.0.1", 5683, "/uavObjectModel.json", "IPSO Temperature sensor", uavConfig);
+                8095, "127.0.0.1", 5683, "IPSO Temperature sensor", uavConfig);
         TemperatureSensorClient tempSenClient = new TemperatureSensorClient(tempSenDtls);
         tempSenClient.StartDevice();
         log.info("Temperature sensor started");
@@ -732,7 +738,7 @@ public class MilitaryUAV implements Runnable {
          */
         DeviceStarterDetails altitudeSenDtls;
         altitudeSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-                8096, "127.0.0.1", 5683, "/uavObjectModel.json", "Altitude sensor", uavConfig);
+                8096, "127.0.0.1", 5683, "Altitude sensor", uavConfig);
         AltitudeSensorClient altitudeSenClient = new AltitudeSensorClient(altitudeSenDtls);
         altitudeSenClient.StartDevice();
         log.info("Altitude sensor started");
