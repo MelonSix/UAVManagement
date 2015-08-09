@@ -20,6 +20,6 @@ logging:
       archivedFileCount: 7
       timeZone: UTC+8
       maxFileSize: 10MB
-lwm2mserverAddress: 
+lwm2mserverAddress:
 lwm2mserverportnum: 0
 ---
