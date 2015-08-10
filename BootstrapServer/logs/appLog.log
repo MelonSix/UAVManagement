@@ -42,3 +42,40 @@ INFO   [04:46:54.655] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableSe
 INFO   [04:46:54.772] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@6f80fafe{HTTP/1.1}{0.0.0.0:8075} 
 INFO   [04:46:54.772] [main] o.e.j.s.Server -  Started @3567ms 
 INFO   [04:50:46.070] [pool-3-thread-4] o.e.c.c.s.ServerMessageDeliverer -  Did not find resource [bs, endpoint1] 
+INFO   [15:13:50.392] [main] o.e.j.u.log -  Logging initialized @2239ms 
+INFO   [15:13:51.657] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [15:13:51.766] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [15:13:51.766] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /127.0.0.1:5070 
+INFO   [15:13:51.813] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /127.0.0.1:5073 
+INFO   [15:13:51.829] [main] o.e.l.s.c.i.LwM2mBootstrapServerImpl -  LW-M2M server started 
+INFO   [15:13:51.921] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [15:13:52.010] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [15:13:52.262] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [15:13:52.591] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@5d25e6bb{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:13:52.598] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:13:53.665] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [15:13:53.667] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@e04ccf8{/bs,null,AVAILABLE} 
+INFO   [15:13:53.672] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [15:13:53.677] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@16073fa8{/admin-bs,null,AVAILABLE} 
+INFO   [15:13:53.943] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@5d25e6bb{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:13:53.943] [main] o.e.j.s.Server -  Started @5779ms 
+INFO   [15:15:21.363] [pool-3-thread-2] o.e.c.c.s.ServerMessageDeliverer -  Did not find resource [bs, o99090] 
+INFO   [15:15:22.945] [pool-3-thread-2] o.e.c.c.s.ServerMessageDeliverer -  Did not find resource [bs, o99090] 
+INFO   [15:15:23.746] [pool-3-thread-3] o.e.c.c.s.ServerMessageDeliverer -  Did not find resource [bs, o99090] 
+INFO   [15:15:27.628] [pool-3-thread-1] o.e.c.c.s.ServerMessageDeliverer -  Did not find resource [bs, o99090] 
+INFO   [15:15:38.747] [pool-3-thread-1] o.e.c.c.s.ServerMessageDeliverer -  Did not find resource [bs, o99090] 
+INFO   [15:15:39.650] [pool-3-thread-3] o.e.c.c.n.CoAPEndpoint -  Responding to ping by /127.0.0.1:56633 
+ERROR  [15:36:32.802] [pool-3-thread-1] o.e.l.s.c.i.BootstrapResource -  No bootstrap config for iusiduds 
+ERROR  [15:36:37.760] [pool-3-thread-3] o.e.l.s.c.i.BootstrapResource -  No bootstrap config for iusiduds 
+ERROR  [15:36:43.534] [pool-3-thread-2] o.e.l.s.c.i.BootstrapResource -  No bootstrap config for iusiduds 
+ERROR  [15:36:52.702] [pool-3-thread-2] o.e.l.s.c.i.BootstrapResource -  No bootstrap config for iusiduds 
+ERROR  [15:36:59.062] [pool-3-thread-3] o.e.l.s.c.i.BootstrapResource -  No bootstrap config for iusiduds 
+ERROR  [15:39:17.691] [pool-3-thread-2] o.e.l.s.c.i.BootstrapResource -  No bootstrap config for uuu 
