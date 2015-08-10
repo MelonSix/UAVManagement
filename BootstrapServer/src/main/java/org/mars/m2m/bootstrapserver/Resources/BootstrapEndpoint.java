@@ -6,13 +6,18 @@
 package org.mars.m2m.bootstrapserver.Resources;
 
 import ch.qos.logback.classic.Logger;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.eclipse.leshan.server.security.SecurityStore;
+import org.mars.m2m.bootstrapserver.Services.BootstrapInfo;
+import org.mars.m2m.bootstrapserver.Services.BootstrapStoreImpl;
+import org.mars.m2m.bootstrapserver.Services.ConfigurationChecker;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -26,16 +31,39 @@ public class BootstrapEndpoint
      *Logback Logger for logging services
      */
     Logger logger = (Logger) LoggerFactory.getLogger(BootstrapEndpoint.class);
-
-    public BootstrapEndpoint() {
-    }
     
+    BootstrapStoreImpl bsStore;
+    SecurityStore securityStore;
+
+    public BootstrapEndpoint(BootstrapStoreImpl bstrapStore, SecurityStore securityStore) {
+        this.bsStore = bstrapStore;
+        this.securityStore = securityStore;
+    }
+    /**
+     * 
+     * @param endpoint
+     * @return 
+     */
     @Path("/{endpoint}")
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getBootstrapConfigs(@PathParam("endpoint") String endpoint)
     {
-        return Response.ok(endpoint).build();
+        try 
+        {
+            BootstrapInfo bootstrapInfo = new BootstrapInfo();
+            bsStore = bootstrapInfo.setBootstrap(bsStore);
+            return Response.ok(bsStore.getBootstrapConfigs()).build();
+        } catch (ConfigurationChecker.ConfigurationException ex) {
+            logger.error(ex.toString());
+            return Response.serverError().build();
+        }
     }
     
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response setBootstrapInfo()
+    {
+        return null;
+    }
 }

@@ -16,6 +16,9 @@ public class BootstrapServerConfiguration extends Configuration
     private String lwm2mBootstrapServerAddress;
     private int lwm2mBootstrapServerPortnum;
     
+    private String secureLwm2mBootstrapServerAddress;
+    private int secureLwm2mBootstrapServerPortnum;
+    
     public BootstrapServerConfiguration() {
     }
     
@@ -34,4 +37,22 @@ public class BootstrapServerConfiguration extends Configuration
     public void setLwm2mBootstrapServerPortnum(int lwm2mBootstrapServerPortnum) {
         this.lwm2mBootstrapServerPortnum = lwm2mBootstrapServerPortnum;
     }
+
+    public String getSecureLwm2mBootstrapServerAddress() {
+        return secureLwm2mBootstrapServerAddress;
+    }
+
+    public void setSecureLwm2mBootstrapServerAddress(String secureLwm2mBootstrapServerAddress) {
+        this.secureLwm2mBootstrapServerAddress = secureLwm2mBootstrapServerAddress;
+    }
+
+    public int getSecureLwm2mBootstrapServerPortnum() {
+        return secureLwm2mBootstrapServerPortnum;
+    }
+
+    public void setSecureLwm2mBootstrapServerPortnum(int secureLwm2mBootstrapServerPortnum) {
+        this.secureLwm2mBootstrapServerPortnum = secureLwm2mBootstrapServerPortnum;
+    }
+    
+    
 }

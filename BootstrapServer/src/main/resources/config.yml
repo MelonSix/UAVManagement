@@ -20,5 +20,7 @@ logging:
       archivedFileCount: 7
       timeZone: UTC+8
       maxFileSize: 10MB
-lwm2mBootstrapServerAddress: 
-lwm2mBootstrapServerPortnum: 0
+lwm2mBootstrapServerAddress: 127.0.0.1
+lwm2mBootstrapServerPortnum: 5070
+secureLwm2mBootstrapServerAddress: 127.0.0.1
+secureLwm2mBootstrapServerPortnum: 5073

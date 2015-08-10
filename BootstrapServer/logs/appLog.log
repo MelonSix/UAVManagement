@@ -1,84 +1,44 @@
-INFO   [14:56:45.133] [main] o.e.j.u.log -  Logging initialized @5528ms 
-INFO   [14:56:45.366] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [14:56:45.381] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [14:56:45.537] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [14:56:45.752] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@1643d68f{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [14:56:45.793] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:56:47.341] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    GET     / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
- 
-INFO   [14:56:47.349] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2b4786dd{/bs,null,AVAILABLE} 
-INFO   [14:56:47.362] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-WARN   [14:56:47.363] [main] i.d.s.AdminEnvironment -  
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
-!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
-!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
-!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-INFO   [14:56:47.376] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@16c8b7bd{/admin-bs,null,AVAILABLE} 
-INFO   [14:56:47.663] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@1643d68f{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [14:56:47.663] [main] o.e.j.s.Server -  Started @8064ms 
-INFO   [15:00:13.660] [main] o.e.j.u.log -  Logging initialized @3340ms 
-INFO   [15:00:13.989] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [15:00:14.016] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [15:00:14.048] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [15:00:14.148] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@6d0b5baf{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:00:14.160] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [15:00:16.441] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [04:44:58.532] [main] o.e.j.u.log -  Logging initialized @3070ms 
+INFO   [04:44:58.747] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [04:44:58.770] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [04:44:58.793] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [04:44:58.895] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@7a7471ce{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [04:44:58.912] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [04:44:59.918] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
  
-INFO   [15:00:16.452] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@14e2e1c3{/bs,null,AVAILABLE} 
-INFO   [15:00:16.461] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [04:44:59.924] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6136998b{/bs,null,AVAILABLE} 
+INFO   [04:44:59.934] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-WARN   [15:00:16.462] [main] i.d.s.AdminEnvironment -  
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
-!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
-!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
-!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-INFO   [15:00:16.469] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5f80fa43{/admin-bs,null,AVAILABLE} 
-INFO   [15:00:16.635] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@6d0b5baf{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:00:16.635] [main] o.e.j.s.Server -  Started @6320ms 
-INFO   [15:01:29.429] [main] o.e.j.u.log -  Logging initialized @2921ms 
-INFO   [15:01:29.674] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [15:01:29.700] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [15:01:29.734] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [15:01:29.826] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@6d0b5baf{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:01:29.839] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [15:01:31.371] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [04:44:59.942] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7e75bf2d{/admin-bs,null,AVAILABLE} 
+INFO   [04:45:00.135] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@7a7471ce{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [04:45:00.135] [main] o.e.j.s.Server -  Started @4686ms 
+INFO   [04:46:53.221] [main] o.e.j.u.log -  Logging initialized @2012ms 
+INFO   [04:46:53.421] [main] o.e.c.c.n.c.NetworkConfig -  Storing standard properties in file Californium.properties 
+INFO   [04:46:53.522] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [04:46:53.523] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /127.0.0.1:5070 
+INFO   [04:46:53.566] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /127.0.0.1:5073 
+INFO   [04:46:53.567] [main] o.e.l.s.c.i.LwM2mBootstrapServerImpl -  LW-M2M server started 
+INFO   [04:46:53.576] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [04:46:53.590] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [04:46:53.615] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [04:46:53.676] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@6f80fafe{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [04:46:53.682] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [04:46:54.627] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
  
-INFO   [15:01:31.377] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@14e2e1c3{/bs,null,AVAILABLE} 
-INFO   [15:01:31.397] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [04:46:54.631] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7c4fc2bf{/bs,null,AVAILABLE} 
+INFO   [04:46:54.642] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-WARN   [15:01:31.397] [main] i.d.s.AdminEnvironment -  
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
-!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
-!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
-!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-INFO   [15:01:31.410] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5f80fa43{/admin-bs,null,AVAILABLE} 
-INFO   [15:01:31.706] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@6d0b5baf{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:01:31.707] [main] o.e.j.s.Server -  Started @5204ms 
+INFO   [04:46:54.655] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@24e08d59{/admin-bs,null,AVAILABLE} 
+INFO   [04:46:54.772] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@6f80fafe{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [04:46:54.772] [main] o.e.j.s.Server -  Started @3567ms 
+INFO   [04:50:46.070] [pool-3-thread-4] o.e.c.c.s.ServerMessageDeliverer -  Did not find resource [bs, endpoint1] 

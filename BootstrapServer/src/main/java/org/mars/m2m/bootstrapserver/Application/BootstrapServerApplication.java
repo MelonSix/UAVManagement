@@ -9,9 +9,14 @@ import ch.qos.logback.classic.Logger;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import java.net.InetSocketAddress;
 import org.eclipse.leshan.server.californium.impl.LwM2mBootstrapServerImpl;
+import org.eclipse.leshan.server.security.SecurityStore;
 import org.mars.m2m.bootstrapserver.Configuration.BootstrapServerConfiguration;
+import org.mars.m2m.bootstrapserver.Health.BootStrapResourceHealth;
 import org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint;
+import org.mars.m2m.bootstrapserver.Services.BootstrapSecurityStore;
+import org.mars.m2m.bootstrapserver.Services.BootstrapStoreImpl;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -21,18 +26,29 @@ import org.slf4j.LoggerFactory;
 public class BootstrapServerApplication extends Application<BootstrapServerConfiguration> {
     
     Logger logger = (Logger) LoggerFactory.getLogger(BootstrapServerApplication.class);
+    
+    BootstrapStoreImpl bsStore;
+    SecurityStore securityStore;
+
+    public BootstrapServerApplication() {
+        this.bsStore = new BootstrapStoreImpl();
+        this.securityStore = new BootstrapSecurityStore(bsStore);
+    }   
 
     @Override
-    public void run(BootstrapServerConfiguration t, Environment e) throws Exception {
+    public void run(BootstrapServerConfiguration t, Environment e) throws Exception 
+    {
+        //starts Bootstrap server
+        startLwm2mBootstrapServer(t);
         
         //resources
-        BootstrapEndpoint bootstrapEndpoint = new BootstrapEndpoint();
+        BootstrapEndpoint bootstrapEndpoint = new BootstrapEndpoint(bsStore, securityStore);
         
         //expose resource
         e.jersey().register(bootstrapEndpoint);
         
         //healthcheck resources
-        //e.healthChecks().register("Clients Resource healthcheck", new ClientsResourceHealth());
+        e.healthChecks().register("Clients Resource healthcheck", new BootStrapResourceHealth());
     }   
     
     @Override
@@ -56,7 +72,13 @@ public class BootstrapServerApplication extends Application<BootstrapServerConfi
         if(config.getLwm2mBootstrapServerAddress()!= null 
                 && config.getLwm2mBootstrapServerPortnum()> 0)
         {
+            bsServer = 
+                new LwM2mBootstrapServerImpl(new InetSocketAddress(config.getLwm2mBootstrapServerAddress(), config.getLwm2mBootstrapServerPortnum()),
+                    new InetSocketAddress(config.getSecureLwm2mBootstrapServerAddress(), config.getSecureLwm2mBootstrapServerPortnum()), bsStore, securityStore);
             
+            //starts bs server
+            bsServer.start();
         }
+        
     }
 }
