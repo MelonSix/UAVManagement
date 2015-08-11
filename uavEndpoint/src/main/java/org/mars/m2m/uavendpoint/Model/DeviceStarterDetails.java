@@ -25,6 +25,16 @@ public class DeviceStarterDetails {
     private String objectModelFileName;
     private String endPointName;
     UAVConfiguration uavConfig;
+    
+    /**
+     * Bootstrap server address
+     */
+    protected String bsAddress;
+    
+    /**
+     * Bootstrap server port number
+     */
+    protected int bsPortnumber;
 
     /**
      * Default constructor
@@ -40,6 +50,8 @@ public class DeviceStarterDetails {
      * @param serverPort The lwm2m server/CoAP client's port number
      * @param endpointName The name of the device
      * @param uavConfig A configuration object to expose the various global values of the UAV to the device so they can be used where necessary
+     * @param bootstrapServerAddr Bootstrap server IP address
+     * @param bootstrapServerPortnum Bootstrap server port number
      */
     public DeviceStarterDetails(String localHostName, 
                                 int localPort, 
@@ -47,7 +59,7 @@ public class DeviceStarterDetails {
                                 int serverPort, 
 //                                String objectModelFileName,
                                 String endpointName,
-                                UAVConfiguration uavConfig) {
+                                UAVConfiguration uavConfig, String bootstrapServerAddr, int bootstrapServerPortnum) {
         this.localHostName = localHostName;
         this.localPort = localPort;
         this.serverHostName = serverHostName;
@@ -55,6 +67,8 @@ public class DeviceStarterDetails {
         //this.objectModelFileName = objectModelFileName;
         this.uavConfig = uavConfig;
         this.endPointName = endpointName;
+        this.bsAddress = bootstrapServerAddr;
+        this.bsPortnumber = bootstrapServerPortnum;
     }
 
     public String getLocalHostName() {
@@ -112,5 +126,21 @@ public class DeviceStarterDetails {
     public void setEndPointName(String endPointName) {
         this.endPointName = endPointName;
     }         
+
+    public String getBsAddress() {
+        return bsAddress;
+    }
+
+    public void setBsAddress(String bsAddress) {
+        this.bsAddress = bsAddress;
+    }
+
+    public int getBsPortnumber() {
+        return bsPortnumber;
+    }
+
+    public void setBsPortnumber(int bsPortnumber) {
+        this.bsPortnumber = bsPortnumber;
+    }
     
 }

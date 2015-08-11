@@ -1,15 +1,61 @@
-2015-08-07 14:14:00 - file /uavObjectModel.json successfully loaded
-2015-08-07 14:14:00 - Started execution in military uav run method
-2015-08-07 14:14:00 - UAV manager started
-2015-08-07 14:14:00 - Threat sensor started
-2015-08-07 14:14:00 - Missile dispatcher started
-2015-08-07 14:14:00 - Temperature sensor started
-2015-08-07 14:14:00 - Altitude sensor started
-2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
-2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
-2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
-2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
-2015-08-07 14:15:14 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
-2015-08-07 14:15:15 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
-2015-08-07 14:15:16 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
-2015-08-07 14:15:17 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
+2015-08-11 16:00:55 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:00:55 - Started execution in military uav run method
+2015-08-11 16:03:27 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:03:27 - Started execution in military uav run method
+2015-08-11 16:03:27 - UAV manager started
+2015-08-11 16:03:27 - Threat sensor started
+2015-08-11 16:06:38 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:07:03 - Started execution in military uav run method
+2015-08-11 16:22:38 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:22:38 - Started execution in military uav run method
+2015-08-11 16:24:08 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:24:08 - Started execution in military uav run method
+2015-08-11 16:25:51 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:25:56 - Started execution in military uav run method
+2015-08-11 16:54:04 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:54:04 - Started execution in military uav run method
+2015-08-11 16:57:24 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:57:24 - Started execution in military uav run method
+2015-08-11 16:58:17 - file /uavObjectModel.json successfully loaded
+2015-08-11 16:58:17 - Started execution in military uav run method
+2015-08-11 17:05:57 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:05:57 - Started execution in military uav run method
+2015-08-11 17:12:24 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:12:24 - Started execution in military uav run method
+2015-08-11 17:14:06 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:14:06 - Started execution in military uav run method
+2015-08-11 17:23:01 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:23:01 - Started execution in military uav run method
+2015-08-11 17:30:04 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:30:04 - Started execution in military uav run method
+2015-08-11 17:31:43 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:31:43 - Started execution in military uav run method
+2015-08-11 17:33:02 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:33:02 - Started execution in military uav run method
+2015-08-11 17:33:41 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:33:41 - Started execution in military uav run method
+2015-08-11 17:37:19 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:37:19 - Started execution in military uav run method
+2015-08-11 17:38:38 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:38:38 - Started execution in military uav run method
+2015-08-11 17:39:36 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:39:36 - Started execution in military uav run method
+2015-08-11 17:40:22 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:40:22 - Started execution in military uav run method
+2015-08-11 17:41:42 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:41:42 - Started execution in military uav run method
+2015-08-11 17:42:56 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:42:56 - Started execution in military uav run method
+2015-08-11 17:43:46 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:43:46 - Started execution in military uav run method
+2015-08-11 17:59:52 - file /uavObjectModel.json successfully loaded
+2015-08-11 17:59:52 - Started execution in military uav run method
+2015-08-11 18:00:25 - file /uavObjectModel.json successfully loaded
+2015-08-11 18:00:25 - Started execution in military uav run method
+2015-08-11 18:02:37 - file /uavObjectModel.json successfully loaded
+2015-08-11 18:02:37 - Started execution in military uav run method
+2015-08-11 18:04:39 - file /uavObjectModel.json successfully loaded
+2015-08-11 18:04:39 - Started execution in military uav run method
+2015-08-11 18:04:39 - Missile dispatcher started
+2015-08-11 18:05:03 - file /uavObjectModel.json successfully loaded
+2015-08-11 18:05:03 - Started execution in military uav run method

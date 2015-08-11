@@ -5,13 +5,16 @@
  */
 package org.mars.m2m.uavendpoint.Helpers;
 
+import java.net.InetSocketAddress;
 import org.eclipse.leshan.ResponseCode;
+import org.eclipse.leshan.client.LwM2mClient;
 import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.core.request.DeregisterRequest;
 import org.eclipse.leshan.core.request.RegisterRequest;
 import org.eclipse.leshan.core.response.RegisterResponse;
 import org.mars.m2m.dmcore.Loader.LwM2mModelLoader;
+import org.mars.m2m.uavendpoint.Bootstrap.BootstrapEp;
 
 /**
  *
@@ -68,6 +71,20 @@ public class DeviceHelper {
                     .println("If you're having issues connecting to the LWM2M endpoint, try using the DTLS port instead");
         }
         return registrationID;
+    }
+    
+    /**
+     * For performing bootstrap and getting the bootstrap information
+     * @param endpoint The endpoint ID or name
+     * @param serverAddr the bootstrap server's IP address
+     * @param serverPortnum the bootstrap server's port number
+     * @param lwM2mClient the LwM2M client
+     * @return The bootstrap information as a byte array
+     */
+    public static byte[] bootStrapLwM2mClient(String endpoint, String serverAddr, int serverPortnum, LwM2mClient lwM2mClient) throws InterruptedException
+    {
+        BootstrapEp bootstrapEp = new BootstrapEp(new InetSocketAddress(serverAddr, serverPortnum), lwM2mClient);
+        return bootstrapEp.performBootstrap(endpoint);
     }
     
 }

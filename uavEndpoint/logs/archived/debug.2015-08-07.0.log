@@ -1,0 +1,15 @@
+2015-08-07 14:14:00 - file /uavObjectModel.json successfully loaded
+2015-08-07 14:14:00 - Started execution in military uav run method
+2015-08-07 14:14:00 - UAV manager started
+2015-08-07 14:14:00 - Threat sensor started
+2015-08-07 14:14:00 - Missile dispatcher started
+2015-08-07 14:14:00 - Temperature sensor started
+2015-08-07 14:14:00 - Altitude sensor started
+2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
+2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-07 14:15:10 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
+2015-08-07 14:15:14 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-07 14:15:15 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
+2015-08-07 14:15:16 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-07 14:15:17 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3

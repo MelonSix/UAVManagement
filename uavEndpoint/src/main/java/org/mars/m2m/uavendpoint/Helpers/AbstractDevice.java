@@ -32,4 +32,14 @@ public abstract class AbstractDevice {
      * The leshan client / CoAP server for a device
      */
     protected LeshanClient client;
+        
+    /**
+     * Bootstrap server address
+     */
+    protected String bsAddress;
+    
+    /**
+     * Bootstrap server port number
+     */
+    protected int bsPortnumber;
 }

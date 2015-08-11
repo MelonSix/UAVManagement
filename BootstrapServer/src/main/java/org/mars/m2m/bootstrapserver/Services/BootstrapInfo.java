@@ -63,7 +63,7 @@ public class BootstrapInfo {
         BootstrapConfig bootstrapConfig = new BootstrapConfig();
         bootstrapConfig.servers.put(1, setUpServerConfig());
         bootstrapConfig.security.put(0, setUpSecurityConfig());
-        bStore.addConfig("myEndpoint", bootstrapConfig);
+        bStore.addConfig("missileDispatcher", bootstrapConfig);
         bStore.deleteConfig("");//for forcing write to file
         return bStore;
     }
