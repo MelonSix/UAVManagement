@@ -34,17 +34,18 @@ public class BootstrapEp
         this.client = client;
     }   
             
-    public synchronized byte[] performBootstrap(String endpointName) throws InterruptedException
+    public byte[] performBootstrap(String endpointName) throws InterruptedException
     {
         ccrb = new CoapClientRequestBuilder(this.serverAddress, this.client);
         bootstrapRequest = new BootstrapRequest(endpointName);
         bootstrapRequest.accept(ccrb);
         coapRequest = ccrb.getRequest();
+        //System.out.println("Req uri: "+coapRequest.getURI());
+        //coapRequest.setURI("coap://127.0.0.1:"+serverAddress.getPort()+"/bs?ep="+endpointName);
         System.out.println("Req uri: "+coapRequest.getURI());
-        coapRequest.setURI("coap://127.0.0.1:"+serverAddress.getPort()+"/bs?ep="+endpointName);
-        System.out.println("Req uri: "+coapRequest.getURI());
-        coapRequest.send().waitForResponse();
-        coapResponse = coapRequest.getResponse();
+        coapRequest.send();
+        coapResponse = coapRequest.waitForResponse();  
+        System.out.println(coapResponse.toString());
         return coapResponse.getPayload();
     }
 }

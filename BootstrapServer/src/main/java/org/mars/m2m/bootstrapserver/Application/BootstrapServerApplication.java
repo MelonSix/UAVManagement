@@ -69,12 +69,14 @@ public class BootstrapServerApplication extends Application<BootstrapServerConfi
         LwM2mBootstrapServerImpl bsServer;
         
         //if the server has predefined address and port number to listen on
-        if(config.getLwm2mBootstrapServerAddress()!= null 
-                && config.getLwm2mBootstrapServerPortnum()> 0)
+        if(/*config.getLwm2mBootstrapServerAddress()!= null
+                && */config.getLwm2mBootstrapServerPortnum()> 0)
         {
             bsServer = 
-                new LwM2mBootstrapServerImpl(new InetSocketAddress(config.getLwm2mBootstrapServerAddress(), config.getLwm2mBootstrapServerPortnum()),
-                    new InetSocketAddress(config.getSecureLwm2mBootstrapServerAddress(), config.getSecureLwm2mBootstrapServerPortnum()), bsStore, securityStore);
+                new LwM2mBootstrapServerImpl(
+                    new InetSocketAddress(config.getLwm2mBootstrapServerAddress(), config.getLwm2mBootstrapServerPortnum()),
+                    new InetSocketAddress(config.getSecureLwm2mBootstrapServerAddress(), config.getSecureLwm2mBootstrapServerPortnum()), 
+                     bsStore, securityStore);
             
             //starts bs server
             bsServer.start();

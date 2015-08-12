@@ -9,7 +9,6 @@ import ch.qos.logback.classic.Logger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
@@ -239,7 +238,7 @@ public class MilitaryUAV implements Runnable {
             }
             catch(Exception ex)
             {
-                ex.printStackTrace();
+                log.info(ex.toString());
             }
         }
         
@@ -276,13 +275,14 @@ public class MilitaryUAV implements Runnable {
                 // Start the client
                 client.start();
                 
+                
                 //Bootstrap
                 byte[] boostrapInfo;
                 try {
-                    boostrapInfo = DeviceHelper.bootStrapLwM2mClient(this.endpointName, this.bsAddress, this.bsPortnumber, client);
-                System.out.println("asd"+ new String(boostrapInfo));
+                    boostrapInfo = DeviceHelper.bootStrapLwM2mClient(endpointName, bsAddress, bsPortnumber, client);
+                System.out.println("Bootstrap payload: "+ new String(boostrapInfo));
                 } catch (InterruptedException ex) {
-                    java.util.logging.Logger.getLogger(MilitaryUAV.class.getName()).log(Level.SEVERE, null, ex);
+                    log.error(ex.toString());
                 }
 
                 // register to the server provided
