@@ -112,63 +112,14 @@ public class BsResource extends CoapResource {
             LOG.error("No bootstrap config for {}", endpoint);
             exchange.respond(ResponseCode.BAD_REQUEST);
             return;
-        }
-        exchange.respond(ResponseCode.CHANGED, cfg.toString().getBytes());
-        
-        try {
-            request.waitForResponse();
-        } catch (InterruptedException ex) {
-            java.util.logging.Logger.getLogger(BsResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }        
+                       
         // now push the config
-
         e.execute(new Runnable() {
-
             @Override
             public void run() {
-                // first delete everything
-
-                final Endpoint e = exchange.advanced().getEndpoint();
-                Request deleteAll = Request.newDelete();
-                deleteAll.setConfirmable(true);
-                deleteAll.setDestination(exchange.getSourceAddress());
-                deleteAll.setDestinationPort(exchange.getSourcePort());
-
-                deleteAll.send(e).addMessageObserver(new MessageObserver() {
-
-                    @Override
-                    public void onTimeout() {
-                        LOG.debug("Bootstrap delete {} timeout!", endpoint);
-                    }
-
-                    @Override
-                    public void onRetransmission() {
-                        LOG.debug("Bootstrap delete {} retransmission", endpoint);
-                    }
-
-                    @Override
-                    public void onResponse(Response response) {
-                        LOG.debug("Bootstrap delete {} return code {}", endpoint, response.getCode());
-                        List<Integer> toSend = new ArrayList<>(cfg.security.keySet());
-                        sendBootstrap(e, endpoint, exchange.getSourceAddress(), exchange.getSourcePort(), cfg, toSend);
-                    }
-
-                    @Override
-                    public void onReject() {
-                        LOG.debug("Bootstrap delete {} reject", endpoint);
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        LOG.debug("Bootstrap delete {} cancel", endpoint);
-                    }
-
-                    @Override
-                    public void onAcknowledgement() {
-                        LOG.debug("Bootstrap delete {} acknowledgement", endpoint);
-                    }
-                });
+                //sends data to client
+                exchange.respond(ResponseCode.CHANGED, cfg.toString().getBytes());
             }
         });
     }

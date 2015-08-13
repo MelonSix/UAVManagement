@@ -268,3 +268,80 @@ java.lang.NullPointerException: null
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_25]
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_25]
 	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+INFO   [17:06:47.863] [main] o.e.j.u.log -  Logging initialized @1247ms 
+INFO   [17:06:47.951] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [17:06:47.980] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [17:06:47.980] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [17:06:47.986] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [17:06:47.987] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [17:06:47.993] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [17:06:48.001] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [17:06:48.017] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [17:06:48.051] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:06:48.054] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:06:48.633] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [17:06:48.635] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [17:06:48.639] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:06:48.645] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [17:06:48.693] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:06:48.693] [main] o.e.j.s.Server -  Started @2079ms 
+ERROR  [17:07:11.379] [pool-3-thread-4] o.m.m.b.c.BsResource -  Exception while handling a request on the /bs resource 
+java.lang.NullPointerException: null
+	at org.mars.m2m.bootstrapserver.core.BsResource.handlePOST(BsResource.java:110) ~[classes/:na]
+	at org.eclipse.californium.core.CoapResource.handleRequest(CoapResource.java:207) ~[californium-core-1.0.0-M3.jar:na]
+	at org.mars.m2m.bootstrapserver.core.BsResource.handleRequest(BsResource.java:68) ~[classes/:na]
+	at org.eclipse.californium.core.server.ServerMessageDeliverer.deliverRequest(ServerMessageDeliverer.java:81) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack$StackTopAdapter.receiveRequest(CoapStack.java:180) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.BlockwiseLayer.receiveRequest(BlockwiseLayer.java:242) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.TokenLayer.receiveRequest(TokenLayer.java:72) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.ReliabilityLayer.receiveRequest(ReliabilityLayer.java:221) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.AbstractLayer.receiveRequest(AbstractLayer.java:88) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.stack.CoapStack.receiveRequest(CoapStack.java:133) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.receiveMessage(CoAPEndpoint.java:594) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl.access$700(CoAPEndpoint.java:530) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$InboxImpl$1.run(CoAPEndpoint.java:542) [californium-core-1.0.0-M3.jar:na]
+	at org.eclipse.californium.core.network.CoAPEndpoint$5.run(CoAPEndpoint.java:678) [californium-core-1.0.0-M3.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_25]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+INFO   [17:07:57.811] [main] o.e.j.u.log -  Logging initialized @1169ms 
+INFO   [17:07:57.894] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [17:07:57.922] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [17:07:57.922] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [17:07:57.928] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [17:07:57.928] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [17:07:57.933] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [17:07:57.941] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [17:07:57.956] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [17:07:57.991] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:07:57.994] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:07:58.536] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [17:07:58.539] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [17:07:58.545] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:07:58.551] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [17:07:58.599] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:07:58.600] [main] o.e.j.s.Server -  Started @1961ms 
