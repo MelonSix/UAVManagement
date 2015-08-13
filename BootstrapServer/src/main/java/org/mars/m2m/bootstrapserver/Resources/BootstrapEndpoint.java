@@ -48,8 +48,7 @@ public class BootstrapEndpoint
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBootstrapConfigs(@PathParam("endpoint") String endpoint)
-    {
-        
+    {        
         try 
         {
             BootstrapInfo bootstrapInfo = new BootstrapInfo();

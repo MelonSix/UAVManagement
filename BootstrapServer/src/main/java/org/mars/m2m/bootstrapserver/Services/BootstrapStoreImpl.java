@@ -50,7 +50,7 @@ public class BootstrapStoreImpl implements BootstrapStore {
     }
 
     /**
-     * @param file the file path to persist the registry
+     * @param filename
      */
     public BootstrapStoreImpl(String filename) {
         Validate.notEmpty(filename);
