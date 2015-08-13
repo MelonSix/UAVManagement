@@ -26,12 +26,12 @@ import org.slf4j.LoggerFactory;
  * @author AG BRIGHTER
  */
 @Path("/mgmtAdapter")
-public class ManagementOpsResource {
+public class MgmtAdptrInterface {
     
-    Logger logger = (Logger) LoggerFactory.getLogger(ManagementOpsResource.class);
+    Logger logger = (Logger) LoggerFactory.getLogger(MgmtAdptrInterface.class);
     Operation operation;
 
-    public ManagementOpsResource() {
+    public MgmtAdptrInterface() {
     }
     
     /**
@@ -53,6 +53,7 @@ public class ManagementOpsResource {
     {
         return new NotificationResource();
     }
+    
     
     /**
      * Process the request primitive by selecting the appropriate operation to handle the request

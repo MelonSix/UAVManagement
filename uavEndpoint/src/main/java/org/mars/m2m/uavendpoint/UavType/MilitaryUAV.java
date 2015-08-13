@@ -703,25 +703,25 @@ public class MilitaryUAV implements Runnable {
         /**
          * UAV Manager
          */
-//        DeviceStarterDetails UAVmanagerDevDtls;
-//        UAVmanagerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-//                8081, "127.0.0.1", 5683, "UAV Manager", uavConfig, "127.0.0.1", 5070);
-//        UAVManagerClient UAVmanagerDev = new UAVManagerClient(UAVmanagerDevDtls);
-//        UAVmanagerDev.StartDevice();
-//        log.info("UAV manager started");
+        DeviceStarterDetails UAVmanagerDevDtls;
+        UAVmanagerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8081, "127.0.0.1", 5683, "UAV Manager", uavConfig, "127.0.0.1", 5070);
+        UAVManagerClient UAVmanagerDev = new UAVManagerClient(UAVmanagerDevDtls);
+        UAVmanagerDev.StartDevice();
+        log.info("UAV manager started");
         
         /**
          * Threat sensor
          */
-//        DeviceStarterDetails threatDevDtls;
-//        threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-//                8087, "127.0.0.1", 5683, "Threat sensor", uavConfig, "127.0.0.1", 5070);
-//        ThreatSensorDeviceClient threatSensorDev = new ThreatSensorDeviceClient(threatDevDtls);
-//        threatSensorDev.StartDevice();
-//        //Thread.sleep(10000);
-//        //DeviceHelper.stopDevice(threatSensorDev);
-//        log.info("Threat sensor started");        
-//        uavOwnedDevices.add(threatSensorDev);
+        DeviceStarterDetails threatDevDtls;
+        threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8087, "127.0.0.1", 5683, "Threat sensor", uavConfig, "127.0.0.1", 5070);
+        ThreatSensorDeviceClient threatSensorDev = new ThreatSensorDeviceClient(threatDevDtls);
+        threatSensorDev.StartDevice();
+        //Thread.sleep(10000);
+        //DeviceHelper.stopDevice(threatSensorDev);
+        log.info("Threat sensor started");        
+        uavOwnedDevices.add(threatSensorDev);
         
         /**
          * Missile dispatcher
@@ -737,24 +737,24 @@ public class MilitaryUAV implements Runnable {
         /**
          * Temperature sensor
          */
-//        DeviceStarterDetails tempSenDtls;
-//        tempSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-//                8095, "127.0.0.1", 5683, "IPSO Temperature sensor", uavConfig, "127.0.0.1", 5070);
-//        TemperatureSensorClient tempSenClient = new TemperatureSensorClient(tempSenDtls);
-//        tempSenClient.StartDevice();
-//        log.info("Temperature sensor started");
-//        uavOwnedDevices.add(tempSenClient);
-//        
-//        /**
-//         * Altitude sensor
-//         */
-//        DeviceStarterDetails altitudeSenDtls;
-//        altitudeSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
-//                8096, "127.0.0.1", 5683, "Altitude sensor", uavConfig, "127.0.0.1", 5070);
-//        AltitudeSensorClient altitudeSenClient = new AltitudeSensorClient(altitudeSenDtls);
-//        altitudeSenClient.StartDevice();
-//        log.info("Altitude sensor started");
-//        uavOwnedDevices.add(altitudeSenClient);
+        DeviceStarterDetails tempSenDtls;
+        tempSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8095, "127.0.0.1", 5683, "IPSO Temperature sensor", uavConfig, "127.0.0.1", 5070);
+        TemperatureSensorClient tempSenClient = new TemperatureSensorClient(tempSenDtls);
+        tempSenClient.StartDevice();
+        log.info("Temperature sensor started");
+        uavOwnedDevices.add(tempSenClient);
+        
+        /**
+         * Altitude sensor
+         */
+        DeviceStarterDetails altitudeSenDtls;
+        altitudeSenDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
+                8096, "127.0.0.1", 5683, "Altitude sensor", uavConfig, "127.0.0.1", 5070);
+        AltitudeSensorClient altitudeSenClient = new AltitudeSensorClient(altitudeSenDtls);
+        altitudeSenClient.StartDevice();
+        log.info("Altitude sensor started");
+        uavOwnedDevices.add(altitudeSenClient);
     }
     
 }

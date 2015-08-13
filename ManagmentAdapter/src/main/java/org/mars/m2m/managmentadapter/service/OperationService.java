@@ -28,7 +28,7 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
 import org.mars.m2m.dmcore.util.DmCommons;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 import org.mars.m2m.managmentadapter.model.SvcConsumerDetails;
-import org.mars.m2m.managmentadapter.resources.ManagementOpsResource;
+import org.mars.m2m.managmentadapter.resources.MgmtAdptrInterface;
 
 
 /**
@@ -226,7 +226,7 @@ public class OperationService
         primitiveContent.getAny().add(container);
         resp.setContent(primitiveContent);
         resp.setTo(req.getFrom());
-        resp.setFrom(uriInfo.getBaseUriBuilder().path(ManagementOpsResource.class).build().toString());
+        resp.setFrom(uriInfo.getBaseUriBuilder().path(MgmtAdptrInterface.class).build().toString());
         resp.setOriginatingTimestamp(DmCommons.getOneM2mTimeStamp());
         resp.setResultExpirationTimestamp(DmCommons.setOneM2mTimeStamp(new GregorianCalendar(2015,8,1,0,0,0)));
         resp.setEventCategory(StdEventCats.DEFAULT.name());

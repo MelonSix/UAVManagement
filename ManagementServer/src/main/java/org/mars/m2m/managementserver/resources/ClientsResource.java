@@ -48,6 +48,7 @@ import org.eclipse.leshan.util.Validate;
 import org.mars.m2m.managementserver.core.ResponseManagement;
 import org.mars.m2m.managementserver.json.ConfigGson;
 import org.mars.m2m.managementserver.representations.ObjectResource;
+import org.mars.m2m.managementserver.resources.subresources.Discovery;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -367,6 +368,17 @@ public class ClientsResource {
             }
         }
         return processedValResponse;
+    }
+    
+    /**
+     *
+     * @param clientEndpoint
+     * @return
+     */
+    @Path("/discover/{clientEndpoint}")
+    public Discovery performDiscovery(@PathParam("clientEndpoint") String clientEndpoint)
+    {
+        return new Discovery(server, clientEndpoint);
     }
     
     /**
