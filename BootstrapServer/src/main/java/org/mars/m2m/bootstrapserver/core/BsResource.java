@@ -15,13 +15,13 @@
  *******************************************************************************/
 package org.mars.m2m.bootstrapserver.core;
 
+import com.google.gson.Gson;
 import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
 
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
@@ -107,7 +107,9 @@ public class BsResource extends CoapResource {
         // TODO check security of the endpoint
 
         final BootstrapConfig cfg = store.getBootstrap(endpoint);
-        System.out.println("Collected bs : "+cfg.toString());
+        Gson gson = new Gson();
+        final String configInJson = gson.toJson(cfg);
+        System.out.println("Collected bs : "+configInJson);
         if (cfg == null) {
             LOG.error("No bootstrap config for {}", endpoint);
             exchange.respond(ResponseCode.BAD_REQUEST);
@@ -119,7 +121,7 @@ public class BsResource extends CoapResource {
             @Override
             public void run() {
                 //sends data to client
-                exchange.respond(ResponseCode.CHANGED, cfg.toString().getBytes());
+                exchange.respond(ResponseCode.CHANGED, configInJson.getBytes());
             }
         });
     }

@@ -1,38 +1,19 @@
-INFO   [14:32:51.771] [main] o.e.j.u.log -  Logging initialized @1233ms 
-INFO   [14:32:51.864] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:32:51.872] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:32:51.887] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:32:51.920] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:32:51.923] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:32:52.543] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [11:33:00.701] [main] o.e.j.u.log -  Logging initialized @1207ms 
+INFO   [11:33:00.806] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [11:33:00.815] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [11:33:00.830] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [11:33:00.862] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:33:00.865] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:33:01.434] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.MgmtAdptrInterface)
  
-INFO   [14:32:52.547] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@29c2c826{/ma,null,AVAILABLE} 
-INFO   [14:32:52.553] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [11:33:01.438] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@29c2c826{/ma,null,AVAILABLE} 
+INFO   [11:33:01.444] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:32:52.558] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e904fd5{/admin-ma,null,AVAILABLE} 
-INFO   [14:32:52.607] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:32:52.607] [main] o.e.j.s.Server -  Started @2071ms 
-INFO   [17:35:43.879] [main] o.e.j.u.log -  Logging initialized @1169ms 
-INFO   [17:35:43.963] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [17:35:43.972] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [17:35:43.988] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [17:35:44.021] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [17:35:44.023] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:35:44.571] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.MgmtAdptrInterface)
- 
-INFO   [17:35:44.576] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3350ebdd{/ma,null,AVAILABLE} 
-INFO   [17:35:44.583] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [17:35:44.588] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@b18c4{/admin-ma,null,AVAILABLE} 
-INFO   [17:35:44.635] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [17:35:44.636] [main] o.e.j.s.Server -  Started @1927ms 
+INFO   [11:33:01.450] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e904fd5{/admin-ma,null,AVAILABLE} 
+INFO   [11:33:01.493] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:33:01.493] [main] o.e.j.s.Server -  Started @2002ms 

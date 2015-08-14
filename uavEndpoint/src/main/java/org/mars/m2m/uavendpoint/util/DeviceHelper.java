@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mars.m2m.uavendpoint.Helpers;
+package org.mars.m2m.uavendpoint.util;
 
 import java.net.InetSocketAddress;
 import org.eclipse.leshan.ResponseCode;
@@ -15,6 +15,7 @@ import org.eclipse.leshan.core.request.RegisterRequest;
 import org.eclipse.leshan.core.response.RegisterResponse;
 import org.mars.m2m.dmcore.Loader.LwM2mModelLoader;
 import org.mars.m2m.uavendpoint.Bootstrap.BootstrapEp;
+import org.mars.m2m.uavendpoint.Model.RequiredBootstrapInfo;
 
 /**
  *
@@ -75,16 +76,15 @@ public class DeviceHelper {
     
     /**
      * For performing bootstrap and getting the bootstrap information
-     * @param endpoint The endpoint ID or name
-     * @param serverAddr the bootstrap server's IP address
-     * @param serverPortnum the bootstrap server's port number
-     * @param lwM2mClient the LwM2M client
+     * @param info Holds the details to connect to the Bootstrap server and get the payload back
      * @return The bootstrap information as a byte array
      */
-    public static byte[] bootStrapLwM2mClient(String endpoint, String serverAddr, int serverPortnum, LwM2mClient lwM2mClient) throws InterruptedException
+    public static byte[] bootStrapLwM2mClient(RequiredBootstrapInfo info) throws InterruptedException
     {
-        BootstrapEp bootstrapEp = new BootstrapEp(new InetSocketAddress(serverAddr, serverPortnum), lwM2mClient);
-        return bootstrapEp.performBootstrap(endpoint);
+        if(info == null)
+            return null;
+        BootstrapEp bootstrapEp = new BootstrapEp(new InetSocketAddress(info.getServerAddr(), info.getServerPortnum()), info.getLwM2mClient());
+        return bootstrapEp.performBootstrap(info.getEndpoint());
     }
     
 }

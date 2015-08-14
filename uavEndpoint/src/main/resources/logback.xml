@@ -56,7 +56,7 @@ and open the template in the editor.
     </appender>
  
     <!-- Send logs to both console and file audit -->
-    <logger name="org.mars.m2m" level="debug" additivity="false">
+    <logger name="org.mars" level="debug" additivity="false">
             <appender-ref ref="toFile" />
             <appender-ref ref="toConsole" />
     </logger>

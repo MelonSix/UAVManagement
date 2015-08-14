@@ -9,11 +9,14 @@ import ch.qos.logback.classic.Logger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.californium.core.CoapServer;
 import org.eclipse.leshan.client.californium.LeshanClient;
+import org.eclipse.leshan.client.californium.impl.ObjectResource;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
+import org.eclipse.leshan.server.bootstrap.BootstrapConfig;
 import org.mars.m2m.Devices.AltitudeSensor;
 import org.mars.m2m.Devices.FlightControl;
 import org.mars.m2m.Devices.MissileDispatcher;
@@ -22,12 +25,17 @@ import org.mars.m2m.Devices.ThreatSensor;
 import org.mars.m2m.Devices.UAVmanager;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
-import org.mars.m2m.uavendpoint.Helpers.AbstractDevice;
-import org.mars.m2m.uavendpoint.Helpers.DeviceHelper;
-import org.mars.m2m.uavendpoint.Helpers.UavObjectFactory;
+import org.mars.m2m.uavendpoint.util.AbstractDevice;
+import org.mars.m2m.uavendpoint.util.DeviceHelper;
+import org.mars.m2m.uavendpoint.util.UavObjectFactory;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
+import org.mars.m2m.uavendpoint.Model.RequiredBootstrapInfo;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
 import org.mars.m2m.uavendpoint.omaObjects.Device;
+import org.mars.m2m.uavendpoint.omaObjects.LwM2mSecurity;
+import org.mars.m2m.uavendpoint.omaObjects.LwM2mServer;
+import org.mars.m2m.uavendpoint.util.ConvertObject;
+import org.mars.m2m.uavendpoint.util.UnmarshalBootstrap;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -192,7 +200,11 @@ public class MilitaryUAV implements Runnable {
     public static class MissileDispatchClient extends AbstractDevice
     {
         MissileDispatcher missileDispatch;
+        
+        //OMA LwM2M objects
         Device device;
+        LwM2mSecurity lwM2mSecurity;
+        LwM2mServer lwM2mServer;
         
         public MissileDispatchClient()
         {
@@ -263,28 +275,56 @@ public class MilitaryUAV implements Runnable {
                 //attach instance
                 initializer.setInstancesForObject(12203, missileDispatch);
                 initializer.setInstancesForObject(3, device);
-                List<ObjectEnabler> enablers = initializer.create(0,1,12203, 3);
+                List<ObjectEnabler> enablers = initializer.create(12203, 3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
                 final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
-
-                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                
+                CoapServer coapServer = new CoapServer();
+                client = new LeshanClient(clientAddress, serverAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                         enablers));
 
                 // Start the client
                 client.start();
                 
-                
                 //Bootstrap
-                byte[] boostrapInfo;
-                try {
-                    boostrapInfo = DeviceHelper.bootStrapLwM2mClient(endpointName, bsAddress, bsPortnumber, client);
-                System.out.println("Bootstrap payload: "+ new String(boostrapInfo));
-                } catch (InterruptedException ex) {
-                    log.error(ex.toString());
+                UnmarshalBootstrap bootstrap = new UnmarshalBootstrap();
+                BootstrapConfig bootstrapConfig;
+                bootstrapConfig = bootstrap.getBootstrapConfig(new RequiredBootstrapInfo(endpointName, bsAddress, bsPortnumber, client));
+                this.security = bootstrapConfig.security;
+                this.servers = bootstrapConfig.servers;
+                
+                /**
+                 * Remove using loop. reason: Will replace already added instances in a multi-instance scenario
+                 */
+                for(Integer i : this.security.keySet())
+                {
+                    lwM2mSecurity = ConvertObject.toLwM2mSecurity(this.security.get(i));
+                    initializer.setInstancesForObject(0, lwM2mSecurity);
                 }
+                
+                for(Integer i : this.servers.keySet())
+                {
+                    lwM2mServer = ConvertObject.toLwM2mServer(this.servers.get(i));
+                    initializer.setInstancesForObject(1, lwM2mServer);
+                } 
+                //--------------------------------------------------------------------------
+                
+                //
+                enablers = initializer.create(0,1);
+                List<LwM2mObjectEnabler> objectEnablers = new ArrayList<LwM2mObjectEnabler>(enablers);
+                for (LwM2mObjectEnabler enabler : objectEnablers) {
+                if (coapServer.getRoot().getChild(Integer.toString(enabler.getId())) != null) 
+                {
+                    throw new IllegalArgumentException("Trying to load Client Object of name '" + enabler.getId()
+                            + "' when one was already added.");
+                    }
 
+                    final ObjectResource clientObject = new ObjectResource(enabler);
+                    coapServer.add(clientObject);
+                }
+                
                 // register to the server provided
                 final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
