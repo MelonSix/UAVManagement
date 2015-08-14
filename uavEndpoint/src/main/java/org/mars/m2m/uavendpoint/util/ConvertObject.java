@@ -7,8 +7,8 @@ package org.mars.m2m.uavendpoint.util;
 
 import org.eclipse.leshan.server.bootstrap.BootstrapConfig.ServerConfig;
 import org.eclipse.leshan.server.bootstrap.BootstrapConfig.ServerSecurity;
-import org.mars.m2m.uavendpoint.omaObjects.LwM2mSecurity;
-import org.mars.m2m.uavendpoint.omaObjects.LwM2mServer;
+import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mSecurity;
+import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mServer;
 
 /**
  * This class copies the values from the created instances of {@link BootstrapConfig} details to customs ones
@@ -25,11 +25,11 @@ public class ConvertObject
      * The rational is to have a custom method outside the API's {@link ServerSecurity} instance so that other
      * custom operations can be done or it can be extended.
      * @param s The {@link ServerSecurity} instance/object
-     * @return The converted {@link LwM2mSecurity} instance/object
+     * @return The converted {@link OmaLwM2mSecurity} instance/object
      */
-    public static LwM2mSecurity toLwM2mSecurity(ServerSecurity s)
+    public static OmaLwM2mSecurity toLwM2mSecurity(ServerSecurity s)
     {
-        return new LwM2mSecurity()//The OMA resource IDs
+        return new OmaLwM2mSecurity()//The OMA resource IDs
                 .setUri(s.uri)//0
                 .setBootstrapServer(s.bootstrapServer)//1
                 .setSecurityMode(s.securityMode)//2
@@ -49,11 +49,11 @@ public class ConvertObject
      * The rational is to have a custom method outside the API's {@link ServerConfig} instance so that other
      * custom operations can be done or it can be extended.
      * @param s The {@link ServerConfig} instance/object
-     * @return The converted {@link LwM2mServer} instance/object
+     * @return The converted {@link OmaLwM2mServer} instance/object
      */
-    public static LwM2mServer toLwM2mServer(ServerConfig s)
+    public static OmaLwM2mServer toLwM2mServer(ServerConfig s)
     {
-        return new LwM2mServer()//the OMA LwM2M resource IDs
+        return new OmaLwM2mServer()//the OMA LwM2M resource IDs
                 .setShortId(s.shortId)//1
                 .setLifetime(s.lifetime)//1
                 .setDefaultMinPeriod(s.defaultMinPeriod)//2

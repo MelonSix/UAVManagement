@@ -32,8 +32,8 @@ import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Model.RequiredBootstrapInfo;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
 import org.mars.m2m.uavendpoint.omaObjects.Device;
-import org.mars.m2m.uavendpoint.omaObjects.LwM2mSecurity;
-import org.mars.m2m.uavendpoint.omaObjects.LwM2mServer;
+import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mSecurity;
+import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mServer;
 import org.mars.m2m.uavendpoint.util.ConvertObject;
 import org.mars.m2m.uavendpoint.util.UnmarshalBootstrap;
 import org.slf4j.LoggerFactory;
@@ -203,8 +203,8 @@ public class MilitaryUAV implements Runnable {
         
         //OMA LwM2M objects
         Device device;
-        LwM2mSecurity lwM2mSecurity;
-        LwM2mServer lwM2mServer;
+        OmaLwM2mSecurity lwM2mSecurity;
+        OmaLwM2mServer lwM2mServer;
         
         public MissileDispatchClient()
         {
@@ -311,7 +311,7 @@ public class MilitaryUAV implements Runnable {
                 } 
                 //--------------------------------------------------------------------------
                 
-                //
+                //Addition of security and server resources to the endpoint
                 enablers = initializer.create(0,1);
                 List<LwM2mObjectEnabler> objectEnablers = new ArrayList<LwM2mObjectEnabler>(enablers);
                 for (LwM2mObjectEnabler enabler : objectEnablers) {
@@ -322,6 +322,7 @@ public class MilitaryUAV implements Runnable {
                     }
 
                     final ObjectResource clientObject = new ObjectResource(enabler);
+                    //clientObject.getAttributes().
                     coapServer.add(clientObject);
                 }
                 
@@ -331,7 +332,10 @@ public class MilitaryUAV implements Runnable {
                 /**
                  * LwM2M client registration
                  */
-                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+                for(Integer i : this.servers.keySet())
+                {
+                    this.registrationID = DeviceHelper.register(client, endpointIdentifier);  
+                }
             }
             else
             {

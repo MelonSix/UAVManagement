@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.server.bootstrap.BootstrapConfig;
-import org.mars.m2m.uavendpoint.omaObjects.LwM2mSecurity;
+import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mSecurity;
 
 /**
  *This class groups together all the common elements that used by the various LwM2M clients of a device
@@ -84,7 +84,7 @@ public abstract class AbstractDevice {
     protected Map<Integer, BootstrapConfig.ServerConfig> servers;
     
     /**
-     * LwM2M client LwM2mSecurity instances
+     * LwM2M client OmaLwM2mSecurity instances
      */
     protected Map<Integer, BootstrapConfig.ServerSecurity> security;
 }

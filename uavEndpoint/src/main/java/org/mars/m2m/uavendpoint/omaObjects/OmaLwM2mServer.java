@@ -17,7 +17,7 @@ import org.eclipse.leshan.core.response.ValueResponse;
  *
  * @author AG BRIGHTER
  */
-public class LwM2mServer  extends BaseInstanceEnabler
+public class OmaLwM2mServer  extends BaseInstanceEnabler
 {
     private int shortId;
     private int lifetime;
@@ -27,7 +27,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
     private boolean notifIfDisabled;
     private BindingMode binding;
         
-    public LwM2mServer() {
+    public OmaLwM2mServer() {
     }
 
     @Override
@@ -105,7 +105,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
         return shortId;
     }
 
-    public LwM2mServer setShortId(int shortId) {
+    public OmaLwM2mServer setShortId(int shortId) {
         this.shortId = shortId;
         return this;
     }
@@ -114,7 +114,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
         return lifetime;
     }
 
-    public LwM2mServer setLifetime(int lifetime) {
+    public OmaLwM2mServer setLifetime(int lifetime) {
         this.lifetime = lifetime;
         return this;
     }
@@ -123,7 +123,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
         return defaultMinPeriod;
     }
 
-    public LwM2mServer setDefaultMinPeriod(int defaultMinPeriod) {
+    public OmaLwM2mServer setDefaultMinPeriod(int defaultMinPeriod) {
         this.defaultMinPeriod = defaultMinPeriod;
         return this;
     }
@@ -132,7 +132,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
         return defaultMaxPeriod;
     }
 
-    public LwM2mServer setDefaultMaxPeriod(Integer defaultMaxPeriod) {
+    public OmaLwM2mServer setDefaultMaxPeriod(Integer defaultMaxPeriod) {
         this.defaultMaxPeriod = defaultMaxPeriod;
         return this;
     }
@@ -141,7 +141,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
         return disableTimeout;
     }
 
-    public LwM2mServer setDisableTimeout(Integer disableTimeout) {
+    public OmaLwM2mServer setDisableTimeout(Integer disableTimeout) {
         this.disableTimeout = disableTimeout;
         return this;
     }
@@ -150,7 +150,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
         return notifIfDisabled;
     }
 
-    public LwM2mServer setNotifIfDisabled(boolean notifIfDisabled) {
+    public OmaLwM2mServer setNotifIfDisabled(boolean notifIfDisabled) {
         this.notifIfDisabled = notifIfDisabled;
         return this;
     }
@@ -159,7 +159,7 @@ public class LwM2mServer  extends BaseInstanceEnabler
         return binding;
     }
 
-    public LwM2mServer setBinding(BindingMode binding) {
+    public OmaLwM2mServer setBinding(BindingMode binding) {
         this.binding = binding;
         return this;
     }

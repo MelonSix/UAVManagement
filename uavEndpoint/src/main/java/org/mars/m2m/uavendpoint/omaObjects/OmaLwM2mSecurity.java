@@ -13,7 +13,7 @@ import org.eclipse.leshan.server.bootstrap.SmsSecurityMode;
  *
  * @author AG BRIGHTER
  */
-public class LwM2mSecurity extends BaseInstanceEnabler
+public class OmaLwM2mSecurity extends BaseInstanceEnabler
 {
     private String uri;
     private boolean bootstrapServer;
@@ -28,14 +28,14 @@ public class LwM2mSecurity extends BaseInstanceEnabler
     private Integer serverId;
     private int clientOldOffTime;
     
-    public LwM2mSecurity() {
+    public OmaLwM2mSecurity() {
     }
 
     public String getUri() {
         return uri;
     }
 
-    public LwM2mSecurity setUri(String uri) {
+    public OmaLwM2mSecurity setUri(String uri) {
         this.uri = uri;
         return this;
     }
@@ -44,7 +44,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return bootstrapServer;
     }
 
-    public LwM2mSecurity setBootstrapServer(boolean bootstrapServer) {
+    public OmaLwM2mSecurity setBootstrapServer(boolean bootstrapServer) {
         this.bootstrapServer = bootstrapServer;
         return this;
     }
@@ -53,7 +53,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return securityMode;
     }
 
-    public LwM2mSecurity setSecurityMode(SecurityMode securityMode) {
+    public OmaLwM2mSecurity setSecurityMode(SecurityMode securityMode) {
         this.securityMode = securityMode;
         return this;
     }
@@ -62,7 +62,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return publicKeyOrId;
     }
 
-    public LwM2mSecurity setPublicKeyOrId(byte[] publicKeyOrId) {
+    public OmaLwM2mSecurity setPublicKeyOrId(byte[] publicKeyOrId) {
         this.publicKeyOrId = publicKeyOrId;
         return this;
     }
@@ -71,7 +71,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return serverPublicKeyOrId;
     }
 
-    public LwM2mSecurity setServerPublicKeyOrId(byte[] serverPublicKeyOrId) {
+    public OmaLwM2mSecurity setServerPublicKeyOrId(byte[] serverPublicKeyOrId) {
         this.serverPublicKeyOrId = serverPublicKeyOrId;
         return this;
     }
@@ -80,7 +80,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return secretKey;
     }
 
-    public LwM2mSecurity setSecretKey(byte[] secretKey) {
+    public OmaLwM2mSecurity setSecretKey(byte[] secretKey) {
         this.secretKey = secretKey;
         return this;
     }
@@ -89,7 +89,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return smsSecurityMode;
     }
 
-    public LwM2mSecurity setSmsSecurityMode(SmsSecurityMode smsSecurityMode) {
+    public OmaLwM2mSecurity setSmsSecurityMode(SmsSecurityMode smsSecurityMode) {
         this.smsSecurityMode = smsSecurityMode;
         return this;
     }
@@ -98,7 +98,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return smsBindingKeyParam;
     }
 
-    public LwM2mSecurity setSmsBindingKeyParam(byte[] smsBindingKeyParam) {
+    public OmaLwM2mSecurity setSmsBindingKeyParam(byte[] smsBindingKeyParam) {
         this.smsBindingKeyParam = smsBindingKeyParam;
         return this;
     }
@@ -107,7 +107,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return smsBindingKeySecret;
     }
 
-    public LwM2mSecurity setSmsBindingKeySecret(byte[] smsBindingKeySecret) {
+    public OmaLwM2mSecurity setSmsBindingKeySecret(byte[] smsBindingKeySecret) {
         this.smsBindingKeySecret = smsBindingKeySecret;
         return this;
     }
@@ -116,7 +116,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return serverSmsNumber;
     }
 
-    public LwM2mSecurity setServerSmsNumber(String serverSmsNumber) {
+    public OmaLwM2mSecurity setServerSmsNumber(String serverSmsNumber) {
         this.serverSmsNumber = serverSmsNumber;
         return this;
     }
@@ -125,7 +125,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return serverId;
     }
 
-    public LwM2mSecurity setServerId(Integer serverId) {
+    public OmaLwM2mSecurity setServerId(Integer serverId) {
         this.serverId = serverId;
         return this;
     }
@@ -134,7 +134,7 @@ public class LwM2mSecurity extends BaseInstanceEnabler
         return clientOldOffTime;
     }
 
-    public LwM2mSecurity setClientOldOffTime(int clientOldOffTime) {
+    public OmaLwM2mSecurity setClientOldOffTime(int clientOldOffTime) {
         this.clientOldOffTime = clientOldOffTime;
         return this;
     }
