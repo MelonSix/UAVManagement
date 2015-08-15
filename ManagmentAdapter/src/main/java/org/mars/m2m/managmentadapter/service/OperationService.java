@@ -285,4 +285,51 @@ public class OperationService
         container.getContentInstanceOrContainerOrSubscription().add(contentInstance);
     }
     
+    /**
+     * Produces a {@link ContentInstance} object with a given value as the content
+     * @param value The value to be used as the content
+     * @return A {@link ContentInstance} object
+     */
+    public ContentInstance getContentInstance(String value)
+    {
+        ContentInstance ci = new ContentInstance();
+        // resource <contentInstance>
+        ci.setStateTag(BigInteger.ZERO);
+        ci.setContentInfo(MediaType.APPLICATION_JSON);
+        ci.setContentSize(BigInteger.valueOf(20));
+        ci.setOntologyRef("");
+        ci.setContent(value);
+        return ci;
+    }
+    
+    /**
+     * Produces a Container for a given number of {@link ContentInstance} objects
+     * @param contentInstances The given object(s)
+     * @return An instance of {@link Container}
+     */
+    public Container getContainer(ContentInstance... contentInstances)
+    {
+        Container container = new Container();
+        /**
+         * Handles Container stuff
+         * 
+         * Container[ ContentInstance[ Content[contentInstances] ] ]
+         */
+        //resource <container>
+        container.setStateTag(BigInteger.ZERO);
+        container.setCreator("");
+        container.setMaxNrOfInstances(BigInteger.valueOf(1));
+        container.setMaxByteSize(BigInteger.valueOf(1024));
+        container.setMaxInstanceAge(BigInteger.valueOf(86400));//in seconds
+        container.setCurrentByteSize(BigInteger.valueOf(2));
+        container.setLocationID("");
+        container.setOntologyRef("");
+        for(ContentInstance ci : contentInstances)
+        {        
+            container.getContentInstanceOrContainerOrSubscription().add(ci);
+        }
+        
+        return container;
+    }
+    
 }
