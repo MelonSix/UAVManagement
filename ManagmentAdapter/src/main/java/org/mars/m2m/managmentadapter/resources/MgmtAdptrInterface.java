@@ -74,7 +74,9 @@ public class MgmtAdptrInterface {
                     response = opSvc.create(request, uriInfo);
                     break;
                 case RETRIEVE:
-                    response = opSvc.retrieve(request, uriInfo);
+                    response = (request.getTo().contains("discover"))?//threats a discover (a kind of retrieve request) request differently
+                                    opSvc.discover(request, uriInfo):
+                                    opSvc.retrieve(request, uriInfo);
                     break;
                 case UPDATE:
                     response = opSvc.update(request, uriInfo);
@@ -88,7 +90,7 @@ public class MgmtAdptrInterface {
                 default:
             }
         } catch (Exception e) {
-            logger.error(e.toString());
+            e.printStackTrace();
         }
         
         return response;

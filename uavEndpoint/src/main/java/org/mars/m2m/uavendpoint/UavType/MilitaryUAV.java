@@ -426,7 +426,7 @@ public class MilitaryUAV implements Runnable {
                 //attach instance
                 initializer.setInstancesForObject(3303, tempSensor);
                 initializer.setInstancesForObject(3, device);
-                List<ObjectEnabler> enablers = initializer.create(3303, 3);
+                List<ObjectEnabler> enablers = initializer.create(0, 1, 3303, 3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);

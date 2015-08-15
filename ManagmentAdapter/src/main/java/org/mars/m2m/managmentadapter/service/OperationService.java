@@ -6,6 +6,7 @@
 package org.mars.m2m.managmentadapter.service;
 
 import ch.qos.logback.classic.Logger;
+import com.google.gson.Gson;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -25,6 +26,7 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.model.DiscoveryList;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 import org.mars.m2m.managmentadapter.model.SvcConsumerDetails;
 import org.mars.m2m.managmentadapter.resources.MgmtAdptrInterface;
@@ -47,7 +49,12 @@ public class OperationService
     Container container;
     PrimitiveContent primitiveContent;
     UriInfo uriInfo;
-
+    
+    /**
+     * Default constructor for creating an instance of this class.
+     * <br/>
+     * Performs some initializations that are needed
+     */
     public OperationService() {
         this.of = new ObjectFactory();
         this.primitiveContent = new PrimitiveContent();
@@ -60,6 +67,12 @@ public class OperationService
         this.contentInstance = of.createContentInstance();
     }
     
+    /**
+     * Create request handling
+     * @param request The request
+     * @param uriInfo Injected information for the method in events that the URI details are needed
+     * @return A {@link ResponsePrimitive} instance
+     */
     public ResponsePrimitive create(RequestPrimitive request, UriInfo uriInfo)
     {
         //ObjectMapper objectMapper = new ObjectMapper();
@@ -85,10 +98,10 @@ public class OperationService
     }
     
     /**
-     *
-     * @param request
-     * @param uriInfo
-     * @return
+     * Retrieve request handling
+     * @param request The request
+     * @param uriInfo Injected information for the method in events that the URI details are needed
+     * @return A {@link ResponsePrimitive} instance
      */
     public ResponsePrimitive retrieve(RequestPrimitive request, UriInfo uriInfo)
     {
@@ -110,6 +123,12 @@ public class OperationService
         return primitiveResponse;
     }
     
+    /**
+     * Update request handling
+     * @param request The request
+     * @param uriInfo Injected information for the method in events that the URI details are needed
+     * @return A {@link ResponsePrimitive} instance
+     */
     public ResponsePrimitive update(RequestPrimitive request, UriInfo uriInfo)
     {
         //sets the request details to be sent to the client to consume a service
@@ -132,7 +151,12 @@ public class OperationService
          return primitiveResponse;
     }
     
-    
+    /**
+     * Delete request handling
+     * @param request The request
+     * @param uriInfo Injected information for the method in events that the URI details are needed
+     * @return A {@link ResponsePrimitive} instance
+     */
     public ResponsePrimitive delete(RequestPrimitive request, UriInfo uriInfo)
     {
         //sets the request details to be sent to the client to consume a service
@@ -153,7 +177,12 @@ public class OperationService
         return primitiveResponse;
     }
     
-    
+    /**
+     * Notify request handling
+     * @param request The request
+     * @param uriInfo Injected information for the method in events that the URI details are needed
+     * @return A {@link ResponsePrimitive} instance
+     */
     public ResponsePrimitive notify(RequestPrimitive request, UriInfo uriInfo)
     {        
         if(addToRegistry(request))
@@ -182,6 +211,55 @@ public class OperationService
         return primitiveResponse;
     }
     
+    /**
+     * Discovery on an endpoint
+     * @param request
+     * @param uriInfo
+     * @return 
+     */
+    public ResponsePrimitive discover(RequestPrimitive request, UriInfo uriInfo)
+    {
+        //sets the request details to be sent to the client to consume a service
+        this.uriInfo = uriInfo;
+        consumerDtls.setRequest(request);
+        consumerDtls.setHeaderData(headerData);
+                
+        //Gets the response of a consuming client's request
+        Response serviceResponse = msConsumer.handleGet(consumerDtls);
+        int statusCode = serviceResponse.getStatus();
+        DiscoveryList discoveryList = parseDiscoveredData(serviceResponse);
+        
+        //Sets up the data in a <container> resource
+        //prepareContainer(serviceResponse);
+        
+        //resource <responsePrimitive> or <response> 
+        //primitiveResponse = prepareRespPrimitive(request, statusCode, container);
+        
+        return primitiveResponse;
+    }
+    
+    /**
+     * Wraps the discovered response entity
+     * @param resp The discovery request's response
+     * @return A {@link DiscoveryList} instance containing the discovered data
+     */
+    public DiscoveryList parseDiscoveredData(Response resp)
+    {
+        Gson gson = new Gson();  
+        StringBuilder sb = new StringBuilder();
+        sb.append("{")
+                .append("\"data\"").append(":")
+                    .append(resp.readEntity(String.class))
+                .append("}");
+        System.out.println(sb.toString());
+        return gson.fromJson(sb.toString(), DiscoveryList.class);
+    }
+    
+    /**
+     * This method registers a Notify request for future callback invocations
+     * @param request The notify request
+     * @return true for a successful registration or false if otherwise
+     */
     public boolean addToRegistry(RequestPrimitive request)
     {                
         try 

@@ -296,7 +296,7 @@ public class ClientsResource {
             LwM2mResponse cResponse = this.processCreateRequest(client, target, req);
             processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
         } catch (IOException ex) {
-            Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+            log.error(ex.toString());
         }
         if(processedValResponse == null)
         {
