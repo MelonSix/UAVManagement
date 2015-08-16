@@ -9,6 +9,7 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 //import com.sun.jersey.core.util.MultivaluedMapImpl;
 import javax.ws.rs.core.Response;
@@ -18,14 +19,18 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.ObjectFactory;
 import org.mars.m2m.managmentadapter.client.ServiceConsumer;
 import org.slf4j.LoggerFactory;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.StdEventCats;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.Resource;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.model.DiscoveredInstanceDetails;
 import org.mars.m2m.managmentadapter.model.DiscoveryDetails;
 import org.mars.m2m.managmentadapter.model.DiscoveryList;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
@@ -229,14 +234,98 @@ public class OperationService
         Response serviceResponse = msConsumer.handleGet(consumerDtls);
         int statusCode = serviceResponse.getStatus();
         DiscoveryList discoveryList = parseDiscoveredData(serviceResponse);
+        Set<Integer> instances = getInstancesOfObject(discoveryList);
         
         //Sets up the data in a <container> resource
         //prepareContainer(serviceResponse);
         
         //resource <responsePrimitive> or <response> 
-        //primitiveResponse = prepareRespPrimitive(request, statusCode, container);
+        //primitiveResponse = prepareRespPrimitive(request, statusCode, resourcesCcontainer);
         
         return primitiveResponse;
+    }
+    
+    /**
+     * Puts all the resources of an instance into a &lt;Container&gt; resource
+     * and then the instance into a contentInstance. These are then packaged into
+     * another container representing the instance together with its resources
+     * 
+     * <p>
+     * [container [contentInstnce, container[ contentInstance, ...] ] ]
+     * <br/>
+     * <p/>
+     * <p>
+     *  _______________
+     * |Object         | contentInstance -----------------------------------------------------------------
+     * |_______________|                                                                                  |
+     *          |        ________________                                                                 | container
+     *          |--------|Instance       | contentInstance ---------------------------------              |
+     *          |        |_______________|                                                  |--container -|
+     *          |               |         ______________                                    |             |
+     *          |               |---------| Resource    | contentInstance -----             |             |
+     *          |               |         |_____________|                     |--container --             |
+     *          |               |         _______________                     |                           |
+     *          |               |---------| Resource    | contentInstance -----                           |
+     *          |               |         |_____________|                                                 |
+     *          |        ________________                                                                 | 
+     *          |--------|Instance       | contentInstance ---------------------------------              |
+     *          |        |_______________|                                                  |--container --
+     *                          |         ______________                                    |
+     *                          |---------| Resource    | contentInstance -----             |
+     *                          |         |_____________|                     |--container -- 
+     *                          |         _______________                     |
+     *                          |---------| Resource    | contentInstance -----
+     *                          |         |_____________|
+     * </p>
+     * @param discoveryList The discovered data
+     * @param instances The unique instances in the discovered data of an object
+     * @return A list of {@link Container} as the instances of this object
+     */
+    private Container getInstancesInContainers(DiscoveryList discoveryList, final Set<Integer> instancesIds)
+    {
+        //gets the details of the object  - the element in the reported list
+        DiscoveryDetails objectDetails = discoveryList.getData().get(0);
+                
+        ArrayList<Resource> instances;
+        instances = new ArrayList<>();
+        Gson gson = new Gson();
+         
+        //for each instance of the object gather all of it's associated resources
+        for(Integer i : instancesIds)
+        {
+            ArrayList<Resource> contentInstances = new ArrayList<>();
+            
+            for(DiscoveryDetails element : discoveryList.getData())
+            {
+                if(element.getObjectInstanceId() != null && 
+                        i == Integer.parseInt(element.getObjectInstanceId()))
+                {
+                   contentInstances.add(getContentInstance(gson.toJson(element)));
+                }
+            }
+            //Puts all the resource contentInstances into a single resourcesCcontainer for this instance
+            Container c = getContainer(contentInstances);
+            
+            //froms instance details
+            DiscoveredInstanceDetails instanceDetails = new DiscoveredInstanceDetails();
+            instanceDetails.setUrl(objectDetails.getUrl()+"/"+i);
+            instanceDetails.setObjectId(objectDetails.getObjectId());
+            instanceDetails.setPath(objectDetails.getPath()+"/"+i);
+            
+            //Gets this instance's contentInstance
+            ContentInstance ci = getContentInstance(gson.toJson(instanceDetails));
+            
+            //adds it to the instances list
+            instances.add(getContainer(ci,c));
+        }
+        
+        //For each instance of the object get a contentInstance for it
+        for(Resource instance : instances)
+        {
+            
+        }
+        
+        return getContainer(resources);
     }
     
     /**
@@ -244,14 +333,17 @@ public class OperationService
      * @param discoveryList The discovered data
      * @return The instance IDs of all the available instances of the object
      */
-    public ArrayList<Integer> getInstancesOfObject(DiscoveryList discoveryList)
+    private Set<Integer> getInstancesOfObject(DiscoveryList discoveryList)
     {
-        ArrayList<DiscoveryDetails> data = discoveryList.getData();
-        ArrayList<Integer> instanceIds = new ArrayList<>();
+        Set<Integer> instanceIds = new HashSet<>();
         
-        for(DiscoveryDetails element : data)
+        for(DiscoveryDetails element : discoveryList.getData())
         {
-            
+            if(element.getObjectInstanceId() != null && 
+                   !instanceIds.contains(Integer.parseInt(element.getObjectInstanceId())) )
+            {
+                instanceIds.add(Integer.parseInt(element.getObjectInstanceId()));
+            }
         }
         
         return instanceIds;
@@ -262,7 +354,7 @@ public class OperationService
      * @param resp The discovery request's response
      * @return A {@link DiscoveryList} instance containing the discovered data
      */
-    public DiscoveryList parseDiscoveredData(Response resp)
+    private DiscoveryList parseDiscoveredData(Response resp)
     {
         Gson gson = new Gson();  
         StringBuilder sb = new StringBuilder();
@@ -279,7 +371,7 @@ public class OperationService
      * @param request The notify request
      * @return true for a successful registration or false if otherwise
      */
-    public boolean addToRegistry(RequestPrimitive request)
+    private boolean addToRegistry(RequestPrimitive request)
     {                
         try 
         {
@@ -311,7 +403,7 @@ public class OperationService
      * Sets up the &lt;response&gt; or &lt;responsePrimitive&gt; resource to be sent to the originator of the request
      * @param req The &lt;request&gt; resource or request primitive
      * @param statusCode The returned status code from the management server
-     * @param container The &lt;container&gt; resource associated with this &lt;resource&gt; resource
+     * @param container The &lt;resourcesCcontainer&gt; resource associated with this &lt;resource&gt; resource
      * @return &ltresponse&gt; resource to be sent to the originator
      */
     public ResponsePrimitive prepareRespPrimitive(RequestPrimitive req, int statusCode, Container container)
@@ -346,7 +438,7 @@ public class OperationService
     }
         
     /**
-     * Sets up the &lt;container&gt; resource which shares the data instances among entities.
+     * Sets up the &lt;resourcesCcontainer&gt; resource which shares the data instances among entities.
      * <br/>
      * It is used as a mediator that buffers data exchange
      * @param resp The response from the exposed management server web service
@@ -400,33 +492,60 @@ public class OperationService
     }
     
     /**
-     * Produces a Container for a given number of {@link ContentInstance} objects
-     * @param contentInstances The given object(s)
+     * Produces a Container for a given number of {@link Resource} objects
+     * @param resources
      * @return An instance of {@link Container}
      */
-    public Container getContainer(ContentInstance... contentInstances)
+    public Container getContainer(ArrayList<Resource> resources)
     {
-        Container container = new Container();
+        Container resourcesCcontainer = new Container();
         /**
          * Handles Container stuff
          * 
          * Container[ ContentInstance[ Content[contentInstances] ] ]
          */
         //resource <container>
-        container.setStateTag(BigInteger.ZERO);
-        container.setCreator("");
-        container.setMaxNrOfInstances(BigInteger.valueOf(1));
-        container.setMaxByteSize(BigInteger.valueOf(1024));
-        container.setMaxInstanceAge(BigInteger.valueOf(86400));//in seconds
-        container.setCurrentByteSize(BigInteger.valueOf(2));
-        container.setLocationID("");
-        container.setOntologyRef("");
-        for(ContentInstance ci : contentInstances)
+        resourcesCcontainer.setStateTag(BigInteger.ZERO);
+        resourcesCcontainer.setCreator("");
+        resourcesCcontainer.setMaxNrOfInstances(BigInteger.valueOf(1));
+        resourcesCcontainer.setMaxByteSize(BigInteger.valueOf(1024));
+        resourcesCcontainer.setMaxInstanceAge(BigInteger.valueOf(86400));//in seconds
+        resourcesCcontainer.setCurrentByteSize(BigInteger.valueOf(2));
+        resourcesCcontainer.setLocationID("");
+        resourcesCcontainer.setOntologyRef("");
+        for(Resource ci : resources)
         {        
-            container.getContentInstanceOrContainerOrSubscription().add(ci);
+            resourcesCcontainer.getContentInstanceOrContainerOrSubscription().add(ci);
         }
         
-        return container;
+        return resourcesCcontainer;
+    }
+    
+    /**
+     * Produces a Container for a given number of {@link Resource} objects
+     * @param resources The passed resource(s)
+     * @return An instance of {@link Container}
+     */
+    public Container getContainer(Resource... resources)
+    {
+        Container resourcesCcontainer = new Container();
+        /**
+         * Handles Container stuff
+         * 
+         * Container[ ContentInstance[ Content[contentInstances] ] ]
+         */
+        //resource <container>
+        resourcesCcontainer.setStateTag(BigInteger.ZERO);
+        resourcesCcontainer.setCreator("");
+        resourcesCcontainer.setMaxNrOfInstances(BigInteger.valueOf(1));
+        resourcesCcontainer.setMaxByteSize(BigInteger.valueOf(1024));
+        resourcesCcontainer.setMaxInstanceAge(BigInteger.valueOf(86400));//in seconds
+        resourcesCcontainer.setCurrentByteSize(BigInteger.valueOf(2));
+        resourcesCcontainer.setLocationID("");
+        resourcesCcontainer.setOntologyRef("");
+        resourcesCcontainer.getContentInstanceOrContainerOrSubscription().addAll(Arrays.asList(resources));
+        
+        return resourcesCcontainer;
     }
     
 }

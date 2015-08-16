@@ -5,24 +5,18 @@
  */
 package org.mars.m2m.managmentadapter.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * This class is the model for the individual discovery details about a particular object/instance/resource
+ *
  * @author BRIGHTER AGYEMANG
  */
-public class DiscoveryDetails 
+public class DiscoveredInstanceDetails 
 {
     private String url;
-    private Map<String, String> attributes;
     private String objectId; // Made as a string to track IDs that are null although IDs are integers
     private String objectInstanceId;
-    private String resourceId;
     private String path;
 
-    public DiscoveryDetails() {
-        this.attributes = new HashMap<>();
+    public DiscoveredInstanceDetails() {
     }
 
     public String getUrl() {
@@ -31,14 +25,6 @@ public class DiscoveryDetails
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public Map<String, String> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Map<String, String> attributes) {
-        this.attributes = attributes;
     }
 
     public String getObjectId() {
@@ -72,5 +58,6 @@ public class DiscoveryDetails
     public void setPath(String path) {
         this.path = path;
     }
+    
     
 }
