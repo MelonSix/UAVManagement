@@ -236,11 +236,9 @@ public class OperationService
         DiscoveryList discoveryList = parseDiscoveredData(serviceResponse);
         Set<Integer> instances = getInstancesOfObject(discoveryList);
         
-        //Sets up the data in a <container> resource
-        //prepareContainer(serviceResponse);
-        
+                
         //resource <responsePrimitive> or <response> 
-        //primitiveResponse = prepareRespPrimitive(request, statusCode, resourcesCcontainer);
+        primitiveResponse = prepareRespPrimitive(request, statusCode, getContainerForObject(discoveryList, instances));
         
         return primitiveResponse;
     }
@@ -281,14 +279,16 @@ public class OperationService
      * @param instances The unique instances in the discovered data of an object
      * @return A list of {@link Container} as the instances of this object
      */
-    private Container getInstancesInContainers(DiscoveryList discoveryList, final Set<Integer> instancesIds)
+    private Container getContainerForObject(DiscoveryList discoveryList, final Set<Integer> instancesIds)
     {
+        Gson gson = new Gson();
+        
         //gets the details of the object  - the element in the reported list
         DiscoveryDetails objectDetails = discoveryList.getData().get(0);
                 
         ArrayList<Resource> instances;
         instances = new ArrayList<>();
-        Gson gson = new Gson();
+        instances.add(getContentInstance(gson.toJson(objectDetails)));
          
         //for each instance of the object gather all of it's associated resources
         for(Integer i : instancesIds)
@@ -319,13 +319,8 @@ public class OperationService
             instances.add(getContainer(ci,c));
         }
         
-        //For each instance of the object get a contentInstance for it
-        for(Resource instance : instances)
-        {
-            
-        }
-        
-        return getContainer(resources);
+                
+        return getContainer(instances);
     }
     
     /**
