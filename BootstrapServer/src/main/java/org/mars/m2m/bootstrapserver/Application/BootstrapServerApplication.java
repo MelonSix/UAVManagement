@@ -10,7 +10,6 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import java.net.InetSocketAddress;
-import org.eclipse.leshan.server.californium.impl.LwM2mBootstrapServerImpl;
 import org.eclipse.leshan.server.security.SecurityStore;
 import org.mars.m2m.bootstrapserver.Configuration.BootstrapServerConfiguration;
 import org.mars.m2m.bootstrapserver.Health.BootStrapResourceHealth;

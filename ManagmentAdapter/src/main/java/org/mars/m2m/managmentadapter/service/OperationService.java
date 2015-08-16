@@ -26,6 +26,7 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.model.DiscoveryDetails;
 import org.mars.m2m.managmentadapter.model.DiscoveryList;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 import org.mars.m2m.managmentadapter.model.SvcConsumerDetails;
@@ -236,6 +237,24 @@ public class OperationService
         //primitiveResponse = prepareRespPrimitive(request, statusCode, container);
         
         return primitiveResponse;
+    }
+    
+    /**
+     * Scans through the list and reports the unique instances of the object
+     * @param discoveryList The discovered data
+     * @return The instance IDs of all the available instances of the object
+     */
+    public ArrayList<Integer> getInstancesOfObject(DiscoveryList discoveryList)
+    {
+        ArrayList<DiscoveryDetails> data = discoveryList.getData();
+        ArrayList<Integer> instanceIds = new ArrayList<>();
+        
+        for(DiscoveryDetails element : data)
+        {
+            
+        }
+        
+        return instanceIds;
     }
     
     /**
