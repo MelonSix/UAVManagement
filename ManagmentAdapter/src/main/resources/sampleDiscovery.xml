@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ns2:responsePrimitive xmlns:ns2="http://www.onem2m.org/xml/protocols">
+    <responseStatusCode>2000</responseStatusCode>
+    <requestIdentifier>3aa2ae37-1805-4509-9931-77cc40823cee</requestIdentifier>
+    <content>
+        <ns2:container>
+            <stateTag>0</stateTag>
+            </creator>
+            <maxNrOfInstances>1</maxNrOfInstances>
+            <maxByteSize>1024</maxByteSize>
+            <maxInstanceAge>86400</maxInstanceAge>
+            <currentByteSize>2</currentByteSize>
+            </locationID>
+            </ontologyRef>
+            <ns2:contentInstance>
+                <stateTag>0</stateTag>
+                <contentInfo>application/json</contentInfo>
+                <contentSize>20</contentSize>
+                </ontologyRef>
+                <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303","attributes":{},"objectId":"3303","path":"/3303"}</content>
+            </ns2:contentInstance>
+            <ns2:container>
+                <stateTag>0</stateTag>
+                </creator>
+                <maxNrOfInstances>1</maxNrOfInstances>
+                <maxByteSize>1024</maxByteSize>
+                <maxInstanceAge>86400</maxInstanceAge>
+                <currentByteSize>2</currentByteSize>
+                </locationID>
+                </ontologyRef>
+                <ns2:contentInstance>
+                    <stateTag>0</stateTag>
+                    <contentInfo>application/json</contentInfo>
+                    <contentSize>20</contentSize>
+                    </ontologyRef>
+                    <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0","objectId":"3303","path":"/3303/0"}</content>
+                </ns2:contentInstance>
+                <ns2:container>
+                    <stateTag>0</stateTag>
+                    </creator>
+                    <maxNrOfInstances>1</maxNrOfInstances>
+                    <maxByteSize>1024</maxByteSize>
+                    <maxInstanceAge>86400</maxInstanceAge>
+                    <currentByteSize>2</currentByteSize>
+                    </locationID>
+                    </ontologyRef>
+                    <ns2:contentInstance>
+                        <stateTag>0</stateTag>
+                        <contentInfo>application/json</contentInfo>
+                        <contentSize>20</contentSize>
+                        </ontologyRef>
+                        <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0/5601","attributes":{},"objectId":"3303","objectInstanceId":"0","resourceId":"5601","path":"/3303/0/5601"}</content>
+                    </ns2:contentInstance>
+                    <ns2:contentInstance>
+                        <stateTag>0</stateTag>
+                        <contentInfo>application/json</contentInfo>
+                        <contentSize>20</contentSize>
+                        </ontologyRef>
+                        <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0/5602","attributes":{},"objectId":"3303","objectInstanceId":"0","resourceId":"5602","path":"/3303/0/5602"}</content>
+                    </ns2:contentInstance>
+                    <ns2:contentInstance>
+                        <stateTag>0</stateTag>
+                        <contentInfo>application/json</contentInfo>
+                        <contentSize>20</contentSize>
+                        </ontologyRef>
+                        <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0/5603","attributes":{},"objectId":"3303","objectInstanceId":"0","resourceId":"5603","path":"/3303/0/5603"}</content>
+                    </ns2:contentInstance>
+                    <ns2:contentInstance>
+                        <stateTag>0</stateTag>
+                        <contentInfo>application/json</contentInfo>
+                        <contentSize>20</contentSize>
+                        </ontologyRef>
+                        <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0/5604","attributes":{},"objectId":"3303","objectInstanceId":"0","resourceId":"5604","path":"/3303/0/5604"}</content>
+                    </ns2:contentInstance>
+                    <ns2:contentInstance>
+                        <stateTag>0</stateTag>
+                        <contentInfo>application/json</contentInfo>
+                        <contentSize>20</contentSize>
+                        </ontologyRef>
+                        <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0/5605","attributes":{},"objectId":"3303","objectInstanceId":"0","resourceId":"5605","path":"/3303/0/5605"}</content>
+                    </ns2:contentInstance>
+                    <ns2:contentInstance>
+                        <stateTag>0</stateTag>
+                        <contentInfo>application/json</contentInfo>
+                        <contentSize>20</contentSize>
+                        </ontologyRef>
+                        <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0/5700","attributes":{},"objectId":"3303","objectInstanceId":"0","resourceId":"5700","path":"/3303/0/5700"}</content>
+                    </ns2:contentInstance>
+                    <ns2:contentInstance>
+                        <stateTag>0</stateTag>
+                        <contentInfo>application/json</contentInfo>
+                        <contentSize>20</contentSize>
+                        </ontologyRef>
+                        <content xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">{"url":"/3303/0/5701","attributes":{},"objectId":"3303","objectInstanceId":"0","resourceId":"5701","path":"/3303/0/5701"}</content>
+                    </ns2:contentInstance>
+                </ns2:container>
+            </ns2:container>
+        </ns2:container>
+    </content>
+    <to>http://managmentadapter.com/resource</to>
+    <from>http://localhost:8070/ma/mgmtAdapter</from>
+    <originatingTimestamp>20150716T100356</originatingTimestamp>
+    <resultExpirationTimestamp>20150801T000000</resultExpirationTimestamp>
+    <eventCategory>DEFAULT</eventCategory>
+</ns2:responsePrimitive>
