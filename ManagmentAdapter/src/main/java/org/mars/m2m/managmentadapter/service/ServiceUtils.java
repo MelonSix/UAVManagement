@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceType;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.StdEventCats;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
@@ -46,7 +47,7 @@ public class ServiceUtils
      * @param discoveryList The discovered data
      * @return The instance IDs of all the available instances of the object
      */
-    Set<Integer> getInstancesOfObject(DiscoveryList discoveryList) {
+    public Set<Integer> getInstancesOfObject(DiscoveryList discoveryList) {
         Set<Integer> instanceIds = new HashSet<>();
         for (DiscoveryDetails element : discoveryList.getData()) {
             if (element.getObjectInstanceId() != null && !instanceIds.contains(Integer.parseInt(element.getObjectInstanceId()))) {
@@ -67,25 +68,25 @@ public class ServiceUtils
      * <p/>
      * <p>
      *  _______________
-     * |Object         | contentInstance -----------------------------------------------------------------
-     * |_______________|                                                                                  |
-     *          |        ________________                                                                 | container
-     *          |--------|Instance       | contentInstance ---------------------------------              |
-     *          |        |_______________|                                                  |--container -|
-     *          |               |         ______________                                    |             |
-     *          |               |---------| Resource    | contentInstance -----             |             |
-     *          |               |         |_____________|                     |--container --             |
-     *          |               |         _______________                     |                           |
-     *          |               |---------| Resource    | contentInstance -----                           |
-     *          |               |         |_____________|                                                 |
-     *          |        ________________                                                                 |
-     *          |--------|Instance       | contentInstance ---------------------------------              |
-     *          |        |_______________|                                                  |--container --
-     *                          |         ______________                                    |
-     *                          |---------| Resource    | contentInstance -----             |
-     *                          |         |_____________|                     |--container --
-     *                          |         _______________                     |
-     *                          |---------| Resource    | contentInstance -----
+     * |Object         | contentInstance -------------------------------------------------------------------
+     * |_______________|                                                                                    |
+     *          |        ________________                                                                   |-- container
+     *          |--------|Instance       | contentInstance ----------------------------------               |
+     *          |        |_______________|                                                  |-- container --|
+     *          |               |         ______________                                    |               |
+     *          |               |---------| Resource    | contentInstance- container -------|               | 
+     *          |               |         |_____________|                                   |               |
+     *          |               |         _______________                                   |               |
+     *          |               |---------| Resource    | contentInstance- container -------                |
+     *          |               |         |_____________|                                                   |
+     *          |        ________________                                                                   |
+     *          |--------|Instance       | contentInstance----------------------------------                |
+     *          |        |_______________|                                                  |--container ---|
+     *                          |         ______________                                    |               
+     *                          |---------| Resource    | contentInstance-- container ------                
+     *                          |         |_____________|                                   |           
+     *                          |         _______________                                   |
+     *                          |---------| Resource    | contentInstance-- container ------
      *                          |         |_____________|
      * </p>
      * @param discoveryList The discovered data
@@ -95,35 +96,46 @@ public class ServiceUtils
     public Container getContainerForObject(DiscoveryList discoveryList, final Set<Integer> instancesIds) {
         Gson gson = new Gson();
         DiscoveryDetails objectDetails = discoveryList.getData().get(0);
-        ArrayList<Resource> instances;
-        instances = new ArrayList<>();
+        ArrayList<Resource> discoveredContent;
+        discoveredContent = new ArrayList<>();
         
         if(discoveryList.getData().size() > 1)//case of a collection
         {
-            instances.add(getContentInstance(gson.toJson(objectDetails)));
-            for (Integer i : instancesIds) {
-                ArrayList<Resource> contentInstances = new ArrayList<>();
+            //object handling
+            discoveredContent.add(getContentInstance(gson.toJson(objectDetails)));
+            
+            //instance(s) handling
+            for (Integer i : instancesIds)
+            {
+                //resource(s) handling
+                ArrayList<Resource> objectInstanceResources = new ArrayList<>();
                 for (DiscoveryDetails element : discoveryList.getData()) {
                     if (element.getObjectInstanceId() != null && i == Integer.parseInt(element.getObjectInstanceId())) {
-                        contentInstances.add(getContentInstance(gson.toJson(element)));
+                        objectInstanceResources.add(getContainer(getContentInstance(gson.toJson(element)), element.getPath()));
                     }
                 }
-                Container c = getContainer(contentInstances);
-                DiscoveredInstanceDetails instanceDetails = new DiscoveredInstanceDetails();
-                instanceDetails.setUrl(objectDetails.getUrl() + "/" + i);
-                instanceDetails.setObjectId(objectDetails.getObjectId());
-                instanceDetails.setPath(objectDetails.getPath() + "/" + i);
-                ContentInstance ci = getContentInstance(gson.toJson(instanceDetails));
-                instances.add(getContainer(ci, c));
+                
+                //Container objectInstanceResourcesContainer = getContainer(objectInstanceResources);
+                DiscoveredInstanceDetails objectInstance = new DiscoveredInstanceDetails();
+                objectInstance.setUrl(objectDetails.getUrl() + "/" + i);
+                objectInstance.setObjectId(objectDetails.getObjectId());
+                objectInstance.setPath(objectDetails.getPath() + "/" + i);
+                ContentInstance objectInstanceContntInst = getContentInstance(gson.toJson(objectInstance));
+                discoveredContent.add(addResourcesToInstance(getContainer(objectInstanceContntInst, objectInstance.getPath()), objectInstanceResources));
             }
         }
         else if(discoveryList.getData().size() == 1) //case of data about a particular instance or resource discovery e.g. /0/0/0 or /0/0
         {
             DiscoveryDetails element = discoveryList.getData().get(0);
-            instances.add(getContentInstance(gson.toJson(element)));            
+            return getContainer(getContentInstance(gson.toJson(element)), element.getPath());       
         }
         
-        return getContainer(instances);
+        //wraps the discovered data in a container for the response primitive to be sent to the originator of the request
+        Container responseContainer = getContainer(discoveredContent); 
+        //sets the resource and parent Ids of the object details contentInstance's container
+        setResourceAndParentID(objectDetails.getPath(), responseContainer);
+        
+        return responseContainer;
     }
 
     /**
@@ -157,7 +169,34 @@ public class ServiceUtils
         ci.setContentSize(BigInteger.valueOf(20));
         ci.setOntologyRef("");
         ci.setContent(value);
+        //setResourceAndParentID(path, ci);
+        ci.setCreationTime(DmCommons.getOneM2mTimeStamp());
         return ci;
+    }
+    
+    /**
+     * 
+     * @param path
+     * @param m2mResource 
+     */
+    private void setResourceAndParentID(String path, Resource m2mResource) {
+        String[] pathElements = path.substring(1).split("/");// e.g. /0/0/0 -> 0/0/0 -> [0][0][0]
+        switch(pathElements.length)
+        {
+            case 3:// 3/0/1
+                m2mResource.setResourceID(path);
+                m2mResource.setParentID("/"+pathElements[0]+"/"+pathElements[1]);
+                break;
+            case 2:// 3/0
+                m2mResource.setResourceID("/"+pathElements[0]+"/"+pathElements[1]);
+                m2mResource.setParentID("/"+pathElements[0]);
+                break;
+            case 1:// 3
+                m2mResource.setResourceID("/"+pathElements[0]);
+                m2mResource.setParentID("");
+                break;
+            default:
+        }
     }
 
     /**
@@ -251,38 +290,74 @@ public class ServiceUtils
      * @return An instance of {@link Container}
      */
     public Container getContainer(ArrayList<Resource> resources) {
-        Container resourcesCcontainer = new Container();
-        resourcesCcontainer.setStateTag(BigInteger.ZERO);
-        resourcesCcontainer.setCreator("");
-        resourcesCcontainer.setMaxNrOfInstances(BigInteger.valueOf(1));
-        resourcesCcontainer.setMaxByteSize(BigInteger.valueOf(1024));
-        resourcesCcontainer.setMaxInstanceAge(BigInteger.valueOf(86400));
-        resourcesCcontainer.setCurrentByteSize(BigInteger.valueOf(2));
-        resourcesCcontainer.setLocationID("");
-        resourcesCcontainer.setOntologyRef("");
-        for (Resource ci : resources) {
-            resourcesCcontainer.getContentInstanceOrContainerOrSubscription().add(ci);
+        Container resourcesContainer = new Container();
+        
+        //Resource properties
+        resourcesContainer.setResourceType(ResourceType.CONTAINER.getValue());
+        resourcesContainer.setResourceID(null);
+        resourcesContainer.setParentID(null);
+        resourcesContainer.setCreationTime(DmCommons.getOneM2mTimeStamp());
+        
+        //Container properties
+        resourcesContainer.setStateTag(BigInteger.ZERO);
+        resourcesContainer.setCreator("");
+        resourcesContainer.setMaxNrOfInstances(BigInteger.valueOf(1));
+        resourcesContainer.setMaxByteSize(BigInteger.valueOf(1024));
+        resourcesContainer.setMaxInstanceAge(BigInteger.valueOf(86400));
+        resourcesContainer.setCurrentByteSize(BigInteger.valueOf(2));
+        resourcesContainer.setLocationID("");
+        resourcesContainer.setOntologyRef("");
+        for (Resource res : resources) {
+            
+            if(res instanceof ContentInstance)//selects the 
+            {
+                
+            }
+            
+            resourcesContainer.getContentInstanceOrContainerOrSubscription().add(res);
         }
-        return resourcesCcontainer;
+        return resourcesContainer;
     }
 
     /**
      * Produces a Container for a given number of {@link Resource} objects
-     * @param resources The passed resource(s)
+     * @param resource The passed resource(s)
      * @return An instance of {@link Container}
      */
-    public Container getContainer(Resource... resources) {
-        Container resourcesCcontainer = new Container();
-        resourcesCcontainer.setStateTag(BigInteger.ZERO);
-        resourcesCcontainer.setCreator("");
-        resourcesCcontainer.setMaxNrOfInstances(BigInteger.valueOf(1));
-        resourcesCcontainer.setMaxByteSize(BigInteger.valueOf(1024));
-        resourcesCcontainer.setMaxInstanceAge(BigInteger.valueOf(86400));
-        resourcesCcontainer.setCurrentByteSize(BigInteger.valueOf(2));
-        resourcesCcontainer.setLocationID("");
-        resourcesCcontainer.setOntologyRef("");
-        resourcesCcontainer.getContentInstanceOrContainerOrSubscription().addAll(Arrays.asList(resources));
-        return resourcesCcontainer;
+    public Container getContainer(ContentInstance resource, String elementPath) {
+        Container resourcesContainer = new Container();
+                
+        //Resource properties        
+        resourcesContainer.setResourceType(ResourceType.CONTAINER.getValue());
+        setResourceAndParentID(elementPath, resourcesContainer);
+        resourcesContainer.setCreationTime(DmCommons.getOneM2mTimeStamp());
+        
+        //container properties
+        resourcesContainer.setStateTag(BigInteger.ZERO);
+        resourcesContainer.setCreator("");
+        resourcesContainer.setMaxNrOfInstances(BigInteger.valueOf(1));
+        resourcesContainer.setMaxByteSize(BigInteger.valueOf(1024));
+        resourcesContainer.setMaxInstanceAge(BigInteger.valueOf(86400));
+        resourcesContainer.setCurrentByteSize(BigInteger.valueOf(2));
+        resourcesContainer.setLocationID("");
+        resourcesContainer.setOntologyRef("");
+        resourcesContainer.getContentInstanceOrContainerOrSubscription().add(resource);
+        return resourcesContainer;
+    }
+    
+    /**
+     * Adds resources packaged into containers to the container of the object instance they belong to 
+     * @param instanceContainer The container of the object instance
+     * @param resourceContainers The resources, packaged into containers, to be added to the container of the object instance
+     * @return  The object instance container containing its {@link ContentInstance} object and the resource containers
+     */
+    private Container addResourcesToInstance(Container instanceContainer, final ArrayList<Resource> resourceContainers)
+    {
+        for(Resource resource : resourceContainers)
+        {
+            instanceContainer.getContentInstanceOrContainerOrSubscription().add(resource);
+        }
+        return instanceContainer;
     }
     
 }
