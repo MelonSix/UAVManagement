@@ -47,7 +47,7 @@ import org.eclipse.leshan.server.client.Client;
 import org.eclipse.leshan.util.Validate;
 import org.mars.m2m.managementserver.core.ResponseManagement;
 import org.mars.m2m.managementserver.json.ConfigGson;
-import org.mars.m2m.managementserver.representations.ObjectResource;
+import org.mars.m2m.managementserver.model.ObjectResource;
 import org.mars.m2m.managementserver.resources.subresources.Discovery;
 import org.slf4j.LoggerFactory;
 

@@ -43,14 +43,6 @@ public class DiscoveredInstanceDetails
         this.objectInstanceId = objectInstanceId;
     }
 
-    public String getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(String resourceId) {
-        this.resourceId = resourceId;
-    }
-
     public String getPath() {
         return path;
     }

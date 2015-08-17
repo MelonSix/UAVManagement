@@ -15,6 +15,8 @@ import org.eclipse.leshan.core.request.DiscoverRequest;
 import org.eclipse.leshan.core.response.DiscoverResponse;
 import org.eclipse.leshan.server.LwM2mServer;
 import org.eclipse.leshan.server.client.Client;
+import org.mars.m2m.managementserver.exceptions.DiscoverResourcesException;
+import org.mars.m2m.managementserver.model.ErrorMessage;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -25,7 +27,7 @@ import org.slf4j.LoggerFactory;
 @Produces(MediaType.APPLICATION_JSON)
 public class Discovery 
 {    
-    private ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Discovery.class);
+    private final ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Discovery.class);
     private final LwM2mServer server;
     private final String endpointID;
     
@@ -78,4 +80,13 @@ public class Discovery
         else
             return Response.serverError().build();
     }
+    
+//    @GET
+//    @Path("{id : .+}")
+//    public Response error()
+//    {
+//        //throw new DiscoverResourcesException("Path not found");
+//        ErrorMessage errorMessage = new ErrorMessage("Path not found", 404, "www.exceptionLinkHere.com");
+//        return Response.status(Response.Status.NOT_FOUND).entity(errorMessage).build();
+//    }
 }

@@ -18,7 +18,7 @@ import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ResponsePrimitive;
 import org.mars.m2m.dmcore.util.DmCommons;
 import org.mars.m2m.managmentadapter.resources.subResources.NotificationResource;
-import org.mars.m2m.managmentadapter.service.OperationService;
+import org.mars.m2m.managmentadapter.service.AdapterServices;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -66,7 +66,7 @@ public class MgmtAdptrInterface {
     {
         ResponsePrimitive response = null;
         operation = DmCommons.determineOneM2mOperation(request.getOperation());
-        OperationService opSvc = new OperationService();
+        AdapterServices opSvc = new AdapterServices();
         
         try {
             switch (operation) {
