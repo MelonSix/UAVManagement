@@ -90,25 +90,28 @@ public class DeviceHelper {
                                     OmaLwM2mSecurity sc, OmaLwM2mServer ss) 
     {
         String registrationID=null;
-//        RegisterResponse response = client.send(new RegisterRequest(endpointIdentifier,
-//                                                    ss.getLifetime(),
-//                                                    "LwM2m v1",
-//                                                     ss.getBinding(),
-//                                                    sc.getServerSmsNumber(),
-//                                                    null, null, 0, new InetSocketAddress));
-//
-//        // Report registration response.
-//        System.out.println("Device Registration (Success? " + response.getCode() + ")");
-//        if (response.getCode() == ResponseCode.CREATED) {
-//            System.out.println("\tDevice: Registered Client Location '" + response.getRegistrationID() + "'");
-//            registrationID = response.getRegistrationID();
-//        } else {
-//            // TODO Should we have a error message on response ?
-//            // System.err.println("\tDevice Registration Error: " + response.getErrorMessage());
-//            System.err.println("\tDevice Registration Error: " + response.getCode());
-//            System.err
-//                    .println("If you're having issues connecting to the LWM2M endpoint, try using the DTLS port instead");
-//        }
+        RegisterResponse response = 
+                client.send(
+        new RegisterRequest(endpointIdentifier,
+                                            ss.getLifetime(),
+                                            "LwM2m v1",
+                                             ss.getBinding(),
+                                            sc.getServerSmsNumber(),
+                                            null, null, 0, 
+                sc.getSecretKey(), sc.getServerPublicKeyOrId()));
+
+        // Report registration response.
+        System.out.println("Device Registration (Success? " + response.getCode() + ")");
+        if (response.getCode() == ResponseCode.CREATED) {
+            System.out.println("\tDevice: Registered Client Location '" + response.getRegistrationID() + "'");
+            registrationID = response.getRegistrationID();
+        } else {
+            // TODO Should we have a error message on response ?
+            // System.err.println("\tDevice Registration Error: " + response.getErrorMessage());
+            System.err.println("\tDevice Registration Error: " + response.getCode());
+            System.err
+                    .println("If you're having issues connecting to the LWM2M endpoint, try using the DTLS port instead");
+        }
         return registrationID;
     }
     
