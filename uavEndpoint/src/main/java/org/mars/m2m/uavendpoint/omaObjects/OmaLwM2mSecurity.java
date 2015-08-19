@@ -29,6 +29,8 @@ public class OmaLwM2mSecurity extends BaseInstanceEnabler
     private int clientOldOffTime;
     
     public OmaLwM2mSecurity() {
+        securityMode = SecurityMode.NO_SEC;
+        smsSecurityMode = SmsSecurityMode.NO_SEC;
     }
 
     public String getUri() {

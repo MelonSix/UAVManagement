@@ -332,12 +332,19 @@ public class MilitaryUAV implements Runnable {
                 /**
                  * LwM2M client registration
                  */
+                    BootstrapConfig.ServerConfig sc;
+                    BootstrapConfig.ServerSecurity ss;
+                    this.registrationID = DeviceHelper.register(client, endpointIdentifier, 
+                                lwM2mSecurity, lwM2mServer, 
+                                    serverHostName, serverPort);
                 for(Integer i : this.servers.keySet())
                 {
-                    BootstrapConfig.ServerConfig sc = servers.get(i);
-                    BootstrapConfig.ServerSecurity ss = security.get(i);
+                    sc = servers.get(i);
+                    ss = security.get(i);
                     //this.registrationID = DeviceHelper.register(client, endpointIdentifier);
-                    this.registrationID = DeviceHelper.register(client, endpointIdentifier, ss, sc, serverHostName, serverPort);
+//                    this.registrationID = DeviceHelper.register(client, endpointIdentifier, 
+//                                ConvertObject.toLwM2mSecurity(ss), ConvertObject.toLwM2mServer(sc), 
+//                                    serverHostName, serverPort);
                 }
             }
             else
