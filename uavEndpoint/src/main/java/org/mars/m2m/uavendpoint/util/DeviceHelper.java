@@ -5,7 +5,11 @@
  */
 package org.mars.m2m.uavendpoint.util;
 
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.LwM2mClient;
 import org.eclipse.leshan.client.californium.LeshanClient;
@@ -82,37 +86,51 @@ public class DeviceHelper {
      * Registers a LwM2M client with a LwM2M server using bootstrap information
      * @param client The client to be registered
      * @param endpointIdentifier The endpoint's name
-     * @param sc Server configuration details
-     * @param ss Server security details for registration
+     * @param sec Server configuration details
+     * @param server Server security details for registration
+     * @param sourceAddress
+     * @param sourcePort
      * @return The registration ID assigned by the server
      */
     public static synchronized String register(final LeshanClient client, final String endpointIdentifier, 
-                                    OmaLwM2mSecurity sc, OmaLwM2mServer ss) 
+                                    OmaLwM2mSecurity sec, OmaLwM2mServer server, String sourceAddress, int sourcePort) 
     {
-        String registrationID=null;
-        RegisterResponse response = 
-                client.send(
-        new RegisterRequest(endpointIdentifier,
-                                            ss.getLifetime(),
-                                            "LwM2m v1",
-                                             ss.getBinding(),
-                                            sc.getServerSmsNumber(),
-                                            null, null, 0, 
-                sc.getSecretKey(), sc.getServerPublicKeyOrId()));
-
-        // Report registration response.
-        System.out.println("Device Registration (Success? " + response.getCode() + ")");
-        if (response.getCode() == ResponseCode.CREATED) {
-            System.out.println("\tDevice: Registered Client Location '" + response.getRegistrationID() + "'");
-            registrationID = response.getRegistrationID();
-        } else {
-            // TODO Should we have a error message on response ?
-            // System.err.println("\tDevice Registration Error: " + response.getErrorMessage());
-            System.err.println("\tDevice Registration Error: " + response.getCode());
-            System.err
-                    .println("If you're having issues connecting to the LWM2M endpoint, try using the DTLS port instead");
+        try 
+        {
+            String registrationID=null;
+            String[] lwm2mServerDetails = sec.getUri().split(":");//coap://ipaddr:port -> [coap][ipaddr][port]
+            RegisterResponse response;
+            RegisterRequest request = new RegisterRequest(endpointIdentifier,//endpoint Name
+                    (long)server.getLifetime(),//lifetime
+                    "LWM2M v1",//lwVersion
+                    server.getBinding(),//binding Mode
+                    sec.getServerSmsNumber(),//sms Number
+                    null,//object Links
+                    InetAddress.getByName(sourceAddress), // source Address
+                    sourcePort,//source Port
+                    new InetSocketAddress(lwm2mServerDetails[1], Integer.parseInt(lwm2mServerDetails[2])),//registrationEndpoint
+                    new String(sec.getSecretKey()),//pskIdentity
+                    null//public key
+            );
+            response = client.send(request);
+            
+            // Report registration response.
+            System.out.println("Device Registration (Success? " + response.getCode() + ")");
+            if (response.getCode() == ResponseCode.CREATED) {
+                System.out.println("\tDevice: Registered Client Location '" + response.getRegistrationID() + "'");
+                registrationID = response.getRegistrationID();
+            } else {
+                // TODO Should we have a error message on response ?
+                // System.err.println("\tDevice Registration Error: " + response.getErrorMessage());
+                System.err.println("\tDevice Registration Error: " + response.getCode());
+                System.err
+                        .println("If you're having issues connecting to the LWM2M endpoint, try using the DTLS port instead");
+            }
+            return registrationID;
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(DeviceHelper.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-        return registrationID;
     }
     
     /**

@@ -334,7 +334,10 @@ public class MilitaryUAV implements Runnable {
                  */
                 for(Integer i : this.servers.keySet())
                 {
-                    this.registrationID = DeviceHelper.register(client, endpointIdentifier);  
+                    BootstrapConfig.ServerConfig sc = servers.get(i);
+                    BootstrapConfig.ServerSecurity ss = security.get(i);
+                    //this.registrationID = DeviceHelper.register(client, endpointIdentifier);
+                    this.registrationID = DeviceHelper.register(client, endpointIdentifier, ss, sc, serverHostName, serverPort);
                 }
             }
             else
