@@ -13,7 +13,7 @@ import org.eclipse.leshan.server.bootstrap.SmsSecurityMode;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Bootstrap information setup Stub
  * @author BRIGHTER AGYEMANG
  */
 public class BootstrapInfo {
@@ -63,7 +63,11 @@ public class BootstrapInfo {
         BootstrapConfig bootstrapConfig = new BootstrapConfig();
         bootstrapConfig.servers.put(1, setUpServerConfig());
         bootstrapConfig.security.put(0, setUpSecurityConfig());
+        bStore.addConfig("UAV Manager", bootstrapConfig);
+        bStore.addConfig("Threat sensor", bootstrapConfig);
+        bStore.addConfig("IPSO Temperature sensor", bootstrapConfig);
         bStore.addConfig("missileDispatcher", bootstrapConfig);
+        bStore.addConfig("Altitude sensor", bootstrapConfig);
         bStore.deleteConfig("");//for forcing write to file
         return bStore;
     }

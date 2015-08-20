@@ -121,7 +121,7 @@ public class BootstrapedRegistrationHandler
             registerWithBoostrapInfo(client, serverConfigs, securityConfigs, clientAddress);
             
         } catch (Exception e) {
-            LOG.error(e.toString());
+            e.printStackTrace();
         }
     }
     

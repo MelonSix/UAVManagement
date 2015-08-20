@@ -8,17 +8,13 @@ package org.mars.m2m.uavendpoint.UavType;
 import ch.qos.logback.classic.Logger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.eclipse.californium.core.CoapServer;
-import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.client.californium.LeshanClientExt;
-import org.eclipse.leshan.client.californium.impl.ObjectResource;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
-import org.eclipse.leshan.server.bootstrap.BootstrapConfig;
 import org.mars.m2m.Devices.AltitudeSensor;
 import org.mars.m2m.Devices.FlightControl;
 import org.mars.m2m.Devices.MissileDispatcher;
@@ -31,16 +27,10 @@ import org.mars.m2m.uavendpoint.util.AbstractDevice;
 import org.mars.m2m.uavendpoint.util.DeviceHelper;
 import org.mars.m2m.uavendpoint.util.UavObjectFactory;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
-import org.mars.m2m.uavendpoint.Model.RegisteredClientData;
 import org.mars.m2m.uavendpoint.Model.RegisteredClientDataList;
-import org.mars.m2m.uavendpoint.Model.RequiredBootstrapInfo;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
 import org.mars.m2m.uavendpoint.omaObjects.Device;
-import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mSecurity;
-import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mServer;
 import org.mars.m2m.uavendpoint.util.BootstrapedRegistrationHandler;
-import org.mars.m2m.uavendpoint.util.ConvertObject;
-import org.mars.m2m.uavendpoint.util.UnmarshalBootstrap;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -102,10 +92,12 @@ public class MilitaryUAV implements Runnable {
     {        
         private ThreatSensor threatSensor;
         private Device device;
+        BootstrapedRegistrationHandler bsRegHandler;
 
         public ThreatSensorDeviceClient()
         {
             this(null);
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.threatSensor = uavObjFactory.createThreatSensor();
         }  
@@ -116,6 +108,7 @@ public class MilitaryUAV implements Runnable {
          */
         public ThreatSensorDeviceClient(DeviceStarterDetails lwm2mClientDetails)
         {
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.threatSensor = uavObjFactory.createThreatSensor();
             try
@@ -128,6 +121,8 @@ public class MilitaryUAV implements Runnable {
                     this.serverPort = lwm2mClientDetails.getServerPort();
                     this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
                     this.endpointName = lwm2mClientDetails.getEndPointName();
+                    this.bsAddress = lwm2mClientDetails.getBsAddress();
+                    this.bsPortnumber = lwm2mClientDetails.getBsPortnumber();
                     
                     StarterValidator.notNull(localHostName);
                     StarterValidator.notWellKnownPort(localPort);
@@ -145,7 +140,7 @@ public class MilitaryUAV implements Runnable {
             }
             catch(Exception ex)
             {
-                ex.printStackTrace();
+                log.error(ex.toString());
             }
         }
         
@@ -169,25 +164,26 @@ public class MilitaryUAV implements Runnable {
                 //attach instance
                 initializer.setInstancesForObject(12202, threatSensor);
                 initializer.setInstancesForObject(3, device);
-                List<ObjectEnabler> enablers = initializer.create(12202,3,0,1);
+                List<ObjectEnabler> enablers = initializer.create(12202,3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
                 final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
 
-                client = new LeshanClientExt(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                CoapServer coapServer = new CoapServer();
+                client = new LeshanClientExt(clientAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                         enablers));
 
                 // Start the client
                 client.start();
-
-                // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
+                
+                //performs registration using bootstrap approach on the client
+                bsRegHandler.doBsRegistration(initializer, coapServer, clientAddress, this);
                 
                 /**
                  * LwM2M client registration
                  */
-                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+                //this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
             }
             else
             {
@@ -317,6 +313,7 @@ public class MilitaryUAV implements Runnable {
          */
         TemperatureSensor tempSensor;
         Device device;
+        BootstrapedRegistrationHandler bsRegHandler;
         
         /**
          * Default constructor
@@ -324,6 +321,7 @@ public class MilitaryUAV implements Runnable {
         public TemperatureSensorClient() 
         {
             this(null);
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.tempSensor = new TemperatureSensor();
         }
@@ -334,8 +332,11 @@ public class MilitaryUAV implements Runnable {
          */
         public TemperatureSensorClient(DeviceStarterDetails lwm2mClientDetails)
         {
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.tempSensor = new TemperatureSensor();
+            this.registeredClientDataList = new RegisteredClientDataList();
+            
             try
             {
                 if(lwm2mClientDetails != null)
@@ -346,6 +347,8 @@ public class MilitaryUAV implements Runnable {
                     this.serverPort = lwm2mClientDetails.getServerPort();
                     this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
                     this.endpointName = lwm2mClientDetails.getEndPointName();
+                    this.bsAddress = lwm2mClientDetails.getBsAddress();
+                    this.bsPortnumber = lwm2mClientDetails.getBsPortnumber();
                     
                     StarterValidator.notNull(localHostName);
                     StarterValidator.notWellKnownPort(localPort);
@@ -363,7 +366,7 @@ public class MilitaryUAV implements Runnable {
             }
             catch(Exception ex)
             {
-                ex.printStackTrace();
+                log.error(ex.toString());
             }
         }
         
@@ -377,9 +380,9 @@ public class MilitaryUAV implements Runnable {
                 /** Monitors the state of the UAV */
                 this.deviceStarted = true;
             
-//                //Gets the model
-//                LwM2mModel uavCustomLwM2mModel;
-//                uavCustomLwM2mModel = DeviceHelper.getObjectModel(this.objectModelFilename);
+                /*//Gets the model
+                LwM2mModel uavCustomLwM2mModel;
+                uavCustomLwM2mModel = DeviceHelper.getObjectModel(this.objectModelFilename);*/
 
                 ObjectsInitializer initializer;
                 initializer = new ObjectsInitializer(uavCustomLwM2mModel);
@@ -387,25 +390,21 @@ public class MilitaryUAV implements Runnable {
                 //attach instance
                 initializer.setInstancesForObject(3303, tempSensor);
                 initializer.setInstancesForObject(3, device);
-                List<ObjectEnabler> enablers = initializer.create(0, 1, 3303, 3);
+                List<ObjectEnabler> enablers = initializer.create(3303, 3);
 
                 // Create client
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
                 final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
 
-                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                CoapServer coapServer = new CoapServer();
+                client = new LeshanClientExt(clientAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                         enablers));
 
                 // Start the client
                 client.start();
-
-                // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
-                /**
-                 * LwM2M client registration
-                 */
-                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+                //performs registration using bootstrap approach on the client
+                bsRegHandler.doBsRegistration(initializer, coapServer, clientAddress, this);              
             }
             else
             {
@@ -423,10 +422,12 @@ public class MilitaryUAV implements Runnable {
     {
         FlightControl flightControl;
         Device device;
+        BootstrapedRegistrationHandler bsRegHandler;
 
         public FlightControlClient() {
             this.device = new Device();
             this.flightControl = new FlightControl();
+            this.registeredClientDataList = new RegisteredClientDataList();
         }
 
         public FlightControlClient(DeviceStarterDetails lwm2mClientDetails) 
@@ -443,6 +444,8 @@ public class MilitaryUAV implements Runnable {
                     this.serverPort = lwm2mClientDetails.getServerPort();
                     this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
                     this.endpointName = lwm2mClientDetails.getEndPointName();
+                    this.bsAddress = lwm2mClientDetails.getBsAddress();
+                    this.bsPortnumber = lwm2mClientDetails.getBsPortnumber();
                     
                     StarterValidator.notNull(localHostName);
                     StarterValidator.notWellKnownPort(localPort);
@@ -460,7 +463,7 @@ public class MilitaryUAV implements Runnable {
             }
             catch(Exception ex)
             {
-                ex.printStackTrace();
+                log.error(ex.toString());
             }
         }
         
@@ -490,19 +493,15 @@ public class MilitaryUAV implements Runnable {
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
                 final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
 
-                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                CoapServer coapServer = new CoapServer();
+                client = new LeshanClientExt(clientAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                         enablers));
 
                 // Start the client
                 client.start();
-
-                // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
-                /**
-                 * LwM2M client registration
-                 */
-                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+                //performs registration using bootstrap approach on the client
+                bsRegHandler.doBsRegistration(initializer, coapServer, clientAddress, this);              
             }
             else
             {
@@ -516,14 +515,18 @@ public class MilitaryUAV implements Runnable {
     {
         UAVmanager uavManager;
         Device device;
+        BootstrapedRegistrationHandler bsRegHandler;
 
         public UAVManagerClient() {
+            this(null);
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.uavManager = uavObjFactory.createUAVmanager();
         }
         
         public UAVManagerClient(DeviceStarterDetails lwm2mClientDetails)
         {
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.uavManager = uavObjFactory.createUAVmanager();
             try
@@ -536,6 +539,8 @@ public class MilitaryUAV implements Runnable {
                     this.serverPort = lwm2mClientDetails.getServerPort();
                     this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
                     this.endpointName = lwm2mClientDetails.getEndPointName();
+                    this.bsAddress = lwm2mClientDetails.getBsAddress();
+                    this.bsPortnumber = lwm2mClientDetails.getBsPortnumber();
                     
                     StarterValidator.notNull(localHostName);
                     StarterValidator.notWellKnownPort(localPort);
@@ -583,19 +588,15 @@ public class MilitaryUAV implements Runnable {
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
                 final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
 
-                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                CoapServer coapServer = new CoapServer();
+                client = new LeshanClientExt(clientAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                         enablers));
 
                 // Start the client
                 client.start();
-
-                // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
-                /**
-                 * LwM2M client registration
-                 */
-                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+                //performs registration using bootstrap approach on the client
+                bsRegHandler.doBsRegistration(initializer, coapServer, clientAddress, this);              
             }
             else
             {
@@ -610,14 +611,18 @@ public class MilitaryUAV implements Runnable {
     {
         AltitudeSensor altitudeSensor;
         Device device;
+        BootstrapedRegistrationHandler bsRegHandler;
 
         public AltitudeSensorClient() {
+            this(null);
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.altitudeSensor = uavObjFactory.createAltitudeSensor();
         }
         
         public AltitudeSensorClient(DeviceStarterDetails lwm2mClientDetails)
         {
+            this.bsRegHandler = new BootstrapedRegistrationHandler();
             this.device = new Device();
             this.altitudeSensor = uavObjFactory.createAltitudeSensor();
             try
@@ -630,6 +635,8 @@ public class MilitaryUAV implements Runnable {
                     this.serverPort = lwm2mClientDetails.getServerPort();
                     this.objectModelFilename = lwm2mClientDetails.getObjectModelFileName();
                     this.endpointName = lwm2mClientDetails.getEndPointName();
+                    this.bsAddress = lwm2mClientDetails.getBsAddress();
+                    this.bsPortnumber = lwm2mClientDetails.getBsPortnumber();
                     
                     StarterValidator.notNull(localHostName);
                     StarterValidator.notWellKnownPort(localPort);
@@ -673,19 +680,15 @@ public class MilitaryUAV implements Runnable {
                 final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
                 final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
 
-                client = new LeshanClient(clientAddress, serverAddress, new ArrayList<LwM2mObjectEnabler>(
+                CoapServer coapServer = new CoapServer();
+                client = new LeshanClientExt(clientAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                         enablers));
 
                 // Start the client
                 client.start();
-
-                // register to the server provided
-                final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
                 
-                /**
-                 * LwM2M client registration
-                 */
-                this.registrationID = DeviceHelper.register(client, endpointIdentifier);               
+                //performs registration using bootstrap approach on the client
+                bsRegHandler.doBsRegistration(initializer, coapServer, clientAddress, this);            
             }
             else
             {
