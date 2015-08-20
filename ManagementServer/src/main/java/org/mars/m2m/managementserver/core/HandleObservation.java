@@ -17,8 +17,8 @@ import org.slf4j.LoggerFactory;
 public class HandleObservation implements Runnable
 {
     public static ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(HandleObservation.class);
-    private String entity_data;
-    private ServiceConsumer consumer;
+    private final String entity_data;
+    private final ServiceConsumer consumer;
 
     public HandleObservation(String entity_data) {
         this.entity_data = entity_data;
