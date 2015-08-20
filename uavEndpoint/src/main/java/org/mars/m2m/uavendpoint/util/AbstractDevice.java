@@ -7,9 +7,11 @@ package org.mars.m2m.uavendpoint.util;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
+import org.eclipse.leshan.client.LwM2mClient;
 import org.eclipse.leshan.client.californium.LeshanClient;
+import org.eclipse.leshan.client.californium.LeshanClientExt;
 import org.eclipse.leshan.server.bootstrap.BootstrapConfig;
-import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mSecurity;
+import org.mars.m2m.uavendpoint.Model.RegisteredClientDataList;
 
 /**
  *This class groups together all the common elements that used by the various LwM2M clients of a device
@@ -64,9 +66,9 @@ public abstract class AbstractDevice {
     protected String endpointName;
 
     /**
-     * The leshan client / CoAP server for a device
+     * The LWM2M client / CoAP server for a device
      */
-    protected LeshanClient client;
+    protected LwM2mClient client;
         
     /**
      * LwM2M Bootstrap server address
@@ -87,4 +89,9 @@ public abstract class AbstractDevice {
      * LwM2M client OmaLwM2mSecurity instances
      */
     protected Map<Integer, BootstrapConfig.ServerSecurity> security;
+    
+    /**
+     * Keeps all successful registrations to different LWM2M servers of the client
+     */
+    protected RegisteredClientDataList registeredClientDataList;
 }

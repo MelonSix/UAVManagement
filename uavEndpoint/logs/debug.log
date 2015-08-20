@@ -40,3 +40,43 @@
 2015-08-19 15:57:47 - Missile dispatcher started
 2015-08-19 15:57:47 - Temperature sensor started
 2015-08-19 15:57:47 - Altitude sensor started
+2015-08-20 22:12:14 - file /uavObjectModel.json successfully loaded
+2015-08-20 22:12:14 - Started execution in military uav run method
+2015-08-20 22:12:15 - UAV manager started
+2015-08-20 22:12:15 - Threat sensor started
+2015-08-20 22:12:15 - Missile dispatcher started
+2015-08-20 22:12:15 - Temperature sensor started
+2015-08-20 22:12:15 - Altitude sensor started
+2015-08-20 22:18:36 - file /uavObjectModel.json successfully loaded
+2015-08-20 22:18:36 - Started execution in military uav run method
+2015-08-20 22:18:36 - UAV manager started
+2015-08-20 22:18:36 - Threat sensor started
+2015-08-20 22:18:36 - Missile dispatcher started
+2015-08-20 22:18:36 - Temperature sensor started
+2015-08-20 22:18:36 - Altitude sensor started
+2015-08-20 22:19:12 - file /uavObjectModel.json successfully loaded
+2015-08-20 22:19:12 - Started execution in military uav run method
+2015-08-20 22:19:12 - UAV manager started
+2015-08-20 22:19:12 - Threat sensor started
+2015-08-20 22:19:12 - Missile dispatcher started
+2015-08-20 22:19:12 - Temperature sensor started
+2015-08-20 22:19:12 - Altitude sensor started
+2015-08-20 22:51:23 - file /uavObjectModel.json successfully loaded
+2015-08-20 22:51:23 - Started execution in military uav run method
+2015-08-20 22:51:23 - UAV manager started
+2015-08-20 22:51:23 - Threat sensor started
+2015-08-20 22:51:23 - Missile dispatcher started
+2015-08-20 22:51:23 - Temperature sensor started
+2015-08-20 22:51:23 - Altitude sensor started
+2015-08-20 22:51:42 - file /uavObjectModel.json successfully loaded
+2015-08-20 22:51:42 - Started execution in military uav run method
+2015-08-20 22:51:42 - UAV manager started
+2015-08-20 22:51:42 - Threat sensor started
+2015-08-20 22:51:42 - Missile dispatcher started
+2015-08-20 22:51:42 - Temperature sensor started
+2015-08-20 22:51:42 - Altitude sensor started
+2015-08-20 23:01:03 - [org.mars.m2m.Devices.TemperatureSensor] Read on resource: 5601
+2015-08-20 23:01:03 - [org.mars.m2m.Devices.TemperatureSensor] Read on resource: 5602
+2015-08-20 23:01:03 - [org.mars.m2m.Devices.TemperatureSensor] Read on resource: 5603
+2015-08-20 23:01:03 - [org.mars.m2m.Devices.TemperatureSensor] Read on resource: 5700
+2015-08-20 23:01:03 - [org.mars.m2m.Devices.TemperatureSensor] Read on resource: 5701

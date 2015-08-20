@@ -27,7 +27,7 @@ public class BootstrapInfo {
     {
         BootstrapConfig.ServerConfig serverConfig = new BootstrapConfig.ServerConfig();
         serverConfig.shortId=101;
-        serverConfig.lifetime=60;
+        serverConfig.lifetime=86400;
         serverConfig.defaultMinPeriod = 20;
         serverConfig.defaultMaxPeriod=60;
         serverConfig.disableTimeout =3600;

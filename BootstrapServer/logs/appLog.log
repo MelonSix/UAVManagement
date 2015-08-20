@@ -33,3 +33,28 @@ ERROR  [15:28:47.612] [main] o.e.c.c.CoapServer -  Address already in use: Canno
 INFO   [15:28:47.612] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
 INFO   [15:28:47.613] [main] o.e.c.c.n.CoAPEndpoint -  Stopping endpoint at address /0.0.0.0:5073 
 ERROR  [15:28:47.613] [main] o.e.c.c.CoapServer -  Address already in use: Cannot bind at /0.0.0.0:5073 
+INFO   [22:11:27.876] [main] o.e.j.u.log -  Logging initialized @1360ms 
+INFO   [22:11:27.988] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [22:11:28.030] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [22:11:28.030] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [22:11:28.055] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [22:11:28.056] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [22:11:28.085] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [22:11:28.093] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [22:11:28.109] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [22:11:28.156] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [22:11:28.159] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [22:11:28.688] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [22:11:28.691] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [22:11:28.696] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [22:11:28.703] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [22:11:28.750] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [22:11:28.751] [main] o.e.j.s.Server -  Started @2236ms 

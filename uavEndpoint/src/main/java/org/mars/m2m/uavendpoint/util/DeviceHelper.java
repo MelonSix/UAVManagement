@@ -63,7 +63,7 @@ public class DeviceHelper {
      * @param endpointIdentifier The endpoint's name
      * @return The registration ID assigned by the server
      */
-    public static synchronized String register(final LeshanClient client, final String endpointIdentifier) {
+    public static synchronized String register(final LwM2mClient client, final String endpointIdentifier) {
         String registrationID=null;
         RegisterResponse response = client.send(new RegisterRequest(endpointIdentifier));
 
@@ -92,7 +92,7 @@ public class DeviceHelper {
      * @param sourcePort
      * @return The registration ID assigned by the server
      */
-    public static synchronized String register(final LeshanClient client, final String endpointIdentifier, 
+    public static synchronized String register(final LwM2mClient client, final String endpointIdentifier, 
                                     OmaLwM2mSecurity sec, OmaLwM2mServer server, String sourceAddress, int sourcePort) 
     {
         try 

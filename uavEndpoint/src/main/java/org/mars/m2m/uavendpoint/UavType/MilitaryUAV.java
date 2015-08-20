@@ -8,9 +8,11 @@ package org.mars.m2m.uavendpoint.UavType;
 import ch.qos.logback.classic.Logger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.leshan.client.californium.LeshanClient;
+import org.eclipse.leshan.client.californium.LeshanClientExt;
 import org.eclipse.leshan.client.californium.impl.ObjectResource;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
@@ -29,6 +31,8 @@ import org.mars.m2m.uavendpoint.util.AbstractDevice;
 import org.mars.m2m.uavendpoint.util.DeviceHelper;
 import org.mars.m2m.uavendpoint.util.UavObjectFactory;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
+import org.mars.m2m.uavendpoint.Model.RegisteredClientData;
+import org.mars.m2m.uavendpoint.Model.RegisteredClientDataList;
 import org.mars.m2m.uavendpoint.Model.RequiredBootstrapInfo;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
 import org.mars.m2m.uavendpoint.omaObjects.Device;
@@ -221,6 +225,7 @@ public class MilitaryUAV implements Runnable {
         {
             this.device = new Device();
             this.missileDispatch = uavObjFactory.createMissileDispatcher();
+            this.registeredClientDataList = new RegisteredClientDataList();
             try
             {
                 if(lwm2mClientDetails != null)
@@ -282,7 +287,7 @@ public class MilitaryUAV implements Runnable {
                 final InetSocketAddress serverAddress = new InetSocketAddress(serverHostName, serverPort);
                 
                 CoapServer coapServer = new CoapServer();
-                client = new LeshanClient(clientAddress, serverAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
+                client = new LeshanClientExt(clientAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                         enablers));
 
                 // Start the client
@@ -298,16 +303,19 @@ public class MilitaryUAV implements Runnable {
                 /**
                  * Remove using loop. reason: Will replace already added instances in a multi-instance scenario
                  */
+                ArrayList<OmaLwM2mSecurity> securityConfigs = new ArrayList<>();
                 for(Integer i : this.security.keySet())
                 {
                     lwM2mSecurity = ConvertObject.toLwM2mSecurity(this.security.get(i));
                     initializer.setInstancesForObject(0, lwM2mSecurity);
-                }
-                
+                    securityConfigs.add(lwM2mSecurity);
+                }                
+                ArrayList<OmaLwM2mServer> serverConfigs = new ArrayList<>();
                 for(Integer i : this.servers.keySet())
                 {
                     lwM2mServer = ConvertObject.toLwM2mServer(this.servers.get(i));
                     initializer.setInstancesForObject(1, lwM2mServer);
+                    serverConfigs.add(lwM2mServer);
                 } 
                 //--------------------------------------------------------------------------
                 
@@ -326,25 +334,25 @@ public class MilitaryUAV implements Runnable {
                     coapServer.add(clientObject);
                 }
                 
-                // register to the server provided
                 final String endpointIdentifier = this.endpointName ;//UUID.randomUUID().toString();
-                
+                                
                 /**
                  * LwM2M client registration
+                 * Treats server and security instances as pairs
+                 * {(serverConfigs[0],securityConfigs[0]),..,(serverConfigs[n],securityConfigs[n])}
                  */
-                    BootstrapConfig.ServerConfig sc;
-                    BootstrapConfig.ServerSecurity ss;
-                    this.registrationID = DeviceHelper.register(client, endpointIdentifier, 
-                                lwM2mSecurity, lwM2mServer, 
-                                    serverHostName, serverPort);
-                for(Integer i : this.servers.keySet())
+                for(int i=0; i<serverConfigs.size(); i++)
                 {
-                    sc = servers.get(i);
-                    ss = security.get(i);
-                    //this.registrationID = DeviceHelper.register(client, endpointIdentifier);
-//                    this.registrationID = DeviceHelper.register(client, endpointIdentifier, 
-//                                ConvertObject.toLwM2mSecurity(ss), ConvertObject.toLwM2mServer(sc), 
-//                                    serverHostName, serverPort);
+                    registrationID = DeviceHelper.register(client, endpointIdentifier, 
+                                securityConfigs.get(i), serverConfigs.get(i), //get the pairs
+                                    serverHostName, serverPort);
+                    if(registrationID != null)
+                    {
+                        RegisteredClientData registeredClientData = new RegisteredClientData();
+                        registeredClientData.setLwM2mSecurity(securityConfigs.get(i));
+                        registeredClientData.setLwM2mServer(serverConfigs.get(i));
+                        this.registeredClientDataList.getRegisteredList().put(registrationID, registeredClientData);
+                    }
                 }
             }
             else
