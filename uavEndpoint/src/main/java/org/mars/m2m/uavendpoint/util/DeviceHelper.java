@@ -12,13 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.LwM2mClient;
-import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.core.request.DeregisterRequest;
 import org.eclipse.leshan.core.request.RegisterRequest;
 import org.eclipse.leshan.core.response.RegisterResponse;
-import org.eclipse.leshan.server.bootstrap.BootstrapConfig.ServerConfig;
-import org.eclipse.leshan.server.bootstrap.BootstrapConfig.ServerSecurity;
 import org.mars.m2m.dmcore.Loader.LwM2mModelLoader;
 import org.mars.m2m.uavendpoint.Bootstrap.BootstrapEp;
 import org.mars.m2m.uavendpoint.Model.RequiredBootstrapInfo;
@@ -98,7 +95,7 @@ public class DeviceHelper {
         try 
         {
             String registrationID=null;
-            String[] lwm2mServerDetails = sec.getUri().split(":");//coap://ipaddr:port -> [coap][ipaddr][port]
+            String[] lwm2mServerDetails = sec.getUri().split(":");//coap://ipaddr:port -> [coap][//+ipaddr][port]
             RegisterResponse response;
             RegisterRequest request = new RegisterRequest(endpointIdentifier,//endpoint Name
                     (long)server.getLifetime(),//lifetime
@@ -108,7 +105,7 @@ public class DeviceHelper {
                     null,//object Links
                     InetAddress.getByName(sourceAddress), // source Address
                     sourcePort,//source Port
-                    new InetSocketAddress(lwm2mServerDetails[1], Integer.parseInt(lwm2mServerDetails[2])),//registrationEndpoint
+                    new InetSocketAddress(lwm2mServerDetails[1].substring(2), Integer.parseInt(lwm2mServerDetails[2])),//registrationEndpoint
                     new String(sec.getSecretKey()),//pskIdentity
                     null//public key
             );
@@ -145,5 +142,6 @@ public class DeviceHelper {
         BootstrapEp bootstrapEp = new BootstrapEp(new InetSocketAddress(info.getServerAddr(), info.getServerPortnum()), info.getLwM2mClient());
         return bootstrapEp.performBootstrap(info.getEndpoint());
     }
+
     
 }

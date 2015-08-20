@@ -47,6 +47,7 @@ public class LeshanClientExt implements LwM2mClient {
      * Modified to allow starting of server without LWM2M server address specified.
      * The subsequent bootstrap information is then used later to create the {@link CaliforniumLwM2mClientRequestSender} object
      * @param clientAddress
+     * @param serverLocal
      * @param objectEnablers 
      */
     public LeshanClientExt(final InetSocketAddress clientAddress,
@@ -77,7 +78,18 @@ public class LeshanClientExt implements LwM2mClient {
         /*requestSender = new CaliforniumLwM2mClientRequestSender(serverLocal.getEndpoint(clientAddress), serverAddress,
         this);*/
     }
-
+    
+    /**
+     * Creates a request sender for this client using the specified client and server addresses
+     * @param clientAddress Client address
+     * @param serverAddress Server address
+     */
+    public void setRequestSender(InetSocketAddress clientAddress, InetSocketAddress serverAddress)
+    {
+        requestSender = new CaliforniumLwM2mClientRequestSender(clientSideServer.getEndpoint(clientAddress), serverAddress,
+        this);
+    }
+    
     @Override
     public void start() {
         clientSideServer.start();
