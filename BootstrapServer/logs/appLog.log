@@ -1,136 +1,165 @@
-INFO   [15:22:41.438] [main] o.e.j.u.log -  Logging initialized @3145ms 
-INFO   [15:22:41.703] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [15:22:41.809] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [15:22:41.810] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [15:22:41.820] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [15:22:41.821] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [15:22:41.909] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [15:22:41.940] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [15:22:41.993] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [15:22:42.056] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@5ab14cb9{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:22:42.063] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [15:22:43.321] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:42:05.876] [main] o.e.j.u.log -  Logging initialized @1792ms 
+INFO   [13:42:06.006] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [13:42:06.072] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [13:42:06.072] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [13:42:06.098] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [13:42:06.099] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [13:42:06.129] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [13:42:06.138] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [13:42:06.154] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [13:42:06.222] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@6c6357f9{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [13:42:06.226] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:42:06.790] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
     GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
  
-INFO   [15:22:43.329] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1f966492{/bs,null,AVAILABLE} 
-INFO   [15:22:43.356] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [13:42:06.792] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@35636217{/bs,null,AVAILABLE} 
+INFO   [13:42:06.798] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [15:22:43.369] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2116b68b{/admin-bs,null,AVAILABLE} 
-INFO   [15:22:43.513] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@5ab14cb9{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:22:43.514] [main] o.e.j.s.Server -  Started @5225ms 
-ERROR  [15:23:02.482] [pool-4-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
-INFO   [15:28:47.352] [main] o.e.j.u.log -  Logging initialized @2791ms 
-INFO   [15:28:47.506] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [15:28:47.604] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [15:28:47.605] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [15:28:47.612] [main] o.e.c.c.n.CoAPEndpoint -  Stopping endpoint at address /0.0.0.0:5070 
-ERROR  [15:28:47.612] [main] o.e.c.c.CoapServer -  Address already in use: Cannot bind at /0.0.0.0:5070 
-INFO   [15:28:47.612] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [15:28:47.613] [main] o.e.c.c.n.CoAPEndpoint -  Stopping endpoint at address /0.0.0.0:5073 
-ERROR  [15:28:47.613] [main] o.e.c.c.CoapServer -  Address already in use: Cannot bind at /0.0.0.0:5073 
-INFO   [22:11:27.876] [main] o.e.j.u.log -  Logging initialized @1360ms 
-INFO   [22:11:27.988] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [22:11:28.030] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [22:11:28.030] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [22:11:28.055] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [22:11:28.056] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [22:11:28.085] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [22:11:28.093] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [22:11:28.109] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [22:11:28.156] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [22:11:28.159] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [22:11:28.688] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:42:06.804] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@64c4c01{/admin-bs,null,AVAILABLE} 
+INFO   [13:42:06.864] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@6c6357f9{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [13:42:06.864] [main] o.e.j.s.Server -  Started @2782ms 
+ERROR  [13:42:30.149] [pool-4-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [13:42:30.198] [pool-4-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [13:42:30.227] [pool-4-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [13:42:30.243] [pool-4-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [13:42:30.279] [pool-4-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+INFO   [13:44:34.120] [main] o.e.j.u.log -  Logging initialized @1224ms 
+INFO   [13:44:34.207] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [13:44:34.236] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [13:44:34.236] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [13:44:34.242] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [13:44:34.243] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [13:44:34.248] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [13:44:34.256] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [13:44:34.271] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [13:44:34.307] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [13:44:34.311] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:44:34.839] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
     GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
  
-INFO   [22:11:28.691] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
-INFO   [22:11:28.696] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [13:44:34.841] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [13:44:34.847] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [22:11:28.703] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
-INFO   [22:11:28.750] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [22:11:28.751] [main] o.e.j.s.Server -  Started @2236ms 
-INFO   [02:37:19.877] [main] o.e.j.u.log -  Logging initialized @1274ms 
-INFO   [02:37:19.969] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [02:37:20.017] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [02:37:20.017] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [02:37:20.023] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [02:37:20.024] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [02:37:20.057] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [02:37:20.064] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [02:37:20.079] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [02:37:20.115] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [02:37:20.120] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [02:37:20.661] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:44:34.852] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [13:44:34.901] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [13:44:34.901] [main] o.e.j.s.Server -  Started @2008ms 
+ERROR  [13:44:43.000] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [13:44:43.018] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [13:44:43.025] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [13:44:43.033] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [13:44:43.038] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [13:55:07.036] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [13:55:07.043] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [13:55:07.051] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [13:55:07.056] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [13:55:07.469] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [13:57:32.769] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [13:57:32.777] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [13:57:32.786] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [13:57:32.790] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [14:02:05.951] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [14:02:05.959] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [14:02:05.967] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [14:02:05.972] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [14:03:08.791] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [14:03:08.799] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [14:03:08.807] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [14:03:08.812] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [14:07:25.112] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [14:07:25.120] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [14:07:25.128] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [14:07:25.133] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [14:33:00.545] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [14:33:00.554] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [14:33:00.565] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [14:33:00.571] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+INFO   [15:12:06.761] [main] o.e.j.u.log -  Logging initialized @1183ms 
+INFO   [15:12:06.851] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [15:12:06.887] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [15:12:06.887] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [15:12:06.893] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [15:12:06.894] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [15:12:06.903] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [15:12:06.910] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [15:12:06.925] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [15:12:06.958] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:12:06.961] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:12:07.486] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
     GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
  
-INFO   [02:37:20.664] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
-INFO   [02:37:20.670] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [15:12:07.488] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [15:12:07.494] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [02:37:20.677] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
-INFO   [02:37:20.727] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [02:37:20.727] [main] o.e.j.s.Server -  Started @2127ms 
-ERROR  [02:38:23.164] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
-INFO   [02:39:26.547] [main] o.e.j.u.log -  Logging initialized @1182ms 
-INFO   [02:39:26.634] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [02:39:26.664] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [02:39:26.664] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [02:39:26.670] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [02:39:26.670] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [02:39:26.675] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [02:39:26.683] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [02:39:26.697] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [02:39:26.733] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [02:39:26.736] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [02:39:27.300] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [15:12:07.501] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [15:12:07.548] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:12:07.548] [main] o.e.j.s.Server -  Started @1972ms 
+ERROR  [15:13:22.358] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:13:22.379] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:13:22.383] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:13:22.391] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:13:22.397] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+INFO   [15:14:27.998] [main] o.e.j.u.log -  Logging initialized @1216ms 
+INFO   [15:14:28.083] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [15:14:28.112] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [15:14:28.112] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [15:14:28.118] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [15:14:28.119] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [15:14:28.124] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [15:14:28.131] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [15:14:28.146] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [15:14:28.179] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:14:28.183] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:14:28.703] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
     GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
  
-INFO   [02:39:27.302] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
-INFO   [02:39:27.310] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [15:14:28.705] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [15:14:28.710] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [02:39:27.316] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
-INFO   [02:39:27.366] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [02:39:27.366] [main] o.e.j.s.Server -  Started @2004ms 
-INFO   [02:59:09.938] [main] o.e.j.u.log -  Logging initialized @1215ms 
-INFO   [02:59:10.023] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [02:59:10.052] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [02:59:10.052] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [02:59:10.058] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [02:59:10.058] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [02:59:10.063] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [02:59:10.071] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [02:59:10.085] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [02:59:10.118] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [02:59:10.121] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [02:59:10.653] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
-    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
- 
-INFO   [02:59:10.655] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
-INFO   [02:59:10.660] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [02:59:10.666] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
-INFO   [02:59:10.717] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [02:59:10.717] [main] o.e.j.s.Server -  Started @1998ms 
+INFO   [15:14:28.716] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [15:14:28.761] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:14:28.761] [main] o.e.j.s.Server -  Started @1981ms 
+ERROR  [15:16:06.018] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:16:06.036] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:16:06.041] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:16:06.050] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:16:06.054] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:16:11.037] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:16:11.044] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:16:11.054] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:16:11.057] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:16:11.060] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:16:17.040] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:16:17.046] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:16:17.055] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:16:17.069] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:16:17.070] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:16:23.038] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:16:23.044] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:16:23.054] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:16:23.065] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:16:23.067] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:16:29.038] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:16:29.046] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:16:29.057] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:16:29.069] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:16:29.078] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 

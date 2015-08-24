@@ -93,4 +93,14 @@ public abstract class AbstractDevice {
      * Keeps all successful registrations to different LWM2M servers of the client
      */
     protected RegisteredClientDataList registeredClientDataList;
+    
+    /**
+     *Implemented to start a device
+     */
+    public abstract void  StartDevice();
+
+    public String getRegistrationID() {
+        return registrationID;
+    }    
+    
 }

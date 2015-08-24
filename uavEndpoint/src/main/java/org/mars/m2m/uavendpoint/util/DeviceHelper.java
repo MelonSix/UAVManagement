@@ -30,16 +30,17 @@ public class DeviceHelper {
     
     /**
      * Stops a device already started
+     * @param <E>
      * @param deviceClient
      */
-    public static synchronized void stopDevice(AbstractDevice deviceClient)
+    public static <E extends AbstractDevice> void stopDevice(E deviceClient)
     {
         if (deviceClient.registrationID != null) {
             System.out.println("\tDevice: Deregistering Client '" + deviceClient.registrationID + "'");
-            deviceClient.canDeviceStart.set(true);
             deviceClient.client.send(new DeregisterRequest(deviceClient.registrationID));
-            deviceClient.client.stop();
         }
+        deviceClient.canDeviceStart.set(true);
+        deviceClient.client.stop();
     }  
             
     /**

@@ -30,11 +30,13 @@ import org.slf4j.LoggerFactory;
 @Consumes(MediaType.APPLICATION_JSON)
 public class NotificationResource 
 {
-    private ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(NotificationResource.class);
-    private Notify notify = new Notify();
-    private NotificationListenerImpl listenerImpl = new NotificationListenerImpl();
+    private final ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(NotificationResource.class);
+    private final Notify notify;
+    private final NotificationListenerImpl listenerImpl;
     
     public NotificationResource() {
+        this.notify = new Notify();
+        this.listenerImpl = new NotificationListenerImpl();
     }
     
     @POST

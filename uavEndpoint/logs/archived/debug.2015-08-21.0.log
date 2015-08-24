@@ -1,0 +1,92 @@
+2015-08-21 00:20:00 - file /uavObjectModel.json successfully loaded
+2015-08-21 00:20:00 - Started execution in military uav run method
+2015-08-21 00:20:00 - UAV manager started
+2015-08-21 00:20:00 - Threat sensor started
+2015-08-21 00:43:25 - file /uavObjectModel.json successfully loaded
+2015-08-21 00:43:26 - Started execution in military uav run method
+2015-08-21 00:43:32 - UAV manager started
+2015-08-21 00:43:45 - Threat sensor started
+2015-08-21 00:48:03 - file /uavObjectModel.json successfully loaded
+2015-08-21 00:48:04 - Started execution in military uav run method
+2015-08-21 00:48:10 - UAV manager started
+2015-08-21 00:48:12 - Threat sensor started
+2015-08-21 00:49:43 - file /uavObjectModel.json successfully loaded
+2015-08-21 00:49:43 - Started execution in military uav run method
+2015-08-21 00:49:45 - UAV manager started
+2015-08-21 00:49:55 - Threat sensor started
+2015-08-21 00:53:09 - file /uavObjectModel.json successfully loaded
+2015-08-21 00:53:09 - Started execution in military uav run method
+2015-08-21 00:53:14 - UAV manager started
+2015-08-21 00:53:31 - Threat sensor started
+2015-08-21 02:38:23 - file /uavObjectModel.json successfully loaded
+2015-08-21 02:38:23 - Started execution in military uav run method
+2015-08-21 02:38:23 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:38:23 - UAV manager started
+2015-08-21 02:38:23 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:38:23 - Threat sensor started
+2015-08-21 02:38:23 - java.lang.NullPointerException
+2015-08-21 02:38:23 - Missile dispatcher started
+2015-08-21 02:38:23 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:38:23 - Temperature sensor started
+2015-08-21 02:38:23 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:38:23 - Altitude sensor started
+2015-08-21 02:40:31 - file /uavObjectModel.json successfully loaded
+2015-08-21 02:40:31 - Started execution in military uav run method
+2015-08-21 02:40:31 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:40:31 - UAV manager started
+2015-08-21 02:40:31 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:40:31 - Threat sensor started
+2015-08-21 02:40:31 - Missile dispatcher started
+2015-08-21 02:40:31 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:40:31 - Temperature sensor started
+2015-08-21 02:40:31 - java.lang.IllegalArgumentException: hostname can't be null
+2015-08-21 02:40:31 - Altitude sensor started
+2015-08-21 02:45:49 - file /uavObjectModel.json successfully loaded
+2015-08-21 02:45:49 - Started execution in military uav run method
+2015-08-21 02:45:49 - UAV manager started
+2015-08-21 02:45:49 - Threat sensor started
+2015-08-21 02:45:49 - Missile dispatcher started
+2015-08-21 02:45:49 - Temperature sensor started
+2015-08-21 02:45:49 - Altitude sensor started
+2015-08-21 02:48:31 - file /uavObjectModel.json successfully loaded
+2015-08-21 02:48:31 - Started execution in military uav run method
+2015-08-21 02:48:31 - UAV manager started
+2015-08-21 02:48:31 - Threat sensor started
+2015-08-21 02:48:31 - Missile dispatcher started
+2015-08-21 02:48:31 - Temperature sensor started
+2015-08-21 02:48:31 - Altitude sensor started
+2015-08-21 02:55:25 - file /uavObjectModel.json successfully loaded
+2015-08-21 02:55:25 - Started execution in military uav run method
+2015-08-21 02:55:25 - UAV manager started
+2015-08-21 02:55:25 - Threat sensor started
+2015-08-21 02:55:25 - Missile dispatcher started
+2015-08-21 02:55:25 - Temperature sensor started
+2015-08-21 02:55:25 - Altitude sensor started
+2015-08-21 02:57:43 - file /uavObjectModel.json successfully loaded
+2015-08-21 02:57:43 - Started execution in military uav run method
+2015-08-21 02:57:43 - UAV manager started
+2015-08-21 02:57:43 - Threat sensor started
+2015-08-21 02:57:43 - Missile dispatcher started
+2015-08-21 02:57:43 - Temperature sensor started
+2015-08-21 02:57:43 - Altitude sensor started
+2015-08-21 02:59:52 - file /uavObjectModel.json successfully loaded
+2015-08-21 02:59:52 - Started execution in military uav run method
+2015-08-21 02:59:52 - UAV manager started
+2015-08-21 02:59:52 - Threat sensor started
+2015-08-21 02:59:52 - Missile dispatcher started
+2015-08-21 02:59:52 - Temperature sensor started
+2015-08-21 02:59:52 - Altitude sensor started
+2015-08-21 03:00:22 - file /uavObjectModel.json successfully loaded
+2015-08-21 03:00:22 - Started execution in military uav run method
+2015-08-21 03:00:22 - UAV manager started
+2015-08-21 03:00:22 - Threat sensor started
+2015-08-21 03:00:22 - Missile dispatcher started
+2015-08-21 03:00:22 - Temperature sensor started
+2015-08-21 03:00:22 - Altitude sensor started
+2015-08-21 03:00:43 - file /uavObjectModel.json successfully loaded
+2015-08-21 03:00:43 - Started execution in military uav run method
+2015-08-21 03:00:43 - UAV manager started
+2015-08-21 03:00:43 - Threat sensor started
+2015-08-21 03:00:43 - Missile dispatcher started
+2015-08-21 03:00:43 - Temperature sensor started
+2015-08-21 03:00:43 - Altitude sensor started

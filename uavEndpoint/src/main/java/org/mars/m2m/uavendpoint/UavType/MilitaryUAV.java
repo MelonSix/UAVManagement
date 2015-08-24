@@ -9,6 +9,8 @@ import ch.qos.logback.classic.Logger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.leshan.client.californium.LeshanClientExt;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
@@ -147,6 +149,7 @@ public class MilitaryUAV implements Runnable {
         /**
          * Starts the device within the UAV
          */
+        @Override
         public synchronized void StartDevice()
         {
             if(canDeviceStart.getAndSet(false))
@@ -260,6 +263,7 @@ public class MilitaryUAV implements Runnable {
         /**
          * Starts the device within the UAV
          */
+        @Override
         public synchronized void StartDevice()
         {
             if(canDeviceStart.getAndSet(false))
@@ -373,6 +377,7 @@ public class MilitaryUAV implements Runnable {
         /**
          * Starts the device within the UAV
          */
+        @Override
         public synchronized void StartDevice()
         {
             if(canDeviceStart.getAndSet(false))
@@ -470,6 +475,7 @@ public class MilitaryUAV implements Runnable {
         /**
          * Starts the device within the UAV
          */
+        @Override
         public synchronized void StartDevice()
         {
             if(canDeviceStart.getAndSet(false))
@@ -565,6 +571,7 @@ public class MilitaryUAV implements Runnable {
         /**
          * Starts the device within the UAV
          */
+        @Override
         public synchronized void StartDevice()
         {
             if(canDeviceStart.getAndSet(false))
@@ -661,6 +668,7 @@ public class MilitaryUAV implements Runnable {
         /**
          * Starts the device within the UAV
          */
+        @Override
         public synchronized void StartDevice()
         {
             if(canDeviceStart.getAndSet(false))
@@ -714,8 +722,9 @@ public class MilitaryUAV implements Runnable {
         DeviceStarterDetails UAVmanagerDevDtls;
         UAVmanagerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(), 
                 8081, "127.0.0.1", 5683, "UAV Manager", uavConfig, "127.0.0.1", 5070);
-        UAVManagerClient UAVmanagerDev = new UAVManagerClient(UAVmanagerDevDtls);
+        final UAVManagerClient UAVmanagerDev = new UAVManagerClient(UAVmanagerDevDtls);
         UAVmanagerDev.StartDevice();
+        ClientDaemon(UAVmanagerDev);//invokes a background process for this device
         log.info("UAV manager started");
         
         /**
@@ -726,6 +735,7 @@ public class MilitaryUAV implements Runnable {
                 8087, "127.0.0.1", 5683, "Threat sensor", uavConfig, "127.0.0.1", 5070);
         ThreatSensorDeviceClient threatSensorDev = new ThreatSensorDeviceClient(threatDevDtls);
         threatSensorDev.StartDevice();
+        ClientDaemon(threatSensorDev);//invokes a background process for this device
         //Thread.sleep(10000);
         //DeviceHelper.stopDevice(threatSensorDev);
         log.info("Threat sensor started");        
@@ -739,6 +749,7 @@ public class MilitaryUAV implements Runnable {
                 8092, "127.0.0.1", 5683, "missileDispatcher", uavConfig, "127.0.0.1", 5070);
         MissileDispatchClient mislDisClient = new MissileDispatchClient(missileDisDtls);
         mislDisClient.StartDevice();
+        ClientDaemon(mislDisClient);//invokes a background process for this device
         log.info("Missile dispatcher started");
         uavOwnedDevices.add(mislDisClient);
         
@@ -750,6 +761,7 @@ public class MilitaryUAV implements Runnable {
                 8095, "127.0.0.1", 5683, "IPSO Temperature sensor", uavConfig, "127.0.0.1", 5070);
         TemperatureSensorClient tempSenClient = new TemperatureSensorClient(tempSenDtls);
         tempSenClient.StartDevice();
+        ClientDaemon(tempSenClient);//invokes a background process for this device
         log.info("Temperature sensor started");
         uavOwnedDevices.add(tempSenClient);
         
@@ -761,8 +773,38 @@ public class MilitaryUAV implements Runnable {
                 8096, "127.0.0.1", 5683, "Altitude sensor", uavConfig, "127.0.0.1", 5070);
         AltitudeSensorClient altitudeSenClient = new AltitudeSensorClient(altitudeSenDtls);
         altitudeSenClient.StartDevice();
+        ClientDaemon(altitudeSenClient);//invokes a background process for this device
         log.info("Altitude sensor started");
         uavOwnedDevices.add(altitudeSenClient);
+    }
+    
+    /**
+     * Starts a thread for monitoring the client's services e.g. Registration
+     * @param <E> The implemented client type
+     * @param lwm2mClient 
+     */
+    public <E extends AbstractDevice> void ClientDaemon(final E lwm2mClient) 
+    {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //If the device is yet to be registered
+                if(lwm2mClient.getRegistrationID() == null)
+                {
+                    restartClient();
+                }
+            }
+            
+            /**
+             * Restarts the device.<br/>
+             * Separated for semantic purposes
+             */
+            public void restartClient() {
+                DeviceHelper.stopDevice(lwm2mClient);
+                lwm2mClient.StartDevice();
+            }
+        }, 50000, 6000);
     }
     
 }

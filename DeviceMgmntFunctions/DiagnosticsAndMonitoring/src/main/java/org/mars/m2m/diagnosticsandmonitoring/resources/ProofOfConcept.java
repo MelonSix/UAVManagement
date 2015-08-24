@@ -6,8 +6,6 @@
 package org.mars.m2m.diagnosticsandmonitoring.resources;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

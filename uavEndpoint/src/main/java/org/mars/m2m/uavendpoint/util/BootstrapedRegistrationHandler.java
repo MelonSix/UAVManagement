@@ -120,8 +120,12 @@ public class BootstrapedRegistrationHandler
             //Registration
             registerWithBoostrapInfo(client, serverConfigs, securityConfigs, clientAddress);
             
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch(NullPointerException nulEx)
+        {
+            LOG.error("Error Loading bootstrap information. Registration failed");
+        }
+        catch (Exception e) {
+            LOG.error(e.toString());
         }
     }
     

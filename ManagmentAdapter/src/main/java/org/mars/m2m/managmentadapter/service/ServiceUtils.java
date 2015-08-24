@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -204,6 +203,7 @@ public class ServiceUtils
      * @param req The &lt;request&gt; resource or request primitive
      * @param statusCode The returned status code from the management server
      * @param container The &lt;resourcesCcontainer&gt; resource associated with this &lt;resource&gt; resource
+     * @param operationService
      * @return &ltresponse&gt; resource to be sent to the originator
      */
     public ResponsePrimitive prepareRespPrimitive(RequestPrimitive req, int statusCode, Container container, AdapterServices operationService) {
@@ -223,6 +223,7 @@ public class ServiceUtils
     /**
      * This method registers a Notify request for future callback invocations
      * @param request The notify request
+     * @param operationService
      * @return true for a successful registration or false if otherwise
      */
     public boolean addToRegistry(RequestPrimitive request, AdapterServices operationService) {
@@ -247,12 +248,13 @@ public class ServiceUtils
     }
 
     /**
-     * Gets the data within a <container> resource's <contentInstance> resource
+     * Gets the data within a &lt;container&gt; resource's &lt;contentInstance&gt; resource
      * @param requestPrimitive The request sent by the originator
+     * @param operationService
      * @return The content/data as string
      */
     public String extractRequestData(RequestPrimitive requestPrimitive, AdapterServices operationService) {
-        String content = null;
+        String content;
         operationService.container = (Container) requestPrimitive.getContent().getAny().get(0);
         operationService.contentInstance = (ContentInstance) operationService.container.getContentInstanceOrContainerOrSubscription().get(0);
         content = (String) operationService.contentInstance.getContent();
@@ -264,6 +266,7 @@ public class ServiceUtils
      * <br/>
      * It is used as a mediator that buffers data exchange
      * @param resp The response from the exposed management server web service
+     * @param operationService
      */
     public void prepareContainer(Response resp, AdapterServices operationService) {
         String entityAsStringData = resp.readEntity(String.class);
@@ -322,6 +325,7 @@ public class ServiceUtils
     /**
      * Produces a Container for a given number of {@link Resource} objects
      * @param resource The passed resource(s)
+     * @param elementPath
      * @return An instance of {@link Container}
      */
     public Container getContainer(ContentInstance resource, String elementPath) {
