@@ -26,12 +26,12 @@ import org.slf4j.LoggerFactory;
  * @author AG BRIGHTER
  */
 @Path("/mgmtAdapter")
-public class MgmtAdptrInterface {
+public class AdapterServiceInterface {
     
-    Logger logger = (Logger) LoggerFactory.getLogger(MgmtAdptrInterface.class);
+    Logger logger = (Logger) LoggerFactory.getLogger(AdapterServiceInterface.class);
     Operation operation;
 
-    public MgmtAdptrInterface() {
+    public AdapterServiceInterface() {
     }
     
     /**

@@ -27,7 +27,7 @@ import org.mars.m2m.managmentadapter.model.DiscoveredInstanceDetails;
 import org.mars.m2m.managmentadapter.model.DiscoveryDetails;
 import org.mars.m2m.managmentadapter.model.DiscoveryList;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
-import org.mars.m2m.managmentadapter.resources.MgmtAdptrInterface;
+import org.mars.m2m.managmentadapter.resources.AdapterServiceInterface;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -213,7 +213,7 @@ public class ServiceUtils
         operationService.primitiveContent.getAny().add(container);
         resp.setContent(operationService.primitiveContent);
         resp.setTo(req.getFrom());
-        resp.setFrom(operationService.uriInfo.getBaseUriBuilder().path(MgmtAdptrInterface.class).build().toString());
+        resp.setFrom(operationService.uriInfo.getBaseUriBuilder().path(AdapterServiceInterface.class).build().toString());
         resp.setOriginatingTimestamp(DmCommons.getOneM2mTimeStamp());
         resp.setResultExpirationTimestamp(DmCommons.setOneM2mTimeStamp(new GregorianCalendar(2015, 8, 1, 0, 0, 0)));
         resp.setEventCategory(StdEventCats.DEFAULT.name());

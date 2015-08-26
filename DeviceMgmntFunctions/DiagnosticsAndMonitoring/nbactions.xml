@@ -10,7 +10,7 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath ${packageClassName} server src/main/resources/config.yml</exec.args>
+                <exec.args>-classpath %classpath org.mars.m2m.diagnosticsandmonitoring.application.DeviceDiagMonitApplication server src/main/resources/config.yml</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
         </action>

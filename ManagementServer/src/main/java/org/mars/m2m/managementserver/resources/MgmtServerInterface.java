@@ -56,8 +56,8 @@ import org.slf4j.LoggerFactory;
  * @author AG BRIGHTER
  */
 @Path("/clients")
-public class ClientsResource {
-    private static ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ClientsResource.class);
+public class MgmtServerInterface {
+    private static ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(MgmtServerInterface.class);
     
     private final LwM2mServer server;
     
@@ -68,7 +68,7 @@ public class ClientsResource {
     /**
      * Default constructor
      */
-    public ClientsResource() {
+    public MgmtServerInterface() {
         this(null);
     }   
     
@@ -76,7 +76,7 @@ public class ClientsResource {
      * 
      * @param server 
      */
-    public ClientsResource(LwM2mServer server) {
+    public MgmtServerInterface(LwM2mServer server) {
         Validate.notNull(server);
         this.server = server;
         this.gson = ConfigGson.getCustomGsonConfig();       
@@ -164,7 +164,7 @@ public class ClientsResource {
                 ValueResponse cResponse = server.send(client, request);
                 processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
             } catch (IOException ex) {
-                Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MgmtServerInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
         } 
         return processedValResponse;        
@@ -270,7 +270,7 @@ public class ClientsResource {
                 LwM2mResponse cResponse = server.send(client, request);
                 processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
             } catch (IOException ex) {
-                Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MgmtServerInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
         }        
         return processedValResponse;
@@ -364,7 +364,7 @@ public class ClientsResource {
             }
             //return Response.status(Response.Status.OK).build();
             catch (IOException ex) {
-                Logger.getLogger(ClientsResource.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MgmtServerInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return processedValResponse;

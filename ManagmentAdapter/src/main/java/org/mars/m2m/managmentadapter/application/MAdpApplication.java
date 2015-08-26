@@ -11,7 +11,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.mars.m2m.managmentadapter.applicationConfiguration.MAdpConfiguration;
 import org.mars.m2m.managmentadapter.health.ClientsResourceHealth;
-import org.mars.m2m.managmentadapter.resources.MgmtAdptrInterface;
+import org.mars.m2m.managmentadapter.resources.AdapterServiceInterface;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -26,7 +26,7 @@ public class MAdpApplication extends Application<MAdpConfiguration> {
     public void run(MAdpConfiguration t, Environment e) throws Exception {
         
         //resources
-        MgmtAdptrInterface mgmntRes = new MgmtAdptrInterface();
+        AdapterServiceInterface mgmntRes = new AdapterServiceInterface();
         
         //expose resource
         e.jersey().register(mgmntRes);

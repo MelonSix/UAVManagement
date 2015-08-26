@@ -1,133 +1,19 @@
-INFO   [11:47:59.988] [main] o.e.j.u.log -  Logging initialized @1218ms 
-INFO   [11:48:00.076] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
-INFO   [11:48:00.083] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
-INFO   [11:48:00.099] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
-INFO   [11:48:00.131] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@7a48e6e2{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:48:00.134] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:48:00.579] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    NONE
- 
-INFO   [11:48:00.581] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76075d65{/dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:48:00.585] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [11:48:00.590] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@441cc260{/admin-dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:48:00.633] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@7a48e6e2{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:48:00.633] [main] o.e.j.s.Server -  Started @1864ms 
-INFO   [11:52:29.136] [main] o.e.j.u.log -  Logging initialized @1221ms 
-INFO   [11:52:29.217] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
-INFO   [11:52:29.225] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
-INFO   [11:52:29.239] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
-INFO   [11:52:29.271] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@24fb6a80{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:52:29.274] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:52:29.718] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    NONE
- 
-INFO   [11:52:29.720] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5f404594{/dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:52:29.726] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [11:52:29.732] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31cb96e1{/admin-dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:52:29.773] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@24fb6a80{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:52:29.773] [main] o.e.j.s.Server -  Started @1860ms 
-INFO   [11:53:57.681] [main] o.e.j.u.log -  Logging initialized @1186ms 
-INFO   [11:53:57.767] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
-INFO   [11:53:57.774] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
-INFO   [11:53:57.788] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
-INFO   [11:53:57.819] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:53:57.822] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:53:58.316] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:30:43.615] [main] o.e.j.u.log -  Logging initialized @1243ms 
+INFO   [10:30:43.722] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
+INFO   [10:30:43.731] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
+INFO   [10:30:43.745] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
+INFO   [10:30:43.777] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
+INFO   [10:30:43.780] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:30:44.309] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /demoLogic (org.mars.m2m.diagnosticsandmonitoring.resources.ProofOfConcept)
  
-INFO   [11:53:58.318] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3ed0918d{/dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:53:58.323] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:30:44.312] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4074023c{/dmg/diagmonit,null,AVAILABLE} 
+INFO   [10:30:44.317] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:53:58.327] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@546621c4{/admin-dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:53:58.376] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:53:58.376] [main] o.e.j.s.Server -  Started @1884ms 
-INFO   [11:54:56.282] [main] o.e.j.u.log -  Logging initialized @1228ms 
-INFO   [11:54:56.367] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
-INFO   [11:54:56.374] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
-INFO   [11:54:56.387] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
-INFO   [11:54:56.418] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:54:56.421] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:54:56.924] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /demoLogic (org.mars.m2m.diagnosticsandmonitoring.resources.ProofOfConcept)
- 
-INFO   [11:54:56.926] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3ed0918d{/dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:54:56.931] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [11:54:56.935] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@546621c4{/admin-dmg/diagmonit,null,AVAILABLE} 
-INFO   [11:54:56.980] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [11:54:56.980] [main] o.e.j.s.Server -  Started @1928ms 
-INFO   [13:16:16.325] [main] o.e.j.u.log -  Logging initialized @1208ms 
-INFO   [13:16:16.411] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
-INFO   [13:16:16.418] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
-INFO   [13:16:16.432] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
-INFO   [13:16:16.465] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [13:16:16.469] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [13:16:16.967] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /demoLogic (org.mars.m2m.diagnosticsandmonitoring.resources.ProofOfConcept)
- 
-INFO   [13:16:16.969] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3ed0918d{/dmg/diagmonit,null,AVAILABLE} 
-INFO   [13:16:16.973] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [13:16:16.978] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@546621c4{/admin-dmg/diagmonit,null,AVAILABLE} 
-INFO   [13:16:17.033] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [13:16:17.034] [main] o.e.j.s.Server -  Started @1918ms 
-INFO   [18:41:51.816] [main] o.e.j.u.log -  Logging initialized @1281ms 
-INFO   [18:41:51.913] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
-INFO   [18:41:51.920] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
-INFO   [18:41:51.934] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
-INFO   [18:41:51.966] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [18:41:51.968] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:41:52.509] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /demoLogic (org.mars.m2m.diagnosticsandmonitoring.resources.ProofOfConcept)
- 
-INFO   [18:41:52.512] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3ed0918d{/dmg/diagmonit,null,AVAILABLE} 
-INFO   [18:41:52.517] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [18:41:52.521] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@546621c4{/admin-dmg/diagmonit,null,AVAILABLE} 
-INFO   [18:41:52.578] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [18:41:52.578] [main] o.e.j.s.Server -  Started @2044ms 
-INFO   [18:57:14.398] [main] o.e.j.u.log -  Logging initialized @1194ms 
-INFO   [18:57:14.483] [main] i.d.s.ServerFactory -  Starting DeviceDiagMonitApplication 
-INFO   [18:57:14.490] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /dmg/diagmonit 
-INFO   [18:57:14.504] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-dmg/diagmonit 
-INFO   [18:57:14.536] [main] o.e.j.s.SetUIDListener -  Opened DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [18:57:14.538] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:57:15.044] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /demoLogic (org.mars.m2m.diagnosticsandmonitoring.resources.ProofOfConcept)
- 
-INFO   [18:57:15.046] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3ed0918d{/dmg/diagmonit,null,AVAILABLE} 
-INFO   [18:57:15.051] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [18:57:15.056] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@546621c4{/admin-dmg/diagmonit,null,AVAILABLE} 
-INFO   [18:57:15.098] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
-INFO   [18:57:15.098] [main] o.e.j.s.Server -  Started @1896ms 
+INFO   [10:30:44.323] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@66c83fc8{/admin-dmg/diagmonit,null,AVAILABLE} 
+INFO   [10:30:44.372] [main] o.e.j.s.ServerConnector -  Started DeviceDiagMonitApplication@2e029d61{HTTP/1.1}{0.0.0.0:8073} 
+INFO   [10:30:44.372] [main] o.e.j.s.Server -  Started @2003ms 

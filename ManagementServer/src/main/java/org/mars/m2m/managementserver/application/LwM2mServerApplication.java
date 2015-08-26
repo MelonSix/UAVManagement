@@ -16,7 +16,7 @@ import org.mars.m2m.managementserver.Listeners.ObservationListenerImpl;
 import org.mars.m2m.managementserver.applicationConfiguration.Lwm2mServerConfiguration;
 import org.mars.m2m.managementserver.core.CustomObjectModel;
 import org.mars.m2m.managementserver.health.ClientsResourceHealth;
-import org.mars.m2m.managementserver.resources.ClientsResource;
+import org.mars.m2m.managementserver.resources.MgmtServerInterface;
 import org.mars.m2m.managementserver.resources.ObjectModelSpec;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +48,7 @@ public class LwM2mServerApplication extends Application<Lwm2mServerConfiguration
         startLwm2mServer(configuration);
         
         //resource objects
-        ClientsResource clientsRes = new ClientsResource(lwServer);
+        MgmtServerInterface clientsRes = new MgmtServerInterface(lwServer);
         ObjectModelSpec objMdlRes = new ObjectModelSpec();
         
         //resources registration
