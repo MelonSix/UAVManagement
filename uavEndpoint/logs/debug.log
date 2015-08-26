@@ -54,3 +54,21 @@
 2015-08-26 10:25:17 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
 2015-08-26 10:25:34 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=900, type=INTEGER]], isMultiInstances=false]] 
 2015-08-26 10:26:33 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-26 14:23:08 - file /uavObjectModel.json successfully loaded
+2015-08-26 14:23:08 - Started execution in military uav run method
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - UAV manager started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Threat sensor started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Missile dispatcher started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Temperature sensor started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Altitude sensor started
+2015-08-26 14:25:16 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:25:16 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:25:16 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:30:13 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-26 14:34:12 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=900, type=INTEGER]], isMultiInstances=false]] 
+2015-08-26 14:34:30 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2

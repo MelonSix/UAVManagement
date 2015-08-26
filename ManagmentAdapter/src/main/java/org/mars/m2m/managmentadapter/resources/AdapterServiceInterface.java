@@ -66,26 +66,26 @@ public class AdapterServiceInterface {
     {
         ResponsePrimitive response = null;
         operation = DmCommons.determineOneM2mOperation(request.getOperation());
-        AdapterServices opSvc = new AdapterServices();
+        AdapterServices adapterSvc = new AdapterServices();
         
         try {
             switch (operation) {
                 case CREATE:
-                    response = opSvc.create(request, uriInfo);
+                    response = adapterSvc.create(request, uriInfo);
                     break;
                 case RETRIEVE:
                     response = (request.getTo().contains("discover"))?//threats a discover (a kind of retrieve request) request differently
-                                    opSvc.discover(request, uriInfo):
-                                    opSvc.retrieve(request, uriInfo);
+                                    adapterSvc.discover(request, uriInfo):
+                                    adapterSvc.retrieve(request, uriInfo);
                     break;
                 case UPDATE:
-                    response = opSvc.update(request, uriInfo);
+                    response = adapterSvc.update(request, uriInfo);
                     break;
                 case DELETE:
-                    response = opSvc.delete(request, uriInfo);
+                    response = adapterSvc.delete(request, uriInfo);
                     break;
                 case NOTIFY:                    
-                    response = opSvc.notify(request, uriInfo);
+                    response = adapterSvc.notify(request, uriInfo);
                     break;
                 default:
             }
