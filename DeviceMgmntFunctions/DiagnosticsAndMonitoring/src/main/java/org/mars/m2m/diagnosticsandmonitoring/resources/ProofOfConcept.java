@@ -23,7 +23,6 @@ import org.slf4j.LoggerFactory;
  * @author AG BRIGHTER
  */
 @Path("/demoLogic")
-@Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProofOfConcept {
     private static ch.qos.logback.classic.Logger log = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ProofOfConcept.class);
@@ -32,6 +31,7 @@ public class ProofOfConcept {
     }
     
     @POST
+    @Consumes(MediaType.APPLICATION_XML)
     public Response getNotified(@Context HttpServletRequest req, @Context UriInfo uriInfo)
     {
         String content="[]";
