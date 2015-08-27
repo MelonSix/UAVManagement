@@ -1,0 +1,74 @@
+2015-08-26 10:10:29 - file /uavObjectModel.json successfully loaded
+2015-08-26 10:10:29 - Started execution in military uav run method
+2015-08-26 10:11:14 - file /uavObjectModel.json successfully loaded
+2015-08-26 10:11:14 - Started execution in military uav run method
+2015-08-26 10:11:30 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:11:30 - UAV manager started
+2015-08-26 10:11:31 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:11:31 - Threat sensor started
+2015-08-26 10:11:31 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:11:31 - Missile dispatcher started
+2015-08-26 10:11:31 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:11:31 - Temperature sensor started
+2015-08-26 10:11:31 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:11:31 - Altitude sensor started
+2015-08-26 10:12:20 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:21 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:21 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:21 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:21 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:27 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:27 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:27 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:27 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:27 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:32 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:33 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:33 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:33 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:33 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:38 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:39 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:39 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:39 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:39 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:44 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:45 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:45 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:45 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:45 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:50 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:51 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:51 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:51 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:12:51 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:13:35 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:13:35 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:13:35 - Error Loading bootstrap information. Registration failed
+2015-08-26 10:21:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-26 10:21:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 1
+2015-08-26 10:21:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-26 10:21:22 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 3
+2015-08-26 10:22:16 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-26 10:25:11 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-26 10:25:17 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-26 10:25:34 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=900, type=INTEGER]], isMultiInstances=false]] 
+2015-08-26 10:26:33 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2
+2015-08-26 14:23:08 - file /uavObjectModel.json successfully loaded
+2015-08-26 14:23:08 - Started execution in military uav run method
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - UAV manager started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Threat sensor started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Missile dispatcher started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Temperature sensor started
+2015-08-26 14:23:52 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:23:52 - Altitude sensor started
+2015-08-26 14:25:16 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:25:16 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:25:16 - Error Loading bootstrap information. Registration failed
+2015-08-26 14:30:13 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 0
+2015-08-26 14:34:12 - Write on Device Resource [2]  value[LwM2mResource [id=2, values=[Value [value=900, type=INTEGER]], isMultiInstances=false]] 
+2015-08-26 14:34:30 - [org.mars.m2m.Devices.MissileDispatcher] Read on resource: 2

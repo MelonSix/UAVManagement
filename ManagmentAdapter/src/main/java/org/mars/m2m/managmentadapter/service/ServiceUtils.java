@@ -15,10 +15,14 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceType;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResponseStatusCode;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.StdEventCats;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.MgmtResource;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Resource;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ResponsePrimitive;
@@ -219,6 +223,37 @@ public class ServiceUtils
         resp.setEventCategory(StdEventCats.DEFAULT.name());
         return resp;
     }
+    
+    /**
+     *Sends a &lt;request&gt; resource as a response to the OneM2M platform.
+     * @param req The initial request for this response message
+     * @param container The &lt;Container&gt; resource that is created for this data
+     * @param operationService Helper to access the contents of the Adapter services class
+     * @return An instance of {@link RequestPrimitive} as a response to the OneM2M platform
+     */
+    public RequestPrimitive prepareReqPrimitiveAsResponse(RequestPrimitive req, Container container, AdapterServices operationService) {
+        RequestPrimitive reqPri = operationService.of.createRequestPrimitive();
+        reqPri.setOperation(Operation.CREATE.getValue());
+        reqPri.setTo(req.getFrom());//The recipient and sender addresses are swapped for the the response message
+        reqPri.setFrom(req.getTo());
+        reqPri.setRequestIdentifier(DmCommons.generateID());
+        reqPri.setResourceType(ResourceType.REQUEST.getValue());
+        reqPri.setName("");
+        operationService.primitiveContent.getAny().add(container);
+        reqPri.setContent(operationService.primitiveContent);
+        reqPri.setOriginatingTimestamp(DmCommons.getOneM2mTimeStamp());
+        reqPri.setResultExpirationTimestamp(DmCommons.getOneM2mTimeStamp());
+        /*resp.setResponseStatusCode(DmCommons.getOneM2mStatusCode(statusCode).getValue());
+        resp.setRequestIdentifier(req.getRequestIdentifier());
+        operationService.primitiveContent.getAny().add(container);
+        resp.setContent(operationService.primitiveContent);
+        resp.setTo(req.getFrom());
+        resp.setFrom(operationService.uriInfo.getBaseUriBuilder().path(AdapterServiceInterface.class).build().toString());
+        resp.setOriginatingTimestamp(DmCommons.getOneM2mTimeStamp());
+        resp.setResultExpirationTimestamp(DmCommons.setOneM2mTimeStamp(new GregorianCalendar(2015, 8, 1, 0, 0, 0)));
+        resp.setEventCategory(StdEventCats.DEFAULT.name());*/
+        return reqPri;
+    }
 
     /**
      * This method registers a Notify request for future callback invocations
@@ -231,15 +266,20 @@ public class ServiceUtils
             String[] endpointTarget = request.getTo().split("/");
             String resourcePath = endpointTarget[endpointTarget.length - 3] + "/" + endpointTarget[endpointTarget.length - 2] + "/" + endpointTarget[endpointTarget.length - 2];
             String notifyTarget = request.getFrom();
-            if (NotificationRegistry.getRegistry().containsKey(resourcePath)) {
-                ArrayList subscribers = NotificationRegistry.getRegistry().get(resourcePath);
-                subscribers.add(notifyTarget);
+            
+            if (NotificationRegistry.getRegistry().containsKey(resourcePath)) 
+            {
+                ArrayList<RequestPrimitive> subscribers = NotificationRegistry.getRegistry().get(resourcePath);
+                subscribers.add(request);
                 NotificationRegistry.updateSubscribers(resourcePath, subscribers);
-            } else {
-                ArrayList<String> subscribers = new ArrayList<>();
-                subscribers.add(notifyTarget);
+            } 
+            else
+            {
+                ArrayList<RequestPrimitive> subscribers = new ArrayList<>();
+                subscribers.add(request);
                 NotificationRegistry.setSubscribers(resourcePath, subscribers);
             }
+            
             return true;
         } catch (Exception e) {
             operationService.logger.error(e.toString());
@@ -285,6 +325,32 @@ public class ServiceUtils
         operationService.contentInstance.setOntologyRef("");
         operationService.contentInstance.setContent(entityAsStringData);
         operationService.container.getContentInstanceOrContainerOrSubscription().add(operationService.contentInstance);
+    }
+    
+    /**
+     * Prepares a &lt;Container&gt; resource for notification data
+     * @param content The notification content
+     * @return An instance of {@link Container}
+     */
+    public Container prepareNotificationContainer(String content)
+    {
+        Container container = new Container();
+        container.setStateTag(BigInteger.ZERO);
+        container.setCreator("");
+        container.setMaxNrOfInstances(BigInteger.valueOf(1));
+        container.setMaxByteSize(BigInteger.valueOf(1024));
+        container.setMaxInstanceAge(BigInteger.valueOf(86400));
+        container.setCurrentByteSize(BigInteger.valueOf(content.getBytes().length));
+        container.setLocationID("");
+        container.setOntologyRef("");
+            ContentInstance contentInstance = new ContentInstance();
+            contentInstance.setStateTag(BigInteger.ZERO);
+            contentInstance.setContentInfo(MediaType.APPLICATION_JSON);
+            contentInstance.setContentSize(BigInteger.valueOf(content.getBytes().length));
+            contentInstance.setOntologyRef("");
+            contentInstance.setContent(content);
+        container.getContentInstanceOrContainerOrSubscription().add(contentInstance);
+        return container;
     }
 
     /**

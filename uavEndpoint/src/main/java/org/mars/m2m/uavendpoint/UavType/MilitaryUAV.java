@@ -804,7 +804,7 @@ public class MilitaryUAV implements Runnable {
                 DeviceHelper.stopDevice(lwm2mClient);
                 lwm2mClient.StartDevice();
             }
-        }, 50000, 6000);
+        }, 5000, 5000);
     }
     
 }

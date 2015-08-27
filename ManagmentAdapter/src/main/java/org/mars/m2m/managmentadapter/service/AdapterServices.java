@@ -69,7 +69,7 @@ public class AdapterServices
      * @param uriInfo Injected information for the method in events that the URI details are needed
      * @return A {@link ResponsePrimitive} instance
      */
-    public ResponsePrimitive create(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive create(RequestPrimitive request, UriInfo uriInfo)
     {
         //ObjectMapper objectMapper = new ObjectMapper();
         String data = serviceUtils.extractRequestData(request, this);
@@ -88,9 +88,9 @@ public class AdapterServices
         serviceUtils.prepareContainer(serviceResponse, this);
 
         //resource <responsePrimitive> or <response> 
-        primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
+        //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         
-        return primitiveResponse;
+        return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
     }
     
     /**
@@ -99,7 +99,7 @@ public class AdapterServices
      * @param uriInfo Injected information for the method in events that the URI details are needed
      * @return A {@link ResponsePrimitive} instance
      */
-    public ResponsePrimitive retrieve(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive retrieve(RequestPrimitive request, UriInfo uriInfo)
     {
         //sets the request details to be sent to the client to consume a service
         this.uriInfo = uriInfo;
@@ -114,9 +114,9 @@ public class AdapterServices
         serviceUtils.prepareContainer(serviceResponse, this);
         
         //resource <responsePrimitive> or <response> 
-        primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
+        //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         
-        return primitiveResponse;
+        return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
     }
     
     /**
@@ -125,7 +125,7 @@ public class AdapterServices
      * @param uriInfo Injected information for the method in events that the URI details are needed
      * @return A {@link ResponsePrimitive} instance
      */
-    public ResponsePrimitive update(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive update(RequestPrimitive request, UriInfo uriInfo)
     {
         //sets the request details to be sent to the client to consume a service
         this.uriInfo = uriInfo;
@@ -142,9 +142,9 @@ public class AdapterServices
         serviceUtils.prepareContainer(serviceResponse, this);
         
         //resource <responsePrimitive> or <response> 
-        primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
+        //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         
-         return primitiveResponse;
+         return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
     }
     
     /**
@@ -153,7 +153,7 @@ public class AdapterServices
      * @param uriInfo Injected information for the method in events that the URI details are needed
      * @return A {@link ResponsePrimitive} instance
      */
-    public ResponsePrimitive delete(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive delete(RequestPrimitive request, UriInfo uriInfo)
     {
         //sets the request details to be sent to the client to consume a service
         this.uriInfo = uriInfo;
@@ -169,8 +169,9 @@ public class AdapterServices
         serviceUtils.prepareContainer(serviceResponse, this);
         
         //resource <responsePrimitive> or <response> 
-        primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
-        return primitiveResponse;
+        //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
+        
+        return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
     }
     
     /**
@@ -179,7 +180,7 @@ public class AdapterServices
      * @param uriInfo Injected information for the method in events that the URI details are needed
      * @return A {@link ResponsePrimitive} instance
      */
-    public ResponsePrimitive notify(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive notify(RequestPrimitive request, UriInfo uriInfo)
     {        
         if(serviceUtils.addToRegistry(request, this))
         {
@@ -201,10 +202,46 @@ public class AdapterServices
             serviceUtils.prepareContainer(serviceResponse, this);
 
             //resource <responsePrimitive> or <response> 
-            primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
+            return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+            //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         }
         
-        return primitiveResponse;
+        return null;
+    }
+    
+    /**
+     * Receives a notification request and performs registration for the request on a particular endpoint
+     * @param request The notification request in a {@link RequestPrimitive} instance
+     * @param uriInfo The URI information of this particular request
+     * @return An instance of {@link RequestPrimitive} for the originator
+     */
+    public RequestPrimitive prepareNotification(RequestPrimitive request, UriInfo uriInfo)
+    {        
+        if(serviceUtils.addToRegistry(request, this))
+        {
+            String data = null;//extractRequestData(request);
+
+            request.setTo(request.getTo()+"/observe");
+
+            //sets the request details to be sent to the client to consume a service
+            this.uriInfo = uriInfo;
+            consumerDtls.setRequest(request);
+            headerData.put("content-type", MediaType.APPLICATION_JSON);
+            consumerDtls.setHeaderData(headerData);
+
+            //Gets the response of a consuming client's request
+            Response serviceResponse = msConsumer.handlePost(consumerDtls, data);
+            int statusCode = serviceResponse.getStatus();
+
+            //Sets up the data in a <container> resource
+            serviceUtils.prepareContainer(serviceResponse, this);
+
+            //resource <responsePrimitive> or <response> 
+            return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+            //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
+        }
+        
+        return null;
     }
     
     /**
@@ -213,7 +250,7 @@ public class AdapterServices
      * @param uriInfo
      * @return 
      */
-    public ResponsePrimitive discover(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive discover(RequestPrimitive request, UriInfo uriInfo)
     {
         //sets the request details to be sent to the client to consume a service
         this.uriInfo = uriInfo;
@@ -231,13 +268,26 @@ public class AdapterServices
         
                 
             //resource <responsePrimitive> or <response> 
-            primitiveResponse = 
-                    serviceUtils.prepareRespPrimitive(request, statusCode, 
-                            serviceUtils.getContainerForObject(discoveryList, instances), this);
+            return serviceUtils.prepareReqPrimitiveAsResponse(request,
+                                    serviceUtils.getContainerForObject(discoveryList, instances), this);
+            
+            /*primitiveResponse =
+            serviceUtils.prepareRespPrimitive(request, statusCode,
+            serviceUtils.getContainerForObject(discoveryList, instances), this);*/
         }
         
-        return primitiveResponse;
+        return null;
     }
     
+    /**
+     * Forms a request primitive for a notification process
+     * @param req The corresponding request for this notification
+     * @param content The notification content
+     * @return An instance of {@link RequestPrimitive} as the response
+     */
+    public RequestPrimitive notificationResponse(RequestPrimitive req, String content)
+    {
+        return serviceUtils.prepareReqPrimitiveAsResponse(req, serviceUtils.prepareNotificationContainer(content), this);
+    }
     
 }

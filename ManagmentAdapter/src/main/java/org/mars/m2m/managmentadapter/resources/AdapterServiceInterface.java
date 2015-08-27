@@ -43,7 +43,7 @@ public class AdapterServiceInterface {
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public ResponsePrimitive postRequest(RequestPrimitive requestPrimitive, @Context UriInfo uriInfo)
+    public RequestPrimitive postRequest(RequestPrimitive requestPrimitive, @Context UriInfo uriInfo)
     {
         return processRequest(requestPrimitive, uriInfo);
     }
@@ -62,9 +62,9 @@ public class AdapterServiceInterface {
      * @param uriInfo
      * @return 
      */
-    public ResponsePrimitive processRequest(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive processRequest(RequestPrimitive request, UriInfo uriInfo)
     {
-        ResponsePrimitive response = null;
+        RequestPrimitive response = null;
         operation = DmCommons.determineOneM2mOperation(request.getOperation());
         AdapterServices adapterSvc = new AdapterServices();
         

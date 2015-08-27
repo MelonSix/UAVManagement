@@ -61,6 +61,7 @@ public class Notify
      * Calls the registered listeners to perform their respective send implementations
      * @param notificationRegistry The object used to access the static registry
      * containing all currently registered subscribers of an observation
+     * @param data The notification content
      */
     public void sendNotification(NotificationRegistry notificationRegistry, Object data)
     {
