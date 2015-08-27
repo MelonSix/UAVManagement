@@ -45,7 +45,7 @@ public class NotificationListenerImpl implements NotificationListener
             {//for each subscriber of a resource, notify the subscriber
                 sc.handlePost(subscriber.getFrom(), 
                         adapterServices.notificationResponse(subscriber, notificationObject.getData().toString()),
-                        MediaType.APPLICATION_JSON_TYPE);
+                        MediaType.APPLICATION_XML_TYPE);
             }
         }
         //System.out.println("Fired event from sendToOriginator, data: "+notificationObject.getData());
