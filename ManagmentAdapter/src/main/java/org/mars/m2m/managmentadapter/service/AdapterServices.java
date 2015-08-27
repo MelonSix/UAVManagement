@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
@@ -90,7 +91,7 @@ public class AdapterServices
         //resource <responsePrimitive> or <response> 
         //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         
-        return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+        return serviceUtils.prepareReqPrimitiveAsResponse(Operation.CREATE, request, container, this);
     }
     
     /**
@@ -116,7 +117,7 @@ public class AdapterServices
         //resource <responsePrimitive> or <response> 
         //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         
-        return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+        return serviceUtils.prepareReqPrimitiveAsResponse(Operation.CREATE, request, container, this);
     }
     
     /**
@@ -144,7 +145,7 @@ public class AdapterServices
         //resource <responsePrimitive> or <response> 
         //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         
-         return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+         return serviceUtils.prepareReqPrimitiveAsResponse(Operation.UPDATE, request, container, this);
     }
     
     /**
@@ -171,7 +172,7 @@ public class AdapterServices
         //resource <responsePrimitive> or <response> 
         //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         
-        return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+        return serviceUtils.prepareReqPrimitiveAsResponse(Operation.DELETE, request, container, this);
     }
     
     /**
@@ -202,7 +203,7 @@ public class AdapterServices
             serviceUtils.prepareContainer(serviceResponse, this);
 
             //resource <responsePrimitive> or <response> 
-            return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+            return serviceUtils.prepareReqPrimitiveAsResponse(Operation.CREATE, request, container, this);
             //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         }
         
@@ -237,7 +238,7 @@ public class AdapterServices
             serviceUtils.prepareContainer(serviceResponse, this);
 
             //resource <responsePrimitive> or <response> 
-            return serviceUtils.prepareReqPrimitiveAsResponse(request, container, this);
+            return serviceUtils.prepareReqPrimitiveAsResponse(Operation.CREATE, request, container, this);
             //primitiveResponse = serviceUtils.prepareRespPrimitive(request, statusCode, container, this);
         }
         
@@ -268,7 +269,7 @@ public class AdapterServices
         
                 
             //resource <responsePrimitive> or <response> 
-            return serviceUtils.prepareReqPrimitiveAsResponse(request,
+            return serviceUtils.prepareReqPrimitiveAsResponse(Operation.CREATE, request,
                                     serviceUtils.getContainerForObject(discoveryList, instances), this);
             
             /*primitiveResponse =
@@ -287,7 +288,7 @@ public class AdapterServices
      */
     public RequestPrimitive notificationResponse(RequestPrimitive req, String content)
     {
-        return serviceUtils.prepareReqPrimitiveAsResponse(req, serviceUtils.prepareNotificationContainer(content), this);
+        return serviceUtils.prepareReqPrimitiveAsResponse(Operation.UPDATE, req, serviceUtils.prepareNotificationContainer(content), this);
     }
     
 }

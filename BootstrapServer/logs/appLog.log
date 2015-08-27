@@ -97,3 +97,48 @@ INFO   [07:18:24.550] [main] i.d.s.AdminEnvironment -  tasks =
 INFO   [07:18:24.566] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@11de56e6{/admin-bs,null,AVAILABLE} 
 INFO   [07:18:26.352] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@5fb97279{HTTP/1.1}{0.0.0.0:8075} 
 INFO   [07:18:26.353] [main] o.e.j.s.Server -  Started @22232ms 
+INFO   [15:35:14.355] [main] o.e.j.u.log -  Logging initialized @1282ms 
+INFO   [15:35:14.444] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [15:35:14.477] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [15:35:14.478] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [15:35:14.484] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [15:35:14.485] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [15:35:14.495] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [15:35:14.503] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [15:35:14.518] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [15:35:14.553] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:35:14.557] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:35:15.083] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [15:35:15.085] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [15:35:15.091] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [15:35:15.097] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [15:35:15.143] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [15:35:15.143] [main] o.e.j.s.Server -  Started @2073ms 
+ERROR  [15:35:18.283] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:35:18.308] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:35:18.316] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:35:18.324] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:35:18.334] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:35:23.311] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:35:23.336] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:35:23.342] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:35:23.377] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:35:23.378] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:35:28.305] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:35:28.319] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:35:28.338] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:35:28.362] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:35:28.377] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 
+ERROR  [15:35:33.302] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for UAV Manager 
+ERROR  [15:35:33.320] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for Threat sensor 
+ERROR  [15:35:33.336] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [15:35:33.361] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for IPSO Temperature sensor 
+ERROR  [15:35:33.375] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for Altitude sensor 

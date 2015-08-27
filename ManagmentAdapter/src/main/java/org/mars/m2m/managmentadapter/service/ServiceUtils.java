@@ -226,14 +226,15 @@ public class ServiceUtils
     
     /**
      *Sends a &lt;request&gt; resource as a response to the OneM2M platform.
+     * @param operation The OneM2M operation to be performed - C/R/U/D
      * @param req The initial request for this response message
      * @param container The &lt;Container&gt; resource that is created for this data
      * @param operationService Helper to access the contents of the Adapter services class
      * @return An instance of {@link RequestPrimitive} as a response to the OneM2M platform
      */
-    public RequestPrimitive prepareReqPrimitiveAsResponse(RequestPrimitive req, Container container, AdapterServices operationService) {
+    public RequestPrimitive prepareReqPrimitiveAsResponse(Operation operation, RequestPrimitive req, Container container, AdapterServices operationService) {
         RequestPrimitive reqPri = operationService.of.createRequestPrimitive();
-        reqPri.setOperation(Operation.CREATE.getValue());
+        reqPri.setOperation(operation.getValue());
         reqPri.setTo(req.getFrom());//The recipient and sender addresses are swapped for the the response message
         reqPri.setFrom(req.getTo());
         reqPri.setRequestIdentifier(DmCommons.generateID());
