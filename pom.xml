@@ -18,6 +18,7 @@
         <module>DMCore</module>
         <module>DeviceMgmntFunctions</module>
         <module>BootstrapServer</module>
+        <module>CaseStudy</module>
     </modules>
     <developers>
         <developer>
