@@ -104,7 +104,7 @@ public class AnimationPanel extends JPanel implements MouseListener {
             Color fog_of_war_color = GraphicConfig.fog_of_war_color;//Color.black;
 
             //initiate background image
-            background_image_level_1 = ImageUtil.retrieveImage("/resources/background2.jpg");
+            background_image_level_1 = ImageUtil.retrieveImage("/background2.jpg");
 
             //initiate obstacle image
             obstacle_image_level_2 = createBufferedImage();
@@ -163,7 +163,7 @@ public class AnimationPanel extends JPanel implements MouseListener {
             this.initObstaclesInObstacleImageInLevel2(world.getObstaclesForUIRendering());
 //            this.updateTargetInUAVImageLevel(world.getThreatsForUIRendering());
 
-            this.initFogOfWarImage();
+            //this.initFogOfWarImage();
 
             //initiate parameters according to world
             this.initParameterFromInitConfig(world);
@@ -172,7 +172,7 @@ public class AnimationPanel extends JPanel implements MouseListener {
             this.addMouseListener(this);
 
         } catch (IOException ex) {
-            logger.error("",ex.toString());
+            logger.error("{}",ex.toString());
         }
 
     }

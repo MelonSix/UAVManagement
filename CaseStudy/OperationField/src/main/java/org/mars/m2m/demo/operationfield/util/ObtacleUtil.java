@@ -76,6 +76,6 @@ public class ObtacleUtil {
     }
 
     public static void main(String[] args) {
-        readObstacleFromResourceKML("/Users/Yulin_Zhang/Desktop/simple_obstacle_v2.kml");
+        readObstacleFromResourceKML("/simple_obstacle_v2.kml");
     }
 }

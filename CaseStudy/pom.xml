@@ -12,11 +12,4 @@
         <module>ControlCenter</module>
         <module>OperationField</module>
     </modules>
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>UAVManagement</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 </project>

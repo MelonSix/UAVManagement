@@ -107,7 +107,7 @@ public class NonStaticInitConfig {
      */
     public void initObstacles() {
         if (StaticInitConfig.EXTERNAL_KML_FILE_PATH == null) {
-            String obs_path = "/resources/Obstacle" + NonStaticInitConfig.obstacle_num + ".kml";
+            String obs_path = "/Obstacle" + NonStaticInitConfig.obstacle_num + ".kml";
             obstacles = ObtacleUtil.readObstacleFromResourceKML(obs_path); //get obstacle from kml
         } else {
             obstacles = ObtacleUtil.readObstacleFromExternalKML(StaticInitConfig.EXTERNAL_KML_FILE_PATH);

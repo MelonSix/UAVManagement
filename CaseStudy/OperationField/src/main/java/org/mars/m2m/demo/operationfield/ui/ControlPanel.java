@@ -129,7 +129,6 @@ public class ControlPanel extends javax.swing.JPanel {
         jSplitPane7.setDividerLocation(46);
         jSplitPane7.setDividerSize(1);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Slow.jpg"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -137,7 +136,6 @@ public class ControlPanel extends javax.swing.JPanel {
         });
         jSplitPane7.setLeftComponent(jButton6);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Fast.jpg"))); // NOI18N
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -172,7 +170,7 @@ public class ControlPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

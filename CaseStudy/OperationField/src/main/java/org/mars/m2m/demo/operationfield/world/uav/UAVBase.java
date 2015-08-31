@@ -32,7 +32,7 @@ public class UAVBase {
             this.coordinate = coordinate;
             this.base_radius = base_radius;
             this.base_shape = new Circle(coordinate[0], coordinate[1], this.base_radius);
-            image = ImageUtil.retrieveImage("/resources/radar2.jpg");
+            image = ImageUtil.retrieveImage("/radar2.jpg");
         } catch (IOException ex) {
             Logger.getLogger(UAVBase.class.getName()).log(Level.SEVERE, null, ex);
         }
