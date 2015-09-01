@@ -19,8 +19,10 @@ import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.uav.Attacker;
 import org.mars.m2m.demo.uav.Scout;
+import org.mars.m2m.demo.uav.UAV;
 import org.mars.m2m.demo.uav.UAVBase;
 import org.mars.m2m.demo.util.ImageUtil;
+import org.mars.m2m.demo.world.AnimatorListener;
 import org.mars.m2m.demo.world.World;
 import org.slf4j.LoggerFactory;
 
@@ -80,7 +82,7 @@ public class AnimationPanel extends JPanel
     public static int highlight_threat_index = -1;
 
     private long simulation_time_in_milli_seconds = 0;
-    private int simulation_time_step = 0;
+    private static int simulation_time_step = 0;
     private ArrayList<Scout> scouts;
     private ArrayList<Attacker> attackers;
     private ArrayList<Threat> threats_from_world_view;
@@ -146,21 +148,32 @@ public class AnimationPanel extends JPanel
            //initiate world
             NonStaticInitConfig init_config = new NonStaticInitConfig();
             this.world = new World(init_config);            
-            this.threats_from_world_view = world.getThreatsForUIRendering();
+            this.threats_from_world_view = world.getThreats();
             
             //draw obstacles
             this.initObstaclesInObstacleImage(init_config.getObstacles());
             
-            //Covers areas yet to be scouted by the scout UAV
-            this.initFogOfWarImage();
-            
             //initiate parameters according to the world
             this.initParameterFromInitConfig(world);
             
+            //Covers areas yet to be scouted by the scout UAV
+            this.initFogOfWarImage();
 
         } catch (/*IO*/Exception ex) {
             logger.error("{}",ex.toString());
         }
+    }
+    
+    /** start the threat to drive the world and paint the graph. The thread is implemented by AnimatorListener Class in this file.
+     * 
+     */
+    public void start() {
+        //drive the world and ui
+        StaticInitConfig.SIMULATION_WITH_UI_TIMER = 
+             new javax.swing.Timer(
+                     (int) (StaticInitConfig.INIT_SIMULATION_DELAY / StaticInitConfig.SIMULATION_SPEED),
+                     new AnimatorListener(this));
+        StaticInitConfig.SIMULATION_WITH_UI_TIMER.start();
     }
     
     /**Initiate parameter from Config
@@ -227,4 +240,166 @@ public class AnimationPanel extends JPanel
             }
         }
     }
+    
+    /** clear the given image.
+     * 
+     */
+    private void clearImageBeforeUpdate(Graphics2D graphics) {
+        graphics.setColor(transparent_color);
+        graphics.setBackground(transparent_color);
+        graphics.clearRect(0, 0, bound_width, bound_height);
+    }
+    
+    /** clear the images, which is dynamically updated.
+     * 
+     */
+    public void clearUAVImageBeforeUpdate() {
+        clearImageBeforeUpdate(uav_image_graphics);
+        clearImageBeforeUpdate(enemy_uav_image_graphics);
+        clearImageBeforeUpdate(highlight_obstacle_image_graphics);
+        clearImageBeforeUpdate(threat_image_graphics);
+    }
+    
+    /** update the images at each time step.
+     * 
+     */
+    public void updateImageAtEachIteration() {
+        initUAVBase(uav_image_graphics);
+//        updateTargetInUAVImageLevel(world.getThreatsForUIRendering());
+        updateThreatImage();
+        updateHighlightObstacleImage(world.getObstacles());
+        updateUAVImage();
+        updateFogOfWarImage();
+        updateUAVHistoryPath();
+        showUAVPlannedPath();
+//        showUAVPlannedTree();
+    }
+    
+    /** paint the uav base
+     *
+     * @param uav_image_graphics
+     */
+    private void initUAVBase(Graphics2D uav_image_graphics) {
+        virtualizer.drawUAVBase(uav_image_graphics, uav_base);
+    }
+    
+    /** repaint the threat image.
+     * 
+     */
+    private void updateThreatImage() {
+        ArrayList<Threat> threats = world.getThreats();
+        for (Threat threat : threats) {
+            if (!threat.isEnabled()) {
+                continue;
+            }
+            if (threat.getIndex() == AnimationPanel.highlight_threat_index) {
+                virtualizer.drawThreat(threat_image_graphics, threat, GraphicConfig.threat_color, GraphicConfig.highlight_threat_color);
+            } else {
+                virtualizer.drawThreat(threat_image_graphics, threat, GraphicConfig.threat_color, null);
+            }
+            int threat_index = threat.getIndex();
+            if (this.threats_from_world_view.get(threat_index).getMode() == Threat.LOCKED_MODE) {
+                virtualizer.drawCombatSymbol(threat_image_graphics, threat.getCoordinates(), Threat.threat_width * 3 / 2, Color.red);
+            }
+        }
+    }
+    
+    /** repaint the uav image.
+     * 
+     */
+    private void updateUAVImage() {
+        for (Scout scout : this.scouts) {
+            virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, null);
+        }
+        for (Attacker attacker : this.attackers) {
+            if (attacker.getIndex() == this.highlight_uav_index) {
+                virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, attacker, GraphicConfig.highlight_uav_color);
+            }
+            virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, attacker, null);
+
+        }
+    }
+    
+    /** repaint the fog of war image.
+     * 
+     */
+    private void updateFogOfWarImage() 
+    {
+        if (!StaticInitConfig.SHOW_FOG_OF_WAR) {
+            return;
+        }
+        for (Attacker attcker : this.attackers) {
+            virtualizer.drawUAVInFogOfWarInLevel3(fog_of_war_graphics, (UAV) attcker);
+        }
+        for (Scout scout : this.scouts) {
+            virtualizer.drawUAVInFogOfWarInLevel3(fog_of_war_graphics, (UAV) scout);
+        }
+        ArrayList<Obstacle> obstacles = this.world.getObstacles();
+        for (Obstacle obstacle : obstacles) {
+            virtualizer.showObstacleInFogOfWar(fog_of_war_graphics, obstacle);
+        }
+        ArrayList<Threat> threats = this.world.getThreats();
+        for (Threat threat : threats) {
+            virtualizer.showThreatInFogOfWar(fog_of_war_graphics, threat);
+        }
+    }
+    
+    /** repaint the history path of the uav
+     * 
+     */
+    private void updateUAVHistoryPath() {
+        if (!StaticInitConfig.SHOW_HISTORY_PATH) {
+            return;
+        }
+        for (Attacker attacker : this.attackers) {
+            if (attacker.isVisible() && attacker.getTarget_indicated_by_role() != null) {
+                virtualizer.drawUAVHistoryPath(uav_history_path_image_graphics, attacker, GraphicConfig.side_a_center_color);
+            }
+        }
+    }
+    
+    /** repaint the path planned by the uav.
+     * 
+     */
+    private void showUAVPlannedPath() 
+    {
+        uav_planned_path_image_graphics.setBackground(transparent_color);
+        uav_planned_path_image_graphics.setColor(transparent_color);
+        uav_planned_path_image_graphics.clearRect(0, 0, bound_width, bound_height);
+        if (!StaticInitConfig.SHOW_PLANNED_PATH && AnimationPanel.highlight_uav_index == -1) {
+            return;
+        } else if (!StaticInitConfig.SHOW_PLANNED_PATH && AnimationPanel.highlight_uav_index > 0) {
+            for (Attacker attacker : this.attackers) {
+                if (attacker.getIndex() == AnimationPanel.highlight_uav_index) {
+                    virtualizer.drawUAVPlannedPath(uav_planned_path_image_graphics, attacker, GraphicConfig.uav_planned_path_color);
+                }
+            }
+            return;
+        }
+        for (Attacker attacker : this.attackers) {
+            if (attacker.getTarget_indicated_by_role() != null) {
+                virtualizer.drawUAVPlannedPath(uav_planned_path_image_graphics, attacker, GraphicConfig.uav_planned_path_color);
+            }
+        }
+    }
+    
+    
+    /**************** ACCESSORS AND MUTATORS ********/    
+
+    public long getSimulation_time_in_milli_seconds() {
+        return simulation_time_in_milli_seconds;
+    }
+
+    public int getSimulation_time_step() {
+        return simulation_time_step;
+    }
+
+    public void setSimulation_time_step(int simulation_time_step) {
+        this.simulation_time_step = simulation_time_step;
+    }
+
+    public World getWorld() {
+        return world;
+    }
+    
 }

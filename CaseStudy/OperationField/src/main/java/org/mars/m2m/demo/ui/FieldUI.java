@@ -19,6 +19,7 @@ public class FieldUI extends javax.swing.JFrame {
      */
     public FieldUI() {
         initComponents();
+        this.animationPanel.start();//begins animation after initialization procedures
     }
 
     /**
