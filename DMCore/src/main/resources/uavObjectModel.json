@@ -2782,36 +2782,36 @@
             },
             {
                "id": 1,
-                "name": "Threat latitude",
+                "name": "Threat range",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "integer",
                 "range": "",
-                "units": "deg",
-                "description": "" 
+                "units": "",
+                "description": "The range of this threat" 
             },
             {
                "id": 2,
-                "name": "Threat longitude",
+                "name": "Threat caption",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
-                "type": "integer",
+                "type": "String",
                 "range": "",
-                "units": "deg",
-                "description": "" 
+                "units": "",
+                "description": "The caption of the threat" 
             },
             {
                "id": 3,
-                "name": "Threat minimum bounded rectangle",
+                "name": "Planned path",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "string",
                 "range": "",
                 "units": "",
-                "description": "The coordinates of the minimum bounded rectangle" 
+                "description": "The waypoints to this threat fromm UAV base" 
             },
             {
                "id": 4,
@@ -2834,6 +2834,39 @@
                 "range": "",
                 "units": "m",
                 "description": "" 
+            },
+            {
+               "id": 6,
+                "name": "Current angle",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "float",
+                "range": "",
+                "units": "deg",
+                "description": "" 
+            },
+            {
+               "id": 7,
+                "name": "Current planned path index",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "m",
+                "description": "" 
+            },
+            {
+               "id": 8,
+                "name": "Bounds",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "The minimum bounding rectangle" 
             }
         ]
     },
@@ -2953,6 +2986,49 @@
                 "range": "",
                 "units": "ft",
                 "description": "Resets the value of the sensor to 0 for it to detect teh current altitude again" 
+            }
+        ]
+    },
+    {
+        "name":"Obstacle sensor",
+        "id":12206,
+        "instancetype":"single",
+        "mandatory":true,
+        "description":"Senses the obstacles in the environment",
+        "objecturn":"urn:oma:lwm2m:ext:12206",
+        "resourcedefs":[
+            {
+               "id": 0,
+                "name": "index",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 1,
+                "name": "Shape",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 2,
+                "name": "Bounds",
+                "operations": "E",
+                "instancetype": "single",
+                "mandatory": false,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "" 
             }
         ]
     }

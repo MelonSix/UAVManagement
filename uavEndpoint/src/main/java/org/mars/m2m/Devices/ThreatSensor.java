@@ -6,6 +6,7 @@
 package org.mars.m2m.Devices;
 
 import ch.qos.logback.classic.Logger;
+import com.google.gson.Gson;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.eclipse.leshan.ResponseCode;
@@ -15,6 +16,7 @@ import org.eclipse.leshan.core.node.Value;
 import org.eclipse.leshan.core.response.LwM2mResponse;
 import org.eclipse.leshan.core.response.ValueResponse;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
+import org.mars.m2m.uavendpoint.Model.Rectangle;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -29,31 +31,19 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
     private int threatType;
     private int threatPosition_latitude;
     private int threatPosition_longitude;
-    private String threatMinimumBoundedRectangle;
+    private Rectangle threatMinimumBoundedRectangle;
     private float threatWidth;
     private float threatHeight;
+    private Gson gson;
     
     float myVal = (float) Math.random();//testing
 
     /**
     * Default constructor
     */
-    public ThreatSensor() {
-        // TODO Set device informatin here
-        /**E.g
-         * private final String manufacturelModel = "EclipseCon Tuto Client";
-        private final String modelNumber = "2015";
-        private final String serialNumber = "leshan-client-001";
-        private final BindingMode bindingModel = BindingMode.U;
-         */
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               // fireResourceChange(5700);
-                myVal = (float) Math.random();
-            }
-        }, 1000, 1000);
+    public ThreatSensor() 
+    {
+        this.gson = new Gson();
     }
 
     /**
@@ -67,11 +57,13 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
      */
     public ThreatSensor(int threatType, int threatPosition_latitude, 
             int threatPosition_longitude, String threatMinimumBoundedRectangle, 
-            float threatWidth, float threatHeight) {
+            float threatWidth, float threatHeight) 
+    {
+        this.gson = new Gson();
         this.threatType = threatType;
         this.threatPosition_latitude = threatPosition_latitude;
         this.threatPosition_longitude = threatPosition_longitude;
-        this.threatMinimumBoundedRectangle = threatMinimumBoundedRectangle;
+        this.threatMinimumBoundedRectangle = gson.fromJson(threatMinimumBoundedRectangle, Rectangle.class);
         this.threatWidth = threatWidth;
         this.threatHeight = threatHeight;
     }   
@@ -105,7 +97,7 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
                         new LwM2mResource(resourceid,  Value.newIntegerValue(this.getThreatPosition_longitude())) );
         case 3:
             return new ValueResponse(ResponseCode.CONTENT, 
-                        new LwM2mResource(resourceid,  Value.newStringValue(this.getThreatMinimumBoundedRectangle())) );
+                        new LwM2mResource(resourceid,  Value.newStringValue(gson.toJson(this.getThreatMinimumBoundedRectangle()))) );
         case 4:
             return new ValueResponse(ResponseCode.CONTENT, 
                         new LwM2mResource(resourceid,  Value.newFloatValue(this.getThreatWidth())) );
@@ -164,12 +156,12 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
         this.threatPosition_longitude = threatPosition_longitude;
     }
 
-    public String getThreatMinimumBoundedRectangle() {
+    public Rectangle getThreatMinimumBoundedRectangle() {
         return threatMinimumBoundedRectangle;
     }
 
-    public void setThreatMinimumBoundedRectangle(String threatMinimumBoundedRectangle) {
-        this.threatMinimumBoundedRectangle = threatMinimumBoundedRectangle;
+    public void setThreatMinimumBoundedRectangle(String bounds) {
+        this.threatMinimumBoundedRectangle = gson.fromJson(bounds, Rectangle.class);
     }
 
     public float getThreatWidth() {
