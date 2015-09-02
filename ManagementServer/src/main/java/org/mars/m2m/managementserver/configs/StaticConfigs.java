@@ -14,7 +14,7 @@ public class StaticConfigs
     /**
      * The address of where a new client should be reported to
      * <br/>
-     * E.g. Control center
+     * E.g. Management Adapter
      */
     public static final String DEVICE_REPORTING_URL = "http://localhost:8070/ma/mgmtAdapter/processDeviceReporting";
 }
