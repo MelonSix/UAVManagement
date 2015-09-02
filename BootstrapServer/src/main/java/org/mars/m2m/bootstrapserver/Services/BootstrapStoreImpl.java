@@ -63,7 +63,7 @@ public class BootstrapStoreImpl implements BootstrapStore {
 
     @Override
     public BootstrapConfig getBootstrap(String endpoint) {
-        return bootstrapByEndpoint.get(endpoint);
+        return bootstrapByEndpoint.get("default");//bootstrapByEndpoint.get(endpoint);
     }
 
     public void addConfig(String endpoint, BootstrapConfig config) throws ConfigurationException {

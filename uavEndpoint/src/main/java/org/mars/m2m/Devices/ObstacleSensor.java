@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ObstacleSensor  extends BaseInstanceEnabler implements DeviceExecution
 {
-    private static final Logger log = (Logger) LoggerFactory.getLogger(ThreatSensor.class);
+    private static final Logger log = (Logger) LoggerFactory.getLogger(ObstacleSensor.class);
     
     private int index;
     private Polygon shape;

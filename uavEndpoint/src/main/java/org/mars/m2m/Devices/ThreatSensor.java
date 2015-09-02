@@ -7,8 +7,6 @@ package org.mars.m2m.Devices;
 
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
-import java.util.Timer;
-import java.util.TimerTask;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
 import org.eclipse.leshan.core.node.LwM2mResource;

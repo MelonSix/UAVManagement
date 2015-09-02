@@ -68,6 +68,7 @@ public class BootstrapInfo {
         bStore.addConfig("IPSO Temperature sensor", bootstrapConfig);
         bStore.addConfig("missileDispatcher", bootstrapConfig);
         bStore.addConfig("Altitude sensor", bootstrapConfig);
+        bStore.addConfig("default", bootstrapConfig);
         bStore.deleteConfig("");//for forcing write to file
         return bStore;
     }

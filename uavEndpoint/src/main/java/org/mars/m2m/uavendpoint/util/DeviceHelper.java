@@ -8,6 +8,8 @@ package org.mars.m2m.uavendpoint.util;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.leshan.ResponseCode;
@@ -142,6 +144,28 @@ public class DeviceHelper {
             return null;
         BootstrapEp bootstrapEp = new BootstrapEp(new InetSocketAddress(info.getServerAddr(), info.getServerPortnum()), info.getLwM2mClient());
         return bootstrapEp.performBootstrap(info.getEndpoint());
+    }
+
+    /**
+     * Starts a thread for monitoring the client's services e.g. Registration
+     * @param <E> The implemented client type
+     * @param lwm2mClient
+     */
+    public <E extends AbstractDevice> void lwM2mClientDaemon(final E lwm2mClient) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (lwm2mClient.getRegistrationID() == null) {
+                    restartClient();
+                }
+            }
+
+            public void restartClient() {
+                DeviceHelper.stopDevice(lwm2mClient);
+                lwm2mClient.StartDevice();
+            }
+        }, 5000, 5000);
     }
 
     

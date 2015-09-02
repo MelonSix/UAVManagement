@@ -5,25 +5,52 @@
  */
 package org.mars.m2m.demo.uav;
 
+import ch.qos.logback.classic.Logger;
 import org.mars.m2m.demo.config.GraphicConfig;
 import org.mars.m2m.demo.config.StaticInitConfig;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.UUID;
+import org.eclipse.leshan.core.model.LwM2mModel;
+import org.mars.m2m.demo.LwM2mClients.ThreatSensorClient;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.VectorUtil;
-/*import org.mars.m2m.demo.world.ControlCenter;*/
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.shape.Circle;
 import org.mars.m2m.demo.world.Reconnaissance;
 import org.mars.m2m.demo.world.World;
+import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
+import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
+import org.mars.m2m.uavendpoint.util.AbstractDevice;
+import org.mars.m2m.uavendpoint.util.DeviceHelper;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author boluo
  */
-public class Scout extends UAV {
-
+public final class Scout extends UAV 
+{
+    private final Logger log = (Logger) LoggerFactory.getLogger(Scout.class);
+    
+    //lwm2m client stuffs
+    /**
+     * Keeps track of all devices (lwm2m clients) owned by this particular UAV
+     */
+    ArrayList<AbstractDevice> uavOwnedDevices = new ArrayList<>();
+    
+    UAVConfiguration uavConfig;
+    private static ArrayList<Integer> occupiedPorts;
+       
+    /**
+     * Gets the Lightweight M2M model for this UAV
+     * */
+    private LwM2mModel uavLwM2mModel;
+    private ThreatSensorClient threatSensorClient;
+    private final DeviceHelper deviceHelper;
+    
+    /*Class variables */
     private float[] base_coordinate;
     private LinkedList<Float> move_at_y_coordinate_task;
     private Float current_y_coordinate_task = null;
@@ -35,16 +62,78 @@ public class Scout extends UAV {
             Reconnaissance r, float remained_energy) 
     {
         super(index, null, uav_type, center_coordinates,remained_energy);
+        this.occupiedPorts = new ArrayList<>();
+        this.deviceHelper = new DeviceHelper();
+        
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], StaticInitConfig.scout_radar_radius);
         this.base_coordinate = base_coordinate;
         this.reconnaissance = r;
-        this.move_at_y_coordinate_task = new LinkedList<Float>();
+        this.move_at_y_coordinate_task = new LinkedList<>();
         this.max_angle = (float) Math.PI / 2;
         this.speed = StaticInitConfig.SPEED_OF_SCOUT;
         center_color = GraphicConfig.uav_colors.get(22);
         radar_color = new Color(center_color.getRed(), center_color.getGreen(), center_color.getBlue(), 128);
+        
+        //for LwM2M initialization of the UAV
+        initUAV(new UAVConfiguration());
     }
-
+    
+    /**
+     * For initializing the uav configuration object
+     * @param config The uav configuration to be used for this UAV
+     */
+    public void initUAV(UAVConfiguration config) 
+    {
+        if(config == null)
+        this.uavConfig = new UAVConfiguration();
+        else
+            this.uavConfig = config;
+        
+        /**
+         * Loads the LwM2mModel once for all devices
+         */
+       this.uavLwM2mModel  = DeviceHelper.getObjectModel(this.uavConfig.getObjectModelFile());
+       this.threatSensorClient = startThreatSensor();
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="Starts the threat sensor">
+    /**
+     *
+     * @return A started instance of {@link ThreatSensorClient}
+     */
+    private ThreatSensorClient startThreatSensor()
+    {
+        int portNumber = selectPortNumber();
+        /**
+         * Threat sensor
+         */
+        DeviceStarterDetails threatDevDtls;
+        threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
+                portNumber, "127.0.0.1", 5683, UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
+        ThreatSensorClient threatSensor = new ThreatSensorClient(uavLwM2mModel, threatDevDtls);
+        threatSensor.StartDevice();
+        deviceHelper.lwM2mClientDaemon(threatSensor);//invokes a background process for this device
+        //Thread.sleep(10000);
+        //DeviceHelper.stopDevice(threatSensor);
+        log.info("Threat sensor started");
+        uavOwnedDevices.add(threatSensor);
+        return threatSensor;
+    }
+//</editor-fold>
+    
+    /**
+     * Gets a port number within the range 49152 to 65532
+     * @return Port number
+     */
+    private int selectPortNumber() 
+    {
+        int portNumber = 49152 + (int)(Math.random()*16381);//range is from 49152 -> 65532
+        while(occupiedPorts.contains(portNumber))
+            portNumber = 49152 + (int)(Math.random()*16381);
+        occupiedPorts.add(portNumber);
+        return portNumber;
+    }
+    
     /** to update the coordinate of the scout.
      * 
      * @return 
@@ -109,7 +198,7 @@ public class Scout extends UAV {
         moveTo(next_waypoint[0], next_waypoint[1]);
         return true;
     }
-
+    
     /** set the responsible y coordinate to be scanned by the scout. The scout will scan the line at y coordinate from one side to the other.
      * 
      * @param move_at_y_coordinate_task 
@@ -118,4 +207,40 @@ public class Scout extends UAV {
         this.move_at_y_coordinate_task = move_at_y_coordinate_task;
     }
 
+    public ArrayList<AbstractDevice> getUavOwnedDevices() {
+        return uavOwnedDevices;
+    }
+
+    public void setUavOwnedDevices(ArrayList<AbstractDevice> uavOwnedDevices) {
+        this.uavOwnedDevices = uavOwnedDevices;
+    }
+
+    public UAVConfiguration getUavConfig() {
+        return uavConfig;
+    }
+
+    public void setUavConfig(UAVConfiguration uavConfig) {
+        this.uavConfig = uavConfig;
+    }
+
+    public LwM2mModel getUavLwM2mModel() {
+        return uavLwM2mModel;
+    }
+
+    public void setUavLwM2mModel(LwM2mModel uavLwM2mModel) {
+        this.uavLwM2mModel = uavLwM2mModel;
+    }
+
+    public Reconnaissance getReconnaissance() {
+        return reconnaissance;
+    }
+
+    public void setReconnaissance(Reconnaissance reconnaissance) {
+        this.reconnaissance = reconnaissance;
+    }
+
+    public ThreatSensorClient getThreatSensorLwM2mClient() {
+        return threatSensorClient;
+    }
+    
 }

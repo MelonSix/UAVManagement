@@ -85,11 +85,11 @@ public class UAVConfiguration {
      * Instantiates an object of the configuration class
      */
     public UAVConfiguration() {
-        connectedLwm2mServers =  new HashMap<Integer, UavLwm2mServer>();
+        connectedLwm2mServers =  new HashMap<>();
         
         /**
-         * Ensures that the default short server ID (i.e 0) is not used
-         * to identify an LWM2M server.
+         * Ensures that the default short server ID (i.e. 0) is not used
+         * to identify a LwM2M server.
          */
         connectedLwm2mServers.put(0, null);
     }

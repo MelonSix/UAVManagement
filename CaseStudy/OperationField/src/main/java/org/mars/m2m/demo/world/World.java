@@ -181,7 +181,7 @@ public class World {
             attackers.add(attacker);
         }
 
-        for (int i = 0; i < scout_num; i++) {
+        for (int i = 1; i <= scout_num; i++) {
             Scout scout = new Scout(i, StaticInitConfig.SCOUT, uav_base_center, uav_base_center, reconnaissance, Float.MAX_VALUE);
             scouts.add(scout);
         }

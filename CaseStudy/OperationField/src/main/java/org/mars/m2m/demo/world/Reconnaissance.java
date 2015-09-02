@@ -21,6 +21,7 @@ import org.mars.m2m.demo.model.shape.Point;
 import org.mars.m2m.demo.uav.Attacker;
 import org.mars.m2m.demo.uav.Scout;
 import org.mars.m2m.demo.util.DistanceUtil;
+import org.mars.m2m.uavendpoint.util.AbstractDevice;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -96,18 +97,29 @@ public class Reconnaissance implements KnowledgeAwareInterface
     /** update the coordinate of each scout according to their responsible scanning area.
      * 
      */
-    public void updateScoutCoordinate() {
+    public void updateScoutCoordinate() 
+    {
         int scout_num = this.scouts.size();
         for (int i = 0; i < scout_num; i++) {
             Scout scout = this.scouts.get(i);
             boolean visible = scout.isVisible();
-            if (visible) {
-                scout.moveToNextWaypoint();
+            if (visible)
+            {
+                /**
+                 * Gets the LwM2M client and ensures the client is registered before the scout moves
+                 * else it does not move
+                 * */
+                AbstractDevice device = scout.getThreatSensorLwM2mClient();
+                if(device.getRegistrationID() != null)
+                    scout.moveToNextWaypoint();
+                
+                //handles scouts that are not online or no more online
                 if (!scout.isVisible()) {
                     this.scout_remained--;
                 }
             }
-
+            
+            //If no more scouts available then the assigned area has been scouted successfully
             if (this.scout_remained == 0) {
                 this.setScout_scanned_over(true);
             }
