@@ -69,12 +69,12 @@ import org.slf4j.LoggerFactory;
  *
  * @author Yulin_Zhang
  */
-public class OntologyBasedKnowledge extends KnowledgeInterface {
+public final class OntologyBasedKnowledge extends KnowledgeInterface {
 
     public OntModel ontology_based_knowledge;
     public static String base_ns = "http://www.multiagent.com.cn/robotontology/";
     public static String rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-    private static Logger logger = (Logger) LoggerFactory.getLogger(OntologyBasedKnowledge.class);
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(OntologyBasedKnowledge.class);
     public String prefix = "PREFIX mars:<http://www.multiagent.com.cn/robotontology/>" + "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>";
 
     /**
@@ -96,9 +96,9 @@ public class OntologyBasedKnowledge extends KnowledgeInterface {
      *
      */
     public boolean obstacle_updated = false, threat_updated = false, conflict_updated = false;
-    public ArrayList<Obstacle> obstacles_cache = new ArrayList<Obstacle>();
-    public ArrayList<Threat> threats_cache = new ArrayList<Threat>();
-    public ArrayList<Conflict> conflicts_cache = new ArrayList<Conflict>();
+    public ArrayList<Obstacle> obstacles_cache = new ArrayList<>();
+    public ArrayList<Threat> threats_cache = new ArrayList<>();
+    public ArrayList<Conflict> conflicts_cache = new ArrayList<>();
 
     public OntologyBasedKnowledge() {
         super();
@@ -196,7 +196,7 @@ public class OntologyBasedKnowledge extends KnowledgeInterface {
 //        OntologyBasedKnowledge.printStatements(kb.ontology_based_knowledge);
 //        logger.debug(OntologyBasedKnowledge.printOntology(kb.ontology_based_knowledge));
 //        OntologyBasedKnowledge.printStatements(kb.ontology_based_knowledge);
-        LinkedList<Point> path = new LinkedList<Point>();
+        LinkedList<Point> path = new LinkedList<>();
         Point point1 = new Point(1, 1, 0);
         point1.setDecision_time_step(0);
         point1.setExptected_time_step(0);
@@ -290,7 +290,7 @@ public class OntologyBasedKnowledge extends KnowledgeInterface {
         if (!this.obstacle_updated) {
             return this.obstacles_cache;
         }
-        ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+        ArrayList<Obstacle> obstacles = new ArrayList<>();
         String sparql = "SELECT ?points ?index"
                 + "{"
                 + "?obstacle_ind mars:hasRegion ?region_ind ."
@@ -330,8 +330,8 @@ public class OntologyBasedKnowledge extends KnowledgeInterface {
         if (!this.conflict_updated) {
             return this.conflicts_cache;
         }
-        ArrayList<Conflict> conflicts = new ArrayList<Conflict>();
-        Map<Integer, Conflict> conflict_map = new HashMap<Integer, Conflict>();
+        ArrayList<Conflict> conflicts = new ArrayList<>();
+        Map<Integer, Conflict> conflict_map = new HashMap<>();
         String sparql = "SELECT ?conflict_center ?conflict_range ?exptected_conflict_time ?decided_conflict_time ?uav_index"
                 + "{"
                 + "?conflict_ind rdf:type mars:Conflict ."
@@ -371,7 +371,7 @@ public class OntologyBasedKnowledge extends KnowledgeInterface {
 
             Conflict conflict = conflict_map.get(uav_index);
             if (conflict == null) {
-                LinkedList<Point> path = new LinkedList<Point>();
+                LinkedList<Point> path = new LinkedList<>();
                 conflict = new Conflict(uav_index, path, decided_conflict_time, range);
                 conflict_map.put(uav_index, conflict);
             }
@@ -394,7 +394,7 @@ public class OntologyBasedKnowledge extends KnowledgeInterface {
         if (!this.threat_updated) {
             return this.threats_cache;
         }
-        ArrayList<Threat> threats = new ArrayList<Threat>();
+        ArrayList<Threat> threats = new ArrayList<>();
         String sparql = "SELECT ?center ?speed ?range ?threatCap ?index ?threat_enabled"
                 + "{"
                 + "?threat_ind mars:hasThreatCenter ?center ."

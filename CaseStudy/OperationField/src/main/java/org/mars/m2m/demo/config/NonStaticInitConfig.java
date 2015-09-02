@@ -13,6 +13,9 @@ import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.ObtacleUtil;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
+import org.mars.m2m.demo.world.OntologyBasedKnowledge;
+import org.mars.m2m.demo.world.Reconnaissance;
+
 /**
  *
  * @author boluo
@@ -30,6 +33,8 @@ public class NonStaticInitConfig {
 
     private ArrayList<Obstacle> obstacles;
     private ArrayList<Threat> threats;
+    
+    private Reconnaissance reconnaissance;
 
     private UAVBase uav_base;
     public static int inforshare_algorithm = StaticInitConfig.BROADCAST_INFOSHARE;
@@ -56,6 +61,7 @@ public class NonStaticInitConfig {
         float[] coordinate = new float[]{60, 60};
         UAVBase uav_base = new UAVBase(coordinate, 60);
         this.uav_base = uav_base;
+        this.reconnaissance = new Reconnaissance(new OntologyBasedKnowledge());
         initObstacles();
         initThreats();
     }
@@ -213,4 +219,9 @@ public class NonStaticInitConfig {
     public int getSize_of_subteam() {
         return size_of_subteam;
     } 
+
+    public Reconnaissance getReconnaissance() {
+        return reconnaissance;
+    }
+    
 }

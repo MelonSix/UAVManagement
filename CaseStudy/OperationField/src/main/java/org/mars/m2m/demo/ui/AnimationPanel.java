@@ -328,17 +328,17 @@ public class AnimationPanel extends JPanel
         if (!StaticInitConfig.SHOW_FOG_OF_WAR) {
             return;
         }
-        for (Attacker attcker : this.attackers) {
-            virtualizer.drawUAVInFogOfWarInLevel3(fog_of_war_graphics, (UAV) attcker);
+        for (Attacker attacker : this.attackers) {
+            virtualizer.drawUAVInFogOfWarInLevel3(fog_of_war_graphics, (UAV) attacker);
         }
         for (Scout scout : this.scouts) {
             virtualizer.drawUAVInFogOfWarInLevel3(fog_of_war_graphics, (UAV) scout);
         }
-        ArrayList<Obstacle> obstacles = this.world.getObstacles();
+        ArrayList<Obstacle> obstacles = this.world.getReconnaissance().getObstacles();
         for (Obstacle obstacle : obstacles) {
             virtualizer.showObstacleInFogOfWar(fog_of_war_graphics, obstacle);
         }
-        ArrayList<Threat> threats = this.world.getThreats();
+        ArrayList<Threat> threats = this.world.getReconnaissance().getThreats();
         for (Threat threat : threats) {
             virtualizer.showThreatInFogOfWar(fog_of_war_graphics, threat);
         }

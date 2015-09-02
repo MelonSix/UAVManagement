@@ -68,6 +68,8 @@ public class World {
     private float attacker_patrol_range; //The patrol range of scout 
 
     private int inforshare_algorithm = 0; //distinction between information-sharing algrithm
+    
+    private Reconnaissance reconnaissance;
 
     //robot coordinates, robot_coordinates[1][0], robot_coordinates[1][1] represents the x, y coordinate of robot 1
     public static UAVBase uav_base;
@@ -112,17 +114,17 @@ public class World {
     public World(NonStaticInitConfig init_config) {
 //        World.kb = new WorldKnowledge();//OntologyBasedKnowledge();WorldKnowledge
         this.conflicts = new ArrayList<Conflict>();
-//        this.control_center = new ControlCenter(new OntologyBasedKnowledge());
+        this.reconnaissance = init_config.getReconnaissance();
         initParameterFromInitConfig(init_config);
         this.num_of_threat_remained = this.threat_num;
         this.num_of_attacker_remained = this.attacker_num;
         initUAVs();
-        /*this.control_center.setAttackers(attackers);
-        this.control_center.setScouts(scouts);
-        this.control_center.setScout_speed(StaticInitConfig.SPEED_OF_SCOUT);
-        this.control_center.setConflicts(conflicts);
-        this.control_center.roleAssignForScouts();
-        control_center.roleAssignForAttackerWithSubTeam(-1, -1); //initialize role assignment*/
+        this.reconnaissance.setAttackers(attackers);
+        this.reconnaissance.setScouts(scouts);
+        this.reconnaissance.setScout_speed(StaticInitConfig.SPEED_OF_SCOUT);
+        this.reconnaissance.setConflicts(conflicts);
+        this.reconnaissance.roleAssignForScouts();
+        reconnaissance.roleAssignForAttackerWithSubTeam(-1, -1); //initialize role assignment*/
     }
 
     /**initiate the parameter from init_config, which is called by World constructor.
@@ -180,7 +182,7 @@ public class World {
         }
 
         for (int i = 0; i < scout_num; i++) {
-            Scout scout = new Scout(i, StaticInitConfig.SCOUT, uav_base_center, uav_base_center, Float.MAX_VALUE);
+            Scout scout = new Scout(i, StaticInitConfig.SCOUT, uav_base_center, uav_base_center, reconnaissance, Float.MAX_VALUE);
             scouts.add(scout);
         }
     }
@@ -387,27 +389,39 @@ public class World {
     }
 
     /**During patrol,the scout detect event by radar.
-     * 
+     * This method is used to detect/sense obstacles and threats and reports
+     * them to the {@link Reconnaissance} instance to keep all the list of discoveries
      */
-    private void detectScoutEvent() {
-        for (Scout scout : this.scouts) {
+    private void detectScoutEvent()
+    {
+        for (Scout scout : this.scouts) 
+        {
+            //Senses obstacles
             int obs_list_size = this.getObstacles().size();
-            for (int i = 0; i < obs_list_size; i++) {
+            for (int i = 0; i < obs_list_size; i++) 
+            {
                 Obstacle obs = this.getObstacles().get(i);
-//                if (!control_center.containsObstacle(obs) && obs.getMbr().intersects(scout.getUav_radar().getBounds())) {
-//                    control_center.addObstacle(obs);
-//                }
+                if (!this.reconnaissance.containsObstacle(obs) && obs.getMbr().intersects(scout.getUav_radar().getBounds())) {
+                    reconnaissance.addObstacle(obs);
+                }
             }
-
+            
+            //senses threats
             int threat_list_size = this.getThreats().size();
             for (int i = 0; i < threat_list_size; i++) {
                 Threat threat = this.getThreats().get(i);
-                float dist_from_attacker_to_threat = DistanceUtil.distanceBetween(scout.getCenter_coordinates(), threat.getCoordinates());
-//                if (threat.isEnabled() && !control_center.containsThreat(threat) && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9) {
-//                    control_center.addThreat(threat);
-//                }
+                float dist_from_attacker_to_threat = 
+                        DistanceUtil.distanceBetween(scout.getCenter_coordinates(), threat.getCoordinates());
+                if (threat.isEnabled() && !reconnaissance.containsThreat(threat) 
+                        && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9) 
+                {
+                    reconnaissance.addThreat(threat);
+                }
             }
         }
+        
+        System.out.println("Num of discovered obstacles: "+reconnaissance.getObstacles().size());
+        System.out.println("Num of discovered threats: "+reconnaissance.getThreats().size());
     }
 
     /**register information requirement for attackers, according to its target and location.
@@ -536,9 +550,9 @@ public class World {
 //            RightControlPanel.setWorldKnowledge(World.attackers.get(0).getKb());
         }
 
-//        updateScoutInControlCenter();
-//        logger.debug("scout updated in control center over");
-//        detectScoutEvent();
+        updateScout();
+        logger.debug("scout(s) coordinates updated");
+        detectScoutEvent();
 //        logger.debug("scout event detect over");
 //        detectAttackerEvent();
 //        logger.debug("attacker detect over");
@@ -650,11 +664,11 @@ public class World {
 //        this.control_center.setNeed_to_assign_role(false);
     }
 
-    /** calls the control center to update the coordinates of the scouts it owned.
+    /**Update the coordinates of the scouts.
      * 
      */
-    private void updateScoutInControlCenter() {
-        //this.control_center.updateScoutCoordinate();
+    private void updateScout() {
+        this.reconnaissance.updateScoutCoordinate();
     }
 
     /** check whether the attacker should replan in  next time step. 
@@ -801,5 +815,11 @@ public class World {
     public static float[] assignUAVPortInBase(int attacker_index) {
         return World.uav_base.assignUAVLocation(attacker_index);
     }
+
+    public Reconnaissance getReconnaissance() {
+        return reconnaissance;
+    }
+    
+    
 
 }

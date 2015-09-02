@@ -24,7 +24,7 @@ import org.mars.m2m.demo.uav.UAVPath;
  */
 public class Threat extends Target implements Serializable {
 
-    protected int target_type = 0;
+    protected int threat_type = 0;
     protected float threat_range = 0;
     protected String threat_cap = "";
     protected UAVPath path_planned_at_current_time_step;
@@ -38,7 +38,7 @@ public class Threat extends Target implements Serializable {
     
     public Threat(int index, float[] coordinates, int target_type, float speed) {
         super(index, coordinates);
-        this.target_type = target_type;
+        this.threat_type = target_type;
         this.msg_type = Message.THREAT_MSG;
         this.speed = speed;
         this.path_planned_at_current_time_step = new UAVPath();
@@ -82,11 +82,11 @@ public class Threat extends Target implements Serializable {
     }
 
     public int getTarget_type() {
-        return target_type;
+        return threat_type;
     }
 
     public void setTarget_type(int target_type) {
-        this.target_type = target_type;
+        this.threat_type = target_type;
     }
 
     public float getThreat_range() {

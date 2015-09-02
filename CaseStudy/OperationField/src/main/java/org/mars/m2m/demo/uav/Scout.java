@@ -15,6 +15,8 @@ import org.mars.m2m.demo.util.VectorUtil;
 /*import org.mars.m2m.demo.world.ControlCenter;*/
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.shape.Circle;
+import org.mars.m2m.demo.world.Reconnaissance;
+import org.mars.m2m.demo.world.World;
 
 /**
  *
@@ -26,14 +28,16 @@ public class Scout extends UAV {
     private LinkedList<Float> move_at_y_coordinate_task;
     private Float current_y_coordinate_task = null;
     private int direction = 1;
-    /*private ControlCenter control_center;*/
+    private Reconnaissance reconnaissance;
     private int conflict_avoid = 1;
 
-    public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, /*ControlCenter control_center,*/ float remained_energy) {
+    public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, 
+            Reconnaissance r, float remained_energy) 
+    {
         super(index, null, uav_type, center_coordinates,remained_energy);
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], StaticInitConfig.scout_radar_radius);
         this.base_coordinate = base_coordinate;
-        //this.control_center = control_center;
+        this.reconnaissance = r;
         this.move_at_y_coordinate_task = new LinkedList<Float>();
         this.max_angle = (float) Math.PI / 2;
         this.speed = StaticInitConfig.SPEED_OF_SCOUT;
@@ -46,63 +50,63 @@ public class Scout extends UAV {
      * @return 
      */
     public boolean moveToNextWaypoint() {
-//        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0) {
-//            current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
-//        } else if(current_y_coordinate_task == null && move_at_y_coordinate_task.size()==0){
-//            this.setVisible(false);
-//            return false;
-//        }
-//        float[] next_waypoint = new float[2];
-//        float[] goal_waypoint = new float[2];
-//        goal_waypoint[1] = current_y_coordinate_task;
-//        ArrayList<Obstacle> obstacles = this.control_center.getObstacles();
-//        if (direction == 1) //move to the right
-//        {
-//            goal_waypoint[0] = this.center_coordinates[0] + this.speed;
-//            next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
-//            if (next_waypoint[0] > World.bound_width) {
-//                next_waypoint[0] -= this.speed;
-//                if (move_at_y_coordinate_task.size() == 0) {
-//                    current_y_coordinate_task=null;
-//                    return false;
-//                }
-//                current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
-//                goal_waypoint[1] = current_y_coordinate_task;
-//                direction = 0;
-//            } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-//                next_waypoint[0] = this.center_coordinates[0];
-//                next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
-//                if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-//                    conflict_avoid = -1 * conflict_avoid;
-//                    next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
-//                }
-//            }
-//        }
-//
-//        if (direction == 0)//move to the left
-//        {
-//            goal_waypoint[0] = this.center_coordinates[0] - this.speed;
-//            next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
-//            if (next_waypoint[0] < 0) {
-//                next_waypoint[0] += this.speed;
-//                if (move_at_y_coordinate_task.size() == 0) {
-//                    current_y_coordinate_task=null;
-//                    return false;
-//                }
-//                current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
-//                goal_waypoint[1] = current_y_coordinate_task;
-//                direction = 1;
-//            } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-//                next_waypoint[0] = this.center_coordinates[0];
-//                next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
-//                if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-//                    conflict_avoid = -1 * conflict_avoid;
-//                    next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
-//                }
-//            }
-//        }
-//        this.current_angle = VectorUtil.getAngleOfVectorRelativeToXCoordinate(next_waypoint[0] - this.center_coordinates[0], next_waypoint[1] - this.center_coordinates[1]);
-//        moveTo(next_waypoint[0], next_waypoint[1]);
+        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0) {
+            current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
+        } else if(current_y_coordinate_task == null && move_at_y_coordinate_task.size()==0){
+            this.setVisible(false);
+            return false;
+        }
+        float[] next_waypoint = new float[2];
+        float[] goal_waypoint = new float[2];
+        goal_waypoint[1] = current_y_coordinate_task;
+        ArrayList<Obstacle> obstacles = this.reconnaissance.getObstacles();
+        if (direction == 1) //move to the right
+        {
+            goal_waypoint[0] = this.center_coordinates[0] + this.speed;
+            next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
+            if (next_waypoint[0] > World.bound_width) {
+                next_waypoint[0] -= this.speed;
+                if (move_at_y_coordinate_task.size() == 0) {
+                    current_y_coordinate_task=null;
+                    return false;
+                }
+                current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
+                goal_waypoint[1] = current_y_coordinate_task;
+                direction = 0;
+            } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                next_waypoint[0] = this.center_coordinates[0];
+                next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                    conflict_avoid = -1 * conflict_avoid;
+                    next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                }
+            }
+        }
+
+        if (direction == 0)//move to the left
+        {
+            goal_waypoint[0] = this.center_coordinates[0] - this.speed;
+            next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
+            if (next_waypoint[0] < 0) {
+                next_waypoint[0] += this.speed;
+                if (move_at_y_coordinate_task.size() == 0) {
+                    current_y_coordinate_task=null;
+                    return false;
+                }
+                current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
+                goal_waypoint[1] = current_y_coordinate_task;
+                direction = 1;
+            } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                next_waypoint[0] = this.center_coordinates[0];
+                next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                    conflict_avoid = -1 * conflict_avoid;
+                    next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                }
+            }
+        }
+        this.current_angle = VectorUtil.getAngleOfVectorRelativeToXCoordinate(next_waypoint[0] - this.center_coordinates[0], next_waypoint[1] - this.center_coordinates[1]);
+        moveTo(next_waypoint[0], next_waypoint[1]);
         return true;
     }
 

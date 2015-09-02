@@ -49,7 +49,7 @@ public class UAVPath implements Serializable{
     }
 
     /**
-     * add waypoint to beginning and undate path length
+     * add waypoint to beginning and update path length
      * 
      * @param point 
      */

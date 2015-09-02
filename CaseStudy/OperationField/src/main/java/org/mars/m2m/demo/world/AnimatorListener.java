@@ -33,13 +33,13 @@ public class AnimatorListener implements ActionListener
          */
         @Override
         public void actionPerformed(ActionEvent e) 
-        {
-            int simStep = this.animPnl.getSimulation_time_step();
-            System.out.println("timestep "+this.animPnl.getSimulation_time_step());
-            
+        {            
             this.animPnl.clearUAVImageBeforeUpdate();
-            if (StaticInitConfig.SIMULATION_ON) {
+            if (StaticInitConfig.SIMULATION_ON) 
+            {
+                int simStep = this.animPnl.getSimulation_time_step();
                 this.animPnl.setSimulation_time_step(++simStep);
+                    System.out.println("timestep "+this.animPnl.getSimulation_time_step());
                 this.animPnl.getWorld().updateAll();
                 int minimutes = this.animPnl.getSimulation_time_step();
                 int hours = minimutes / 60;
