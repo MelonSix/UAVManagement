@@ -13,5 +13,10 @@ import java.util.EventListener;
  */
 public interface NotificationListener extends EventListener
 {
+
+    /**
+     *
+     * @param notificationObject
+     */
     public void sendToOriginator(NotificationObject notificationObject);
 }

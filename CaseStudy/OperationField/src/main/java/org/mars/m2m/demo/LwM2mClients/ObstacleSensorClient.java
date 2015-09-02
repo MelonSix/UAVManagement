@@ -16,7 +16,7 @@ import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.util.Validate;
-import org.mars.m2m.Devices.ThreatSensor;
+import org.mars.m2m.Devices.ObstacleSensor;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
@@ -29,24 +29,20 @@ import org.slf4j.LoggerFactory;
  *
  * @author AG BRIGHTER
  */
-/**
-* The threat sensor device within the UAV
-* The threat sensor board can be also viewed as consisting of other objects
-*/
-public class ThreatSensorClient extends AbstractDevice
-{        
-   private Logger log = (Logger) LoggerFactory.getLogger(ThreatSensorClient.class);
-   private ThreatSensor threatSensor;
+public class ObstacleSensorClient  extends AbstractDevice
+{
+    private Logger log = (Logger) LoggerFactory.getLogger(ObstacleSensorClient.class);
+   private ObstacleSensor obstacleSensor;
    private Device device;
    private BootstrapedRegistrationHandler bsRegHandler;
    private LwM2mModel uavLwM2mModel;
 
-   public ThreatSensorClient()
+   public ObstacleSensorClient()
    {
        this(null, null);
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.threatSensor = new ThreatSensor();
+       this.obstacleSensor = new ObstacleSensor();
    }  
 
    /**
@@ -54,11 +50,11 @@ public class ThreatSensorClient extends AbstractDevice
      * @param lwM2mObjModel The object model to be used by the client
     * @param lwm2mClientDetails 
     */
-   public ThreatSensorClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails)
+   public ObstacleSensorClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails)
    {
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.threatSensor = new ThreatSensor();
+       this.obstacleSensor = new ObstacleSensor();
        try
        {
            if(lwm2mClientDetails != null)
@@ -109,9 +105,9 @@ public class ThreatSensorClient extends AbstractDevice
            initializer = new ObjectsInitializer(this.uavLwM2mModel);
 
            //attach instance
-           initializer.setInstancesForObject(12202, threatSensor);
+           initializer.setInstancesForObject(12206, obstacleSensor);
            initializer.setInstancesForObject(3, device);
-           List<ObjectEnabler> enablers = initializer.create(12202,3);
+           List<ObjectEnabler> enablers = initializer.create(12206,3);
 
            // Create client
            final InetSocketAddress clientAddress = new InetSocketAddress(localHostName, localPort);
@@ -139,9 +135,8 @@ public class ThreatSensorClient extends AbstractDevice
        }
    }        
 
-    public ThreatSensor getThreatSensor() {
-        return threatSensor;
+    public ObstacleSensor getObstacleSensor() {
+        return obstacleSensor;
     }
-
    
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.UUID;
 import org.eclipse.leshan.core.model.LwM2mModel;
+import org.mars.m2m.demo.LwM2mClients.ObstacleSensorClient;
 import org.mars.m2m.demo.LwM2mClients.ThreatSensorClient;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.VectorUtil;
@@ -48,6 +49,7 @@ public final class Scout extends UAV
      * */
     private LwM2mModel uavLwM2mModel;
     private ThreatSensorClient threatSensorClient;
+    private ObstacleSensorClient obstacleSensorClient;
     private final DeviceHelper deviceHelper;
     
     /*Class variables */
@@ -94,6 +96,7 @@ public final class Scout extends UAV
          */
        this.uavLwM2mModel  = DeviceHelper.getObjectModel(this.uavConfig.getObjectModelFile());
        this.threatSensorClient = startThreatSensor();
+       this.obstacleSensorClient = startObstacleSensor();
     }
     
     //<editor-fold defaultstate="collapsed" desc="Starts the threat sensor">
@@ -109,7 +112,7 @@ public final class Scout extends UAV
          */
         DeviceStarterDetails threatDevDtls;
         threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
-                portNumber, "127.0.0.1", 5683, UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
+                portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
         ThreatSensorClient threatSensor = new ThreatSensorClient(uavLwM2mModel, threatDevDtls);
         threatSensor.StartDevice();
         deviceHelper.lwM2mClientDaemon(threatSensor);//invokes a background process for this device
@@ -121,11 +124,37 @@ public final class Scout extends UAV
     }
 //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Starts the obstacle sensor">
+    /**
+     * 
+     * @return A started instance of {@link ObstacleSensorClient} 
+     */
+    private ObstacleSensorClient startObstacleSensor()
+    {
+        int portNumber = selectPortNumber();
+        /**
+         * Threat sensor
+         */
+        DeviceStarterDetails obstacleDevDtls;
+        obstacleDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
+                portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
+        ObstacleSensorClient obstacleSensor = new ObstacleSensorClient(uavLwM2mModel, obstacleDevDtls);
+        obstacleSensor.StartDevice();
+        deviceHelper.lwM2mClientDaemon(obstacleSensor);//invokes a background process for this device
+        //Thread.sleep(10000);
+        //DeviceHelper.stopDevice(threatSensor);
+        log.info("Threat sensor started");
+        uavOwnedDevices.add(obstacleSensor);
+        return obstacleSensor;
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Gets an ephemeral port number">
     /**
      * Gets a port number within the range 49152 to 65532
      * @return Port number
      */
-    private int selectPortNumber() 
+    private int selectPortNumber()
     {
         int portNumber = 49152 + (int)(Math.random()*16381);//range is from 49152 -> 65532
         while(occupiedPorts.contains(portNumber))
@@ -133,6 +162,7 @@ public final class Scout extends UAV
         occupiedPorts.add(portNumber);
         return portNumber;
     }
+//</editor-fold>
     
     /** to update the coordinate of the scout.
      * 

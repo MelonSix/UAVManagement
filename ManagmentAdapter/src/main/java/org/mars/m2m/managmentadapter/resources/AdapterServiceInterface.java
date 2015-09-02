@@ -15,8 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
-import org.mars.m2m.dmcore.onem2m.xsdBundle.ResponsePrimitive;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.resources.subResources.DeviceReporting;
 import org.mars.m2m.managmentadapter.resources.subResources.NotificationResource;
 import org.mars.m2m.managmentadapter.service.AdapterServices;
 import org.slf4j.LoggerFactory;
@@ -52,6 +52,12 @@ public class AdapterServiceInterface {
     public NotificationResource getNotificationResource()
     {
         return new NotificationResource();
+    }
+    
+    @Path("/processDeviceReporting")
+    public DeviceReporting getDeviceReportingResource()
+    {
+        return new DeviceReporting();
     }
     
     

@@ -126,7 +126,7 @@ public class ServiceConsumer
         return response;
     }
     
-    public Response handlePost(String to, Object data, MediaType mediaType)
+    public Response handlePost(String to, Object data, String mediaType)
     {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(to);

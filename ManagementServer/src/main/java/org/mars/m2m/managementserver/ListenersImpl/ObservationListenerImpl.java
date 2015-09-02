@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mars.m2m.managementserver.Listeners;
+package org.mars.m2m.managementserver.ListenersImpl;
 
 import org.eclipse.leshan.core.node.LwM2mNode;
-import org.eclipse.leshan.core.node.LwM2mResource;
 import org.eclipse.leshan.server.observation.Observation;
 import org.eclipse.leshan.server.observation.ObservationRegistryListener;
+import org.mars.m2m.dmcore.json.ConfigGson;
 import org.mars.m2m.managementserver.core.HandleObservation;
-import org.mars.m2m.managementserver.json.ConfigGson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

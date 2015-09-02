@@ -7,8 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.core.model.ObjectModel;
+import org.mars.m2m.dmcore.json.ConfigGson;
 import org.mars.m2m.managementserver.core.CustomObjectModel;
-import org.mars.m2m.managementserver.json.ConfigGson;
 
 /**
  * 

@@ -7,7 +7,7 @@ package org.mars.m2m.managementserver.core;
 
 import java.io.IOException;
 import org.eclipse.leshan.core.response.LwM2mResponse;
-import org.mars.m2m.managementserver.json.ConfigGson;
+import org.mars.m2m.dmcore.json.ConfigGson;
 
 /**
  *
