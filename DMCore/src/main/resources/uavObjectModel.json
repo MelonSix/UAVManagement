@@ -3031,5 +3031,81 @@
                 "description": "" 
             }
         ]
+    },
+    {
+        "name":"UAV Attacker Device",
+        "id":12207,
+        "instancetype":"single",
+        "mandatory":true,
+        "description":"Keeps the resources of an attacker UAV(case study specific)",
+        "objecturn":"urn:oma:lwm2m:ext:12207",
+        "resourcedefs":[
+            {
+               "id": 0,
+                "name": "Path index",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 1,
+                "name": "Replan",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "boolean",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 2,
+                "name": "Moved at last step",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "boolean",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 3,
+                "name": "Knowledgebase",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "opaque",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 4,
+                "name": "Path planned at last step",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "opaque",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 5,
+                "name": "Path history",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "opaque",
+                "range": "",
+                "units": "",
+                "description": "" 
+            }
+        ]
     }
 ]

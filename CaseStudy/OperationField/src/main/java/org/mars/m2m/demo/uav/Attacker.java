@@ -29,6 +29,9 @@ import org.mars.m2m.demo.world.World;
 import ch.qos.logback.classic.Logger;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.UUID;
+import org.eclipse.leshan.core.model.LwM2mModel;
+import org.mars.m2m.demo.LwM2mClients.AttackerDeviceClient;
 import org.mars.m2m.demo.algorithm.RRT.RRTAlg;
 import org.mars.m2m.demo.algorithm.RRT.RRTTree;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
@@ -48,6 +51,10 @@ import org.mars.m2m.demo.util.VectorUtil;
 import org.mars.m2m.demo.world.KnowledgeInterface;
 import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.demo.world.WorldKnowledge;
+import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
+import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
+import org.mars.m2m.uavendpoint.util.AbstractDevice;
+import org.mars.m2m.uavendpoint.util.DeviceHelper;
 import org.slf4j.LoggerFactory;
 
 
@@ -56,7 +63,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Yulin_Zhang
  */
-public class Attacker extends UAV implements KnowledgeAwareInterface {
+public final class Attacker extends UAV implements KnowledgeAwareInterface {
 
     private volatile UAVPath path_planned_at_current_time_step;
     private int current_index_of_planned_path = 0; //index of waypoint
@@ -65,6 +72,21 @@ public class Attacker extends UAV implements KnowledgeAwareInterface {
     private boolean need_to_replan = true;
     private boolean replanned_at_current_time_step = false;
     private boolean moved_at_last_time = false;
+    
+    //lwm2m client stuffs
+    /**
+     * Keeps track of all devices (lwm2m clients) owned by this particular UAV
+     */
+    ArrayList<AbstractDevice> uavOwnedDevices = new ArrayList<>();
+    
+    UAVConfiguration uavConfig;
+       
+    /**
+     * Gets the Lightweight M2M model for this UAV
+     * */
+    private LwM2mModel uavLwM2mModel;
+    private AttackerDeviceClient attackerDeviceClient;
+    private final DeviceHelper deviceHelper;
 
     //variables for conflict planning
     private KnowledgeInterface kb;
@@ -88,10 +110,18 @@ public class Attacker extends UAV implements KnowledgeAwareInterface {
      *
      * @param index
      * @param target
+     * @param uav_type
      * @param center_coordinates
+     * @param obstacles
+     * @param remained_energy
      */
-    public Attacker(int index, Target target, int uav_type, float[] center_coordinates, ArrayList<Obstacle> obstacles, float remained_energy) {
+    public Attacker(int index, Target target, int uav_type, float[] center_coordinates,
+                                        ArrayList<Obstacle> obstacles, float remained_energy)
+    {
         super(index, target, uav_type, center_coordinates, remained_energy);
+        this.occupiedPorts = new ArrayList<>();
+        this.deviceHelper = new DeviceHelper();
+        
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], StaticInitConfig.attacker_radar_radius);
         this.path_planned_at_current_time_step = new UAVPath();
         this.history_path = new UAVPath();
@@ -105,6 +135,9 @@ public class Attacker extends UAV implements KnowledgeAwareInterface {
             rrt_alg = new RRTAlg(super.getCenter_coordinates(), target.getCoordinates(), StaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, StaticInitConfig.rrt_iteration_times, speed, null, this.getConflicts(), this.index);
         }
         initColor(index);
+        
+         //for LwM2M initialization of the UAV
+        initUAV(new UAVConfiguration());
     }
 
  
@@ -520,5 +553,50 @@ public class Attacker extends UAV implements KnowledgeAwareInterface {
     public boolean containsObstacle(Obstacle obstacle) {
         return this.kb.containsObstacle(obstacle);
     }
+    
+    /**
+     * Initializes the UAV
+     * @param config 
+     */
+    private void initUAV(UAVConfiguration config) 
+    {
+        if(config == null)
+        this.uavConfig = new UAVConfiguration();
+        else
+            this.uavConfig = config;
+        
+        /**
+         * Loads the LwM2mModel once for all devices
+         */
+       this.uavLwM2mModel  = DeviceHelper.getObjectModel(this.uavConfig.getObjectModelFile());
+       this.attackerDeviceClient = startAttackerDevice();
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="Starts the attacker device">
+    /**
+     * 
+     * @return A started instance of {@link AttackerDeviceClient} 
+     */
+    private AttackerDeviceClient startAttackerDevice()
+    {
+        int portNumber = selectPortNumber();
+        /**
+         * Threat sensor
+         */
+        DeviceStarterDetails attackerDevDtls;
+        attackerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
+                portNumber, "127.0.0.1", 5683, "attacker"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
+        AttackerDeviceClient uavAttackerDevice = new AttackerDeviceClient(uavLwM2mModel, attackerDevDtls);
+        uavAttackerDevice.StartDevice();
+        deviceHelper.lwM2mClientDaemon(uavAttackerDevice);//invokes a background process for this device
+        logger.info("Attacker device started");
+        uavOwnedDevices.add(uavAttackerDevice);
+        return uavAttackerDevice;
+    }
+//</editor-fold>
 
+    public AttackerDeviceClient getAttackerDeviceClient() {
+        return attackerDeviceClient;
+    }
+    
 }

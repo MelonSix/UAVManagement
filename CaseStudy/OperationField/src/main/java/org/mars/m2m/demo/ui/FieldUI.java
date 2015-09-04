@@ -34,7 +34,6 @@ public class FieldUI extends javax.swing.JFrame {
         opFieldSplitPane = new javax.swing.JSplitPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 603));
         setMinimumSize(new java.awt.Dimension(1000, 603));
         setName("UAV Operational Field"); // NOI18N
 

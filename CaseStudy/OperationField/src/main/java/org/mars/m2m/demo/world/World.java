@@ -175,7 +175,7 @@ public class World {
         float[] uav_base_center = new float[2];
         uav_base_center[0] = uav_base_coordinate[0];// + uav_base_width / 2;
         uav_base_center[1] = uav_base_coordinate[1]; //+ uav_base_height / 2;
-        for (int i = 0; i < attacker_num; i++) {
+        for (int i = 1; i <= attacker_num; i++) {
             float[] uav_init_coord = uav_base.assignUAVLocation(i);
             Attacker attacker = new Attacker(i, null, StaticInitConfig.ATTACKER, uav_init_coord, null, Float.MAX_VALUE);
             attackers.add(attacker);

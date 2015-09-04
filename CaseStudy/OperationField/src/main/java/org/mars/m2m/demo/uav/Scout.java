@@ -42,7 +42,6 @@ public final class Scout extends UAV
     ArrayList<AbstractDevice> uavOwnedDevices = new ArrayList<>();
     
     UAVConfiguration uavConfig;
-    private static ArrayList<Integer> occupiedPorts;
        
     /**
      * Gets the Lightweight M2M model for this UAV
@@ -143,26 +142,12 @@ public final class Scout extends UAV
         deviceHelper.lwM2mClientDaemon(obstacleSensor);//invokes a background process for this device
         //Thread.sleep(10000);
         //DeviceHelper.stopDevice(threatSensor);
-        log.info("Threat sensor started");
+        log.info("Obstacle sensor started");
         uavOwnedDevices.add(obstacleSensor);
         return obstacleSensor;
     }
 //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Gets an ephemeral port number">
-    /**
-     * Gets a port number within the range 49152 to 65532
-     * @return Port number
-     */
-    private int selectPortNumber()
-    {
-        int portNumber = 49152 + (int)(Math.random()*16381);//range is from 49152 -> 65532
-        while(occupiedPorts.contains(portNumber))
-            portNumber = 49152 + (int)(Math.random()*16381);
-        occupiedPorts.add(portNumber);
-        return portNumber;
-    }
-//</editor-fold>
     
     /** to update the coordinate of the scout.
      * 

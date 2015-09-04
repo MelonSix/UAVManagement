@@ -8,6 +8,7 @@ package org.mars.m2m.demo.uav;
 import org.mars.m2m.demo.config.GraphicConfig;
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import org.mars.m2m.demo.util.VectorUtil;
 import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.util.RectangleUtil;
@@ -28,8 +29,8 @@ public class UAV extends Unit {
     protected int speed = 5;
     protected boolean visible=true;
     protected float remained_energy=2000;
-    
-    
+        
+    protected static ArrayList<Integer> occupiedPorts;
     
     public UAV(int index, Target target_indicated_by_role, int uav_type, float[] center_coordinates,float remained_energy) {
         super(index, target_indicated_by_role, uav_type, center_coordinates);
@@ -134,5 +135,23 @@ public class UAV extends Unit {
         this.visible = visible;
     }
     
-    
+    //<editor-fold defaultstate="collapsed" desc="Gets an ephemeral port number">
+    /**
+     * Gets a port number within the range 49152 to 65532
+     * @return Port number
+     */
+    protected int selectPortNumber() {
+        if(occupiedPorts != null)
+        {
+            int portNumber = 49152 + (int) (Math.random() * 16381); //range is from 49152 -> 65532
+            while (occupiedPorts.contains(portNumber)) {
+                portNumber = 49152 + (int) (Math.random() * 16381);
+            }
+            occupiedPorts.add(portNumber);
+            return portNumber;
+        }
+        else
+            return -1;
+    }
+    //</editor-fold>
 }
