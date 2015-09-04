@@ -98,7 +98,7 @@ public class AnimationPanel extends JPanel
             Color fog_of_war_color = GraphicConfig.fog_of_war_color;//Color.black;
 
             //initiate background image
-            background_image_level_1 = ImageUtil.retrieveImage("/background2.jpg");
+            background_image_level_1 = ImageUtil.retrieveImage("/oakland.png");
 
             //initiate obstacle image
             obstacle_image_level_2 = createBufferedImage();

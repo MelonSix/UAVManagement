@@ -12,6 +12,7 @@ import io.dropwizard.setup.Environment;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
 import org.mars.m2m.demo.controlcenter.health.ClientsResourceHealth;
 import org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface;
+import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -43,5 +44,7 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
     public static void main(String [] args) throws Exception
     {
         new ControlCenterApplication().run(args);
+        Thread t = new Thread(new ControlCenter());
+        t.start();
     }
 }
