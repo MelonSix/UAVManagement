@@ -1,19 +1,19 @@
-INFO   [11:44:33.826] [main] o.e.j.u.log -  Logging initialized @1221ms 
-INFO   [11:44:33.936] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [11:44:33.936] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [11:44:33.951] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [11:44:33.982] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:44:33.982] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:44:34.546] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [11:50:09.359] [main] o.e.j.u.log -  Logging initialized @1332ms 
+INFO   [11:50:09.502] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [11:50:09.519] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [11:50:09.538] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [11:50:09.575] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:50:09.577] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:50:10.270] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [11:44:34.546] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
-INFO   [11:44:34.546] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [11:50:10.275] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
+INFO   [11:50:10.281] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:44:34.561] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
-INFO   [11:44:34.593] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:44:34.608] [main] o.e.j.s.Server -  Started @1997ms 
+INFO   [11:50:10.287] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
+INFO   [11:50:10.334] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:50:10.334] [main] o.e.j.s.Server -  Started @2309ms 

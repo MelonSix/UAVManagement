@@ -1,148 +1,98 @@
-INFO   [11:43:08.413] [main] o.e.j.u.log -  Logging initialized @1171ms 
-INFO   [11:43:08.522] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [11:43:08.522] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [11:43:08.538] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [11:43:08.600] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@5ce33a58{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [11:43:08.600] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:43:09.116] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [11:49:43.771] [main] o.e.j.u.log -  Logging initialized @1137ms 
+INFO   [11:49:43.890] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:49:43.900] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:49:43.919] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:49:43.956] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:49:43.960] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:49:44.461] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [11:43:09.116] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1f443fae{/cc,null,AVAILABLE} 
-INFO   [11:43:09.132] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [11:49:44.464] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@79ab34c1{/cc,null,AVAILABLE} 
+INFO   [11:49:44.468] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:43:09.132] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@45792847{/admin-cc,null,AVAILABLE} 
-INFO   [11:43:09.178] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@5ce33a58{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [11:43:09.178] [main] o.e.j.s.Server -  Started @1944ms 
-INFO   [17:31:09.636] [main] o.e.j.u.log -  Logging initialized @1054ms 
-INFO   [17:31:09.721] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [17:31:09.729] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [17:31:09.744] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-WARN   [17:31:09.785] [main] o.e.j.u.c.AbstractLifeCycle -  FAILED org.eclipse.jetty.server.Server@546ccad7: java.lang.RuntimeException: java.net.BindException: Address already in use: bind 
-java.lang.RuntimeException: java.net.BindException: Address already in use: bind
-	at org.eclipse.jetty.setuid.SetUIDListener.lifeCycleStarting(SetUIDListener.java:213) ~[jetty-setuid-java-1.0.3.jar:na]
-	at org.eclipse.jetty.util.component.AbstractLifeCycle.setStarting(AbstractLifeCycle.java:188) ~[jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:67) ~[jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.cli.Cli.run(Cli.java:70) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.Application.run(Application.java:80) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at org.mars.m2m.demo.controlcenter.application.ControlCenterApplication.main(ControlCenterApplication.java:45) [classes/:na]
-Caused by: java.net.BindException: Address already in use: bind
-	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_25]
-	at sun.nio.ch.Net.bind(Net.java:436) ~[na:1.8.0_25]
-	at sun.nio.ch.Net.bind(Net.java:428) ~[na:1.8.0_25]
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214) ~[na:1.8.0_25]
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_25]
-	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.setuid.SetUIDListener.lifeCycleStarting(SetUIDListener.java:200) ~[jetty-setuid-java-1.0.3.jar:na]
-	... 8 common frames omitted
-ERROR  [17:31:09.785] [main] i.d.c.ServerCommand -  Unable to start server, shutting down 
-java.lang.RuntimeException: java.net.BindException: Address already in use: bind
-	at org.eclipse.jetty.setuid.SetUIDListener.lifeCycleStarting(SetUIDListener.java:213) ~[jetty-setuid-java-1.0.3.jar:na]
-	at org.eclipse.jetty.util.component.AbstractLifeCycle.setStarting(AbstractLifeCycle.java:188) ~[jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:67) ~[jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) ~[dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.cli.Cli.run(Cli.java:70) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at io.dropwizard.Application.run(Application.java:80) [dropwizard-core-0.9.0-rc1.jar:0.9.0-rc1]
-	at org.mars.m2m.demo.controlcenter.application.ControlCenterApplication.main(ControlCenterApplication.java:45) [classes/:na]
-Caused by: java.net.BindException: Address already in use: bind
-	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_25]
-	at sun.nio.ch.Net.bind(Net.java:436) ~[na:1.8.0_25]
-	at sun.nio.ch.Net.bind(Net.java:428) ~[na:1.8.0_25]
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214) ~[na:1.8.0_25]
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_25]
-	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
-	at org.eclipse.jetty.setuid.SetUIDListener.lifeCycleStarting(SetUIDListener.java:200) ~[jetty-setuid-java-1.0.3.jar:na]
-	... 8 common frames omitted
-INFO   [17:31:39.933] [main] o.e.j.u.log -  Logging initialized @1083ms 
-INFO   [17:31:40.018] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [17:31:40.026] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [17:31:40.042] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [17:31:40.079] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:31:40.081] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:31:40.582] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [11:49:44.472] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4e25147a{/admin-cc,null,AVAILABLE} 
+INFO   [11:49:44.511] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:49:44.511] [main] o.e.j.s.Server -  Started @1878ms 
+INFO   [14:48:35.398] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [14:48:35.410] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@4e25147a{/admin-cc,null,UNAVAILABLE} 
+INFO   [14:48:35.421] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@79ab34c1{/cc,null,UNAVAILABLE} 
+INFO   [16:04:44.387] [main] o.e.j.u.log -  Logging initialized @1106ms 
+INFO   [16:04:44.471] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:04:44.478] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:04:44.493] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:04:44.529] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:04:44.532] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:04:45.015] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [17:31:40.587] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,AVAILABLE} 
-INFO   [17:31:40.592] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:04:45.019] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@281f23f2{/cc,null,AVAILABLE} 
+INFO   [16:04:45.023] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [17:31:40.596] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,AVAILABLE} 
-INFO   [17:31:40.639] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:31:40.639] [main] o.e.j.s.Server -  Started @1790ms 
-INFO   [17:45:56.601] [main] o.e.j.u.log -  Logging initialized @1074ms 
-INFO   [17:45:56.686] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [17:45:56.693] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [17:45:56.708] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [17:45:56.744] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:45:56.747] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:45:57.231] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:04:45.028] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@675ffd1d{/admin-cc,null,AVAILABLE} 
+INFO   [16:04:45.068] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:04:45.068] [main] o.e.j.s.Server -  Started @1788ms 
+INFO   [16:06:12.781] [main] o.e.j.u.log -  Logging initialized @1178ms 
+INFO   [16:06:12.870] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:06:12.878] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:06:12.905] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:06:12.946] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:06:12.949] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:06:13.457] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [17:45:57.235] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,AVAILABLE} 
-INFO   [17:45:57.239] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:06:13.462] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@281f23f2{/cc,null,AVAILABLE} 
+INFO   [16:06:13.467] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [17:45:57.243] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,AVAILABLE} 
-INFO   [17:45:57.284] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:45:57.284] [main] o.e.j.s.Server -  Started @1757ms 
-INFO   [17:46:08.042] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:46:08.044] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,UNAVAILABLE} 
-INFO   [17:46:08.049] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,UNAVAILABLE} 
-INFO   [17:47:10.004] [main] o.e.j.u.log -  Logging initialized @1057ms 
-INFO   [17:47:10.091] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [17:47:10.099] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [17:47:10.114] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [17:47:10.149] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:47:10.152] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:47:10.637] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:06:13.471] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@675ffd1d{/admin-cc,null,AVAILABLE} 
+INFO   [16:06:13.510] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:06:13.510] [main] o.e.j.s.Server -  Started @1908ms 
+INFO   [16:07:36.677] [main] o.e.j.u.log -  Logging initialized @1118ms 
+INFO   [16:07:36.764] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:07:36.772] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:07:36.787] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:07:36.825] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:07:36.827] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:07:37.323] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [17:47:10.640] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,AVAILABLE} 
-INFO   [17:47:10.644] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:07:37.327] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,AVAILABLE} 
+INFO   [16:07:37.331] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [17:47:10.648] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,AVAILABLE} 
-INFO   [17:47:10.690] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:47:10.690] [main] o.e.j.s.Server -  Started @1743ms 
-INFO   [17:47:55.602] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:47:55.604] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,UNAVAILABLE} 
-INFO   [17:47:55.612] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,UNAVAILABLE} 
-INFO   [17:48:18.403] [main] o.e.j.u.log -  Logging initialized @1091ms 
-INFO   [17:48:18.490] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [17:48:18.497] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [17:48:18.513] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [17:48:18.548] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:48:18.551] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [17:48:19.056] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:07:37.335] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,AVAILABLE} 
+INFO   [16:07:37.376] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:07:37.376] [main] o.e.j.s.Server -  Started @1817ms 
+INFO   [16:09:55.920] [main] o.e.j.u.log -  Logging initialized @1077ms 
+INFO   [16:09:56.004] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:09:56.011] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:09:56.026] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:09:56.065] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:09:56.067] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:09:56.560] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [17:48:19.059] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,AVAILABLE} 
-INFO   [17:48:19.064] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:09:56.564] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,AVAILABLE} 
+INFO   [16:09:56.569] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [17:48:19.068] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,AVAILABLE} 
-INFO   [17:48:19.111] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:48:19.111] [main] o.e.j.s.Server -  Started @1800ms 
-INFO   [17:50:53.016] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [17:50:53.018] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,UNAVAILABLE} 
-INFO   [17:50:53.026] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@1698d7c0{/cc,null,UNAVAILABLE} 
+INFO   [16:09:56.574] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6b68cb27{/admin-cc,null,AVAILABLE} 
+INFO   [16:09:56.616] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@546ccad7{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:09:56.616] [main] o.e.j.s.Server -  Started @1774ms 
