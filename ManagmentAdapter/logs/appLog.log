@@ -1,19 +1,46 @@
-INFO   [11:50:09.359] [main] o.e.j.u.log -  Logging initialized @1332ms 
-INFO   [11:50:09.502] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [11:50:09.519] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [11:50:09.538] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [11:50:09.575] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:50:09.577] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:50:10.270] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:32:23.363] [main] o.e.j.u.log -  Logging initialized @1375ms 
+INFO   [16:32:23.497] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:32:23.506] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:32:23.523] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:32:23.567] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:32:23.570] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:32:24.406] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [11:50:10.275] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
-INFO   [11:50:10.281] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:32:24.409] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
+INFO   [16:32:24.415] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:50:10.287] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
-INFO   [11:50:10.334] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:50:10.334] [main] o.e.j.s.Server -  Started @2309ms 
+INFO   [16:32:24.422] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
+INFO   [16:32:24.469] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:32:24.469] [main] o.e.j.s.Server -  Started @2483ms 
+ERROR  [16:46:33.071] [dw-22 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:34.141] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:35.207] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:36.266] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.311] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:38.377] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:39.488] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:40.541] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:41.594] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:42.653] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:43.707] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:44.769] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:45.818] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [17:59:03.086] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [17:59:04.167] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [17:59:05.232] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [17:59:06.293] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:32.770] [dw-39 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:32.770] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:32.773] [dw-41 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:32.775] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:33.797] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:33.800] [dw-44 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:34.838] [dw-39 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:35.890] [dw-41 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:36.929] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [18:05:38.014] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 

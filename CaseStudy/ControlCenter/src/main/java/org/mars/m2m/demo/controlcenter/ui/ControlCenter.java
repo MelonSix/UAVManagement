@@ -5,21 +5,37 @@
  */
 package org.mars.m2m.demo.controlcenter.ui;
 
+import ch.qos.logback.classic.Logger;
 import javax.swing.JSplitPane;
+import javax.swing.JTree;
 import javax.swing.UIManager;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import org.mars.m2m.demo.controlcenter.core.HandleTree;
+import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author AG BRIGHTER
  */
-public class ControlCenter extends javax.swing.JFrame implements Runnable {
+public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeSelectionListener
+{
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenter.class);
+    private HandleTree handleTree;
 
     /**
      * Creates new form ControlCenter
      */
     public ControlCenter() {
         initComponents();
+        handleTree = new HandleTree(jTreeControlCenter);
+        NewDeviceServices.setHandleTree(handleTree);
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
+    }
+
+    public HandleTree getHandleTree() {
+        return handleTree;
     }
 
     /**
@@ -34,6 +50,8 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable {
         ccTabbedPane = new javax.swing.JTabbedPane();
         ccJPanelInTab1 = new javax.swing.JPanel();
         ccSplitPanelTab1 = new javax.swing.JSplitPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTreeControlCenter = new javax.swing.JTree();
         jPanel2 = new javax.swing.JPanel();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -41,24 +59,25 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Control Center v1.0.0");
-        setPreferredSize(new java.awt.Dimension(850, 550));
+        setPreferredSize(new java.awt.Dimension(900, 550));
 
+        ccSplitPanelTab1.setDividerLocation(150);
         this.pnlLeft = new JPanelForLeftSplitPane();
         this.pnlRight = new JPanelForRightSplitPane();
+
+        jScrollPane1.setViewportView(jTreeControlCenter);
+
+        ccSplitPanelTab1.setLeftComponent(jScrollPane1);
 
         javax.swing.GroupLayout ccJPanelInTab1Layout = new javax.swing.GroupLayout(ccJPanelInTab1);
         ccJPanelInTab1.setLayout(ccJPanelInTab1Layout);
         ccJPanelInTab1Layout.setHorizontalGroup(
             ccJPanelInTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 814, Short.MAX_VALUE)
-            .addGroup(ccJPanelInTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE))
+            .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
         );
         ccJPanelInTab1Layout.setVerticalGroup(
             ccJPanelInTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
-            .addGroup(ccJPanelInTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
+            .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
         );
 
         ccTabbedPane.addTab("UAV", ccJPanelInTab1);
@@ -139,5 +158,12 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTreeControlCenter;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void valueChanged(TreeSelectionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
