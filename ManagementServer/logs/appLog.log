@@ -68,3 +68,39 @@ INFO   [18:05:32.774] [pool-5-thread-3] o.e.c.c.n.Matcher -  Message is a duplic
 INFO   [18:05:32.774] [pool-5-thread-3] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=35526, Token=27021251, OptionSet={"Uri-Path":"rd", "Uri-Query":["ep=attacker1-2474aa07-8550-4f8f-bbe7-062665fdef5a","lt=86400","sms=00233248864955","lwm2m=LWM2M v1","b=U"]}, "</>;rt="oma.lwm2m", ".. 38 bytes 
 INFO   [18:05:32.776] [pool-5-thread-4] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=28540, Token=991da4b2, OptionSet={"Uri-Path":"rd", "Uri-Query":["ep=attacker3-e7ada8e7-a08e-4445-93c5-75a0187fb001","lt=86400","sms=00233248864955","lwm2m=LWM2M v1","b=U"]}, "</>;rt="oma.lwm2m", ".. 38 bytes 
 INFO   [18:05:32.776] [pool-5-thread-4] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=28540, Token=991da4b2, OptionSet={"Uri-Path":"rd", "Uri-Query":["ep=attacker3-e7ada8e7-a08e-4445-93c5-75a0187fb001","lt=86400","sms=00233248864955","lwm2m=LWM2M v1","b=U"]}, "</>;rt="oma.lwm2m", ".. 38 bytes 
+INFO   [18:05:10.443] [main] o.e.j.u.log -  Logging initialized @1253ms 
+INFO   [18:05:10.637] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:05:10.656] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [18:05:10.731] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [18:05:10.731] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [18:05:10.736] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [18:05:10.737] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [18:05:10.805] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:05:10.810] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [18:05:10.820] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [18:05:10.837] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [18:05:10.919] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:05:10.923] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:05:11.579] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [18:05:11.582] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1da4b6b3{/ms,null,AVAILABLE} 
+INFO   [18:05:11.587] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:05:11.593] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1a891add{/admin-ms,null,AVAILABLE} 
+INFO   [18:05:11.634] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:05:11.634] [main] o.e.j.s.Server -  Started @2445ms 

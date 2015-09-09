@@ -44,3 +44,22 @@ ERROR  [18:05:34.838] [dw-39 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.
 ERROR  [18:05:35.890] [dw-41 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
 ERROR  [18:05:36.929] [dw-30 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
 ERROR  [18:05:38.014] [dw-17 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+INFO   [18:05:18.383] [main] o.e.j.u.log -  Logging initialized @1273ms 
+INFO   [18:05:18.487] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [18:05:18.495] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [18:05:18.510] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [18:05:18.543] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:05:18.546] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:05:19.148] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [18:05:19.153] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
+INFO   [18:05:19.166] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:05:19.172] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
+INFO   [18:05:19.238] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:05:19.238] [main] o.e.j.s.Server -  Started @2130ms 

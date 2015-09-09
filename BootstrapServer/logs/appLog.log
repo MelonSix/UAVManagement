@@ -93,3 +93,42 @@ ERROR  [16:32:41.323] [pool-4-thread-3] o.m.m.b.c.BsResource -  No bootstrap con
 ERROR  [16:32:41.344] [pool-4-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout1-743cf681-0798-407c-bb54-85434f3178df 
 ERROR  [16:32:41.359] [pool-4-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout2-93626226-2833-4237-a920-8816cf9da8f4 
 ERROR  [16:32:41.364] [pool-4-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout2-ebec778e-177c-4365-a6b9-7ebb873baf4e 
+INFO   [17:58:18.142] [main] o.e.j.u.log -  Logging initialized @1615ms 
+INFO   [17:58:18.244] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [17:58:18.285] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [17:58:18.286] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [17:58:18.298] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [17:58:18.299] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [17:58:18.325] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [17:58:18.333] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [17:58:18.358] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [17:58:18.417] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:58:18.423] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:58:18.974] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [17:58:18.976] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [17:58:18.982] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:58:18.989] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [17:58:19.083] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:58:19.083] [main] o.e.j.s.Server -  Started @2557ms 
+ERROR  [18:05:28.674] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker1-ab266cd6-eb10-41ec-93fb-9980adc5d05b 
+ERROR  [18:05:28.698] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker2-12a25041-2e29-40ce-b59b-cd3c8d906a82 
+ERROR  [18:05:28.713] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker3-028dd611-ebcd-4eb0-9c36-e47990ee8046 
+ERROR  [18:05:28.729] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker4-ccee0531-560a-4294-bf21-e6d9614c99d2 
+ERROR  [18:05:28.748] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker5-de482cf3-186c-4a26-a3e2-afed03dca8f4 
+ERROR  [18:05:28.771] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker6-30d420c6-7808-4b2b-b41e-7a95c4bf5d7e 
+ERROR  [18:05:28.786] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker7-d1c0cbbd-8f79-4982-91b9-e3b0bb660b4b 
+ERROR  [18:05:28.802] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker8-2e018397-36e8-4d42-ac26-56aef23be254 
+ERROR  [18:05:28.812] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker9-a4b757e2-e3d6-47e5-92dc-77008d2a02e8 
+ERROR  [18:05:28.828] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker10-9344dea0-658d-4c25-b27c-30519b2a682b 
+ERROR  [18:05:28.865] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout1-e110afaa-fdae-462f-a43c-0429ffd5a712 
+ERROR  [18:05:28.885] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout1-ecbee6a2-399a-4ae8-9506-54c3bd935f73 
+ERROR  [18:05:28.894] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout2-d67268a3-36a9-4dbc-81fc-543c9302cecd 
+ERROR  [18:05:28.897] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout2-014281b2-4197-4791-899e-360695b9fe19 

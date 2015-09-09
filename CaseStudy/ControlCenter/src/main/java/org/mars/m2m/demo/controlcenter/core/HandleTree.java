@@ -7,9 +7,10 @@ package org.mars.m2m.demo.controlcenter.core;
 
 import ch.qos.logback.classic.Logger;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.concurrent.ExecutionException;
 import javax.swing.JTree;
+import javax.swing.SwingWorker;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -29,7 +30,11 @@ public class HandleTree implements TreeSelectionListener
     private DefaultTreeModel treeModel;
     private static DefaultMutableTreeNode scoutsNode;
     private static DefaultMutableTreeNode attackersNode;
-
+    
+    /**
+     * Constructor for this class with the JTree component it will work with
+     * @param tree The JTree object
+     */
     public HandleTree(JTree tree) 
     {
         if(tree != null)
@@ -39,6 +44,9 @@ public class HandleTree implements TreeSelectionListener
         }
     }
     
+    /**
+     * Performs initialization procedures on the JTree
+     */
     private void initializeTree()
     {
         treeModel = (DefaultTreeModel) this.tree.getModel();
@@ -52,7 +60,11 @@ public class HandleTree implements TreeSelectionListener
         
         treeModel.setRoot(root);
     }
-
+    
+    /**
+     * Handles node selection events
+     * @param e The event object
+     */
     @Override
     public void valueChanged(TreeSelectionEvent e)
     {
@@ -68,8 +80,13 @@ public class HandleTree implements TreeSelectionListener
         System.out.println(device.getAddress()+", "+device.getRegistrationId());
     }
     
+    /**
+     * Populates the JTree of this {@link HandleTree} instance with the necessary nodes
+     * @param devices The newly connected devices(LwM2M clients) data submitted to the Control center (Scouts & Attackers)
+     */
     public void populateJTree(ArrayList<ReportedLwM2MClient> devices)
     {
+        //updates the connected devices list of the control center.
         this.connectedDevices = devices;
         
         //categorizes the reported devices
@@ -78,12 +95,15 @@ public class HandleTree implements TreeSelectionListener
         System.out.println("Scouts num: "+scoutDevices.size()+", attacker num: "+attackerDevices.size());
         
         //gets scouts and their respective devices
-        TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = getScouts(scoutDevices);
+        TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = getUAVAndOnboardDevices(scoutDevices);
         
         //gets attackers with their respective devices
-        TreeMap<String, ArrayList<ReportedLwM2MClient>> attackers = getScouts(attackerDevices);
+        TreeMap<String, ArrayList<ReportedLwM2MClient>> attackers = getUAVAndOnboardDevices(attackerDevices);
         
-        //resets the uav nodes
+        /**
+         * Resets the UAV nodes because any call to this method submits a fresh list of all
+         * Connected devices meaning previously listed nodes has to be removed to avoid duplicates
+         */
         scoutsNode.removeAllChildren();
         attackersNode.removeAllChildren();
         
@@ -94,26 +114,62 @@ public class HandleTree implements TreeSelectionListener
         populateNode(attackers, attackersNode);
         
     }
-
-    private void populateNode(TreeMap<String, ArrayList<ReportedLwM2MClient>> uavKind, DefaultMutableTreeNode uavKindNode) 
+    
+    /**
+     * Populates a list of available UAVs of a particular UAV kind (Scouts/Attackers) under the node of that particular UAV kind
+     * @param UAVs The UAVs of a particular UAV kind (Scouts/Attackers)
+     * @param uavKindNode The tree node dedicated to a particular UAV kind
+     */
+    private void populateNode(final TreeMap<String, ArrayList<ReportedLwM2MClient>> UAVs, final DefaultMutableTreeNode uavKindNode) 
     {
-        for(String uavLabel : uavKind.keySet())
+        //registers a UI component update with the Event Dispatch Thread (EDT)
+        SwingWorker<JTree,Void> swingWorker; 
+        swingWorker = new SwingWorker<JTree, Void>() 
         {
-            DefaultMutableTreeNode uavNode = new DefaultMutableTreeNode(uavLabel);
-            ArrayList<ReportedLwM2MClient> onBoardDevices = uavKind.get(uavLabel);
-            for(ReportedLwM2MClient device : onBoardDevices)
+            @Override
+            protected JTree doInBackground() throws Exception
             {
-                DefaultMutableTreeNode deviceNode = new DefaultMutableTreeNode(device);
-                uavNode.add(deviceNode);
+                for(String uavLabel : UAVs.keySet())
+                {
+                    DefaultMutableTreeNode uavNode = new DefaultMutableTreeNode(uavLabel);
+                    ArrayList<ReportedLwM2MClient> onBoardDevices = UAVs.get(uavLabel);
+                    for(ReportedLwM2MClient device : onBoardDevices)
+                    {
+                        DefaultMutableTreeNode deviceNode = new DefaultMutableTreeNode(device);
+                        uavNode.add(deviceNode);
+                    }
+                    //decides where to add a particular UAV
+                    uavKindNode.add(uavNode);
+                }
+                return tree;
             }
-            //decides where to add a particular UAV
-            uavKindNode.add(uavNode);
-        }
-        //updates the JTree component to show the latest nodes
-        tree.updateUI();
+            
+            @Override
+            protected void done() 
+            {
+                JTree jTree;
+                try 
+                {
+                    jTree = get();
+                    //updates the JTree component to show the latest nodes
+                    jTree.updateUI();
+                } catch (InterruptedException | ExecutionException ex) {
+                    logger.error(ex.toString());
+                }
+            }            
+        };
+        swingWorker.execute();
     }
     
-    private TreeMap<String, ArrayList<ReportedLwM2MClient>> getScouts(ArrayList<ReportedLwM2MClient> connectedUavDevices)
+    /**
+     * Identifies an instance of a UAV and the devices/objects mounted on the UAV.
+     * This method base on the device identifier nomenclature e.g. scout1-xxxx-xxxx-xxxx... to identify a UAV instance.
+     * It splits the first part of the ID, which denotes the UAV instance that a device is mounted onto, and uses that to group all 
+     * devices with the same UAV instance as devices mounted on the UAV instance.
+     * @param connectedUavDevices Connected devices reported to the control center.
+     * @return Mapping of a group of devices to a particular UAV instance
+     */
+    private TreeMap<String, ArrayList<ReportedLwM2MClient>> getUAVAndOnboardDevices(ArrayList<ReportedLwM2MClient> connectedUavDevices)
     {
         TreeMap<String, ArrayList<ReportedLwM2MClient>> uavWithOnboardDevices;
         uavWithOnboardDevices = new TreeMap<>();
@@ -135,6 +191,12 @@ public class HandleTree implements TreeSelectionListener
         return uavWithOnboardDevices;
     }
     
+    /**
+     * This method is used for categorization purposes. It groups the reported devices into UAV kinds
+     * @param connectedDevices The reported devices/LwM2M clients
+     * @param uavType The UAV kind to be used for the categorization (e.g. scout/attacker)
+     * @return The list of connected devices which are of the specified <code>uavType</code>
+     */
     private ArrayList<ReportedLwM2MClient> getConnectedDevices(ArrayList<ReportedLwM2MClient> connectedDevices, String uavType)
     {
         ArrayList<ReportedLwM2MClient> conDevices;
