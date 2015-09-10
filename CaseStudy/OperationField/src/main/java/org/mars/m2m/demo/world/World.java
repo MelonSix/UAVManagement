@@ -123,8 +123,8 @@ public class World {
         this.reconnaissance.setScouts(scouts);
         this.reconnaissance.setScout_speed(StaticInitConfig.SPEED_OF_SCOUT);
         this.reconnaissance.setConflicts(conflicts);
-        this.reconnaissance.roleAssignForScouts();
-        reconnaissance.roleAssignForAttackerWithSubTeam(-1, -1); //initialize role assignment*/
+        //this.reconnaissance.roleAssignForScouts();
+        //reconnaissance.roleAssignForAttackerWithSubTeam(-1, -1); //initialize role assignment*/
     }
 
     /**initiate the parameter from init_config, which is called by World constructor.
@@ -552,7 +552,7 @@ public class World {
 
         updateScout();
         logger.debug("scout(s) coordinates updated");
-        detectScoutEvent();
+        //detectScoutEvent();
 //        logger.debug("scout event detect over");
 //        detectAttackerEvent();
 //        logger.debug("attacker detect over");

@@ -7,12 +7,13 @@ package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
 import javax.swing.JSplitPane;
-import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
+import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
+import org.mars.m2m.demo.controlcenter.services.OntologyBasedKnowledge;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -31,6 +32,7 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
         initComponents();
         handleTree = new HandleTree(jTreeControlCenter);
         NewDeviceServices.setHandleTree(handleTree);
+        ControlCenterServices.setKb(new OntologyBasedKnowledge());//initializes the knowledgebase of the control center
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
     }
 

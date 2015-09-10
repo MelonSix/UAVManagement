@@ -20,3 +20,5 @@ logging:
       archivedFileCount: 7
       timeZone: UTC+8
       maxFileSize: 10MB
+      
+controlCenter_address: http://127.0.0.1:8170

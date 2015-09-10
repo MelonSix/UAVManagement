@@ -13,6 +13,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.util.DmCommons;
@@ -45,6 +48,17 @@ public class AdapterServiceInterface {
     @Produces(MediaType.APPLICATION_XML)
     public RequestPrimitive postRequest(RequestPrimitive requestPrimitive, @Context UriInfo uriInfo)
     {
+        try 
+        {
+            System.out.println("Inside generate request function in proof of concept class");
+            JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            jaxbMarshaller.marshal(requestPrimitive, System.out);
+            
+        } catch (JAXBException ex) {
+            ex.printStackTrace();
+        }
         return processRequest(requestPrimitive, uriInfo);
     }
     

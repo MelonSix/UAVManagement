@@ -2943,7 +2943,28 @@
         "description":"Controls the UAV",
         "objecturn":"urn:oma:lwm2m:ext:12204",
         "resourcedefs":[
-
+             {
+               "id": 0,
+                "name": "X waypoints",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "The x coordinate points" 
+            },
+            {
+               "id": 1,
+                "name": "Y waypoints",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "The y coordinate points" 
+            }
         ]
     },
     {

@@ -31,8 +31,9 @@ public class NewDeviceServices
     /**
      * Register a newly connected device
      * @param device The new device's details
+     * @return The current list of connected devices
      */
-    public void addNewDevice(ReportedLwM2MClient device)
+    public ArrayList<ReportedLwM2MClient> addNewDevice(ReportedLwM2MClient device)
     {
         if(this.connectedDevices != null && !this.connectedDevices.contains(device))
         {
@@ -42,6 +43,7 @@ public class NewDeviceServices
         }
         Validate.notNull(handleTree);
         handleTree.populateJTree(connectedDevices);
+        return this.connectedDevices;
     }
 
     public static void setHandleTree(HandleTree handleTree) {

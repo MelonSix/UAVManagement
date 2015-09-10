@@ -10,9 +10,13 @@ import org.mars.m2m.demo.config.GraphicConfig;
 import org.mars.m2m.demo.config.StaticInitConfig;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 import org.eclipse.leshan.core.model.LwM2mModel;
+import org.mars.m2m.demo.LwM2mClients.FlightControlClient;
 import org.mars.m2m.demo.LwM2mClients.ObstacleSensorClient;
 import org.mars.m2m.demo.LwM2mClients.ThreatSensorClient;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
@@ -49,6 +53,7 @@ public final class Scout extends UAV
     private LwM2mModel uavLwM2mModel;
     private ThreatSensorClient threatSensorClient;
     private ObstacleSensorClient obstacleSensorClient;
+    private FlightControlClient flightControlClient;
     private final DeviceHelper deviceHelper;
     
     /*Class variables */
@@ -96,6 +101,19 @@ public final class Scout extends UAV
        this.uavLwM2mModel  = DeviceHelper.getObjectModel(this.uavConfig.getObjectModelFile());
        this.threatSensorClient = startThreatSensor();
        this.obstacleSensorClient = startObstacleSensor();
+       this.flightControlClient = startFlightControl();
+       
+       //refreshes the y coordinate values
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+                move_at_y_coordinate_task = flightControlClient.getFlightControl().getMove_at_y_coordinate_task();
+                System.out.println("y-stuff: "+Arrays.asList(move_at_y_coordinate_task));
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 5000, 5000);
     }
     
     //<editor-fold defaultstate="collapsed" desc="Starts the threat sensor">
@@ -145,6 +163,31 @@ public final class Scout extends UAV
         log.info("Obstacle sensor started");
         uavOwnedDevices.add(obstacleSensor);
         return obstacleSensor;
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Starts Flight control">
+    /**
+     * 
+     * @return A started instance of {@link FlightControlClient} 
+     */
+    private FlightControlClient startFlightControl()
+    {
+        int portNumber = selectPortNumber();
+        /**
+         * Threat sensor
+         */
+        DeviceStarterDetails flightDevDtls;
+        flightDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
+                portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
+        FlightControlClient flightControl = new FlightControlClient(uavLwM2mModel, flightDevDtls);
+        flightControl.StartDevice();
+        deviceHelper.lwM2mClientDaemon(flightControl);//invokes a background process for this device
+        //Thread.sleep(10000);
+        //DeviceHelper.stopDevice(threatSensor);
+        log.info("Flight control started");
+        uavOwnedDevices.add(flightControl);
+        return flightControl;
     }
 //</editor-fold>
     
@@ -257,5 +300,10 @@ public final class Scout extends UAV
     public ThreatSensorClient getThreatSensorLwM2mClient() {
         return threatSensorClient;
     }
+
+    public FlightControlClient getFlightControlClient() {
+        return flightControlClient;
+    }
+    
     
 }

@@ -382,7 +382,7 @@ public class MgmtServerInterface {
     }
     
     /**
-     * For converting the value of the resource to appropriate type and then use that to create a lwm2mresource
+     * For converting the value of the resource to appropriate type and then use that to create a lwm2m resource
      * @param resource the resource object created by JAX-RS
      * @return the LwM2M resource
      */

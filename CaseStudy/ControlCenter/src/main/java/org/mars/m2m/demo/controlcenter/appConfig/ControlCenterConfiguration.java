@@ -13,8 +13,18 @@ import io.dropwizard.Configuration;
  */
 public class ControlCenterConfiguration extends Configuration 
 {
-
+    private String controlCenter_address;
+    
     public ControlCenterConfiguration() {
     }
+
+    public void setControlCenter_address(String controlCenter_address) {
+        this.controlCenter_address = controlCenter_address;
+    }
+
+    public String getControlCenter_address() {
+        return controlCenter_address;
+    }
+    
     
 }

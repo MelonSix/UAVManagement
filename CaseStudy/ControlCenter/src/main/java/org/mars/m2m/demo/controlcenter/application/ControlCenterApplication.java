@@ -10,6 +10,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
+import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.health.ClientsResourceHealth;
 import org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface;
 import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
@@ -24,7 +25,10 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
     Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterApplication.class);
 
     @Override
-    public void run(ControlCenterConfiguration t, Environment e) throws Exception {
+    public void run(ControlCenterConfiguration t, Environment e) throws Exception 
+    {
+        //sets the address configured from the yml file to the static config to make it accessible by all classes
+        StaticInitConfig.ccAddress = t.getControlCenter_address();
         
         //resources
         ControlCenterInterface cc = new ControlCenterInterface();
