@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.eventHandling.CallbackImpl.AssignScout;
 import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.AssignScoutRoleListenerImpl;
 import org.mars.m2m.demo.controlcenter.model.ObjectLink;
@@ -22,13 +23,13 @@ import org.slf4j.LoggerFactory;
  * upon the triggering of an event
  * @author AG BRIGHTER
  */
-public class ControlCenterReflex 
+public class ControlCenterReflexes 
 {
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterReflex.class);    
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterReflexes.class);    
     private final UavUtil uavUtil;
     private final ExecutorService  executor;
     
-    public ControlCenterReflex() {
+    public ControlCenterReflexes() {
         executor = Executors.newFixedThreadPool(5);
         this.uavUtil = new UavUtil();
     }
@@ -38,41 +39,49 @@ public class ControlCenterReflex
      * then sends the coordinates to the UAV
      * @param connectedDevices 
      */
+    private static ArrayList<String> configuredScouts = new ArrayList<>();
     public void scoutingWaypointsReflex(final ArrayList<ReportedLwM2MClient> connectedDevices)
     {
         //gets all scouts and their respective onboard devices
         TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = 
                 uavUtil.getUAVAndOnboardDevices(uavUtil.getConnectedDevicesByCategory(connectedDevices, "scout"));
+        int i=0;
         for(String scout : scouts.keySet())
-        {
-            ArrayList<ReportedLwM2MClient> onboardDevices = scouts.get(scout);
-            ReportedLwM2MClient flightControl = null;
-            
-            for(ReportedLwM2MClient device : onboardDevices)
-            {
-                ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
-                for(ObjectLink obj : objectLinks)
-                {                   
-                    
-                    //flight control object ID in json object model file is 12204
-                    if(obj.getObjectId() == 12204)
-                    {
-                        System.out.println("Object id: "+obj.getObjectId());
-                        flightControl = device;
+        {  
+            StaticInitConfig.currentScoutIndex = i;
+            if(!configuredScouts.contains(scout))
+            {            
+                ArrayList<ReportedLwM2MClient> onboardDevices = scouts.get(scout);
+                ReportedLwM2MClient flightControl = null;
+
+                for(ReportedLwM2MClient device : onboardDevices)
+                {
+                    ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
+                    for(ObjectLink obj : objectLinks)
+                    {                   
+
+                        //flight control object ID in json object model file is 12204
+                        if(obj.getObjectId() == 12204)
+                        {
+                            System.out.println("Object id: "+obj.getObjectId());
+                            flightControl = device;
+                        }
+                        if(flightControl != null)
+                            break;//device found
                     }
                     if(flightControl != null)
                         break;//device found
                 }
+
+                //if flight control device has been found
                 if(flightControl != null)
-                    break;//device found
+                {
+                    WorkerThread thread = new WorkerThread(flightControl);
+                    executor.execute(thread);
+                    configuredScouts.add(scout);
+                }
             }
-            
-            //if flight control device has been found
-            if(flightControl != null)
-            {
-                WorkerThread thread = new WorkerThread(flightControl);
-                executor.execute(thread);
-            }
+            i++;
         }
     }
 }

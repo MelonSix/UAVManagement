@@ -14,9 +14,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
-import org.mars.m2m.demo.controlcenter.services.ControlCenterReflex;
+import org.mars.m2m.demo.controlcenter.services.ControlCenterReflexes;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
-import org.mars.m2m.demo.controlcenter.util.UavUtil;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -29,10 +28,10 @@ public class ControlCenterInterface
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterInterface.class);
     private final NewDeviceServices newDeviceServices;
     private ArrayList<ReportedLwM2MClient> connectedDevices;
-    private ControlCenterReflex reflex;
+    private ControlCenterReflexes reflex;
     
     public ControlCenterInterface() {
-        this.reflex = new ControlCenterReflex();
+        this.reflex = new ControlCenterReflexes();
         this.newDeviceServices = new NewDeviceServices();
     }
     

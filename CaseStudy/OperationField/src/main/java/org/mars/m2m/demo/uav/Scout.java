@@ -12,8 +12,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.UUID;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.demo.LwM2mClients.FlightControlClient;
@@ -79,7 +77,7 @@ public final class Scout extends UAV
         this.speed = StaticInitConfig.SPEED_OF_SCOUT;
         center_color = GraphicConfig.uav_colors.get(22);
         radar_color = new Color(center_color.getRed(), center_color.getGreen(), center_color.getBlue(), 128);
-        
+                
         //for LwM2M initialization of the UAV
         initUAV(new UAVConfiguration());
     }
@@ -101,19 +99,7 @@ public final class Scout extends UAV
        this.uavLwM2mModel  = DeviceHelper.getObjectModel(this.uavConfig.getObjectModelFile());
        this.threatSensorClient = startThreatSensor();
        this.obstacleSensorClient = startObstacleSensor();
-       this.flightControlClient = startFlightControl();
-       
-       //refreshes the y coordinate values
-        TimerTask task = new TimerTask() {
-
-            @Override
-            public void run() {
-                move_at_y_coordinate_task = flightControlClient.getFlightControl().getMove_at_y_coordinate_task();
-                System.out.println("y-stuff: "+Arrays.asList(move_at_y_coordinate_task));
-            }
-        };
-        Timer timer = new Timer();
-        timer.schedule(task, 5000, 5000);
+       this.flightControlClient = startFlightControl(); 
     }
     
     //<editor-fold defaultstate="collapsed" desc="Starts the threat sensor">
@@ -262,8 +248,14 @@ public final class Scout extends UAV
      * @param move_at_y_coordinate_task 
      */
     public void setMove_at_y_coordinate_task(LinkedList<Float> move_at_y_coordinate_task) {
+        System.out.println("Coordinates: "+Arrays.asList(move_at_y_coordinate_task));
         this.move_at_y_coordinate_task = move_at_y_coordinate_task;
     }
+
+    public LinkedList<Float> getMove_at_y_coordinate_task() {
+        return move_at_y_coordinate_task;
+    }
+    
 
     public ArrayList<AbstractDevice> getUavOwnedDevices() {
         return uavOwnedDevices;

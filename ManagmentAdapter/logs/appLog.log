@@ -1,155 +1,23 @@
-INFO   [11:57:21.909] [main] o.e.j.u.log -  Logging initialized @1297ms 
-INFO   [11:57:22.029] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [11:57:22.038] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [11:57:22.053] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [11:57:22.086] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:57:22.089] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:57:22.672] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [08:40:34.443] [main] o.e.j.u.log -  Logging initialized @1269ms 
+INFO   [08:40:34.581] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [08:40:34.590] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [08:40:34.605] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [08:40:34.639] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [08:40:34.642] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [08:40:35.358] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [11:57:22.677] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
-INFO   [11:57:22.683] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [08:40:35.361] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
+INFO   [08:40:35.365] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:57:22.689] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
-INFO   [11:57:22.734] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:57:22.735] [main] o.e.j.s.Server -  Started @2126ms 
-INFO   [19:21:18.215] [main] o.e.j.u.log -  Logging initialized @1311ms 
-INFO   [19:21:18.322] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [19:21:18.329] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [19:21:18.345] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [19:21:18.380] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:21:18.383] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:21:18.993] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
- 
-INFO   [19:21:18.996] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [19:21:19.002] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [19:21:19.009] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [19:21:19.082] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:21:19.082] [main] o.e.j.s.Server -  Started @2181ms 
-INFO   [20:17:34.867] [main] o.e.j.u.log -  Logging initialized @1415ms 
-INFO   [20:17:34.979] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [20:17:34.987] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [20:17:35.002] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [20:17:35.039] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [20:17:35.042] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [20:17:35.621] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
- 
-INFO   [20:17:35.626] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [20:17:35.637] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [20:17:35.642] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [20:17:35.699] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [20:17:35.699] [main] o.e.j.s.Server -  Started @2250ms 
-ERROR  [20:23:48.471] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:49.579] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:50.667] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:51.734] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:52.813] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:53.863] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:54.938] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:56.038] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:57.086] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:58.131] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:23:59.186] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:24:00.301] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:24:01.358] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:24:02.420] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:24:03.487] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:24:04.546] [dw-19 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:49:04.140] [dw-38 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:49:05.176] [dw-40 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:49:06.206] [dw-42 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:49:07.259] [dw-48 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:54:07.963] [dw-42 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [20:55:34.098] [dw-57 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-INFO   [21:01:36.552] [main] o.e.j.u.log -  Logging initialized @1323ms 
-INFO   [21:01:36.641] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [21:01:36.649] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [21:01:36.665] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [21:01:36.698] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:01:36.701] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [21:01:37.304] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
- 
-INFO   [21:01:37.307] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [21:01:37.316] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [21:01:37.321] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [21:01:37.375] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:01:37.375] [main] o.e.j.s.Server -  Started @2147ms 
-INFO   [21:04:52.834] [main] o.e.j.u.log -  Logging initialized @1395ms 
-INFO   [21:04:52.935] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [21:04:52.944] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [21:04:52.961] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [21:04:52.997] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:04:52.999] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [21:04:53.600] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
- 
-INFO   [21:04:53.605] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [21:04:53.615] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [21:04:53.620] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [21:04:53.676] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:04:53.676] [main] o.e.j.s.Server -  Started @2240ms 
-INFO   [21:44:30.505] [main] o.e.j.u.log -  Logging initialized @1555ms 
-INFO   [21:44:30.652] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [21:44:30.669] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [21:44:30.718] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [21:44:30.822] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:44:30.825] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [21:44:31.749] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
- 
-INFO   [21:44:31.752] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [21:44:31.771] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [21:44:31.779] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [21:44:31.864] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:44:31.864] [main] o.e.j.s.Server -  Started @2917ms 
-INFO   [21:47:49.708] [main] o.e.j.u.log -  Logging initialized @1281ms 
-INFO   [21:47:49.819] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [21:47:49.826] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [21:47:49.841] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [21:47:49.874] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:47:49.877] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [21:47:50.482] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
- 
-INFO   [21:47:50.486] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [21:47:50.498] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [21:47:50.503] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [21:47:50.550] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [21:47:50.550] [main] o.e.j.s.Server -  Started @2127ms 
+INFO   [08:40:35.370] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
+INFO   [08:40:35.410] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [08:40:35.411] [main] o.e.j.s.Server -  Started @2239ms 
+ERROR  [11:02:33.088] [dw-124 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [11:02:34.154] [dw-97 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [11:02:35.215] [dw-116 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [11:02:36.271] [dw-120 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 

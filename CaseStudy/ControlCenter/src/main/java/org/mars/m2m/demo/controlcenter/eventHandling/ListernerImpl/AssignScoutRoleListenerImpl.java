@@ -61,17 +61,21 @@ public class AssignScoutRoleListenerImpl implements AssignScoutRoleListener
         
         consumerDetails.setRequest(requestUtil.
                 getRequestPrimitiveForData(Operation.UPDATE, endpointURL, StaticInitConfig.ccAddress, data));
-        try 
-        {
-            System.out.println("Inside generate request function in proof of concept class");
-            JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.marshal(consumerDetails.getRequest(), System.out);
-            
-        } catch (JAXBException ex) {
-            ex.printStackTrace();
-        }
+        
+        //        //<editor-fold defaultstate="collapsed" desc="For pretty printing of XML - verification purposes">
+//        try
+//        {
+//            System.out.println("Inside generate request function in proof of concept class");
+//            JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
+//            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//            jaxbMarshaller.marshal(consumerDetails.getRequest(), System.out);
+//
+//        } catch (JAXBException ex) {
+//            ex.printStackTrace();
+//        }
+//</editor-fold>
+        
         sc.handlePost(StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
         logger.info("Scouting info sent: {},to: {}",data,device.getAddress());
         System.out.println("Sending address: "+endpointURL);

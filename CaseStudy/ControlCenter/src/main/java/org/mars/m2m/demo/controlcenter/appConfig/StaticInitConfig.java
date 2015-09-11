@@ -98,4 +98,5 @@ public class StaticInitConfig {
     public static int bound_height=600;//simulation environment height
     public static String mgmntAdapterURL="http://127.0.0.1:8070/ma/mgmtAdapter/";//URL for managment adapter
     public static String mgmntServerURL = "http://127.0.0.1:8089/ms/clients/";
+    public static int currentScoutIndex = -1;//used to control scout role assignment
 }

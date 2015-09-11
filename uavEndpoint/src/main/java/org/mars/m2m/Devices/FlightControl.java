@@ -6,6 +6,7 @@
 package org.mars.m2m.Devices;
 
 import ch.qos.logback.classic.Logger;
+import java.util.Arrays;
 import java.util.LinkedList;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
@@ -24,6 +25,7 @@ public class FlightControl extends BaseInstanceEnabler implements DeviceExecutio
     private static Logger log = (Logger) LoggerFactory.getLogger(FlightControl.class);
     private LinkedList<Float> move_at_y_coordinate_task;
     private LinkedList<Float> move_at_x_coordinate_task;
+    private boolean y_updated = false;
     
 
     public FlightControl() {
@@ -38,7 +40,7 @@ public class FlightControl extends BaseInstanceEnabler implements DeviceExecutio
 
     @Override
     public LwM2mResponse write(int resourceid, LwM2mResource value){
-        System.out.println("huraaayyy");
+        System.out.println("Received Y coordinates for scout");
         log.info("Write on Device Resource [{}]  value[{}] ", resourceid , value);
         switch(resourceid)
         {
@@ -46,10 +48,13 @@ public class FlightControl extends BaseInstanceEnabler implements DeviceExecutio
                 return new LwM2mResponse(ResponseCode.CHANGED);
             case 1:
                 String [] points = value.getValue().value.toString().split(",");
+                LinkedList<Float> vals = new LinkedList<>();
                 for(String point : points)
                 {
-                    move_at_y_coordinate_task.add(Float.parseFloat(point));
+                    vals.add(Float.parseFloat(point));
                 }
+                this.move_at_y_coordinate_task = vals;
+                this.y_updated = true;
                 return new LwM2mResponse(ResponseCode.CHANGED);
             default:
                 return new LwM2mResponse(ResponseCode.BAD_REQUEST);
@@ -98,6 +103,14 @@ public class FlightControl extends BaseInstanceEnabler implements DeviceExecutio
 
     public LinkedList<Float> getMove_at_y_coordinate_task() {
         return move_at_y_coordinate_task;
+    }
+
+    public void setY_updated(boolean y_updated) {
+        this.y_updated = y_updated;
+    }
+
+    public boolean isY_updated() {
+        return y_updated;
     }
     
     

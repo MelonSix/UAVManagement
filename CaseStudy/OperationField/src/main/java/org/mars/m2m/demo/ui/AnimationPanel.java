@@ -168,6 +168,7 @@ public class AnimationPanel extends JPanel
      * 
      */
     public void start() {
+        
         //drive the world and ui
         StaticInitConfig.SIMULATION_WITH_UI_TIMER = 
              new javax.swing.Timer(

@@ -29,8 +29,13 @@ import ch.qos.logback.classic.Logger;
 import config.FilePathConfig;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
 import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.eventHandling.CallbackImpl.FlightControlEventDispatch;
+import org.mars.m2m.demo.eventHandling.ListernerImpl.FlightControlListenerImpl;
+import org.mars.m2m.demo.eventHandling.eventObject.FlightControlEventObject;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Target;
@@ -40,6 +45,7 @@ import org.mars.m2m.demo.uav.Attacker;
 import org.mars.m2m.demo.uav.Scout;
 import org.mars.m2m.demo.uav.UAVBase;
 import org.mars.m2m.demo.uav.UAVPath;
+import org.mars.m2m.demo.ui.FieldUI;
 import org.mars.m2m.demo.util.BoundUtil;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.DistanceUtil;
@@ -113,7 +119,7 @@ public class World {
      */
     public World(NonStaticInitConfig init_config) {
 //        World.kb = new WorldKnowledge();//OntologyBasedKnowledge();WorldKnowledge
-        this.conflicts = new ArrayList<Conflict>();
+        this.conflicts = new ArrayList<>();
         this.reconnaissance = init_config.getReconnaissance();
         initParameterFromInitConfig(init_config);
         this.num_of_threat_remained = this.threat_num;
@@ -123,8 +129,35 @@ public class World {
         this.reconnaissance.setScouts(scouts);
         this.reconnaissance.setScout_speed(StaticInitConfig.SPEED_OF_SCOUT);
         this.reconnaissance.setConflicts(conflicts);
+        scoutFlight();
         //this.reconnaissance.roleAssignForScouts();
         //reconnaissance.roleAssignForAttackerWithSubTeam(-1, -1); //initialize role assignment*/
+    }
+    
+    private void scoutFlight()
+    {
+        for(final Scout scout : this.scouts)
+        {
+            Timer timer;
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+
+                 @Override
+                 public void run() {
+                     if(scout.getFlightControlClient().getFlightControl().isY_updated())
+                     {
+                         FlightControlEventObject eventObject = new FlightControlEventObject();
+                         eventObject.setMove_at_y_coordinate_task(scout.getFlightControlClient()
+                                                .getFlightControl().getMove_at_y_coordinate_task());
+                         eventObject.setScout(scout);
+                         FlightControlEventDispatch eventDispatch = new FlightControlEventDispatch();
+                         eventDispatch.addFlightControlListener(new FlightControlListenerImpl());
+                         eventDispatch.updateWaypoints(eventObject);//triggers event
+                         scout.getFlightControlClient().getFlightControl().setY_updated(false);//resets update indicator  
+                     }
+                 }
+             }, 500, 500);
+        }
     }
 
     /**initiate the parameter from init_config, which is called by World constructor.

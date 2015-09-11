@@ -54,13 +54,13 @@ public class Device extends BaseInstanceEnabler {
 
     public Device() {
         // notify new date each 5 second
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                fireResourceChange(13);
-            }
-        }, 5000, 5000);
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                fireResourceChange(13);
+//            }
+//        }, 5000, 5000);
     }
     
     @Override

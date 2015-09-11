@@ -51,8 +51,8 @@ public class Reconnaissance implements KnowledgeAwareInterface
      */
     public Reconnaissance(KnowledgeInterface kb) {
         this.kb = kb;
-        way_point_for_uav = new HashMap<Integer, LinkedList<Point>>();
-        locked_threat = new HashMap<Integer, Set<Integer>>();
+        way_point_for_uav = new HashMap<>();
+        locked_threat = new HashMap<>();
     }
 
     /** assign the area to be scanned by each scout.
@@ -65,7 +65,7 @@ public class Reconnaissance implements KnowledgeAwareInterface
         int task_num = (int) Math.ceil(average_region_height / (StaticInitConfig.scout_radar_radius * 2));
         for (int i = 0; i < scout_num; i++) {
             Scout scout = this.scouts.get(i);
-            LinkedList<Float> move_at_y_coordinate_task = new LinkedList<Float>();
+            LinkedList<Float> move_at_y_coordinate_task = new LinkedList<>();
             float init_y_coord = average_region_height * i + StaticInitConfig.scout_radar_radius;
             for (int task_index = 0; task_index < task_num; task_index++) {
                 float coord_y = init_y_coord + task_index * StaticInitConfig.scout_radar_radius * 2;

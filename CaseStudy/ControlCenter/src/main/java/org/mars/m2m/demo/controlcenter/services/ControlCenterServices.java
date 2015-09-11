@@ -7,6 +7,7 @@ package org.mars.m2m.demo.controlcenter.services;
 
 import ch.qos.logback.classic.Logger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -50,16 +51,16 @@ public class ControlCenterServices extends KnowledgeInterface
 
     /** assign the area to be scanned by each scout.
      * 
+     * @return 
      */
-    private static int assignedScoutsCounter;
     public static LinkedList<Float> roleAssignForScouts() {
         int scout_num = HandleTree.scoutsNode.getChildCount();
 
         float average_region_height = StaticInitConfig.bound_height * 1.0f / scout_num;
         int task_num = (int) Math.ceil(average_region_height / (StaticInitConfig.scout_radar_radius * 2));
         
-            LinkedList<Float> move_at_y_coordinate_task = new LinkedList<Float>();
-            float init_y_coord = average_region_height * assignedScoutsCounter + StaticInitConfig.scout_radar_radius;
+            LinkedList<Float> move_at_y_coordinate_task = new LinkedList<>();
+            float init_y_coord = average_region_height * StaticInitConfig.currentScoutIndex + StaticInitConfig.scout_radar_radius;
             for (int task_index = 0; task_index < task_num; task_index++) {
                 float coord_y = init_y_coord + task_index * StaticInitConfig.scout_radar_radius * 2;
                 if (coord_y - init_y_coord > average_region_height) {
@@ -67,7 +68,7 @@ public class ControlCenterServices extends KnowledgeInterface
                 }
                 move_at_y_coordinate_task.add(coord_y);
             }
-            
+            System.out.println("cc-roleassignfor :"+Arrays.asList(move_at_y_coordinate_task));
         return move_at_y_coordinate_task;        
     }
 

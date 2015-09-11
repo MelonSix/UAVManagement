@@ -7,6 +7,7 @@ package org.mars.m2m.demo.ui;
 
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
+import org.mars.m2m.demo.uav.Scout;
 
 /**
  *
@@ -19,7 +20,25 @@ public class FieldUI extends javax.swing.JFrame {
      */
     public FieldUI() {
         initComponents();
-        this.animationPanel.start();//begins animation after initialization procedures
+        //starts animation depending on scout(s) status
+        boolean wait_for_scouts = true;
+        boolean are_scouts_ready = false;
+        do
+        {
+            for(Scout scout : this.animationPanel.getWorld().getScouts())
+            {
+                if(scout.getMove_at_y_coordinate_task().size() > 0)
+                    are_scouts_ready = true;
+                else
+                    are_scouts_ready = false;
+            }
+            if(are_scouts_ready)
+            {
+                //begins animation after initialization procedures and scout waypoints are available
+                wait_for_scouts =false;
+                this.animationPanel.start();
+            }
+        }while(wait_for_scouts);
     }
 
     /**
