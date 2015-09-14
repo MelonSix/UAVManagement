@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import org.mars.m2m.demo.config.GraphicConfig;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.uav.Attacker;
@@ -170,11 +170,11 @@ public class AnimationPanel extends JPanel
     public void start() {
         
         //drive the world and ui
-        StaticInitConfig.SIMULATION_WITH_UI_TIMER = 
+        OpStaticInitConfig.SIMULATION_WITH_UI_TIMER = 
              new javax.swing.Timer(
-                     (int) (StaticInitConfig.INIT_SIMULATION_DELAY / StaticInitConfig.SIMULATION_SPEED),
+                     (int) (OpStaticInitConfig.INIT_SIMULATION_DELAY / OpStaticInitConfig.SIMULATION_SPEED),
                      new AnimatorListener(this));
-        StaticInitConfig.SIMULATION_WITH_UI_TIMER.start();
+        OpStaticInitConfig.SIMULATION_WITH_UI_TIMER.start();
     }
     
     /**Initiate parameter from Config
@@ -203,13 +203,13 @@ public class AnimationPanel extends JPanel
         g.drawImage(this.highlight_obstacle_image_level_3, 0, 0, null);
         g.drawImage(this.threat_image_level_9, 0, 0, null);
         g.drawImage(enemy_uav_image_level_4, 0, 0, null);
-        if (StaticInitConfig.SHOW_FOG_OF_WAR) {
+        if (OpStaticInitConfig.SHOW_FOG_OF_WAR) {
             g.drawImage(fog_of_war_image_level_5, 0, 0, null);
         }
-        if (StaticInitConfig.SHOW_HISTORY_PATH) {
+        if (OpStaticInitConfig.SHOW_HISTORY_PATH) {
             g.drawImage(uav_history_path_image_level_6, 0, 0, null);
         }
-        if (StaticInitConfig.SHOW_PLANNED_TREE) {
+        if (OpStaticInitConfig.SHOW_PLANNED_TREE) {
             g.drawImage(uav_planned_tree_image_level_7, 0, 0, null);
         }
         g.drawImage(uav_planned_path_image_level_8, 0, 0, null);
@@ -326,7 +326,7 @@ public class AnimationPanel extends JPanel
      */
     private void updateFogOfWarImage() 
     {
-        if (!StaticInitConfig.SHOW_FOG_OF_WAR) {
+        if (!OpStaticInitConfig.SHOW_FOG_OF_WAR) {
             return;
         }
         for (Attacker attacker : this.attackers) {
@@ -349,7 +349,7 @@ public class AnimationPanel extends JPanel
      * 
      */
     private void updateUAVHistoryPath() {
-        if (!StaticInitConfig.SHOW_HISTORY_PATH) {
+        if (!OpStaticInitConfig.SHOW_HISTORY_PATH) {
             return;
         }
         for (Attacker attacker : this.attackers) {
@@ -367,9 +367,9 @@ public class AnimationPanel extends JPanel
         uav_planned_path_image_graphics.setBackground(transparent_color);
         uav_planned_path_image_graphics.setColor(transparent_color);
         uav_planned_path_image_graphics.clearRect(0, 0, bound_width, bound_height);
-        if (!StaticInitConfig.SHOW_PLANNED_PATH && AnimationPanel.highlight_uav_index == -1) {
+        if (!OpStaticInitConfig.SHOW_PLANNED_PATH && AnimationPanel.highlight_uav_index == -1) {
             return;
-        } else if (!StaticInitConfig.SHOW_PLANNED_PATH && AnimationPanel.highlight_uav_index > 0) {
+        } else if (!OpStaticInitConfig.SHOW_PLANNED_PATH && AnimationPanel.highlight_uav_index > 0) {
             for (Attacker attacker : this.attackers) {
                 if (attacker.getIndex() == AnimationPanel.highlight_uav_index) {
                     virtualizer.drawUAVPlannedPath(uav_planned_path_image_graphics, attacker, GraphicConfig.uav_planned_path_color);

@@ -50,7 +50,7 @@ public class AdapterServiceInterface {
     {
         try 
         {
-            System.out.println("Inside generate request function in proof of concept class");
+            System.out.println("Inside generate request function in AdapterServiceInterface.class");
             JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

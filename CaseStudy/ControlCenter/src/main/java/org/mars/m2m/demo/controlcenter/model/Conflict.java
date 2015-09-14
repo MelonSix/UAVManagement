@@ -34,7 +34,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;
 
 /**
@@ -104,7 +104,7 @@ public class Conflict extends Message implements Serializable {
 
     @Override
     public String toString() {
-        return StaticInitConfig.CONFLICT_NAME + this.uav_index;
+        return CC_StaticInitConfig.CONFLICT_NAME + this.uav_index;
     }
 
     @Override

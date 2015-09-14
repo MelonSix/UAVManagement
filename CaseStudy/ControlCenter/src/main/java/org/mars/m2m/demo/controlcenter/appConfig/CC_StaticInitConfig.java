@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mars.m2m.demo.config;
+package org.mars.m2m.demo.controlcenter.appConfig;
 
+import java.util.ArrayList;
 import javax.swing.Timer;
-import org.mars.m2m.demo.model.Threat;
+import org.mars.m2m.demo.controlcenter.model.Threat;
 
 /**
  *
  * @author Yulin_Zhang
  */
-public class StaticInitConfig {
+public class CC_StaticInitConfig {
 
     public static boolean SIMULATION_ON = true; //enable simulation
 
@@ -92,4 +93,12 @@ public class StaticInitConfig {
     public static boolean UI_PARAMETER_CONFIG = false;
 
     public static int LOCKED_TIME_STEP_UNTIL_DESTROYED = 20;
+    
+    public static String ccAddress="";
+    public static String ccNotificationServiceURL="";
+    public static int bound_width=800;//simulation environment width
+    public static int bound_height=600;//simulation environment height
+    public static String mgmntAdapterURL="";//URL for managment adapter
+    public static String mgmntServerURL = "";
+    public static int currentScoutIndex = -1;//used to control scout role assignment
 }

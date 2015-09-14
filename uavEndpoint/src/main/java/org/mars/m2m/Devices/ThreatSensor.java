@@ -55,7 +55,7 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
      */
     public ThreatSensor(int threatType, int threatPosition_latitude, 
             int threatPosition_longitude, String threatMinimumBoundedRectangle, 
-            float threatWidth, float threatHeight) 
+            int threatWidth, int threatHeight) 
     {
         this.gson = new Gson();
         this.threatType = threatType;
@@ -121,15 +121,7 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
     public void ResetErrorCode(int deviceID) {
         System.out.println("Device error code reset triggered");
     }
-
-    public static Logger getLog() {
-        return log;
-    }
-
-    public static void setLog(Logger log) {
-        ThreatSensor.log = log;
-    }
-
+    
     public int getThreatType() {
         return threatType;
     }

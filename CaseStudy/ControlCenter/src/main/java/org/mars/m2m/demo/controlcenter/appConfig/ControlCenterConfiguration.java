@@ -14,6 +14,9 @@ import io.dropwizard.Configuration;
 public class ControlCenterConfiguration extends Configuration 
 {
     private String controlCenter_address;
+    private String controlCenter_notificationURL;
+    private String mgmntServerURL;
+    private String mgmntAdapterURL;
     
     public ControlCenterConfiguration() {
     }
@@ -24,6 +27,30 @@ public class ControlCenterConfiguration extends Configuration
 
     public String getControlCenter_address() {
         return controlCenter_address;
+    }
+
+    public void setControlCenter_notificationURL(String controlCenter_notificationURL) {
+        this.controlCenter_notificationURL = controlCenter_notificationURL;
+    }
+
+    public String getControlCenter_notificationURL() {
+        return controlCenter_notificationURL;
+    }
+
+    public String getMgmntServerURL() {
+        return mgmntServerURL;
+    }
+
+    public void setMgmntServerURL(String mgmntServerURL) {
+        this.mgmntServerURL = mgmntServerURL;
+    }
+
+    public String getMgmntAdapterURL() {
+        return mgmntAdapterURL;
+    }
+
+    public void setMgmntAdapterURL(String mgmntAdapterURL) {
+        this.mgmntAdapterURL = mgmntAdapterURL;
     }
     
     

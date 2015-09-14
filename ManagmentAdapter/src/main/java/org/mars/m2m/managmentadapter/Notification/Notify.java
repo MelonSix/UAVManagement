@@ -63,7 +63,7 @@ public class Notify
      * containing all currently registered subscribers of an observation
      * @param data The notification content
      */
-    public void sendNotification(NotificationRegistry notificationRegistry, Object data)
+    public void sendNotification(NotificationRegistry notificationRegistry, String data)
     {
         for(NotificationListener listener : this.notifyListeners)
         {

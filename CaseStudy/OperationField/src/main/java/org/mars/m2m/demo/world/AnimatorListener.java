@@ -8,7 +8,7 @@ package org.mars.m2m.demo.world;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.ui.AnimationPanel;
 
 /**
@@ -35,7 +35,7 @@ public class AnimatorListener implements ActionListener
         public void actionPerformed(ActionEvent e) 
         {            
             this.animPnl.clearUAVImageBeforeUpdate();
-            if (StaticInitConfig.SIMULATION_ON) 
+            if (OpStaticInitConfig.SIMULATION_ON) 
             {
                 int simStep = this.animPnl.getSimulation_time_step();
                 this.animPnl.setSimulation_time_step(++simStep);

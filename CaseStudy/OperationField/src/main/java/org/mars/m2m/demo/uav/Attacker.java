@@ -35,7 +35,7 @@ import org.mars.m2m.demo.LwM2mClients.AttackerDeviceClient;
 import org.mars.m2m.demo.algorithm.RRT.RRTAlg;
 import org.mars.m2m.demo.algorithm.RRT.RRTTree;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.model.Message;
@@ -122,17 +122,17 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
         this.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
         
-        this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], StaticInitConfig.attacker_radar_radius);
+        this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], OpStaticInitConfig.attacker_radar_radius);
         this.path_planned_at_current_time_step = new UAVPath();
         this.history_path = new UAVPath();
         setPreviousWaypoint();
         this.kb = new OntologyBasedKnowledge();//OntologyBasedKnowledge();WorldKnowledge
         this.kb.setObstacles(obstacles);
-        this.speed = StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK;
+        this.speed = OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK;
         if (target == null) {
-            rrt_alg = new RRTAlg(super.getCenter_coordinates(), null, StaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, StaticInitConfig.rrt_iteration_times, speed, null, this.getConflicts(), this.index);
+            rrt_alg = new RRTAlg(super.getCenter_coordinates(), null, OpStaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, OpStaticInitConfig.rrt_iteration_times, speed, null, this.getConflicts(), this.index);
         } else {
-            rrt_alg = new RRTAlg(super.getCenter_coordinates(), target.getCoordinates(), StaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, StaticInitConfig.rrt_iteration_times, speed, null, this.getConflicts(), this.index);
+            rrt_alg = new RRTAlg(super.getCenter_coordinates(), target.getCoordinates(), OpStaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, OpStaticInitConfig.rrt_iteration_times, speed, null, this.getConflicts(), this.index);
         }
         initColor(index);
         
@@ -152,15 +152,15 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
             this.goal_for_each_iteration = target_indicated_by_role.getCoordinates();
             if (this.fly_mode == Attacker.TARGET_LOCKED_MODE && this.target_indicated_by_role.getIndex() != Threat.UAV_BASE_INDEX) {
                 this.goal_for_each_iteration = this.genRandomHoveringGoal(goal_for_each_iteration, NonStaticInitConfig.threat_range_from_obstacles/2, this.getObstacles());
-                this.speed=StaticInitConfig.SPEED_OF_ATTACKER_ON_DESTROYING_THREAT;
+                this.speed=OpStaticInitConfig.SPEED_OF_ATTACKER_ON_DESTROYING_THREAT;
                 this.rrt_alg.setMax_angle((float) Math.PI / 5);
             }else if(this.fly_mode== Attacker.FLYING_MODE && this.target_indicated_by_role.getIndex() == Threat.UAV_BASE_INDEX)
             {
-                this.speed=StaticInitConfig.SPEED_OF_ATTACKER_IDLE;
+                this.speed=OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE;
                 this.rrt_alg.setMax_angle((float) Math.PI / 6);
             }else if(this.fly_mode== Attacker.FLYING_MODE && this.target_indicated_by_role.getIndex() != Threat.UAV_BASE_INDEX)
             {
-                this.speed=StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK;
+                this.speed=OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK;
                 this.rrt_alg.setMax_angle((float) Math.PI / 6);
             }
             
@@ -172,7 +172,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
             }
             UAVPath shortest_path = null;
             float shotest_path_length = Float.MAX_VALUE;
-            planning_times = StaticInitConfig.rrt_planning_times_for_attacker;
+            planning_times = OpStaticInitConfig.rrt_planning_times_for_attacker;
             boolean available_path_found = false;
             int nums_of_trap = 0;
             for (int i = 0; i <= planning_times; i++) {

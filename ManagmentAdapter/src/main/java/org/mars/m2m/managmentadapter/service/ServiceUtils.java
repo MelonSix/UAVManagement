@@ -347,6 +347,7 @@ public class ServiceUtils
             contentInstance.setContentSize(BigInteger.valueOf(content.getBytes().length));
             contentInstance.setOntologyRef("");
             contentInstance.setContent(content);
+        container.getContentInstanceOrContainerOrSubscription().clear();
         container.getContentInstanceOrContainerOrSubscription().add(contentInstance);
         return container;
     }

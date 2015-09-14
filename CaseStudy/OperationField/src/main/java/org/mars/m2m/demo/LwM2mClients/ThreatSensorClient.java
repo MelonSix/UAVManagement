@@ -16,7 +16,7 @@ import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.util.Validate;
-import org.mars.m2m.Devices.ThreatSensor;
+import org.mars.m2m.Devices.ThreatSensorInCaseStudy;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 public class ThreatSensorClient extends AbstractDevice
 {        
    private Logger log = (Logger) LoggerFactory.getLogger(ThreatSensorClient.class);
-   private ThreatSensor threatSensor;
+   private ThreatSensorInCaseStudy threatSensor;
    private Device device;
    private BootstrapedRegistrationHandler bsRegHandler;
    private LwM2mModel uavLwM2mModel;
@@ -46,7 +46,7 @@ public class ThreatSensorClient extends AbstractDevice
        this(null, null);
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.threatSensor = new ThreatSensor();
+       this.threatSensor = new ThreatSensorInCaseStudy();
    }  
 
    /**
@@ -58,7 +58,7 @@ public class ThreatSensorClient extends AbstractDevice
    {
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.threatSensor = new ThreatSensor();
+       this.threatSensor = new ThreatSensorInCaseStudy();
        try
        {
            if(lwm2mClientDetails != null)
@@ -139,7 +139,7 @@ public class ThreatSensorClient extends AbstractDevice
        }
    }        
 
-    public ThreatSensor getThreatSensor() {
+    public ThreatSensorInCaseStudy getThreatSensor() {
         return threatSensor;
     }
 

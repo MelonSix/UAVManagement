@@ -9,8 +9,6 @@ import ch.qos.logback.classic.Logger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.leshan.client.californium.LeshanClientExt;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;

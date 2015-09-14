@@ -22,3 +22,6 @@ logging:
       maxFileSize: 10MB
       
 controlCenter_address: http://127.0.0.1:8170
+controlCenter_notificationURL: http://127.0.0.1:8170/cc/notification/
+mgmntServerURL: http://127.0.0.1:8089/ms/clients/
+mgmntAdapterURL: http://127.0.0.1:8070/ma/mgmtAdapter/

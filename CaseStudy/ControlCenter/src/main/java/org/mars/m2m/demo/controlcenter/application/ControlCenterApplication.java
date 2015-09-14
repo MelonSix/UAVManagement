@@ -10,7 +10,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
-import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.health.ClientsResourceHealth;
 import org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface;
 import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
@@ -27,8 +27,7 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
     @Override
     public void run(ControlCenterConfiguration t, Environment e) throws Exception 
     {
-        //sets the address configured from the yml file to the static config to make it accessible by all classes
-        StaticInitConfig.ccAddress = t.getControlCenter_address();
+        initStaticConfigMembers(t);
         
         //resources
         ControlCenterInterface cc = new ControlCenterInterface();
@@ -39,6 +38,25 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
         //healthcheck resources
         e.healthChecks().register("Clients Resource healthcheck", new ClientsResourceHealth());
     }   
+    
+    /**
+     * Initializes some member variables in {@link CC_StaticInitConfig}
+     * @param t configuration object containing configurations from .yaml file
+     */
+    private void initStaticConfigMembers(ControlCenterConfiguration t) 
+    {
+        //sets the address configured from the yml file to the static config to make it accessible by all classes
+        CC_StaticInitConfig.ccAddress = t.getControlCenter_address();
+        
+        //sets the notification url
+        CC_StaticInitConfig.ccNotificationServiceURL = t.getControlCenter_notificationURL();
+        
+        //sets management server URL
+        CC_StaticInitConfig.mgmntServerURL = t.getMgmntServerURL();
+        
+        //sets management adapter URL
+        CC_StaticInitConfig.mgmntAdapterURL = t.getMgmntAdapterURL();
+    }
     
     @Override
     public void initialize(Bootstrap<ControlCenterConfiguration> bootstrap) {

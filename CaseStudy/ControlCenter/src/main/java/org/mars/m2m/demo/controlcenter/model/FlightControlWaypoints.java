@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mars.m2m.dmcore.model;
+package org.mars.m2m.demo.controlcenter.model;
 
 import java.util.LinkedList;
 

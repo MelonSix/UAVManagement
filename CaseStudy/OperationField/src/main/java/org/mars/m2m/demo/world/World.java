@@ -32,9 +32,13 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
-import org.mars.m2m.demo.config.StaticInitConfig;
-import org.mars.m2m.demo.eventHandling.CallbackImpl.FlightControlEventDispatch;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
+import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedObstacleListenerImpl;
+import org.mars.m2m.demo.eventHandling.callerImpl.UpdateSensorValEventDispatch;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.FlightControlListenerImpl;
+import org.mars.m2m.demo.eventHandling.Listerners.DetectedObstacleListener;
+import org.mars.m2m.demo.eventHandling.Listerners.FlightControlListener;
+import org.mars.m2m.demo.eventHandling.eventObject.DetectedObstacleEventObject;
 import org.mars.m2m.demo.eventHandling.eventObject.FlightControlEventObject;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.Obstacle;
@@ -45,7 +49,6 @@ import org.mars.m2m.demo.uav.Attacker;
 import org.mars.m2m.demo.uav.Scout;
 import org.mars.m2m.demo.uav.UAVBase;
 import org.mars.m2m.demo.uav.UAVPath;
-import org.mars.m2m.demo.ui.FieldUI;
 import org.mars.m2m.demo.util.BoundUtil;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.DistanceUtil;
@@ -127,7 +130,7 @@ public class World {
         initUAVs();
         this.reconnaissance.setAttackers(attackers);
         this.reconnaissance.setScouts(scouts);
-        this.reconnaissance.setScout_speed(StaticInitConfig.SPEED_OF_SCOUT);
+        this.reconnaissance.setScout_speed(OpStaticInitConfig.SPEED_OF_SCOUT);
         this.reconnaissance.setConflicts(conflicts);
         scoutFlight();
         //this.reconnaissance.roleAssignForScouts();
@@ -150,8 +153,8 @@ public class World {
                          eventObject.setMove_at_y_coordinate_task(scout.getFlightControlClient()
                                                 .getFlightControl().getMove_at_y_coordinate_task());
                          eventObject.setScout(scout);
-                         FlightControlEventDispatch eventDispatch = new FlightControlEventDispatch();
-                         eventDispatch.addFlightControlListener(new FlightControlListenerImpl());
+                         UpdateSensorValEventDispatch eventDispatch = new UpdateSensorValEventDispatch();
+                         eventDispatch.addListener(new FlightControlListenerImpl(), FlightControlListener.class);
                          eventDispatch.updateWaypoints(eventObject);//triggers event
                          scout.getFlightControlClient().getFlightControl().setY_updated(false);//resets update indicator  
                      }
@@ -185,16 +188,16 @@ public class World {
         this.uav_base = init_config.getUav_base();
 
 //        //share information in different ways
-//        if (this.inforshare_algorithm == StaticInitConfig.BROADCAST_INFOSHARE) {
+//        if (this.inforshare_algorithm == OpStaticInitConfig.BROADCAST_INFOSHARE) {
 //            this.msg_dispatcher = new BroadcastMessageDispatcher(control_center);
-//        } else if (this.inforshare_algorithm == StaticInitConfig.REGISTER_BASED_INFORSHARE) {
+//        } else if (this.inforshare_algorithm == OpStaticInitConfig.REGISTER_BASED_INFORSHARE) {
 //            this.msg_dispatcher = new RegisteredMessageDispatcher(control_center);
-//        } else if (this.inforshare_algorithm == StaticInitConfig.NONE_INFORSHARE) {
+//        } else if (this.inforshare_algorithm == OpStaticInitConfig.NONE_INFORSHARE) {
 //            this.msg_dispatcher = new DummyMessageDispatcher(control_center);
 //        }
 
-        if (StaticInitConfig.debug_rrt) {
-            StaticInitConfig.SHOW_FOG_OF_WAR = false;
+        if (OpStaticInitConfig.debug_rrt) {
+            OpStaticInitConfig.SHOW_FOG_OF_WAR = false;
             this.scout_num = 0;
             this.attacker_num = 3;
         }
@@ -210,13 +213,14 @@ public class World {
         uav_base_center[1] = uav_base_coordinate[1]; //+ uav_base_height / 2;
         for (int i = 1; i <= attacker_num; i++) {
             float[] uav_init_coord = uav_base.assignUAVLocation(i);
-            Attacker attacker = new Attacker(i, null, StaticInitConfig.ATTACKER, uav_init_coord, null, Float.MAX_VALUE);
+            Attacker attacker = new Attacker(i, null, OpStaticInitConfig.ATTACKER, uav_init_coord, null, Float.MAX_VALUE);
             attackers.add(attacker);
         }
 
         for (int i = 1; i <= scout_num; i++) {
-            Scout scout = new Scout(i, StaticInitConfig.SCOUT, uav_base_center, uav_base_center, reconnaissance, Float.MAX_VALUE);
+            Scout scout = new Scout(i, OpStaticInitConfig.SCOUT, uav_base_center, uav_base_center, Float.MAX_VALUE);
             scouts.add(scout);
+            System.out.println("scout"+i);
         }
     }
 
@@ -257,7 +261,7 @@ public class World {
                     continue;
                 }
                 float[] attacker2_coord = attacker2.getCenter_coordinates();
-                if (DistanceUtil.distanceBetween(attacker1_coord, attacker2_coord) < StaticInitConfig.SAFE_DISTANCE_FOR_CONFLICT) {
+                if (DistanceUtil.distanceBetween(attacker1_coord, attacker2_coord) < OpStaticInitConfig.SAFE_DISTANCE_FOR_CONFLICT) {
                     conflict_times++;
                     attacker1.setNeed_to_replan(true);
                     logger.debug("conflict:" + conflict_times);
@@ -293,7 +297,7 @@ public class World {
                     //this.control_center.setNeed_to_assign_role(true);
                     break;
                 } else {
-                    attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                    attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
                     attacker.setFly_mode(Attacker.FLYING_MODE);
                 }
 
@@ -318,7 +322,7 @@ public class World {
                             attacker.setNeed_to_replan(true);
                             //this.control_center.lockAttackerToThreat(attacker.getIndex(), threat.getIndex());
                         } else if (attacker.getFly_mode() == Attacker.TARGET_LOCKED_MODE) {
-                            if (attacker.getHovered_time_step() < StaticInitConfig.LOCKED_TIME_STEP_UNTIL_DESTROYED) {
+                            if (attacker.getHovered_time_step() < OpStaticInitConfig.LOCKED_TIME_STEP_UNTIL_DESTROYED) {
                                 attacker.increaseHovered_time_step();
                             } else {
                                 threat.setEnabled(false);
@@ -330,7 +334,7 @@ public class World {
                                 Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
                                 attacker.setTarget_indicated_by_role(dummy_threat);
                                 attacker.setNeed_to_replan(true);
-                                attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                                attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
                                 attacker.setFly_mode(Attacker.FLYING_MODE);
                             }
                         }
@@ -434,8 +438,10 @@ public class World {
             for (int i = 0; i < obs_list_size; i++) 
             {
                 Obstacle obs = this.getObstacles().get(i);
-                if (!this.reconnaissance.containsObstacle(obs) && obs.getMbr().intersects(scout.getUav_radar().getBounds())) {
-                    reconnaissance.addObstacle(obs);
+                if (!scout.getKb().containsObstacle(obs) && obs.getMbr().intersects(scout.getUav_radar().getBounds())) {
+                    scout.getKb().addObstacle(obs);
+                    reconnaissance.addObstacle(obs);//TODO: remove this statement
+                    updateSensorValue(scout, obs);
                 }
             }
             
@@ -445,7 +451,7 @@ public class World {
                 Threat threat = this.getThreats().get(i);
                 float dist_from_attacker_to_threat = 
                         DistanceUtil.distanceBetween(scout.getCenter_coordinates(), threat.getCoordinates());
-                if (threat.isEnabled() && !reconnaissance.containsThreat(threat) 
+                if (threat.isEnabled() && !scout.getKb().containsThreat(threat) 
                         && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9) 
                 {
                     reconnaissance.addThreat(threat);
@@ -453,8 +459,8 @@ public class World {
             }
         }
         
-        System.out.println("Num of discovered obstacles: "+reconnaissance.getObstacles().size());
-        System.out.println("Num of discovered threats: "+reconnaissance.getThreats().size());
+        //System.out.println("Num of discovered obstacles: "+reconnaissance.getObstacles().size());
+        //System.out.println("Num of discovered threats: "+reconnaissance.getThreats().size());
     }
 
     /**register information requirement for attackers, according to its target and location.
@@ -501,7 +507,7 @@ public class World {
                 continue;
             }
             if (attacker.isReplanned_at_current_time_step()) {
-                Conflict conflict = new Conflict(attacker.getIndex(), attacker.getFuturePath().getWaypointsAsLinkedList(), this.time_step, StaticInitConfig.SAFE_DISTANCE_FOR_CONFLICT);
+                Conflict conflict = new Conflict(attacker.getIndex(), attacker.getFuturePath().getWaypointsAsLinkedList(), this.time_step, OpStaticInitConfig.SAFE_DISTANCE_FOR_CONFLICT);
                 this.addConflict(conflict);
             }
         }
@@ -548,7 +554,7 @@ public class World {
             coord_y += speed * (float) Math.sin(threat_angle);
             Rectangle threat_mbr = new Rectangle((int) coord_x - (Threat.threat_width + NonStaticInitConfig.threat_range_from_obstacles) / 2, (int) coord_y - (Threat.threat_height + NonStaticInitConfig.threat_range_from_obstacles) / 2, Threat.threat_width + NonStaticInitConfig.threat_range_from_obstacles, Threat.threat_height + NonStaticInitConfig.threat_range_from_obstacles);
             point_conflicted_with_obstacles = ConflictCheckUtil.checkThreatInObstacles(obstacles, threat_mbr)||World.uav_base.getBase_shape().intersects(threat_mbr);
-            if (point_conflicted_with_obstacles || !BoundUtil.withinRelaxedBound(coord_x, coord_y, bound_width, bound_height) || DistanceUtil.distanceBetween(threat.getCoordinates(), new float[]{coord_x, coord_y}) > StaticInitConfig.maximum_threat_movement_length) {
+            if (point_conflicted_with_obstacles || !BoundUtil.withinRelaxedBound(coord_x, coord_y, bound_width, bound_height) || DistanceUtil.distanceBetween(threat.getCoordinates(), new float[]{coord_x, coord_y}) > OpStaticInitConfig.maximum_threat_movement_length) {
                 coord_x -= speed * (float) Math.cos(threat_angle);
                 coord_y -= speed * (float) Math.sin(threat_angle);
                 threat_angle += Math.PI / 2;
@@ -575,7 +581,7 @@ public class World {
                     this.scout_num + " threat_num=" + this.threat_num + 
                     " obstalce_num=" + NonStaticInitConfig.obstacle_num + 
                     " infoshare=" + this.inforshare_algorithm + "(0:broadcast 1:noinfor 2:intelligent)");
-//            if (StaticInitConfig.debug_rrt) {
+//            if (OpStaticInitConfig.debug_rrt) {
 //                this.control_center.setObstacles(obstacles);
 //                this.control_center.setThreats(threats);
 //                this.control_center.setConflicts(conflicts);
@@ -585,7 +591,7 @@ public class World {
 
         updateScout();
         logger.debug("scout(s) coordinates updated");
-        //detectScoutEvent();
+        detectScoutEvent();
 //        logger.debug("scout event detect over");
 //        detectAttackerEvent();
 //        logger.debug("attacker detect over");
@@ -626,7 +632,7 @@ public class World {
 //
 //        //when all the scout scanned over, clear all the fog and show all threats
 //        if (this.scout_scaned_over) {
-//            StaticInitConfig.SHOW_FOG_OF_WAR = false;
+//            OpStaticInitConfig.SHOW_FOG_OF_WAR = false;
 ////            ArrayList<Threat> threats_in_control = this.control_center.getThreats();
 ////            for (Threat threat : this.threats) {
 ////                if (!threats_in_control.contains(threat)) {
@@ -722,7 +728,7 @@ public class World {
                     Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
                     attacker.setTarget_indicated_by_role(dummy_threat);
                     attacker.setNeed_to_replan(true);
-                    attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                    attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
                     attacker.setFly_mode(Attacker.FLYING_MODE);
                 } else {//have target to destroy
                     float dist_to_target = DistanceUtil.distanceBetween(attacker.getCenter_coordinates(), attacker.getTarget_indicated_by_role().getCoordinates());
@@ -739,11 +745,11 @@ public class World {
                         if (dist_to_target < attacker.getUav_radar().getRadius() / 2) {
                             attacker.setNeed_to_replan(true);
                             attacker.setFly_mode(Attacker.TARGET_LOCKED_MODE);
-                            attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_ON_DESTROYING_THREAT);
+                            attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_DESTROYING_THREAT);
                         } else {//not reaching target
                             attacker.setNeed_to_replan(true);
                             attacker.setFly_mode(Attacker.FLYING_MODE);
-                            attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                            attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
                         }
                     }
                 }
@@ -852,7 +858,11 @@ public class World {
     public Reconnaissance getReconnaissance() {
         return reconnaissance;
     }
-    
-    
 
+    private void updateSensorValue(Scout scout, Obstacle obs)
+    {
+        UpdateSensorValEventDispatch eventDispatch = new UpdateSensorValEventDispatch();
+        eventDispatch.addListener(new DetectedObstacleListenerImpl(), DetectedObstacleListener.class);
+        eventDispatch.updateObstacleSensorValue(new DetectedObstacleEventObject(scout, obs));
+    }
 }

@@ -35,7 +35,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 
 /**
  *
@@ -74,7 +74,7 @@ public class Obstacle extends Message implements Serializable {
 
     @Override
     public String toString() {
-        return StaticInitConfig.OBSTACLE_NAME + this.index;
+        return CC_StaticInitConfig.OBSTACLE_NAME + this.index;
     }
 
     public String getPointsStr() {

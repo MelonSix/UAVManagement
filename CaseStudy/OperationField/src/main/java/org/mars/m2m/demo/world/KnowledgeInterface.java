@@ -25,7 +25,7 @@
  */
 package org.mars.m2m.demo.world;
 
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import java.util.ArrayList;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
@@ -41,10 +41,10 @@ import org.mars.m2m.demo.model.Threat;
  */
 public abstract class KnowledgeInterface implements TreeModel {
 
-    protected final String rootNode = StaticInitConfig.UAV_KNOWLEDGE;
-    protected final String firstChild = StaticInitConfig.OBSTACLE_INFO;
-    protected final String secondChild = StaticInitConfig.THREAT_INFO;
-    protected final String thirdChild = StaticInitConfig.CONFLICT_INFO;
+    protected final String rootNode = OpStaticInitConfig.UAV_KNOWLEDGE;
+    protected final String firstChild = OpStaticInitConfig.OBSTACLE_INFO;
+    protected final String secondChild = OpStaticInitConfig.THREAT_INFO;
+    protected final String thirdChild = OpStaticInitConfig.CONFLICT_INFO;
 
     protected int obstacle_num;
     protected int threat_num;

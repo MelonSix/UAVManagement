@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import org.mars.m2m.demo.algorithm.RRT.RRTNode;
 import org.mars.m2m.demo.algorithm.RRT.RRTTree;
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.model.shape.Circle;
@@ -228,7 +228,7 @@ public class MyGraphic {
             graphics.setColor(target_color);
         }
         graphics.setStroke(new BasicStroke(3.0f));//Set the width of the stroke
-        graphics.drawString(StaticInitConfig.THREAT_NAME + threat.getIndex(), threat.getCoordinates()[0] - 10, threat.getCoordinates()[1] - 15);
+        graphics.drawString(OpStaticInitConfig.THREAT_NAME + threat.getIndex(), threat.getCoordinates()[0] - 10, threat.getCoordinates()[1] - 15);
         int[] upper_left_point = new int[2];
         upper_left_point[0] = (int) threat.getCoordinates()[0] - Threat.threat_width / 2;
         upper_left_point[1] = (int) threat.getCoordinates()[1] - Threat.threat_height / 2;

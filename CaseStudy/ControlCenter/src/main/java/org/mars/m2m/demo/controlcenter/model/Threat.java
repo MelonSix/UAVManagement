@@ -34,7 +34,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;
 import org.mars.m2m.demo.controlcenter.uav.UAVPath;
 
@@ -63,7 +63,7 @@ public class Threat extends Target implements Serializable {
         this.speed = speed;
         this.path_planned_at_current_time_step = new UAVPath();
         threat_mbr=new Rectangle((int) coordinates[0] - Threat.threat_width / 2, (int) coordinates[1] - Threat.threat_height / 2, Threat.threat_width, Threat.threat_height);
-//        rrt_alg = new RRTAlg(coordinates, null, StaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, StaticInitConfig.rrt_iteration_times, speed, null, null, -1);
+//        rrt_alg = new RRTAlg(coordinates, null, CC_StaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, CC_StaticInitConfig.rrt_iteration_times, speed, null, null, -1);
     }
 
     public void resetCurrentIndexOfPath() {
@@ -98,7 +98,7 @@ public class Threat extends Target implements Serializable {
 
     @Override
     public String toString() {
-        return StaticInitConfig.THREAT_NAME + this.index;//this.coordinates[0]+","+this.coordinates[1]+this.threat_range+this.threat_cap;
+        return CC_StaticInitConfig.THREAT_NAME + this.index;//this.coordinates[0]+","+this.coordinates[1]+this.threat_range+this.threat_cap;
     }
 
     public int getTarget_type() {

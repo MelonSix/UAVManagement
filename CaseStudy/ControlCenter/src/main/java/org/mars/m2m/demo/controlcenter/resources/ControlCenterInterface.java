@@ -8,6 +8,7 @@ package org.mars.m2m.demo.controlcenter.resources;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -16,6 +17,10 @@ import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterReflexes;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
+import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -47,7 +52,19 @@ public class ControlCenterInterface
         
         //reflex operations to endpoints
         reflex.scoutingWaypointsReflex(connectedDevices);
+        reflex.observationRequestReflex(connectedDevices);
         
+        return Response.accepted().build();
+    }
+    
+    @POST
+    @Path("/notification")
+    @Consumes(MediaType.APPLICATION_XML)
+    public Response acceptNotification(RequestPrimitive data)
+    {        
+        Container container = (Container) data.getContent().getAny().get(0);
+        ContentInstance contentInstance = (ContentInstance) container.getContentInstanceOrContainerOrSubscription().get(0);
+        System.out.println("Received notification: "+contentInstance.getContent().toString());
         return Response.accepted().build();
     }
 }

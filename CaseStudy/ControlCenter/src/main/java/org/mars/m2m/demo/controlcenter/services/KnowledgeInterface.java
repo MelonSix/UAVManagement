@@ -26,7 +26,7 @@
 package org.mars.m2m.demo.controlcenter.services;
 
 import java.util.ArrayList;
-import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Threat;
@@ -38,10 +38,10 @@ import org.mars.m2m.demo.controlcenter.model.Threat;
 public abstract class KnowledgeInterface
 {
 
-    protected final String rootNode = StaticInitConfig.UAV_KNOWLEDGE;
-    protected final String firstChild = StaticInitConfig.OBSTACLE_INFO;
-    protected final String secondChild = StaticInitConfig.THREAT_INFO;
-    protected final String thirdChild = StaticInitConfig.CONFLICT_INFO;
+    protected final String rootNode = CC_StaticInitConfig.UAV_KNOWLEDGE;
+    protected final String firstChild = CC_StaticInitConfig.OBSTACLE_INFO;
+    protected final String secondChild = CC_StaticInitConfig.THREAT_INFO;
+    protected final String thirdChild = CC_StaticInitConfig.CONFLICT_INFO;
 
     protected int obstacle_num;
     protected int threat_num;

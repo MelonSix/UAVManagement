@@ -5,7 +5,7 @@
  */
 package org.mars.m2m.demo.algorithm.RRT;
 
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +54,7 @@ public class RRTAlg implements Serializable {
      * less than goal_range_for_delta means goal reached
      *
      */
-    protected float goal_range_for_delta = StaticInitConfig.SAFE_DISTANCE_FOR_TARGET;
+    protected float goal_range_for_delta = OpStaticInitConfig.SAFE_DISTANCE_FOR_TARGET;
     private final Logger logger = (Logger) LoggerFactory.getLogger(RRTAlg.class);
 
     /**

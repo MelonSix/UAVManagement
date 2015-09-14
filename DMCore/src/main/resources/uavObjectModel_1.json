@@ -2771,14 +2771,102 @@
         "resourcedefs":[
             {
                "id": 0,
-                "name": "Threat",
+                "name": "Threat type",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "integer",
                 "range": "",
                 "units": "",
-                "description": "The discovered threat's details" 
+                "description": "The discovered threat type" 
+            },
+            {
+               "id": 1,
+                "name": "Threat range",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "The range of this threat" 
+            },
+            {
+               "id": 2,
+                "name": "Threat caption",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "The caption of the threat" 
+            },
+            {
+               "id": 3,
+                "name": "Planned path",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "The waypoints to this threat fromm UAV base" 
+            },
+            {
+               "id": 4,
+                "name": "Threat width",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "float",
+                "range": "",
+                "units": "m",
+                "description": "" 
+            },
+            {
+               "id": 5,
+                "name": "Threat height",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "float",
+                "range": "",
+                "units": "m",
+                "description": "" 
+            },
+            {
+               "id": 6,
+                "name": "Current angle",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "float",
+                "range": "",
+                "units": "deg",
+                "description": "" 
+            },
+            {
+               "id": 7,
+                "name": "Current planned path index",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "m",
+                "description": "" 
+            },
+            {
+               "id": 8,
+                "name": "Bounds",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "The minimum bounding rectangle" 
             }
         ]
     },
@@ -2932,14 +3020,36 @@
         "resourcedefs":[
             {
                "id": 0,
-                "name": "Obstacle",
+                "name": "index",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 1,
+                "name": "Shape",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "String",
                 "range": "",
                 "units": "",
-                "description": "The discovered obstacle's details" 
+                "description": "" 
+            },
+            {
+               "id": 2,
+                "name": "Bounds",
+                "operations": "E",
+                "instancetype": "single",
+                "mandatory": false,
+                "type": "String",
+                "range": "",
+                "units": "",
+                "description": "" 
             }
         ]
     },

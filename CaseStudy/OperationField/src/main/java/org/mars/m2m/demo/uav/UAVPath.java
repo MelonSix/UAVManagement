@@ -5,7 +5,7 @@
  */
 package org.mars.m2m.demo.uav;
 
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import java.io.Serializable;
 import java.util.LinkedList;
 import org.mars.m2m.demo.util.DistanceUtil;
@@ -92,7 +92,7 @@ public class UAVPath implements Serializable{
     public boolean pathReachEndPoint(float[] target_coord)
     {
         float dist_to_target=DistanceUtil.distanceBetween(this.waypoints.getLast().toFloatArray(), target_coord);
-        if(dist_to_target<StaticInitConfig.SAFE_DISTANCE_FOR_TARGET)
+        if(dist_to_target<OpStaticInitConfig.SAFE_DISTANCE_FOR_TARGET)
         {
             return true;
         }else{

@@ -5,7 +5,7 @@
  */
 package org.mars.m2m.demo.model;
 
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -84,7 +84,7 @@ public class Conflict extends Message implements Serializable {
 
     @Override
     public String toString() {
-        return StaticInitConfig.CONFLICT_NAME + this.uav_index;
+        return OpStaticInitConfig.CONFLICT_NAME + this.uav_index;
     }
 
     @Override

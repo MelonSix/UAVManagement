@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.model.Obstacle;
@@ -62,13 +62,13 @@ public class Reconnaissance implements KnowledgeAwareInterface
         int scout_num = this.scouts.size();
 
         float average_region_height = World.bound_height * 1.0f / scout_num;
-        int task_num = (int) Math.ceil(average_region_height / (StaticInitConfig.scout_radar_radius * 2));
+        int task_num = (int) Math.ceil(average_region_height / (OpStaticInitConfig.scout_radar_radius * 2));
         for (int i = 0; i < scout_num; i++) {
             Scout scout = this.scouts.get(i);
             LinkedList<Float> move_at_y_coordinate_task = new LinkedList<>();
-            float init_y_coord = average_region_height * i + StaticInitConfig.scout_radar_radius;
+            float init_y_coord = average_region_height * i + OpStaticInitConfig.scout_radar_radius;
             for (int task_index = 0; task_index < task_num; task_index++) {
-                float coord_y = init_y_coord + task_index * StaticInitConfig.scout_radar_radius * 2;
+                float coord_y = init_y_coord + task_index * OpStaticInitConfig.scout_radar_radius * 2;
                 if (coord_y - init_y_coord > average_region_height) {
                     coord_y = init_y_coord + average_region_height;
                 }
@@ -162,7 +162,7 @@ public class Reconnaissance implements KnowledgeAwareInterface
                             attacker.setFly_mode(Attacker.FLYING_MODE);
                         }
                         attacker.setTarget_indicated_by_role(threat);
-                        attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                        attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
                         attacker.setNeed_to_replan(true);
                         assigned_attacker.add(assigned_attacker_index);
                         break;
@@ -224,7 +224,7 @@ public class Reconnaissance implements KnowledgeAwareInterface
                     assigned_attacker.add(attacker.getIndex());
                     attacker.setTarget_indicated_by_role(threat);
 
-                    attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                    attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
                     attacker.setNeed_to_replan(true);
                     attacker.setFly_mode(Attacker.FLYING_MODE);
                 }
@@ -242,7 +242,7 @@ public class Reconnaissance implements KnowledgeAwareInterface
                 Threat dummy_threat = new Threat(-1, dummy_threat_coord, 0, 0);
                 current_attacker.setTarget_indicated_by_role(dummy_threat);
                 current_attacker.setNeed_to_replan(true);
-                current_attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                current_attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
                 current_attacker.setFly_mode(Attacker.FLYING_MODE);
             }
         }
@@ -296,7 +296,7 @@ public class Reconnaissance implements KnowledgeAwareInterface
             Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
             attacker.setTarget_indicated_by_role(dummy_threat);
             attacker.setNeed_to_replan(true);
-            attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+            attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
             attacker.setFly_mode(Attacker.FLYING_MODE);
             attacker.setHovered_time_step(0);
         }

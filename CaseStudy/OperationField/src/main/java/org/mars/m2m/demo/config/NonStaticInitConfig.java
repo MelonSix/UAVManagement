@@ -29,7 +29,7 @@ public class NonStaticInitConfig {
     
     private int bound_width=800;
     private int bound_height=600;
-    private int size_of_subteam = StaticInitConfig.SIZE_OF_SUBTEAM;
+    private int size_of_subteam = OpStaticInitConfig.SIZE_OF_SUBTEAM;
 
     private ArrayList<Obstacle> obstacles;
     private ArrayList<Threat> threats;
@@ -37,7 +37,7 @@ public class NonStaticInitConfig {
     private Reconnaissance reconnaissance;
 
     private UAVBase uav_base;
-    public static int inforshare_algorithm = StaticInitConfig.BROADCAST_INFOSHARE;
+    public static int inforshare_algorithm = OpStaticInitConfig.BROADCAST_INFOSHARE;
 
     //robot coordinates, robot_coordinates[1][0], robot_coordinates[1][1] represents the x, y coordinate of robot 1
     private float attacker_patrol_range = 100;
@@ -48,15 +48,15 @@ public class NonStaticInitConfig {
     public static int obstacle_num = 17;
 
     public NonStaticInitConfig() {
-        if (!StaticInitConfig.UI_PARAMETER_CONFIG) {
+        if (!OpStaticInitConfig.UI_PARAMETER_CONFIG) {
             this.enemy_num = 0;
             this.threat_num = 10;
             this.attacker_num = 10;
             this.scout_num = 2;
         } else {
-            this.threat_num = StaticInitConfig.THREAT_NUM;
-            this.attacker_num = StaticInitConfig.ATTACKER_NUM;
-            this.scout_num = StaticInitConfig.SCOUT_NUM;
+            this.threat_num = OpStaticInitConfig.THREAT_NUM;
+            this.attacker_num = OpStaticInitConfig.ATTACKER_NUM;
+            this.scout_num = OpStaticInitConfig.SCOUT_NUM;
         }
         float[] coordinate = new float[]{60, 60};
         UAVBase uav_base = new UAVBase(coordinate, 60);
@@ -78,7 +78,7 @@ public class NonStaticInitConfig {
                 Rectangle threat_mbr=new Rectangle((int)coordinate_x - (Threat.threat_width+threat_range_from_obstacles) / 2, (int) coordinate_y - (Threat.threat_height+threat_range_from_obstacles) / 2, Threat.threat_width+threat_range_from_obstacles, Threat.threat_height+threat_range_from_obstacles);
                 found = !ConflictCheckUtil.checkThreatInObstacles(obstacles, threat_mbr)&&!this.uav_base.getBase_shape().intersects(threat_mbr);
             }
-            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, StaticInitConfig.STATIC_THREAT_TYPE, 5);
+            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, OpStaticInitConfig.STATIC_THREAT_TYPE, 5);
             threats.add(threat);
         }
     }
@@ -95,16 +95,16 @@ public class NonStaticInitConfig {
                 coordinate_y = random.nextFloat() * (bound_height - 3 * attacker_patrol_range) + attacker_patrol_range;
                 found = !ConflictCheckUtil.checkPointInObstacles(obstacles, coordinate_x, coordinate_y);
             }
-            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, StaticInitConfig.STATIC_THREAT_TYPE, 5);
+            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, OpStaticInitConfig.STATIC_THREAT_TYPE, 5);
             threats.add(threat);
         }
     }
 
     private void initConfigurationFromParameterConfiguration() {
-        this.attacker_num = StaticInitConfig.ATTACKER_NUM;
-        this.scout_num = StaticInitConfig.SCOUT_NUM;
-        this.enemy_num = StaticInitConfig.ENEMY_UAV_NUM;
-        this.threat_num = StaticInitConfig.THREAT_NUM;
+        this.attacker_num = OpStaticInitConfig.ATTACKER_NUM;
+        this.scout_num = OpStaticInitConfig.SCOUT_NUM;
+        this.enemy_num = OpStaticInitConfig.ENEMY_UAV_NUM;
+        this.threat_num = OpStaticInitConfig.THREAT_NUM;
     }
 
     /**
@@ -112,11 +112,11 @@ public class NonStaticInitConfig {
      * obstacles
      */
     public void initObstacles() {
-        if (StaticInitConfig.EXTERNAL_KML_FILE_PATH == null) {
+        if (OpStaticInitConfig.EXTERNAL_KML_FILE_PATH == null) {
             String obs_path = "/Obstacle" + NonStaticInitConfig.obstacle_num + ".kml";
             obstacles = ObtacleUtil.readObstacleFromResourceKML(obs_path); //get obstacle from kml
         } else {
-            obstacles = ObtacleUtil.readObstacleFromExternalKML(StaticInitConfig.EXTERNAL_KML_FILE_PATH);
+            obstacles = ObtacleUtil.readObstacleFromExternalKML(OpStaticInitConfig.EXTERNAL_KML_FILE_PATH);
         }
     }
 

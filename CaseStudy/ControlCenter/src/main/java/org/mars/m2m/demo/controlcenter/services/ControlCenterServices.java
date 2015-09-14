@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
@@ -56,13 +56,13 @@ public class ControlCenterServices extends KnowledgeInterface
     public static LinkedList<Float> roleAssignForScouts() {
         int scout_num = HandleTree.scoutsNode.getChildCount();
 
-        float average_region_height = StaticInitConfig.bound_height * 1.0f / scout_num;
-        int task_num = (int) Math.ceil(average_region_height / (StaticInitConfig.scout_radar_radius * 2));
+        float average_region_height = CC_StaticInitConfig.bound_height * 1.0f / scout_num;
+        int task_num = (int) Math.ceil(average_region_height / (CC_StaticInitConfig.scout_radar_radius * 2));
         
             LinkedList<Float> move_at_y_coordinate_task = new LinkedList<>();
-            float init_y_coord = average_region_height * StaticInitConfig.currentScoutIndex + StaticInitConfig.scout_radar_radius;
+            float init_y_coord = average_region_height * CC_StaticInitConfig.currentScoutIndex + CC_StaticInitConfig.scout_radar_radius;
             for (int task_index = 0; task_index < task_num; task_index++) {
-                float coord_y = init_y_coord + task_index * StaticInitConfig.scout_radar_radius * 2;
+                float coord_y = init_y_coord + task_index * CC_StaticInitConfig.scout_radar_radius * 2;
                 if (coord_y - init_y_coord > average_region_height) {
                     coord_y = init_y_coord + average_region_height;
                 }
@@ -110,7 +110,7 @@ public class ControlCenterServices extends KnowledgeInterface
 //                            attacker.setFly_mode(Attacker.FLYING_MODE);
 //                        }
 //                        attacker.setTarget_indicated_by_role(threat);
-//                        attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+//                        attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
 //                        attacker.setNeed_to_replan(true);
 //                        assigned_attacker.add(assigned_attacker_index);
 //                        break;
@@ -172,7 +172,7 @@ public class ControlCenterServices extends KnowledgeInterface
 //                    assigned_attacker.add(attacker.getIndex());
 //                    attacker.setTarget_indicated_by_role(threat);
 //
-//                    attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+//                    attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
 //                    attacker.setNeed_to_replan(true);
 //                    attacker.setFly_mode(Attacker.FLYING_MODE);
 //                }
@@ -190,7 +190,7 @@ public class ControlCenterServices extends KnowledgeInterface
 //                Threat dummy_threat = new Threat(-1, dummy_threat_coord, 0, 0);
 //                current_attacker.setTarget_indicated_by_role(dummy_threat);
 //                current_attacker.setNeed_to_replan(true);
-//                current_attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+//                current_attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
 //                current_attacker.setFly_mode(Attacker.FLYING_MODE);
 //            }
 //        }
@@ -244,7 +244,7 @@ public class ControlCenterServices extends KnowledgeInterface
 //            Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
 //            attacker.setTarget_indicated_by_role(dummy_threat);
 //            attacker.setNeed_to_replan(true);
-//            attacker.setSpeed(StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+//            attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
 //            attacker.setFly_mode(Attacker.FLYING_MODE);
 //            attacker.setHovered_time_step(0);
 //        }

@@ -5,7 +5,7 @@
  */
 package org.mars.m2m.demo.model;
 
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.io.ByteArrayInputStream;
@@ -54,7 +54,7 @@ public class Obstacle extends Message implements Serializable {
 
     @Override
     public String toString() {
-        return StaticInitConfig.OBSTACLE_NAME + this.index;
+        return OpStaticInitConfig.OBSTACLE_NAME + this.index;
     }
 
     public String getPointsStr() {

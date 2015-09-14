@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import org.mars.m2m.demo.controlcenter.appConfig.StaticInitConfig;
-import org.mars.m2m.demo.controlcenter.eventHandling.CallbackImpl.AssignScout;
-import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.AssignScoutRoleListenerImpl;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.eventHandling.caller.ReflexListenerImplCaller;
+import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.AssignScoutRoleReflexListenerImpl;
+import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.SendObservationReflexListenerImpl;
 import org.mars.m2m.demo.controlcenter.model.ObjectLink;
 import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.util.UavUtil;
@@ -39,7 +40,7 @@ public class ControlCenterReflexes
      * then sends the coordinates to the UAV
      * @param connectedDevices 
      */
-    private static ArrayList<String> configuredScouts = new ArrayList<>();
+    private static final ArrayList<String> configuredScouts = new ArrayList<>();
     public void scoutingWaypointsReflex(final ArrayList<ReportedLwM2MClient> connectedDevices)
     {
         //gets all scouts and their respective onboard devices
@@ -48,7 +49,7 @@ public class ControlCenterReflexes
         int i=0;
         for(String scout : scouts.keySet())
         {  
-            StaticInitConfig.currentScoutIndex = i;
+            CC_StaticInitConfig.currentScoutIndex = i;
             if(!configuredScouts.contains(scout))
             {            
                 ArrayList<ReportedLwM2MClient> onboardDevices = scouts.get(scout);
@@ -63,7 +64,6 @@ public class ControlCenterReflexes
                         //flight control object ID in json object model file is 12204
                         if(obj.getObjectId() == 12204)
                         {
-                            System.out.println("Object id: "+obj.getObjectId());
                             flightControl = device;
                         }
                         if(flightControl != null)
@@ -76,7 +76,7 @@ public class ControlCenterReflexes
                 //if flight control device has been found
                 if(flightControl != null)
                 {
-                    WorkerThread thread = new WorkerThread(flightControl);
+                    WorkerThread thread = new WorkerThread(flightControl, ThreadOperation.SCOUTING_REFLEX);
                     executor.execute(thread);
                     configuredScouts.add(scout);
                 }
@@ -84,20 +84,98 @@ public class ControlCenterReflexes
             i++;
         }
     }
+    
+    /**
+     * Performs observation requests on the threat and obstacle resources
+     * @param connectedDevices Devices attached to the control center
+     */
+    private static final ArrayList<String> existingObservations = new ArrayList<>();
+    public void observationRequestReflex(final ArrayList<ReportedLwM2MClient> connectedDevices)
+    {
+        //gets all scouts and their respective onboard devices
+        TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = 
+                uavUtil.getUAVAndOnboardDevices(uavUtil.getConnectedDevicesByCategory(connectedDevices, "scout"));
+        
+        for(String scout : scouts.keySet())
+        { 
+            ArrayList<ReportedLwM2MClient> onboardDevices = scouts.get(scout);
+
+            for (ReportedLwM2MClient device : onboardDevices) {
+                ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
+                for (ObjectLink obj : objectLinks) {                        
+                    if (obj.getObjectId() == 12202 || obj.getObjectId() == 12206) {
+                        WorkerThread thread = new WorkerThread(device, ThreadOperation.OBSERVATION_REFLEX);
+                        executor.execute(thread);
+
+                    } else {
+                        logger.info("Reflex Observation request is invalid");
+                    }
+                }
+            }
+            
+        }
+    }
 }
 
+//<editor-fold defaultstate="collapsed" desc="Worker Thread for sending scouting plan and other control center reflexes">
 class WorkerThread implements Runnable
 {
-    private ReportedLwM2MClient device;
-    public WorkerThread(ReportedLwM2MClient device) {
+    private final ReportedLwM2MClient device;
+    private final ThreadOperation threadOperation;
+    private ReflexListenerImplCaller reflexListenerCaller;
+    
+    public WorkerThread(ReportedLwM2MClient device, ThreadOperation threadOperation) {
         this.device = device;
+        this.threadOperation = threadOperation;
     }
     
     @Override
-    public void run() {
-        AssignScout assignScout = new AssignScout();
-        assignScout.addAssignScoutRoleListener(new AssignScoutRoleListenerImpl());
-        assignScout.assignScout(device);
+    public void run() 
+    {   
+        reflexListenerCaller = new ReflexListenerImplCaller();
+        switch(this.threadOperation)
+        {
+            case SCOUTING_REFLEX:                                
+                                reflexListenerCaller.addReflexListener(new AssignScoutRoleReflexListenerImpl());
+                                reflexListenerCaller.assignScout(device);
+                                break;
+            case OBSERVATION_REFLEX:
+                                reflexListenerCaller.addReflexListener(new SendObservationReflexListenerImpl());
+                                reflexListenerCaller.sendObservationRequest(device);
+                                break;
+            default:
+                
+        }
     }
     
 }
+//</editor-fold>
+
+/**
+ * Indicates which thread operation to be done
+ * <br/>
+ * For convenience
+ * @author AG BRIGHTER
+ */
+//<editor-fold defaultstate="collapsed" desc="For indicating thread operation">
+enum ThreadOperation
+{
+    SCOUTING_REFLEX("scouting_reflex"),
+    OBSERVATION_REFLEX("observation_reflex");
+    private final String operation;
+    
+    private ThreadOperation(String operation) {
+        this.operation = operation;
+    }
+    
+    public String getOperation() {
+        return operation;
+    }
+    
+    @Override
+    public String toString() {
+        return this.operation;
+    }
+    
+}
+//</editor-fold>

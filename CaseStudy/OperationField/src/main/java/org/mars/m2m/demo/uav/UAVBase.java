@@ -5,7 +5,7 @@
  */
 package org.mars.m2m.demo.uav;
 
-import org.mars.m2m.demo.config.StaticInitConfig;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,7 +48,7 @@ public class UAVBase {
         for (int loop_index = 1; loop_index <= 3; loop_index++) {
             int current_loop_num = (int) Math.floor(Math.PI * 2 * loop_index);
             double delta_theta = Math.PI * 2 / current_loop_num;
-            int port_radius = StaticInitConfig.attacker_radar_radius * loop_index;
+            int port_radius = OpStaticInitConfig.attacker_radar_radius * loop_index;
             double theta = 0;
             for (int uav_index = total_uav_port_num; uav_index < total_uav_port_num + current_loop_num; uav_index++) {
                 float[] coord = new float[2];

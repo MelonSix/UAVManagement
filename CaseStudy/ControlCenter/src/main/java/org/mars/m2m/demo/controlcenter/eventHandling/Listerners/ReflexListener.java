@@ -12,7 +12,9 @@ import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
  *
  * @author AG BRIGHTER
  */
-public interface AssignScoutRoleListener extends EventListener
+public interface ReflexListener extends EventListener
 {
     void sendScoutingPlan(ReportedLwM2MClient device);
+    
+    void sendObservationRequest(ReportedLwM2MClient device);
 }
