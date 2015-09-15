@@ -65,26 +65,32 @@ public class ControlCenterInterface
     @Consumes(MediaType.APPLICATION_XML)
     public Response acceptNotification(RequestPrimitive data)
     {
-        String content = Unmarshaller.getJsonContent(data);
-        Notification notification = Unmarshaller.getNotificationObject(content);
-        switch(Unmarshaller.determineNotificationType(notification))
-        {
-            case OBSTACLE:
-                 Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
-                 controlCenterServices.addObstacle(obs);
-                 System.out.println("Obstacle added to kb");
-                break;
-            case THREAT:
-                 Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
-                 controlCenterServices.addThreat(threat);
-                 System.out.println("Threat added to kb");
-                break;
-            case CONFLICT:
-                break;
-            default:
-                logger.info("INVALID NOTIFICATION OPTION RECEIVED");
+        if (data != null) {
+            String content = Unmarshaller.getJsonContent(data);
+            Notification notification = Unmarshaller.getNotificationObject(content);
+            switch (Unmarshaller.determineNotificationType(notification)) {
+                case OBSTACLE:
+                    Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
+                    if (obs != null) {
+                        controlCenterServices.addObstacle(obs);
+                        System.out.println("Obstacle added to kb");
+                    }
+                    break;
+                case THREAT:
+                    Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
+                    if (threat != null) {
+                        controlCenterServices.addThreat(threat);
+                        System.out.println("Threat added to kb");
+                    }
+                    break;
+                case CONFLICT:
+                    break;
+                default:
+                    logger.info("INVALID NOTIFICATION OPTION RECEIVED");
+            }
+            System.out.println("Received notification: " + content);
+            return Response.accepted().build();
         }
-        System.out.println("Received notification: "+content);
-        return Response.accepted().build();
+        return Response.status(Response.Status.NOT_ACCEPTABLE).build();
     }
 }

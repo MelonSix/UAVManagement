@@ -34,6 +34,7 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
         NewDeviceServices.setHandleTree(handleTree);
         ControlCenterServices.setKb(new OntologyBasedKnowledge());//initializes the knowledgebase of the control center
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
+        this.animationPanel.start();
     }
 
     public HandleTree getHandleTree() {
@@ -55,13 +56,16 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
         jScrollPane1 = new javax.swing.JScrollPane();
         jTreeControlCenter = new javax.swing.JTree();
         jPanel2 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Control Center v1.0.0");
-        setPreferredSize(new java.awt.Dimension(900, 550));
+        setMaximumSize(new java.awt.Dimension(900, 700));
+        setMinimumSize(new java.awt.Dimension(900, 700));
+        setPreferredSize(new java.awt.Dimension(900, 700));
 
         ccSplitPanelTab1.setDividerLocation(150);
         this.pnlLeft = new JPanelForLeftSplitPane();
@@ -84,18 +88,23 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
 
         ccTabbedPane.addTab("UAV", ccJPanelInTab1);
 
+        jSplitPane1.setDividerLocation(600);
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        this.animationPanel = new AnimationPanel();
+        this.jSplitPane1.add(animationPanel, JSplitPane.TOP);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 814, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
         );
 
-        ccTabbedPane.addTab("tab2", jPanel2);
+        ccTabbedPane.addTab("Field", jPanel2);
 
         jMenu1.setText("File");
         ccMenuBar.add(jMenu1);
@@ -161,6 +170,8 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSplitPane jSplitPane1;
+    private AnimationPanel animationPanel;
     private javax.swing.JTree jTreeControlCenter;
     // End of variables declaration//GEN-END:variables
 

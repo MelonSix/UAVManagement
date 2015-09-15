@@ -7,7 +7,6 @@ package org.mars.m2m.demo.world;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.ui.AnimationPanel;
 

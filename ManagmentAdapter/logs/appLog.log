@@ -1,174 +1,177 @@
-INFO   [14:34:46.506] [main] o.e.j.u.log -  Logging initialized @1209ms 
-INFO   [14:34:46.618] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:34:46.628] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:34:46.643] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:34:46.676] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:34:46.679] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:34:47.265] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [06:15:28.736] [main] o.e.j.u.log -  Logging initialized @1191ms 
+INFO   [06:15:28.851] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [06:15:28.860] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [06:15:28.874] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [06:15:28.906] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [06:15:28.909] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [06:15:29.479] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:34:47.269] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
-INFO   [14:34:47.276] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [06:15:29.482] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
+INFO   [06:15:29.487] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:34:47.283] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
-INFO   [14:34:47.328] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:34:47.328] [main] o.e.j.s.Server -  Started @2033ms 
-ERROR  [14:35:12.048] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:13.861] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:13.951] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:14.170] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:14.319] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:14.322] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:18.308] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:18.324] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:18.343] [dw-30 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:18.511] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:19.179] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:19.183] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:35:25.308] [dw-37 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.308] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.309] [dw-22 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.309] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.310] [dw-30 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.310] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.310] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.310] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.315] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.315] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.316] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.316] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.323] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.323] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.323] [dw-42 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.323] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:25.473] [dw-47 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:25.494] [dw-43 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:26.585] [dw-45 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:26.585] [dw-44 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:26.585] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:26.589] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:26.991] [dw-37 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:27.609] [dw-44 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:27.615] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:27.620] [dw-22 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:28.020] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:28.022] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:28.492] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:28.497] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:35:29.009] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:35:29.019] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:01.056] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:03.599] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.477] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.481] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.518] [dw-47 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.520] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.526] [dw-42 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.888] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.893] [dw-45 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.896] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.896] [dw-22 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.897] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:06.898] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:42:15.901] [dw-47 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.901] [dw-52 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.903] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.904] [dw-53 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.904] [dw-45 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.904] [dw-62 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.905] [dw-55 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.905] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.905] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.905] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.905] [dw-22 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.912] [dw-54 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.913] [dw-61 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.913] [dw-49 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.914] [dw-64 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.915] [dw-60 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.915] [dw-50 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.915] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.915] [dw-65 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.916] [dw-59 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.917] [dw-56 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.917] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.917] [dw-58 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.918] [dw-63 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.918] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.919] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.919] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.919] [dw-57 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.919] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.920] [dw-51 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.920] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:15.921] [dw-42 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:42:16.099] [dw-66 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:16.099] [dw-67 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:16.627] [dw-68 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:16.627] [dw-69 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:17.086] [dw-52 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:17.086] [dw-70 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:17.593] [dw-47 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:17.598] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:18.086] [dw-62 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:18.089] [dw-45 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:18.598] [dw-55 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:42:18.599] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:37.607] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:37.773] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:38.061] [dw-54 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:38.671] [dw-51 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:39.220] [dw-62 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:40.748] [dw-49 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:40.754] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:40.757] [dw-69 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:40.758] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:40.942] [dw-61 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [14:44:48.674] [dw-70 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.674] [dw-66 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.674] [dw-56 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.674] [dw-57 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.675] [dw-60 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.675] [dw-58 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.675] [dw-42 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.676] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.676] [dw-51 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.676] [dw-22 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.676] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.677] [dw-65 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.677] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.677] [dw-63 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.678] [dw-62 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.678] [dw-54 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.678] [dw-49 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.678] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.678] [dw-55 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.683] [dw-67 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.684] [dw-52 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.684] [dw-45 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.685] [dw-68 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:48.685] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:44:49.062] [dw-59 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:49.212] [dw-47 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:49.437] [dw-69 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:49.698] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:49.949] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:50.196] [dw-61 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:50.431] [dw-64 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:44:50.678] [dw-53 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:30:52.490] [dw-79 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:52.493] [dw-74 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:52.751] [dw-79 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:55.399] [dw-82 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:55.399] [dw-65 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:55.404] [dw-75 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:55.418] [dw-78 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:56.057] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:56.058] [dw-81 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:56.064] [dw-74 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:56.100] [dw-65 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
-ERROR  [16:30:56.175] [dw-82 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+INFO   [06:15:29.492] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
+INFO   [06:15:29.539] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [06:15:29.540] [main] o.e.j.s.Server -  Started @1996ms 
+ERROR  [06:15:48.396] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:48.717] [dw-22 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:50.687] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:50.727] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:50.745] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:51.145] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:54.803] [dw-22 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:54.811] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:15:54.875] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:25.886] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:28.294] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.412] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.416] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.420] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.444] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.471] [dw-42 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.474] [dw-30 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.478] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+ERROR  [06:23:30.563] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [06:24:05.557] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.SocketException: Connection reset 
+ERROR  [06:24:05.567] [dw-132 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.SocketException: Connection reset 
+ERROR  [06:24:05.573] [dw-128 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.SocketException: Connection reset 
+ERROR  [06:24:05.573] [dw-141 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.SocketException: Connection reset 
+ERROR  [06:24:05.573] [dw-63 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.SocketException: Connection reset 
+ERROR  [06:24:06.561] [dw-52 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.562] [dw-115 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.563] [dw-84 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.563] [dw-113 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.564] [dw-105 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.565] [dw-151 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.565] [dw-85 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.566] [dw-136 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.566] [dw-69 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.566] [dw-116 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.567] [dw-101 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.568] [dw-150 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.568] [dw-111 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.568] [dw-92 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.569] [dw-89 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.569] [dw-124 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.569] [dw-125 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.569] [dw-45 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.569] [dw-120 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.570] [dw-156 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.570] [dw-61 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.570] [dw-108 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.571] [dw-53 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.571] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.571] [dw-81 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.571] [dw-130 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.571] [dw-48 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.572] [dw-62 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.572] [dw-79 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.572] [dw-129 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.572] [dw-76 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.573] [dw-49 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.573] [dw-139 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.573] [dw-83 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.573] [dw-60 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.573] [dw-152 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.574] [dw-75 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.574] [dw-77 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.577] [dw-58 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.578] [dw-72 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.578] [dw-148 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.579] [dw-153 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.580] [dw-59 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.580] [dw-98 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.580] [dw-56 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.580] [dw-112 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.580] [dw-159 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.581] [dw-106 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.581] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.581] [dw-146 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.582] [dw-126 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.582] [dw-64 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.582] [dw-119 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.582] [dw-86 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.582] [dw-143 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.582] [dw-99 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.583] [dw-67 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.583] [dw-149 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.583] [dw-109 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.583] [dw-47 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.584] [dw-87 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.584] [dw-82 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.584] [dw-50 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.584] [dw-94 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.584] [dw-154 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.585] [dw-145 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.585] [dw-133 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.585] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.585] [dw-103 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.585] [dw-44 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.585] [dw-88 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-91 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-122 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-80 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-78 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-66 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-127 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.586] [dw-134 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-140 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-97 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-70 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-131 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-42 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-147 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-95 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-96 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-71 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.587] [dw-90 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.588] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.588] [dw-57 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.588] [dw-43 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.588] [dw-110 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.588] [dw-68 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.588] [dw-123 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.588] [dw-144 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-158 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-160 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-100 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-107 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-51 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-142 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-121 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-161 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-102 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-162 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.589] [dw-54 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-117 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-157 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-73 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-155 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-164 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-137 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-65 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-118 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.592] [dw-104 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.595] [dw-138 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.596] [dw-30 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.590] [dw-163 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [06:24:06.845] [dw-46 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:07.010] [dw-165 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:07.370] [dw-132 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:07.526] [dw-63 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:07.866] [dw-141 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:08.011] [dw-128 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:08.365] [dw-52 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:08.501] [dw-115 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:08.882] [dw-105 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:09.000] [dw-113 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:09.376] [dw-151 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:09.505] [dw-84 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:09.869] [dw-136 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
+ERROR  [06:24:10.026] [dw-85 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
