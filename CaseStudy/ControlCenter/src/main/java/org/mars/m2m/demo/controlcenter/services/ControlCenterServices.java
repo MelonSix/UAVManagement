@@ -28,8 +28,8 @@ import org.slf4j.LoggerFactory;
 public class ControlCenterServices extends KnowledgeInterface
 {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterServices.class);
-
-    private static KnowledgeInterface kb;//this is set upon initialization of the Control Center GUI
+    
+    private static KnowledgeInterface kb;//this is set upon initialization of the Control Center GUI so it can be accessed across board
     private Map<Integer, LinkedList<Point>> way_point_for_uav;
     private float scout_speed;
     private boolean need_to_assign_role = true;
@@ -46,8 +46,10 @@ public class ControlCenterServices extends KnowledgeInterface
      */
     public ControlCenterServices() {
         way_point_for_uav = new HashMap<>();
-        locked_threat = new HashMap<>();
+        locked_threat = new HashMap<>();        
     }
+    
+    
 
     /** assign the area to be scanned by each scout.
      * 

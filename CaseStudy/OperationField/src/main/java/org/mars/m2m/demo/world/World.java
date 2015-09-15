@@ -34,11 +34,14 @@ import java.util.TimerTask;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedObstacleListenerImpl;
+import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedThreatListenerImpl;
 import org.mars.m2m.demo.eventHandling.callerImpl.UpdateSensorValEventDispatch;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.FlightControlListenerImpl;
 import org.mars.m2m.demo.eventHandling.Listerners.DetectedObstacleListener;
+import org.mars.m2m.demo.eventHandling.Listerners.DetectedThreatListener;
 import org.mars.m2m.demo.eventHandling.Listerners.FlightControlListener;
 import org.mars.m2m.demo.eventHandling.eventObject.DetectedObstacleEventObject;
+import org.mars.m2m.demo.eventHandling.eventObject.DetectedThreatEventObject;
 import org.mars.m2m.demo.eventHandling.eventObject.FlightControlEventObject;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.Obstacle;
@@ -454,7 +457,9 @@ public class World {
                 if (threat.isEnabled() && !scout.getKb().containsThreat(threat) 
                         && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9) 
                 {
-                    reconnaissance.addThreat(threat);
+                    scout.getKb().addThreat(threat);
+                    reconnaissance.addThreat(threat);//TODO: remove this statement
+                    updateSensorValue(scout, threat);
                 }
             }
         }
@@ -864,5 +869,11 @@ public class World {
         UpdateSensorValEventDispatch eventDispatch = new UpdateSensorValEventDispatch();
         eventDispatch.addListener(new DetectedObstacleListenerImpl(), DetectedObstacleListener.class);
         eventDispatch.updateObstacleSensorValue(new DetectedObstacleEventObject(scout, obs));
+    }
+    private void updateSensorValue(Scout scout, Threat threat)
+    {
+        UpdateSensorValEventDispatch eventDispatch = new UpdateSensorValEventDispatch();
+        eventDispatch.addListener(new DetectedThreatListenerImpl(), DetectedThreatListener.class);
+        eventDispatch.updateObstacleSensorValue(new DetectedThreatEventObject(scout, threat));
     }
 }

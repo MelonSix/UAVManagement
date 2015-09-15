@@ -8,18 +8,19 @@ package org.mars.m2m.demo.controlcenter.resources;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
+import org.mars.m2m.demo.controlcenter.model.Threat;
+import org.mars.m2m.demo.controlcenter.model.endpointModel.Notification;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterReflexes;
+import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
-import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
-import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
-import org.mars.m2m.dmcore.onem2m.xsdBundle.PrimitiveContent;
+import org.mars.m2m.demo.controlcenter.util.Unmarshaller;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.slf4j.LoggerFactory;
 
@@ -34,10 +35,12 @@ public class ControlCenterInterface
     private final NewDeviceServices newDeviceServices;
     private ArrayList<ReportedLwM2MClient> connectedDevices;
     private ControlCenterReflexes reflex;
+    private final ControlCenterServices controlCenterServices;
     
     public ControlCenterInterface() {
         this.reflex = new ControlCenterReflexes();
         this.newDeviceServices = new NewDeviceServices();
+        this.controlCenterServices = new ControlCenterServices();
     }
     
     @POST
@@ -61,10 +64,27 @@ public class ControlCenterInterface
     @Path("/notification")
     @Consumes(MediaType.APPLICATION_XML)
     public Response acceptNotification(RequestPrimitive data)
-    {        
-        Container container = (Container) data.getContent().getAny().get(0);
-        ContentInstance contentInstance = (ContentInstance) container.getContentInstanceOrContainerOrSubscription().get(0);
-        System.out.println("Received notification: "+contentInstance.getContent().toString());
+    {
+        String content = Unmarshaller.getJsonContent(data);
+        Notification notification = Unmarshaller.getNotificationObject(content);
+        switch(Unmarshaller.determineNotificationType(notification))
+        {
+            case OBSTACLE:
+                 Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
+                 controlCenterServices.addObstacle(obs);
+                 System.out.println("Obstacle added to kb");
+                break;
+            case THREAT:
+                 Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
+                 controlCenterServices.addThreat(threat);
+                 System.out.println("Threat added to kb");
+                break;
+            case CONFLICT:
+                break;
+            default:
+                logger.info("INVALID NOTIFICATION OPTION RECEIVED");
+        }
+        System.out.println("Received notification: "+content);
         return Response.accepted().build();
     }
 }

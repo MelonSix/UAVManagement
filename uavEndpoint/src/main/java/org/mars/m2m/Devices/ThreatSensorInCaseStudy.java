@@ -86,7 +86,7 @@ public class ThreatSensorInCaseStudy extends BaseInstanceEnabler implements Devi
         return threatAsJson;
     }
 
-    public void setThreatAsJson(String threatAsJson) {
+    public void setThreatInJson(String threatAsJson) {
         this.threatAsJson = threatAsJson;
     }
     

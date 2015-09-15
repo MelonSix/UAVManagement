@@ -9,8 +9,10 @@ import ch.qos.logback.classic.Logger;
 import java.util.EventListener;
 import javax.swing.event.EventListenerList;
 import org.mars.m2m.demo.eventHandling.Listerners.DetectedObstacleListener;
+import org.mars.m2m.demo.eventHandling.Listerners.DetectedThreatListener;
 import org.mars.m2m.demo.eventHandling.Listerners.FlightControlListener;
 import org.mars.m2m.demo.eventHandling.eventObject.DetectedObstacleEventObject;
+import org.mars.m2m.demo.eventHandling.eventObject.DetectedThreatEventObject;
 import org.mars.m2m.demo.eventHandling.eventObject.FlightControlEventObject;
 import org.slf4j.LoggerFactory;
 
@@ -76,6 +78,20 @@ public class UpdateSensorValEventDispatch
         DetectedObstacleListener[] listeners;
         listeners = listenerList.getListeners(DetectedObstacleListener.class);
         for(DetectedObstacleListener listener : listeners)
+        {
+            listener.fireSensorResourceUpdate(eventObject);
+        }
+    }
+    
+    /**
+     * Updates the sensor value of the threat sensor
+     * @param eventObject 
+     */
+    public void updateObstacleSensorValue(DetectedThreatEventObject eventObject)
+    {
+        DetectedThreatListener[] listeners;
+        listeners = listenerList.getListeners(DetectedThreatListener.class);
+        for(DetectedThreatListener listener : listeners)
         {
             listener.fireSensorResourceUpdate(eventObject);
         }

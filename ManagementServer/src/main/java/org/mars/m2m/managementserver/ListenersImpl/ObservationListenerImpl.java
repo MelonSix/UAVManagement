@@ -28,10 +28,10 @@ public class ObservationListenerImpl implements ObservationRegistryListener {
     public void newValue(Observation observation, LwM2mNode value) {
         StringBuilder dataBuilder =  new StringBuilder();
         String data = dataBuilder.append("{").append("\"path\"").append(":\"").append(observation.getPath()).append("\",")
-                        .append("\"content\"")
-                            .append(": [")
+                        .append("\"content\":")
+                            //.append("[")
                                 .append(ConfigGson.getCustomGsonConfig().toJson(value))
-                            .append("]")
+                            //.append("]")
             .append("}").toString();
         HandleObservation handleObservation = new HandleObservation(data);
         Thread t = new Thread(handleObservation);
