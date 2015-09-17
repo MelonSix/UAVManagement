@@ -9,10 +9,12 @@ import ch.qos.logback.classic.Logger;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import javax.swing.UIManager;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.health.ClientsResourceHealth;
 import org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface;
+import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +24,8 @@ import org.slf4j.LoggerFactory;
  */
 public class ControlCenterApplication extends Application<ControlCenterConfiguration> {
     
-    Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterApplication.class);
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterApplication.class);
+    private ControlCenterServices controlCenterServices;
 
     @Override
     public void run(ControlCenterConfiguration t, Environment e) throws Exception 
@@ -31,6 +34,7 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
         
         //resources
         ControlCenterInterface cc = new ControlCenterInterface();
+        this.controlCenterServices = cc.getControlCenterServices();
         
         //expose resource
         e.jersey().register(cc);
@@ -62,11 +66,38 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
     public void initialize(Bootstrap<ControlCenterConfiguration> bootstrap) {
         // nothing to do yet
     }
+
+    public ControlCenterServices getControlCenterServices() {
+        return controlCenterServices;
+    }
     
     public static void main(String [] args) throws Exception
     {
-        new ControlCenterApplication().run(args);
-        Thread t = new Thread(new ControlCenter());
-        t.start();
+        ControlCenterApplication controlCenterApplication = new ControlCenterApplication();
+        controlCenterApplication.run(args);
+        HandleControlCenterUI(controlCenterApplication);
+    }
+
+    private static void HandleControlCenterUI(final ControlCenterApplication controlCenterApplication)
+    {
+        //Key idea is to ensure the KB in the control services has been set up before starting UI
+        if(controlCenterApplication.getControlCenterServices() != null)
+        {
+            try 
+            {
+                javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException 
+                    | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+                logger.error(ex.toString());
+            }
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new ControlCenter(controlCenterApplication.getControlCenterServices()).setVisible(true);
+                }
+            }); 
+            
+        }
     }
 }

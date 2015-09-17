@@ -874,6 +874,6 @@ public class World {
     {
         UpdateSensorValEventDispatch eventDispatch = new UpdateSensorValEventDispatch();
         eventDispatch.addListener(new DetectedThreatListenerImpl(), DetectedThreatListener.class);
-        eventDispatch.updateObstacleSensorValue(new DetectedThreatEventObject(scout, threat));
+        eventDispatch.updateThreatSensorValue(new DetectedThreatEventObject(scout, threat));
     }
 }

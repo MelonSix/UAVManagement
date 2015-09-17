@@ -78,5 +78,17 @@ public void drawCombatSymbol(Graphics2D graphics, float[] combat_center, int com
         graphics.drawLine((int) upper_left_coord[0], (int) upper_left_coord[1], (int) lower_right_coord[0], (int) lower_right_coord[1]);
         graphics.drawLine((int) upper_right_coord[0], (int) upper_right_coord[1], (int) lower_left_coord[0], (int) lower_left_coord[1]);
     }
-
+    
+public void drawObstacle(Graphics2D graphics, Obstacle obstacle, Color obstacle_center_color, Color obstacle_edge_color, Color obstacle_hightlight_color) {
+        graphics.setComposite(AlphaComposite.SrcOver);
+        graphics.setStroke(new BasicStroke(1f)); //Set the width of the stroke
+        graphics.setColor(obstacle_center_color);
+        graphics.fill(obstacle.getShape());
+        if (obstacle_hightlight_color != null) {
+            graphics.setColor(obstacle_hightlight_color);
+        } else {
+            graphics.setColor(obstacle_edge_color);
+        }
+        graphics.draw(obstacle.getShape());
+    }
 }

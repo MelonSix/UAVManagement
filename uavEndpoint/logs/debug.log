@@ -1,15 +1,10 @@
-2015-09-14 21:09:12 - file /uavObjectModel.json successfully loaded
-2015-09-14 21:09:12 - Started execution in military uav run method
-2015-09-14 21:09:28 - Error Loading bootstrap information. Registration failed
-2015-09-14 21:09:28 - UAV manager started
-2015-09-14 21:09:28 - Error Loading bootstrap information. Registration failed
-2015-09-14 21:09:28 - Threat sensor started
-2015-09-14 21:09:28 - Error Loading bootstrap information. Registration failed
-2015-09-14 21:09:28 - Missile dispatcher started
-2015-09-14 21:09:28 - Error Loading bootstrap information. Registration failed
-2015-09-14 21:09:28 - Temperature sensor started
-2015-09-14 21:09:28 - Error Loading bootstrap information. Registration failed
-2015-09-14 21:09:28 - Altitude sensor started
-2015-09-14 21:09:34 - Error Loading bootstrap information. Registration failed
-2015-09-14 21:09:35 - Error Loading bootstrap information. Registration failed
-2015-09-14 21:09:38 - Error Loading bootstrap information. Registration failed
+2015-09-17 10:49:37 - file /uavObjectModel.json successfully loaded
+2015-09-17 10:49:37 - Started execution in military uav run method
+2015-09-17 10:49:37 - Error Loading bootstrap information. Registration failed
+2015-09-17 10:49:37 - UAV manager started
+2015-09-17 10:49:38 - Error Loading bootstrap information. Registration failed
+2015-09-17 10:49:38 - Threat sensor started
+2015-09-17 10:49:38 - Missile dispatcher started
+2015-09-17 10:49:38 - Temperature sensor started
+2015-09-17 10:49:38 - Error Loading bootstrap information. Registration failed
+2015-09-17 10:49:38 - Altitude sensor started

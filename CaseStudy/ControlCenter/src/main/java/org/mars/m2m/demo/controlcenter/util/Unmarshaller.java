@@ -92,7 +92,9 @@ public class Unmarshaller
         try 
         { 
             Gson gson = new Gson();
-            return gson.fromJson(n.getContent().getValue().toString(), clazz);
+            String str = n.getContent().getValue().toString();
+            System.out.println(str);
+            return gson.fromJson(str, clazz);
         } catch (JsonSyntaxException e) {
             logger.error(e.toString());
             return null;

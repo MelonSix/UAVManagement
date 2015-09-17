@@ -23,7 +23,6 @@ import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.shape.Circle;
 import org.mars.m2m.demo.world.KnowledgeInterface;
 import org.mars.m2m.demo.world.OntologyBasedKnowledge;
-import org.mars.m2m.demo.world.Reconnaissance;
 import org.mars.m2m.demo.world.World;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;

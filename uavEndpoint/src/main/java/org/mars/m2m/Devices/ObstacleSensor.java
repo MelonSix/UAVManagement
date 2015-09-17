@@ -34,14 +34,14 @@ public class ObstacleSensor  extends BaseInstanceEnabler implements DeviceExecut
 
     public ObstacleSensor() 
     {
-        Timer timer = new Timer();
+        /*Timer timer = new Timer();
         timer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                fireResourceChange(0);
-            }
-        }, 500, 500);
+        
+        @Override
+        public void run() {
+        fireResourceChange(0);
+        }
+        }, 500, 500);*/
     }
 
     @Override
@@ -93,6 +93,7 @@ public class ObstacleSensor  extends BaseInstanceEnabler implements DeviceExecut
 
     public void setObstacleInJson(String obstacleInJson) {
         this.obstacleInJson = obstacleInJson;
+        fireResourceChange(0);
     }
 
     public String getObstacleInJson() {

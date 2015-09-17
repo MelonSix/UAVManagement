@@ -29,7 +29,7 @@ public class ControlCenterServices extends KnowledgeInterface
 {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterServices.class);
     
-    private static KnowledgeInterface kb;//this is set upon initialization of the Control Center GUI so it can be accessed across board
+    private KnowledgeInterface kb;//this is set upon initialization of the Control Center GUI so it can be accessed across board
     private Map<Integer, LinkedList<Point>> way_point_for_uav;
     private float scout_speed;
     private boolean need_to_assign_role = true;
@@ -42,11 +42,11 @@ public class ControlCenterServices extends KnowledgeInterface
 
     /** constructor of the control center.
      * 
-     * @param kb is the knowledge of the control center
      */
     public ControlCenterServices() {
         way_point_for_uav = new HashMap<>();
-        locked_threat = new HashMap<>();        
+        locked_threat = new HashMap<>();  
+        kb = new OntologyBasedKnowledge();
     }
     
     
@@ -57,12 +57,14 @@ public class ControlCenterServices extends KnowledgeInterface
      */
     public static LinkedList<Float> roleAssignForScouts() {
         int scout_num = HandleTree.scoutsNode.getChildCount();
+        
+        int index = CC_StaticInitConfig.currentScoutIndex.getAndIncrement();
 
         float average_region_height = CC_StaticInitConfig.bound_height * 1.0f / scout_num;
         int task_num = (int) Math.ceil(average_region_height / (CC_StaticInitConfig.scout_radar_radius * 2));
         
             LinkedList<Float> move_at_y_coordinate_task = new LinkedList<>();
-            float init_y_coord = average_region_height * CC_StaticInitConfig.currentScoutIndex + CC_StaticInitConfig.scout_radar_radius;
+            float init_y_coord = average_region_height * index + CC_StaticInitConfig.scout_radar_radius;
             for (int task_index = 0; task_index < task_num; task_index++) {
                 float coord_y = init_y_coord + task_index * CC_StaticInitConfig.scout_radar_radius * 2;
                 if (coord_y - init_y_coord > average_region_height) {
@@ -252,8 +254,12 @@ public class ControlCenterServices extends KnowledgeInterface
 //        }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
-    public ArrayList<Obstacle> getObstacles() {
+    public synchronized ArrayList<Obstacle> getObstacles() {
         return kb.getObstacles();
     }
 
@@ -279,7 +285,7 @@ public class ControlCenterServices extends KnowledgeInterface
     }
 
     @Override
-    public ArrayList<Threat> getThreats() {
+    public synchronized ArrayList<Threat> getThreats() {
         return kb.getThreats();
     }
 
@@ -353,12 +359,12 @@ public class ControlCenterServices extends KnowledgeInterface
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static KnowledgeInterface getKb() {
+    public synchronized KnowledgeInterface getKb() {
         return kb;
     }
 
-    public static void setKb(KnowledgeInterface kb) {
-        ControlCenterServices.kb = kb;
+    public synchronized void setKb(KnowledgeInterface kb) {
+        this.kb = kb;
     }
     
     

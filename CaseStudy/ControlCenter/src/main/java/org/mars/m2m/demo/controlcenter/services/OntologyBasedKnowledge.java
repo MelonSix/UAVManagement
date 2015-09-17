@@ -106,8 +106,10 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         try {
 //            ontology_based_knowledge.read(new FileInputStream(FilePathConfig.ROBOT_ONTOLOGY_TEMPLATE_FILE_PATH), null);
             ontology_based_knowledge.read(OntologyBasedKnowledge.class.getResourceAsStream(FilePathConfig.ROBOT_ONTOLOGY_TEMPLATE_FILE_PATH), null);
+            System.out.println("Ontology file successfully loaded");
         } catch (Exception ex) {
-            logger.error("{}", ex);
+            logger.error("Ontology file could not be loaded");
+            ex.printStackTrace();
         }
         initClassAndProperty();
     }
@@ -286,7 +288,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public ArrayList<Obstacle> getObstacles() {
+    public synchronized ArrayList<Obstacle> getObstacles() {
         if (!this.obstacle_updated) {
             return this.obstacles_cache;
         }
@@ -301,24 +303,28 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         Query query = QueryFactory.create(prefix + sparql);
         QueryExecution qe = QueryExecutionFactory.create(query, ontology_based_knowledge);
         ResultSet results = qe.execSelect();
+                
         while (results.hasNext()) {
             QuerySolution result = results.next();
             Polygon polygon = new Polygon();
-            String raw_points_str = StringUtil.parseLiteralStr(result.get("points").toString());
-            String[] points_str = raw_points_str.split(" ");
-            for (String point_str : points_str) {
-                String[] coord_str = point_str.split(",");
-                int[] coord = new int[2];
-                coord[0] = Integer.parseInt(coord_str[0]);
-                coord[1] = Integer.parseInt(coord_str[1]);
-                polygon.addPoint(coord[0], coord[1]);
-            }
+            synchronized(polygon)
+            {
+                String raw_points_str = StringUtil.parseLiteralStr(result.get("points").toString());
+                String[] points_str = raw_points_str.split(" ");
+                for (String point_str : points_str) {
+                    String[] coord_str = point_str.split(",");
+                    int[] coord = new int[2];
+                    coord[0] = Integer.parseInt(coord_str[0]);
+                    coord[1] = Integer.parseInt(coord_str[1]);
+                    polygon.addPoint(coord[0], coord[1]);
+                }
 
-            String raw_obstacle_index = StringUtil.parseLiteralStr(result.get("index").toString());
-            Integer obstacle_index = Integer.parseInt(raw_obstacle_index);
-            Obstacle obstacle = new Obstacle(polygon, 0);
-            obstacle.setIndex(obstacle_index);
-            obstacles.add(obstacle);
+                String raw_obstacle_index = StringUtil.parseLiteralStr(result.get("index").toString());
+                Integer obstacle_index = Integer.parseInt(raw_obstacle_index);
+                Obstacle obstacle = new Obstacle(polygon, 0);
+                obstacle.setIndex(obstacle_index);
+                obstacles.add(obstacle);
+            }
         }
         this.obstacles_cache = obstacles;
         this.obstacle_updated = false;
@@ -518,37 +524,41 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public void addObstacle(Obstacle obs) {
-        Individual obs_individual = Obstacle_Class.createIndividual();
-        Individual region_individual = Region_Class.createIndividual();
-        Individual polygon_individual = Polygon_Class.createIndividual();
-        Individual lowerbound_individual = LowerBoundOfRegion_Class.createIndividual();
-        Individual upperbound_individual = UpperBoundOfRegion_Class.createIndividual();
-
-        Literal points = ontology_based_knowledge.createTypedLiteral(obs.getPointsStr());
+    public synchronized void addObstacle(Obstacle obs) {
+        try {
+            Individual obs_individual = Obstacle_Class.createIndividual();
+            Individual region_individual = Region_Class.createIndividual();
+            Individual polygon_individual = Polygon_Class.createIndividual();
+            Individual lowerbound_individual = LowerBoundOfRegion_Class.createIndividual();
+            Individual upperbound_individual = UpperBoundOfRegion_Class.createIndividual();
+            
+            Literal points = ontology_based_knowledge.createTypedLiteral(obs.getPointsStr());
 //        logger.debug("------------------"+points);
-        Literal max_x_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMaxX());
-        Literal max_y_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMaxY());
-        Literal min_x_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMinX());
-        Literal min_y_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMinY());
-        Literal obstacle_index = ontology_based_knowledge.createTypedLiteral(obs.getIndex());
-
-        obs_individual.addProperty(has_region, region_individual);
-        region_individual.addProperty(has_polygon, polygon_individual);
-        region_individual.addProperty(hasObstacleIndex, obstacle_index);
-        polygon_individual.addProperty(has_points, points);
-        region_individual.addProperty(has_lowerbound, lowerbound_individual);
-        region_individual.addProperty(has_upperbound, upperbound_individual);
-        lowerbound_individual.addProperty(hasMinXCoordinate, min_x_coordinate);
-        lowerbound_individual.addProperty(hasMinYCoordinate, min_y_coordinate);
-        upperbound_individual.addProperty(hasMaxXCoordinate, max_x_coordinate);
-        upperbound_individual.addProperty(hasMaxYCoordinate, max_y_coordinate);
-        this.obstacle_num++;
-        this.obstacle_updated = true;
+            Literal max_x_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMaxX());
+            Literal max_y_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMaxY());
+            Literal min_x_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMinX());
+            Literal min_y_coordinate = ontology_based_knowledge.createTypedLiteral(obs.getMbr().getMinY());
+            Literal obstacle_index = ontology_based_knowledge.createTypedLiteral(obs.getIndex());
+            
+            obs_individual.addProperty(has_region, region_individual);
+            region_individual.addProperty(has_polygon, polygon_individual);
+            region_individual.addProperty(hasObstacleIndex, obstacle_index);
+            polygon_individual.addProperty(has_points, points);
+            region_individual.addProperty(has_lowerbound, lowerbound_individual);
+            region_individual.addProperty(has_upperbound, upperbound_individual);
+            lowerbound_individual.addProperty(hasMinXCoordinate, min_x_coordinate);
+            lowerbound_individual.addProperty(hasMinYCoordinate, min_y_coordinate);
+            upperbound_individual.addProperty(hasMaxXCoordinate, max_x_coordinate);
+            upperbound_individual.addProperty(hasMaxYCoordinate, max_y_coordinate);
+            this.obstacle_num++;
+            this.obstacle_updated = true;
+        } catch (Exception e) {
+            logger.error("ERROR: {}",e.toString());
+        }
     }
 
     @Override
-    public void addConflict(Conflict conflict) {
+    public synchronized void addConflict(Conflict conflict) {
         ArrayList<Conflict> conflicts = this.getConflicts();
         if (conflict_num == 0) {
             addConflictWithoutCheck(conflict);
@@ -566,7 +576,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         conflict_num++;
     }
 
-    private void addConflictWithoutCheck(Conflict conflict) {
+    private synchronized void addConflictWithoutCheck(Conflict conflict) {
 
         LinkedList<Point> path = conflict.getPath_prefound();
         int path_len = path.size();
@@ -589,7 +599,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public void addThreat(Threat threat) {
+    public synchronized void addThreat(Threat threat) {
         Individual threat_individual = Threat_Class.createIndividual();
 
         Literal center = ontology_based_knowledge.createTypedLiteral(threat.getCoordinates()[0] + "," + threat.getCoordinates()[1]);

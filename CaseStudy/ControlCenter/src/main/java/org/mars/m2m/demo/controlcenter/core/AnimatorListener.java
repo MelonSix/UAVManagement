@@ -8,8 +8,6 @@ package org.mars.m2m.demo.controlcenter.core;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.ExecutionException;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 
@@ -35,7 +33,7 @@ public class AnimatorListener implements ActionListener
          */
         @Override
         public void actionPerformed(ActionEvent e) 
-        {            
+        { 
             SwingWorker<AnimationPanel,Void> swingWorker = new SwingWorker<AnimationPanel, Void>() {
 
                 @Override
@@ -46,9 +44,7 @@ public class AnimatorListener implements ActionListener
                 @Override
                 protected void done() {
                     try 
-                    {
-                        JOptionPane.showMessageDialog(null, "asdasdsdfa");
-                        System.out.println("asdfasdfsaf");
+                    {                        
                         AnimationPanel panel = get();
                         panel.clearUAVImageBeforeUpdate();            
                         panel.updateImageAtEachIteration();
@@ -58,8 +54,7 @@ public class AnimatorListener implements ActionListener
                     }
                     
                 }
-                
-                
             };
+            swingWorker.execute();
         }
     }

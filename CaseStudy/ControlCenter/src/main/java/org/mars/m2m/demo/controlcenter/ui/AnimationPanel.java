@@ -78,9 +78,9 @@ public class AnimationPanel extends JPanel
     private ArrayList<Threat> threats_from_world_view;
 
 
-    public AnimationPanel() {
-        initComponents();
-        this.controlCenterServices = new ControlCenterServices();
+    public AnimationPanel(ControlCenterServices ccs) {
+        this.controlCenterServices = ccs;
+        initComponents();        
     }
 
     private void initComponents() {
@@ -156,7 +156,7 @@ public class AnimationPanel extends JPanel
      */
     public void start() { 
         System.out.println("starting animation listener");
-        Timer timer = new Timer(5000, new AnimatorListener(this));
+        Timer timer = new Timer(500, new AnimatorListener(this));
         timer.start();
     }
 
@@ -186,18 +186,19 @@ public class AnimationPanel extends JPanel
      */
     public void updateImageAtEachIteration() {
         updateThreatImage();
-        updateHighlightObstacleImage(controlCenterServices.getObstacles());
+        updateObstacleImage(controlCenterServices.getObstacles());
     }
     
     /** update graphics of the highlighted(chosen) obstacle.
      * 
      * @param obstacles 
      */
-    private void updateHighlightObstacleImage(ArrayList<Obstacle> obstacles) {
+    private void updateObstacleImage(ArrayList<Obstacle> obstacles) {
+        System.out.println("obstacles for painting: "+obstacles.size());
         for (Obstacle obs : obstacles) {
-            if (obs.getIndex() == AnimationPanel.highlight_obstacle_index) {
-                virtualizer.highlightObstacle(highlight_obstacle_image_graphics, obs, GraphicConfig.obstacle_center_color, GraphicConfig.obstacle_edge_color, GraphicConfig.highlight_obstacle_color);
-            }
+            virtualizer.drawObstacle(obstacle_image_graphics, obs, GraphicConfig.obstacle_center_color, GraphicConfig.obstacle_edge_color, null);
+            virtualizer.highlightObstacle(highlight_obstacle_image_graphics, obs,
+                        GraphicConfig.obstacle_center_color, GraphicConfig.obstacle_edge_color, GraphicConfig.highlight_obstacle_color);
         }
     }
     
@@ -206,18 +207,22 @@ public class AnimationPanel extends JPanel
      */
     private void updateThreatImage() {
         ArrayList<Threat> threats = controlCenterServices.getThreats();
-        for (Threat threat : threats) {
-            if (!threat.isEnabled()) {
-                continue;
-            }
-            if (threat.getIndex() == AnimationPanel.highlight_threat_index) {
-                virtualizer.drawThreat(threat_image_graphics, threat, GraphicConfig.threat_color, GraphicConfig.highlight_threat_color);
-            } else {
-                virtualizer.drawThreat(threat_image_graphics, threat, GraphicConfig.threat_color, null);
-            }
-            int threat_index = threat.getIndex();
-            if (this.threats_from_world_view.get(threat_index).getMode() == Threat.LOCKED_MODE) {
-                virtualizer.drawCombatSymbol(threat_image_graphics, threat.getCoordinates(), Threat.threat_width * 3 / 2, Color.red);
+        if(threats != null)
+        {
+            for (Threat threat : threats) 
+            {
+                if (!threat.isEnabled()) {
+                    continue;
+                }
+                if (threat.getIndex() == AnimationPanel.highlight_threat_index) {
+                    virtualizer.drawThreat(threat_image_graphics, threat, GraphicConfig.threat_color, GraphicConfig.highlight_threat_color);
+                } else {
+                    virtualizer.drawThreat(threat_image_graphics, threat, GraphicConfig.threat_color, null);
+                }
+//                int threat_index = threat.getIndex();
+//                if (this.threats_from_world_view.get(threat_index).getMode() == Threat.LOCKED_MODE) {
+//                    virtualizer.drawCombatSymbol(threat_image_graphics, threat.getCoordinates(), Threat.threat_width * 3 / 2, Color.red);
+//                }
             }
         }
     }

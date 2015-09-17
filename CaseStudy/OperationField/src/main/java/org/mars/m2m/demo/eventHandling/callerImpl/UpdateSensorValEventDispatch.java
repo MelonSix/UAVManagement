@@ -87,7 +87,7 @@ public class UpdateSensorValEventDispatch
      * Updates the sensor value of the threat sensor
      * @param eventObject 
      */
-    public void updateObstacleSensorValue(DetectedThreatEventObject eventObject)
+    public void updateThreatSensorValue(DetectedThreatEventObject eventObject)
     {
         DetectedThreatListener[] listeners;
         listeners = listenerList.getListeners(DetectedThreatListener.class);

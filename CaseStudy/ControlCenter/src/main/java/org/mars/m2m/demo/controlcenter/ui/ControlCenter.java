@@ -7,32 +7,31 @@ package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
 import javax.swing.JSplitPane;
-import javax.swing.UIManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
-import org.mars.m2m.demo.controlcenter.services.OntologyBasedKnowledge;
 import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author AG BRIGHTER
  */
-public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeSelectionListener
+public final class ControlCenter extends javax.swing.JFrame implements TreeSelectionListener
 {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenter.class);
-    private HandleTree handleTree;
-
+    private final HandleTree handleTree;
+    private final ControlCenterServices controlCenterServices;
     /**
      * Creates new form ControlCenter
+     * @param ccs
      */
-    public ControlCenter() {
+    public ControlCenter(ControlCenterServices ccs) {
+        this.controlCenterServices = ccs;//has to come before initialization of components because the object is used in UI customized code
         initComponents();
         handleTree = new HandleTree(jTreeControlCenter);
         NewDeviceServices.setHandleTree(handleTree);
-        ControlCenterServices.setKb(new OntologyBasedKnowledge());//initializes the knowledgebase of the control center
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
         this.animationPanel.start();
     }
@@ -65,7 +64,6 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
         setTitle("Control Center v1.0.0");
         setMaximumSize(new java.awt.Dimension(900, 700));
         setMinimumSize(new java.awt.Dimension(900, 700));
-        setPreferredSize(new java.awt.Dimension(900, 700));
 
         ccSplitPanelTab1.setDividerLocation(150);
         this.pnlLeft = new JPanelForLeftSplitPane();
@@ -79,29 +77,30 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
         ccJPanelInTab1.setLayout(ccJPanelInTab1Layout);
         ccJPanelInTab1Layout.setHorizontalGroup(
             ccJPanelInTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+            .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
         );
         ccJPanelInTab1Layout.setVerticalGroup(
             ccJPanelInTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+            .addComponent(ccSplitPanelTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
 
         ccTabbedPane.addTab("UAV", ccJPanelInTab1);
 
         jSplitPane1.setDividerLocation(600);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        this.animationPanel = new AnimationPanel();
+        this.animationPanel = new AnimationPanel(this.controlCenterServices);
+
         this.jSplitPane1.add(animationPanel, JSplitPane.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
 
         ccTabbedPane.addTab("Field", jPanel2);
@@ -118,46 +117,19 @@ public class ControlCenter extends javax.swing.JFrame implements Runnable, TreeS
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 819, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(ccTabbedPane))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+            .addGap(0, 679, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(ccTabbedPane))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     */
-    @Override
-    public void run() {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try 
-        {
-            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ControlCenter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ControlCenter().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ccJPanelInTab1;

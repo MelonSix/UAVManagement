@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.eventHandling.caller.ReflexListenerImplCaller;
 import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.AssignScoutRoleReflexListenerImpl;
 import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.SendObservationReflexListenerImpl;
@@ -29,8 +28,10 @@ public class ControlCenterReflexes
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterReflexes.class);    
     private final UavUtil uavUtil;
     private final ExecutorService  executor;
+    private final ArrayList<String> existingObservations;
     
     public ControlCenterReflexes() {
+        this.existingObservations = new ArrayList<>();
         executor = Executors.newFixedThreadPool(5);
         this.uavUtil = new UavUtil();
     }
@@ -46,10 +47,9 @@ public class ControlCenterReflexes
         //gets all scouts and their respective onboard devices
         TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = 
                 uavUtil.getUAVAndOnboardDevices(uavUtil.getConnectedDevicesByCategory(connectedDevices, "scout"));
-        int i=0;
+        
         for(String scout : scouts.keySet())
-        {  
-            CC_StaticInitConfig.currentScoutIndex = i;
+        {              
             if(!configuredScouts.contains(scout))
             {            
                 ArrayList<ReportedLwM2MClient> onboardDevices = scouts.get(scout);
@@ -72,7 +72,7 @@ public class ControlCenterReflexes
                     if(flightControl != null)
                         break;//device found
                 }
-
+            
                 //if flight control device has been found
                 if(flightControl != null)
                 {
@@ -81,38 +81,24 @@ public class ControlCenterReflexes
                     configuredScouts.add(scout);
                 }
             }
-            i++;
         }
     }
     
     /**
      * Performs observation requests on the threat and obstacle resources
-     * @param connectedDevices Devices attached to the control center
+     * @param device The connected device/client
      */
-    private static final ArrayList<String> existingObservations = new ArrayList<>();
-    public void observationRequestReflex(final ArrayList<ReportedLwM2MClient> connectedDevices)
+    public void observationRequestReflex(ReportedLwM2MClient device)
     {
-        //gets all scouts and their respective onboard devices
-        TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = 
-                uavUtil.getUAVAndOnboardDevices(uavUtil.getConnectedDevicesByCategory(connectedDevices, "scout"));
-        
-        for(String scout : scouts.keySet())
-        { 
-            ArrayList<ReportedLwM2MClient> onboardDevices = scouts.get(scout);
-
-            for (ReportedLwM2MClient device : onboardDevices) {
-                ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
-                for (ObjectLink obj : objectLinks) {                        
-                    if (obj.getObjectId() == 12202 || obj.getObjectId() == 12206) {
-                        WorkerThread thread = new WorkerThread(device, ThreadOperation.OBSERVATION_REFLEX);
-                        executor.execute(thread);
-
-                    } else {
-                        logger.info("Reflex Observation request is invalid");
-                    }
-                }
+        ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
+        for (ObjectLink obj : objectLinks) 
+        {                        
+            System.out.println("Current Object link ID:" + obj.getObjectId());
+            if (obj.getObjectId() == 12202 || obj.getObjectId() == 12206) {
+                WorkerThread thread = new WorkerThread(device, ThreadOperation.OBSERVATION_REFLEX);
+                executor.execute(thread);
+                System.out.println("Current Object added to worker thread");
             }
-            
         }
     }
 }

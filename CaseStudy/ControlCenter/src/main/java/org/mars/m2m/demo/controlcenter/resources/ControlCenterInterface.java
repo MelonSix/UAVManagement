@@ -34,7 +34,7 @@ public class ControlCenterInterface
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterInterface.class);
     private final NewDeviceServices newDeviceServices;
     private ArrayList<ReportedLwM2MClient> connectedDevices;
-    private ControlCenterReflexes reflex;
+    private final ControlCenterReflexes reflex;
     private final ControlCenterServices controlCenterServices;
     
     public ControlCenterInterface() {
@@ -55,7 +55,7 @@ public class ControlCenterInterface
         
         //reflex operations to endpoints
         reflex.scoutingWaypointsReflex(connectedDevices);
-        reflex.observationRequestReflex(connectedDevices);
+        reflex.observationRequestReflex(device);
         
         return Response.accepted().build();
     }
@@ -65,20 +65,20 @@ public class ControlCenterInterface
     @Consumes(MediaType.APPLICATION_XML)
     public Response acceptNotification(RequestPrimitive data)
     {
-        if (data != null) {
+        if (data != null && controlCenterServices.getKb() != null) {
             String content = Unmarshaller.getJsonContent(data);
             Notification notification = Unmarshaller.getNotificationObject(content);
             switch (Unmarshaller.determineNotificationType(notification)) {
                 case OBSTACLE:
                     Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
-                    if (obs != null) {
+                    if (obs != null && !controlCenterServices.containsObstacle(obs)) {
                         controlCenterServices.addObstacle(obs);
                         System.out.println("Obstacle added to kb");
                     }
                     break;
                 case THREAT:
                     Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
-                    if (threat != null) {
+                    if (threat != null && !controlCenterServices.containsThreat(threat)) {
                         controlCenterServices.addThreat(threat);
                         System.out.println("Threat added to kb");
                     }
@@ -92,5 +92,9 @@ public class ControlCenterInterface
             return Response.accepted().build();
         }
         return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+    }
+
+    public ControlCenterServices getControlCenterServices() {
+        return controlCenterServices;
     }
 }

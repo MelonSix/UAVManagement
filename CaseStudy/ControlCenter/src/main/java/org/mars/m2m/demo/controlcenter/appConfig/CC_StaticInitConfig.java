@@ -5,7 +5,7 @@
  */
 package org.mars.m2m.demo.controlcenter.appConfig;
 
-import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.Timer;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 
@@ -100,5 +100,5 @@ public class CC_StaticInitConfig {
     public static int bound_height=600;//simulation environment height
     public static String mgmntAdapterURL="";//URL for managment adapter
     public static String mgmntServerURL = "";
-    public static int currentScoutIndex = -1;//used to control scout role assignment
+    public static AtomicInteger currentScoutIndex = new AtomicInteger();//used to control scout role assignment
 }

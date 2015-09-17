@@ -6,8 +6,6 @@
 package org.mars.m2m.Devices;
 
 import ch.qos.logback.classic.Logger;
-import java.util.Timer;
-import java.util.TimerTask;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
 import org.eclipse.leshan.core.node.LwM2mResource;
@@ -35,14 +33,14 @@ public class ThreatSensorInCaseStudy extends BaseInstanceEnabler implements Devi
     */
     public ThreatSensorInCaseStudy() 
     {
-        Timer timer = new Timer();
+        /*Timer timer = new Timer();
         timer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                fireResourceChange(0);
-            }
-        }, 500, 500);
+        
+        @Override
+        public void run() {
+        fireResourceChange(0);
+        }
+        }, 500, 500);*/
     }    
     
     @Override
@@ -88,6 +86,7 @@ public class ThreatSensorInCaseStudy extends BaseInstanceEnabler implements Devi
 
     public void setThreatInJson(String threatAsJson) {
         this.threatAsJson = threatAsJson;
+        fireResourceChange(0);
     }
     
     

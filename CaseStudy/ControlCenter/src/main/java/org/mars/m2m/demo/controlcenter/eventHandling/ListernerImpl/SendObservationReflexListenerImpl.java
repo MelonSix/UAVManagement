@@ -5,18 +5,13 @@
  */
 package org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl;
 
-import com.google.gson.Gson;
-import java.util.LinkedList;
 import javax.ws.rs.core.MediaType;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.client.ServiceConsumer;
 import org.mars.m2m.demo.controlcenter.client.SvcConsumerDetails;
 import org.mars.m2m.demo.controlcenter.eventHandling.Listerners.ReflexListener;
-import org.mars.m2m.demo.controlcenter.model.FlightControlWaypoints;
 import org.mars.m2m.demo.controlcenter.model.ObjectLink;
-import org.mars.m2m.demo.controlcenter.model.ObjectResource;
 import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
-import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.util.RequestUtil;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 
