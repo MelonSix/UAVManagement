@@ -13,12 +13,17 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.swing.tree.DefaultMutableTreeNode;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
+import org.mars.m2m.demo.controlcenter.model.Attacker;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
+import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;
+import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
+import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -86,119 +91,151 @@ public class ControlCenterServices extends KnowledgeInterface
      */
     public void roleAssignForAttackerWithSubTeam(int assigned_attacker_index, int assigned_role_index) 
     {
-//        TreeSet<Integer> assigned_attacker = new TreeSet<Integer>();
-//        ArrayList<Threat> threats = kb.getThreats();
-//        int threat_num = threats.size();
-//        int attacker_num = attackers.size();
-//
-//        for (int i = 0; i < threat_num; i++) {
-//            Threat threat = threats.get(i);
-//            if (!threat.isEnabled()) {
-//                continue;
-//            }
-//            Set<Integer> attackers_locked=this.locked_threat.get(threat.getIndex());
-//            if(attackers_locked==null)
-//            {
-//                attackers_locked=new TreeSet<Integer>();
-//            }
-//            assigned_attacker.addAll(attackers_locked);
-//            //mannaually assign
-//            if (threat.getIndex() == assigned_role_index) {
-//                for (int j = 0; j < attacker_num; j++) {
-//                    Attacker attacker = this.attackers.get(j);
-//                    if (!attacker.isVisible()) {
-//                        continue;
-//                    }
-//                    if (assigned_attacker_index == attacker.getIndex()) {
-//                        if (attacker.getTarget_indicated_by_role() == null || attacker.getTarget_indicated_by_role().getIndex() != threat.getIndex()) {
-//                            attacker.setFly_mode(Attacker.FLYING_MODE);
-//                        }
-//                        attacker.setTarget_indicated_by_role(threat);
-//                        attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
-//                        attacker.setNeed_to_replan(true);
-//                        assigned_attacker.add(assigned_attacker_index);
-//                        break;
-//                    }
-//                }
-//                continue;
-//            }
-//            
-//            int remained_team_size=this.sub_team_size-attackers_locked.size();
-//            ArrayList<Attacker> attacker_arr_to_assign = new ArrayList<Attacker>();
-//            ArrayList<Float> attacker_dist_to_assign = new ArrayList<Float>();
-//            for (int j = 0; j < attacker_num; j++) {
-//                Attacker current_attacker = this.attackers.get(j);
-//                if (!current_attacker.isEnduranceCapReachable(threat)) {
-//                    continue;
-//                }
-//                if (assigned_attacker_index == current_attacker.getIndex()) {
-//                    continue;
-//                }
-//                if (!current_attacker.isVisible()) {
-//                    continue;
-//                }
-//                if (attackers_locked.contains(j)) {
-//                    continue;
-//                }
-//                if (assigned_attacker.contains(current_attacker.getIndex())) {
-//                    continue;
-//                }
-//
-//                float dist_between_uav_and_role = DistanceUtil.distanceBetween(current_attacker.getCenter_coordinates(), threat.getCoordinates());
-//                int index_to_insert = 0;
-//                boolean attacker_added = false;
-//                for (float attacker_dist : attacker_dist_to_assign) {
-//                    if (dist_between_uav_and_role < attacker_dist) {
-//                        attacker_added = true;
-//                        break;
-//                    }
-//                    index_to_insert++;
-//                }
-//                if (attacker_added) {
-//                    attacker_dist_to_assign.add(index_to_insert, dist_between_uav_and_role);
-//                    attacker_arr_to_assign.add(index_to_insert, current_attacker);
-//
-//                    if (attacker_dist_to_assign.size() > remained_team_size) {
-//                        attacker_dist_to_assign.remove(remained_team_size);
-//                        attacker_arr_to_assign.remove(remained_team_size);
-//                    }
-//                } else if (attacker_dist_to_assign.size() < remained_team_size) {
-//                    attacker_dist_to_assign.add(dist_between_uav_and_role);
-//                    attacker_arr_to_assign.add(current_attacker);
-//                }
-//            }
-//            
-//            if (attacker_arr_to_assign.size() >= remained_team_size) {
-//                for (Attacker attacker : attacker_arr_to_assign) {
-//                    if (attacker.getFly_mode() == Attacker.TARGET_LOCKED_MODE) {
-//                        continue;
-//                    }
-//                    assigned_attacker.add(attacker.getIndex());
-//                    attacker.setTarget_indicated_by_role(threat);
-//
-//                    attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
-//                    attacker.setNeed_to_replan(true);
-//                    attacker.setFly_mode(Attacker.FLYING_MODE);
-//                }
-//            }
-//        }
-//
-//        for (int j = 0; j < attacker_num; j++) {
-//            Attacker current_attacker = this.attackers.get(j);
-//            if(current_attacker.getFly_mode()==Attacker.TARGET_LOCKED_MODE)
-//            {
-//                continue;
-//            }
-//            if (!assigned_attacker.contains(current_attacker.getIndex()) && current_attacker.getTarget_indicated_by_role() != null && current_attacker.getTarget_indicated_by_role().getIndex() != -1) {
-//                float[] dummy_threat_coord = World.assignUAVPortInBase(current_attacker.getIndex());
-//                Threat dummy_threat = new Threat(-1, dummy_threat_coord, 0, 0);
-//                current_attacker.setTarget_indicated_by_role(dummy_threat);
-//                current_attacker.setNeed_to_replan(true);
-//                current_attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
-//                current_attacker.setFly_mode(Attacker.FLYING_MODE);
-//            }
-//        }
-//        need_to_assign_role = false;
+        TreeSet<Integer> assigned_attacker = new TreeSet<>();
+        ArrayList<Threat> threats = kb.getThreats();
+        int threat_num = threats.size();
+        int attacker_num = HandleTree.attackersNode.getChildCount();
+
+        for (int i = 0; i < threat_num; i++) {
+            Threat threat = threats.get(i);
+            if (!threat.isEnabled()) {
+                continue;
+            }
+            Set<Integer> attackers_locked=this.locked_threat.get(threat.getIndex());
+            if(attackers_locked==null)
+            {
+                attackers_locked=new TreeSet<>();
+            }
+            assigned_attacker.addAll(attackers_locked);
+            //manually assign
+            if (threat.getIndex() == assigned_role_index) {
+                for (int j = 0; j < attacker_num; j++) 
+                {
+                    DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(j);
+                    
+                    if (node != null) 
+                    {
+                        Attacker attacker = getVirtualizedAttacker(node);
+                        if (!attacker.isOnline()) {
+                            continue;
+                        }
+                        if (assigned_attacker_index == attacker.getIndex()) {
+                            if (attacker.getTarget_indicated_by_role() == null || attacker.getTarget_indicated_by_role().getIndex() != threat.getIndex()) {
+                                attacker.setFlightMode(CC_StaticInitConfig.FLYING_MODE);
+                            }
+                            attacker.setTarget_indicated_by_role(threat);
+                            attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                            attacker.setReplan(true);
+                            assigned_attacker.add(assigned_attacker_index);
+                            break;
+                        }
+                    }
+                }
+                continue;
+            }
+            
+            int remained_team_size=this.sub_team_size-attackers_locked.size();
+            ArrayList<Attacker> attacker_arr_to_assign = new ArrayList<Attacker>();
+            ArrayList<Float> attacker_dist_to_assign = new ArrayList<Float>();
+            for (int j = 0; j < attacker_num; j++) {
+                DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(j);
+                    
+                    if (node != null) 
+                    {
+                        Attacker current_attacker = getVirtualizedAttacker(node);
+                        
+                        if (!current_attacker.isEnduranceCapReachable(threat)) {
+                            continue;
+                        }
+                        if (assigned_attacker_index == current_attacker.getIndex()) {
+                            continue;
+                        }
+                        if (!current_attacker.isOnline()) {
+                            continue;
+                        }
+                        if (attackers_locked.contains(j)) {
+                            continue;
+                        }
+                        if (assigned_attacker.contains(current_attacker.getIndex())) {
+                            continue;
+                        }
+
+                        float dist_between_uav_and_role = DistanceUtil.distanceBetween(current_attacker.getCenterCoordinates(), threat.getCoordinates());
+                        int index_to_insert = 0;
+                        boolean attacker_added = false;
+                        for (float attacker_dist : attacker_dist_to_assign) {
+                            if (dist_between_uav_and_role < attacker_dist) {
+                                attacker_added = true;
+                                break;
+                            }
+                            index_to_insert++;
+                        }
+                        if (attacker_added) {
+                            attacker_dist_to_assign.add(index_to_insert, dist_between_uav_and_role);
+                            attacker_arr_to_assign.add(index_to_insert, current_attacker);
+
+                            if (attacker_dist_to_assign.size() > remained_team_size) {
+                                attacker_dist_to_assign.remove(remained_team_size);
+                                attacker_arr_to_assign.remove(remained_team_size);
+                            }
+                        } else if (attacker_dist_to_assign.size() < remained_team_size) {
+                            attacker_dist_to_assign.add(dist_between_uav_and_role);
+                            attacker_arr_to_assign.add(current_attacker);
+                        }
+                    }
+                
+            }
+            
+            if (attacker_arr_to_assign.size() >= remained_team_size) {
+                for (Attacker attacker : attacker_arr_to_assign) {
+                    if (attacker.getFlightMode()== CC_StaticInitConfig.TARGET_LOCKED_MODE) {
+                        continue;
+                    }
+                    assigned_attacker.add(attacker.getIndex());
+                    attacker.setTarget_indicated_by_role(threat);
+
+                    attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                    attacker.setReplan(true);
+                    attacker.setFlightMode(CC_StaticInitConfig.FLYING_MODE);
+                }
+            }
+        }
+
+        for (int j = 0; j < attacker_num; j++) 
+        {
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(j);                    
+            if (node != null) 
+            {
+                Attacker current_attacker = getVirtualizedAttacker(node);
+                if(current_attacker != null)
+                {
+                    if(current_attacker.getFlightMode() == CC_StaticInitConfig.TARGET_LOCKED_MODE)
+                    {
+                        continue;
+                    }
+                    if (!assigned_attacker.contains(current_attacker.getIndex()) && current_attacker.getTarget_indicated_by_role() 
+                            != null && current_attacker.getTarget_indicated_by_role().getIndex() != -1) 
+                    {
+                        float[] dummy_threat_coord = current_attacker.getUavPositionInBaseStation();
+                        Threat dummy_threat = new Threat(-1, dummy_threat_coord, 0, 0);
+                        current_attacker.setTarget_indicated_by_role(dummy_threat);
+                        current_attacker.setReplan(true);
+                        current_attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                        current_attacker.setFlightMode(CC_StaticInitConfig.FLYING_MODE);
+                    }
+                }
+            }
+            
+        }
+        need_to_assign_role = false;
+    }
+
+    private Attacker getVirtualizedAttacker(DefaultMutableTreeNode node) {
+        Object nodeInfo;
+        nodeInfo = node.getUserObject();
+        ReportedLwM2MClient client = (ReportedLwM2MClient) nodeInfo;
+        Attacker attacker = AttackerUtils.getAttacker(client);
+        return attacker;
     }
 
     /** lock the attacker to the threat. when attacker is close enough to the attacker, the method is called.

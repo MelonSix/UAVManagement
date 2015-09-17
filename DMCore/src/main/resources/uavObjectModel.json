@@ -1,5 +1,5 @@
 [
-      {
+       {
     "name": "Security",
     "id": 0,
     "instancetype": "multiple",
@@ -2985,23 +2985,12 @@
                 "description": "" 
             },
             {
-               "id": 3,
-                "name": "Knowledgebase",
-                "operations": "RW",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "opaque",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
                "id": 4,
                 "name": "Path planned at last step",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
-                "type": "opaque",
+                "type": "string",
                 "range": "",
                 "units": "",
                 "description": "" 
@@ -3012,7 +3001,161 @@
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
-                "type": "opaque",
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 6,
+                "name": "Current path",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 7,
+                "name": "Has replanned",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "boolean",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 8,
+                "name": "Flight mode",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 9,
+                "name": "Hovered time step",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 10,
+                "name": "Iteration goal",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 11,
+                "name": "Stuck times",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 12,
+                "name": "Maximum stuck times",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 13,
+                "name": "Index",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 14,
+                "name": "Target indicated by role",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 15,
+                "name": "Online status",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "boolean",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 16,
+                "name": "Center coordinates",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 17,
+                "name": "Remained energy",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "float",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 18,
+                "name": "UAV Base Center coordinates",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 19,
+                "name": "UAV position in Base station",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
                 "range": "",
                 "units": "",
                 "description": "" 

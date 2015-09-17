@@ -194,7 +194,6 @@ public class AnimationPanel extends JPanel
      * @param obstacles 
      */
     private void updateObstacleImage(ArrayList<Obstacle> obstacles) {
-        System.out.println("obstacles for painting: "+obstacles.size());
         for (Obstacle obs : obstacles) {
             virtualizer.drawObstacle(obstacle_image_graphics, obs, GraphicConfig.obstacle_center_color, GraphicConfig.obstacle_edge_color, null);
             virtualizer.highlightObstacle(highlight_obstacle_image_graphics, obs,

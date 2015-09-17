@@ -101,4 +101,7 @@ public class CC_StaticInitConfig {
     public static String mgmntAdapterURL="";//URL for managment adapter
     public static String mgmntServerURL = "";
     public static AtomicInteger currentScoutIndex = new AtomicInteger();//used to control scout role assignment
+    
+    public static int FLYING_MODE = 0;
+    public static int TARGET_LOCKED_MODE = 1;
 }

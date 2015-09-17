@@ -21,7 +21,6 @@ public class DetectedThreatListenerImpl implements DetectedThreatListener {
         gson = new Gson();
         String data = gson.toJson(e.getThreat());
         e.getScout().getThreatSensorLwM2mClient().getThreatSensor().setThreatInJson(data);
-        System.out.println("Detected threat: "+data);
     }
     
 }

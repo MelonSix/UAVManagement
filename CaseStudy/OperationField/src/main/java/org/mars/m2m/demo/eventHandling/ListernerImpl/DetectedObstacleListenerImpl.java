@@ -21,7 +21,6 @@ public class DetectedObstacleListenerImpl implements DetectedObstacleListener {
         gson = new Gson();
         String data = gson.toJson(e.getObstacle());
         e.getScout().getObstacleSensorClient().getObstacleSensor().setObstacleInJson(data);
-        System.out.println("Detected obstacle: "+data);
     }
     
 }

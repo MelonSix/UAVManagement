@@ -8,6 +8,11 @@ package org.mars.m2m.demo.controlcenter.util;
 import ch.qos.logback.classic.Logger;
 import java.math.BigInteger;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.client.ServiceConsumer;
+import org.mars.m2m.demo.controlcenter.client.SvcConsumerDetails;
+import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceType;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
@@ -93,5 +98,23 @@ public class RequestUtil
         ci.setContent(value);
         ci.setCreationTime(DmCommons.getOneM2mTimeStamp());
         return ci;
+    }
+    
+    public Object sendToEndpoint(ReportedLwM2MClient client, String endpointUrl, Operation op, String data)
+    {
+        ServiceConsumer sc = new ServiceConsumer();
+        SvcConsumerDetails consumerDetails = new SvcConsumerDetails();
+        consumerDetails.setRequest(getRequestPrimitiveForData(op, 
+                        endpointUrl, CC_StaticInitConfig.ccAddress, data));
+        Response handlePost = sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
+        return handlePost.getEntity();
+    }
+    
+    public String extractRequestData(RequestPrimitive requestPrimitive) {
+        String content;
+        Container container = (Container) requestPrimitive.getContent().getAny().get(0);
+        ContentInstance ci = (ContentInstance) container.getContentInstanceOrContainerOrSubscription().get(0);
+        content = (String) ci.getContent();
+        return content;
     }
 }

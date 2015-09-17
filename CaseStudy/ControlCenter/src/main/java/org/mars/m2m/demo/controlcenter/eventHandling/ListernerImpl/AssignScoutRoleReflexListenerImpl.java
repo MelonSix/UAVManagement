@@ -74,7 +74,6 @@ public class AssignScoutRoleReflexListenerImpl implements ReflexListener
         
         sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
         logger.info("Scouting info sent: {},to: {}",data,device.getAddress());
-        System.out.println("Sending address: "+endpointURL);
     }
 
     @Override

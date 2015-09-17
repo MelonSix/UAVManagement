@@ -95,4 +95,5 @@ public class OpStaticInitConfig {
     public static int LOCKED_TIME_STEP_UNTIL_DESTROYED = 20;
     
     public static ArrayList<Float> alreadyAssignedScoutingTasks = new ArrayList<>();
+    
 }
