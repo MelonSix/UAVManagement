@@ -123,3 +123,28 @@ INFO   [06:10:17.144] [main] i.d.s.AdminEnvironment -  tasks =
 INFO   [06:10:17.160] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
 INFO   [06:10:17.222] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
 INFO   [06:10:17.222] [main] o.e.j.s.Server -  Started @2645ms 
+INFO   [14:18:31.886] [main] o.e.j.u.log -  Logging initialized @1895ms 
+INFO   [14:18:31.996] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [14:18:32.058] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [14:18:32.058] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [14:18:32.105] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [14:18:32.105] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [14:18:32.121] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [14:18:32.136] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [14:18:32.152] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [14:18:32.183] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [14:18:32.183] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:18:32.687] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [14:18:32.687] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [14:18:32.687] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:18:32.705] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [14:18:32.740] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [14:18:32.740] [main] o.e.j.s.Server -  Started @2758ms 

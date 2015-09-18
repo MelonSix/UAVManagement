@@ -16,7 +16,7 @@ import java.util.TreeSet;
 import javax.swing.tree.DefaultMutableTreeNode;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
-import org.mars.m2m.demo.controlcenter.model.Attacker;
+import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
@@ -115,7 +115,7 @@ public class ControlCenterServices extends KnowledgeInterface
                     
                     if (node != null) 
                     {
-                        Attacker attacker = getVirtualizedAttacker(node);
+                        AttackerModel attacker = getVirtualizedAttacker(node);
                         if (!attacker.isOnline()) {
                             continue;
                         }
@@ -135,14 +135,14 @@ public class ControlCenterServices extends KnowledgeInterface
             }
             
             int remained_team_size=this.sub_team_size-attackers_locked.size();
-            ArrayList<Attacker> attacker_arr_to_assign = new ArrayList<Attacker>();
+            ArrayList<AttackerModel> attacker_arr_to_assign = new ArrayList<AttackerModel>();
             ArrayList<Float> attacker_dist_to_assign = new ArrayList<Float>();
             for (int j = 0; j < attacker_num; j++) {
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(j);
                     
                     if (node != null) 
                     {
-                        Attacker current_attacker = getVirtualizedAttacker(node);
+                        AttackerModel current_attacker = getVirtualizedAttacker(node);
                         
                         if (!current_attacker.isEnduranceCapReachable(threat)) {
                             continue;
@@ -187,7 +187,7 @@ public class ControlCenterServices extends KnowledgeInterface
             }
             
             if (attacker_arr_to_assign.size() >= remained_team_size) {
-                for (Attacker attacker : attacker_arr_to_assign) {
+                for (AttackerModel attacker : attacker_arr_to_assign) {
                     if (attacker.getFlightMode()== CC_StaticInitConfig.TARGET_LOCKED_MODE) {
                         continue;
                     }
@@ -206,7 +206,7 @@ public class ControlCenterServices extends KnowledgeInterface
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(j);                    
             if (node != null) 
             {
-                Attacker current_attacker = getVirtualizedAttacker(node);
+                AttackerModel current_attacker = getVirtualizedAttacker(node);
                 if(current_attacker != null)
                 {
                     if(current_attacker.getFlightMode() == CC_StaticInitConfig.TARGET_LOCKED_MODE)
@@ -230,11 +230,11 @@ public class ControlCenterServices extends KnowledgeInterface
         need_to_assign_role = false;
     }
 
-    private Attacker getVirtualizedAttacker(DefaultMutableTreeNode node) {
+    private AttackerModel getVirtualizedAttacker(DefaultMutableTreeNode node) {
         Object nodeInfo;
         nodeInfo = node.getUserObject();
         ReportedLwM2MClient client = (ReportedLwM2MClient) nodeInfo;
-        Attacker attacker = AttackerUtils.getAttacker(client);
+        AttackerModel attacker = AttackerUtils.getAttacker(client);
         return attacker;
     }
 
@@ -279,14 +279,14 @@ public class ControlCenterServices extends KnowledgeInterface
 //            return;
 //        }
 //        for (Integer attacker_index : assigned_attackers) {
-//            Attacker attacker = this.attackers.get(attacker_index);
-//            attacker.setFly_mode(Attacker.FLYING_MODE);
+//            AttackerModel attacker = this.attackers.get(attacker_index);
+//            attacker.setFly_mode(AttackerModel.FLYING_MODE);
 //            float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
 //            Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
 //            attacker.setTarget_indicated_by_role(dummy_threat);
 //            attacker.setNeed_to_replan(true);
 //            attacker.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_IDLE);
-//            attacker.setFly_mode(Attacker.FLYING_MODE);
+//            attacker.setFly_mode(AttackerModel.FLYING_MODE);
 //            attacker.setHovered_time_step(0);
 //        }
     }

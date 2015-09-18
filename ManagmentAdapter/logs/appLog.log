@@ -2055,3 +2055,23 @@ INFO   [06:10:47.639] [main] i.d.s.AdminEnvironment -  tasks =
 INFO   [06:10:47.650] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
 INFO   [06:10:47.710] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
 INFO   [06:10:47.710] [main] o.e.j.s.Server -  Started @2558ms 
+INFO   [14:20:36.469] [main] o.e.j.u.log -  Logging initialized @1282ms 
+INFO   [14:20:36.578] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [14:20:36.578] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [14:20:36.594] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [14:20:36.625] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:20:36.625] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:20:37.178] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [14:20:37.194] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
+INFO   [14:20:37.194] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:20:37.194] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
+INFO   [14:20:37.241] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:20:37.241] [main] o.e.j.s.Server -  Started @2053ms 
+ERROR  [18:09:06.171] [dw-43 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 

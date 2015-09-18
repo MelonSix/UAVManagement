@@ -43,3 +43,39 @@ INFO   [06:24:37.658] [pool-5-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout:
 INFO   [06:26:30.625] [pool-5-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=43965, Token=8c93c882, OptionSet={"Uri-Path":["3","0"]}, "" 
 INFO   [06:29:17.774] [pool-5-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=43966, Token=8c93c883, OptionSet={"Uri-Path":["3","0"]}, "" 
 INFO   [06:30:48.224] [pool-5-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=43967, Token=8c93c884, OptionSet={"Uri-Path":["3","0"]}, "" 
+INFO   [14:20:30.844] [main] o.e.j.u.log -  Logging initialized @1295ms 
+INFO   [14:20:30.973] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [14:20:30.988] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [14:20:31.051] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [14:20:31.051] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [14:20:31.067] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [14:20:31.067] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [14:20:31.098] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [14:20:31.098] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [14:20:31.113] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [14:20:31.129] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [14:20:31.160] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [14:20:31.207] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:20:31.826] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [14:20:31.841] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1da4b6b3{/ms,null,AVAILABLE} 
+INFO   [14:20:31.857] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:20:31.857] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1a891add{/admin-ms,null,AVAILABLE} 
+INFO   [14:20:31.904] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1095f122{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [14:20:31.904] [main] o.e.j.s.Server -  Started @2359ms 

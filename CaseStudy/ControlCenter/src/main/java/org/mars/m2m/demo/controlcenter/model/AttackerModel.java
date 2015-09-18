@@ -5,26 +5,27 @@
  */
 package org.mars.m2m.demo.controlcenter.model;
 
+import org.mars.m2m.demo.controlcenter.uav.UAVPath;
 import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
 
 /**
  *
  * @author AG BRIGHTER
  */
-public class Attacker 
+public class AttackerModel 
 {
     //device resources
     private int pathIndex;
     private boolean replan;
     private boolean movedAtLastStep;
     /*private KnowledgeInterface kb;*/
-    private String pathPlannedAtLastStep;
-    private String pathHistory;
-    private String currentPath;
+    private UAVPath pathPlannedAtLastStep;
+    private UAVPath pathHistory;
+    private UAVPath currentPath;
     private boolean hasReplanned;
     private int flightMode;
     private int hoveredTimeStep;
-    private String iterationGoal;
+    private float [] iterationGoal;
     private int stuckTimes;
     private int maximumStuckTimes;
     private int index;
@@ -36,7 +37,7 @@ public class Attacker
     private float [] uavBaseCenterCoordinates;
     private float [] uavPositionInBaseStation;
 
-    public Attacker() {
+    public AttackerModel() {
     }
 
     public void setIndex(int index) {
@@ -71,27 +72,27 @@ public class Attacker
         this.movedAtLastStep = movedAtLastStep;
     }
 
-    public String getPathPlannedAtLastStep() {
+    public UAVPath getPathPlannedAtLastStep() {
         return pathPlannedAtLastStep;
     }
 
-    public void setPathPlannedAtLastStep(String pathPlannedAtLastStep) {
+    public void setPathPlannedAtLastStep(UAVPath pathPlannedAtLastStep) {
         this.pathPlannedAtLastStep = pathPlannedAtLastStep;
     }
 
-    public String getPathHistory() {
+    public UAVPath getPathHistory() {
         return pathHistory;
     }
 
-    public void setPathHistory(String pathHistory) {
+    public void setPathHistory(UAVPath pathHistory) {
         this.pathHistory = pathHistory;
     }
 
-    public String getCurrentPath() {
+    public UAVPath getCurrentPath() {
         return currentPath;
     }
 
-    public void setCurrentPath(String currentPath) {
+    public void setCurrentPath(UAVPath currentPath) {
         this.currentPath = currentPath;
     }
 
@@ -119,11 +120,11 @@ public class Attacker
         this.hoveredTimeStep = hoveredTimeStep;
     }
 
-    public String getIterationGoal() {
+    public float[] getIterationGoal() {
         return iterationGoal;
     }
 
-    public void setIterationGoal(String iterationGoal) {
+    public void setIterationGoal(float [] iterationGoal) {
         this.iterationGoal = iterationGoal;
     }
 
