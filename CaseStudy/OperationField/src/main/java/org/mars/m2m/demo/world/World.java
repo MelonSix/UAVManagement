@@ -190,15 +190,6 @@ public class World {
         this.setObstacles(init_config.getObstacles());
         this.uav_base = init_config.getUav_base();
 
-//        //share information in different ways
-//        if (this.inforshare_algorithm == OpStaticInitConfig.BROADCAST_INFOSHARE) {
-//            this.msg_dispatcher = new BroadcastMessageDispatcher(control_center);
-//        } else if (this.inforshare_algorithm == OpStaticInitConfig.REGISTER_BASED_INFORSHARE) {
-//            this.msg_dispatcher = new RegisteredMessageDispatcher(control_center);
-//        } else if (this.inforshare_algorithm == OpStaticInitConfig.NONE_INFORSHARE) {
-//            this.msg_dispatcher = new DummyMessageDispatcher(control_center);
-//        }
-
         if (OpStaticInitConfig.debug_rrt) {
             OpStaticInitConfig.SHOW_FOG_OF_WAR = false;
             this.scout_num = 0;
@@ -388,7 +379,8 @@ public class World {
     /**During patrol,the attacker detect event by radar.
      * 
      */
-    private void detectAttackerEvent() {
+    private void detectAttackerEvent() 
+    {
         for (Attacker attacker : World.attackers) {
             if (!attacker.isVisible()) {
                 continue;
@@ -402,15 +394,13 @@ public class World {
                         attacker.addObstacle(obs);
                         attacker.setNeed_to_replan(true);
                     }
-//                    if (!control_center.containsObstacle(obs)) {
-//                        control_center.addObstacle(obs);
-//                    }
                 }
             }
 
             ArrayList<Threat> threats = this.getThreats();
             int threat_list_size = threats.size();
-            for (int i = 0; i < threat_list_size; i++) {
+            for (int i = 0; i < threat_list_size; i++) 
+            {
                 Threat threat = threats.get(i);
                 float dist_from_attacker_to_threat = DistanceUtil.distanceBetween(attacker.getCenter_coordinates(), threat.getCoordinates());
                 if (dist_from_attacker_to_threat < attacker.getUav_radar().getRadius() && threat.isEnabled()) {
@@ -418,11 +408,6 @@ public class World {
                         attacker.addThreat(threat);
                         attacker.setNeed_to_replan(true);
                     }
-
-//                    if (!control_center.containsThreat(threat)) {
-//                        control_center.addThreat(threat);
-//                        control_center.setNeed_to_assign_role(true);
-//                    }
                 }
             }
         }
@@ -597,9 +582,9 @@ public class World {
         updateScout();
         logger.debug("scout(s) coordinates updated");
         detectScoutEvent();
-//        logger.debug("scout event detect over");
-//        detectAttackerEvent();
-//        logger.debug("attacker detect over");
+        logger.debug("scout event detect over");
+        detectAttackerEvent();
+        logger.debug("attacker detect over");
 //        registerInfoRequirement();
 //        logger.debug("information register over");
 //        shareInfoAfterRegistration();

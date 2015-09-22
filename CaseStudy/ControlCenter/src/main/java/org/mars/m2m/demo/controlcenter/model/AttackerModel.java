@@ -5,8 +5,11 @@
  */
 package org.mars.m2m.demo.controlcenter.model;
 
+import java.awt.Rectangle;
 import org.mars.m2m.demo.controlcenter.uav.UAVPath;
+import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
+import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
 
 /**
  *
@@ -14,6 +17,8 @@ import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
  */
 public class AttackerModel 
 {
+    public ReportedLwM2MClient client;
+    
     //device resources
     private int pathIndex;
     private boolean replan;
@@ -34,7 +39,7 @@ public class AttackerModel
     private int speed;
     private float [] centerCoordinates;
     private float remainedEnergy;
-    private float [] uavBaseCenterCoordinates;
+    private float [] uavBaseCenterCoordinates = new float[]{60, 60};;
     private float [] uavPositionInBaseStation;
 
     public AttackerModel() {
@@ -165,6 +170,7 @@ public class AttackerModel
     }
 
     public void setSpeed(int speed) {
+        System.out.println("speed set");
         this.speed = speed;
     }
 
@@ -199,10 +205,52 @@ public class AttackerModel
     public void setUavPositionInBaseStation(float[] uavPositionInBaseStation) {
         this.uavPositionInBaseStation = uavPositionInBaseStation;
     }
+
+    public void setClient(ReportedLwM2MClient client) {
+        this.client = client;
+    }
+
+    public ReportedLwM2MClient getClient() {
+        return client;
+    }
     
     
+    /**receive message and parse message
+     *
+     * @param msg
+     */
+    public void receiveMesage(Message msg) {
+        if (msg != null) {
+            parseMessage(msg);
+        }
+    }
     
-    /** check whether the remained energy of the attacker is enough to destory the target and return back to the uav base.
+    /** parsing the received msgs, The received msgs are parsed into obstacle, threat, or conflict. 
+     * And the uav should replan when received new info.
+     *
+     * @param msg
+     */
+    private void parseMessage(Message msg) {
+        AttackerUtils attackerUtils = new AttackerUtils();
+        int msg_type = msg.getMsg_type();
+        if (msg_type == Message.CONFLICT_MSG) {
+            Conflict conflict = (Conflict) msg;
+            attackerUtils.execute.addConflict(conflict, this);
+            this.setReplan(true);
+        } else if (msg_type == Message.OBSTACLE_MSG) {
+            Obstacle obstacle = (Obstacle) msg;
+            attackerUtils.execute.addObstacle(obstacle, this);
+            if (this.getTarget_indicated_by_role()== null || !this.isObstacleInTargetMBR(obstacle.getShape().getBounds())) {
+                this.setReplan(true);
+            }
+        } else if (msg_type == Message.THREAT_MSG) {
+            Threat threat = (Threat) msg;
+            attackerUtils.execute.addThreat(threat,  this);
+            attackerUtils.update.setReplan(true, this);
+        }
+    }
+    
+    /** check whether the remained energy of the attacker is enough to destroy the target and return back to the uav base.
      * 
      * @param potential_target
      * @return 
@@ -215,5 +263,21 @@ public class AttackerModel
             return false;
         }
         return true;
+    }
+   
+    /** check whether obstacle is in the rectangle, which is constructed by the current location of this uav and its target location.
+     * 
+     * @param obstacleMinimumBoundedRectangle
+     * @return 
+     */
+    public boolean isObstacleInTargetMBR(Rectangle obstacleMinimumBoundedRectangle)
+    {
+        float[] target_coord=this.getTarget_indicated_by_role().getCoordinates();
+        Rectangle rect = RectangleUtil.findMBRRect(this.centerCoordinates, target_coord);
+        return rect.intersects(obstacleMinimumBoundedRectangle);
+    }
+
+    public boolean containsObstacle(Obstacle obstacle) {
+        return false;//TODO: Handle this operation
     }
 }

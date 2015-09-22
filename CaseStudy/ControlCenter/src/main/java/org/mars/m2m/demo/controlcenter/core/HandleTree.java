@@ -74,13 +74,13 @@ public class HandleTree implements TreeSelectionListener
         /**
          * Converts a selected node of the tree back to an instance of ReportedLwM2MClient
          */
-        DefaultMutableTreeNode node = (DefaultMutableTreeNode) this.tree.getLastSelectedPathComponent();
-        if(node == null)
-        return;        
-        Object nodeInfo;
-        nodeInfo = node.getUserObject();
-        ReportedLwM2MClient device = (ReportedLwM2MClient) nodeInfo;
-        System.out.println(device.getAddress()+", "+device.getRegistrationId());
+//        DefaultMutableTreeNode node = (DefaultMutableTreeNode) this.tree.getLastSelectedPathComponent();
+//        if(node == null)
+//        return;        
+//        Object nodeInfo;
+//        nodeInfo = node.getUserObject();
+//        ReportedLwM2MClient device = (ReportedLwM2MClient) nodeInfo;
+//        System.out.println(device.getAddress()+", "+device.getRegistrationId());
     }
     
     /**
@@ -95,7 +95,7 @@ public class HandleTree implements TreeSelectionListener
         //categorizes the reported devices
         ArrayList<ReportedLwM2MClient> scoutDevices = uavUtil.getConnectedDevicesByCategory(this.connectedDevices, "scout");
         ArrayList<ReportedLwM2MClient> attackerDevices = uavUtil.getConnectedDevicesByCategory(this.connectedDevices, "attacker");
-        System.out.println("Scouts num: "+scoutDevices.size()+", attacker num: "+attackerDevices.size());
+        //System.out.println("Scouts num: "+scoutDevices.size()+", attacker num: "+attackerDevices.size());
         
         //gets scouts and their respective devices
         TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = uavUtil.getUAVAndOnboardDevices(scoutDevices);

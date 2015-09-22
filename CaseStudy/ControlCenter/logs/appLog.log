@@ -1,147 +1,992 @@
-INFO   [06:10:24.198] [main] o.e.j.u.log -  Logging initialized @1365ms 
-ERROR  [06:10:24.860] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
-INFO   [06:10:24.876] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [06:10:24.891] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [06:10:24.907] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [06:10:24.954] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [06:10:24.954] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [06:10:25.470] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:07:21.339] [main] o.e.j.u.log -  Logging initialized @1341ms 
+ERROR  [10:07:21.975] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [10:07:22.016] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [10:07:22.026] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [10:07:22.044] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [10:07:22.080] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:07:22.084] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:07:22.612] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [06:10:25.470] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6a472566{/cc,null,AVAILABLE} 
-INFO   [06:10:25.470] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:07:22.614] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6a472566{/cc,null,AVAILABLE} 
+INFO   [10:07:22.618] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [06:10:25.470] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@17f2dd85{/admin-cc,null,AVAILABLE} 
-INFO   [06:10:25.516] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [06:10:25.516] [main] o.e.j.s.Server -  Started @2677ms 
-INFO   [06:12:58.474] [pool-4-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:54640 
-INFO   [06:12:59.144] [pool-4-thread-1] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:55791 
-INFO   [06:14:14.402] [main] o.e.j.u.log -  Logging initialized @1366ms 
-ERROR  [06:14:15.008] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
-INFO   [06:14:15.018] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [06:14:15.026] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [06:14:15.041] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [06:14:15.081] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [06:14:15.084] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [06:14:15.634] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:07:22.623] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@17f2dd85{/admin-cc,null,AVAILABLE} 
+INFO   [10:07:22.660] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:07:22.660] [main] o.e.j.s.Server -  Started @2666ms 
+INFO   [10:08:41.892] [pool-4-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:52690 
+INFO   [10:08:41.892] [pool-4-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:54536 
+ERROR  [10:08:42.145] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  null 
+ERROR  [10:08:43.238] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:43.333] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:43.335] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:43.338] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:08:43.338] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:43.833] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:08:43.837] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:43.841] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+ERROR  [10:08:44.231] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:44.232] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:44.232] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:44.239] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:08:44.240] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:44.241] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:08:44.241] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:08:44.739] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+INFO   [10:23:49.818] [main] o.e.j.u.log -  Logging initialized @1263ms 
+ERROR  [10:23:50.315] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [10:23:50.327] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [10:23:50.334] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [10:23:50.351] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [10:23:50.386] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:23:50.390] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:23:50.887] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [06:14:15.637] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@761e788f{/cc,null,AVAILABLE} 
-INFO   [06:14:15.641] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:23:50.890] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@761e788f{/cc,null,AVAILABLE} 
+INFO   [10:23:50.894] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [06:14:15.645] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,AVAILABLE} 
-INFO   [06:14:15.683] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [06:14:15.683] [main] o.e.j.s.Server -  Started @2663ms 
-INFO   [06:14:33.721] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:52868 
-INFO   [06:14:34.128] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:65099 
-INFO   [06:32:33.592] [main] o.e.j.u.log -  Logging initialized @1318ms 
-ERROR  [06:32:34.089] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
-INFO   [06:32:34.104] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [06:32:34.104] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [06:32:34.120] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [06:32:34.151] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [06:32:34.167] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [06:32:34.660] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:23:50.899] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,AVAILABLE} 
+INFO   [10:23:50.937] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:23:50.937] [main] o.e.j.s.Server -  Started @2384ms 
+INFO   [10:24:28.942] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:52320 
+INFO   [10:24:29.547] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:59297 
+ERROR  [10:24:30.875] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:30.880] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:30.880] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:30.882] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:24:30.883] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:30.885] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:24:30.886] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:30.887] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+ERROR  [10:24:31.315] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:31.317] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:31.318] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:31.320] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:24:31.322] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:31.323] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:24:31.324] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:31.332] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+ERROR  [10:24:32.170] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.170] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.171] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.171] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:24:32.172] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.172] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:24:32.173] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.188] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+ERROR  [10:24:32.570] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.570] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.571] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.571] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:24:32.572] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.575] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:24:32.575] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.579] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+ERROR  [10:24:32.952] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.952] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.952] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.953] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:24:32.953] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.954] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:24:32.955] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:24:32.958] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+INFO   [10:32:18.227] [main] o.e.j.u.log -  Logging initialized @1241ms 
+ERROR  [10:32:18.748] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [10:32:18.760] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [10:32:18.767] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [10:32:18.782] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [10:32:18.816] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:32:18.819] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:32:19.306] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [06:32:34.660] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@761e788f{/cc,null,AVAILABLE} 
-INFO   [06:32:34.660] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:32:19.307] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1907874b{/cc,null,AVAILABLE} 
+INFO   [10:32:19.311] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [06:32:34.676] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,AVAILABLE} 
-INFO   [06:32:34.707] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [06:32:34.707] [main] o.e.j.s.Server -  Started @2445ms 
-INFO   [06:34:58.815] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:49274 
-INFO   [06:34:59.128] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:49310 
-INFO   [14:18:29.330] [main] o.e.j.u.log -  Logging initialized @2103ms 
-ERROR  [14:18:30.112] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
-INFO   [14:18:30.112] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [14:18:30.143] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [14:18:30.159] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [14:18:30.205] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [14:18:30.221] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:18:31.027] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:32:19.316] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e58512c{/admin-cc,null,AVAILABLE} 
+INFO   [10:32:19.353] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:32:19.353] [main] o.e.j.s.Server -  Started @2369ms 
+INFO   [10:32:59.789] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:63783 
+INFO   [10:33:00.083] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:60244 
+ERROR  [10:33:01.872] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:01.880] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:01.880] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:01.882] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:33:01.883] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:01.884] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:33:01.885] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:01.886] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+ERROR  [10:33:02.329] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.329] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.330] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.330] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:33:02.331] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.331] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:33:02.334] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.335] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+ERROR  [10:33:02.734] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.735] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.735] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.735] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [10:33:02.736] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.736] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "4.0" 
+ERROR  [10:33:02.736] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+ERROR  [10:33:02.737] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: java.lang.Double cannot be cast to java.lang.Float 
+INFO   [10:39:28.207] [main] o.e.j.u.log -  Logging initialized @3833ms 
+ERROR  [10:39:32.547] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [10:39:32.736] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [10:39:32.767] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [10:39:32.859] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [10:39:32.976] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@4f4c88f9{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:39:32.984] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:39:35.392] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [14:18:31.027] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@761e788f{/cc,null,AVAILABLE} 
-INFO   [14:18:31.027] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:39:35.398] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5287ba5f{/cc,null,AVAILABLE} 
+INFO   [10:39:35.420] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:18:31.043] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,AVAILABLE} 
-INFO   [14:18:31.105] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [14:18:31.105] [main] o.e.j.s.Server -  Started @3890ms 
-INFO   [14:21:20.165] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:51474 
-INFO   [14:21:20.649] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:62776 
-INFO   [14:21:54.574] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [14:21:54.576] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,UNAVAILABLE} 
-INFO   [14:21:54.580] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@761e788f{/cc,null,UNAVAILABLE} 
-INFO   [14:22:03.145] [main] o.e.j.u.log -  Logging initialized @1265ms 
-ERROR  [14:22:03.665] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
-INFO   [14:22:03.680] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [14:22:03.680] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [14:22:03.696] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [14:22:03.743] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [14:22:03.743] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:22:04.239] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:39:35.441] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7e49ded{/admin-cc,null,AVAILABLE} 
+INFO   [10:39:35.546] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@4f4c88f9{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:39:35.547] [main] o.e.j.s.Server -  Started @11176ms 
+INFO   [10:40:30.254] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:65406 
+INFO   [10:40:30.782] [pool-3-thread-5] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:52028 
+ERROR  [10:43:02.991] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: For input string: "0.0" 
+INFO   [10:52:24.092] [main] o.e.j.u.log -  Logging initialized @3154ms 
+ERROR  [10:52:28.706] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [10:52:28.862] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [10:52:28.891] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [10:52:28.975] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [10:52:29.091] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@57fbc06f{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:52:29.098] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:52:31.604] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [14:22:04.255] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@761e788f{/cc,null,AVAILABLE} 
-INFO   [14:22:04.255] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:52:31.610] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@41e9f86{/cc,null,AVAILABLE} 
+INFO   [10:52:31.634] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:22:04.255] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,AVAILABLE} 
-INFO   [14:22:04.302] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [14:22:04.302] [main] o.e.j.s.Server -  Started @2415ms 
-INFO   [14:22:25.535] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:57690 
-INFO   [14:22:26.073] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:56790 
-INFO   [14:25:19.713] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [14:25:19.713] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,UNAVAILABLE} 
-INFO   [14:25:19.713] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@761e788f{/cc,null,UNAVAILABLE} 
-INFO   [18:04:04.039] [main] o.e.j.u.log -  Logging initialized @1308ms 
-ERROR  [18:04:04.564] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
-INFO   [18:04:04.564] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
-INFO   [18:04:04.579] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
-INFO   [18:04:04.595] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
-INFO   [18:04:04.626] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [18:04:04.642] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:04:05.126] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:52:31.655] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6d5f4900{/admin-cc,null,AVAILABLE} 
+INFO   [10:52:31.763] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@57fbc06f{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:52:31.764] [main] o.e.j.s.Server -  Started @10828ms 
+INFO   [10:53:04.187] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58839 
+INFO   [10:53:04.698] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:65278 
+INFO   [10:57:06.380] [main] o.e.j.u.log -  Logging initialized @4034ms 
+ERROR  [10:57:10.287] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [10:57:10.449] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [10:57:10.478] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [10:57:10.558] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [10:57:10.670] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@51a18b21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:57:10.677] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:57:13.077] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
     POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
  
-INFO   [18:04:05.126] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1907874b{/cc,null,AVAILABLE} 
-INFO   [18:04:05.142] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:57:13.083] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@66f5b8fe{/cc,null,AVAILABLE} 
+INFO   [10:57:13.105] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [18:04:05.142] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e58512c{/admin-cc,null,AVAILABLE} 
-INFO   [18:04:05.189] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [18:04:05.189] [main] o.e.j.s.Server -  Started @2459ms 
-INFO   [18:04:18.958] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:55281 
-INFO   [18:04:19.635] [pool-3-thread-5] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:61410 
-INFO   [18:09:00.183] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
-INFO   [18:09:00.183] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@1e58512c{/admin-cc,null,UNAVAILABLE} 
-INFO   [18:09:00.183] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@1907874b{/cc,null,UNAVAILABLE} 
+INFO   [10:57:13.125] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e40fbb3{/admin-cc,null,AVAILABLE} 
+INFO   [10:57:13.228] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@51a18b21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [10:57:13.229] [main] o.e.j.s.Server -  Started @10886ms 
+INFO   [10:57:37.687] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58009 
+INFO   [10:57:38.194] [pool-3-thread-5] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:60386 
+INFO   [11:15:55.083] [main] o.e.j.u.log -  Logging initialized @1284ms 
+ERROR  [11:15:55.593] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [11:15:55.605] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:15:55.614] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:15:55.629] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:15:55.664] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:15:55.668] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:15:56.163] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [11:15:56.164] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1907874b{/cc,null,AVAILABLE} 
+INFO   [11:15:56.169] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:15:56.173] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e58512c{/admin-cc,null,AVAILABLE} 
+INFO   [11:15:56.210] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:15:56.210] [main] o.e.j.s.Server -  Started @2414ms 
+INFO   [11:16:53.897] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:51768 
+INFO   [11:16:54.426] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:55412 
+ERROR  [11:16:55.993] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [11:16:56.448] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [11:16:56.954] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+ERROR  [11:16:57.731] [AWT-EventQueue-0] o.m.m.d.c.u.AttackerUtils -  ERROR: null 
+INFO   [11:23:18.613] [main] o.e.j.u.log -  Logging initialized @3441ms 
+ERROR  [11:23:24.215] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [11:23:24.394] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:23:24.424] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:23:24.507] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:23:24.620] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@1db7157f{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:23:24.627] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:23:27.036] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [11:23:27.041] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@233f52f8{/cc,null,AVAILABLE} 
+INFO   [11:23:27.064] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:23:27.085] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1b560eb0{/admin-cc,null,AVAILABLE} 
+INFO   [11:23:27.189] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@1db7157f{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:23:27.190] [main] o.e.j.s.Server -  Started @12022ms 
+INFO   [11:24:19.712] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58246 
+INFO   [11:24:20.296] [pool-3-thread-1] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:62936 
+INFO   [11:27:29.960] [main] o.e.j.u.log -  Logging initialized @1318ms 
+ERROR  [11:27:30.472] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [11:27:30.483] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:27:30.491] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:27:30.506] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:27:30.541] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:27:30.545] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:27:31.027] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [11:27:31.030] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@761e788f{/cc,null,AVAILABLE} 
+INFO   [11:27:31.034] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:27:31.038] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,AVAILABLE} 
+INFO   [11:27:31.076] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:27:31.076] [main] o.e.j.s.Server -  Started @2436ms 
+INFO   [11:27:51.190] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:51346 
+INFO   [11:27:51.533] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:59305 
+INFO   [11:35:40.216] [main] o.e.j.u.log -  Logging initialized @3243ms 
+ERROR  [11:35:45.485] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [11:35:46.836] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:35:46.866] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:35:46.940] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:35:47.054] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@62b790a5{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:35:47.062] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:35:49.452] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [11:35:49.457] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@69ec93c2{/cc,null,AVAILABLE} 
+INFO   [11:35:49.480] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:35:49.501] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9e02f84{/admin-cc,null,AVAILABLE} 
+INFO   [11:35:49.604] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@62b790a5{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:35:49.604] [main] o.e.j.s.Server -  Started @12635ms 
+INFO   [11:36:21.877] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:56381 
+INFO   [11:36:22.380] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:61319 
+INFO   [11:39:08.787] [main] o.e.j.u.log -  Logging initialized @1364ms 
+ERROR  [11:39:09.316] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [11:39:09.328] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:39:09.336] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:39:09.351] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:39:09.388] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:39:09.391] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:39:09.905] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [11:39:09.907] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1907874b{/cc,null,AVAILABLE} 
+INFO   [11:39:09.911] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:39:09.916] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e58512c{/admin-cc,null,AVAILABLE} 
+INFO   [11:39:09.955] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:39:09.955] [main] o.e.j.s.Server -  Started @2534ms 
+INFO   [11:39:44.721] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:64525 
+INFO   [11:39:45.226] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:57083 
+INFO   [11:42:04.208] [main] o.e.j.u.log -  Logging initialized @1296ms 
+ERROR  [11:42:04.738] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [11:42:04.749] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:42:04.757] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:42:04.772] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:42:04.814] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:42:04.817] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:42:05.329] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [11:42:05.331] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1907874b{/cc,null,AVAILABLE} 
+INFO   [11:42:05.336] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:42:05.341] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e58512c{/admin-cc,null,AVAILABLE} 
+INFO   [11:42:05.381] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@bdecc21{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:42:05.381] [main] o.e.j.s.Server -  Started @2472ms 
+INFO   [11:42:23.255] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:53718 
+INFO   [11:42:23.551] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:62579 
+INFO   [11:42:52.082] [main] o.e.j.u.log -  Logging initialized @1291ms 
+ERROR  [11:42:52.603] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [11:42:52.615] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [11:42:52.623] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [11:42:52.638] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [11:42:52.672] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:42:52.675] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:42:53.170] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [11:42:53.173] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@761e788f{/cc,null,AVAILABLE} 
+INFO   [11:42:53.177] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [11:42:53.181] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@508a65bf{/admin-cc,null,AVAILABLE} 
+INFO   [11:42:53.219] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@6872f9c8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [11:42:53.220] [main] o.e.j.s.Server -  Started @2431ms 
+INFO   [11:43:08.682] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:60332 
+INFO   [11:43:08.964] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:53984 
+INFO   [13:01:56.408] [main] o.e.j.u.log -  Logging initialized @1287ms 
+ERROR  [13:01:56.954] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [13:01:56.967] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [13:01:56.977] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [13:01:56.995] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [13:01:57.034] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:01:57.038] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:01:57.550] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [13:01:57.552] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [13:01:57.556] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [13:01:57.560] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [13:01:57.598] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:01:57.598] [main] o.e.j.s.Server -  Started @2479ms 
+INFO   [13:02:56.452] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:50302 
+INFO   [13:02:56.913] [pool-3-thread-1] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:63245 
+INFO   [13:11:15.887] [main] o.e.j.u.log -  Logging initialized @1311ms 
+ERROR  [13:11:16.434] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [13:11:16.446] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [13:11:16.455] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [13:11:16.473] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [13:11:16.509] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:11:16.512] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:11:16.995] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [13:11:16.996] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [13:11:17.001] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [13:11:17.005] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [13:11:17.043] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:11:17.043] [main] o.e.j.s.Server -  Started @2469ms 
+INFO   [13:11:59.823] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:54967 
+INFO   [13:12:00.276] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:50578 
+INFO   [13:34:09.740] [main] o.e.j.u.log -  Logging initialized @1240ms 
+ERROR  [13:34:10.298] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [13:34:10.315] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [13:34:10.324] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [13:34:10.341] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [13:34:10.379] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:34:10.383] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:34:10.872] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [13:34:10.874] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [13:34:10.878] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [13:34:10.882] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [13:34:10.920] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:34:10.920] [main] o.e.j.s.Server -  Started @2422ms 
+INFO   [13:34:36.702] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:57029 
+INFO   [13:34:37.006] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:50840 
+INFO   [13:35:49.731] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:35:49.732] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,UNAVAILABLE} 
+INFO   [13:35:49.735] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,UNAVAILABLE} 
+INFO   [13:42:15.645] [main] o.e.j.u.log -  Logging initialized @1333ms 
+ERROR  [13:42:16.207] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [13:42:16.220] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [13:42:16.229] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [13:42:16.245] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [13:42:16.281] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:42:16.284] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:42:16.744] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [13:42:16.746] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [13:42:16.750] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [13:42:16.754] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [13:42:16.792] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:42:16.793] [main] o.e.j.s.Server -  Started @2483ms 
+INFO   [13:42:28.521] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58926 
+INFO   [13:42:28.755] [pool-3-thread-1] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:62142 
+INFO   [13:51:35.884] [main] o.e.j.u.log -  Logging initialized @1271ms 
+ERROR  [13:51:36.432] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [13:51:36.444] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [13:51:36.454] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [13:51:36.470] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [13:51:36.509] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:51:36.513] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:51:37.016] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [13:51:37.018] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [13:51:37.022] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [13:51:37.027] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [13:51:37.066] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:51:37.067] [main] o.e.j.s.Server -  Started @2456ms 
+INFO   [13:51:48.385] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:57224 
+INFO   [13:51:48.689] [pool-3-thread-5] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:51242 
+INFO   [13:53:32.322] [main] o.e.j.u.log -  Logging initialized @3326ms 
+ERROR  [13:53:36.894] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [13:53:37.054] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [13:53:37.085] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [13:53:37.180] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [13:53:37.298] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@2525a5b8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:53:37.306] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:53:39.954] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [13:53:39.960] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@64656b9e{/cc,null,AVAILABLE} 
+INFO   [13:53:39.984] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [13:53:40.006] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2bec068b{/admin-cc,null,AVAILABLE} 
+INFO   [13:53:40.118] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@2525a5b8{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [13:53:40.118] [main] o.e.j.s.Server -  Started @11126ms 
+INFO   [13:54:29.439] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:60444 
+INFO   [13:54:29.978] [pool-3-thread-5] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:53610 
+INFO   [14:10:35.102] [main] o.e.j.u.log -  Logging initialized @1307ms 
+ERROR  [14:10:35.660] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [14:10:35.673] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [14:10:35.681] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [14:10:35.697] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [14:10:35.730] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [14:10:35.734] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:10:36.187] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [14:10:36.188] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [14:10:36.193] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:10:36.197] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [14:10:36.236] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [14:10:36.236] [main] o.e.j.s.Server -  Started @2444ms 
+INFO   [14:11:03.750] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58638 
+INFO   [14:11:04.026] [pool-3-thread-1] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:56229 
+INFO   [15:54:33.929] [main] o.e.j.u.log -  Logging initialized @1295ms 
+ERROR  [15:54:34.505] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [15:54:34.516] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [15:54:34.525] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [15:54:34.543] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [15:54:34.582] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [15:54:34.585] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:54:35.086] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [15:54:35.087] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [15:54:35.092] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [15:54:35.096] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [15:54:35.135] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [15:54:35.135] [main] o.e.j.s.Server -  Started @2503ms 
+INFO   [15:55:02.358] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:59917 
+INFO   [15:55:02.666] [pool-3-thread-5] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:61831 
+ERROR  [15:55:28.349] [Thread-80] o.m.m.d.c.u.AttackerUtils -  YET TO BE IMPLEMENTED OPERATION 
+ERROR  [15:55:29.460] [Thread-80] o.m.m.d.c.u.AttackerUtils -  YET TO BE IMPLEMENTED OPERATION 
+INFO   [16:22:36.408] [main] o.e.j.u.log -  Logging initialized @1308ms 
+ERROR  [16:22:36.956] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [16:22:36.968] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:22:36.977] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:22:36.994] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:22:37.034] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:22:37.037] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:22:37.538] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [16:22:37.540] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [16:22:37.545] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [16:22:37.550] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [16:22:37.589] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:22:37.589] [main] o.e.j.s.Server -  Started @2491ms 
+INFO   [16:24:37.655] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58658 
+INFO   [16:24:38.171] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:50500 
+INFO   [16:30:33.641] [main] o.e.j.u.log -  Logging initialized @1245ms 
+ERROR  [16:30:34.189] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [16:30:34.201] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:30:34.210] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:30:34.227] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:30:34.264] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@66596a88{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:30:34.267] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:30:34.760] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [16:30:34.763] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2924f1d8{/cc,null,AVAILABLE} 
+INFO   [16:30:34.767] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [16:30:34.771] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6dcc40f5{/admin-cc,null,AVAILABLE} 
+INFO   [16:30:34.808] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@66596a88{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:30:34.809] [main] o.e.j.s.Server -  Started @2415ms 
+INFO   [16:31:07.576] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:54577 
+INFO   [16:31:07.858] [pool-3-thread-1] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:63009 
+INFO   [16:31:56.402] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@66596a88{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:31:56.403] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@6dcc40f5{/admin-cc,null,UNAVAILABLE} 
+INFO   [16:31:56.408] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@2924f1d8{/cc,null,UNAVAILABLE} 
+INFO   [16:33:05.220] [main] o.e.j.u.log -  Logging initialized @1250ms 
+ERROR  [16:33:05.763] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [16:33:05.775] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:33:05.783] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:33:05.799] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:33:05.838] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:33:05.841] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:33:06.341] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [16:33:06.342] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [16:33:06.346] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [16:33:06.351] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [16:33:06.390] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:33:06.390] [main] o.e.j.s.Server -  Started @2421ms 
+INFO   [16:33:29.150] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:54505 
+INFO   [16:33:29.391] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:52473 
+INFO   [16:37:19.674] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:37:19.676] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,UNAVAILABLE} 
+INFO   [16:37:19.678] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,UNAVAILABLE} 
+INFO   [16:41:08.694] [main] o.e.j.u.log -  Logging initialized @1248ms 
+ERROR  [16:41:09.241] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [16:41:09.253] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:41:09.261] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:41:09.277] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:41:09.314] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:41:09.317] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:41:09.803] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [16:41:09.805] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [16:41:09.809] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [16:41:09.813] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [16:41:09.851] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:41:09.852] [main] o.e.j.s.Server -  Started @2408ms 
+INFO   [16:42:13.420] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:55958 
+INFO   [16:42:13.897] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:59838 
+INFO   [16:46:05.243] [main] o.e.j.u.log -  Logging initialized @1300ms 
+ERROR  [16:46:05.786] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [16:46:05.797] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:46:05.806] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:46:05.823] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:46:05.864] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:46:05.868] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:46:06.365] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [16:46:06.367] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [16:46:06.371] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [16:46:06.375] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [16:46:06.414] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:46:06.414] [main] o.e.j.s.Server -  Started @2474ms 
+INFO   [16:46:20.346] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:53389 
+INFO   [16:46:20.614] [pool-3-thread-5] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:59848 
+INFO   [16:46:46.588] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:46:46.590] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,UNAVAILABLE} 
+INFO   [16:46:46.593] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,UNAVAILABLE} 
+INFO   [16:55:30.991] [main] o.e.j.u.log -  Logging initialized @1265ms 
+ERROR  [16:55:31.525] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [16:55:31.538] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [16:55:31.547] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [16:55:31.565] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [16:55:31.602] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:55:31.606] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:55:32.104] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [16:55:32.106] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [16:55:32.110] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [16:55:32.114] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [16:55:32.154] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:55:32.154] [main] o.e.j.s.Server -  Started @2430ms 
+INFO   [16:56:06.196] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:61964 
+INFO   [16:56:06.476] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:55223 
+WARN   [16:57:31.666] [dw-14] o.e.j.s.HttpConnection -  HttpConnection@67a1786f{FILLING} 
+java.lang.IllegalStateException: s=DISPATCHED i=true a=null
+	at org.eclipse.jetty.server.HttpChannelState.handling(HttpChannelState.java:232) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:282) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+WARN   [16:57:31.668] [dw-211] o.e.j.s.HttpConnection -  HttpConnection@752b40d7{FILLING} 
+java.lang.IllegalStateException: s=DISPATCHED i=true a=null
+	at org.eclipse.jetty.server.HttpChannelState.handling(HttpChannelState.java:232) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:282) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+WARN   [16:57:31.668] [dw-198] o.e.j.s.HttpConnection -  HttpConnection@74f9c5f4{FILLING} 
+java.lang.IllegalStateException: s=DISPATCHED i=true a=null
+	at org.eclipse.jetty.server.HttpChannelState.handling(HttpChannelState.java:232) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:282) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+INFO   [16:57:31.674] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [16:57:31.677] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,UNAVAILABLE} 
+INFO   [16:57:31.680] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,UNAVAILABLE} 
+INFO   [17:04:17.972] [main] o.e.j.u.log -  Logging initialized @1262ms 
+ERROR  [17:04:18.503] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:04:18.515] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:04:18.524] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:04:18.540] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:04:18.578] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:04:18.582] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:04:19.077] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:04:19.078] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [17:04:19.083] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:04:19.087] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [17:04:19.125] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:04:19.125] [main] o.e.j.s.Server -  Started @2418ms 
+ERROR  [17:04:20.045] [pool-6-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:04:20.539] [pool-8-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:04:21.039] [pool-9-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:04:21.541] [pool-10-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:04:22.041] [pool-11-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:04:22.542] [pool-12-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:04:23.043] [pool-13-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+INFO   [17:04:23.167] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:04:23.168] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,UNAVAILABLE} 
+INFO   [17:04:23.173] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,UNAVAILABLE} 
+INFO   [17:05:27.354] [main] o.e.j.u.log -  Logging initialized @1245ms 
+ERROR  [17:05:27.893] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:05:27.905] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:05:27.914] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:05:27.932] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:05:27.968] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:05:27.972] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:05:28.465] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:05:28.466] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [17:05:28.471] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:05:28.475] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [17:05:28.512] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:05:28.513] [main] o.e.j.s.Server -  Started @2404ms 
+ERROR  [17:05:29.458] [pool-6-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:05:29.945] [pool-8-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:05:30.445] [pool-9-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+INFO   [17:07:18.837] [main] o.e.j.u.log -  Logging initialized @1669ms 
+ERROR  [17:07:19.403] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:07:19.417] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:07:19.426] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:07:19.444] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:07:19.487] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:07:19.491] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:07:20.015] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:07:20.017] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [17:07:20.022] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:07:20.026] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [17:07:20.067] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:07:20.068] [main] o.e.j.s.Server -  Started @2902ms 
+ERROR  [17:07:21.006] [pool-6-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+INFO   [17:07:27.911] [main] o.e.j.u.log -  Logging initialized @1243ms 
+ERROR  [17:07:28.426] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:07:28.437] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:07:28.446] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:07:28.462] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:07:28.498] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:07:28.501] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:07:28.999] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:07:29.000] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [17:07:29.004] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:07:29.009] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [17:07:29.046] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:07:29.047] [main] o.e.j.s.Server -  Started @2380ms 
+ERROR  [17:07:29.964] [pool-6-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:07:30.450] [pool-8-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:07:30.951] [pool-9-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:07:31.451] [pool-10-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+INFO   [17:09:26.514] [main] o.e.j.u.log -  Logging initialized @1302ms 
+ERROR  [17:09:27.057] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:09:27.069] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:09:27.080] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:09:27.097] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:09:27.135] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:09:27.138] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:09:27.618] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:09:27.619] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [17:09:27.624] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:09:27.629] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [17:09:27.666] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:09:27.666] [main] o.e.j.s.Server -  Started @2457ms 
+ERROR  [17:09:28.605] [pool-6-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+ERROR  [17:09:29.091] [pool-8-thread-2] o.m.m.d.c.s.ControlCenterServices -  org.mars.m2m.demo.controlcenter.services.ControlCenterServices 
+INFO   [17:10:25.100] [main] o.e.j.u.log -  Logging initialized @1255ms 
+ERROR  [17:10:25.625] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:10:25.636] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:10:25.645] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:10:25.662] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:10:25.699] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@66596a88{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:10:25.702] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:10:26.226] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:10:26.229] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2924f1d8{/cc,null,AVAILABLE} 
+INFO   [17:10:26.234] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:10:26.238] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6dcc40f5{/admin-cc,null,AVAILABLE} 
+INFO   [17:10:26.277] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@66596a88{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:10:26.277] [main] o.e.j.s.Server -  Started @2434ms 
+INFO   [17:10:44.785] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:56019 
+INFO   [17:10:45.119] [pool-3-thread-1] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58239 
+INFO   [17:12:53.974] [main] o.e.j.u.log -  Logging initialized @1289ms 
+ERROR  [17:12:54.546] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:12:54.558] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:12:54.568] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:12:54.587] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:12:54.628] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:12:54.632] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:12:55.131] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:12:55.132] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [17:12:55.137] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:12:55.141] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [17:12:55.180] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:12:55.180] [main] o.e.j.s.Server -  Started @2497ms 
+INFO   [17:13:08.651] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:60509 
+INFO   [17:13:08.746] [pool-3-thread-2] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:52958 
+INFO   [17:20:40.228] [main] o.e.j.u.log -  Logging initialized @1280ms 
+ERROR  [17:20:40.777] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [17:20:40.789] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [17:20:40.797] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [17:20:40.813] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [17:20:40.851] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:20:40.854] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:20:41.365] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [17:20:41.367] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [17:20:41.371] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:20:41.376] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [17:20:41.416] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [17:20:41.416] [main] o.e.j.s.Server -  Started @2470ms 
+INFO   [17:21:32.299] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:64285 
+INFO   [17:21:32.510] [pool-3-thread-4] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:58796 
+INFO   [18:15:04.785] [main] o.e.j.u.log -  Logging initialized @1299ms 
+ERROR  [18:15:05.303] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [18:15:05.315] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [18:15:05.324] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [18:15:05.341] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [18:15:05.379] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [18:15:05.383] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:15:05.891] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [18:15:05.892] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,AVAILABLE} 
+INFO   [18:15:05.897] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:15:05.901] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,AVAILABLE} 
+INFO   [18:15:05.938] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [18:15:05.938] [main] o.e.j.s.Server -  Started @2453ms 
+INFO   [18:15:07.684] [Thread-12] o.e.j.s.ServerConnector -  Stopped ControlCenterApplication@76954a33{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [18:15:07.686] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@70887727{/admin-cc,null,UNAVAILABLE} 
+INFO   [18:15:07.699] [Thread-12] o.e.j.s.h.ContextHandler -  Stopped i.d.j.MutableServletContextHandler@5b5e7036{/cc,null,UNAVAILABLE} 
+INFO   [18:15:15.615] [main] o.e.j.u.log -  Logging initialized @1266ms 
+ERROR  [18:15:16.166] [main] c.h.h.j.r.m.i.RDFDefaultErrorHandler -  unknown-source: {E213} null 
+INFO   [18:15:16.180] [main] i.d.s.ServerFactory -  Starting ControlCenterApplication 
+INFO   [18:15:16.189] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /cc 
+INFO   [18:15:16.208] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-cc 
+INFO   [18:15:16.246] [main] o.e.j.s.SetUIDListener -  Opened ControlCenterApplication@66596a88{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [18:15:16.248] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:15:16.718] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /notification (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+    POST    /reportConnectedDevice (org.mars.m2m.demo.controlcenter.resources.ControlCenterInterface)
+ 
+INFO   [18:15:16.721] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2924f1d8{/cc,null,AVAILABLE} 
+INFO   [18:15:16.725] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:15:16.730] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6dcc40f5{/admin-cc,null,AVAILABLE} 
+INFO   [18:15:16.769] [main] o.e.j.s.ServerConnector -  Started ControlCenterApplication@66596a88{HTTP/1.1}{0.0.0.0:8170} 
+INFO   [18:15:16.769] [main] o.e.j.s.Server -  Started @2422ms 
+INFO   [18:15:37.239] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"50.0,150.0,250.0,350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:53986 
+INFO   [18:15:37.695] [pool-3-thread-3] o.m.m.d.c.e.L.AssignScoutRoleReflexListenerImpl -  Scouting info sent: {"id":1,"value":"350.0,450.0,550.0","dataType":"STRING"},to: /127.0.0.1:50620 

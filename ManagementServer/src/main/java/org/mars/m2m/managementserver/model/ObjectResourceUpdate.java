@@ -6,10 +6,10 @@
 package org.mars.m2m.managementserver.model;
 
 /**
- *
+ * Models the structure for containing the data for an update operation on a resource
  * @author AG BRIGHTER
  */
-public class ObjectResource {
+public class ObjectResourceUpdate {
     
     /**
      * The resource ID in this class is used for determining the appropriate datatype
@@ -21,10 +21,10 @@ public class ObjectResource {
     
     private String dataType;
 
-    public ObjectResource() {
+    public ObjectResourceUpdate() {
     }
 
-    public ObjectResource(int id, Object value) {
+    public ObjectResourceUpdate(int id, Object value) {
         this.id = id;
         this.value = value;
     } 

@@ -29,15 +29,16 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(UavAttackerDevice.class);
     private static final Gson gson = new Gson();
+    private Attacker attacker;
     
     //device resources
     private int pathIndex;
     private boolean replan;
     private boolean movedAtLastStep;
     private KnowledgeInterface kb;
-    private String pathPlannedAtLastStep="";
-    private String pathHistory="";
-    private String currentPath="";
+    private UAVPath pathPlannedAtLastStep;
+    private UAVPath pathHistory;
+    private UAVPath currentPath;
     private boolean hasReplanned;
     private int flightMode;
     private int hoveredTimeStep;
@@ -61,7 +62,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     @Override
     public ValueResponse read(int resourceid) {
        logger.info("[{}] Read on resource: {}",resourceid);
-       System.out.println("read on resource "+resourceid);
+       //System.out.println("read on resource "+resourceid);
         try {
             switch (resourceid) {
                 case 0:
@@ -81,13 +82,13 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                             new LwM2mResource(resourceid, Value.newBinaryValue(bo.toByteArray())));
                 case 4:
                     return new ValueResponse(ResponseCode.CONTENT,
-                            new LwM2mResource(resourceid, Value.newStringValue(this.getPathPlannedAtLastStep())));
+                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getPathPlannedAtLastStep()))));
                 case 5:
                     return new ValueResponse(ResponseCode.CONTENT,
-                            new LwM2mResource(resourceid, Value.newStringValue(this.getPathHistory())));
+                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getPathHistory()))));
                 case 6:
                     return new ValueResponse(ResponseCode.CONTENT,
-                            new LwM2mResource(resourceid, Value.newStringValue(this.getCurrentPath())));
+                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getPathHistory()))));
                 case 7:
                     return new ValueResponse(ResponseCode.CONTENT,
                             new LwM2mResource(resourceid, Value.newBooleanValue(this.isHasReplanned())));
@@ -121,12 +122,12 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                 case 17:
                     return new ValueResponse(ResponseCode.CONTENT,
                             new LwM2mResource(resourceid, Value.newFloatValue(getRemainedEnergy()))); 
-                case 18:
-                    return new ValueResponse(ResponseCode.CONTENT,
-                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getUavBaseCenterCoordinates())))); 
-                case 19:
-                    return new ValueResponse(ResponseCode.CONTENT,
-                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getUavPositionInBaseStation())))); 
+//                case 18:
+//                    return new ValueResponse(ResponseCode.CONTENT,
+//                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getUavBaseCenterCoordinates())))); 
+//                case 19:
+//                    return new ValueResponse(ResponseCode.CONTENT,
+//                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getUavPositionInBaseStation())))); 
                 default:
                     return super.read(resourceid);
             }
@@ -146,7 +147,36 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     @Override
     public LwM2mResponse write(int resourceid, LwM2mResource value) {
-        return super.write(resourceid, value); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Write on UAV Attacker Device Resource " + resourceid + " value " + value);
+        switch (resourceid) {
+        case 0:
+            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
+        case 1:
+            System.out.println("Need to replan write");
+            return new LwM2mResponse(ResponseCode.CHANGED);
+        case 3:
+            System.out.println("Knowledegbase write");
+            return new LwM2mResponse(ResponseCode.CHANGED);
+        case 7:
+            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
+        case 8:
+            System.out.println("Fly mode write");
+            return new LwM2mResponse(ResponseCode.CHANGED);
+        case 10:
+            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
+        case 12:
+            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
+        case 13:
+            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
+        case 14:
+            System.out.println("target indicated by role write");
+            return new LwM2mResponse(ResponseCode.CHANGED);
+        case 20:
+            System.out.println("Speed write");
+            return new LwM2mResponse(ResponseCode.CHANGED);
+        default:
+            return super.write(resourceid, value);
+        }
     }
     
     @Override
@@ -165,6 +195,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public int getPathIndex() {
+        if(this.attacker != null)
+            this.setPathIndex(attacker.getCurrent_index_of_planned_path());
         return pathIndex;
     }
 
@@ -173,6 +205,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public boolean isReplan() {
+        if(this.attacker != null)
+            this.setReplan(attacker.isReplanned_at_current_time_step());
         return replan;
     }
 
@@ -181,6 +215,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public boolean isMovedAtLastStep() {
+        if(this.attacker != null)
+            this.setMovedAtLastStep(attacker.isMoved_at_last_time());
         return movedAtLastStep;
     }
 
@@ -189,6 +225,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public KnowledgeInterface getKb() {
+        if(this.attacker != null)
+            this.setKb(attacker.getKb());
         return kb;
     }
 
@@ -196,31 +234,39 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
         this.kb = kb;
     }
 
-    public String getPathPlannedAtLastStep() {
+    public UAVPath getPathPlannedAtLastStep() {
+        if(this.attacker != null)
+            this.setPathPlannedAtLastStep(attacker.getPath_planned_at_last_time_step());
         return pathPlannedAtLastStep;
     }
 
-    public void setPathPlannedAtLastStep(String pathPlannedAtLastStep) {
+    public void setPathPlannedAtLastStep(UAVPath pathPlannedAtLastStep) {
         this.pathPlannedAtLastStep = pathPlannedAtLastStep;
     }
 
-    public String getPathHistory() {
+    public UAVPath getPathHistory() {
+        if(this.attacker != null)
+            this.setPathHistory(attacker.getHistory_path());
         return pathHistory;
     }
 
-    public void setPathHistory(String pathHistory) {
+    public void setPathHistory(UAVPath pathHistory) {
         this.pathHistory = pathHistory;
     }
 
-    public String getCurrentPath() {
+    public UAVPath getCurrentPath() {
+        if(this.attacker != null)
+            this.setCurrentPath(attacker.getPath_planned_at_current_time_step());
         return currentPath;
     }
 
-    public void setCurrentPath(String currentPath) {
+    public void setCurrentPath(UAVPath currentPath) {
         this.currentPath = currentPath;
     }
 
     public boolean isHasReplanned() {
+        if(this.attacker != null)
+            this.setHasReplanned(attacker.isReplanned_at_current_time_step());
         return hasReplanned;
     }
 
@@ -229,6 +275,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public int getFlightMode() {
+        if(this.attacker != null)
+            this.setFlightMode(attacker.getFly_mode());
         return flightMode;
     }
 
@@ -237,6 +285,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public int getHoveredTimeStep() {
+        if(this.attacker != null)
+            this.setHoveredTimeStep(attacker.getHovered_time_step());
         return hoveredTimeStep;
     }
 
@@ -245,6 +295,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public float[] getIterationGoal() {
+        if(this.attacker != null)
+            this.setIterationGoal(attacker.getGoal_for_each_iteration());
         return iterationGoal;
     }
 
@@ -253,6 +305,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public int getStuckTimes() {
+        if(this.attacker != null)
+            this.setStuckTimes(attacker.getStucked_times());
         return stuckTimes;
     }
 
@@ -261,6 +315,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public int getMaximumStuckTimes() {
+        if(this.attacker != null)
+            this.setMaximumStuckTimes(attacker.getMax_stucked_times());
         return maximumStuckTimes;
     }
 
@@ -269,6 +325,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public Target getTarget_indicated_by_role() {
+        if(this.attacker != null)
+            this.setTarget_indicated_by_role(attacker.getTarget_indicated_by_role());
         return target_indicated_by_role;
     }
 
@@ -277,6 +335,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public boolean isOnline() {
+        if(this.attacker != null)
+            this.setOnline(attacker.isVisible());
         return online;
     }
 
@@ -285,6 +345,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public int getSpeed() {
+        if(this.attacker != null)
+            this.setSpeed(attacker.getSpeed());
         return speed;
     }
 
@@ -293,6 +355,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public float[] getCenterCoordinates() {
+        if(this.attacker != null)
+            this.setCenterCoordinates(attacker.getCenter_coordinates());
         return centerCoordinates;
     }
 
@@ -301,6 +365,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public float getRemainedEnergy() {
+        if(this.attacker != null)
+            this.setRemainedEnergy(attacker.getRemained_energy());
         return remainedEnergy;
     }
 
@@ -308,20 +374,32 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
         this.remainedEnergy = remainedEnergy;
     }
 
-    public float[] getUavBaseCenterCoordinates() {
-        return uavBaseCenterCoordinates;
+    /*public float[] getUavBaseCenterCoordinates() {
+    if(this.attacker != null)
+    this.setUavBaseCenterCoordinates(attacker.getCenter_coordinates());
+    return uavBaseCenterCoordinates;
     }
-
+    
     public void setUavBaseCenterCoordinates(float[] uavBaseCenterCoordinates) {
-        this.uavBaseCenterCoordinates = uavBaseCenterCoordinates;
-    }
+    this.uavBaseCenterCoordinates = uavBaseCenterCoordinates;
+    }*/
 
-    public float[] getUavPositionInBaseStation() {
-        return uavPositionInBaseStation;
+    /*public float[] getUavPositionInBaseStation() {
+    if(this.attacker != null)
+    this.setUavPositionInBaseStation(attacker.getPath_planned_at_last_time_step());
+    return uavPositionInBaseStation;
     }
-
+    
     public void setUavPositionInBaseStation(float[] uavPositionInBaseStation) {
-        this.uavPositionInBaseStation = uavPositionInBaseStation;
+    this.uavPositionInBaseStation = uavPositionInBaseStation;
+    }*/
+
+    public void setAttacker(Attacker attacker) {
+        this.attacker = attacker;
+    }
+
+    public Attacker getAttacker() {
+        return attacker;
     }
     
 }

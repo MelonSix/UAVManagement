@@ -59,6 +59,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import org.mars.m2m.demo.controlcenter.appConfig.FilePathConfig;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
+import org.mars.m2m.demo.controlcenter.model.KnowledgeInterface;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;

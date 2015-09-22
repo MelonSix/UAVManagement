@@ -155,7 +155,7 @@ public class AnimationPanel extends JPanel
      * 
      */
     public void start() { 
-        System.out.println("starting animation listener");
+        System.out.println("starting animation listener");        
         Timer timer = new Timer(500, new AnimatorListener(this));
         timer.start();
     }
@@ -246,4 +246,10 @@ public class AnimationPanel extends JPanel
         g.drawImage(uav_planned_path_image_level_8, 0, 0, null);
         g.drawImage(uav_image_level_10, 0, 0, null);
     }
+
+    public synchronized ControlCenterServices getControlCenterServices() {
+        return controlCenterServices;
+    }
+    
+    
 }

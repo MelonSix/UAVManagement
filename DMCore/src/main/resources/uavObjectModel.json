@@ -2985,6 +2985,17 @@
                 "description": "" 
             },
             {
+               "id": 3,
+                "name": "Add Conflict",
+                "operations": "E",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
                "id": 4,
                 "name": "Path planned at last step",
                 "operations": "R",
@@ -3153,6 +3164,39 @@
                "id": 19,
                 "name": "UAV position in Base station",
                 "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 20,
+                "name": "Speed",
+                "operations": "RW",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 21,
+                "name": "Add obstacle",
+                "operations": "E",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "" 
+            },
+            {
+               "id": 22,
+                "name": "Add threat",
+                "operations": "E",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "string",

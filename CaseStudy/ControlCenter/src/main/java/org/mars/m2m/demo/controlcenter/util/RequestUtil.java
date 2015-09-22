@@ -7,6 +7,7 @@ package org.mars.m2m.demo.controlcenter.util;
 
 import ch.qos.logback.classic.Logger;
 import java.math.BigInteger;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
@@ -53,7 +54,9 @@ public class RequestUtil
         reqPri.setRequestIdentifier(DmCommons.generateID());
         reqPri.setResourceType(ResourceType.REQUEST.getValue());
         reqPri.setName("");
-        content.getAny().add(getContainer(getContentInstance(data)));
+        ContentInstance contentInstance = getContentInstance(data);
+        Container container = getContainer(contentInstance);
+        content.getAny().add(container);
         reqPri.setContent(content);
         reqPri.setOriginatingTimestamp(DmCommons.getOneM2mTimeStamp());
         reqPri.setResultExpirationTimestamp(DmCommons.getOneM2mTimeStamp());
@@ -90,6 +93,7 @@ public class RequestUtil
      * @return A {@link ContentInstance} object
      */
     private ContentInstance getContentInstance(String value) {
+        if(value==null)value="";//ensures the string is not null
         ContentInstance ci = new ContentInstance();
         ci.setStateTag(BigInteger.ZERO);
         ci.setContentInfo(MediaType.APPLICATION_JSON);
@@ -100,14 +104,20 @@ public class RequestUtil
         return ci;
     }
     
-    public Object sendToEndpoint(ReportedLwM2MClient client, String endpointUrl, Operation op, String data)
+    public Object sendToEndpoint(String senderUrl, String endpointUrl, Operation op, String data, Class clazz)
     {
-        ServiceConsumer sc = new ServiceConsumer();
-        SvcConsumerDetails consumerDetails = new SvcConsumerDetails();
-        consumerDetails.setRequest(getRequestPrimitiveForData(op, 
-                        endpointUrl, CC_StaticInitConfig.ccAddress, data));
-        Response handlePost = sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
-        return handlePost.getEntity();
+        try {
+            ServiceConsumer sc = new ServiceConsumer();
+            SvcConsumerDetails consumerDetails = new SvcConsumerDetails();
+            RequestPrimitive requestPrimitiveForData = getRequestPrimitiveForData(op, endpointUrl, senderUrl, data);
+            consumerDetails.setRequest(requestPrimitiveForData);
+            //All operations are posted to the Management Adapter
+            Response handlePost = sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
+            return handlePost.readEntity(clazz);
+        } catch (Exception e) {
+            logger.error(e.toString());
+            return null;
+        }
     }
     
     public String extractRequestData(RequestPrimitive requestPrimitive) {
@@ -116,6 +126,13 @@ public class RequestUtil
         ContentInstance ci = (ContentInstance) container.getContentInstanceOrContainerOrSubscription().get(0);
         content = (String) ci.getContent();
         return content;
+    }
+    
+    public ReportedLwM2MClient getLwM2MClientFromTreeNode(DefaultMutableTreeNode node) {
+        Object nodeInfo;
+        nodeInfo = node.getUserObject();
+        ReportedLwM2MClient client = (ReportedLwM2MClient) nodeInfo;
+        return client;
     }
     
 }

@@ -80,7 +80,6 @@ public class ServiceConsumer
                 invBuilder.header(key, headerData.get(key));
             }
         }
-        System.out.println(data);
         response = invBuilder.put(Entity.entity(data, MediaType.APPLICATION_JSON));
         return response;
     }

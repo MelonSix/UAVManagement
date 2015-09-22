@@ -8,7 +8,10 @@ package org.mars.m2m.demo.controlcenter.core;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.SwingWorker;
+import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 
 /**
@@ -33,28 +36,63 @@ public class AnimatorListener implements ActionListener
          */
         @Override
         public void actionPerformed(ActionEvent e) 
-        { 
-            SwingWorker<AnimationPanel,Void> swingWorker = new SwingWorker<AnimationPanel, Void>() {
+        {             
+            ExecutorService executor = Executors.newFixedThreadPool(2);
+            executor.execute(new Runnable() {
 
                 @Override
-                protected AnimationPanel doInBackground() throws Exception {
-                    return animPnl;
+                public void run() {                    
+                    updateGUI();
                 }
+            });
+            executor.execute(new Runnable() {
 
                 @Override
-                protected void done() {
-                    try 
-                    {                        
-                        AnimationPanel panel = get();
-                        panel.clearUAVImageBeforeUpdate();            
-                        panel.updateImageAtEachIteration();
-                        panel.repaint();
-                    } catch (InterruptedException | ExecutionException e) {
-                        
-                    }
+                public void run() {
+                    updateAll(animPnl);
+                }
+            });
+            executor.shutdown();
+        }
+
+    private void updateGUI() {
+        SwingWorker<AnimationPanel,Void> swingWorker = new SwingWorker<AnimationPanel, Void>() {
+            
+            @Override
+            protected AnimationPanel doInBackground() throws Exception {
+                return animPnl;
+            }
+            
+            @Override
+            protected void done() {
+                try
+                {
+                    ControlCenterServices.time_step++;
+                    AnimationPanel panel = get();
+                    panel.clearUAVImageBeforeUpdate();
+                    panel.updateImageAtEachIteration();
+                    panel.repaint();
+                } catch (InterruptedException | ExecutionException e) {
                     
                 }
-            };
-            swingWorker.execute();
-        }
+                
+            }
+        };
+        swingWorker.execute();
     }
+        
+    private void updateAll(AnimationPanel panel) 
+    {
+        ControlCenterServices cc = panel.getControlCenterServices();
+
+        //synchronized(cc)
+        //{                
+            if (cc.isSimulationStartable()) //if any obstacle or threat has ever been reported
+            {
+                cc.registerInfoRequirement();
+                cc.shareInfoAfterRegistration();
+                cc.roleAssignmentInControlCenter();
+            }
+        //}
+    }
+}

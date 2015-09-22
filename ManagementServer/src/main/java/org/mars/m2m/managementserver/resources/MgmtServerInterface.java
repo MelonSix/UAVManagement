@@ -47,7 +47,7 @@ import org.eclipse.leshan.server.client.Client;
 import org.eclipse.leshan.util.Validate;
 import org.mars.m2m.dmcore.json.ConfigGson;
 import org.mars.m2m.managementserver.core.ResponseManagement;
-import org.mars.m2m.managementserver.model.ObjectResource;
+import org.mars.m2m.managementserver.model.ObjectResourceUpdate;
 import org.mars.m2m.managementserver.resources.subresources.Discovery;
 import org.slf4j.LoggerFactory;
 
@@ -91,7 +91,6 @@ public class MgmtServerInterface {
     public String getAllClients()
     {
         Collection<Client> clients = server.getClientRegistry().allClients();
-        System.out.println(clients.size());
         String json = this.gson.toJson(clients.toArray(new Client[]{}));
         return json;
     }   
@@ -127,7 +126,6 @@ public class MgmtServerInterface {
     {
         String processedValResponse = null;
         String target = "/"+objectid+"/"+instance;
-        System.out.println(target);
         Client client = server.getClientRegistry().get(clientEndpoint);
         if (client != null) {
             try {
@@ -184,14 +182,13 @@ public class MgmtServerInterface {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String updateResource(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid, ObjectResource resource)
+                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid, ObjectResourceUpdate resource)
     {
         String processedValResponse = null;
         try 
         {
             String target = "/"+objectid+"/"+instance+"/"+resourceid;
-            Client client = server.getClientRegistry().get(clientEndpoint);
-            System.out.println(target+" "+clientEndpoint);
+            Client client = server.getClientRegistry().get(clientEndpoint);            
             LwM2mResource resce = parseData(resource);            
             if(resce != null)
             {
@@ -249,13 +246,14 @@ public class MgmtServerInterface {
      * @param objectid
      * @param instance
      * @param resourceid
+     * @param execArg
      * @return 
      */
     @POST
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}")
     @Produces(MediaType.APPLICATION_JSON)
     public String executeRequest(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid)
+                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid, String execArg)
     {        
         String processedValResponse = null;
         String target = "/"+objectid+"/"+instance+"/"+resourceid;
@@ -264,9 +262,10 @@ public class MgmtServerInterface {
         {
             try 
             {
-                System.out.println(new String(IOUtils.toByteArray(req.getInputStream())));
-                ExecuteRequest request = 
-                        new ExecuteRequest(target,IOUtils.toByteArray(req.getInputStream()),null);
+                byte[] execData = IOUtils.toByteArray(req.getInputStream());
+                ExecuteRequest request = new ExecuteRequest(target,execArg.getBytes(),ContentFormat.JSON);//TODO: Model execArg to decide content format
+//                        new ExecuteRequest(target,IOUtils.toByteArray(req.getInputStream()),null);
+                        
                 LwM2mResponse cResponse = server.send(client, request);
                 processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
             } catch (IOException ex) {
@@ -386,7 +385,7 @@ public class MgmtServerInterface {
      * @param resource the resource object created by JAX-RS
      * @return the LwM2M resource
      */
-    public LwM2mResource parseData(ObjectResource resource) 
+    public LwM2mResource parseData(ObjectResourceUpdate resource) 
     {
         String datatype = resource.getDataType();
         try {            

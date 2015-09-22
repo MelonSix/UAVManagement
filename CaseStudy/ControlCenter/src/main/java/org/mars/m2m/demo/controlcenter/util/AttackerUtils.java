@@ -8,15 +8,21 @@ package org.mars.m2m.demo.controlcenter.util;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
+import javax.swing.tree.DefaultMutableTreeNode;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
+import org.mars.m2m.demo.controlcenter.model.Conflict;
+import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.model.Target;
+import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.Content;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectInstance;
+import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectResourceUpdate;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.Resource;
 import org.mars.m2m.demo.controlcenter.uav.UAVPath;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
+import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceDataType;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.utils.json.jsonarrayparser.JsonArrayUtil;
 import org.slf4j.LoggerFactory;
@@ -31,16 +37,44 @@ public class AttackerUtils
     private static final RequestUtil requestUtil = new RequestUtil();
     private static final Gson gson = new Gson();
     private static final JsonArrayUtil jsonArrayUtil = new JsonArrayUtil();
+    public final AttackerUpdate update;
+    public final AttackerExecution execute;
     
     public AttackerUtils() {
+        this.update = new AttackerUpdate();
+        this.execute = new AttackerExecution();
     }
     
-    public static AttackerModel getAttacker(ReportedLwM2MClient client)
+    /**
+     * Provides the an attacker model that is a virtual operation field attacker
+     * @param node
+     * @return
+     */
+    public static AttackerModel getVirtualizedAttacker(DefaultMutableTreeNode node) 
+    {
+        Object nodeInfo;
+        nodeInfo = node.getUserObject();
+        ReportedLwM2MClient client = requestUtil.getLwM2MClientFromTreeNode(node);
+        AttackerModel attacker = getAttacker(client);
+        attacker.setClient(client);
+        return attacker;
+    }
+    
+    private static AttackerModel getAttacker(ReportedLwM2MClient client)
     {        
-        String endpointURL = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0";
-        RequestPrimitive resp = (RequestPrimitive) requestUtil.sendToEndpoint(client, endpointURL, Operation.RETRIEVE, null);
-        if(resp==null) return null;
-        return parseDataToAttacker(resp);
+        try {
+            String endpointURL = CC_StaticInitConfig.mgmntServerURL + client.getEndpoint() + "/12207/0";
+            RequestPrimitive resp = 
+                    (RequestPrimitive) requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointURL, 
+                            Operation.RETRIEVE, null, RequestPrimitive.class);
+            if (resp == null) {
+                return null;
+            }
+            return parseDataToAttacker(resp);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return null;
+        }
     }
     
     private static AttackerModel parseDataToAttacker(RequestPrimitive req)
@@ -62,7 +96,10 @@ public class AttackerUtils
                 switch(resource.getId()) 
                 {
                     case 0:
-                        attacker.setPathIndex((int) resource.getValue());
+                        Double pathIndexVal = (double)resource.getValue();
+                        if (!pathIndexVal.isNaN()) {
+                            attacker.setPathIndex(pathIndexVal.intValue());
+                        }
                         break;
                     case 1:
                         attacker.setReplan((boolean) resource.getValue());
@@ -88,22 +125,37 @@ public class AttackerUtils
                         attacker.setHasReplanned((boolean) resource.getValue());
                         break;
                     case 8:
-                        attacker.setFlightMode((int) resource.getValue());
+                        Double flightModeVal = (double)resource.getValue();
+                        if (!flightModeVal.isNaN()) {
+                            attacker.setFlightMode(flightModeVal.intValue());
+                        }
                         break;
                     case 9:
-                        attacker.setHoveredTimeStep((int) resource.getValue());
+                        Double hoveredVal = (double) resource.getValue();
+                        if (!hoveredVal.isNaN()) {
+                            attacker.setHoveredTimeStep(hoveredVal.intValue());
+                        }
                         break;
                     case 10:
                         attacker.setIterationGoal(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
                         break;
                     case 11:
-                        attacker.setStuckTimes((int)resource.getValue());
+                        Double stuckVal = (double) resource.getValue();
+                        if (!stuckVal.isNaN()) {
+                            attacker.setStuckTimes(stuckVal.intValue());
+                        }
                         break;
                     case 12:
-                        attacker.setMaximumStuckTimes((int) resource.getValue());
+                        Double maxStuckTimesVal = (double) resource.getValue();
+                        if (!maxStuckTimesVal.isNaN()) {
+                            attacker.setMaximumStuckTimes(maxStuckTimesVal.intValue());
+                        }
                         break;
                     case 13:
-                        attacker.setIndex((int) resource.getValue());
+                        Double indexVal = (double) resource.getValue();
+                        if (!indexVal.isNaN()) {
+                            attacker.setIndex(indexVal.intValue());
+                        }
                         break;    
                     case 14:
                         attacker.setTarget_indicated_by_role(gson.fromJson(resource.getValue().toString(), Target.class));
@@ -115,7 +167,9 @@ public class AttackerUtils
                         attacker.setCenterCoordinates(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
                         break; 
                     case 17:
-                        attacker.setRemainedEnergy((float) resource.getValue());
+                        Double energyVal = (double) resource.getValue();if (!energyVal.isNaN()) {                            
+                            attacker.setRemainedEnergy(energyVal.floatValue());
+                        }
                         break;
                     case 18:
                         attacker.setUavBaseCenterCoordinates(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
@@ -123,6 +177,12 @@ public class AttackerUtils
                     case 19: 
                         attacker.setUavPositionInBaseStation(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
                         break;
+                    case 20:
+                        Double speedVal = (double) resource.getValue();
+                        if (!speedVal.isNaN()) {
+                            attacker.setSpeed(speedVal.intValue());
+                        }
+                        break; 
                     default:
                 }
             } catch (Exception e) {
@@ -130,5 +190,103 @@ public class AttackerUtils
             }
         }
         return attacker;
+    }
+    
+    public static synchronized void updateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
+    {
+        if(resourceUpdate != null && client != null)
+        {
+            String data = gson.toJson(resourceUpdate);
+            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+            requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class);
+        }
+    }
+    
+    public static synchronized void executeOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
+    {
+        if(resourceUpdate != null && client != null)
+        {
+            String data = gson.toJson(resourceUpdate);
+            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+            requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class);
+        }
+    }
+    
+    /**
+     * This class contains static methods for invoking attacker endpoints updates
+     */
+    public class AttackerUpdate
+    {
+
+        public AttackerUpdate() {
+        }
+            
+        /**
+         * Updates Need to replan resource
+         * @param replan
+         * @param attacker 
+         */
+        public void setReplan(boolean replan, AttackerModel attacker) 
+        {
+            System.out.println("Replan set");
+            AttackerUtils.updateResource(attacker.client, 1, new ObjectResourceUpdate(1, replan, 
+                                        ResourceDataType.BOOLEAN.toString()));
+        }
+        
+        /**
+         * Updates the flight mode
+         * @param flightMode
+         * @param attacker 
+         */
+        public void setFlightMode(int flightMode, AttackerModel attacker) 
+        {
+            AttackerUtils.updateResource(attacker.client, 8, new ObjectResourceUpdate(8, flightMode, 
+                                            ResourceDataType.INTEGER.toString()));
+        }
+        
+        /**
+         * Updates the target resource
+         * @param target_indicated_by_role
+         * @param attacker 
+         */
+        public void setTarget_indicated_by_role(Target target_indicated_by_role, AttackerModel attacker) {
+            AttackerUtils.updateResource(attacker.client, 14, new ObjectResourceUpdate(14, target_indicated_by_role, 
+                                            ResourceDataType.STRING.toString()));
+        }
+        
+        /**
+         * Updates the speed resource
+         * @param speed
+         * @param attacker 
+         */
+        public void setSpeed(int speed, AttackerModel attacker) 
+        {
+            AttackerUtils.updateResource(attacker.client, 20, new ObjectResourceUpdate(20, speed, 
+                                            ResourceDataType.INTEGER.toString()));
+        }
+        
+    }
+    
+    /**
+     * This class contains static methods for executing procedures on attacker endpoints
+     */
+    public class AttackerExecution
+    {
+         private  Gson gson;
+        public AttackerExecution() {
+            gson = new Gson();
+        }
+        
+        public void addConflict(Conflict conflict, AttackerModel attacker) {
+            AttackerUtils.executeOperationOnResource(attacker.client, 3, new ObjectResourceUpdate(3, gson.toJson(conflict), ResourceDataType.STRING.toString()));
+        }
+    
+        public void addObstacle(Obstacle obstacle, AttackerModel attacker) {
+            AttackerUtils.executeOperationOnResource(attacker.client, 21, new ObjectResourceUpdate(21, gson.toJson(obstacle), ResourceDataType.STRING.toString()));
+        }
+    
+        public  void addThreat(Threat threat, AttackerModel attacker) {
+            AttackerUtils.executeOperationOnResource(attacker.client, 22, new ObjectResourceUpdate(22, gson.toJson(threat), ResourceDataType.STRING.toString()));
+        }
     }
 }

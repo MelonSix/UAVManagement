@@ -51,9 +51,8 @@ public class ControlCenterInterface
         Gson gson = new Gson();
         ReportedLwM2MClient device = gson.fromJson(data, ReportedLwM2MClient.class);
         connectedDevices = newDeviceServices.addNewDevice(device);
-        System.out.println(device.toString());
         
-        //reflex operations to endpoints
+        //reflex operations to endpoints        
         reflex.scoutingWaypointsReflex(connectedDevices);
         reflex.observationRequestReflex(device);
         
@@ -73,14 +72,14 @@ public class ControlCenterInterface
                     Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
                     if (obs != null && !controlCenterServices.containsObstacle(obs)) {
                         controlCenterServices.addObstacle(obs);
-                        System.out.println("Obstacle added to kb");
+                        controlCenterServices.setSimulationStartable(true);
                     }
                     break;
                 case THREAT:
                     Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
                     if (threat != null && !controlCenterServices.containsThreat(threat)) {
                         controlCenterServices.addThreat(threat);
-                        System.out.println("Threat added to kb");
+                        controlCenterServices.setSimulationStartable(true);
                     }
                     break;
                 case CONFLICT:
@@ -88,11 +87,12 @@ public class ControlCenterInterface
                 default:
                     logger.info("INVALID NOTIFICATION OPTION RECEIVED");
             }
-            System.out.println("Received notification: " + content);
+            //System.out.println("Received notification: " + content);
             return Response.accepted().build();
         }
         return Response.status(Response.Status.NOT_ACCEPTABLE).build();
     }
+    
 
     public ControlCenterServices getControlCenterServices() {
         return controlCenterServices;

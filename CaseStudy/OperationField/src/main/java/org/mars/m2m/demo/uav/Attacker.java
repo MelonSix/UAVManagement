@@ -588,6 +588,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
                 portNumber, "127.0.0.1", 5683, "attacker"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
         AttackerDeviceClient uavAttackerDevice = new AttackerDeviceClient(uavLwM2mModel, attackerDevDtls);
         uavAttackerDevice.StartDevice();
+        uavAttackerDevice.getAttackerDevice().setAttacker(this);
         deviceHelper.lwM2mClientDaemon(uavAttackerDevice);//invokes a background process for this device
         logger.info("Attacker device started");
         uavOwnedDevices.add(uavAttackerDevice);
@@ -598,5 +599,82 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     public AttackerDeviceClient getAttackerDeviceClient() {
         return attackerDeviceClient;
     }
+
+    public UAVPath getPath_planned_at_current_time_step() {
+        return path_planned_at_current_time_step;
+    }
+
+    public int getCurrent_index_of_planned_path() {
+        return current_index_of_planned_path;
+    }
+
+    public boolean isNeed_to_replan() {
+        return need_to_replan;
+    }
+
+    public ArrayList<AbstractDevice> getUavOwnedDevices() {
+        return uavOwnedDevices;
+    }
+
+    public UAVConfiguration getUavConfig() {
+        return uavConfig;
+    }
+
+    public LwM2mModel getUavLwM2mModel() {
+        return uavLwM2mModel;
+    }
+
+    public DeviceHelper getDeviceHelper() {
+        return deviceHelper;
+    }
+
+    public float[] getGoal_for_each_iteration() {
+        return goal_for_each_iteration;
+    }
+
+    public int getStucked_times() {
+        return stucked_times;
+    }
+
+    public int getMax_stucked_times() {
+        return max_stucked_times;
+    }
+
+    public RRTAlg getRrt_alg() {
+        return rrt_alg;
+    }
+
+    public static Logger getLogger() {
+        return logger;
+    }
+
+    public static int getFLYING_MODE() {
+        return FLYING_MODE;
+    }
+
+    public static int getTARGET_LOCKED_MODE() {
+        return TARGET_LOCKED_MODE;
+    }
+
+    public double getMax_angle() {
+        return max_angle;
+    }
+
+    public float getRemained_energy() {
+        return remained_energy;
+    }
+
+    public static ArrayList<Integer> getOccupiedPorts() {
+        return occupiedPorts;
+    }
+
+    public static int getCenter_height() {
+        return center_height;
+    }
+
+    public static int getCenter_width() {
+        return center_width;
+    }
+    
     
 }

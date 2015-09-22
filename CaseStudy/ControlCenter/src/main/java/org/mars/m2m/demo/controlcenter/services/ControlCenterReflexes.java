@@ -93,11 +93,10 @@ public class ControlCenterReflexes
         ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
         for (ObjectLink obj : objectLinks) 
         {                        
-            System.out.println("Current Object link ID:" + obj.getObjectId());
-            if (obj.getObjectId() == 12202 || obj.getObjectId() == 12206) {
+            if (obj.getObjectId() == 12202 || obj.getObjectId() == 12206) 
+            {
                 WorkerThread thread = new WorkerThread(device, ThreadOperation.OBSERVATION_REFLEX);
                 executor.execute(thread);
-                System.out.println("Current Object added to worker thread");
             }
         }
     }

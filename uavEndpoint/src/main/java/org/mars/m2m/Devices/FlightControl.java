@@ -105,11 +105,11 @@ public class FlightControl extends BaseInstanceEnabler implements DeviceExecutio
         return move_at_y_coordinate_task;
     }
 
-    public void setY_updated(boolean y_updated) {
+    public synchronized void setY_updated(boolean y_updated) {
         this.y_updated = y_updated;
     }
 
-    public boolean isY_updated() {
+    public synchronized boolean isY_updated() {
         return y_updated;
     }
     

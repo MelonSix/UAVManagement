@@ -163,6 +163,7 @@ public class ServiceUtils
      * @return A {@link ContentInstance} object
      */
     public ContentInstance getContentInstance(String value) {
+        value=(value==null)?"":value;//ensures the value is not null. This avoids nullpointerexception on operations on the value
         ContentInstance ci = new ContentInstance();
         ci.setStateTag(BigInteger.ZERO);
         ci.setContentInfo(MediaType.APPLICATION_JSON);
