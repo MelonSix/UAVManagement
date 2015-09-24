@@ -12,9 +12,11 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.InvocationCallback;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.ObjectFactory;
 import org.slf4j.LoggerFactory;
 
@@ -24,9 +26,9 @@ import org.slf4j.LoggerFactory;
  Consumes the various services exposed by the management server
  ServiceConsumer => Management Sever Service Consumer
  */
-public class ServiceConsumer 
+public class AsyncServiceConsumer 
 {
-    Logger logger = (Logger) LoggerFactory.getLogger(ServiceConsumer.class);
+    Logger logger = (Logger) LoggerFactory.getLogger(AsyncServiceConsumer.class);
     ObjectFactory of;
     Response response;
     Map<String, String> headerData;
@@ -35,7 +37,7 @@ public class ServiceConsumer
     /**
      * Default constructor
      */
-    public ServiceConsumer() {
+    public AsyncServiceConsumer() {
         this.of = new ObjectFactory();
         this.response = null;
     }
@@ -45,7 +47,7 @@ public class ServiceConsumer
      * @param consumerDtls
      * @return 
      */
-    public Response handleGet(SvcConsumerDetails consumerDtls)
+    public Response handleGet(SvcConsumerDetails consumerDtls, final AsyncServiceCallback callback)
     {
         headerData = consumerDtls.getHeaderData();
         
@@ -65,8 +67,33 @@ public class ServiceConsumer
         response = invBuilder.get();
         return response;
     }
+    
+    /**
+     * Handles client get operations to the management server
+     * @param toUrl
+     * @param callback 
+     */
+    public void handleGet(String toUrl, final AsyncServiceCallback callback)
+    {        
+        Client client = ClientBuilder.newClient();
+        WebTarget webTarget = client.target(toUrl);        
+        Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+                
+        invBuilder.async().get(new InvocationCallback<Response>() {
 
-    public Response handlePut(SvcConsumerDetails consumerDtls, String data) 
+            @Override
+            public void completed(Response response) {
+                callback.asyncServicePerformed(response);
+            }
+
+            @Override
+            public void failed(Throwable throwable) {
+                logger.error("Error loading devices from MA"); 
+            }
+        });
+    }
+
+    public Response handlePut(SvcConsumerDetails consumerDtls, String data, final AsyncServiceCallback callback) 
     {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(consumerDtls.getRequest().getTo());
@@ -85,7 +112,7 @@ public class ServiceConsumer
         return response;
     }
     
-    public Response handlePost(String to, Object data, String mediaType)
+    public Response handlePost(String to, Object data, String mediaType, final AsyncServiceCallback callback)
     {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(to);
@@ -105,7 +132,7 @@ public class ServiceConsumer
         return response;
     }
     
-    public Response handleDelete(SvcConsumerDetails consumerDetails)
+    public Response handleDelete(SvcConsumerDetails consumerDetails, final AsyncServiceCallback callback)
     {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(consumerDetails.getRequest().getTo());

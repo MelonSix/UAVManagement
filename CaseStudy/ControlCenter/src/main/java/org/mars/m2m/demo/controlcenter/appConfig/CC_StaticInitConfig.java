@@ -100,6 +100,7 @@ public class CC_StaticInitConfig {
     public static int bound_height=600;//simulation environment height
     public static String mgmntAdapterURL="";//URL for managment adapter
     public static String mgmntServerURL = "";
+    public static String mgmntAdapterGetClientsURL = "";
     public static AtomicInteger currentScoutIndex = new AtomicInteger();//used to control scout role assignment
     
     public static int FLYING_MODE = 0;

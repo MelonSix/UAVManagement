@@ -85,14 +85,14 @@ public class AnimatorListener implements ActionListener
     {
         ControlCenterServices cc = panel.getControlCenterServices();
 
-        //synchronized(cc)
-        //{                
+        synchronized(cc)
+        {                
             if (cc.isSimulationStartable()) //if any obstacle or threat has ever been reported
             {
                 cc.registerInfoRequirement();
                 cc.shareInfoAfterRegistration();
                 cc.roleAssignmentInControlCenter();
             }
-        //}
+        }
     }
 }

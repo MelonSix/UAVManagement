@@ -17,6 +17,7 @@ public class ControlCenterConfiguration extends Configuration
     private String controlCenter_notificationURL;
     private String mgmntServerURL;
     private String mgmntAdapterURL;
+    private String mgmntAdapterGetClients;
     
     public ControlCenterConfiguration() {
     }
@@ -51,6 +52,14 @@ public class ControlCenterConfiguration extends Configuration
 
     public void setMgmntAdapterURL(String mgmntAdapterURL) {
         this.mgmntAdapterURL = mgmntAdapterURL;
+    }
+
+    public String getMgmntAdapterGetClients() {
+        return mgmntAdapterGetClients;
+    }
+
+    public void setMgmntAdapterGetClients(String mgmntAdapterGetClients) {
+        this.mgmntAdapterGetClients = mgmntAdapterGetClients;
     }
     
     

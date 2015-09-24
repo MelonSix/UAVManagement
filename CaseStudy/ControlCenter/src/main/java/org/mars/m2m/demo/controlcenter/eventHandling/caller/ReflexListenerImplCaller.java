@@ -8,7 +8,7 @@ package org.mars.m2m.demo.controlcenter.eventHandling.caller;
 import ch.qos.logback.classic.Logger;
 import java.util.ArrayList;
 import org.mars.m2m.demo.controlcenter.eventHandling.Listerners.ReflexListener;
-import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
+import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.slf4j.LoggerFactory;
 
 /**

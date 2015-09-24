@@ -9,7 +9,7 @@ import ch.qos.logback.classic.Logger;
 import java.util.ArrayList;
 import org.apache.commons.lang3.Validate;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
-import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
+import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.slf4j.LoggerFactory;
 
 /**

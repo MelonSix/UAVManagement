@@ -5,6 +5,7 @@
  */
 package org.mars.m2m.demo.controlcenter.model;
 
+import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import java.awt.Rectangle;
 import org.mars.m2m.demo.controlcenter.uav.UAVPath;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;

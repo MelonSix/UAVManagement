@@ -60,6 +60,9 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
         
         //sets management adapter URL
         CC_StaticInitConfig.mgmntAdapterURL = t.getMgmntAdapterURL();
+        
+        //Sets url for getting connected clients at the Management Adapter
+        CC_StaticInitConfig.mgmntAdapterGetClientsURL = t.getMgmntAdapterGetClients();
     }
     
     @Override

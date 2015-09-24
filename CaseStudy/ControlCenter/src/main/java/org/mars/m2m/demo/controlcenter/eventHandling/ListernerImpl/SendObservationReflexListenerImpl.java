@@ -8,10 +8,10 @@ package org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl;
 import javax.ws.rs.core.MediaType;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.client.ServiceConsumer;
-import org.mars.m2m.demo.controlcenter.client.SvcConsumerDetails;
+import org.mars.m2m.demo.controlcenter.model.SvcConsumerDetails;
 import org.mars.m2m.demo.controlcenter.eventHandling.Listerners.ReflexListener;
-import org.mars.m2m.demo.controlcenter.model.ObjectLink;
-import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
+import org.mars.m2m.dmcore.model.ObjectLink;
+import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.util.RequestUtil;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 

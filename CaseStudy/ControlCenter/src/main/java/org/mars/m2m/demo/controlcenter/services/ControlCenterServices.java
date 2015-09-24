@@ -322,7 +322,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
      * @return
      */
     @Override
-    public synchronized ArrayList<Obstacle> getObstacles() {
+    public ArrayList<Obstacle> getObstacles() {
         return kb.getObstacles();
     }
 
@@ -348,7 +348,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     }
 
     @Override
-    public synchronized ArrayList<Threat> getThreats() {
+    public ArrayList<Threat> getThreats() {
         return kb.getThreats();
     }
 
@@ -402,15 +402,15 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         this.need_to_assign_role = need_to_assign_role;
     }
 
-    public synchronized KnowledgeInterface getKb() {
+    public KnowledgeInterface getKb() {
         return kb;
     }
 
-    public synchronized void setKb(KnowledgeInterface kb) {
+    public void setKb(KnowledgeInterface kb) {
         this.kb = kb;
     }
 
-    public synchronized boolean isSimulationStartable() {
+    public boolean isSimulationStartable() {
         return simulationStartable;
     }
 
@@ -423,7 +423,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     /**share information every 3 time step.
      *
      */
-    public synchronized void shareInfoAfterRegistration() {
+    public void shareInfoAfterRegistration() {
         if (this.time_step % 3 == 0) {
             this.msg_dispatcher.decideAndSumitMsgToSend();
             this.msg_dispatcher.dispatch();
@@ -433,7 +433,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     /**register information requirement for attackers, according to its target and location.
      *
      */
-    public synchronized void registerInfoRequirement() 
+    public void registerInfoRequirement() 
     {
         int attacker_num = HandleTree.attackersNode.getChildCount();
         for (int i = 0; i < attacker_num; i++) 
@@ -458,7 +458,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     /** calls the control center to assign role for each attacker.
      * 
      */
-    public synchronized void roleAssignmentInControlCenter() {
+    public void roleAssignmentInControlCenter() {
         if (this.isNeed_to_assign_role()) {
             this.roleAssignForAttackerWithSubTeam(-1, -1);
         }

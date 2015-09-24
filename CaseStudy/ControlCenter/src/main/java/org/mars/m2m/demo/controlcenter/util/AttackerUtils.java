@@ -13,7 +13,7 @@ import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
-import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
+import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.model.Target;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.Content;

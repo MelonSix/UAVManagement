@@ -1,443 +1,426 @@
-INFO   [10:07:58.962] [main] o.e.j.u.log -  Logging initialized @1211ms 
-INFO   [10:07:59.079] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [10:07:59.088] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [10:07:59.103] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [10:07:59.140] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [10:07:59.143] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [10:07:59.720] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [11:25:21.540] [main] o.e.j.u.log -  Logging initialized @1224ms 
+INFO   [11:25:21.650] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [11:25:21.650] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [11:25:21.665] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [11:25:21.697] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:25:21.712] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:25:22.343] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [10:07:59.724] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@31e72cbc{/ma,null,AVAILABLE} 
-INFO   [10:07:59.731] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [11:25:22.343] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
+INFO   [11:25:22.364] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [10:07:59.737] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7bbbb6a8{/admin-ma,null,AVAILABLE} 
-INFO   [10:07:59.781] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [10:07:59.781] [main] o.e.j.s.Server -  Started @2032ms 
-ERROR  [10:24:35.483] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [10:33:06.274] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [10:43:30.547] [dw-49 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [10:54:00.512] [dw-67 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [10:58:12.766] [dw-73 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [10:58:12.968] [dw-74 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-INFO   [11:16:40.734] [main] o.e.j.u.log -  Logging initialized @1193ms 
-INFO   [11:16:40.818] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [11:16:40.826] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [11:16:40.840] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [11:16:40.874] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:16:40.877] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:16:41.394] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [11:25:22.369] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
+INFO   [11:25:22.410] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:25:22.410] [main] o.e.j.s.Server -  Started @2082ms 
+INFO   [11:57:47.315] [main] o.e.j.u.log -  Logging initialized @1184ms 
+INFO   [11:57:47.393] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [11:57:47.409] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [11:57:47.425] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [11:57:47.456] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:57:47.456] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [11:57:47.972] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [11:16:41.397] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [11:16:41.402] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [11:57:47.987] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6dcd5639{/ma,null,AVAILABLE} 
+INFO   [11:57:47.987] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:16:41.408] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [11:16:41.455] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:16:41.456] [main] o.e.j.s.Server -  Started @1916ms 
-ERROR  [11:17:00.392] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [11:17:06.200] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:09.836] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:10.639] [dw-20 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:12.641] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:13.848] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:22.486] [dw-27 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:27.105] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:27.312] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:32.737] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:37.152] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:39.143] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:50.204] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:51.818] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:17:52.624] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:18:01.247] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:18:15.931] [dw-20 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:18:21.731] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:18:23.527] [dw-20 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:18:46.046] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:18:50.275] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:19:02.728] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:19:16.189] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:19:18.592] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:19:24.643] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:19:51.547] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:19:53.560] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:20:09.828] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:20:22.684] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:20:27.701] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:20:37.945] [dw-20 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:20:39.356] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:20:51.194] [dw-20 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:21:09.275] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:21:17.370] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:21:40.227] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:21:50.461] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:22:02.515] [dw-32 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:22:26.225] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:22:42.090] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:24:56.846] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [11:28:03.694] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:04.104] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:07.324] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:08.115] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:11.333] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:15.166] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:15.955] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:19.986] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:24.595] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:30.219] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:34.615] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:36.448] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:36.623] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:46.341] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:47.707] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:28:49.304] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-INFO   [11:39:27.288] [main] o.e.j.u.log -  Logging initialized @1262ms 
-INFO   [11:39:27.374] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [11:39:27.381] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [11:39:27.396] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [11:39:27.433] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:39:27.436] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:39:27.974] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [11:57:47.987] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@27d57a2c{/admin-ma,null,AVAILABLE} 
+INFO   [11:57:48.034] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [11:57:48.034] [main] o.e.j.s.Server -  Started @1912ms 
+INFO   [12:36:11.634] [main] o.e.j.u.log -  Logging initialized @1236ms 
+INFO   [12:36:11.709] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [12:36:11.724] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [12:36:11.740] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [12:36:11.771] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [12:36:11.771] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [12:36:12.322] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [11:39:27.977] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [11:39:27.982] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [12:36:12.322] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6dcd5639{/ma,null,AVAILABLE} 
+INFO   [12:36:12.322] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:39:27.988] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [11:39:28.034] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:39:28.035] [main] o.e.j.s.Server -  Started @2011ms 
-ERROR  [11:40:00.567] [dw-18 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [11:40:01.378] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:01.978] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:04.587] [dw-27 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:09.208] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:11.412] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:13.225] [dw-18 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:17.849] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:19.667] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:21.668] [dw-27 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:23.475] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:27.889] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:29.296] [dw-18 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:29.908] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:30.295] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:40.936] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:41.730] [dw-27 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:42.544] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:40:52.005] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:41:06.920] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:41:12.547] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:41:14.338] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:41:41.073] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:41:50.709] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:42:39.097] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [11:42:39.904] [dw-18 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:42:43.098] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:42:47.122] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [11:42:48.530] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-INFO   [13:02:20.095] [main] o.e.j.u.log -  Logging initialized @1197ms 
-INFO   [13:02:20.180] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [13:02:20.188] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [13:02:20.202] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [13:02:20.236] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [13:02:20.239] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [13:02:20.771] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [12:36:12.338] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@27d57a2c{/admin-ma,null,AVAILABLE} 
+INFO   [12:36:12.385] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [12:36:12.385] [main] o.e.j.s.Server -  Started @1991ms 
+ERROR  [12:40:21.778] [Thread-736] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.SocketException: Connection reset 
+ERROR  [12:40:22.796] [Thread-571] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.796] [Thread-449] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.796] [Thread-428] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.796] [Thread-543] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.796] [Thread-344] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.812] [Thread-677] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.812] [Thread-351] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.812] [Thread-418] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.812] [Thread-601] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [12:40:22.827] [Thread-269] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+INFO   [14:30:23.568] [main] o.e.j.u.log -  Logging initialized @1244ms 
+INFO   [14:30:23.661] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [14:30:23.661] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [14:30:23.677] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [14:30:23.724] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:30:23.724] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:30:24.284] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [13:02:20.777] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [13:02:20.783] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [14:30:24.284] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6dcd5639{/ma,null,AVAILABLE} 
+INFO   [14:30:24.299] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [13:02:20.789] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [13:02:20.840] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [13:02:20.840] [main] o.e.j.s.Server -  Started @1944ms 
-INFO   [13:11:41.021] [main] o.e.j.u.log -  Logging initialized @1160ms 
-INFO   [13:11:41.106] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [13:11:41.114] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [13:11:41.128] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [13:11:41.163] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [13:11:41.166] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [13:11:41.663] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [14:30:24.299] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@27d57a2c{/admin-ma,null,AVAILABLE} 
+INFO   [14:30:24.346] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:30:24.346] [main] o.e.j.s.Server -  Started @2026ms 
+INFO   [14:50:32.309] [main] o.e.j.u.log -  Logging initialized @1288ms 
+INFO   [14:50:32.403] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [14:50:32.418] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [14:50:32.434] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [14:50:32.465] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:50:32.481] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:50:33.020] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [13:11:41.669] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [13:11:41.676] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [14:50:33.020] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6dcd5639{/ma,null,AVAILABLE} 
+INFO   [14:50:33.036] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [13:11:41.682] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [13:11:41.724] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [13:11:41.725] [main] o.e.j.s.Server -  Started @1865ms 
-ERROR  [13:44:01.564] [dw-152 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.564] [dw-86 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.564] [dw-17 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.564] [dw-92 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.565] [dw-94 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.565] [dw-122 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.566] [dw-49 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.566] [dw-52 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.566] [dw-67 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.567] [dw-138 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.567] [dw-96 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.567] [dw-21 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:44:01.567] [dw-125 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.314] [dw-105 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.315] [dw-101 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.316] [dw-63 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.316] [dw-55 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.317] [dw-163 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.317] [dw-169 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.317] [dw-90 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.318] [dw-139 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.321] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.321] [dw-177 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.322] [dw-158 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.324] [dw-174 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.327] [dw-91 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.327] [dw-57 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.327] [dw-117 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.327] [dw-93 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:54.327] [dw-82 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:52:55.720] [dw-68 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [13:58:57.874] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.880] [dw-80 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.881] [dw-100 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.881] [dw-142 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.882] [dw-103 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.884] [dw-157 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.884] [dw-64 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.884] [dw-102 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.884] [dw-150 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.885] [dw-124 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.885] [dw-96 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.885] [dw-126 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.885] [dw-104 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.885] [dw-37 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.885] [dw-50 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.886] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.886] [dw-141 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.886] [dw-77 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.887] [dw-128 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.887] [dw-170 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.887] [dw-162 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.887] [dw-151 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.888] [dw-172 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.889] [dw-166 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.889] [dw-118 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.889] [dw-155 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.889] [dw-75 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.889] [dw-152 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.889] [dw-123 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.890] [dw-89 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.890] [dw-73 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.890] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [13:58:57.890] [dw-131 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.186] [dw-37 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.186] [dw-92 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.186] [dw-126 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.186] [dw-115 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.186] [dw-113 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.187] [dw-84 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.187] [dw-79 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.187] [dw-139 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.186] [dw-174 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.190] [dw-135 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.190] [dw-103 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.190] [dw-63 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:46.190] [dw-175 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [14:11:47.109] [dw-82 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [14:11:49.119] [dw-68 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [15:55:39.378] [dw-85 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.SocketException: Connection reset 
-ERROR  [15:55:40.383] [dw-126 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.383] [dw-41 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.383] [dw-103 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.384] [dw-117 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.384] [dw-195 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.384] [dw-82 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.383] [dw-139 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.385] [dw-136 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.385] [dw-196 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.394] [dw-174 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [15:55:40.934] [dw-198 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-INFO   [16:24:20.606] [main] o.e.j.u.log -  Logging initialized @1255ms 
-INFO   [16:24:20.701] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [16:24:20.709] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [16:24:20.723] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [16:24:20.758] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [16:24:20.761] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [16:24:21.309] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [14:50:33.036] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@27d57a2c{/admin-ma,null,AVAILABLE} 
+INFO   [14:50:33.083] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:50:33.083] [main] o.e.j.s.Server -  Started @2062ms 
+INFO   [16:49:06.246] [main] o.e.j.u.log -  Logging initialized @1288ms 
+INFO   [16:49:06.335] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:49:06.343] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:49:06.358] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:49:06.394] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:49:06.397] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:49:06.966] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [16:24:21.312] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [16:24:21.318] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:49:06.970] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [16:49:06.975] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [16:24:21.323] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [16:24:21.374] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [16:24:21.375] [main] o.e.j.s.Server -  Started @2026ms 
-ERROR  [16:45:17.603] [dw-223 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-236 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-215 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-358 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-175 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-283 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-363 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-135 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-418 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-116 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-450 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-259 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-405 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-361 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-397 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-84 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-340 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-217 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-189 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-164 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-193 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.605] [dw-66 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.603] [dw-99 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-219 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:45:17.604] [dw-357 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:46:48.809] [dw-264 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.660] [dw-454 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:57:32.679] [dw-350 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:57:32.683] [dw-322 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:57:32.685] [dw-309 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:57:32.688] [dw-139 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.688] [dw-253 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:57:32.688] [dw-356 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.688] [dw-323 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:57:32.688] [dw-425 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [16:57:32.693] [dw-178 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.695] [dw-103 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.696] [dw-346 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.698] [dw-421 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.701] [dw-79 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.703] [dw-466 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.704] [dw-71 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.706] [dw-235 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.708] [dw-89 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.714] [dw-329 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:32.719] [dw-47 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:34.354] [dw-364 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [16:57:36.148] [dw-65 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: Already connected 
-ERROR  [17:11:30.771] [dw-300 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.771] [dw-104 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.771] [dw-90 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.771] [dw-162 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.771] [dw-122 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.772] [dw-234 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.773] [dw-175 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.773] [dw-325 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:11:30.771] [dw-92 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.015] [dw-166 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.016] [dw-355 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.016] [dw-389 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.016] [dw-392 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.018] [dw-443 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.018] [dw-460 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.018] [dw-335 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.019] [dw-118 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.019] [dw-265 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.020] [dw-95 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.020] [dw-336 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.020] [dw-261 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:13:47.020] [dw-455 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.051] [dw-270 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.051] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.052] [dw-458 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.052] [dw-211 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.052] [dw-373 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.052] [dw-201 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.052] [dw-59 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.053] [dw-131 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.054] [dw-230 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.055] [dw-214 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.055] [dw-90 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.056] [dw-135 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.056] [dw-480 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.057] [dw-479 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.057] [dw-69 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.057] [dw-320 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.058] [dw-212 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [17:22:52.060] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-INFO   [18:04:33.612] [main] o.e.j.u.log -  Logging initialized @1396ms 
-INFO   [18:04:33.768] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [18:04:33.786] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [18:04:33.807] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [18:04:33.848] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:04:33.852] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:04:35.167] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:49:06.982] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [16:49:07.029] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:49:07.029] [main] o.e.j.s.Server -  Started @2073ms 
+INFO   [17:00:19.872] [main] o.e.j.u.log -  Logging initialized @1174ms 
+INFO   [17:00:19.958] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:00:19.965] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:00:19.980] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:00:20.016] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:00:20.018] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:00:20.544] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [18:04:35.171] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [18:04:35.177] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [17:00:20.546] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [17:00:20.551] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [18:04:35.182] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [18:04:35.253] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:04:35.253] [main] o.e.j.s.Server -  Started @3039ms 
-ERROR  [18:04:37.233] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:04:38.376] [dw-18 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:04:39.469] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:04:40.537] [dw-18 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:04:41.605] [dw-21 - POST /ma/mgmtAdapter/processDeviceReporting] o.m.m.m.D.DeviceReporterImpl -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-INFO   [18:15:23.935] [main] o.e.j.u.log -  Logging initialized @1333ms 
-INFO   [18:15:24.019] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [18:15:24.027] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [18:15:24.042] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [18:15:24.078] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:15:24.081] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:15:24.633] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [17:00:20.556] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [17:00:20.601] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:00:20.601] [main] o.e.j.s.Server -  Started @1907ms 
+INFO   [17:58:11.878] [main] o.e.j.u.log -  Logging initialized @1248ms 
+INFO   [17:58:11.965] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:58:11.973] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:58:11.988] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:58:12.026] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:58:12.029] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:58:12.577] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [18:15:24.636] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5fad41be{/ma,null,AVAILABLE} 
-INFO   [18:15:24.645] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [17:58:12.581] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [17:58:12.586] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [18:15:24.652] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@58a120b0{/admin-ma,null,AVAILABLE} 
-INFO   [18:15:24.694] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@4052274f{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:15:24.695] [main] o.e.j.s.Server -  Started @2094ms 
-ERROR  [18:17:46.019] [dw-39 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.019] [dw-28 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.019] [dw-37 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.019] [dw-36 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.020] [dw-20 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.020] [dw-31 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.020] [dw-33 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.020] [dw-38 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.020] [dw-19 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.020] [dw-29 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.020] [dw-42 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.019] [dw-34 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.019] [dw-35 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.019] [dw-43 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:17:46.021] [dw-40 - POST /ma/mgmtAdapter/notification] o.m.m.m.r.s.NotificationResource -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+INFO   [17:58:12.591] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [17:58:12.638] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:58:12.638] [main] o.e.j.s.Server -  Started @2009ms 
+INFO   [18:10:51.065] [main] o.e.j.u.log -  Logging initialized @1244ms 
+INFO   [18:10:51.170] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [18:10:51.178] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [18:10:51.193] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [18:10:51.232] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:10:51.235] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:10:51.788] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [18:10:51.793] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [18:10:51.799] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:10:51.805] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [18:10:51.852] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:10:51.852] [main] o.e.j.s.Server -  Started @2033ms 
+INFO   [18:19:29.947] [main] o.e.j.u.log -  Logging initialized @1533ms 
+INFO   [18:19:30.147] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [18:19:30.167] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [18:19:30.194] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [18:19:30.313] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:19:30.316] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:19:31.665] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [18:19:31.675] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [18:19:31.683] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:19:31.689] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [18:19:31.750] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:19:31.750] [main] o.e.j.s.Server -  Started @3340ms 
+INFO   [20:55:07.035] [main] o.e.j.u.log -  Logging initialized @1195ms 
+INFO   [20:55:07.118] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [20:55:07.125] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [20:55:07.139] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [20:55:07.175] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [20:55:07.178] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [20:55:07.708] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [20:55:07.715] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [20:55:07.721] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [20:55:07.726] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [20:55:07.774] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [20:55:07.775] [main] o.e.j.s.Server -  Started @1938ms 
+ERROR  [20:55:41.770] [Thread-24] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:65346 
+ERROR  [20:55:41.772] [Thread-45] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:64629 
+ERROR  [20:55:41.773] [Thread-44] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:60557 
+ERROR  [20:55:41.775] [Thread-43] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:61264 
+ERROR  [20:55:41.778] [Thread-42] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:60627 
+ERROR  [20:55:41.781] [Thread-37] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:52416 
+ERROR  [20:55:41.785] [Thread-35] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:61738 
+ERROR  [20:55:41.795] [Thread-26] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:50980 
+ERROR  [20:55:41.797] [Thread-25] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:64897 
+ERROR  [20:55:41.799] [Thread-31] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:49751 
+ERROR  [20:55:41.801] [Thread-30] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:49205 
+ERROR  [20:55:41.804] [Thread-32] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:49546 
+ERROR  [20:55:41.806] [Thread-29] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:54353 
+ERROR  [20:55:41.809] [Thread-33] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:57127 
+ERROR  [20:55:41.811] [Thread-28] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:61079 
+ERROR  [20:55:41.813] [Thread-27] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:56116 
+INFO   [20:57:00.691] [main] o.e.j.u.log -  Logging initialized @1193ms 
+INFO   [20:57:00.779] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [20:57:00.787] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [20:57:00.802] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [20:57:00.838] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [20:57:00.841] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [20:57:01.353] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [20:57:01.355] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [20:57:01.360] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [20:57:01.364] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [20:57:01.413] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [20:57:01.413] [main] o.e.j.s.Server -  Started @1917ms 
+INFO   [21:02:17.401] [main] o.e.j.u.log -  Logging initialized @1497ms 
+INFO   [21:02:17.503] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [21:02:17.512] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [21:02:17.531] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [21:02:17.576] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:02:17.581] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [21:02:18.232] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [21:02:18.235] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [21:02:18.241] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [21:02:18.248] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [21:02:18.314] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:02:18.314] [main] o.e.j.s.Server -  Started @2414ms 
+ERROR  [21:02:28.122] [Thread-17] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:50454 
+ERROR  [21:02:28.131] [Thread-23] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:57765 
+ERROR  [21:02:28.135] [Thread-21] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:53662 
+ERROR  [21:02:28.138] [Thread-19] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:51861 
+ERROR  [21:02:28.621] [Thread-16] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:52746 
+ERROR  [21:02:28.623] [Thread-35] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:50794 
+ERROR  [21:02:28.624] [Thread-34] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:58677 
+ERROR  [21:02:28.625] [Thread-33] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:53307 
+ERROR  [21:02:28.628] [Thread-32] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:60143 
+ERROR  [21:02:28.630] [Thread-31] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:62005 
+ERROR  [21:02:28.632] [Thread-30] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:57387 
+ERROR  [21:02:28.633] [Thread-29] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:51021 
+ERROR  [21:02:28.635] [Thread-28] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:61026 
+ERROR  [21:02:28.636] [Thread-27] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:58691 
+ERROR  [21:02:28.638] [Thread-26] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:57650 
+ERROR  [21:02:28.639] [Thread-25] o.m.m.m.D.DeviceReporterImpl -  com.google.gson.JsonSyntaxException: java.net.UnknownHostException: /127.0.0.1:49370 
+INFO   [21:12:15.597] [main] o.e.j.u.log -  Logging initialized @1232ms 
+INFO   [21:12:15.683] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [21:12:15.691] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [21:12:15.710] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [21:12:15.748] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:12:15.751] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [21:12:16.448] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [21:12:16.451] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@333cb916{/ma,null,AVAILABLE} 
+INFO   [21:12:16.459] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [21:12:16.468] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9d1a267{/admin-ma,null,AVAILABLE} 
+INFO   [21:12:16.528] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:12:16.528] [main] o.e.j.s.Server -  Started @2166ms 
+INFO   [21:36:50.424] [main] o.e.j.u.log -  Logging initialized @1266ms 
+INFO   [21:36:50.517] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [21:36:50.524] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [21:36:50.540] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [21:36:50.583] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:36:50.587] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [21:36:51.139] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [21:36:51.142] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4a0df195{/ma,null,AVAILABLE} 
+INFO   [21:36:51.158] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [21:36:51.164] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3eee3e2b{/admin-ma,null,AVAILABLE} 
+INFO   [21:36:51.226] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:36:51.226] [main] o.e.j.s.Server -  Started @2071ms 
+ERROR  [21:39:18.260] [Thread-33] o.m.m.m.r.s.ConnectedClients -  java.lang.UnsupportedOperationException: Attempted to serialize java.lang.Class: org.mars.m2m.managmentadapter.model.ReportedClients. Forgot to register a type adapter? 
+ERROR  [21:40:18.260] [jersey-background-task-scheduler-0] o.m.m.m.r.s.ConnectedClients -  Client Operation time out 
+INFO   [21:41:49.748] [main] o.e.j.u.log -  Logging initialized @1318ms 
+INFO   [21:41:49.839] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [21:41:49.847] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [21:41:49.864] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [21:41:49.907] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:41:49.910] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [21:41:50.528] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [21:41:50.537] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4a0df195{/ma,null,AVAILABLE} 
+INFO   [21:41:50.547] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [21:41:50.552] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3eee3e2b{/admin-ma,null,AVAILABLE} 
+INFO   [21:41:50.601] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:41:50.601] [main] o.e.j.s.Server -  Started @2173ms 
+INFO   [21:46:14.536] [main] o.e.j.u.log -  Logging initialized @1271ms 
+INFO   [21:46:14.625] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [21:46:14.633] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [21:46:14.649] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [21:46:14.689] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:46:14.692] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [21:46:15.264] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [21:46:15.270] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4a0df195{/ma,null,AVAILABLE} 
+INFO   [21:46:15.277] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [21:46:15.283] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3eee3e2b{/admin-ma,null,AVAILABLE} 
+INFO   [21:46:15.333] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [21:46:15.333] [main] o.e.j.s.Server -  Started @2071ms 
+INFO   [22:44:07.165] [main] o.e.j.u.log -  Logging initialized @1391ms 
+INFO   [22:44:07.325] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [22:44:07.332] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [22:44:07.348] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [22:44:07.385] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [22:44:07.389] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [22:44:08.062] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [22:44:08.065] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4a0df195{/ma,null,AVAILABLE} 
+INFO   [22:44:08.069] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [22:44:08.076] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3eee3e2b{/admin-ma,null,AVAILABLE} 
+INFO   [22:44:08.118] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [22:44:08.119] [main] o.e.j.s.Server -  Started @2348ms 
+INFO   [22:47:10.481] [main] o.e.j.u.log -  Logging initialized @1695ms 
+INFO   [22:47:10.575] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [22:47:10.583] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [22:47:10.600] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [22:47:10.637] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [22:47:10.641] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [22:47:11.273] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [22:47:11.278] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4a0df195{/ma,null,AVAILABLE} 
+INFO   [22:47:11.286] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [22:47:11.295] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3eee3e2b{/admin-ma,null,AVAILABLE} 
+INFO   [22:47:11.341] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [22:47:11.342] [main] o.e.j.s.Server -  Started @2558ms 
+ERROR  [22:48:00.805] [Thread-53] o.m.m.m.r.s.NotificationResource -  java.util.ConcurrentModificationException 
+INFO   [22:56:19.900] [main] o.e.j.u.log -  Logging initialized @1314ms 
+INFO   [22:56:19.998] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [22:56:20.007] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [22:56:20.024] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [22:56:20.064] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [22:56:20.067] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [22:56:20.891] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [22:56:20.941] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4a0df195{/ma,null,AVAILABLE} 
+INFO   [22:56:20.964] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [22:56:20.973] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@3eee3e2b{/admin-ma,null,AVAILABLE} 
+INFO   [22:56:21.085] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@297ea53a{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [22:56:21.085] [main] o.e.j.s.Server -  Started @2502ms 

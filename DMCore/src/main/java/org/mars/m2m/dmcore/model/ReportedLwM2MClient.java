@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mars.m2m.demo.controlcenter.model;
+package org.mars.m2m.dmcore.model;
 
 import java.util.ArrayList;
 import org.eclipse.leshan.core.request.BindingMode;

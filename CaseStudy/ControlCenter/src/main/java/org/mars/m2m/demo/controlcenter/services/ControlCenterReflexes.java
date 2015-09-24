@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
 import org.mars.m2m.demo.controlcenter.eventHandling.caller.ReflexListenerImplCaller;
 import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.AssignScoutRoleReflexListenerImpl;
 import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.SendObservationReflexListenerImpl;
-import org.mars.m2m.demo.controlcenter.model.ObjectLink;
-import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
+import org.mars.m2m.dmcore.model.ObjectLink;
+import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.util.UavUtil;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +36,7 @@ public class ControlCenterReflexes
         this.uavUtil = new UavUtil();
     }
     
-    /**
+    /**Automatic scouting information forwarding
      * Gets the scouts and their devices and then selects the flight control device of each
      * then sends the coordinates to the UAV
      * @param connectedDevices 
@@ -80,6 +80,49 @@ public class ControlCenterReflexes
                     executor.execute(thread);
                     configuredScouts.add(scout);
                 }
+            }
+        }
+    }
+    
+    /**Manual scouting information forwarding
+     * Gets the scouts and their devices and then selects the flight control device of each
+     * then sends the coordinates to the UAV
+     * @param connectedDevices 
+     */
+    public synchronized void onDemandScoutingWaypointsReflex(final ArrayList<ReportedLwM2MClient> connectedDevices)
+    {
+        //gets all scouts and their respective onboard devices
+        TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = 
+                uavUtil.getUAVAndOnboardDevices(uavUtil.getConnectedDevicesByCategory(connectedDevices, "scout"));
+        
+        for(String scout : scouts.keySet())
+        {            
+            ArrayList<ReportedLwM2MClient> onboardDevices = scouts.get(scout);
+            ReportedLwM2MClient flightControl = null;
+
+            for(ReportedLwM2MClient device : onboardDevices)
+            {
+                ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
+                for(ObjectLink obj : objectLinks)
+                {                   
+
+                    //flight control object ID in json object model file is 12204
+                    if(obj.getObjectId() == 12204)
+                    {
+                        flightControl = device;
+                    }
+                    if(flightControl != null)
+                        break;//device found
+                }
+                if(flightControl != null)
+                    break;//device found
+            }
+
+            //if flight control device has been found
+            if(flightControl != null)
+            {
+                WorkerThread thread = new WorkerThread(flightControl, ThreadOperation.SCOUTING_REFLEX);
+                executor.execute(thread);
             }
         }
     }

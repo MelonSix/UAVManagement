@@ -5,18 +5,22 @@
  */
 package org.mars.m2m.managementserver.resources.subresources;
 
+import java.util.concurrent.TimeUnit;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.CompletionCallback;
+import javax.ws.rs.container.ConnectionCallback;
+import javax.ws.rs.container.Suspended;
+import javax.ws.rs.container.TimeoutHandler;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.eclipse.leshan.core.request.DiscoverRequest;
 import org.eclipse.leshan.core.response.DiscoverResponse;
 import org.eclipse.leshan.server.LwM2mServer;
 import org.eclipse.leshan.server.client.Client;
-import org.mars.m2m.managementserver.exceptions.DiscoverResourcesException;
-import org.mars.m2m.managementserver.model.ErrorMessage;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -39,46 +43,74 @@ public class Discovery
     /**
      * Creates a request for discovering the resources implemented by a client for a particular object type.
      * @param objectId the object type
-     * @return HTTP response containing the response entity
+     * @param asyncResponse
      */
     @GET
     @Path("/{objectId}")
-    public Response discoverObject(@PathParam("objectId") int objectId)
+    public void discoverObject(@PathParam("objectId") final int objectId, @Suspended final AsyncResponse asyncResponse)
     {         
-        Client client = server.getClientRegistry().get(endpointID);
-        DiscoverRequest discoverRequest = new DiscoverRequest(objectId);
-        DiscoverResponse discoveryResponse = server.send(client, discoverRequest);
-        if(discoveryResponse != null)        
-            return Response.ok(discoveryResponse.getObjectLinks()).build();
-        else
-            return Response.serverError().build();
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Client client = server.getClientRegistry().get(endpointID);
+                DiscoverRequest discoverRequest = new DiscoverRequest(objectId);
+                DiscoverResponse discoveryResponse = server.send(client, discoverRequest);
+                Response build;
+                if(discoveryResponse != null)        
+                    build = Response.ok(discoveryResponse.getObjectLinks()).build();
+                else
+                    build = Response.serverError().build();
+                asyncResponse.resume(build);
+            }
+        }).start();        
     }
     
     @GET
     @Path("/{objectId}/{instanceId}")
-    public Response discoverObjectInstance(@PathParam("objectId") int objectId, @PathParam("instanceId") int instanceId)
+    public void discoverObjectInstance(@PathParam("objectId") final int objectId, @PathParam("instanceId") final int instanceId,
+                                        @Suspended final AsyncResponse asyncResponse )
     {
-        Client client = server.getClientRegistry().get(endpointID);
-        DiscoverRequest discoverRequest = new DiscoverRequest(objectId, instanceId);
-        DiscoverResponse discoveryResponse = server.send(client, discoverRequest);
-        if(discoveryResponse != null)        
-            return Response.ok(discoveryResponse.getObjectLinks()).build();
-        else
-            return Response.serverError().build();
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Client client = server.getClientRegistry().get(endpointID);
+                DiscoverRequest discoverRequest = new DiscoverRequest(objectId, instanceId);
+                DiscoverResponse discoveryResponse = server.send(client, discoverRequest);
+                Response build;
+                if(discoveryResponse != null)        
+                    build = Response.ok(discoveryResponse.getObjectLinks()).build();
+                else
+                    build = Response.serverError().build();
+                asyncResponse.resume(build);
+            }
+        }).start();        
     }
     
     @GET
     @Path("/{objectId}/{instanceId}/{resourceId}")
-    public Response discoverObjectInstance(@PathParam("objectId") int objectId, @PathParam("instanceId") int instanceId,
-                                            @PathParam("resourceId") int resourceId)
+    public void discoverObjectInstance(@PathParam("objectId") final int objectId, @PathParam("instanceId") final int instanceId,
+                                            @PathParam("resourceId") final int resourceId, @Suspended final AsyncResponse asyncResponse)
     {
-        Client client = server.getClientRegistry().get(endpointID);
-        DiscoverRequest discoverRequest = new DiscoverRequest(objectId, instanceId, resourceId);
-        DiscoverResponse discoveryResponse = server.send(client, discoverRequest);
-        if(discoveryResponse != null)        
-            return Response.ok(discoveryResponse.getObjectLinks()).build();
-        else
-            return Response.serverError().build();
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Client client = server.getClientRegistry().get(endpointID);
+                DiscoverRequest discoverRequest = new DiscoverRequest(objectId, instanceId, resourceId);
+                DiscoverResponse discoveryResponse = server.send(client, discoverRequest);
+                Response build;
+                if(discoveryResponse != null)        
+                    build = Response.ok(discoveryResponse.getObjectLinks()).build();
+                else
+                    build = Response.serverError().build();
+                asyncResponse.resume(build);
+            }
+        }).start();        
     }
     
 //    @GET
@@ -89,4 +121,37 @@ public class Discovery
 //        ErrorMessage errorMessage = new ErrorMessage("Path not found", 404, "www.exceptionLinkHere.com");
 //        return Response.status(Response.Status.NOT_FOUND).entity(errorMessage).build();
 //    }
+    
+    /**
+     * Sets the timeout, callback registration for an Asynchronous response's object
+     * @param asyncResponse 
+     */
+    private void setAsyncResponseProperties(AsyncResponse asyncResponse) {
+        //async properties
+        asyncResponse.setTimeoutHandler(new TimeoutHandler() { 
+            @Override
+            public void handleTimeout(AsyncResponse asyncResponse) {
+                asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
+                        .entity("Operation time out.").build());
+                log.info("MS operation time out");
+            }
+        });
+        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
+        asyncResponse.register(new CompletionCallback() {
+            @Override
+            public void onComplete(Throwable throwable) {
+                if (throwable != null) 
+                {
+                    log.error("Error reporting device to client");
+                }
+            }            
+        });
+        asyncResponse.register(new ConnectionCallback() {
+
+            @Override
+            public void onDisconnect(AsyncResponse disconnected) {
+                log.error("Client could not be contacted.");
+            }
+        });
+    }
 }

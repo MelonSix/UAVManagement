@@ -22,20 +22,20 @@ public class NotificationRegistry
         
     }
 
-    public static Map<String, ArrayList<RequestPrimitive>> getRegistry() {
+    public synchronized static Map<String, ArrayList<RequestPrimitive>> getRegistry() {
         return registry;
     }
 
-    public static void setRegistry(Map<String, ArrayList<RequestPrimitive>> registry) {
+    public synchronized static void setRegistry(Map<String, ArrayList<RequestPrimitive>> registry) {
         NotificationRegistry.registry = registry;
     }
     
-    public static void updateSubscribers(String key, ArrayList<RequestPrimitive> subscribers)
+    public synchronized static void updateSubscribers(String key, ArrayList<RequestPrimitive> subscribers)
     {
         registry.replace(key, subscribers);
     }
     
-    public static void setSubscribers(String key, ArrayList<RequestPrimitive> subscribers)
+    public synchronized static void setSubscribers(String key, ArrayList<RequestPrimitive> subscribers)
     {
         registry.put(key, subscribers);
     }

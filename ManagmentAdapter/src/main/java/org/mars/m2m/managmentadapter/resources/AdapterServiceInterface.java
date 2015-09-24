@@ -6,19 +6,28 @@
 package org.mars.m2m.managmentadapter.resources;
 
 import ch.qos.logback.classic.Logger;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.concurrent.TimeUnit;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.CompletionCallback;
+import javax.ws.rs.container.ConnectionCallback;
+import javax.ws.rs.container.Suspended;
+import javax.ws.rs.container.TimeoutHandler;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.resources.subResources.ConnectedClients;
 import org.mars.m2m.managmentadapter.resources.subResources.DeviceReporting;
 import org.mars.m2m.managmentadapter.resources.subResources.NotificationResource;
 import org.mars.m2m.managmentadapter.service.AdapterServices;
@@ -33,33 +42,72 @@ public class AdapterServiceInterface {
     
     Logger logger = (Logger) LoggerFactory.getLogger(AdapterServiceInterface.class);
     Operation operation;
+    ObjectMapper mapper;
 
     public AdapterServiceInterface() {
+        this.mapper = new ObjectMapper();
     }
     
     /**
      *Accepts requests that are posted to the management adapter
      * @param requestPrimitive The posted request to be processed by the management adapter
      * @param uriInfo
-     * @return The response associated with this request
+     * @param asyncResponse
+     * @param resp
      */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public RequestPrimitive postRequest(RequestPrimitive requestPrimitive, @Context UriInfo uriInfo)
+    public void postRequest(final RequestPrimitive requestPrimitive, @Context final UriInfo uriInfo, 
+            @Suspended final AsyncResponse asyncResponse, @Context final HttpServletResponse resp)
     {
-        try 
+        //async properties
+        asyncResponse.setTimeoutHandler(new TimeoutHandler() { 
+            @Override
+            public void handleTimeout(AsyncResponse asyncResponse) {
+                asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
+                        .entity("Operation time out.").build());
+            }
+        });
+        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
+        asyncResponse.register(new CompletionCallback() {
+            @Override
+            public void onComplete(Throwable throwable) {
+                if (throwable != null) 
+                {
+                    logger.error("Error writing to client");
+                }
+            }            
+        });
+        asyncResponse.register(new ConnectionCallback() {
+
+            @Override
+            public void onDisconnect(AsyncResponse disconnected) {
+                logger.error("Client could not be contacted.");
+            }
+        });
+        
+        //thread for each request
+        new Thread(new Runnable() 
         {
-            System.out.println("Inside generate request function in AdapterServiceInterface.class");
-            JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.marshal(requestPrimitive, System.out);
-            
-        } catch (JAXBException ex) {
-            ex.printStackTrace();
-        }
-        return processRequest(requestPrimitive, uriInfo);
+            @Override
+            public void run() 
+            {
+                try 
+                {
+                    JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
+                    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+                    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);//for debugging purposes
+                    jaxbMarshaller.marshal(requestPrimitive, System.out);//for debugging purposes
+                    
+                    //handles getting the response and resuming
+                    RequestPrimitive processedRequest = processRequest(requestPrimitive, uriInfo);                    
+                    asyncResponse.resume(processedRequest);
+                } catch (Exception ex) {
+                    logger.error(ex.toString());
+                }                
+            }
+        }).start();        
     }
     
     @Path("/notification")
@@ -74,6 +122,11 @@ public class AdapterServiceInterface {
         return new DeviceReporting();
     }
     
+    @Path("/connectedClients")
+    public ConnectedClients getConnectedClients()
+    {
+        return new ConnectedClients();
+    }
     
     /**
      * Process the request primitive by selecting the appropriate operation to handle the request

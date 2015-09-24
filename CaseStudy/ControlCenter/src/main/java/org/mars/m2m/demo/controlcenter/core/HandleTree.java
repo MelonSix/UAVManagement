@@ -15,7 +15,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import org.mars.m2m.demo.controlcenter.model.ReportedLwM2MClient;
+import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.util.UavUtil;
 import org.slf4j.LoggerFactory;
 
@@ -87,7 +87,7 @@ public class HandleTree implements TreeSelectionListener
      * Populates the JTree of this {@link HandleTree} instance with the necessary nodes
      * @param devices The newly connected devices(LwM2M clients) data submitted to the Control center (Scouts & Attackers)
      */
-    public void populateJTree(ArrayList<ReportedLwM2MClient> devices)
+    public synchronized void populateJTree(ArrayList<ReportedLwM2MClient> devices)
     {
         //updates the connected devices list of the control center.
         this.connectedDevices = devices;

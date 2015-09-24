@@ -6,10 +6,11 @@
 package org.mars.m2m.managmentadapter.resources.subResources;
 
 import ch.qos.logback.classic.Logger;
+import com.google.gson.Gson;
 import java.util.concurrent.TimeUnit;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.CompletionCallback;
 import javax.ws.rs.container.ConnectionCallback;
@@ -17,8 +18,7 @@ import javax.ws.rs.container.Suspended;
 import javax.ws.rs.container.TimeoutHandler;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.mars.m2m.managmentadapter.DeviceReporting.DeviceReporterImpl;
-import org.mars.m2m.managmentadapter.DeviceReporting.HandleDeviceReporting;
+import org.mars.m2m.managmentadapter.model.ReportedClients;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -26,29 +26,24 @@ import org.slf4j.LoggerFactory;
  * @author AG BRIGHTER
  */
 @Path("/")
-@Consumes(MediaType.APPLICATION_JSON)
-public class DeviceReporting 
+public class ConnectedClients 
 {
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(DeviceReporting.class);
-    
-    public DeviceReporting() {
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(ConnectedClients.class);
+
+    public ConnectedClients() {
     }
     
-    /**
-     * Receives the device data which is reported and forwards it
-     * to the designated URL in <code>StaticConfigs</code> class
-     * @param data The received data
-     * @param asyncResponse
-     */
-    @POST
-    public void receiveNewDeviceReport(final String data, @Suspended final AsyncResponse asyncResponse)
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN})
+    public void getConnectedClients(@Suspended final AsyncResponse asyncResponse)
     {
         //async properties
         asyncResponse.setTimeoutHandler(new TimeoutHandler() { 
             @Override
             public void handleTimeout(AsyncResponse asyncResponse) {
                 asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
-                        .entity("Operation time out.").build());
+                        .entity("Client Operation time out.").build());
+                logger.error("Client Operation time out");
             }
         });
         asyncResponse.setTimeout(60, TimeUnit.SECONDS);
@@ -57,7 +52,7 @@ public class DeviceReporting
             public void onComplete(Throwable throwable) {
                 if (throwable != null) 
                 {
-                    logger.error("Error reporting device to client");
+                    logger.error("Error writing to client");
                 }
             }            
         });
@@ -72,30 +67,22 @@ public class DeviceReporting
         //thread for each request
         new Thread(new Runnable() 
         {
-
             @Override
-            public void run()
+            public void run() 
             {
                 try 
-                {            
-                    try 
-                    {
-                        DeviceReporterImpl reporterImpl = new DeviceReporterImpl();
-                        HandleDeviceReporting reporting = new HandleDeviceReporting();
-                        reporting.addDeviceReporterListener(reporterImpl);
-                        reporting.performReporting(data);
-                        asyncResponse.resume(Response.ok().build());
-                    } catch (Exception e) 
-                    {
-                        asyncResponse.resume(Response.serverError().build());
-                    }
-                } 
-                catch (Exception ex) 
                 {
-                   logger.error(ex.toString());
-                   asyncResponse.resume(Response.serverError().build());
-                }
+                    Gson gson = new Gson();
+                    synchronized(ReportedClients.class)
+                    {
+                        String data = gson.toJson(ReportedClients.getClients());
+                        System.out.println(data);
+                        asyncResponse.resume(data);
+                    }
+                } catch (Exception ex) {
+                    logger.error(ex.toString());
+                }                
             }
-        }).start();         
+        }).start();    
     }
 }

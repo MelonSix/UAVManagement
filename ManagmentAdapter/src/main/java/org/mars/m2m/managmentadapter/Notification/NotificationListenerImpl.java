@@ -8,8 +8,10 @@ package org.mars.m2m.managmentadapter.Notification;
 import java.util.ArrayList;
 import java.util.Map;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
-import org.mars.m2m.managmentadapter.client.ServiceConsumer;
+import org.mars.m2m.managmentadapter.callback.AsyncServiceCallback;
+import org.mars.m2m.managmentadapter.client.AsyncServiceConsumer;
 import org.mars.m2m.managmentadapter.model.NotificationRegistry;
 import org.mars.m2m.managmentadapter.service.AdapterServices;
 
@@ -17,24 +19,18 @@ import org.mars.m2m.managmentadapter.service.AdapterServices;
  *
  * @author BRIGHTER AGYEMANG
  */
-public class NotificationListenerImpl implements NotificationListener
+public class NotificationListenerImpl implements NotificationListener, AsyncServiceCallback<Response> 
 {    
     Map<String,ArrayList<RequestPrimitive>> registry;
+    private static int notificationCounter=0;
     
     public NotificationListenerImpl() {
-        //this.notify = new Notify();
-        //notify.addNotificationListener(this);
     }
-    
-//    public void sendNotification(NotificationRegistry registry)
-//    {
-//        notify.sendNotification(registry);
-//    }
 
     @Override
     public void sendToOriginator(NotificationObject notificationObject)
     {
-        ServiceConsumer sc = new ServiceConsumer();
+        AsyncServiceConsumer sc = new AsyncServiceConsumer();
         AdapterServices adapterServices = new AdapterServices();
         
         registry = NotificationRegistry.getRegistry();
@@ -44,11 +40,15 @@ public class NotificationListenerImpl implements NotificationListener
             for(RequestPrimitive subscriber : subscribers)
             {//for each subscriber of a resource, notify the subscriber
                 sc.handlePost(subscriber.getFrom(), 
-                        adapterServices.notificationResponse(subscriber, notificationObject.getData().toString()),
-                        MediaType.APPLICATION_XML);
+                        adapterServices.notificationResponse(subscriber, notificationObject.getData()),
+                        MediaType.APPLICATION_XML, this);
             }
         }
-        //System.out.println("Fired event from sendToOriginator, data: "+notificationObject.getData());
     }    
+
+    @Override
+    public void asyncServicePerformed(Response response) {
+        System.out.println("Notifications sent: "+(++notificationCounter));
+    }
     
 }

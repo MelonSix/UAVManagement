@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.CompletionCallback;
+import javax.ws.rs.container.ConnectionCallback;
+import javax.ws.rs.container.Suspended;
+import javax.ws.rs.container.TimeoutHandler;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -84,31 +90,48 @@ public class MgmtServerInterface {
     
     /**
      * Gets all the connected clients
-     * @return 
+     * @param asyncResponse 
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getAllClients()
+    public void getAllClients(@Suspended final AsyncResponse asyncResponse)
     {
-        Collection<Client> clients = server.getClientRegistry().allClients();
-        String json = this.gson.toJson(clients.toArray(new Client[]{}));
-        return json;
-    }   
+        setAsyncResponseProperties(asyncResponse);
+        
+        //thread for each request
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Collection<Client> clients = server.getClientRegistry().allClients();
+                String json = gson.toJson(clients.toArray(new Client[]{})); 
+                asyncResponse.resume(json);
+            }
+        }).start();
+    }     
     
     /**
      * 
      * @param clientEndpoint
+     * @param asyncResponse
      * @return 
      */
     @GET
     @Path("/{clientEndpoint}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getClient(@PathParam("clientEndpoint") String clientEndpoint)
+    public void getClient(@PathParam("clientEndpoint") final String clientEndpoint, @Suspended final AsyncResponse asyncResponse)
     {
-        Client client = server.getClientRegistry().get(clientEndpoint);
-        String jsonClient;
-        jsonClient = this.gson.toJson(client);
-        return jsonClient;        
+        setAsyncResponseProperties(asyncResponse);
+        
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Client client = server.getClientRegistry().get(clientEndpoint);
+                String jsonClient = gson.toJson(client);
+                asyncResponse.resume(jsonClient);
+            }
+        }).start();     
     }
     
     /**
@@ -116,27 +139,36 @@ public class MgmtServerInterface {
      * @param clientEndpoint
      * @param objectid
      * @param instance
+     * @param asyncResponse
      * @return 
      */
     @GET
     @Path("/{clientEndpoint}/{objectid}/{instance}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String readInstanceResources(@PathParam("clientEndpoint") String clientEndpoint, 
-                                        @PathParam("objectid") String objectid, @PathParam("instance") String instance)
+    public void readInstanceResources(@PathParam("clientEndpoint") final String clientEndpoint, 
+                                        @PathParam("objectid") final String objectid, @PathParam("instance") final String instance, 
+                                        @Suspended final AsyncResponse asyncResponse)
     {
-        String processedValResponse = null;
-        String target = "/"+objectid+"/"+instance;
-        Client client = server.getClientRegistry().get(clientEndpoint);
-        if (client != null) {
-            try {
-                ReadRequest request = new ReadRequest(target);
-                ValueResponse cResponse = server.send(client, request);
-                processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
-            } catch (IOException ex) {
-                log.error(ex.getMessage());
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String processedValResponse = null;
+                String target = "/"+objectid+"/"+instance;
+                Client client = server.getClientRegistry().get(clientEndpoint);
+                if (client != null) {
+                    try {
+                        ReadRequest request = new ReadRequest(target);
+                        ValueResponse cResponse = server.send(client, request);
+                        processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
+                        asyncResponse.resume(processedValResponse);
+                    } catch (IOException ex) {
+                        log.error(ex.getMessage());
+                    }
+                } 
             }
-        } 
-        return processedValResponse;        
+        }).start();      
     }
     
     /**
@@ -145,27 +177,36 @@ public class MgmtServerInterface {
      * @param objectid
      * @param instance
      * @param resourceid
+     * @param asyncResponse
      * @return 
      */
     @GET
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String readResource(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid)
+    public void readResource(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
+                                @PathParam("instance") final String instance, @PathParam("resourceid") final String resourceid, 
+                                @Suspended final AsyncResponse asyncResponse)
     {
-        String processedValResponse = null;
-        String target = "/"+objectid+"/"+instance+"/"+resourceid;
-        Client client = server.getClientRegistry().get(clientEndpoint);
-        if (client != null) {
-            try {
-                ReadRequest request = new ReadRequest(target);
-                ValueResponse cResponse = server.send(client, request);
-                processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
-            } catch (IOException ex) {
-                Logger.getLogger(MgmtServerInterface.class.getName()).log(Level.SEVERE, null, ex);
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String processedValResponse = null;
+                String target = "/"+objectid+"/"+instance+"/"+resourceid;
+                Client client = server.getClientRegistry().get(clientEndpoint);
+                if (client != null) {
+                    try {
+                        ReadRequest request = new ReadRequest(target);
+                        ValueResponse cResponse = server.send(client, request);
+                        processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
+                        asyncResponse.resume(processedValResponse);
+                    } catch (IOException ex) {
+                        log.error(ex.getMessage());
+                    }
+                } 
             }
-        } 
-        return processedValResponse;        
+        }).start();       
     }
     
     /**
@@ -175,37 +216,46 @@ public class MgmtServerInterface {
      * @param instance The object instance which the resource to be updated falls under
      * @param resourceid The resource ID to be used in locating and updating the resource
      * @param resource The deserialized resource object to be used for the update process
+     * @param asyncResponse
      * @return An String which is an already serialized Json value using a custom serializer
      */
     @PUT
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String updateResource(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid, ObjectResourceUpdate resource)
+    public void updateResource(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
+                                @PathParam("instance") final String instance, @PathParam("resourceid") final String resourceid, 
+                                final ObjectResourceUpdate resource, @Suspended final AsyncResponse asyncResponse)
     {
-        String processedValResponse = null;
-        try 
-        {
-            String target = "/"+objectid+"/"+instance+"/"+resourceid;
-            Client client = server.getClientRegistry().get(clientEndpoint);            
-            LwM2mResource resce = parseData(resource);            
-            if(resce != null)
-            {
-                WriteRequest writeRequest = new WriteRequest(target, resce, ContentFormat.TEXT, true);
-                LwM2mResponse res = server.send(client, writeRequest);
-                processedValResponse = ResponseManagement.processDeviceResponse(res);
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String processedValResponse = null;
+                try 
+                {
+                    String target = "/"+objectid+"/"+instance+"/"+resourceid;
+                    Client client = server.getClientRegistry().get(clientEndpoint);            
+                    LwM2mResource resce = parseData(resource);            
+                    if(resce != null)
+                    {
+                        WriteRequest writeRequest = new WriteRequest(target, resce, ContentFormat.TEXT, true);
+                        LwM2mResponse res = server.send(client, writeRequest);
+                        processedValResponse = ResponseManagement.processDeviceResponse(res);
+                    }
+
+                } catch (Exception ex) 
+                {
+                    log.error(ex.toString());
+                }
+                if(processedValResponse == null)
+                {
+                    processedValResponse = "{\"error\":\"Datatype parsing error\"}";
+                }
+                asyncResponse.resume(processedValResponse);
             }
-            
-        } catch (Exception ex) 
-        {
-            log.error(ex.toString());
-        }
-        if(processedValResponse == null)
-        {
-            processedValResponse = "{\"error\":\"Datatype parsing error\"}";
-        }
-        return processedValResponse;
+        }).start();
     }
     
     /**
@@ -214,30 +264,39 @@ public class MgmtServerInterface {
      * @param objectid
      * @param instance
      * @param resourceid
+     * @param asyncResponse
      * @return 
      */
     @POST
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String creatObserveRequest(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid)
+    public void creatObserveRequest(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
+                                @PathParam("instance") final String instance, 
+                                @PathParam("resourceid") final String resourceid, @Suspended final AsyncResponse asyncResponse)
     {
-        String processedValResponse = null;
-        String target = "/"+objectid+"/"+instance+"/"+resourceid;
-        Client client = server.getClientRegistry().get(clientEndpoint);
-        
-        if(client != null)
-        {
-            try {
-                ObserveRequest request = new ObserveRequest(target);
-                LwM2mResponse cResponse = server.send(client, request);
-                processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
-            } catch (IOException ex) {
-                log.error(ex.toString());
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String processedValResponse = null;
+                String target = "/"+objectid+"/"+instance+"/"+resourceid;
+                Client client = server.getClientRegistry().get(clientEndpoint);
+
+                if(client != null)
+                {
+                    try {
+                        ObserveRequest request = new ObserveRequest(target);
+                        LwM2mResponse cResponse = server.send(client, request);
+                        processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
+                    } catch (IOException ex) {
+                        log.error(ex.toString());
+                    }
+                }    
+                asyncResponse.resume(processedValResponse);
             }
-        }        
-        return processedValResponse;
+        }).start();        
     }
     
     /**
@@ -247,32 +306,41 @@ public class MgmtServerInterface {
      * @param instance
      * @param resourceid
      * @param execArg
-     * @return 
+     * @param asyncResponse 
      */
     @POST
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String executeRequest(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid, String execArg)
+    public void executeRequest(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
+                                @PathParam("instance") final String instance, 
+                                @PathParam("resourceid") final String resourceid, final String execArg, 
+                                @Suspended final AsyncResponse asyncResponse)
     {        
-        String processedValResponse = null;
-        String target = "/"+objectid+"/"+instance+"/"+resourceid;
-        Client client = server.getClientRegistry().get(clientEndpoint);
-        if(client != null)
-        {
-            try 
-            {
-                byte[] execData = IOUtils.toByteArray(req.getInputStream());
-                ExecuteRequest request = new ExecuteRequest(target,execArg.getBytes(),ContentFormat.JSON);//TODO: Model execArg to decide content format
-//                        new ExecuteRequest(target,IOUtils.toByteArray(req.getInputStream()),null);
-                        
-                LwM2mResponse cResponse = server.send(client, request);
-                processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
-            } catch (IOException ex) {
-                Logger.getLogger(MgmtServerInterface.class.getName()).log(Level.SEVERE, null, ex);
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String processedValResponse = null;
+                String target = "/"+objectid+"/"+instance+"/"+resourceid;
+                Client client = server.getClientRegistry().get(clientEndpoint);
+                if(client != null)
+                {
+                    try 
+                    {
+                        //byte[] execData = IOUtils.toByteArray(req.getInputStream());
+                        ExecuteRequest request = new ExecuteRequest(target,execArg.getBytes(),ContentFormat.JSON);//TODO: Model execArg to decide content format
+        //                        new ExecuteRequest(target,IOUtils.toByteArray(req.getInputStream()),null);
+
+                        LwM2mResponse cResponse = server.send(client, request);
+                        processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
+                    } catch (IOException ex) {
+                        Logger.getLogger(MgmtServerInterface.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }        
+                asyncResponse.resume(processedValResponse);
             }
-        }        
-        return processedValResponse;
+        }).start();        
     }
     
     /**
@@ -280,28 +348,37 @@ public class MgmtServerInterface {
      * @param clientEndpoint
      * @param objectid
      * @param instance
-     * @return 
+     * @param asyncResponse 
+     * @param req 
      */
     @POST
     @Path("/{clientEndpoint}/{objectid}/{instance}/")
     @Produces(MediaType.APPLICATION_JSON)
-    public String createRequest(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance)
+    public void createRequest(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
+                                @PathParam("instance") final String instance, @Suspended final AsyncResponse asyncResponse, 
+                                @Context final HttpServletRequest req)
     {
-            String processedValResponse = null;
-        try {
-            String target = "/"+objectid+"/"+instance;
-            Client client = server.getClientRegistry().get(clientEndpoint);
-            LwM2mResponse cResponse = this.processCreateRequest(client, target, req);
-            processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
-        } catch (IOException ex) {
-            log.error(ex.toString());
-        }
-        if(processedValResponse == null)
-        {
-            processedValResponse = "{\"error\":\"Datatype parsing error\"}";
-        }
-        return processedValResponse;
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String processedValResponse = null;
+                try {
+                    String target = "/"+objectid+"/"+instance;
+                    Client client = server.getClientRegistry().get(clientEndpoint);
+                    LwM2mResponse cResponse = processCreateRequest(client, target, req);
+                    processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
+                } catch (IOException ex) {
+                    log.error(ex.toString());
+                }
+                if(processedValResponse == null)
+                {
+                    processedValResponse = "{\"error\":\"Datatype parsing error\"}";
+                }
+                asyncResponse.resume(processedValResponse);
+            }
+        }).start();
     }
     
     /**
@@ -310,63 +387,80 @@ public class MgmtServerInterface {
      * @param objectid
      * @param instance
      * @param resourceid 
-     * @return  
+     * @param asyncResponse  
      */
     @DELETE
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteObservation(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance, @PathParam("resourceid") String resourceid)
+    public void deleteObservation(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
+                                @PathParam("instance") final String instance, @PathParam("resourceid") final String resourceid, 
+                                @Suspended final AsyncResponse asyncResponse)
     {
-        String target = "/"+objectid+"/"+instance+"/"+resourceid;
-        Client client = server.getClientRegistry().get(clientEndpoint);
-        
-        if(client != null)
-        {
-            server.getObservationRegistry().cancelObservation(client, target);
-            return Response.ok("{\"Status\":\"CANCELED\"}", MediaType.APPLICATION_JSON).build();
-        }
-        else
-        {
-            try {
-                resp.getWriter().format("No registered client with id '%s'", clientEndpoint).flush();
-            } catch (IOException ex) {
-                log.error(ex.toString());
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String target = "/"+objectid+"/"+instance+"/"+resourceid;
+                Client client = server.getClientRegistry().get(clientEndpoint);
+
+                Response build;
+                if(client != null)
+                {
+                    server.getObservationRegistry().cancelObservation(client, target);
+                    build = Response.ok("{\"Status\":\"CANCELED\"}", MediaType.APPLICATION_JSON).build();
+                }
+                else
+                {
+                    try {
+                        resp.getWriter().format("No registered client with id '%s'", clientEndpoint).flush();
+                    } catch (IOException ex) {
+                        log.error(ex.toString());
+                    }
+                  build = Response.serverError().build();
+                }
+                asyncResponse.resume(build);
             }
-          return Response.serverError().build();
-        }
+        }).start();
     }
     
     /**
      * Deletes an instance of an object
      * @param clientEndpoint
      * @param objectid
-     * @param instance
-     * @return 
+     * @param instance 
+     * @param asyncResponse 
      */
     @DELETE
     @Path("/{clientEndpoint}/{objectid}/{instance}/")
     @Produces(MediaType.APPLICATION_JSON)
-    public String deleteInstance(@PathParam("clientEndpoint") String clientEndpoint, @PathParam("objectid") String objectid,
-                                @PathParam("instance") String instance)
+    public void deleteInstance(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
+                                @PathParam("instance") final String instance, @Suspended final AsyncResponse asyncResponse)
     {
-        String processedValResponse = null;
-        String target = "/"+objectid+"/"+instance;
-        Client client = server.getClientRegistry().get(clientEndpoint);
-        
-        if(client != null)
-        {
-            try {
-                DeleteRequest request = new DeleteRequest(target);
-                LwM2mResponse cResponse = server.send(client, request);
-                processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
+        setAsyncResponseProperties(asyncResponse);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String processedValResponse = null;
+                String target = "/"+objectid+"/"+instance;
+                Client client = server.getClientRegistry().get(clientEndpoint);
+
+                if(client != null)
+                {
+                    try {
+                        DeleteRequest request = new DeleteRequest(target);
+                        LwM2mResponse cResponse = server.send(client, request);
+                        processedValResponse = ResponseManagement.processDeviceResponse(cResponse);
+                    }
+                    //return Response.status(Response.Status.OK).build();
+                    catch (IOException ex) {
+                        log.error(ex.getMessage());
+                    }
+                }
+                asyncResponse.resume(processedValResponse);
             }
-            //return Response.status(Response.Status.OK).build();
-            catch (IOException ex) {
-                Logger.getLogger(MgmtServerInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return processedValResponse;
+        }).start();
     }
     
     /**
@@ -431,7 +525,7 @@ public class MgmtServerInterface {
      * @return The new LwM2m node
      * @throws IOException 
      */
-    private LwM2mResponse processCreateRequest(Client client, String target, HttpServletRequest req)
+    public LwM2mResponse processCreateRequest(Client client, String target, HttpServletRequest req)
             throws IOException {
         Map<String, String> parameters = new HashMap<>();
         String contentType = HttpFields.valueParameters(req.getContentType(), parameters);
@@ -460,5 +554,38 @@ public class MgmtServerInterface {
             throw new IllegalArgumentException("content type " + req.getContentType()
                     + " not supported for write requests");
         }
+    }    
+    
+    /**
+     * Sets the timeout, callback registration for an Asynchronous response's object
+     * @param asyncResponse 
+     */
+    private void setAsyncResponseProperties(AsyncResponse asyncResponse) {
+        //async properties
+        asyncResponse.setTimeoutHandler(new TimeoutHandler() { 
+            @Override
+            public void handleTimeout(AsyncResponse asyncResponse) {
+                asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
+                        .entity("Operation time out.").build());
+                log.info("MS operation time out");
+            }
+        });
+        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
+        asyncResponse.register(new CompletionCallback() {
+            @Override
+            public void onComplete(Throwable throwable) {
+                if (throwable != null) 
+                {
+                    log.error("Error reporting device to client");
+                }
+            }            
+        });
+        asyncResponse.register(new ConnectionCallback() {
+
+            @Override
+            public void onDisconnect(AsyncResponse disconnected) {
+                log.error("Client could not be contacted.");
+            }
+        });
     }
 }

@@ -10,6 +10,7 @@ import javax.swing.JSplitPane;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
+import org.mars.m2m.demo.controlcenter.core.LoadUAVs;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
 import org.slf4j.LoggerFactory;
@@ -58,6 +59,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         jSplitPane1 = new javax.swing.JSplitPane();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        reloadUavMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,7 +107,21 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
         ccTabbedPane.addTab("Field", jPanel2);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Management");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        reloadUavMenuItem.setText("(Re) Load UAVs");
+        reloadUavMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reloadUavMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(reloadUavMenuItem);
+
         ccMenuBar.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -131,6 +147,15 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void reloadUavMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadUavMenuItemActionPerformed
+        LoadUAVs loadUAVs = new LoadUAVs();
+        loadUAVs.loadMgmntAdpterClients();
+    }//GEN-LAST:event_reloadUavMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ccJPanelInTab1;
     private javax.swing.JMenuBar ccMenuBar;
@@ -145,6 +170,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private javax.swing.JSplitPane jSplitPane1;
     private AnimationPanel animationPanel;
     private javax.swing.JTree jTreeControlCenter;
+    private javax.swing.JMenuItem reloadUavMenuItem;
     // End of variables declaration//GEN-END:variables
 
     @Override

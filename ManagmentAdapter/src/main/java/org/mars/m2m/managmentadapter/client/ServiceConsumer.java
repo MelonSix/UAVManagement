@@ -21,13 +21,12 @@ import org.slf4j.LoggerFactory;
 /**
  *
  * @author BRIGHTER AGYEMANG
- Consumes the various services exposed by the management server
- ServiceConsumer => Management Sever Service Consumer
+ * Synchronously consumes the various services exposed by the management server
+ * ServiceConsumer => Management Sever Service Consumer
  */
 public class ServiceConsumer 
 {
     Logger logger = (Logger) LoggerFactory.getLogger(ServiceConsumer.class);
-    ObjectFactory of;
     Response response;
     Map<String, String> headerData;
     Map<String, Object> formData;
@@ -36,7 +35,6 @@ public class ServiceConsumer
      * Default constructor
      */
     public ServiceConsumer() {
-        this.of = new ObjectFactory();
         this.response = null;
     }
     
