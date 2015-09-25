@@ -29,8 +29,12 @@ import ch.qos.logback.classic.Logger;
 import config.FilePathConfig;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.TreeSet;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedObstacleListenerImpl;
@@ -71,7 +75,7 @@ public class World {
     //bound of the canvas x_left_up,y_left_up,x_right_down,y_right_down
     public static int bound_width = 400;
     public static int bound_height = 300;
-
+    public Map<Integer, Set<Integer>> locked_threat;
     private int scout_num; //The number of our scouts
     private int threat_num; //The number of enemy threats_in_world
     private int attacker_num; //The number of our attackers
@@ -123,7 +127,8 @@ public class World {
      *
      * @param init_config records the simulation parameter
      */
-    public World(NonStaticInitConfig init_config) {
+    public World(NonStaticInitConfig init_config) {        
+        locked_threat = new HashMap<>();
 //        World.kb = new WorldKnowledge();//OntologyBasedKnowledge();WorldKnowledge
         this.conflicts = new ArrayList<>();
         this.reconnaissance = init_config.getReconnaissance();
@@ -314,14 +319,14 @@ public class World {
                             attacker.setHovered_time_step(0);
                             threat.setMode(Threat.LOCKED_MODE);
                             attacker.setNeed_to_replan(true);
-                            //this.control_center.lockAttackerToThreat(attacker.getIndex(), threat.getIndex());
+                            this.lockAttackerToThreat(attacker.getIndex(), threat.getIndex());
                         } else if (attacker.getFly_mode() == Attacker.TARGET_LOCKED_MODE) {
                             if (attacker.getHovered_time_step() < OpStaticInitConfig.LOCKED_TIME_STEP_UNTIL_DESTROYED) {
                                 attacker.increaseHovered_time_step();
                             } else {
                                 threat.setEnabled(false);
                                 //this.control_center.updateThreat(threat);
-                                //this.control_center.threatDestroyedAndUnlocked(threat.getIndex());
+                                this.threatDestroyedAndUnlocked(threat.getIndex());
                                 this.num_of_threat_remained--;
                                 //this.control_center.setNeed_to_assign_role(true);
                                 float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
@@ -337,6 +342,42 @@ public class World {
                 }
             }
 
+        }
+    }
+    
+    /** lock the attacker to the threat. when attacker is close enough to the attacker, the method is called.
+     * 
+     * @param attacker_index
+     * @param threat_index 
+     */
+    public void lockAttackerToThreat(Integer attacker_index, Integer threat_index) {
+        Set<Integer> attackers_locked = this.locked_threat.get(threat_index);
+        if (attackers_locked == null) {
+            attackers_locked = new TreeSet<>();
+        }
+        attackers_locked.add(attacker_index);
+        this.locked_threat.put(threat_index, attackers_locked);
+    }
+    
+    /** unlock all the assigned attackers, when the threat is destroyed.
+     * 
+     * @param threat_index 
+     */
+    public void threatDestroyedAndUnlocked(Integer threat_index) {
+        Set<Integer> assigned_attackers = this.locked_threat.remove(threat_index);
+        if (assigned_attackers == null) {
+            return;
+        }
+        for (Integer attacker_index : assigned_attackers) {
+            Attacker attacker = this.attackers.get(attacker_index);
+            attacker.setFly_mode(Attacker.FLYING_MODE);
+            float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
+            Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
+            attacker.setTarget_indicated_by_role(dummy_threat);
+            attacker.setNeed_to_replan(true);
+            attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+            attacker.setFly_mode(Attacker.FLYING_MODE);
+            attacker.setHovered_time_step(0);
         }
     }
 
@@ -591,15 +632,15 @@ public class World {
 //        logger.debug("information share over");
 //        roleAssignmentInControlCenter();
 //        logger.debug("role assign in control center over");
-//        planPathForAllAttacker();
+        planPathForAllAttacker();
 //        logger.debug("path planning for attackers over");
-//        resetDecisionParameter();
+        resetDecisionParameter();
 //        logger.debug("parameter rest over");
-//        updateAttackerCoordinate();
+        updateAttackerCoordinate();
 //        logger.debug("attacker coordinate update over");
-//        checkReplanningAccordingToAttackerMovement();
+        checkReplanningAccordingToAttackerMovement();
 //        logger.debug("replanning check over");
-//        checkThreatReached();
+        checkThreatReached();
 //        logger.debug("threat terminate check over");
 //        checkNumOfAttackerDestroyed();
 //        logger.debug("uav destroyed check over");
@@ -614,23 +655,23 @@ public class World {
 //            updateThreatCoordinateInControlCenter();
 //        }
 //
-//        if (this.num_of_threat_remained == 0 && this.no_threat_time_step == Integer.MAX_VALUE) {
-//            this.no_threat_time_step = this.time_step;
-//        }
-//        this.time_step++;
-////        this.scout_scaned_over = control_center.isScout_scanned_over();
-//
-//        //when all the scout scanned over, clear all the fog and show all threats
-//        if (this.scout_scaned_over) {
-//            OpStaticInitConfig.SHOW_FOG_OF_WAR = false;
-////            ArrayList<Threat> threats_in_control = this.control_center.getThreats();
-////            for (Threat threat : this.threats) {
-////                if (!threats_in_control.contains(threat)) {
-////                    threats_in_control.add(threat);
-////                    this.control_center.setNeed_to_assign_role(true);
-////                }
-////            }
-//        }
+        if (this.num_of_threat_remained == 0 && this.no_threat_time_step == Integer.MAX_VALUE) {
+            this.no_threat_time_step = this.time_step;
+        }
+        this.time_step++;
+        this.scout_scaned_over = reconnaissance.isScout_scanned_over();
+
+        //when all the scout scanned over, clear all the fog and show all threats
+        if (this.scout_scaned_over) {
+            OpStaticInitConfig.SHOW_FOG_OF_WAR = false;
+            ArrayList<Threat> threats_in_control = this.getThreats();
+            for (Threat threat : this.threats) {
+                if (!threats_in_control.contains(threat)) {
+                    threats_in_control.add(threat);
+                    //this.control_center.setNeed_to_assign_role(true);
+                }
+            }
+        }
     }
 
     /**summarize the number of attackers that is destroyed at current time step.

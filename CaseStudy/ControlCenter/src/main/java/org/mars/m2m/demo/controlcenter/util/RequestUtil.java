@@ -11,6 +11,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
+import org.mars.m2m.demo.controlcenter.client.AsyncServiceConsumer;
 import org.mars.m2m.demo.controlcenter.client.ServiceConsumer;
 import org.mars.m2m.demo.controlcenter.model.SvcConsumerDetails;
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
@@ -117,6 +119,21 @@ public class RequestUtil
         } catch (Exception e) {
             logger.error(e.toString());
             return null;
+        }
+    }
+    
+    public void asyncSendToEndpoint(String senderUrl, String endpointUrl, Operation op, String data, Class clazz, AsyncServiceCallback<Response> callback)
+    {
+        try 
+        {
+            AsyncServiceConsumer sc = new AsyncServiceConsumer();
+            SvcConsumerDetails consumerDetails = new SvcConsumerDetails();
+            RequestPrimitive requestPrimitiveForData = getRequestPrimitiveForData(op, endpointUrl, senderUrl, data);
+            consumerDetails.setRequest(requestPrimitiveForData);
+            //All operations are posted to the Management Adapter
+            sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML, callback);
+        } catch (Exception e) {
+            logger.error(e.toString());
         }
     }
     

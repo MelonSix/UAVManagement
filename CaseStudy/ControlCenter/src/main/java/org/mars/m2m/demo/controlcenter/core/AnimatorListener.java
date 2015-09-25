@@ -87,8 +87,11 @@ public class AnimatorListener implements ActionListener
 
         synchronized(cc)
         {                
-            if (cc.isSimulationStartable()) //if any obstacle or threat has ever been reported
-            {
+            if (cc.isSimulationStartable()) 
+            {/**
+             * if any obstacle or threat has ever been reported then simulation can start
+             * and CC can perform operations on endpoint clients
+             */
                 cc.registerInfoRequirement();
                 cc.shareInfoAfterRegistration();
                 cc.roleAssignmentInControlCenter();

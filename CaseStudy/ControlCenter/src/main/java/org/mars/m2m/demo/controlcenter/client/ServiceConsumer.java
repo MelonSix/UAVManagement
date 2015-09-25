@@ -87,21 +87,22 @@ public class ServiceConsumer
     
     public Response handlePost(String to, Object data, String mediaType)
     {
-        Client client = ClientBuilder.newClient();
-        WebTarget webTarget = client.target(to);
-        
-        Invocation.Builder invBuilder = webTarget.request(mediaType);
-        
-        if(headerData != null)
-        {
-            //HTTP request header details
-            for(String key : headerData.keySet())
-            {
-                invBuilder.header(key, headerData.get(key));
+        try {
+            Client client = ClientBuilder.newClient();
+            WebTarget webTarget = client.target(to);
+            
+            Invocation.Builder invBuilder = webTarget.request(mediaType);
+            
+            if (headerData != null) {
+                //HTTP request header details
+                for (String key : headerData.keySet()) {
+                    invBuilder.header(key, headerData.get(key));
+                }
             }
+            //System.out.println(data);
+            response = invBuilder.post(Entity.entity(data, mediaType));
+        } catch (Exception e) { logger.error(e.getMessage());
         }
-        //System.out.println(data);
-        response = invBuilder.post(Entity.entity(data, mediaType));
         return response;
     }
     

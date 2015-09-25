@@ -9,7 +9,9 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
@@ -192,17 +194,18 @@ public class AttackerUtils
         return attacker;
     }
     
-    public static synchronized void updateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
+    public static void updateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
     {
         if(resourceUpdate != null && client != null)
         {
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+            //asynchronous update
             requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class);
         }
     }
     
-    public static synchronized void executeOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
+    public static void executeOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
     {
         if(resourceUpdate != null && client != null)
         {
@@ -212,10 +215,34 @@ public class AttackerUtils
         }
     }
     
+    //Asynchronous methods
+    public static void asyncUpdateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate, AsyncServiceCallback<Response> callback)
+    {
+        if(resourceUpdate != null && client != null)
+        {
+            String data = gson.toJson(resourceUpdate);
+            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+            System.err.println("asynUpdate: "+data);
+            //asynchronous update
+            requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class, callback);
+        }
+    }
+    
+    public static void asyncExecuteOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate,  AsyncServiceCallback<Response> callback)
+    {
+        if(resourceUpdate != null && client != null)
+        {
+            String data = gson.toJson(resourceUpdate);
+            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+            System.err.println("asynExec: "+data);
+            //requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class, callback);
+        }
+    }
+    
     /**
      * This class contains static methods for invoking attacker endpoints updates
      */
-    public class AttackerUpdate
+    public class AttackerUpdate implements AsyncServiceCallback<Response>
     {
 
         public AttackerUpdate() {
@@ -229,8 +256,8 @@ public class AttackerUtils
         public void setReplan(boolean replan, AttackerModel attacker) 
         {
             System.out.println("Replan set");
-            AttackerUtils.updateResource(attacker.client, 1, new ObjectResourceUpdate(1, replan, 
-                                        ResourceDataType.BOOLEAN.toString()));
+            AttackerUtils.asyncUpdateResource(attacker.client, 1, new ObjectResourceUpdate(1, replan, 
+                                        ResourceDataType.BOOLEAN.toString()), this);
         }
         
         /**
@@ -240,8 +267,8 @@ public class AttackerUtils
          */
         public void setFlightMode(int flightMode, AttackerModel attacker) 
         {
-            AttackerUtils.updateResource(attacker.client, 8, new ObjectResourceUpdate(8, flightMode, 
-                                            ResourceDataType.INTEGER.toString()));
+            AttackerUtils.asyncUpdateResource(attacker.client, 8, new ObjectResourceUpdate(8, flightMode, 
+                                            ResourceDataType.INTEGER.toString()), this);
         }
         
         /**
@@ -250,8 +277,8 @@ public class AttackerUtils
          * @param attacker 
          */
         public void setTarget_indicated_by_role(Target target_indicated_by_role, AttackerModel attacker) {
-            AttackerUtils.updateResource(attacker.client, 14, new ObjectResourceUpdate(14, target_indicated_by_role, 
-                                            ResourceDataType.STRING.toString()));
+            AttackerUtils.asyncUpdateResource(attacker.client, 14, new ObjectResourceUpdate(14, target_indicated_by_role, 
+                                            ResourceDataType.STRING.toString()), this);
         }
         
         /**
@@ -261,8 +288,13 @@ public class AttackerUtils
          */
         public void setSpeed(int speed, AttackerModel attacker) 
         {
-            AttackerUtils.updateResource(attacker.client, 20, new ObjectResourceUpdate(20, speed, 
-                                            ResourceDataType.INTEGER.toString()));
+            AttackerUtils.asyncUpdateResource(attacker.client, 20, new ObjectResourceUpdate(20, speed, 
+                                            ResourceDataType.INTEGER.toString()), this);
+        }
+
+        @Override
+        public void asyncServicePerformed(Response response) {
+            logger.info("Attacker update operation performed");
         }
         
     }
@@ -270,7 +302,7 @@ public class AttackerUtils
     /**
      * This class contains static methods for executing procedures on attacker endpoints
      */
-    public class AttackerExecution
+    public class AttackerExecution implements AsyncServiceCallback<Response>
     {
          private  Gson gson;
         public AttackerExecution() {
@@ -278,15 +310,20 @@ public class AttackerUtils
         }
         
         public void addConflict(Conflict conflict, AttackerModel attacker) {
-            AttackerUtils.executeOperationOnResource(attacker.client, 3, new ObjectResourceUpdate(3, gson.toJson(conflict), ResourceDataType.STRING.toString()));
+            AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 3, new ObjectResourceUpdate(3, gson.toJson(conflict), ResourceDataType.STRING.toString()), this);
         }
     
         public void addObstacle(Obstacle obstacle, AttackerModel attacker) {
-            AttackerUtils.executeOperationOnResource(attacker.client, 21, new ObjectResourceUpdate(21, gson.toJson(obstacle), ResourceDataType.STRING.toString()));
+            AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 21, new ObjectResourceUpdate(21, gson.toJson(obstacle), ResourceDataType.STRING.toString()), this);
         }
     
         public  void addThreat(Threat threat, AttackerModel attacker) {
-            AttackerUtils.executeOperationOnResource(attacker.client, 22, new ObjectResourceUpdate(22, gson.toJson(threat), ResourceDataType.STRING.toString()));
+            AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 22, new ObjectResourceUpdate(22, gson.toJson(threat), ResourceDataType.STRING.toString()), this);
+        }
+
+        @Override
+        public void asyncServicePerformed(Response response) {
+            logger.info("Attacker execution operation performed");
         }
     }
 }

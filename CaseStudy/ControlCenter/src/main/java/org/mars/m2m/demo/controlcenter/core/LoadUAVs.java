@@ -8,6 +8,7 @@ package org.mars.m2m.demo.controlcenter.core;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
@@ -47,10 +48,8 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
             String data = response.readEntity(String.class);
             ReportedLwM2MClient[] clients = gson.fromJson(data, ReportedLwM2MClient[].class);
             
-            for (ReportedLwM2MClient client : clients) {
-                connectedDevices = newDeviceServices.addNewDevice(client);
-            }
-
+            connectedDevices = newDeviceServices.addNewClientsOnDemand(new ArrayList<>(Arrays.asList(clients)));
+                
             //reflex operations to endpoints        
             reflex.scoutingWaypointsReflex(connectedDevices);
             for (ReportedLwM2MClient device : clients) {

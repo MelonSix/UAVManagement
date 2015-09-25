@@ -45,6 +45,7 @@ public class AsyncServiceConsumer
     /**
      * Handles client get operations to the management server
      * @param consumerDtls
+     * @param callback
      * @return 
      */
     public Response handleGet(SvcConsumerDetails consumerDtls, final AsyncServiceCallback callback)
@@ -112,7 +113,7 @@ public class AsyncServiceConsumer
         return response;
     }
     
-    public Response handlePost(String to, Object data, String mediaType, final AsyncServiceCallback callback)
+    public void handlePost(String to, Object data, String mediaType, final AsyncServiceCallback callback)
     {
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(to);
@@ -127,9 +128,18 @@ public class AsyncServiceConsumer
                 invBuilder.header(key, headerData.get(key));
             }
         }
-        //System.out.println(data);
-        response = invBuilder.post(Entity.entity(data, mediaType));
-        return response;
+        invBuilder.async().post(Entity.entity(data, mediaType), new InvocationCallback<Response>() {
+
+            @Override
+            public void completed(Response response) {
+                callback.asyncServicePerformed(response);
+            }
+
+            @Override
+            public void failed(Throwable throwable) {
+                logger.error("Not supported yet."); 
+            }
+        });
     }
     
     public Response handleDelete(SvcConsumerDetails consumerDetails, final AsyncServiceCallback callback)

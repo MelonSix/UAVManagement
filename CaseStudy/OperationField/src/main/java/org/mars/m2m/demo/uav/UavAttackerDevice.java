@@ -20,6 +20,7 @@ import org.mars.m2m.demo.world.KnowledgeInterface;
 import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
 import org.slf4j.LoggerFactory;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -146,21 +147,23 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     @Override
-    public LwM2mResponse write(int resourceid, LwM2mResource value) {
-        System.out.println("Write on UAV Attacker Device Resource " + resourceid + " value " + value);
+    public LwM2mResponse write(int resourceid, LwM2mResource resource) {
+        System.out.println("Write on UAV Attacker Device Resource " + resourceid + " value " + resource);
         switch (resourceid) {
         case 0:
             return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
         case 1:
-            System.out.println("Need to replan write");
+           // setReplan(Boolean.valueOf(resource.getValue().value.toString()));
+            System.out.println("Need to replan write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 3:
-            System.out.println("Knowledegbase write");
+            System.out.println("Knowledegbase write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 7:
             return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
         case 8:
-            System.out.println("Fly mode write");
+            //setFlightMode(Integer.parseInt(resource.getValue().value.toString()));
+            System.out.println("Fly mode write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 10:
             return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
@@ -169,14 +172,30 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
         case 13:
             return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
         case 14:
-            System.out.println("target indicated by role write");
+            String data = parseValue(resource.getValue().value.toString());
+            
+            System.out.println("target indicated by role write: "+data);
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 20:
-            System.out.println("Speed write");
+            System.out.println("Speed write: "+resource.getValue().value);
+            return new LwM2mResponse(ResponseCode.CHANGED);
+        case 21:
+            System.out.println("Obstacle write: "+resource.getValue().value.toString());
+            return new LwM2mResponse(ResponseCode.CHANGED);
+        case 22:
+            System.out.println("Threat write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         default:
-            return super.write(resourceid, value);
+            return super.write(resourceid, resource);
         }
+    }
+
+    @Override
+    public LwM2mResponse execute(int resourceid, byte[] params) {
+        System.out.printf("[{}] Execute on Attacker resource {}\n", this.getClass().getName() , resourceid);
+        if (params != null && params.length != 0)
+            System.out.println("\t params " + new String(params));
+        return new LwM2mResponse(ResponseCode.CHANGED);
     }
     
     @Override
@@ -400,6 +419,23 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public Attacker getAttacker() {
         return attacker;
+    }
+    
+    /**
+     * Converts the received data of a complex member variable to a JSON string     * 
+     * @param data
+     * @return 
+     */
+    public String parseValue(String data)
+    {
+        StringBuilder jsonData = new StringBuilder();
+        jsonData.append("{");
+            data = StringUtils.removeStart(data, "{");
+            data = StringUtils.removeEnd(data, "}");
+            data = StringUtils.replace(data, "=", ":");
+        jsonData.append(data);
+        jsonData.append("}");
+        return jsonData.toString();
     }
     
 }

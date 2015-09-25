@@ -28,7 +28,7 @@ public class NewDeviceServices
        
     }
     
-    /**
+    /**Automatic population of JTree
      * Register a newly connected device
      * @param device The new device's details
      * @return The current list of connected devices
@@ -44,6 +44,18 @@ public class NewDeviceServices
         Validate.notNull(handleTree);
         handleTree.populateJTree(connectedDevices);
         return this.connectedDevices;
+    }
+    
+    /**User controlled population of JTree
+     * Register a newly connected device
+     * @param devices
+     * @return The current list of connected devices
+     */
+    public ArrayList<ReportedLwM2MClient> addNewClientsOnDemand(ArrayList<ReportedLwM2MClient> devices)
+    {
+        Validate.notNull(handleTree);
+        handleTree.populateJTree(devices);
+        return devices;
     }
 
     public static void setHandleTree(HandleTree handleTree) {
