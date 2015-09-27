@@ -247,6 +247,7 @@ public class MgmtServerInterface {
 
                 } catch (Exception ex) 
                 {
+                    ex.printStackTrace();
                     log.error(ex.toString());
                 }
                 if(processedValResponse == null)

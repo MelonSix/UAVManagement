@@ -27,6 +27,7 @@ package org.mars.m2m.demo.uav;
 
 import org.mars.m2m.demo.world.World;
 import ch.qos.logback.classic.Logger;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.UUID;
@@ -89,7 +90,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     private final DeviceHelper deviceHelper;
 
     //variables for conflict planning
-    private KnowledgeInterface kb;
+    KnowledgeInterface kb;
 
     private int fly_mode = 0;
     private int hovered_time_step = 0;
@@ -674,6 +675,102 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
 
     public static int getCenter_width() {
         return center_width;
+    }
+
+    public void setPath_planned_at_current_time_step(UAVPath path_planned_at_current_time_step) {
+        this.path_planned_at_current_time_step = path_planned_at_current_time_step;
+    }
+
+    public void setCurrent_index_of_planned_path(int current_index_of_planned_path) {
+        this.current_index_of_planned_path = current_index_of_planned_path;
+    }
+
+    public void setPath_planned_at_last_time_step(UAVPath path_planned_at_last_time_step) {
+        this.path_planned_at_last_time_step = path_planned_at_last_time_step;
+    }
+
+    public void setHistory_path(UAVPath history_path) {
+        this.history_path = history_path;
+    }
+
+    public void setUavOwnedDevices(ArrayList<AbstractDevice> uavOwnedDevices) {
+        this.uavOwnedDevices = uavOwnedDevices;
+    }
+
+    public void setUavConfig(UAVConfiguration uavConfig) {
+        this.uavConfig = uavConfig;
+    }
+
+    public void setUavLwM2mModel(LwM2mModel uavLwM2mModel) {
+        this.uavLwM2mModel = uavLwM2mModel;
+    }
+
+    public void setAttackerDeviceClient(AttackerDeviceClient attackerDeviceClient) {
+        this.attackerDeviceClient = attackerDeviceClient;
+    }
+
+    public void setKb(KnowledgeInterface kb) {
+        this.kb = kb;
+    }
+
+    public void setGoal_for_each_iteration(float[] goal_for_each_iteration) {
+        this.goal_for_each_iteration = goal_for_each_iteration;
+    }
+
+    public void setStucked_times(int stucked_times) {
+        this.stucked_times = stucked_times;
+    }
+
+    public void setMax_stucked_times(int max_stucked_times) {
+        this.max_stucked_times = max_stucked_times;
+    }
+
+    public void setRrt_alg(RRTAlg rrt_alg) {
+        this.rrt_alg = rrt_alg;
+    }
+
+    public void setRrt_tree(RRTTree rrt_tree) {
+        this.rrt_tree = rrt_tree;
+    }
+
+    public static void setLogger(Logger logger) {
+        Attacker.logger = logger;
+    }
+
+    public static void setFLYING_MODE(int FLYING_MODE) {
+        Attacker.FLYING_MODE = FLYING_MODE;
+    }
+
+    public static void setTARGET_LOCKED_MODE(int TARGET_LOCKED_MODE) {
+        Attacker.TARGET_LOCKED_MODE = TARGET_LOCKED_MODE;
+    }
+
+    public void setCenter_color(Color center_color) {
+        this.center_color = center_color;
+    }
+
+    public void setRadar_color(Color radar_color) {
+        this.radar_color = radar_color;
+    }
+
+    public void setMax_angle(double max_angle) {
+        this.max_angle = max_angle;
+    }
+
+    public void setRemained_energy(float remained_energy) {
+        this.remained_energy = remained_energy;
+    }
+
+    public static void setOccupiedPorts(ArrayList<Integer> occupiedPorts) {
+        UAV.occupiedPorts = occupiedPorts;
+    }
+
+    public static void setCenter_height(int center_height) {
+        Unit.center_height = center_height;
+    }
+
+    public static void setCenter_width(int center_width) {
+        Unit.center_width = center_width;
     }
     
     

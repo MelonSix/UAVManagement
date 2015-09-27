@@ -1,17 +1,17 @@
-INFO   [08:30:28.741] [main] o.e.j.u.log -  Logging initialized @1895ms 
-INFO   [08:30:29.256] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:30:29.272] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [08:30:29.334] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [08:30:29.350] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [08:30:29.350] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [08:30:29.350] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [08:30:29.569] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:30:29.569] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [08:30:29.631] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [08:30:29.663] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [08:30:29.892] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@58c540cf{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:30:29.892] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [08:30:30.768] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [08:16:37.461] [main] o.e.j.u.log -  Logging initialized @1867ms 
+INFO   [08:16:38.001] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [08:16:38.037] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [08:16:38.138] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [08:16:38.139] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [08:16:38.147] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [08:16:38.148] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [08:16:38.345] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [08:16:38.352] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [08:16:38.365] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [08:16:38.385] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [08:16:38.595] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@58c540cf{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [08:16:38.598] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [08:16:39.473] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -25,29 +25,51 @@ INFO   [08:30:30.768] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [08:30:30.768] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7e736350{/ms,null,AVAILABLE} 
-INFO   [08:30:30.784] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [08:16:39.476] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7e736350{/ms,null,AVAILABLE} 
+INFO   [08:16:39.482] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [08:30:30.784] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5d5b5fa7{/admin-ms,null,AVAILABLE} 
-INFO   [08:30:30.846] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@58c540cf{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:30:30.846] [main] o.e.j.s.Server -  Started @3993ms 
-INFO   [08:54:54.161] [main] o.e.j.u.log -  Logging initialized @1223ms 
-INFO   [08:54:54.317] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:54:54.332] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [08:54:54.379] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [08:54:54.379] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [08:54:54.379] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [08:54:54.379] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [08:54:54.395] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:54:54.395] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [08:54:54.411] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [08:54:54.426] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [08:54:54.520] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:54:54.520] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [08:54:55.114] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [08:16:39.489] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@5d5b5fa7{/admin-ms,null,AVAILABLE} 
+INFO   [08:16:39.547] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@58c540cf{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [08:16:39.547] [main] o.e.j.s.Server -  Started @3956ms 
+INFO   [08:33:04.379] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.381] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.643] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.703] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.704] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.705] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.854] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.879] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.885] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.890] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:04.891] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [08:33:08.325] [pool-5-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6448, Token=f6e95c27, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:09.238] [pool-5-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6445, Token=f6e95c24, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:09.789] [pool-5-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6449, Token=f6e95c28, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:10.117] [pool-5-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6443, Token=f6e95c22, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:10.369] [pool-5-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6439, Token=f6e95c1e, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:15.413] [pool-5-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6446, Token=f6e95c25, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:17.244] [pool-5-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6447, Token=f6e95c26, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:20.998] [pool-5-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6444, Token=f6e95c23, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:22.516] [pool-5-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6440, Token=f6e95c1f, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:26.578] [pool-5-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 6442, Token=f6e95c21, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [08:33:30.238] [pool-5-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID= 6441, Token=f6e95c20, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [08:46:52.341] [main] o.e.j.u.log -  Logging initialized @2401ms 
+INFO   [08:46:52.703] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [08:46:52.719] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [08:46:52.804] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [08:46:52.804] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [08:46:52.856] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [08:46:52.857] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [08:46:52.940] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [08:46:52.981] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [08:46:53.112] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [08:46:53.176] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [08:46:53.626] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [08:46:53.629] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [08:46:55.335] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -61,29 +83,31 @@ INFO   [08:54:55.114] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [08:54:55.129] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [08:54:55.129] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [08:46:55.342] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [08:46:55.404] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [08:54:55.145] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [08:54:55.192] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:54:55.192] [main] o.e.j.s.Server -  Started @2245ms 
-INFO   [08:56:54.097] [main] o.e.j.u.log -  Logging initialized @1192ms 
-INFO   [08:56:54.253] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:56:54.268] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [08:56:54.300] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [08:56:54.300] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [08:56:54.315] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [08:56:54.315] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [08:56:54.347] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:56:54.362] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [08:56:54.362] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [08:56:54.393] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [08:56:54.503] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:56:54.503] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [08:56:55.164] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [08:46:55.417] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [08:46:55.549] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [08:46:55.549] [main] o.e.j.s.Server -  Started @5613ms 
+ERROR  [08:52:01.336] [Thread-23] o.m.m.m.r.MgmtServerInterface -  java.lang.IllegalArgumentException: JSON content format not supported 
+ERROR  [08:52:01.338] [Thread-24] o.m.m.m.r.MgmtServerInterface -  java.lang.IllegalArgumentException: JSON content format not supported 
+INFO   [09:01:37.576] [main] o.e.j.u.log -  Logging initialized @1323ms 
+INFO   [09:01:37.763] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [09:01:37.779] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [09:01:37.823] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [09:01:37.823] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [09:01:37.829] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [09:01:37.830] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [09:01:37.882] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [09:01:37.889] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [09:01:37.899] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [09:01:37.954] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [09:01:38.088] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [09:01:38.092] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [09:01:38.983] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -97,29 +121,31 @@ INFO   [08:56:55.164] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [08:56:55.180] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [08:56:55.180] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [09:01:38.987] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [09:01:38.997] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [08:56:55.196] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [08:56:55.227] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:56:55.227] [main] o.e.j.s.Server -  Started @2325ms 
-INFO   [08:57:24.925] [main] o.e.j.u.log -  Logging initialized @1340ms 
-INFO   [08:57:25.081] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:57:25.097] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [08:57:25.128] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [08:57:25.128] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [08:57:25.128] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [08:57:25.128] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [08:57:25.144] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [08:57:25.159] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [08:57:25.159] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [08:57:25.175] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [08:57:25.269] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:57:25.269] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [08:57:25.863] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [09:01:39.003] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [09:01:39.109] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [09:01:39.110] [main] o.e.j.s.Server -  Started @2859ms 
+ERROR  [09:03:03.350] [Thread-26] o.m.m.m.r.MgmtServerInterface -  java.lang.IllegalArgumentException: JSON content format not supported 
+ERROR  [09:03:03.353] [Thread-24] o.m.m.m.r.MgmtServerInterface -  java.lang.IllegalArgumentException: JSON content format not supported 
+INFO   [09:06:33.634] [main] o.e.j.u.log -  Logging initialized @1478ms 
+INFO   [09:06:33.796] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [09:06:33.810] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [09:06:33.855] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [09:06:33.855] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [09:06:33.860] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [09:06:33.861] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [09:06:33.878] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [09:06:33.885] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [09:06:33.896] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [09:06:33.923] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [09:06:34.013] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [09:06:34.016] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [09:06:35.159] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -133,29 +159,39 @@ INFO   [08:57:25.863] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [08:57:25.863] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [08:57:25.878] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [09:06:35.165] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [09:06:35.170] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [08:57:25.878] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [08:57:25.925] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [08:57:25.925] [main] o.e.j.s.Server -  Started @2346ms 
-INFO   [09:03:53.249] [main] o.e.j.u.log -  Logging initialized @1202ms 
-INFO   [09:03:53.400] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [09:03:53.416] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [09:03:53.447] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [09:03:53.447] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [09:03:53.463] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [09:03:53.463] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [09:03:53.478] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [09:03:53.478] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [09:03:53.494] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [09:03:53.510] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [09:03:53.598] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [09:03:53.601] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [09:03:54.182] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [09:06:35.176] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [09:06:35.236] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [09:06:35.237] [main] o.e.j.s.Server -  Started @3084ms 
+INFO   [09:08:52.124] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [09:08:52.237] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [09:08:52.297] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [09:08:52.308] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [09:08:52.309] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [09:08:58.221] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=37948, Token=61c0b34f, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1542"}, "?" 
+INFO   [09:09:01.559] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=37947, Token=61c0b34e, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1542"}, "?" 
+INFO   [09:09:13.035] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=37945, Token=61c0b34c, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1542"}, "?" 
+INFO   [09:09:17.087] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=37946, Token=61c0b34d, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [09:09:25.126] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=37949, Token=61c0b350, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1542"}, "?" 
+INFO   [10:09:32.779] [main] o.e.j.u.log -  Logging initialized @2143ms 
+INFO   [10:09:33.156] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [10:09:33.228] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [10:09:33.288] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [10:09:33.288] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [10:09:33.295] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [10:09:33.296] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [10:09:33.311] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [10:09:33.317] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [10:09:33.328] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [10:09:33.355] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [10:09:33.449] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [10:09:33.452] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:09:34.335] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -169,29 +205,31 @@ INFO   [09:03:54.182] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [09:03:54.197] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [09:03:54.197] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [10:09:34.339] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [10:09:34.345] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [09:03:54.197] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [09:03:54.244] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [09:03:54.244] [main] o.e.j.s.Server -  Started @2204ms 
-INFO   [09:18:21.697] [main] o.e.j.u.log -  Logging initialized @1352ms 
-INFO   [09:18:21.853] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [09:18:21.869] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [09:18:21.900] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [09:18:21.900] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [09:18:21.900] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [09:18:21.900] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [09:18:21.915] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [09:18:21.931] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [09:18:21.931] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [09:18:21.962] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [09:18:22.040] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [09:18:22.040] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [09:18:22.654] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [10:09:34.350] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [10:09:34.405] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [10:09:34.406] [main] o.e.j.s.Server -  Started @3774ms 
+INFO   [10:11:32.157] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [10:12:03.114] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=33806, Token=964851e6, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [17:09:12.679] [main] o.e.j.u.log -  Logging initialized @2276ms 
+INFO   [17:09:13.059] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [17:09:13.077] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [17:09:13.148] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [17:09:13.148] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [17:09:13.173] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [17:09:13.173] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [17:09:13.193] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [17:09:13.235] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [17:09:13.263] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [17:09:13.288] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [17:09:13.443] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [17:09:13.446] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:09:14.478] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -205,29 +243,47 @@ INFO   [09:18:22.654] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [09:18:22.654] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [09:18:22.680] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [17:09:14.481] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [17:09:14.486] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [09:18:22.684] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [09:18:22.731] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [09:18:22.731] [main] o.e.j.s.Server -  Started @2391ms 
-INFO   [10:23:12.550] [main] o.e.j.u.log -  Logging initialized @1783ms 
-INFO   [10:23:12.812] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [10:23:12.830] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [10:23:12.903] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [10:23:12.904] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [10:23:12.911] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [10:23:12.913] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [10:23:12.997] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [10:23:13.003] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [10:23:13.020] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [10:23:13.098] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [10:23:13.302] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [10:23:13.305] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [10:23:14.424] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [17:09:14.492] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [17:09:14.537] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [17:09:14.537] [main] o.e.j.s.Server -  Started @4138ms 
+INFO   [17:12:18.129] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.294] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.417] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.447] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.472] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.482] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.497] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.503] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:18.532] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [17:12:22.823] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33164, Token=5faf861e, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [17:12:23.981] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33167, Token=5faf8621, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [17:12:29.096] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33166, Token=5faf8620, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [17:12:31.020] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=33165, Token=5faf861f, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [17:12:47.105] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33170, Token=5faf8624, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [17:12:48.555] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33169, Token=5faf8623, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [17:12:48.692] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33168, Token=5faf8622, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [17:12:50.916] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33163, Token=5faf861d, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [17:12:51.442] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=33171, Token=5faf8625, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [18:09:19.080] [main] o.e.j.u.log -  Logging initialized @2098ms 
+INFO   [18:09:19.408] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:09:19.437] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [18:09:19.482] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [18:09:19.482] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [18:09:19.487] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [18:09:19.488] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [18:09:19.507] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:09:19.514] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [18:09:19.525] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [18:09:19.556] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [18:09:19.677] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:09:19.680] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:09:20.814] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -241,29 +297,31 @@ INFO   [10:23:14.424] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [10:23:14.429] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [10:23:14.435] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [18:09:20.819] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [18:09:20.831] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [10:23:14.442] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [10:23:14.506] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [10:23:14.507] [main] o.e.j.s.Server -  Started @3742ms 
-INFO   [10:53:22.740] [main] o.e.j.u.log -  Logging initialized @1419ms 
-INFO   [10:53:23.020] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [10:53:23.036] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [10:53:23.075] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [10:53:23.076] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [10:53:23.083] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [10:53:23.084] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [10:53:23.106] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [10:53:23.112] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [10:53:23.127] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [10:53:23.183] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [10:53:23.307] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [10:53:23.311] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [10:53:24.306] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [18:09:20.837] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [18:09:20.883] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:09:20.883] [main] o.e.j.s.Server -  Started @3905ms 
+INFO   [18:11:21.337] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [18:11:25.050] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=64389, Token=e3e9dbac, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [18:12:03.352] [main] o.e.j.u.log -  Logging initialized @1678ms 
+INFO   [18:12:03.556] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:12:03.579] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [18:12:03.615] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [18:12:03.615] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [18:12:03.620] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [18:12:03.621] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [18:12:03.636] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:12:03.747] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [18:12:03.760] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [18:12:03.819] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [18:12:04.011] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:12:04.014] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:12:05.252] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -277,118 +335,31 @@ INFO   [10:53:24.306] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [10:53:24.310] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [10:53:24.320] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [18:12:05.260] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [18:12:05.266] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [10:53:24.325] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [10:53:24.374] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [10:53:24.374] [main] o.e.j.s.Server -  Started @3056ms 
-INFO   [10:58:58.750] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:58:59.274] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:58:59.658] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:58:59.949] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.077] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.318] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.377] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.674] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.703] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.759] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.776] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:00.972] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.017] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.162] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.204] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.219] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.256] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.307] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.316] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.357] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.367] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.388] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.457] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.478] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.536] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.875] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.887] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.889] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.892] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.898] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.901] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.904] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.905] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.906] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.908] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.909] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.912] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:01.919] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [10:59:03.476] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24748, Token=2623ee1b, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 419 bytes 
-INFO   [10:59:04.007] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24756, Token=2623ee23, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 419 bytes 
-INFO   [10:59:04.482] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24734, Token=2623ee0d, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 493 bytes 
-INFO   [10:59:06.408] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24754, Token=2623ee21, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 646 bytes 
-INFO   [10:59:06.862] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24732, Token=2623ee0b, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 471 bytes 
-INFO   [10:59:07.964] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24737, Token=2623ee10, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 666 bytes 
-INFO   [10:59:10.483] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24736, Token=2623ee0f, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 493 bytes 
-INFO   [10:59:10.918] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24762, Token=2623ee29, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 467 bytes 
-INFO   [10:59:11.355] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24740, Token=2623ee13, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:11.701] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24751, Token=2623ee1e, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 420 bytes 
-INFO   [10:59:13.964] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24746, Token=2623ee19, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 457 bytes 
-INFO   [10:59:14.835] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24769, Token=2623ee30, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:16.241] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24743, Token=2623ee16, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 658 bytes 
-INFO   [10:59:16.845] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24753, Token=2623ee20, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 649 bytes 
-INFO   [10:59:17.549] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24741, Token=2623ee14, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:17.549] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24757, Token=2623ee24, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:17.628] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24742, Token=2623ee15, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 420 bytes 
-INFO   [10:59:17.807] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24744, Token=2623ee17, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 754 bytes 
-INFO   [10:59:18.204] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24764, Token=2623ee2b, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 420 bytes 
-INFO   [10:59:18.530] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24749, Token=2623ee1c, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 419 bytes 
-INFO   [10:59:18.668] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24763, Token=2623ee2a, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 490 bytes 
-INFO   [10:59:18.876] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24747, Token=2623ee1a, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:19.790] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24755, Token=2623ee22, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:19.997] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24750, Token=2623ee1d, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 748 bytes 
-INFO   [10:59:20.212] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24735, Token=2623ee0e, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 678 bytes 
-INFO   [10:59:21.178] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=24759, Token=2623ee26, OptionSet={"Uri-Path":["12207","0"]}, "" 
-INFO   [10:59:23.380] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24733, Token=2623ee0c, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 645 bytes 
-INFO   [10:59:24.098] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24739, Token=2623ee12, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 493 bytes 
-INFO   [10:59:25.659] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24738, Token=2623ee11, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 471 bytes 
-INFO   [10:59:26.262] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24760, Token=2623ee27, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:28.312] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24767, Token=2623ee2e, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:28.459] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24745, Token=2623ee18, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 656 bytes 
-INFO   [10:59:28.556] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24758, Token=2623ee25, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 679 bytes 
-INFO   [10:59:29.552] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24768, Token=2623ee2f, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 419 bytes 
-INFO   [10:59:30.419] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24761, Token=2623ee28, OptionSet={"Uri-Path":["12207","0","21"], "Content-Format":"unknown/1543"}, "{"id":21,"value":"{\".. 694 bytes 
-INFO   [10:59:31.921] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=24752, Token=2623ee1f, OptionSet={"Uri-Path":["12207","0","1"], "Content-Format":"unknown/1541"}, "1" 
-INFO   [10:59:32.682] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24765, Token=2623ee2c, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 419 bytes 
-INFO   [10:59:32.992] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID=24766, Token=2623ee2d, OptionSet={"Uri-Path":["12207","0","22"], "Content-Format":"unknown/1543"}, "{"id":22,"value":"{\".. 418 bytes 
-INFO   [11:20:52.609] [main] o.e.j.u.log -  Logging initialized @1219ms 
-INFO   [11:20:52.765] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:20:52.781] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [11:20:52.830] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [11:20:52.830] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [11:20:52.835] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [11:20:52.836] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [11:20:52.868] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:20:52.873] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [11:20:52.884] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [11:20:52.902] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [11:20:52.982] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:20:52.985] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:21:18.818] [main] o.e.j.u.log -  Logging initialized @1213ms 
-INFO   [11:21:18.967] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:21:18.981] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [11:21:19.018] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [11:21:19.018] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [11:21:19.023] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [11:21:19.024] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [11:21:19.041] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:21:19.047] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [11:21:19.058] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [11:21:19.075] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [11:21:19.157] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:21:19.160] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:21:19.754] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [18:12:05.274] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [18:12:05.348] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:12:05.349] [main] o.e.j.s.Server -  Started @3676ms 
+INFO   [18:17:12.039] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [18:17:26.844] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=63899, Token=00372c0a, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [18:37:11.695] [main] o.e.j.u.log -  Logging initialized @1844ms 
+INFO   [18:37:12.001] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:37:12.015] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [18:37:12.119] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [18:37:12.120] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [18:37:12.127] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [18:37:12.128] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [18:37:12.298] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:37:12.314] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [18:37:12.326] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [18:37:12.363] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [18:37:12.520] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:37:12.524] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:37:13.739] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -402,29 +373,31 @@ INFO   [11:21:19.754] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [11:21:19.758] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [11:21:19.764] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [18:37:13.745] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [18:37:13.757] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:21:19.771] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [11:21:19.821] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:21:19.822] [main] o.e.j.s.Server -  Started @2220ms 
-INFO   [11:26:49.600] [main] o.e.j.u.log -  Logging initialized @1635ms 
-INFO   [11:26:49.767] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:26:49.781] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [11:26:49.828] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [11:26:49.828] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [11:26:49.832] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [11:26:49.833] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [11:26:49.855] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:26:49.861] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [11:26:49.871] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [11:26:49.889] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [11:26:49.974] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:26:49.976] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:26:50.588] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [18:37:13.762] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [18:37:13.812] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:37:13.812] [main] o.e.j.s.Server -  Started @3967ms 
+INFO   [18:41:22.724] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [18:41:45.530] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=56898, Token=a08cf8c9, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [19:12:06.722] [main] o.e.j.u.log -  Logging initialized @1992ms 
+INFO   [19:12:07.076] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:12:07.148] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [19:12:07.254] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [19:12:07.255] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [19:12:07.282] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [19:12:07.283] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [19:12:07.339] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:12:07.344] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [19:12:07.354] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [19:12:07.401] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [19:12:07.582] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:12:07.587] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [19:12:08.613] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -438,30 +411,31 @@ INFO   [11:26:50.588] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [11:26:50.597] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [11:26:50.604] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [19:12:08.616] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [19:12:08.624] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:26:50.610] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [11:26:50.661] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:26:50.662] [main] o.e.j.s.Server -  Started @2699ms 
-INFO   [11:30:26.187] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [11:32:38.951] [main] o.e.j.u.log -  Logging initialized @1235ms 
-INFO   [11:32:39.104] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:32:39.119] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [11:32:39.157] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [11:32:39.157] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [11:32:39.163] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [11:32:39.164] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [11:32:39.179] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:32:39.186] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [11:32:39.195] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [11:32:39.212] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [11:32:39.300] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:32:39.303] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:32:39.921] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [19:12:08.630] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [19:12:08.678] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:12:08.678] [main] o.e.j.s.Server -  Started @3954ms 
+INFO   [19:14:58.691] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [19:15:14.023] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=56524, Token=f43b96c0, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [19:15:36.032] [main] o.e.j.u.log -  Logging initialized @2036ms 
+INFO   [19:15:36.311] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:15:36.327] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [19:15:36.365] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [19:15:36.365] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [19:15:36.370] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [19:15:36.371] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [19:15:36.404] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:15:36.410] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [19:15:36.426] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [19:15:36.476] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [19:15:36.610] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:15:36.613] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [19:15:37.461] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -475,29 +449,31 @@ INFO   [11:32:39.921] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [11:32:39.924] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [11:32:39.930] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [19:15:37.465] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [19:15:37.471] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:32:39.936] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [11:32:39.982] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:32:39.983] [main] o.e.j.s.Server -  Started @2269ms 
-INFO   [11:35:38.853] [main] o.e.j.u.log -  Logging initialized @1269ms 
-INFO   [11:35:39.002] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:35:39.016] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [11:35:39.053] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [11:35:39.053] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [11:35:39.058] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [11:35:39.059] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [11:35:39.075] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [11:35:39.081] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [11:35:39.091] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [11:35:39.109] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [11:35:39.190] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:35:39.194] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:35:39.773] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [19:15:37.476] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [19:15:37.520] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:15:37.521] [main] o.e.j.s.Server -  Started @3527ms 
+INFO   [19:18:22.654] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [19:18:53.871] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=24068, Token=e68b7976, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [19:53:49.763] [main] o.e.j.u.log -  Logging initialized @1929ms 
+INFO   [19:53:50.088] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:53:50.126] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [19:53:50.227] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [19:53:50.227] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [19:53:50.234] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [19:53:50.236] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [19:53:50.307] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:53:50.314] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [19:53:50.328] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [19:53:50.494] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [19:53:50.674] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:53:50.677] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [19:53:51.878] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -511,14 +487,57 @@ INFO   [11:35:39.773] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [11:35:39.777] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [11:35:39.782] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [19:53:51.881] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [19:53:51.892] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:35:39.787] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [11:35:39.834] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [11:35:39.834] [main] o.e.j.s.Server -  Started @2253ms 
-INFO   [11:39:09.044] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
-INFO   [11:39:34.546] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=30855, Token=89929d9e, OptionSet={"Uri-Path":["12207","0"]}, "" 
+INFO   [19:53:51.897] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [19:53:51.958] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:53:51.958] [main] o.e.j.s.Server -  Started @4126ms 
+INFO   [20:02:28.822] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [20:03:31.062] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [20:05:39.344] [main] o.e.j.u.log -  Logging initialized @1806ms 
+INFO   [20:05:39.628] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [20:05:39.652] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [20:05:39.754] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [20:05:39.754] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [20:05:39.775] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [20:05:39.800] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [20:05:39.874] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [20:05:39.883] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [20:05:39.894] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [20:05:39.917] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [20:05:40.176] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [20:05:40.180] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [20:05:41.547] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [20:05:41.551] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [20:05:41.556] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [20:05:41.567] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [20:05:41.636] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@3d6300e8{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [20:05:41.636] [main] o.e.j.s.Server -  Started @4101ms 
+WARN   [20:07:34.729] [pool-4-thread-3] o.e.c.c.n.Matcher -  Token matches but not MID: Expected 5890 but was 5889 
+WARN   [20:07:37.495] [pool-4-thread-1] o.e.c.c.n.Matcher -  Token matches but not MID: Expected 5890 but was 5889 
+WARN   [20:07:43.025] [pool-4-thread-1] o.e.c.c.n.Matcher -  Token matches but not MID: Expected 5890 but was 5889 
+WARN   [20:07:54.100] [pool-4-thread-3] o.e.c.c.n.Matcher -  Token matches but not MID: Expected 5890 but was 5889 
+WARN   [20:08:16.207] [pool-4-thread-2] o.e.c.c.n.Matcher -  Token matches but not MID: Expected 5890 but was 5889 
+INFO   [20:08:34.716] [jersey-background-task-scheduler-0] o.m.m.m.r.MgmtServerInterface -  MS operation time out 
+INFO   [20:09:00.447] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID= 5890, Token=eb6e6a11, OptionSet={"Uri-Path":["12207","0"], "Block2":773}, "" 

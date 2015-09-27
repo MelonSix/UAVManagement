@@ -9,6 +9,9 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
 import org.eclipse.leshan.core.node.LwM2mResource;
@@ -21,6 +24,9 @@ import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
+import org.mars.m2m.demo.model.Conflict;
+import org.mars.m2m.demo.model.Obstacle;
+import org.mars.m2m.demo.model.Threat;
 
 /**
  *
@@ -61,7 +67,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     @Override
-    public ValueResponse read(int resourceid) {
+    public synchronized ValueResponse read(int resourceid) {
        logger.info("[{}] Read on resource: {}",resourceid);
        //System.out.println("read on resource "+resourceid);
         try {
@@ -147,22 +153,24 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     @Override
-    public LwM2mResponse write(int resourceid, LwM2mResource resource) {
+    public synchronized LwM2mResponse write(int resourceid, LwM2mResource resource) {
         System.out.println("Write on UAV Attacker Device Resource " + resourceid + " value " + resource);
         switch (resourceid) {
         case 0:
             return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
         case 1:
-           // setReplan(Boolean.valueOf(resource.getValue().value.toString()));
+            setReplan(Boolean.valueOf(resource.getValue().value.toString()));
             System.out.println("Need to replan write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 3:
+            Conflict conflict = gson.fromJson(parseValue(resource.getValue().value.toString()), Conflict.class);
+            addConflict(conflict);
             System.out.println("Knowledegbase write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 7:
             return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
         case 8:
-            //setFlightMode(Integer.parseInt(resource.getValue().value.toString()));
+            setFlightMode(Integer.parseInt(resource.getValue().value.toString()));
             System.out.println("Fly mode write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 10:
@@ -173,16 +181,22 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
             return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
         case 14:
             String data = parseValue(resource.getValue().value.toString());
-            
+            Threat target = gson.fromJson(data, Threat.class);
+            setTarget_indicated_by_role(target);
             System.out.println("target indicated by role write: "+data);
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 20:
+            setSpeed(Integer.parseInt(resource.getValue().value.toString()));
             System.out.println("Speed write: "+resource.getValue().value);
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 21:
+            Obstacle obstacle = gson.fromJson(parseValue(resource.getValue().value.toString()), Obstacle.class);
+            addObstacle(obstacle);
             System.out.println("Obstacle write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         case 22:
+            Threat threat = gson.fromJson(resource.getValue().value.toString(), Threat.class);
+            addThreat(threat);
             System.out.println("Threat write: "+resource.getValue().value.toString());
             return new LwM2mResponse(ResponseCode.CHANGED);
         default:
@@ -191,7 +205,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     @Override
-    public LwM2mResponse execute(int resourceid, byte[] params) {
+    public synchronized LwM2mResponse execute(int resourceid, byte[] params) {
         System.out.printf("[{}] Execute on Attacker resource {}\n", this.getClass().getName() , resourceid);
         if (params != null && params.length != 0)
             System.out.println("\t params " + new String(params));
@@ -221,6 +235,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setPathIndex(int pathIndex) {
         this.pathIndex = pathIndex;
+        this.attacker.setCurrent_index_of_planned_path(pathIndex);
     }
 
     public boolean isReplan() {
@@ -231,6 +246,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setReplan(boolean replan) {
         this.replan = replan;
+        this.attacker.setNeed_to_replan(replan);
     }
 
     public boolean isMovedAtLastStep() {
@@ -241,6 +257,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setMovedAtLastStep(boolean movedAtLastStep) {
         this.movedAtLastStep = movedAtLastStep;
+        this.attacker.setMoved_at_last_time(movedAtLastStep);
     }
 
     public KnowledgeInterface getKb() {
@@ -261,6 +278,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setPathPlannedAtLastStep(UAVPath pathPlannedAtLastStep) {
         this.pathPlannedAtLastStep = pathPlannedAtLastStep;
+        this.attacker.setPath_planned_at_last_time_step(pathPlannedAtLastStep);
     }
 
     public UAVPath getPathHistory() {
@@ -271,6 +289,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setPathHistory(UAVPath pathHistory) {
         this.pathHistory = pathHistory;
+        this.attacker.setHistory_path(pathHistory);
     }
 
     public UAVPath getCurrentPath() {
@@ -281,6 +300,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setCurrentPath(UAVPath currentPath) {
         this.currentPath = currentPath;
+        this.attacker.setPath_planned_at_current_time_step(currentPath);
     }
 
     public boolean isHasReplanned() {
@@ -291,6 +311,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setHasReplanned(boolean hasReplanned) {
         this.hasReplanned = hasReplanned;
+        this.attacker.setReplanned_at_current_time_step(hasReplanned);
     }
 
     public int getFlightMode() {
@@ -301,6 +322,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setFlightMode(int flightMode) {
         this.flightMode = flightMode;
+        this.attacker.setFly_mode(flightMode);
     }
 
     public int getHoveredTimeStep() {
@@ -311,6 +333,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setHoveredTimeStep(int hoveredTimeStep) {
         this.hoveredTimeStep = hoveredTimeStep;
+        this.attacker.setHovered_time_step(hoveredTimeStep);
     }
 
     public float[] getIterationGoal() {
@@ -321,6 +344,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setIterationGoal(float[] iterationGoal) {
         this.iterationGoal = iterationGoal;
+        this.attacker.setGoal_for_each_iteration(iterationGoal);
     }
 
     public int getStuckTimes() {
@@ -331,6 +355,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setStuckTimes(int stuckTimes) {
         this.stuckTimes = stuckTimes;
+        this.attacker.setStucked_times(stuckTimes);
     }
 
     public int getMaximumStuckTimes() {
@@ -341,6 +366,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setMaximumStuckTimes(int maximumStuckTimes) {
         this.maximumStuckTimes = maximumStuckTimes;
+        this.attacker.setMax_stucked_times(maximumStuckTimes);
     }
 
     public Target getTarget_indicated_by_role() {
@@ -350,7 +376,11 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public void setTarget_indicated_by_role(Target target_indicated_by_role) {
+        if (this.target_indicated_by_role == target_indicated_by_role) {
+            return;
+        }
         this.target_indicated_by_role = target_indicated_by_role;
+        this.attacker.setTarget_indicated_by_role(target_indicated_by_role);
     }
 
     public boolean isOnline() {
@@ -361,6 +391,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setOnline(boolean online) {
         this.online = online;
+        this.attacker.setVisible(online);
     }
 
     public int getSpeed() {
@@ -371,6 +402,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setSpeed(int speed) {
         this.speed = speed;
+        this.attacker.setSpeed(speed);
     }
 
     public float[] getCenterCoordinates() {
@@ -381,6 +413,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setCenterCoordinates(float[] centerCoordinates) {
         this.centerCoordinates = centerCoordinates;
+        this.attacker.setCenter_coordinates(centerCoordinates);
     }
 
     public float getRemainedEnergy() {
@@ -391,8 +424,39 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 
     public void setRemainedEnergy(float remainedEnergy) {
         this.remainedEnergy = remainedEnergy;
+        this.attacker.setRemained_energy(remainedEnergy);
+    }
+    
+    public void addObstacle(Obstacle obs) {
+        if (!this.attacker.kb.containsObstacle(obs)) {
+            this.attacker.addObstacle(obs);
+        }
     }
 
+    public void addConflict(Conflict conflict) {
+        this.attacker.addConflict(conflict);
+    }
+
+    public void addThreat(Threat threat) {
+        ArrayList<Threat> threats = this.attacker.getThreats();
+        for (int i = 0; i < threats.size(); i++) 
+        {
+            Threat current_threat = threats.get(i);
+            if (threat.getIndex() == current_threat.getIndex()) {
+                this.attacker.kb.removeThreat(current_threat);
+                this.addThreat(threat);
+                if (this.attacker.target_indicated_by_role != null && threat.getIndex() == this.attacker.target_indicated_by_role.getIndex()) {
+                    this.attacker.target_indicated_by_role = threat;
+                }
+                return;
+            }
+        }
+        if (this.attacker.target_indicated_by_role != null && threat.getIndex() == this.attacker.target_indicated_by_role.getIndex()) {
+            this.attacker.target_indicated_by_role = threat;
+        }
+        this.attacker.addThreat(threat);
+    }
+    
     /*public float[] getUavBaseCenterCoordinates() {
     if(this.attacker != null)
     this.setUavBaseCenterCoordinates(attacker.getCenter_coordinates());
@@ -426,16 +490,61 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
      * @param data
      * @return 
      */
-    public String parseValue(String data)
+    private String parseValue(String data)
     {
         StringBuilder jsonData = new StringBuilder();
         jsonData.append("{");
             data = StringUtils.removeStart(data, "{");
             data = StringUtils.removeEnd(data, "}");
             data = StringUtils.replace(data, "=", ":");
-        jsonData.append(data);
+        jsonData.append(applyRegEx(data));
         jsonData.append("}");
         return jsonData.toString();
     }
+    
+    /**
+     * This method is used to help in converting a complex object's data into a
+     * JSON string
+     * @param data The submitted data as a string
+     * @return The JSON equivalent of the submitted string
+     */
+    private String applyRegEx(String data)
+    {
+        //regular expresion for getting value names
+        String elementPart = "([\\w]*:)";
+        
+        //regular expression for gettng the values 
+        String elValuePart = "(:)([\\w]*)";
+        
+        //apply regular expressions to patterns
+        Pattern elPattern = Pattern.compile(elementPart);
+        Pattern valPattern = Pattern.compile(elValuePart);
+        
+        //get matchers to use patterns to match the data/String
+        Matcher elMatcher = elPattern.matcher(data);
+        Matcher vMatcher = valPattern.matcher(data);
+        while(elMatcher.find())//handles value part
+        {   
+            String element = elMatcher.group();
+            data = StringUtils.replaceOnce(data, element, "\""+element.replace(":", "\":"));
+        }
+        while (vMatcher.find( ))//handles the value part
+        {
+           String value = vMatcher.group();
+           value = StringUtils.remove(value, ":");
+           if(!StringUtils.isNumeric(value) && //not a number
+                   !StringUtils.equals(value, "true") && //not a boolean value
+                   !StringUtils.equals(value, "false") )//not a boolean value
+           {
+               if(StringUtils.isEmpty(value))
+                   data = data.replace(":,", ":null,");
+               else
+                   data = StringUtils.replaceOnce(data, value, "\""+value+"\"");
+           }
+        } 
+        return data;
+    }
+    
+        
     
 }
