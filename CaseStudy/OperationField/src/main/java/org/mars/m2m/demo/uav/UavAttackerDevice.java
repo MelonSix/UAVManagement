@@ -24,7 +24,9 @@ import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.model.Conflict;
+import org.mars.m2m.demo.model.ObjectResourceModel;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
 
@@ -153,63 +155,76 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     @Override
-    public synchronized LwM2mResponse write(int resourceid, LwM2mResource resource) {
+    public LwM2mResponse write(int resourceid, LwM2mResource resource) 
+    {
         System.out.println("Write on UAV Attacker Device Resource " + resourceid + " value " + resource);
         switch (resourceid) {
-        case 0:
-            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
-        case 1:
-            setReplan(Boolean.valueOf(resource.getValue().value.toString()));
-            System.out.println("Need to replan write: "+resource.getValue().value.toString());
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 3:
-            Conflict conflict = gson.fromJson(parseValue(resource.getValue().value.toString()), Conflict.class);
-            addConflict(conflict);
-            System.out.println("Knowledegbase write: "+resource.getValue().value.toString());
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 7:
-            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
-        case 8:
-            setFlightMode(Integer.parseInt(resource.getValue().value.toString()));
-            System.out.println("Fly mode write: "+resource.getValue().value.toString());
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 10:
-            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
-        case 12:
-            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
-        case 13:
-            return new LwM2mResponse(ResponseCode.METHOD_NOT_ALLOWED);
-        case 14:
-            String data = parseValue(resource.getValue().value.toString());
-            Threat target = gson.fromJson(data, Threat.class);
-            setTarget_indicated_by_role(target);
-            System.out.println("target indicated by role write: "+data);
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 20:
-            setSpeed(Integer.parseInt(resource.getValue().value.toString()));
-            System.out.println("Speed write: "+resource.getValue().value);
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 21:
-            Obstacle obstacle = gson.fromJson(parseValue(resource.getValue().value.toString()), Obstacle.class);
-            addObstacle(obstacle);
-            System.out.println("Obstacle write: "+resource.getValue().value.toString());
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        case 22:
-            Threat threat = gson.fromJson(resource.getValue().value.toString(), Threat.class);
-            addThreat(threat);
-            System.out.println("Threat write: "+resource.getValue().value.toString());
-            return new LwM2mResponse(ResponseCode.CHANGED);
-        default:
-            return super.write(resourceid, resource);
+            case 1:
+                setReplan(Boolean.valueOf(resource.getValue().value.toString()));
+                System.out.println("Need to replan write: " + resource.getValue().value.toString());
+                return new LwM2mResponse(ResponseCode.CHANGED);
+            case 8:
+                setFlightMode(Integer.parseInt(resource.getValue().value.toString()));
+                System.out.println("Fly mode write: " + resource.getValue().value.toString());
+                return new LwM2mResponse(ResponseCode.CHANGED);
+            case 14:
+                String data = parseValue(resource.getValue().value.toString());
+                Threat target = gson.fromJson(data, Threat.class);
+                setTarget_indicated_by_role(target);
+                System.out.println("target indicated by role write: " + data);
+                return new LwM2mResponse(ResponseCode.CHANGED);
+            case 20:
+                setSpeed(Integer.parseInt(resource.getValue().value.toString()));
+                System.out.println("Speed write: " + resource.getValue().value);
+                return new LwM2mResponse(ResponseCode.CHANGED);
+            default:
+                return super.write(resourceid, resource);
         }
     }
 
     @Override
-    public synchronized LwM2mResponse execute(int resourceid, byte[] params) {
-        System.out.printf("[{}] Execute on Attacker resource {}\n", this.getClass().getName() , resourceid);
-        if (params != null && params.length != 0)
-            System.out.println("\t params " + new String(params));
-        return new LwM2mResponse(ResponseCode.CHANGED);
+    public LwM2mResponse execute(int resourceid, byte[] params) {
+        try 
+        {
+            if (params != null && params.length != 0) {
+                ObjectResourceModel dataStr = gson.fromJson(new String(params), ObjectResourceModel.class);
+                switch (dataStr.getId()) {
+                    case 3:
+                        Conflict conflict = gson.fromJson(dataStr.getValue().toString(), Conflict.class);
+                        if (!attacker.getKb().containsConflict(conflict)) {
+                            addConflict(conflict);
+                            System.out.println("Exec: Conflict added: " + dataStr.getValue().toString());
+                        }
+                        return new LwM2mResponse(ResponseCode.CHANGED);
+                    case 21:
+                        Obstacle obstacle = gson.fromJson(dataStr.getValue().toString(), Obstacle.class);
+                        if (!attacker.getKb().containsObstacle(obstacle)) {
+                            addObstacle(obstacle);
+                            System.out.println("Exec: Obstacle added: " + dataStr.getValue().toString());
+                        }
+                        return new LwM2mResponse(ResponseCode.CHANGED);
+                    case 22:
+                            Threat threat = gson.fromJson(dataStr.getValue().toString(), Threat.class);
+                            if (!attacker.containsThreat(threat)) 
+                            {
+                                attacker.setTarget_indicated_by_role(threat);
+                                attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                                attacker.setNeed_to_replan(true);
+                                addThreat(threat);
+                                System.out.println("Exec: Threat added: " + dataStr.getValue().toString());
+                            }
+                        return new LwM2mResponse(ResponseCode.CHANGED);
+                    default:
+                        return new LwM2mResponse(ResponseCode.BAD_REQUEST);
+                }
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        finally{
+            //updateAttacker();   
+        }
+            return new LwM2mResponse(ResponseCode.BAD_REQUEST);
     }
     
     @Override

@@ -77,14 +77,14 @@ public class BroadcastMessageDispatcher extends MessageDispatcher {
                 for (int j = 0; j < obstacle_num; j++) {
                     Obstacle obstacle = obstacles.get(j);
                     if (!attacker.containsObstacle(obstacle)) {
-                        super.addRecvMessage(i, obstacle);
+                        super.addRecvMessage(attacker.getIndex(), obstacle);
                     }
                 }
 
                 for (int j = 0; j < threat_num; j++) {
                     Threat threat = threats.get(j);
     //                if (!kb.containsThreat(threat)) {
-                        this.addRecvMessage(i, threat);
+                        this.addRecvMessage(attacker.getIndex(), threat);
     //                }
                 }
 
@@ -106,7 +106,7 @@ public class BroadcastMessageDispatcher extends MessageDispatcher {
                         if (conflict_uav_target != null && uav_index != attacker.getIndex()) {
                             Rectangle conflict_uav_rect = RectangleUtil.findMBRRect(conflict_uav.getCenterCoordinates(), conflict_uav_target.getCoordinates());
                             if (attacker_rect.intersects(conflict_uav_rect)) {
-                                super.addRecvMessage(i, conflict);
+                                super.addRecvMessage(attacker.getIndex(), conflict);
                             }
                         }
                     }

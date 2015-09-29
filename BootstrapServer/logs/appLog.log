@@ -375,3 +375,28 @@ ERROR  [08:18:30.816] [pool-4-thread-4] o.m.m.b.c.BsResource -  No bootstrap con
 ERROR  [08:18:30.822] [pool-4-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout2-5444659f-408f-41c7-b996-e984a0947adb 
 ERROR  [08:18:30.832] [pool-4-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout2-6ba76bbb-2cd6-4941-bc7e-03aeab8ef5ac 
 ERROR  [08:18:30.839] [pool-4-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout2-fb608e56-3222-47f0-80a9-14295f3d7cf1 
+INFO   [17:53:00.701] [main] o.e.j.u.log -  Logging initialized @1212ms 
+INFO   [17:53:00.789] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [17:53:00.820] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [17:53:00.821] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [17:53:00.827] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [17:53:00.827] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [17:53:00.833] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [17:53:00.841] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [17:53:00.856] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [17:53:00.891] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:53:00.894] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:53:01.417] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [17:53:01.420] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [17:53:01.425] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:53:01.430] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [17:53:01.478] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:53:01.478] [main] o.e.j.s.Server -  Started @1992ms 

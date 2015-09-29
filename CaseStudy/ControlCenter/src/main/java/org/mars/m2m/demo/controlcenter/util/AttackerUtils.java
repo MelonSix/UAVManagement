@@ -200,7 +200,6 @@ public class AttackerUtils
         {
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-            //asynchronous update
             requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class);
         }
     }
@@ -235,7 +234,7 @@ public class AttackerUtils
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
             System.err.println("asynExec: "+data);
-            //requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class, callback);
+            requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class, callback);
         }
     }
     
