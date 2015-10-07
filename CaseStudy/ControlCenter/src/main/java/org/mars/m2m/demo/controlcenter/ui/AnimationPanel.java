@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.appConfig.GraphicConfig;
-import org.mars.m2m.demo.controlcenter.core.AnimatorListener;
+import org.mars.m2m.demo.controlcenter.core.AnimationListener;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
@@ -151,12 +151,12 @@ public class AnimationPanel extends JPanel
         }
     }
     
-    /** start the threat to drive the world and paint the graph. The thread is implemented by AnimatorListener Class in this file.
+    /** start the threat to drive the world and paint the graph. The thread is implemented by AnimationListener Class in this file.
      * 
      */
     public void start() { 
         System.out.println("starting animation listener");        
-        Timer timer = new Timer(500, new AnimatorListener(this));
+        Timer timer = new Timer(500, new AnimationListener(this));
         timer.start();
     }
 

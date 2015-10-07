@@ -3203,6 +3203,17 @@
                 "range": "",
                 "units": "",
                 "description": "" 
+            },
+            {
+               "id": 23,
+                "name": "Attacker locked",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "boolean",
+                "range": "",
+                "units": "",
+                "description": "" 
             }
         ]
     }

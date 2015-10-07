@@ -62,6 +62,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     private float remainedEnergy;
     private float [] uavBaseCenterCoordinates;
     private float [] uavPositionInBaseStation;
+    private boolean lockedToThreat;
     
     public UavAttackerDevice() 
     {
@@ -130,7 +131,10 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                             new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getCenterCoordinates())))); 
                 case 17:
                     return new ValueResponse(ResponseCode.CONTENT,
-                            new LwM2mResource(resourceid, Value.newFloatValue(getRemainedEnergy()))); 
+                            new LwM2mResource(resourceid, Value.newFloatValue(getRemainedEnergy())));
+                case 23:
+                    return new ValueResponse(ResponseCode.CONTENT,
+                            new LwM2mResource(resourceid, Value.newBooleanValue(isLockedToThreat()))); 
 //                case 18:
 //                    return new ValueResponse(ResponseCode.CONTENT,
 //                            new LwM2mResource(resourceid, Value.newStringValue(gson.toJson(this.getUavBaseCenterCoordinates())))); 
@@ -451,6 +455,16 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     public void addConflict(Conflict conflict) {
         this.attacker.addConflict(conflict);
     }
+
+    public boolean isLockedToThreat() {
+        lockedToThreat = attacker.isLockedToThreat();
+        return lockedToThreat;
+    }
+
+    public void setLockedToThreat(boolean lockedToThreat) {
+        attacker.setLockedToThreat(lockedToThreat);
+    }
+    
 
     public void addThreat(Threat threat) {
         ArrayList<Threat> threats = this.attacker.getThreats();

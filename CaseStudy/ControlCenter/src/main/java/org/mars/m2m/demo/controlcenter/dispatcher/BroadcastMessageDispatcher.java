@@ -35,6 +35,7 @@ import org.mars.m2m.demo.controlcenter.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Target;
 import org.mars.m2m.demo.controlcenter.model.Threat;
+import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
 
@@ -59,58 +60,49 @@ public class BroadcastMessageDispatcher extends MessageDispatcher {
         List<Conflict> conflicts = intelligent_unit.getConflicts();
         int conflict_num = conflicts.size();
 
-        int attacker_num = HandleTree.attackersNode.getChildCount();
-        for (int i = 0; i < attacker_num; i++) 
+        for(AttackerModel attacker : ReadAttackers.attackers)
         {
-            DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(i).getChildAt(0);
-            
-            if(node != null)
+            Rectangle attacker_rect = null;
+            Target attacker_target=attacker.getTarget_indicated_by_role();
+            if ( attacker_target!= null) {
+                attacker_rect = RectangleUtil.findMBRRect(attacker.getCenterCoordinates(), attacker_target.getCoordinates());
+            }
+
+            for (int j = 0; j < obstacle_num; j++) {
+                Obstacle obstacle = obstacles.get(j);
+                if (!attacker.containsObstacle(obstacle)) {
+                    super.addRecvMessage(attacker.getIndex(), obstacle);
+                }
+            }
+
+            for (int j = 0; j < threat_num; j++) {
+                Threat threat = threats.get(j);
+//                if (!kb.containsThreat(threat)) {
+                    this.addRecvMessage(attacker.getIndex(), threat);
+//                }
+            }
+
+            if(attacker_rect==null)
             {
-                AttackerModel attacker = AttackerUtils.getVirtualizedAttacker(node);
+                continue;
+            }
+
+            for (int j = 0; j < conflict_num; j++) 
+            {
+                AttackerModel conflict_uav = ReadAttackers.attackers.get(j);
+                Conflict conflict = conflicts.get(j);
+                int uav_index = conflict.getUav_index();
+                Target conflict_uav_target = conflict_uav.getTarget_indicated_by_role();
                 
-                Rectangle attacker_rect = null;
-                Target attacker_target=attacker.getTarget_indicated_by_role();
-                if ( attacker_target!= null) {
-                    attacker_rect = RectangleUtil.findMBRRect(attacker.getCenterCoordinates(), attacker_target.getCoordinates());
-                }
-
-                for (int j = 0; j < obstacle_num; j++) {
-                    Obstacle obstacle = obstacles.get(j);
-                    if (!attacker.containsObstacle(obstacle)) {
-                        super.addRecvMessage(attacker.getIndex(), obstacle);
-                    }
-                }
-
-                for (int j = 0; j < threat_num; j++) {
-                    Threat threat = threats.get(j);
-    //                if (!kb.containsThreat(threat)) {
-                        this.addRecvMessage(attacker.getIndex(), threat);
-    //                }
-                }
-
-                if(attacker_rect==null)
+                if (conflict_uav_target != null && uav_index != attacker.getIndex()) 
                 {
-                    continue;
-                }
-
-                for (int j = 0; j < conflict_num; j++) 
-                {
-                    DefaultMutableTreeNode node2 = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(j).getChildAt(0);
+                    Rectangle conflict_uav_rect = RectangleUtil.findMBRRect(conflict_uav.getCenterCoordinates(), 
+                            conflict_uav_target.getCoordinates());
                     
-                    if (node2 != null)
+                    if (attacker_rect.intersects(conflict_uav_rect)) 
                     {
-                        AttackerModel conflict_uav = AttackerUtils.getVirtualizedAttacker(node2);
-                        Conflict conflict = conflicts.get(j);
-                        int uav_index = conflict.getUav_index();
-                        Target conflict_uav_target = conflict_uav.getTarget_indicated_by_role();
-                        if (conflict_uav_target != null && uav_index != attacker.getIndex()) {
-                            Rectangle conflict_uav_rect = RectangleUtil.findMBRRect(conflict_uav.getCenterCoordinates(), conflict_uav_target.getCoordinates());
-                            if (attacker_rect.intersects(conflict_uav_rect)) {
-                                super.addRecvMessage(attacker.getIndex(), conflict);
-                            }
-                        }
+                        super.addRecvMessage(attacker.getIndex(), conflict);
                     }
-
                 }
             }
         }

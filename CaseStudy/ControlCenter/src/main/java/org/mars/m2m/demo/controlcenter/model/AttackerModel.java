@@ -42,6 +42,7 @@ public class AttackerModel
     private float remainedEnergy;
     private float [] uavBaseCenterCoordinates = new float[]{60, 60};;
     private float [] uavPositionInBaseStation;
+    private boolean attackerLocked;
 
     public AttackerModel() {
     }
@@ -213,6 +214,14 @@ public class AttackerModel
 
     public ReportedLwM2MClient getClient() {
         return client;
+    }
+
+    public boolean isAttackerLocked() {
+        return attackerLocked;
+    }
+
+    public void setAttackerLocked(boolean attackerLocked) {
+        this.attackerLocked = attackerLocked;
     }
     
     

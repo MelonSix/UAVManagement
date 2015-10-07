@@ -10,8 +10,10 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
+import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
 import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 
 /**
@@ -21,11 +23,11 @@ import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 /** 
      * 
      */
-public class AnimatorListener implements ActionListener 
+public class AnimationListener implements ActionListener 
 {
         AnimationPanel animPnl;
 
-        public AnimatorListener(AnimationPanel animationPanel)
+        public AnimationListener(AnimationPanel animationPanel)
         {
             this.animPnl = animationPanel;
         }
@@ -36,7 +38,7 @@ public class AnimatorListener implements ActionListener
          */
         @Override
         public void actionPerformed(ActionEvent e) 
-        {             
+        {                
             ExecutorService executor = Executors.newFixedThreadPool(2);
             executor.execute(new Runnable() {
 
@@ -83,8 +85,7 @@ public class AnimatorListener implements ActionListener
         
     private void updateAll(AnimationPanel panel) 
     {
-        ControlCenterServices cc = panel.getControlCenterServices();
-
+        final ControlCenterServices cc = panel.getControlCenterServices();
         synchronized(cc)
         {                
             if (cc.isSimulationStartable()) 
@@ -92,6 +93,7 @@ public class AnimatorListener implements ActionListener
              * if any obstacle or threat has ever been reported then simulation can start
              * and CC can perform operations on endpoint clients
              */
+                ReadAttackers.readAttackerResources();
                 cc.registerInfoRequirement();
                 cc.shareInfoAfterRegistration();
                 cc.roleAssignmentInControlCenter();

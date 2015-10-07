@@ -34,6 +34,7 @@ import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.controlcenter.model.Message;
 import org.mars.m2m.demo.controlcenter.model.Target;
+import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 
 /**
@@ -66,28 +67,22 @@ public abstract class MessageDispatcher {
     /** dispatch the information to the receivers.
      * 
      */
-    public void dispatch() {
-        int attacker_num = HandleTree.attackersNode.getChildCount();
-        
-        for (int i = 0; i < attacker_num; i++) {
-             DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(i).getChildAt(0);
-             
-            if(node != null)
-            {
-                AttackerModel attacker = AttackerUtils.getVirtualizedAttacker(node);
-                Integer attacker_index = attacker.getIndex();
-                LinkedList<Message> recv_list = recv_msg_list.get(attacker_index);
-                if (recv_list != null && recv_list.size() > 0) {
-                    int total_msg_sent = recv_list.size();
-                    for (int j = 0; j < total_msg_sent; j++) {
-                        Message msg=recv_list.get(j);
-                        int msg_size=msg.getMsgSize();
-                        attacker.receiveMesage(msg);
-                        this.num_of_msg_sent_total += msg_size;
-                        this.num_of_msg_sent_this_time_step +=  msg_size;
-                    }
-
+    public void dispatch() 
+    {        
+        for(AttackerModel attacker : ReadAttackers.attackers)
+        {
+            Integer attacker_index = attacker.getIndex();
+            LinkedList<Message> recv_list = recv_msg_list.get(attacker_index);
+            if (recv_list != null && recv_list.size() > 0) {
+                int total_msg_sent = recv_list.size();
+                for (int j = 0; j < total_msg_sent; j++) {
+                    Message msg=recv_list.get(j);
+                    int msg_size=msg.getMsgSize();
+                    attacker.receiveMesage(msg);
+                    this.num_of_msg_sent_total += msg_size;
+                    this.num_of_msg_sent_this_time_step +=  msg_size;
                 }
+
             }
         }
         this.clearRecvMsgList();

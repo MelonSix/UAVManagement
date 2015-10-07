@@ -219,7 +219,6 @@ public class World {
         for (int i = 1; i <= scout_num; i++) {
             Scout scout = new Scout(i, OpStaticInitConfig.SCOUT, uav_base_center, uav_base_center, Float.MAX_VALUE);
             scouts.add(scout);
-            System.out.println("scout"+i);
         }
     }
 
@@ -227,8 +226,8 @@ public class World {
      *
      */
     private void initUAVs() {
-        this.scouts = new ArrayList<Scout>();
-        this.attackers = new ArrayList<Attacker>();
+        this.scouts = new ArrayList<>();
+        World.attackers = new ArrayList<>();
         initScoutsAndAttackers();
     }
 
@@ -311,19 +310,26 @@ public class World {
                     continue;
                 }
                 //Otherwise, destroy its threat when the attacker is close to the threat
-                if (threat_index == threat.getIndex()) {
+                if (threat_index == threat.getIndex()) 
+                {
                     float distance_to_target = DistanceUtil.distanceBetween(attacker.getCenter_coordinates(), threat.getCoordinates());
-                    if (distance_to_target < attacker.getUav_radar().getRadius() / 2) {
-                        if (attacker.getFly_mode() == Attacker.FLYING_MODE) {
+                    if (distance_to_target < attacker.getUav_radar().getRadius() / 2) 
+                    {
+                        if (attacker.getFly_mode() == Attacker.FLYING_MODE) 
+                        {
                             attacker.setFly_mode(Attacker.TARGET_LOCKED_MODE);
                             attacker.setHovered_time_step(0);
                             threat.setMode(Threat.LOCKED_MODE);
                             attacker.setNeed_to_replan(true);
-                            this.lockAttackerToThreat(attacker.getIndex(), threat.getIndex());
-                        } else if (attacker.getFly_mode() == Attacker.TARGET_LOCKED_MODE) {
-                            if (attacker.getHovered_time_step() < OpStaticInitConfig.LOCKED_TIME_STEP_UNTIL_DESTROYED) {
+                            this.lockAttackerToThreat(attacker, threat.getIndex());
+                        } else if (attacker.getFly_mode() == Attacker.TARGET_LOCKED_MODE) 
+                        {
+                            if (attacker.getHovered_time_step() < OpStaticInitConfig.LOCKED_TIME_STEP_UNTIL_DESTROYED)
+                            {
                                 attacker.increaseHovered_time_step();
-                            } else {
+                            } 
+                            else 
+                            {
                                 threat.setEnabled(false);
                                 //this.control_center.updateThreat(threat);
                                 this.threatDestroyedAndUnlocked(threat.getIndex());
@@ -347,15 +353,16 @@ public class World {
     
     /** lock the attacker to the threat. when attacker is close enough to the attacker, the method is called.
      * 
-     * @param attacker_index
+     * @param attacker
      * @param threat_index 
      */
-    public void lockAttackerToThreat(Integer attacker_index, Integer threat_index) {
+    public void lockAttackerToThreat(Attacker attacker, Integer threat_index) {
         Set<Integer> attackers_locked = this.locked_threat.get(threat_index);
         if (attackers_locked == null) {
             attackers_locked = new TreeSet<>();
         }
-        attackers_locked.add(attacker_index);
+        attackers_locked.add(attacker.getIndex());
+        attacker.setLockedToThreat(true);
         this.locked_threat.put(threat_index, attackers_locked);
     }
     
@@ -368,7 +375,8 @@ public class World {
         if (assigned_attackers == null) {
             return;
         }
-        for (Integer attacker_index : assigned_attackers) {
+        for (int attacker_index=0; attacker_index < attacker_num; attacker_index++) 
+        {
             Attacker attacker = this.attackers.get(attacker_index);
             attacker.setFly_mode(Attacker.FLYING_MODE);
             float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
@@ -378,6 +386,7 @@ public class World {
             attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
             attacker.setFly_mode(Attacker.FLYING_MODE);
             attacker.setHovered_time_step(0);
+            attacker.setLockedToThreat(false);
         }
     }
 

@@ -185,6 +185,9 @@ public class AttackerUtils
                             attacker.setSpeed(speedVal.intValue());
                         }
                         break; 
+                    case 23:
+                        attacker.setAttackerLocked((boolean)resource.getValue());
+                        break; 
                     default:
                 }
             } catch (Exception e) {
@@ -221,7 +224,7 @@ public class AttackerUtils
         {
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-            System.err.println("asynUpdate: "+data);
+            System.out.println("asynUpdate: "+data);
             //asynchronous update
             requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class, callback);
         }
@@ -233,7 +236,7 @@ public class AttackerUtils
         {
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-            System.err.println("asynExec: "+data);
+            System.out.println("asynExec: "+data);
             requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class, callback);
         }
     }

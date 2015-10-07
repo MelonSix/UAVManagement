@@ -36,6 +36,7 @@ import org.mars.m2m.demo.controlcenter.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Target;
 import org.mars.m2m.demo.controlcenter.model.Threat;
+import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
 
@@ -71,43 +72,35 @@ public class RegisteredMessageDispatcher extends MessageDispatcher {
         int threat_num = threats.size();
 //        List<Conflict> conflicts = intelligent_unit.getConflicts();
         
-        int attacker_num = HandleTree.attackersNode.getChildCount();
-        for (int i = 0; i < attacker_num; i++) 
-        {
-            DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(i).getChildAt(0);
-            
-            if(node != null)
+        for(AttackerModel attacker : ReadAttackers.attackers)
+        {                
+            if(!attacker.isOnline())
             {
-                AttackerModel attacker = AttackerUtils.getVirtualizedAttacker(node);
-                
-                if(!attacker.isOnline())
-                {
-                    continue;
-                }
-                
-                int attacker_index = attacker.getIndex();
-                Integer threat_index = this.target_registered.get(attacker_index);
-                if(threat_index==null)
-                {
-                    continue;
-                }
-                for (int j = 0; j < threat_num; j++) {
-                    Threat threat = threats.get(j);
-                    if (threat.getIndex() == threat_index) {
-                        this.addRecvMessage(i, threat);
-                    }
-                }
+                continue;
+            }
 
-                Rectangle gis_rect = this.gis_rect_registered.get(attacker_index);
-                for (int j = 0; j < obstacle_num; j++) {
-                    Obstacle obstacle = obstacles.get(j);
-                    boolean gis_rect_covered = obstacle.getMbr().intersects(gis_rect);
-                    if (gis_rect_covered && !attacker.containsObstacle(obstacle)) {
-                        this.addRecvMessage(i, obstacle);
-                    }
+            int attacker_index = attacker.getIndex();
+            Integer threat_index = this.target_registered.get(attacker_index);
+            if(threat_index==null)
+            {
+                continue;
+            }
+            for (int j = 0; j < threat_num; j++) {
+                Threat threat = threats.get(j);
+                if (threat.getIndex() == threat_index) {
+                    this.addRecvMessage(attacker_index, threat);
                 }
             }
 
+            Rectangle gis_rect = this.gis_rect_registered.get(attacker_index);
+            for (int j = 0; j < obstacle_num; j++) 
+            {
+                Obstacle obstacle = obstacles.get(j);
+                boolean gis_rect_covered = obstacle.getMbr().intersects(gis_rect);
+                if (gis_rect_covered && !attacker.containsObstacle(obstacle)) {
+                    this.addRecvMessage(attacker_index, obstacle);
+                }
+            }
         }
     }
 

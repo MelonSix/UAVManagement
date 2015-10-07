@@ -121,6 +121,4 @@ public class ReportedLwM2MClient
     public String toString() {
         return this.endpoint;
     }
-    
-    
 }

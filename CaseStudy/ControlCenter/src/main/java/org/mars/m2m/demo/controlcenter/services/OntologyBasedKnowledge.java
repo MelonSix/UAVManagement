@@ -289,7 +289,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public synchronized ArrayList<Obstacle> getObstacles() {
+    public ArrayList<Obstacle> getObstacles() {
         if (!this.obstacle_updated) {
             return this.obstacles_cache;
         }
@@ -525,7 +525,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public synchronized void addObstacle(Obstacle obs) {
+    public void addObstacle(Obstacle obs) {
         try {
             Individual obs_individual = Obstacle_Class.createIndividual();
             Individual region_individual = Region_Class.createIndividual();
@@ -559,7 +559,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public synchronized void addConflict(Conflict conflict) {
+    public void addConflict(Conflict conflict) {
         ArrayList<Conflict> conflicts = this.getConflicts();
         if (conflict_num == 0) {
             addConflictWithoutCheck(conflict);
@@ -577,7 +577,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         conflict_num++;
     }
 
-    private synchronized void addConflictWithoutCheck(Conflict conflict) {
+    private void addConflictWithoutCheck(Conflict conflict) {
 
         LinkedList<Point> path = conflict.getPath_prefound();
         int path_len = path.size();
@@ -600,7 +600,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public synchronized void addThreat(Threat threat) {
+    public void addThreat(Threat threat) {
         Individual threat_individual = Threat_Class.createIndividual();
 
         Literal center = ontology_based_knowledge.createTypedLiteral(threat.getCoordinates()[0] + "," + threat.getCoordinates()[1]);
@@ -621,7 +621,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public boolean containsThreat(Threat threat) {
+    public synchronized boolean containsThreat(Threat threat) {
         Literal center = ontology_based_knowledge.createTypedLiteral(threat.getCoordinates()[0] + "," + threat.getCoordinates()[1]);
         Selector selector = new SimpleSelector(null, hasThreatCenter, center);
         Model result_model = ontology_based_knowledge.query(selector);
@@ -630,7 +630,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public boolean containsObstacle(Obstacle obstacle) {
+    public synchronized boolean containsObstacle(Obstacle obstacle) {
         Literal points = ontology_based_knowledge.createTypedLiteral(obstacle.getPointsStr());
         Selector selector = new SimpleSelector(null, has_points, points);
         Model result_model = ontology_based_knowledge.query(selector);

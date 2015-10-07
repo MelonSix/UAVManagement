@@ -67,6 +67,7 @@ public class ServiceUtils
      * <br/>
      * <p/>
      * <p>
+     * <pre>
      *  _______________
      * |Object         | contentInstance -------------------------------------------------------------------
      * |_______________|                                                                                    |
@@ -88,6 +89,7 @@ public class ServiceUtils
      *                          |         _______________                                   |
      *                          |---------| Resource    | contentInstance-- container ------
      *                          |         |_____________|
+     * </pre>
      * </p>
      * @param discoveryList The discovered data
      * @param instancesIds The set of instances
@@ -121,7 +123,8 @@ public class ServiceUtils
                 objectInstance.setObjectId(objectDetails.getObjectId());
                 objectInstance.setPath(objectDetails.getPath() + "/" + i);
                 ContentInstance objectInstanceContntInst = getContentInstance(gson.toJson(objectInstance));
-                discoveredContent.add(addResourcesToInstance(getContainer(objectInstanceContntInst, objectInstance.getPath()), objectInstanceResources));
+                discoveredContent.add(addResourcesToInstance(getContainer(objectInstanceContntInst, objectInstance.getPath()), 
+                        objectInstanceResources));
             }
         }
         else if(discoveryList.getData().size() == 1) //case of data about a particular instance or resource discovery e.g. /0/0/0 or /0/0
@@ -132,6 +135,7 @@ public class ServiceUtils
         
         //wraps the discovered data in a container for the response primitive to be sent to the originator of the request
         Container responseContainer = getContainer(discoveredContent); 
+        
         //sets the resource and parent Ids of the object details contentInstance's container
         setResourceAndParentID(objectDetails.getPath(), responseContainer);
         

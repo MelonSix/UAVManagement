@@ -15,6 +15,7 @@ import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.client.AsyncServiceConsumer;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterReflexes;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
+import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.slf4j.LoggerFactory;
 
@@ -28,14 +29,16 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
     private final NewDeviceServices newDeviceServices;
     private ArrayList<ReportedLwM2MClient> connectedDevices;
     private final ControlCenterReflexes reflex;
+    private AnimationPanel animationPanel;
     
     public LoadUAVs() {
         this.reflex = new ControlCenterReflexes();
         this.newDeviceServices = new NewDeviceServices();
     }
     
-    public void loadMgmntAdpterClients()
+    public void loadMgmntAdpterClients(AnimationPanel ui)
     {
+        this.animationPanel = ui;
         AsyncServiceConsumer serviceConsumer = new AsyncServiceConsumer();
         serviceConsumer.handleGet(CC_StaticInitConfig.mgmntAdapterGetClientsURL, this);
     }
@@ -54,6 +57,11 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
             reflex.scoutingWaypointsReflex(connectedDevices);
             for (ReportedLwM2MClient device : clients) {
                 reflex.observationRequestReflex(device);
+            }
+            
+            if(connectedDevices != null && connectedDevices.size() > 0 && animationPanel != null)
+            {
+               animationPanel.start();
             }
         } catch (Exception e) {
             logger.error(e.toString());

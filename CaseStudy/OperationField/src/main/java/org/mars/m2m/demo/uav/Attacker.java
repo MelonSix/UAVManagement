@@ -73,6 +73,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     private boolean need_to_replan = true;
     private boolean replanned_at_current_time_step = false;
     private boolean moved_at_last_time = false;
+    private boolean lockedToThreat;
     
     //lwm2m client stuffs
     /**
@@ -771,6 +772,14 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
 
     public static void setCenter_width(int center_width) {
         Unit.center_width = center_width;
+    }
+
+    public boolean isLockedToThreat() {
+        return lockedToThreat;
+    }
+
+    public void setLockedToThreat(boolean lockedToThreat) {
+        this.lockedToThreat = lockedToThreat;
     }
     
     

@@ -34,7 +34,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         handleTree = new HandleTree(jTreeControlCenter);
         NewDeviceServices.setHandleTree(handleTree);
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
-        this.animationPanel.start();
+        //this.animationPanel.start();
     }
 
     public HandleTree getHandleTree() {
@@ -153,7 +153,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
     private void reloadUavMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadUavMenuItemActionPerformed
         LoadUAVs loadUAVs = new LoadUAVs();
-        loadUAVs.loadMgmntAdpterClients();
+        loadUAVs.loadMgmntAdpterClients(animationPanel);
     }//GEN-LAST:event_reloadUavMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
