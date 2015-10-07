@@ -27,15 +27,7 @@ public class ReadAttackers
     
     public static void readAttackerResources()
     {   
-//        if (attackers.size()>0) {
-//            synchronized(attackers)
-//            {
-//                for(AttackerModel attacker : attackers)
-//                {
-//                    attackers.remove(attacker);
-//                }
-//            }
-//         }
+        clearAttackersList();
          int attacker_num = HandleTree.attackersNode.getChildCount();
          for (int i = 0; i < attacker_num; i++) 
          {
@@ -53,5 +45,16 @@ public class ReadAttackers
                  }
              }
          }
+    }
+    
+    private static void clearAttackersList()
+    {
+        for(int i=0; i<attackers.size(); i++)
+        {
+            synchronized(attackers)
+            {
+                attackers.remove(i);
+            }
+        }
     }
 }

@@ -93,7 +93,7 @@ public class AnimationListener implements ActionListener
              * if any obstacle or threat has ever been reported then simulation can start
              * and CC can perform operations on endpoint clients
              */
-                ReadAttackers.readAttackerResources();
+               ReadAttackers.readAttackerResources();
                 cc.registerInfoRequirement();
                 cc.shareInfoAfterRegistration();
                 cc.roleAssignmentInControlCenter();
