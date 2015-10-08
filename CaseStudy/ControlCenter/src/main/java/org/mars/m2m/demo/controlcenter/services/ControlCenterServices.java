@@ -120,6 +120,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         executor = Executors.newFixedThreadPool(5);
         TreeSet<Integer> assigned_attacker = new TreeSet<>();
         ArrayList<Threat> threats = kb.getThreats();
+        ArrayList<AttackerModel> attackersList = ReadAttackers.getAttackers();
         int threat_num = threats.size();
         int attacker_num = HandleTree.attackersNode.getChildCount();
 
@@ -137,7 +138,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
             assigned_attacker.addAll(attackers_locked);
             //manually assign
             if (threat.getIndex() == assigned_role_index) {
-                for(AttackerModel attacker : ReadAttackers.attackers)
+                for(AttackerModel attacker : attackersList)
                 {                    
                     if (!attacker.isOnline()) 
                     {
@@ -163,7 +164,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
             int remained_team_size=this.sub_team_size-attackers_locked.size();
             ArrayList<AttackerModel> attacker_arr_to_assign = new ArrayList<>();
             ArrayList<Float> attacker_dist_to_assign = new ArrayList<>();
-            for (AttackerModel current_attacker : ReadAttackers.attackers) 
+            for (AttackerModel current_attacker : attackersList) 
             {
                         
                 if (!current_attacker.isEnduranceCapReachable(threat)) {
@@ -221,7 +222,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
             }
         }
 
-        for (AttackerModel current_attacker : ReadAttackers.attackers) 
+        for (AttackerModel current_attacker : attackersList) 
         {
             if(current_attacker.getFlightMode() == CC_StaticInitConfig.TARGET_LOCKED_MODE)
             {
@@ -414,7 +415,8 @@ public class ControlCenterServices implements KnowledgeAwareInterface
      */
     public void registerInfoRequirement() 
     {
-        for (AttackerModel attacker : ReadAttackers.attackers) 
+        ArrayList<AttackerModel> attackersList = ReadAttackers.getAttackers();
+        for (AttackerModel attacker : attackersList) 
         {
             if (!attacker.isOnline()) {
                 continue;
@@ -444,8 +446,8 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     private Set<Integer> getLockedAttackers()
     {
         Set<Integer> locked = new TreeSet<>();
-        
-        for(AttackerModel attacker : ReadAttackers.attackers)
+        ArrayList<AttackerModel> attackersList = ReadAttackers.getAttackers();
+        for (AttackerModel attacker : attackersList) 
         {
             if(attacker.isAttackerLocked())
                 locked.add(attacker.getIndex());

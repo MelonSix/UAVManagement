@@ -20,41 +20,41 @@ import org.slf4j.LoggerFactory;
 public class ReadAttackers 
 {   
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ReadAttackers.class);
-    public static ArrayList<AttackerModel> attackers = new ArrayList<>();
+    private static ArrayList<AttackerModel> attackers = new ArrayList<>();
 
     public ReadAttackers() {
     }
     
     public static void readAttackerResources()
     {   
-        clearAttackersList();
-         int attacker_num = HandleTree.attackersNode.getChildCount();
-         for (int i = 0; i < attacker_num; i++) 
-         {
-             DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(i).getChildAt(0);
-             if (node != null) 
-             {
-                 try
-                 {
-                     AttackerModel attacker = AttackerUtils.getVirtualizedAttacker(node);
-                     attackers.add(attacker);
-                 }
-                 catch(NullPointerException e)
-                 {
-                     logger.error(e.toString());
-                 }
-             }
-         }
-    }
-    
-    private static void clearAttackersList()
-    {
-        for(int i=0; i<attackers.size(); i++)
+        ArrayList<AttackerModel> attackers_partial = new ArrayList<>();
+        int attacker_num = HandleTree.attackersNode.getChildCount();
+        for (int i = 0; i < attacker_num; i++) 
         {
-            synchronized(attackers)
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) HandleTree.attackersNode.getChildAt(i).getChildAt(0);
+            if (node != null) 
             {
-                attackers.remove(i);
+                try
+                {
+                    AttackerModel attacker = AttackerUtils.getVirtualizedAttacker(node);
+                    attackers_partial.add(attacker);
+                }
+                catch(NullPointerException e)
+                {
+                    logger.error(e.toString());
+                    e.printStackTrace();
+                }
             }
         }
+        synchronized(attackers)
+        {
+            attackers.clear();
+            attackers.addAll(attackers_partial);
+        }
     }
+
+    public synchronized static ArrayList<AttackerModel> getAttackers() {
+        return attackers;
+    }
+    
 }

@@ -26,6 +26,7 @@
 package org.mars.m2m.demo.controlcenter.dispatcher;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.tree.DefaultMutableTreeNode;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
@@ -59,8 +60,8 @@ public class BroadcastMessageDispatcher extends MessageDispatcher {
         int threat_num = threats.size();
         List<Conflict> conflicts = intelligent_unit.getConflicts();
         int conflict_num = conflicts.size();
-
-        for(AttackerModel attacker : ReadAttackers.attackers)
+        ArrayList<AttackerModel> attackers = ReadAttackers.getAttackers();
+        for(AttackerModel attacker : attackers)
         {
             Rectangle attacker_rect = null;
             Target attacker_target=attacker.getTarget_indicated_by_role();
@@ -86,10 +87,9 @@ public class BroadcastMessageDispatcher extends MessageDispatcher {
             {
                 continue;
             }
-
             for (int j = 0; j < conflict_num; j++) 
             {
-                AttackerModel conflict_uav = ReadAttackers.attackers.get(j);
+                AttackerModel conflict_uav = attackers.get(j);
                 Conflict conflict = conflicts.get(j);
                 int uav_index = conflict.getUav_index();
                 Target conflict_uav_target = conflict_uav.getTarget_indicated_by_role();

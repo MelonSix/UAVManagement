@@ -9,7 +9,6 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.leshan.ResponseCode;
@@ -70,7 +69,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     @Override
-    public synchronized ValueResponse read(int resourceid) {
+    public ValueResponse read(int resourceid) {
        logger.info("[{}] Read on resource: {}",resourceid);
        //System.out.println("read on resource "+resourceid);
         try {
@@ -175,6 +174,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                 String data = parseValue(resource.getValue().value.toString());
                 Threat target = gson.fromJson(data, Threat.class);
                 setTarget_indicated_by_role(target);
+                setLockedToThreat(true);
                 System.out.println("target indicated by role write: " + data);
                 return new LwM2mResponse(ResponseCode.CHANGED);
             case 20:
@@ -211,9 +211,9 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                             Threat threat = gson.fromJson(dataStr.getValue().toString(), Threat.class);
                             if (!attacker.containsThreat(threat)) 
                             {
-                                attacker.setTarget_indicated_by_role(threat);
-                                attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
-                                attacker.setNeed_to_replan(true);
+//                                attacker.setTarget_indicated_by_role(threat);
+//                                attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+//                                attacker.setNeed_to_replan(true);
                                 addThreat(threat);
                                 System.out.println("Exec: Threat added: " + dataStr.getValue().toString());
                             }
@@ -395,10 +395,6 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     }
 
     public void setTarget_indicated_by_role(Target target_indicated_by_role) {
-        if (this.target_indicated_by_role == target_indicated_by_role) {
-            return;
-        }
-        this.target_indicated_by_role = target_indicated_by_role;
         this.attacker.setTarget_indicated_by_role(target_indicated_by_role);
     }
 
@@ -456,9 +452,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
         this.attacker.addConflict(conflict);
     }
 
-    public boolean isLockedToThreat() {
-        lockedToThreat = attacker.isLockedToThreat();
-        return lockedToThreat;
+    public boolean isLockedToThreat() {        
+        return attacker.isLockedToThreat();
     }
 
     public void setLockedToThreat(boolean lockedToThreat) {
@@ -467,44 +462,8 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
     
 
     public void addThreat(Threat threat) {
-        ArrayList<Threat> threats = this.attacker.getThreats();
-        for (int i = 0; i < threats.size(); i++) 
-        {
-            Threat current_threat = threats.get(i);
-            if (threat.getIndex() == current_threat.getIndex()) {
-                this.attacker.kb.removeThreat(current_threat);
-                this.addThreat(threat);
-                if (this.attacker.target_indicated_by_role != null && threat.getIndex() == this.attacker.target_indicated_by_role.getIndex()) {
-                    this.attacker.target_indicated_by_role = threat;
-                }
-                return;
-            }
-        }
-        if (this.attacker.target_indicated_by_role != null && threat.getIndex() == this.attacker.target_indicated_by_role.getIndex()) {
-            this.attacker.target_indicated_by_role = threat;
-        }
         this.attacker.addThreat(threat);
     }
-    
-    /*public float[] getUavBaseCenterCoordinates() {
-    if(this.attacker != null)
-    this.setUavBaseCenterCoordinates(attacker.getCenter_coordinates());
-    return uavBaseCenterCoordinates;
-    }
-    
-    public void setUavBaseCenterCoordinates(float[] uavBaseCenterCoordinates) {
-    this.uavBaseCenterCoordinates = uavBaseCenterCoordinates;
-    }*/
-
-    /*public float[] getUavPositionInBaseStation() {
-    if(this.attacker != null)
-    this.setUavPositionInBaseStation(attacker.getPath_planned_at_last_time_step());
-    return uavPositionInBaseStation;
-    }
-    
-    public void setUavPositionInBaseStation(float[] uavPositionInBaseStation) {
-    this.uavPositionInBaseStation = uavPositionInBaseStation;
-    }*/
 
     public void setAttacker(Attacker attacker) {
         this.attacker = attacker;

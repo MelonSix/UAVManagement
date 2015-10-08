@@ -156,7 +156,7 @@ public class AnimationPanel extends JPanel
      */
     public void start() { 
         System.out.println("starting animation listener");        
-        Timer timer = new Timer(500, new AnimationListener(this));
+        Timer timer = new Timer(5000, new AnimationListener(this));
         timer.start();
     }
 

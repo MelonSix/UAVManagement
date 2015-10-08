@@ -53,8 +53,21 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
             
             connectedDevices = newDeviceServices.addNewClientsOnDemand(new ArrayList<>(Arrays.asList(clients)));
                 
-            //reflex operations to endpoints        
-            reflex.scoutingWaypointsReflex(connectedDevices);
+            //reflex operations to endpoints
+            try 
+            {        
+                Runnable runnable;
+                runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        reflex.scoutingWaypointsReflex(connectedDevices);
+                    }
+                };
+                Thread t = new Thread(runnable);
+                t.start();
+                t.join();
+            } catch (InterruptedException e) {
+            }
             for (ReportedLwM2MClient device : clients) {
                 reflex.observationRequestReflex(device);
             }

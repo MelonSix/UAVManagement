@@ -25,6 +25,7 @@
  */
 package org.mars.m2m.demo.controlcenter.dispatcher;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -69,7 +70,8 @@ public abstract class MessageDispatcher {
      */
     public void dispatch() 
     {        
-        for(AttackerModel attacker : ReadAttackers.attackers)
+        ArrayList<AttackerModel> attackers = ReadAttackers.getAttackers();
+        for(AttackerModel attacker : attackers)
         {
             Integer attacker_index = attacker.getIndex();
             LinkedList<Message> recv_list = recv_msg_list.get(attacker_index);

@@ -8,12 +8,14 @@ package org.mars.m2m.demo.controlcenter.util;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
+import java.util.Map;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
+import org.mars.m2m.demo.controlcenter.model.Message;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.model.Target;
@@ -22,6 +24,7 @@ import org.mars.m2m.demo.controlcenter.model.endpointModel.Content;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectInstance;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectResourceUpdate;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.Resource;
+import org.mars.m2m.demo.controlcenter.services.MessageHistory;
 import org.mars.m2m.demo.controlcenter.uav.UAVPath;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceDataType;
@@ -41,6 +44,7 @@ public class AttackerUtils
     private static final JsonArrayUtil jsonArrayUtil = new JsonArrayUtil();
     public final AttackerUpdate update;
     public final AttackerExecution execute;
+    public static final MessageHistory MESSAGE_HISTORY = new MessageHistory();
     
     public AttackerUtils() {
         this.update = new AttackerUpdate();
@@ -57,9 +61,23 @@ public class AttackerUtils
         Object nodeInfo;
         nodeInfo = node.getUserObject();
         ReportedLwM2MClient client = requestUtil.getLwM2MClientFromTreeNode(node);
-        AttackerModel attacker = getAttacker(client);
-        attacker.setClient(client);
-        return attacker;
+        if (client != null) 
+        {
+            AttackerModel attacker = getAttacker(client);
+            if(attacker == null)
+            {
+                String endpointURL = CC_StaticInitConfig.mgmntServerURL + client.getEndpoint() + "/12207/0";
+                System.out.println("Null attacker: "+endpointURL);
+                return null;
+            }
+            attacker.setClient(client);
+            return attacker;
+        }
+        else
+        {
+            logger.error("Cannot get virtualized attacker. A null client was submitted");
+            return null;
+        }
     }
     
     private static AttackerModel getAttacker(ReportedLwM2MClient client)
@@ -74,6 +92,7 @@ public class AttackerUtils
             }
             return parseDataToAttacker(resp);
         } catch (Exception e) {
+            e.printStackTrace();
             logger.error(e.getMessage());
             return null;
         }
@@ -191,10 +210,52 @@ public class AttackerUtils
                     default:
                 }
             } catch (Exception e) {
-                logger.error("ERROR: {}",e.getMessage());
+                e.printStackTrace();
+                logger.error(e.getMessage());
             }
         }
         return attacker;
+    }
+    
+    /**
+     * Checks and adds a communicated message(Conflict, Threat, or Obstacle) to a message history registry
+     * @param endpointID
+     * @param message
+     * @param registry 
+     */
+    public static void addToMessageHistory(String endpointID, Message message, Map<String, ArrayList<Message>> registry)
+    {
+        if(registry.containsKey(endpointID))//if this endpoint already has an entry then add the current message to the existing
+        {
+            registry.get(endpointID).add(message);
+        }
+        else //else create an entry and add the current message to the new message history record that has been created
+        {
+            ArrayList<Message> messages = new ArrayList<>();
+            messages.add(message);
+            registry.put(endpointID, messages);
+        }
+    }
+    
+    /**
+     * Determines if a threat, obstacle, or conflict has already been communicated to an endpoint
+     * @param endpointID
+     * @param message
+     * @param registry
+     * @return 
+     */
+    public static boolean isMessageInMessageHistory(String endpointID, Message message, Map<String, ArrayList<Message>> registry)
+    {
+        if(registry.containsKey(endpointID))
+        {
+            ArrayList<Message> messages = registry.get(endpointID);
+            if(messages.contains(message))
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
     }
     
     public static void updateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
@@ -304,28 +365,61 @@ public class AttackerUtils
     /**
      * This class contains static methods for executing procedures on attacker endpoints
      */
-    public class AttackerExecution implements AsyncServiceCallback<Response>
+    public class AttackerExecution /*implements AsyncServiceCallback<Response>*/
     {
-         private  Gson gson;
+        private  Gson gson;
         public AttackerExecution() {
             gson = new Gson();
         }
         
-        public void addConflict(Conflict conflict, AttackerModel attacker) {
-            AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 3, new ObjectResourceUpdate(3, gson.toJson(conflict), ResourceDataType.STRING.toString()), this);
+        public void addConflict(final Conflict conflict, final AttackerModel attacker) {
+            if(!isMessageInMessageHistory(attacker.client.getEndpoint(), conflict, MESSAGE_HISTORY.getCommunicatedConflicts()))
+            {
+                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 3, 
+                        new ObjectResourceUpdate(3, gson.toJson(conflict), ResourceDataType.STRING.toString()), 
+                        new AsyncServiceCallback<Response>() {
+
+                    @Override
+                    public void asyncServicePerformed(Response r) {
+                        addToMessageHistory(attacker.client.getEndpoint(), conflict, MESSAGE_HISTORY.getCommunicatedConflicts());
+                    }
+                });
+            }
         }
     
-        public void addObstacle(Obstacle obstacle, AttackerModel attacker) {
-            AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 21, new ObjectResourceUpdate(21, gson.toJson(obstacle), ResourceDataType.STRING.toString()), this);
+        public void addObstacle(final Obstacle obstacle, final AttackerModel attacker) 
+        {
+            if (!isMessageInMessageHistory(attacker.client.getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles())) {
+                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 21,
+                        new ObjectResourceUpdate(21, gson.toJson(obstacle), ResourceDataType.STRING.toString()),
+                        new AsyncServiceCallback<Response>() {
+
+                    @Override
+                    public void asyncServicePerformed(Response r) {
+                        addToMessageHistory(attacker.client.getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles());
+                    }
+                });
+            }
         }
     
-        public  void addThreat(Threat threat, AttackerModel attacker) {
-            AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 22, new ObjectResourceUpdate(22, gson.toJson(threat), ResourceDataType.STRING.toString()), this);
+        public void addThreat(final Threat threat, final AttackerModel attacker) 
+        {
+            if (!isMessageInMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats())) {
+                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 22,
+                        new ObjectResourceUpdate(22, gson.toJson(threat), ResourceDataType.STRING.toString()), 
+                        new AsyncServiceCallback<Response>() {
+
+                    @Override
+                    public void asyncServicePerformed(Response r) {
+                        addToMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
+                    }
+                });
+            }
         }
 
-        @Override
+        /*@Override
         public void asyncServicePerformed(Response response) {
-            logger.info("Attacker execution operation performed");
-        }
+        logger.info("Attacker execution operation performed");
+        }*/
     }
 }

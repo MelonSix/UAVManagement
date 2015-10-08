@@ -26,6 +26,7 @@
 package org.mars.m2m.demo.controlcenter.dispatcher;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,10 +70,11 @@ public class RegisteredMessageDispatcher extends MessageDispatcher {
         List<Obstacle> obstacles = intelligent_unit.getObstacles();
         int obstacle_num = obstacles.size();
         List<Threat> threats = intelligent_unit.getThreats();
-        int threat_num = threats.size();
+        int threat_num = threats.size();        
+        ArrayList<AttackerModel> attackers = ReadAttackers.getAttackers();
 //        List<Conflict> conflicts = intelligent_unit.getConflicts();
         
-        for(AttackerModel attacker : ReadAttackers.attackers)
+        for(AttackerModel attacker : attackers)
         {                
             if(!attacker.isOnline())
             {

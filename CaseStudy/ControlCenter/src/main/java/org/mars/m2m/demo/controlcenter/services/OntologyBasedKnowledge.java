@@ -525,7 +525,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public void addObstacle(Obstacle obs) {
+    public synchronized void addObstacle(Obstacle obs) {
         try {
             Individual obs_individual = Obstacle_Class.createIndividual();
             Individual region_individual = Region_Class.createIndividual();
@@ -600,7 +600,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public void addThreat(Threat threat) {
+    public synchronized void addThreat(Threat threat) {
         Individual threat_individual = Threat_Class.createIndividual();
 
         Literal center = ontology_based_knowledge.createTypedLiteral(threat.getCoordinates()[0] + "," + threat.getCoordinates()[1]);

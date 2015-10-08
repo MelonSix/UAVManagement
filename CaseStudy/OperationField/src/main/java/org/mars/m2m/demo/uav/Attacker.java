@@ -450,16 +450,22 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
         for (int i = 0; i < threats.size(); i++) {
             Threat current_threat = threats.get(i);
             if (threat.getIndex() == current_threat.getIndex()) {
-                this.kb.removeThreat(current_threat);
-                this.addThreat(threat);
+                //this.kb.removeThreat(current_threat);
+                this.kb.addThreat(threat);
                 if (this.target_indicated_by_role != null && threat.getIndex() == this.target_indicated_by_role.getIndex()) {
                     this.target_indicated_by_role = threat;
+//                    this.lockedToThreat = true;
+//                    this.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+//                    this.setNeed_to_replan(true);
                 }
                 return;
             }
         }
         if (this.target_indicated_by_role != null && threat.getIndex() == this.target_indicated_by_role.getIndex()) {
             this.target_indicated_by_role = threat;
+//            this.lockedToThreat = true;
+//            this.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+//            this.setNeed_to_replan(true);
         }
         this.kb.addThreat(threat);
     }
@@ -547,12 +553,12 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     }
 
     @Override
-    public boolean containsThreat(Threat threat) {
+    public synchronized boolean containsThreat(Threat threat) {
         return this.kb.containsThreat(threat);
     }
 
     @Override
-    public boolean containsObstacle(Obstacle obstacle) {
+    public synchronized boolean containsObstacle(Obstacle obstacle) {
         return this.kb.containsObstacle(obstacle);
     }
     
@@ -732,10 +738,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
 
     public void setRrt_tree(RRTTree rrt_tree) {
         this.rrt_tree = rrt_tree;
-    }
-
-    public static void setLogger(Logger logger) {
-        Attacker.logger = logger;
     }
 
     public static void setFLYING_MODE(int FLYING_MODE) {
