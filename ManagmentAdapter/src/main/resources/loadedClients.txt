@@ -1,0 +1,41 @@
+[
+   {
+      "endpoint":"attacker1-190d5015-6609-49d6-94be-12352f6f0e52",
+      "registrationId":"sfdj4TzAyv",
+      "registrationDate":"();2015-10-08T15:43:41+08:00",
+      "address":"/127.0.0.1:65189",
+      "smsNumber":"00233248864955",
+      "lwM2MmVersion":"LWM2M v1",
+      "lifeTime":0,
+      "simple":[4,56,7],
+      "bindingMode":"U",
+      "rootPath":"/",
+      "objectLinks":[
+         {
+            "url":"/",
+            "attributes":{
+               "rt":"oma.lwm2m"
+            },
+            "objectId":0,
+            "objectInstanceId":0
+         },
+         {
+            "url":"/3/0",
+            "attributes":{
+
+            },
+            "objectId":3,
+            "objectInstanceId":0
+         },
+         {
+            "url":"/12207/0",
+            "attributes":{
+
+            },
+            "objectId":12207,
+            "objectInstanceId":0
+         }
+      ],
+      "secure":false
+   }
+]
