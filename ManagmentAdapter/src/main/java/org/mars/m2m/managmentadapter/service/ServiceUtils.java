@@ -362,7 +362,7 @@ public class ServiceUtils
      * @param resources
      * @return An instance of {@link Container}
      */
-    public Container getContainer(ArrayList<Resource> resources) {
+    public Container getContainer(ArrayList<? extends Resource> resources) {
         Container resourcesContainer = new Container();
         
         //Resource properties
@@ -380,15 +380,36 @@ public class ServiceUtils
         resourcesContainer.setCurrentByteSize(BigInteger.valueOf(2));
         resourcesContainer.setLocationID("");
         resourcesContainer.setOntologyRef("");
-        for (Resource res : resources) {
-            
-            if(res instanceof ContentInstance)//selects the 
-            {
-                
-            }
-            
+        for (Resource res : resources) {                       
             resourcesContainer.getContentInstanceOrContainerOrSubscription().add(res);
         }
+        return resourcesContainer;
+    }
+    
+    /**
+     * Produces a Container for a given number of {@link Resource} objects
+     * @param resource
+     * @return An instance of {@link Container}
+     */
+    public Container getContainer(Resource resource) {
+        Container resourcesContainer = new Container();
+        
+        //Resource properties
+        resourcesContainer.setResourceType(ResourceType.CONTAINER.getValue());
+        resourcesContainer.setResourceID(null);
+        resourcesContainer.setParentID(null);
+        resourcesContainer.setCreationTime(DmCommons.getOneM2mTimeStamp());
+        
+        //Container properties
+        resourcesContainer.setStateTag(BigInteger.ZERO);
+        resourcesContainer.setCreator("");
+        resourcesContainer.setMaxNrOfInstances(BigInteger.valueOf(1));
+        resourcesContainer.setMaxByteSize(BigInteger.valueOf(1024));
+        resourcesContainer.setMaxInstanceAge(BigInteger.valueOf(86400));
+        resourcesContainer.setCurrentByteSize(BigInteger.valueOf(2));
+        resourcesContainer.setLocationID("");
+        resourcesContainer.setOntologyRef("");
+        resourcesContainer.getContentInstanceOrContainerOrSubscription().add(resource);
         return resourcesContainer;
     }
 
