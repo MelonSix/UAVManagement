@@ -23,7 +23,6 @@ import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
-import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.ObjectResourceModel;
 import org.mars.m2m.demo.model.Obstacle;
@@ -498,10 +497,10 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
      */
     private String applyRegEx(String data)
     {
-        //regular expresion for getting value names
+        //regular expresion for getting property names
         String elementPart = "([\\w]*:)";
         
-        //regular expression for gettng the values 
+        //regular expression for getting the values 
         String elValuePart = "(:)([\\w]*)";
         
         //apply regular expressions to patterns

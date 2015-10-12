@@ -30,6 +30,8 @@ public class ObjectLink
     }
 
     public HashMap<String, String> getAttributes() {
+        if(this.attributes == null)
+            this.attributes = new HashMap<>();
         return attributes;
     }
 

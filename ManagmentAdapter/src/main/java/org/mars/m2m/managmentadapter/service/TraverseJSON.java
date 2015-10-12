@@ -105,7 +105,7 @@ public class TraverseJSON
      */
     public static void main(String [] args) throws IOException, JAXBException
     {
-        InputStream restrm = TraverseJSON.class.getResourceAsStream("/loadedClients_1.txt");
+        InputStream restrm = TraverseJSON.class.getResourceAsStream("/loadedClients.txt");
         StringWriter writer = new StringWriter();
         IOUtils.copy(restrm, writer, "UTF-8");
         String jsontxt = writer.toString();

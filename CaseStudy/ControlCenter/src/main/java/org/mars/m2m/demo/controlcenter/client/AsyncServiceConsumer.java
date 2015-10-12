@@ -78,7 +78,7 @@ public class AsyncServiceConsumer
     {        
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target(toUrl);        
-        Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+        Invocation.Builder invBuilder = webTarget.request(MediaType.APPLICATION_XML);
                 
         invBuilder.async().get(new InvocationCallback<Response>() {
 

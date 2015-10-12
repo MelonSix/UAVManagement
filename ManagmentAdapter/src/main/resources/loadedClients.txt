@@ -7,7 +7,7 @@
       "smsNumber":"00233248864955",
       "lwM2MmVersion":"LWM2M v1",
       "lifeTime":0,
-      "simple":[4,56,7],
+      "testArrayValue":[4,56,7],
       "bindingMode":"U",
       "rootPath":"/",
       "objectLinks":[

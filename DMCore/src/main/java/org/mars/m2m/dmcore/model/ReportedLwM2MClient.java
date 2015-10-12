@@ -102,6 +102,8 @@ public class ReportedLwM2MClient
     }
 
     public ArrayList<ObjectLink> getObjectLinks() {
+        if(this.objectLinks == null)
+            objectLinks = new ArrayList<>();
         return objectLinks;
     }
 

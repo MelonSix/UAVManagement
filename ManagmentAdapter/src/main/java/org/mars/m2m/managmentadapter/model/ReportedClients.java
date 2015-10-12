@@ -19,7 +19,7 @@ public class ReportedClients
     public ReportedClients() {
     }
 
-    public static ArrayList<ReportedLwM2MClient> getClients() {
+    public synchronized static ArrayList<ReportedLwM2MClient> getClients() {
         return clients;
     }
     
