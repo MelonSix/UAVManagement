@@ -66,7 +66,7 @@ public class TraverseJSON
                     Container co = serviceUtils.getContainer(ci);
                     containers.add(co);
                     //Print key and value
-                    System.out.println("key: "+ keyStr + " value: " + keyvalue);
+                    //System.out.println("key: "+ keyStr + " value: " + keyvalue);
                 }
         }
         return containers;

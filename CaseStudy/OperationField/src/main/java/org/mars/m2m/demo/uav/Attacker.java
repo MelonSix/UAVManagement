@@ -30,6 +30,8 @@ import ch.qos.logback.classic.Logger;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.demo.LwM2mClients.AttackerDeviceClient;
@@ -74,6 +76,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     private boolean replanned_at_current_time_step = false;
     private boolean moved_at_last_time = false;
     private boolean lockedToThreat;
+    private final ArrayList<Threat> destroyedThreats;
     
     //lwm2m client stuffs
     /**
@@ -121,6 +124,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
                                         ArrayList<Obstacle> obstacles, float remained_energy)
     {
         super(index, target, uav_type, center_coordinates, remained_energy);
+        this.destroyedThreats = new ArrayList<>();
         this.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
         
@@ -140,6 +144,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
         
          //for LwM2M initialization of the UAV
         initUAV(new UAVConfiguration());
+        attackThreatDaemon();
     }
 
  
@@ -413,7 +418,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     }
 
     @Override
-    public ArrayList<Threat> getThreats() {
+    public synchronized ArrayList<Threat> getThreats() {
         return this.kb.getThreats();
     }
 
@@ -446,27 +451,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
 
     @Override
     public void addThreat(Threat threat) {
-        ArrayList<Threat> threats = this.getThreats();
-        for (int i = 0; i < threats.size(); i++) {
-            Threat current_threat = threats.get(i);
-            if (threat.getIndex() == current_threat.getIndex()) {
-                //this.kb.removeThreat(current_threat);
-                this.kb.addThreat(threat);
-                if (this.target_indicated_by_role != null && threat.getIndex() == this.target_indicated_by_role.getIndex()) {
-                    this.target_indicated_by_role = threat;
-//                    this.lockedToThreat = true;
-//                    this.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
-//                    this.setNeed_to_replan(true);
-                }
-                return;
-            }
-        }
-        if (this.target_indicated_by_role != null && threat.getIndex() == this.target_indicated_by_role.getIndex()) {
-            this.target_indicated_by_role = threat;
-//            this.lockedToThreat = true;
-//            this.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
-//            this.setNeed_to_replan(true);
-        }
         this.kb.addThreat(threat);
     }
 
@@ -532,7 +516,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
         this.speed = speed;
     }
 
-    public int getFly_mode() {
+    public synchronized int getFly_mode() {
         return fly_mode;
     }
 
@@ -783,6 +767,31 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     public void setLockedToThreat(boolean lockedToThreat) {
         this.lockedToThreat = lockedToThreat;
     }
+
+    public synchronized ArrayList<Threat> getDestroyedThreats() {
+        return destroyedThreats;
+    }
     
-    
+    private void attackThreatDaemon()
+    {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(kb.getThreats().size() > 0)
+                {
+                    for(Threat threat : kb.getThreats())
+                    {
+                        if(!getDestroyedThreats().contains(threat) && getFly_mode()!= Attacker.TARGET_LOCKED_MODE)
+                        {
+                            setTarget_indicated_by_role(threat);
+                            setNeed_to_replan(true);
+                            setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                            setFly_mode(Attacker.FLYING_MODE);
+                        }
+                    }
+                }
+            }
+        }, 5000, 5000);
+    }
 }

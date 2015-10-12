@@ -118,7 +118,7 @@ public class TraverseParsedXmlLwM2MClientInfo
      */
     private void setClientProperty(String propName, String value, ReportedLwM2MClient client)
     {
-//        System.out.println(propName+" "+value);
+        System.out.println(propName+" "+value);
         switch(propName)
         {
             case "endpoint":
@@ -159,7 +159,7 @@ public class TraverseParsedXmlLwM2MClientInfo
             case "objectId":
                 if(objectLink != null)
                 {
-                    objectLink.setUrl(value);
+                    objectLink.setObjectId(Integer.parseInt(value));
                     client.getObjectLinks().add(objectLink);
                     objectLink = null;
                 }

@@ -273,7 +273,8 @@ public class World {
      */
     private void checkThreatReached() {
         ArrayList<Obstacle> obstacles_in_the_world = this.obstacles;
-        for (int i = 0; i < this.attacker_num; i++) {
+        for (int i = 0; i < this.attacker_num; i++) 
+        {
             Attacker attacker = World.attackers.get(i);
             Target attacker_target = attacker.getTarget_indicated_by_role();
             if (!attacker.isVisible()) {
@@ -331,6 +332,7 @@ public class World {
                             else 
                             {
                                 threat.setEnabled(false);
+                                updateDestroyedThreats(threat);
                                 //this.control_center.updateThreat(threat);
                                 this.threatDestroyedAndUnlocked(threat.getIndex());
                                 this.num_of_threat_remained--;
@@ -348,6 +350,13 @@ public class World {
                 }
             }
 
+        }
+    }
+
+    private void updateDestroyedThreats(Threat threat) {
+        for(Attacker attacker : World.attackers)
+        {
+            attacker.getDestroyedThreats().add(threat);
         }
     }
     

@@ -170,11 +170,11 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                 System.out.println("Fly mode write: " + resource.getValue().value.toString());
                 return new LwM2mResponse(ResponseCode.CHANGED);
             case 14:
-                String data = parseValue(resource.getValue().value.toString());
-                Threat target = gson.fromJson(data, Threat.class);
-                setTarget_indicated_by_role(target);
-                setLockedToThreat(true);
-                System.out.println("target indicated by role write: " + data);
+//                String data = parseValue(resource.getValue().value.toString());
+//                Threat target = gson.fromJson(data, Threat.class);
+//                setTarget_indicated_by_role(target);
+//                setLockedToThreat(true);
+//                System.out.println("target indicated by role write: " + data);
                 return new LwM2mResponse(ResponseCode.CHANGED);
             case 20:
                 setSpeed(Integer.parseInt(resource.getValue().value.toString()));
@@ -214,6 +214,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
 //                                attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
 //                                attacker.setNeed_to_replan(true);
                                 addThreat(threat);
+                                System.out.println("Num of threats: "+attacker.getKb().getThreats().size());
                                 System.out.println("Exec: Threat added: " + dataStr.getValue().toString());
                             }
                         return new LwM2mResponse(ResponseCode.CHANGED);

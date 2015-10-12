@@ -93,40 +93,4 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
             logger.error(e.toString());
         }
     }
-    
-    private String ParseContainer(Container container)
-    {
-        StringBuilder strBldr = new StringBuilder();
-        strBldr.append("[");
-        for(Resource resource : container.getContentInstanceOrContainerOrSubscription())
-        {
-            if(resource instanceof Container)
-            {
-                strBldr.append("{");
-                Container ctnr = (Container) resource;
-                String strData = extractDataFromContainer(container);
-                strBldr.append(strData);
-                strBldr.append("},");
-            }
-        }
-        strBldr.append("]");
-        return strBldr.toString();
-    }
-    
-    private String extractDataFromContainer(Container container)
-    {
-        StringBuilder strBldr = new StringBuilder();
-        if(container.getContentInstanceOrContainerOrSubscription().size() > 1)
-        {
-            
-        }
-        else
-            if(container.getContentInstanceOrContainerOrSubscription().size() == 1)
-            {
-               String data = ((ContentInstance) container.getContentInstanceOrContainerOrSubscription())
-                       .getContent().toString().replace("{", "").replace("}", "");
-               strBldr.append(data).append(",");
-            }
-        return strBldr.toString();
-    }
 }
