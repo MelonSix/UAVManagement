@@ -118,7 +118,6 @@ public class TraverseParsedXmlLwM2MClientInfo
      */
     private void setClientProperty(String propName, String value, ReportedLwM2MClient client)
     {
-        System.out.println(propName+" "+value);
         switch(propName)
         {
             case "endpoint":

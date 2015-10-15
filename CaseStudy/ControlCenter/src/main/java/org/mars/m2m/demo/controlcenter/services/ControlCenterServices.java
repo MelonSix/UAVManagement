@@ -390,11 +390,11 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         this.kb = kb;
     }
 
-    public boolean isSimulationStartable() {
+    public synchronized boolean isSimulationStartable() {
         return simulationStartable;
     }
 
-    public void setSimulationStartable(boolean simulationStartable) {
+    public synchronized void setSimulationStartable(boolean simulationStartable) {
         this.simulationStartable = simulationStartable;
     }
     

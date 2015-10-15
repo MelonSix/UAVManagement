@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
@@ -38,23 +37,31 @@ public class AnimationListener implements ActionListener
          */
         @Override
         public void actionPerformed(ActionEvent e) 
-        {                
-            ExecutorService executor = Executors.newFixedThreadPool(2);
-            executor.execute(new Runnable() {
-
-                @Override
-                public void run() {                    
-                    updateGUI();
-                }
-            });
-            executor.execute(new Runnable() {
+        {               
+            updateGUI();
+            new Thread(new Runnable() {
 
                 @Override
                 public void run() {
                     updateAll(animPnl);
                 }
-            });
-            executor.shutdown();
+            }).start();
+//            ExecutorService executor = Executors.newFixedThreadPool(2);
+//            executor.execute(new Runnable() {
+//
+//                @Override
+//                public void run() {                    
+//                    updateGUI();
+//                }
+//            });
+//            executor.execute(new Runnable() {
+//
+//                @Override
+//                public void run() {
+//                    updateAll(animPnl);
+//                }
+//            });
+//            executor.shutdown();
         }
 
     private void updateGUI() {
@@ -86,18 +93,16 @@ public class AnimationListener implements ActionListener
     private void updateAll(AnimationPanel panel) 
     {
         final ControlCenterServices cc = panel.getControlCenterServices();
-        synchronized(cc)
-        {                
-            if (cc.isSimulationStartable()) 
-            {/**
-             * if any obstacle or threat has ever been reported then simulation can start
-             * and CC can perform operations on endpoint clients
-             */
-               ReadAttackers.readAttackerResources();
-                cc.registerInfoRequirement();
-                cc.shareInfoAfterRegistration();
-                cc.roleAssignmentInControlCenter();
-            }
+        if (cc.isSimulationStartable()) 
+        {
+            /**
+            * if any obstacle or threat has ever been reported then simulation can start
+            * and CC can perform operations on endpoint clients
+            */
+            ReadAttackers.readAttackerResources();
+            cc.registerInfoRequirement();
+            cc.shareInfoAfterRegistration();
+            cc.roleAssignmentInControlCenter();
         }
     }
 }
