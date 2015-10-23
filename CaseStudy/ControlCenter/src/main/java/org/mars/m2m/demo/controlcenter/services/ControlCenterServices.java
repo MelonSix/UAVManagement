@@ -140,9 +140,12 @@ public class ControlCenterServices implements KnowledgeAwareInterface
             if (threat.getIndex() == assigned_role_index) {
                 for(AttackerModel attacker : attackersList)
                 {                    
-                    if (!attacker.isOnline()) 
+                    synchronized(attacker)
                     {
-                        continue;
+                        if(attacker == null || !attacker.isOnline())
+                        {
+                            continue;
+                        }
                     }
                     if (assigned_attacker_index == attacker.getIndex()) 
                     {
@@ -417,8 +420,8 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     {
         ArrayList<AttackerModel> attackersList = ReadAttackers.getAttackers();
         for (AttackerModel attacker : attackersList) 
-        {
-            if (!attacker.isOnline()) {
+        {            
+            if (attacker == null || !attacker.isOnline()) {
                 continue;
             }
             Target target = attacker.getTarget_indicated_by_role();

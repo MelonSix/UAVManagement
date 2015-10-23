@@ -117,100 +117,41 @@ public class AttackerUtils
                 switch(resource.getId()) 
                 {
                     case 0:
-                        Double pathIndexVal = (double)resource.getValue();
-                        if (!pathIndexVal.isNaN()) {
-                            attacker.setPathIndex(pathIndexVal.intValue());
-                        }
-                        break;
-                    case 1:
-                        attacker.setReplan((boolean) resource.getValue());
-                        break;
-                    case 2:
-                        attacker.setMovedAtLastStep((boolean) resource.getValue());
-                        break;
-                    case 3://Knowledgebase -- not implemented
-                        break;
-                    case 4:
-                        UAVPath lastpath = gson.fromJson(resource.getValue().toString(), UAVPath.class);
-                        attacker.setPathPlannedAtLastStep(lastpath);
-                        break;
-                    case 5:                        
-                        UAVPath historypath = gson.fromJson(resource.getValue().toString(), UAVPath.class);
-                        attacker.setPathHistory(historypath);
-                        break;
-                    case 6:
-                        UAVPath currentpath = gson.fromJson(resource.getValue().toString(), UAVPath.class);
-                        attacker.setCurrentPath(currentpath);
-                        break;
-                    case 7:
-                        attacker.setHasReplanned((boolean) resource.getValue());
-                        break;
-                    case 8:
                         Double flightModeVal = (double)resource.getValue();
                         if (!flightModeVal.isNaN()) {
                             attacker.setFlightMode(flightModeVal.intValue());
                         }
                         break;
-                    case 9:
-                        Double hoveredVal = (double) resource.getValue();
-                        if (!hoveredVal.isNaN()) {
-                            attacker.setHoveredTimeStep(hoveredVal.intValue());
-                        }
-                        break;
-                    case 10:
-                        attacker.setIterationGoal(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
-                        break;
-                    case 11:
-                        Double stuckVal = (double) resource.getValue();
-                        if (!stuckVal.isNaN()) {
-                            attacker.setStuckTimes(stuckVal.intValue());
-                        }
-                        break;
-                    case 12:
-                        Double maxStuckTimesVal = (double) resource.getValue();
-                        if (!maxStuckTimesVal.isNaN()) {
-                            attacker.setMaximumStuckTimes(maxStuckTimesVal.intValue());
-                        }
-                        break;
-                    case 13:
+                    case 1:
                         Double indexVal = (double) resource.getValue();
                         if (!indexVal.isNaN()) {
                             attacker.setIndex(indexVal.intValue());
                         }
                         break;    
-                    case 14:
+                    case 2:
                         attacker.setTarget_indicated_by_role(gson.fromJson(resource.getValue().toString(), Target.class));
                         break;                     
-                    case 15:
+                    case 3:
                         attacker.setOnline((boolean) resource.getValue());
                         break;
-                    case 16:
+                    case 4:
                         attacker.setCenterCoordinates(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
                         break; 
-                    case 17:
-                        Double energyVal = (double) resource.getValue();if (!energyVal.isNaN()) {                            
+                    case 5: 
+                        attacker.setUavPositionInBaseStation(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
+                        break; 
+                    case 9:
+                        attacker.setAttackerLocked((boolean)resource.getValue());
+                        break;                         
+                    case 12:
+                        Double energyVal = (double)resource.getValue();
+                        if (!energyVal.isNaN()) {
                             attacker.setRemainedEnergy(energyVal.floatValue());
                         }
                         break;
-                    case 18:
-                        attacker.setUavBaseCenterCoordinates(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
-                        break;
-                    case 19: 
-                        attacker.setUavPositionInBaseStation(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
-                        break;
-                    case 20:
-                        Double speedVal = (double) resource.getValue();
-                        if (!speedVal.isNaN()) {
-                            attacker.setSpeed(speedVal.intValue());
-                        }
-                        break; 
-                    case 23:
-                        attacker.setAttackerLocked((boolean)resource.getValue());
-                        break; 
                     default:
                 }
             } catch (Exception e) {
-                e.printStackTrace();
                 logger.error(e.getMessage());
             }
         }
@@ -317,9 +258,10 @@ public class AttackerUtils
          * @param attacker 
          */
         public void setReplan(boolean replan, AttackerModel attacker) 
-        {
+        {            
+            int resourceID = 10;
             System.out.println("Replan set");
-            AttackerUtils.asyncUpdateResource(attacker.client, 1, new ObjectResourceUpdate(1, replan, 
+            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, replan, 
                                         ResourceDataType.BOOLEAN.toString()), this);
         }
         
@@ -329,8 +271,9 @@ public class AttackerUtils
          * @param attacker 
          */
         public void setFlightMode(int flightMode, AttackerModel attacker) 
-        {
-            AttackerUtils.asyncUpdateResource(attacker.client, 8, new ObjectResourceUpdate(8, flightMode, 
+        {            
+            int resourceID = 0;
+            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, flightMode, 
                                             ResourceDataType.INTEGER.toString()), this);
         }
         
@@ -340,7 +283,9 @@ public class AttackerUtils
          * @param attacker 
          */
         public void setTarget_indicated_by_role(Target target_indicated_by_role, AttackerModel attacker) {
-            AttackerUtils.asyncUpdateResource(attacker.client, 14, new ObjectResourceUpdate(14, target_indicated_by_role, 
+            
+            int resourceID = 2;
+            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, target_indicated_by_role, 
                                             ResourceDataType.STRING.toString()), this);
         }
         
@@ -351,7 +296,8 @@ public class AttackerUtils
          */
         public void setSpeed(int speed, AttackerModel attacker) 
         {
-            AttackerUtils.asyncUpdateResource(attacker.client, 20, new ObjectResourceUpdate(20, speed, 
+            int resourceID = 11;
+            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, speed, 
                                             ResourceDataType.INTEGER.toString()), this);
         }
 
@@ -375,8 +321,9 @@ public class AttackerUtils
         public void addConflict(final Conflict conflict, final AttackerModel attacker) {
             if(!isMessageInMessageHistory(attacker.client.getEndpoint(), conflict, MESSAGE_HISTORY.getCommunicatedConflicts()))
             {
-                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 3, 
-                        new ObjectResourceUpdate(3, gson.toJson(conflict), ResourceDataType.STRING.toString()), 
+                int resourceID = 7;
+                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID, 
+                        new ObjectResourceUpdate(resourceID, gson.toJson(conflict), ResourceDataType.STRING.toString()), 
                         new AsyncServiceCallback<Response>() {
 
                     @Override
@@ -390,8 +337,9 @@ public class AttackerUtils
         public void addObstacle(final Obstacle obstacle, final AttackerModel attacker) 
         {
             if (!isMessageInMessageHistory(attacker.client.getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles())) {
-                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 21,
-                        new ObjectResourceUpdate(21, gson.toJson(obstacle), ResourceDataType.STRING.toString()),
+                int resourceID = 6;
+                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID,
+                        new ObjectResourceUpdate(resourceID, gson.toJson(obstacle), ResourceDataType.STRING.toString()),
                         new AsyncServiceCallback<Response>() {
 
                     @Override
@@ -405,8 +353,9 @@ public class AttackerUtils
         public void addThreat(final Threat threat, final AttackerModel attacker) 
         {
             if (!isMessageInMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats())) {
-                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, 22,
-                        new ObjectResourceUpdate(22, gson.toJson(threat), ResourceDataType.STRING.toString()), 
+                int resourceID = 8;
+                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID,
+                        new ObjectResourceUpdate(resourceID, gson.toJson(threat), ResourceDataType.STRING.toString()), 
                         new AsyncServiceCallback<Response>() {
 
                     @Override

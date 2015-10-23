@@ -63,6 +63,7 @@ public class BroadcastMessageDispatcher extends MessageDispatcher {
         ArrayList<AttackerModel> attackers = ReadAttackers.getAttackers();
         for(AttackerModel attacker : attackers)
         {
+            if(attacker == null) continue;
             Rectangle attacker_rect = null;
             Target attacker_target=attacker.getTarget_indicated_by_role();
             if ( attacker_target!= null) {

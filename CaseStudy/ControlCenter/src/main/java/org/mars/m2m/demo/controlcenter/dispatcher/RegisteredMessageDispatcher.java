@@ -76,7 +76,7 @@ public class RegisteredMessageDispatcher extends MessageDispatcher {
         
         for(AttackerModel attacker : attackers)
         {                
-            if(!attacker.isOnline())
+            if(attacker == null || !attacker.isOnline())
             {
                 continue;
             }

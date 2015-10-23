@@ -12,7 +12,8 @@ import org.mars.m2m.demo.model.Target;
  *
  * @author Yulin_Zhang
  */
-public class Unit {
+public abstract class Unit
+{
 
     /**
      * external variables

@@ -52,7 +52,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private AnimationPanel animationPanel;"/>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="this.animationPanel = new AnimationPanel();&#xa;&#xa;this.opFieldSplitPane.add(animationPanel, JSplitPane.LEFT);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="this.opFieldSplitPane.add(animationPanel, JSplitPane.LEFT);"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>

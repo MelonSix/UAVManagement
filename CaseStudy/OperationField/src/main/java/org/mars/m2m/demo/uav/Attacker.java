@@ -27,12 +27,16 @@ package org.mars.m2m.demo.uav;
 
 import org.mars.m2m.demo.world.World;
 import ch.qos.logback.classic.Logger;
+import com.google.gson.Gson;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.demo.LwM2mClients.AttackerDeviceClient;
 import org.mars.m2m.demo.algorithm.RRT.RRTAlg;
@@ -56,7 +60,6 @@ import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.demo.world.WorldKnowledge;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
-import org.mars.m2m.uavendpoint.util.AbstractDevice;
 import org.mars.m2m.uavendpoint.util.DeviceHelper;
 import org.slf4j.LoggerFactory;
 
@@ -66,8 +69,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author Yulin_Zhang
  */
-public final class Attacker extends UAV implements KnowledgeAwareInterface {
-
+public final class Attacker extends UAV implements KnowledgeAwareInterface 
+{
+    private final Gson gson;
     private volatile UAVPath path_planned_at_current_time_step;
     private int current_index_of_planned_path = 0; //index of waypoint
     private UAVPath path_planned_at_last_time_step;//the total path planned lately.
@@ -77,13 +81,8 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     private boolean moved_at_last_time = false;
     private boolean lockedToThreat;
     private final ArrayList<Threat> destroyedThreats;
-    
-    //lwm2m client stuffs
-    /**
-     * Keeps track of all devices (lwm2m clients) owned by this particular UAV
-     */
-    ArrayList<AbstractDevice> uavOwnedDevices = new ArrayList<>();
-    
+    private UavAttackerDevice attackerDevice;
+        
     UAVConfiguration uavConfig;
        
     /**
@@ -109,7 +108,16 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
     public static int FLYING_MODE = 0;
     public static int TARGET_LOCKED_MODE = 1;
 
-
+    /**
+     * Used to satisfy the condition for adding this class' instance in the <code>ObjectInitializer</code> of leshan
+     */
+    public Attacker() {
+        super(0, null, 0, null, 0);
+        this.attackerDevice = new UavAttackerDevice(this);
+        this.gson = null;
+        this.destroyedThreats = null;
+        this.deviceHelper = null;
+    }
 
     /** constructor
      *
@@ -124,6 +132,8 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
                                         ArrayList<Obstacle> obstacles, float remained_energy)
     {
         super(index, target, uav_type, center_coordinates, remained_energy);
+        this.attackerDevice = new UavAttackerDevice(this);
+        this.gson = new Gson();
         this.destroyedThreats = new ArrayList<>();
         this.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
@@ -578,12 +588,10 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
         DeviceStarterDetails attackerDevDtls;
         attackerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
                 portNumber, "127.0.0.1", 5683, "attacker"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
-        AttackerDeviceClient uavAttackerDevice = new AttackerDeviceClient(uavLwM2mModel, attackerDevDtls);
+        AttackerDeviceClient uavAttackerDevice = new AttackerDeviceClient(uavLwM2mModel, attackerDevDtls, attackerDevice);
         uavAttackerDevice.StartDevice();
-        uavAttackerDevice.getAttackerDevice().setAttacker(this);
         deviceHelper.lwM2mClientDaemon(uavAttackerDevice);//invokes a background process for this device
         logger.info("Attacker device started");
-        uavOwnedDevices.add(uavAttackerDevice);
         return uavAttackerDevice;
     }
 //</editor-fold>
@@ -602,10 +610,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
 
     public boolean isNeed_to_replan() {
         return need_to_replan;
-    }
-
-    public ArrayList<AbstractDevice> getUavOwnedDevices() {
-        return uavOwnedDevices;
     }
 
     public UAVConfiguration getUavConfig() {
@@ -682,10 +686,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
 
     public void setHistory_path(UAVPath history_path) {
         this.history_path = history_path;
-    }
-
-    public void setUavOwnedDevices(ArrayList<AbstractDevice> uavOwnedDevices) {
-        this.uavOwnedDevices = uavOwnedDevices;
     }
 
     public void setUavConfig(UAVConfiguration uavConfig) {
@@ -793,5 +793,65 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface {
                 }
             }
         }, 5000, 5000);
+    }
+    
+    /**
+     * Converts the received data of a complex member variable to a JSON string     * 
+     * @param data
+     * @return 
+     */
+    private String parseValue(String data)
+    {
+        StringBuilder jsonData = new StringBuilder();
+        jsonData.append("{");
+            data = StringUtils.removeStart(data, "{");
+            data = StringUtils.removeEnd(data, "}");
+            data = StringUtils.replace(data, "=", ":");
+        jsonData.append(applyRegEx(data));
+        jsonData.append("}");
+        return jsonData.toString();
+    }
+    
+    /**
+     * This method is used to help in converting a complex object's data into a
+     * JSON string
+     * @param data The submitted data as a string
+     * @return The JSON equivalent of the submitted string
+     */
+    private String applyRegEx(String data)
+    {
+        //regular expresion for getting property names
+        String elementPart = "([\\w]*:)";
+        
+        //regular expression for getting the values 
+        String elValuePart = "(:)([\\w]*)";
+        
+        //apply regular expressions to patterns
+        Pattern elPattern = Pattern.compile(elementPart);
+        Pattern valPattern = Pattern.compile(elValuePart);
+        
+        //get matchers to use patterns to match the data/String
+        Matcher elMatcher = elPattern.matcher(data);
+        Matcher vMatcher = valPattern.matcher(data);
+        while(elMatcher.find())//handles value part
+        {   
+            String element = elMatcher.group();
+            data = StringUtils.replaceOnce(data, element, "\""+element.replace(":", "\":"));
+        }
+        while (vMatcher.find( ))//handles the value part
+        {
+           String value = vMatcher.group();
+           value = StringUtils.remove(value, ":");
+           if(!StringUtils.isNumeric(value) && //not a number
+                   !StringUtils.equals(value, "true") && //not a boolean value
+                   !StringUtils.equals(value, "false") )//not a boolean value
+           {
+               if(StringUtils.isEmpty(value))
+                   data = data.replace(":,", ":null,");
+               else
+                   data = StringUtils.replaceOnce(data, value, "\""+value+"\"");
+           }
+        } 
+        return data;
     }
 }

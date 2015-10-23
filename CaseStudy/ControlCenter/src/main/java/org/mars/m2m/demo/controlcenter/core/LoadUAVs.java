@@ -62,18 +62,22 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
             Container container_forLwM2Mclients = (Container) unmarshaller.unmarshal(bi);
             System.out.println("Number of LwM2M clients: "+container_forLwM2Mclients.getContentInstanceOrContainerOrSubscription().size());
             TraverseParsedXmlLwM2MClientInfo traverseContainer = new TraverseParsedXmlLwM2MClientInfo();
-            ArrayList<ReportedLwM2MClient> reportedLwM2MClients = traverseContainer.getReportedLwM2MClients(container_forLwM2Mclients);
+            final ArrayList<ReportedLwM2MClient> reportedLwM2MClients = traverseContainer.getReportedLwM2MClients(container_forLwM2Mclients);
            
             connectedDevices = newDeviceServices.addNewClientsOnDemand(reportedLwM2MClients);
                 
             //reflex operations to endpoints
+            //send observation requests before scouting starts
             try 
             {        
                 Runnable runnable;
                 runnable = new Runnable() {
                     @Override
                     public void run() {
-                        reflex.scoutingWaypointsReflex(connectedDevices);
+                        for (ReportedLwM2MClient device : reportedLwM2MClients) {
+                            reflex.observationRequestReflex(device);
+                        }
+                        
                     }
                 };
                 Thread t = new Thread(runnable);
@@ -81,9 +85,7 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
                 t.join();
             } catch (InterruptedException e) {
             }
-            for (ReportedLwM2MClient device : reportedLwM2MClients) {
-                reflex.observationRequestReflex(device);
-            }
+            reflex.scoutingWaypointsReflex(connectedDevices);
             
             if(connectedDevices != null && connectedDevices.size() > 0 && animationPanel != null)
             {

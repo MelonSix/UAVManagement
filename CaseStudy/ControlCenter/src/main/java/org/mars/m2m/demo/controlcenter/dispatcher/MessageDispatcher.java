@@ -73,6 +73,7 @@ public abstract class MessageDispatcher {
         ArrayList<AttackerModel> attackers = ReadAttackers.getAttackers();
         for(AttackerModel attacker : attackers)
         {
+            if(attacker == null) continue;
             Integer attacker_index = attacker.getIndex();
             LinkedList<Message> recv_list = recv_msg_list.get(attacker_index);
             if (recv_list != null && recv_list.size() > 0) {

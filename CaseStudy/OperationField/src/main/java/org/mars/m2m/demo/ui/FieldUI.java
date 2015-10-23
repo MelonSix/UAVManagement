@@ -19,24 +19,28 @@ public class FieldUI extends javax.swing.JFrame {
      * Creates new form FieldUI
      */
     public FieldUI() {
+        this.animationPanel = new AnimationPanel();
         initComponents();
         //starts animation depending on scout(s) status
         boolean wait_for_scouts = true;
         boolean are_scouts_ready = false;
+        if(animationPanel.getWorld() == null) System.out.println("null");
         do
         {
-            for(Scout scout : this.animationPanel.getWorld().getScouts())
+            if(this.animationPanel.getWorld().getScouts() != null) 
             {
-                if(scout.getMove_at_y_coordinate_task().size() > 0)
-                    are_scouts_ready = true;
-                else
-                    are_scouts_ready = false;
-            }
-            if(are_scouts_ready)
-            {
-                //begins animation after initialization procedures and scout waypoints are available
-                wait_for_scouts =false;
-                this.animationPanel.start();
+                for (Scout scout : this.animationPanel.getWorld().getScouts()) {
+                    if (scout.getMove_at_y_coordinate_task().size() > 0) {
+                        are_scouts_ready = true;
+                    } else {
+                        are_scouts_ready = false;
+                    }
+                }
+                if (are_scouts_ready) {
+                    //begins animation after initialization procedures and scout waypoints are available
+                    wait_for_scouts = false;
+                    this.animationPanel.start();
+                }
             }
         }while(wait_for_scouts);
     }
@@ -60,8 +64,6 @@ public class FieldUI extends javax.swing.JFrame {
         opFieldSplitPane.setMaximumSize(new java.awt.Dimension(1000, 603));
         opFieldSplitPane.setMinimumSize(new java.awt.Dimension(1000, 603));
         opFieldSplitPane.setPreferredSize(new java.awt.Dimension(1000, 603));
-        this.animationPanel = new AnimationPanel();
-
         this.opFieldSplitPane.add(animationPanel, JSplitPane.LEFT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

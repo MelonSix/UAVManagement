@@ -20,8 +20,8 @@ public class OpStaticInitConfig {
     public static Integer ATTACKER_NUM = 4; //The number of our attackers
     public static Integer SCOUT_NUM = 2; //The number of our attackers
     public static Integer ENEMY_UAV_NUM = 0; //The number of enemy uavs
-    public static Integer THREAT_NUM = 10; //The number of enemy threats
-    public static Integer SIZE_OF_SUBTEAM = 1;//determines the number of attackers assigned to one threat
+    public static Integer THREAT_NUM = 5; //The number of enemy threats
+    public static Integer SIZE_OF_SUBTEAM = 2;//determines the number of attackers assigned to one threat
 
     public static boolean VIEW_OBSTACLE = false; //Determine whether an obstacle is detected
     public static boolean VIEW_THREAT = false; //Determine whether a threat is detected

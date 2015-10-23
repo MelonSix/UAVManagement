@@ -2953,94 +2953,6 @@
         "resourcedefs":[
             {
                "id": 0,
-                "name": "Path index",
-                "operations": "RW",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "integer",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 1,
-                "name": "Replan",
-                "operations": "RW",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "boolean",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 2,
-                "name": "Moved at last step",
-                "operations": "R",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "boolean",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 3,
-                "name": "Add Conflict",
-                "operations": "E",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "string",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 4,
-                "name": "Path planned at last step",
-                "operations": "R",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "string",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 5,
-                "name": "Path history",
-                "operations": "R",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "string",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 6,
-                "name": "Current path",
-                "operations": "R",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "string",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 7,
-                "name": "Has replanned",
-                "operations": "RW",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "boolean",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 8,
                 "name": "Flight mode",
                 "operations": "RW",
                 "instancetype": "single",
@@ -3051,53 +2963,9 @@
                 "description": "" 
             },
             {
-               "id": 9,
-                "name": "Hovered time step",
-                "operations": "R",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "integer",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 10,
-                "name": "Iteration goal",
-                "operations": "RW",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "string",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 11,
-                "name": "Stuck times",
-                "operations": "R",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "integer",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 12,
-                "name": "Maximum stuck times",
-                "operations": "RW",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "integer",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 13,
+               "id": 1,
                 "name": "Index",
-                "operations": "RW",
+                "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "integer",
@@ -3106,18 +2974,18 @@
                 "description": "" 
             },
             {
-               "id": 14,
-                "name": "Target indicated by role",
+               "id": 2,
+                "name": "Target",
                 "operations": "RW",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "string",
                 "range": "",
                 "units": "",
-                "description": "" 
+                "description": "Target indicated by role" 
             },
             {
-               "id": 15,
+               "id": 3,
                 "name": "Online status",
                 "operations": "R",
                 "instancetype": "single",
@@ -3128,7 +2996,7 @@
                 "description": "" 
             },
             {
-               "id": 16,
+               "id": 4,
                 "name": "Center coordinates",
                 "operations": "R",
                 "instancetype": "single",
@@ -3139,42 +3007,75 @@
                 "description": "" 
             },
             {
-               "id": 17,
-                "name": "Remained energy",
-                "operations": "R",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "float",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 18,
-                "name": "UAV Base Center coordinates",
+               "id": 5,
+                "name": "Position",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "string",
                 "range": "",
                 "units": "",
-                "description": "" 
+                "description": "UAV position in base station" 
             },
             {
-               "id": 19,
-                "name": "UAV position in Base station",
-                "operations": "R",
+               "id": 6,
+                "name": "Add obstacle",
+                "operations": "E",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "string",
                 "range": "",
                 "units": "",
-                "description": "" 
+                "description": "Adds an obstacle to the knowledge base" 
             },
             {
-               "id": 20,
+               "id": 7,
+                "name": "Add conflict",
+                "operations": "E",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "Adds a conflict to the knowledge base" 
+            },
+            {
+               "id": 8,
+                "name": "Add threat",
+                "operations": "E",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "string",
+                "range": "",
+                "units": "",
+                "description": "Adds a threat to the knowledge base" 
+            },
+            {
+               "id": 9,
+                "name": "Attacker locked",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "boolean",
+                "range": "",
+                "units": "",
+                "description": "Indicates whether an attacker has been locked to a particular threat" 
+            },
+            {
+               "id": 10,
+                "name": "Replan",
+                "operations": "W",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "boolean",
+                "range": "",
+                "units": "",
+                "description": "Sets an attacker to re-plan in its next time step" 
+            },
+            {
+               "id": 11,
                 "name": "Speed",
-                "operations": "RW",
+                "operations": "W",
                 "instancetype": "single",
                 "mandatory": true,
                 "type": "integer",
@@ -3183,34 +3084,12 @@
                 "description": "" 
             },
             {
-               "id": 21,
-                "name": "Add obstacle",
-                "operations": "E",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "string",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 22,
-                "name": "Add threat",
-                "operations": "E",
-                "instancetype": "single",
-                "mandatory": true,
-                "type": "string",
-                "range": "",
-                "units": "",
-                "description": "" 
-            },
-            {
-               "id": 23,
-                "name": "Attacker locked",
+               "id": 12,
+                "name": "Remained energy",
                 "operations": "R",
                 "instancetype": "single",
                 "mandatory": true,
-                "type": "boolean",
+                "type": "float",
                 "range": "",
                 "units": "",
                 "description": "" 

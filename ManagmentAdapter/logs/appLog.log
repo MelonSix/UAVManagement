@@ -1,190 +1,411 @@
-INFO   [11:26:50.595] [main] o.e.j.u.log -  Logging initialized @1980ms 
-INFO   [11:26:50.736] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [11:26:50.747] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [11:26:50.765] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [11:26:50.811] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:26:50.815] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:26:51.447] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:07:58.116] [main] o.e.j.u.log -  Logging initialized @1350ms 
+INFO   [13:07:58.249] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [13:07:58.259] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [13:07:58.276] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [13:07:58.317] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:07:58.322] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:07:59.025] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [11:26:51.452] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@42fcc7e6{/ma,null,AVAILABLE} 
-INFO   [11:26:51.461] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [13:07:59.028] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@42fcc7e6{/ma,null,AVAILABLE} 
+INFO   [13:07:59.036] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [11:26:51.467] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4f63e3c7{/admin-ma,null,AVAILABLE} 
-INFO   [11:26:51.516] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [11:26:51.516] [main] o.e.j.s.Server -  Started @2903ms 
-INFO   [14:18:38.801] [main] o.e.j.u.log -  Logging initialized @1287ms 
-INFO   [14:18:38.903] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:18:38.910] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:18:38.926] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:18:38.964] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:18:38.967] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:18:39.601] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:07:59.045] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@4f63e3c7{/admin-ma,null,AVAILABLE} 
+INFO   [13:07:59.098] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:07:59.098] [main] o.e.j.s.Server -  Started @2334ms 
+INFO   [13:11:12.658] [main] o.e.j.u.log -  Logging initialized @1745ms 
+INFO   [13:11:12.777] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [13:11:12.786] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [13:11:12.813] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [13:11:12.939] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:11:12.942] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:11:13.736] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:18:39.604] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:18:39.611] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [13:11:13.763] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [13:11:13.783] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:18:39.620] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:18:39.686] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:18:39.686] [main] o.e.j.s.Server -  Started @2174ms 
-INFO   [14:27:41.503] [main] o.e.j.u.log -  Logging initialized @1295ms 
-INFO   [14:27:41.613] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:27:41.620] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:27:41.637] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:27:41.676] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:27:41.679] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:27:42.222] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:11:13.790] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [13:11:13.855] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:11:13.855] [main] o.e.j.s.Server -  Started @2944ms 
+INFO   [13:30:50.601] [main] o.e.j.u.log -  Logging initialized @1874ms 
+INFO   [13:30:50.724] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [13:30:50.732] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [13:30:50.747] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [13:30:50.863] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:30:50.884] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:30:52.325] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:27:42.226] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:27:42.233] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [13:30:52.330] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [13:30:52.338] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:27:42.238] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:27:42.286] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:27:42.286] [main] o.e.j.s.Server -  Started @2079ms 
-INFO   [14:35:42.183] [main] o.e.j.u.log -  Logging initialized @2277ms 
-INFO   [14:35:42.296] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:35:42.304] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:35:42.323] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:35:42.476] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:35:42.479] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:35:43.674] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:30:52.344] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [13:30:52.473] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:30:52.473] [main] o.e.j.s.Server -  Started @3748ms 
+INFO   [13:32:12.566] [main] o.e.j.u.log -  Logging initialized @1328ms 
+INFO   [13:32:12.669] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [13:32:12.678] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [13:32:12.700] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [13:32:12.743] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:32:12.746] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [13:32:13.645] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:35:43.678] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:35:43.686] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [13:32:13.651] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [13:32:13.656] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:35:43.705] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:35:43.825] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:35:43.826] [main] o.e.j.s.Server -  Started @3922ms 
-INFO   [14:39:32.204] [main] o.e.j.u.log -  Logging initialized @2003ms 
-INFO   [14:39:32.347] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:39:32.360] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:39:32.389] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:39:32.525] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:39:32.528] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:39:33.711] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [13:32:13.663] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [13:32:13.714] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [13:32:13.714] [main] o.e.j.s.Server -  Started @2480ms 
+ERROR  [13:41:03.998] [Thread-946] o.g.j.s.ServerRuntime$Responder -  An I/O error has occurred while writing a response message entity to the container output stream. 
+javax.ws.rs.InternalServerErrorException: HTTP 500 Internal Server Error
+	at org.glassfish.jersey.jaxb.internal.AbstractRootElementJaxbProvider.writeTo(AbstractRootElementJaxbProvider.java:182) ~[jersey-media-jaxb-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.invokeWriteTo(WriterInterceptorExecutor.java:265) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.aroundWriteTo(WriterInterceptorExecutor.java:250) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor.aroundWriteTo(JsonWithPaddingInterceptor.java:106) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:86) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1128) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse(ServerRuntime.java:677) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$Responder.processResponse(ServerRuntime.java:424) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$Responder.process(ServerRuntime.java:414) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$AsyncResponder$3.run(ServerRuntime.java:897) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$AsyncResponder.resume(ServerRuntime.java:929) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$AsyncResponder.resume(ServerRuntime.java:888) [jersey-server-2.18.jar:na]
+	at org.mars.m2m.managmentadapter.resources.AdapterServiceInterface$4.run(AdapterServiceInterface.java:105) [classes/:na]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+Caused by: javax.xml.bind.MarshalException: null
+	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.write(MarshallerImpl.java:313) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.marshal(MarshallerImpl.java:236) ~[na:1.8.0_25]
+	at javax.xml.bind.helpers.AbstractMarshallerImpl.marshal(AbstractMarshallerImpl.java:95) ~[na:1.8.0_25]
+	at org.glassfish.jersey.jaxb.internal.AbstractRootElementJaxbProvider.writeTo(AbstractRootElementJaxbProvider.java:201) ~[jersey-media-jaxb-2.18.jar:na]
+	at org.glassfish.jersey.jaxb.internal.AbstractRootElementJaxbProvider.writeTo(AbstractRootElementJaxbProvider.java:180) ~[jersey-media-jaxb-2.18.jar:na]
+	... 22 common frames omitted
+Caused by: org.eclipse.jetty.io.EofException: null
+	at org.eclipse.jetty.io.ChannelEndPoint.flush(ChannelEndPoint.java:192) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.WriteFlusher.flush(WriteFlusher.java:408) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.WriteFlusher.write(WriteFlusher.java:302) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractEndPoint.write(AbstractEndPoint.java:129) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection$SendCallback.process(HttpConnection.java:676) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.IteratingCallback.processing(IteratingCallback.java:246) ~[jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.IteratingCallback.iterate(IteratingCallback.java:208) ~[jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.send(HttpConnection.java:471) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.sendResponse(HttpChannel.java:763) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.write(HttpChannel.java:801) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:147) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:140) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:355) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.glassfish.jersey.servlet.internal.ResponseWriter$NonCloseableOutputStreamWrapper.write(ResponseWriter.java:303) ~[jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.CommittingOutputStream.write(CommittingOutputStream.java:233) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$UnCloseableOutputStream.write(WriterInterceptorExecutor.java:299) ~[jersey-common-2.18.jar:na]
+	at com.sun.xml.internal.bind.v2.runtime.output.UTF8XmlOutput.write(UTF8XmlOutput.java:397) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.output.Encoded.write(Encoded.java:152) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.output.UTF8XmlOutput.doText(UTF8XmlOutput.java:308) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.output.UTF8XmlOutput.text(UTF8XmlOutput.java:290) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.text(XMLSerializer.java:391) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.model.impl.RuntimeBuiltinLeafInfoImpl$StringImplImpl.writeText(RuntimeBuiltinLeafInfoImpl.java:1019) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.model.impl.RuntimeBuiltinLeafInfoImpl$StringImplImpl.writeText(RuntimeBuiltinLeafInfoImpl.java:1003) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.LeafBeanInfoImpl.serializeBody(LeafBeanInfoImpl.java:115) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsXsiType(XMLSerializer.java:681) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.property.SingleElementNodeProperty.serializeBody(SingleElementNodeProperty.java:143) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeBody(ClassBeanInfoImpl.java:345) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsXsiType(XMLSerializer.java:681) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.property.ArrayElementNodeProperty.serializeItem(ArrayElementNodeProperty.java:54) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.property.ArrayElementProperty.serializeListBody(ArrayElementProperty.java:157) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.property.ArrayERProperty.serializeBody(ArrayERProperty.java:144) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeBody(ClassBeanInfoImpl.java:345) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsSoleContent(XMLSerializer.java:578) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeRoot(ClassBeanInfoImpl.java:326) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.property.ArrayReferenceNodeProperty.serializeListBody(ArrayReferenceNodeProperty.java:103) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.property.ArrayERProperty.serializeBody(ArrayERProperty.java:144) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeBody(ClassBeanInfoImpl.java:345) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsXsiType(XMLSerializer.java:681) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.property.SingleElementNodeProperty.serializeBody(SingleElementNodeProperty.java:143) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeBody(ClassBeanInfoImpl.java:345) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsSoleContent(XMLSerializer.java:578) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeRoot(ClassBeanInfoImpl.java:326) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsRoot(XMLSerializer.java:479) ~[na:1.8.0_25]
+	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.write(MarshallerImpl.java:308) ~[na:1.8.0_25]
+	... 26 common frames omitted
+Caused by: java.io.IOException: An existing connection was forcibly closed by the remote host
+	at sun.nio.ch.SocketDispatcher.writev0(Native Method) ~[na:1.8.0_25]
+	at sun.nio.ch.SocketDispatcher.writev(SocketDispatcher.java:55) ~[na:1.8.0_25]
+	at sun.nio.ch.IOUtil.write(IOUtil.java:148) ~[na:1.8.0_25]
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:503) ~[na:1.8.0_25]
+	at org.eclipse.jetty.io.ChannelEndPoint.flush(ChannelEndPoint.java:172) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	... 69 common frames omitted
+INFO   [16:03:22.487] [main] o.e.j.u.log -  Logging initialized @1903ms 
+INFO   [16:03:22.638] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:03:22.647] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:03:22.706] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:03:22.814] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:03:22.817] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:03:23.926] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:39:33.714] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:39:33.720] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:03:23.930] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [16:03:23.937] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:39:33.725] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:39:33.771] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:39:33.772] [main] o.e.j.s.Server -  Started @3573ms 
-INFO   [14:46:35.347] [main] o.e.j.u.log -  Logging initialized @1385ms 
-INFO   [14:46:35.438] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:46:35.446] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:46:35.462] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:46:35.501] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:46:35.503] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:46:36.080] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:03:23.942] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [16:03:23.988] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:03:23.989] [main] o.e.j.s.Server -  Started @3406ms 
+INFO   [16:07:16.929] [main] o.e.j.u.log -  Logging initialized @1226ms 
+INFO   [16:07:17.013] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:07:17.020] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:07:17.035] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:07:17.069] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:07:17.072] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:07:17.604] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:46:36.085] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:46:36.092] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:07:17.609] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [16:07:17.616] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:46:36.098] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:46:36.151] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:46:36.151] [main] o.e.j.s.Server -  Started @2192ms 
-INFO   [14:52:11.201] [main] o.e.j.u.log -  Logging initialized @2081ms 
-INFO   [14:52:11.309] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:52:11.318] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:52:11.335] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:52:11.375] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:52:11.378] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:52:12.463] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:07:17.623] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [16:07:17.669] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:07:17.669] [main] o.e.j.s.Server -  Started @1969ms 
+INFO   [16:29:52.885] [main] o.e.j.u.log -  Logging initialized @1243ms 
+INFO   [16:29:52.998] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:29:53.005] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:29:53.020] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:29:53.054] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:29:53.057] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:29:53.684] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:52:12.479] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:52:12.484] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:29:53.688] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [16:29:53.694] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:52:12.492] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:52:12.540] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:52:12.540] [main] o.e.j.s.Server -  Started @3423ms 
-INFO   [14:52:52.172] [main] o.e.j.u.log -  Logging initialized @1656ms 
-INFO   [14:52:52.262] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:52:52.270] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:52:52.287] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:52:52.326] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:52:52.330] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:52:52.891] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:29:53.699] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [16:29:53.741] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:29:53.741] [main] o.e.j.s.Server -  Started @2101ms 
+INFO   [16:40:48.190] [main] o.e.j.u.log -  Logging initialized @1431ms 
+INFO   [16:40:48.298] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:40:48.307] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:40:48.384] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:40:48.473] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:40:48.476] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:40:49.271] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:52:52.896] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:52:52.902] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:40:49.274] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [16:40:49.279] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:52:52.908] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:52:52.969] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:52:52.969] [main] o.e.j.s.Server -  Started @2456ms 
-INFO   [14:59:08.876] [main] o.e.j.u.log -  Logging initialized @1717ms 
-INFO   [14:59:09.032] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [14:59:09.049] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [14:59:09.091] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [14:59:09.192] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:59:09.196] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [14:59:10.331] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:40:49.285] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [16:40:49.330] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:40:49.330] [main] o.e.j.s.Server -  Started @2574ms 
+INFO   [16:51:53.708] [main] o.e.j.u.log -  Logging initialized @2443ms 
+INFO   [16:51:53.838] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:51:53.845] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:51:53.871] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:51:54.014] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:51:54.027] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:51:55.063] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [14:59:10.336] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [14:59:10.344] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:51:55.067] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [16:51:55.081] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [14:59:10.349] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [14:59:10.392] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [14:59:10.392] [main] o.e.j.s.Server -  Started @3235ms 
-INFO   [15:01:52.816] [main] o.e.j.u.log -  Logging initialized @1884ms 
-INFO   [15:01:52.908] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [15:01:52.917] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [15:01:52.933] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [15:01:52.972] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [15:01:52.976] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [15:01:53.563] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:51:55.087] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [16:51:55.250] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:51:55.250] [main] o.e.j.s.Server -  Started @3987ms 
+INFO   [16:53:23.692] [main] o.e.j.u.log -  Logging initialized @1741ms 
+INFO   [16:53:23.801] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [16:53:23.810] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [16:53:23.837] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [16:53:23.910] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:53:23.917] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:53:24.969] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [15:01:53.567] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
-INFO   [15:01:53.573] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:53:24.979] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [16:53:25.017] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [15:01:53.581] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
-INFO   [15:01:53.635] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [15:01:53.635] [main] o.e.j.s.Server -  Started @2706ms 
+INFO   [16:53:25.024] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [16:53:25.108] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [16:53:25.108] [main] o.e.j.s.Server -  Started @3159ms 
+INFO   [17:00:42.201] [main] o.e.j.u.log -  Logging initialized @1626ms 
+INFO   [17:00:42.301] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:00:42.309] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:00:42.326] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:00:42.365] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:00:42.369] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:00:43.570] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [17:00:43.573] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [17:00:43.580] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:00:43.586] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [17:00:43.692] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:00:43.693] [main] o.e.j.s.Server -  Started @3121ms 
+INFO   [17:13:19.200] [main] o.e.j.u.log -  Logging initialized @1175ms 
+INFO   [17:13:19.283] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:13:19.291] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:13:19.305] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:13:19.340] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:13:19.343] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:13:19.892] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [17:13:19.897] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [17:13:19.903] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:13:19.909] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [17:13:19.953] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:13:19.954] [main] o.e.j.s.Server -  Started @1931ms 
+WARN   [17:22:06.424] [jersey-background-task-scheduler-0] o.e.j.s.HttpChannel -  Commit failed 
+java.util.concurrent.TimeoutException: Idle timeout expired: 30001/30000 ms
+	at org.eclipse.jetty.io.IdleTimeout.checkIdleTimeout(IdleTimeout.java:161) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.IdleTimeout$1.run(IdleTimeout.java:50) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_25]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+WARN   [17:22:16.283] [jersey-background-task-scheduler-0] o.e.j.s.HttpChannel -  Commit failed 
+java.util.concurrent.TimeoutException: Idle timeout expired: 30000/30000 ms
+	at org.eclipse.jetty.io.IdleTimeout.checkIdleTimeout(IdleTimeout.java:161) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.IdleTimeout$1.run(IdleTimeout.java:50) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_25]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+INFO   [17:25:44.074] [main] o.e.j.u.log -  Logging initialized @2091ms 
+INFO   [17:25:44.294] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:25:44.310] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:25:44.364] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:25:44.500] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:25:44.504] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:25:45.541] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [17:25:45.545] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [17:25:45.553] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:25:45.559] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [17:25:45.607] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:25:45.607] [main] o.e.j.s.Server -  Started @3630ms 
+INFO   [17:31:22.809] [main] o.e.j.u.log -  Logging initialized @1714ms 
+INFO   [17:31:22.953] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:31:22.962] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:31:22.984] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:31:23.047] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:31:23.051] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:31:24.082] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [17:31:24.085] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [17:31:24.089] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:31:24.093] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [17:31:24.133] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:31:24.133] [main] o.e.j.s.Server -  Started @3040ms 
+INFO   [17:32:39.071] [main] o.e.j.u.log -  Logging initialized @1476ms 
+INFO   [17:32:39.200] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:32:39.208] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:32:39.224] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:32:39.268] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:32:39.271] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:32:40.180] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [17:32:40.184] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [17:32:40.191] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:32:40.218] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [17:32:40.320] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:32:40.320] [main] o.e.j.s.Server -  Started @2727ms 
+INFO   [17:39:24.237] [main] o.e.j.u.log -  Logging initialized @1815ms 
+INFO   [17:39:24.375] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [17:39:24.393] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [17:39:24.473] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [17:39:24.537] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:39:24.540] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:39:25.545] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [17:39:25.548] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@9255c05{/ma,null,AVAILABLE} 
+INFO   [17:39:25.582] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:39:25.588] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@59532566{/admin-ma,null,AVAILABLE} 
+INFO   [17:39:25.709] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [17:39:25.709] [main] o.e.j.s.Server -  Started @3291ms 

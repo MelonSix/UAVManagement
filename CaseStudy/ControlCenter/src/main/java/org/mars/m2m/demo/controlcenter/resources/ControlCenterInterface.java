@@ -87,6 +87,7 @@ public class ControlCenterInterface
                 {
                     String content = Unmarshaller.getJsonContent(data);
                     Notification notification = Unmarshaller.getNotificationObject(content);
+                    System.out.println("notification received: "+content);
                     switch (Unmarshaller.determineNotificationType(notification)) {
                         case OBSTACLE:
                             Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);

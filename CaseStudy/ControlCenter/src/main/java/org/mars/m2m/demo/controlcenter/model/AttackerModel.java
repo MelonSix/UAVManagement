@@ -21,30 +21,18 @@ public class AttackerModel
     public ReportedLwM2MClient client;
     
     //device resources
-    private int pathIndex;
-    private boolean replan;
-    private boolean movedAtLastStep;
-    /*private KnowledgeInterface kb;*/
-    private UAVPath pathPlannedAtLastStep;
-    private UAVPath pathHistory;
-    private UAVPath currentPath;
-    private boolean hasReplanned;
     private int flightMode;
-    private int hoveredTimeStep;
-    private float [] iterationGoal;
-    private int stuckTimes;
-    private int maximumStuckTimes;
     private int index;
     private Target target_indicated_by_role;
     private boolean online;
-    private int speed;
     private float [] centerCoordinates;
     private float remainedEnergy;
-    private float [] uavBaseCenterCoordinates = new float[]{60, 60};;
+    private final float [] uavBaseCenterCoordinates;;
     private float [] uavPositionInBaseStation;
     private boolean attackerLocked;
 
     public AttackerModel() {
+        this.uavBaseCenterCoordinates = new float[]{60, 60};
     }
 
     public void setIndex(int index) {
@@ -53,63 +41,7 @@ public class AttackerModel
 
     public int getIndex() {
         return index;
-    }
-
-    public int getPathIndex() {
-        return pathIndex;
-    }
-
-    public void setPathIndex(int pathIndex) {
-        this.pathIndex = pathIndex;
-    }
-
-    public boolean isReplan() {
-        return replan;
-    }
-
-    public void setReplan(boolean replan) {
-        this.replan = replan;
-    }
-
-    public boolean isMovedAtLastStep() {
-        return movedAtLastStep;
-    }
-
-    public void setMovedAtLastStep(boolean movedAtLastStep) {
-        this.movedAtLastStep = movedAtLastStep;
-    }
-
-    public UAVPath getPathPlannedAtLastStep() {
-        return pathPlannedAtLastStep;
-    }
-
-    public void setPathPlannedAtLastStep(UAVPath pathPlannedAtLastStep) {
-        this.pathPlannedAtLastStep = pathPlannedAtLastStep;
-    }
-
-    public UAVPath getPathHistory() {
-        return pathHistory;
-    }
-
-    public void setPathHistory(UAVPath pathHistory) {
-        this.pathHistory = pathHistory;
-    }
-
-    public UAVPath getCurrentPath() {
-        return currentPath;
-    }
-
-    public void setCurrentPath(UAVPath currentPath) {
-        this.currentPath = currentPath;
-    }
-
-    public boolean isHasReplanned() {
-        return hasReplanned;
-    }
-
-    public void setHasReplanned(boolean hasReplanned) {
-        this.hasReplanned = hasReplanned;
-    }
+    }  
 
     public int getFlightMode() {
         return flightMode;
@@ -117,38 +49,6 @@ public class AttackerModel
 
     public void setFlightMode(int flightMode) {
         this.flightMode = flightMode;
-    }
-
-    public int getHoveredTimeStep() {
-        return hoveredTimeStep;
-    }
-
-    public void setHoveredTimeStep(int hoveredTimeStep) {
-        this.hoveredTimeStep = hoveredTimeStep;
-    }
-
-    public float[] getIterationGoal() {
-        return iterationGoal;
-    }
-
-    public void setIterationGoal(float [] iterationGoal) {
-        this.iterationGoal = iterationGoal;
-    }
-
-    public int getStuckTimes() {
-        return stuckTimes;
-    }
-
-    public void setStuckTimes(int stuckTimes) {
-        this.stuckTimes = stuckTimes;
-    }
-
-    public int getMaximumStuckTimes() {
-        return maximumStuckTimes;
-    }
-
-    public void setMaximumStuckTimes(int maximumStuckTimes) {
-        this.maximumStuckTimes = maximumStuckTimes;
     }
 
     public Target getTarget_indicated_by_role() {
@@ -167,37 +67,12 @@ public class AttackerModel
         this.online = online;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        System.out.println("speed set");
-        this.speed = speed;
-    }
-
     public float[] getCenterCoordinates() {
         return centerCoordinates;
     }
 
     public void setCenterCoordinates(float[] centerCoordinates) {
         this.centerCoordinates = centerCoordinates;
-    }
-
-    public float getRemainedEnergy() {
-        return remainedEnergy;
-    }
-
-    public void setRemainedEnergy(float remainedEnergy) {
-        this.remainedEnergy = remainedEnergy;
-    }
-
-    public float[] getUavBaseCenterCoordinates() {
-        return uavBaseCenterCoordinates;
-    }
-
-    public void setUavBaseCenterCoordinates(float[] uavBaseCenterCoordinates) {
-        this.uavBaseCenterCoordinates = uavBaseCenterCoordinates;
     }
 
     public float[] getUavPositionInBaseStation() {
@@ -223,6 +98,14 @@ public class AttackerModel
     public void setAttackerLocked(boolean attackerLocked) {
         this.attackerLocked = attackerLocked;
     }
+
+    public float getRemainedEnergy() {
+        return remainedEnergy;
+    }
+
+    public void setRemainedEnergy(float remainedEnergy) {
+        this.remainedEnergy = remainedEnergy;
+    }
     
     
     /**receive message and parse message
@@ -246,12 +129,12 @@ public class AttackerModel
         if (msg_type == Message.CONFLICT_MSG) {
             Conflict conflict = (Conflict) msg;
             attackerUtils.execute.addConflict(conflict, this);
-            this.setReplan(true);
+            attackerUtils.update.setReplan(true, this);
         } else if (msg_type == Message.OBSTACLE_MSG) {
             Obstacle obstacle = (Obstacle) msg;
             attackerUtils.execute.addObstacle(obstacle, this);
             if (this.getTarget_indicated_by_role()== null || !this.isObstacleInTargetMBR(obstacle.getShape().getBounds())) {
-                this.setReplan(true);
+                attackerUtils.update.setReplan(true, this);
             }
         } else if (msg_type == Message.THREAT_MSG) {
             Threat threat = (Threat) msg;
