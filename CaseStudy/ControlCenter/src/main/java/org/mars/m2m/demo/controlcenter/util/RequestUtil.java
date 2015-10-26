@@ -6,10 +6,13 @@
 package org.mars.m2m.demo.controlcenter.util;
 
 import ch.qos.logback.classic.Logger;
+import com.google.gson.Gson;
 import java.math.BigInteger;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.client.AsyncServiceConsumer;
@@ -106,18 +109,30 @@ public class RequestUtil
         return ci;
     }
     
-    public Object sendToEndpoint(String senderUrl, String endpointUrl, Operation op, String data, Class clazz)
+    /**
+     * For sending client requests
+     * @param senderUrl The URL of the sender(Control center in this case study). This will be used when sending response
+     * @param endpointUrl The endpoint of the object or resource
+     * @param op The oneM2M operation to be performed (CRUDN)
+     * @param data The data to be attached to the request
+     * @return Response in the form of a <code>RequestPrimitive</code> object
+     */
+    public synchronized RequestPrimitive send(String senderUrl, String endpointUrl, Operation op, String data)
     {
-        try {
+        try 
+        {
             ServiceConsumer sc = new ServiceConsumer();
-            SvcConsumerDetails consumerDetails = new SvcConsumerDetails();
-            RequestPrimitive requestPrimitiveForData = getRequestPrimitiveForData(op, endpointUrl, senderUrl, data);
-            consumerDetails.setRequest(requestPrimitiveForData);
+            RequestPrimitive reqPrim = getRequestPrimitiveForData(op, endpointUrl, senderUrl, data);
             //All operations are posted to the Management Adapter
-            Response handlePost = sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
-            return handlePost.readEntity(clazz);
-        } catch (Exception e) {
-            logger.error(e.toString());
+            Response handlePost = sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, reqPrim, MediaType.APPLICATION_XML);
+            if (handlePost.getStatus() == Response.Status.OK.getStatusCode()) 
+            {
+                RequestPrimitive respEntity = handlePost.readEntity(RequestPrimitive.class);                               
+                return respEntity;
+            }
+            return null;
+        } catch (Exception ex) {
+            logger.error(ex.getMessage());
             return null;
         }
     }

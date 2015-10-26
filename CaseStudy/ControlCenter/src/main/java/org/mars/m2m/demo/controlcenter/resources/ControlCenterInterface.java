@@ -42,6 +42,7 @@ public class ControlCenterInterface
     private ArrayList<ReportedLwM2MClient> connectedDevices;
     private final ControlCenterReflexes reflex;
     private final ControlCenterServices controlCenterServices;
+    static int threatCounter=0;
     
     public ControlCenterInterface() {
         this.reflex = new ControlCenterReflexes();
@@ -99,6 +100,8 @@ public class ControlCenterInterface
                         case THREAT:
                             Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
                             if (threat != null && !controlCenterServices.containsThreat(threat)) {
+                                threatCounter++;
+                                System.out.println("Threats num: "+threatCounter);
                                 controlCenterServices.addThreat(threat);
                                 controlCenterServices.setSimulationStartable(true);
                             }

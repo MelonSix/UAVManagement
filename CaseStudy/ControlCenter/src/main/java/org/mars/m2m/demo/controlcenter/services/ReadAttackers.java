@@ -37,7 +37,8 @@ public class ReadAttackers
                 try
                 {
                     AttackerModel attacker = AttackerUtils.getVirtualizedAttacker(node);
-                    attackers_partial.add(attacker);
+                    if(attacker != null)
+                        attackers_partial.add(attacker);
                 }
                 catch(NullPointerException e)
                 {

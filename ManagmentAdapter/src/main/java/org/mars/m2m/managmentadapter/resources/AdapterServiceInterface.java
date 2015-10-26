@@ -101,7 +101,7 @@ public class AdapterServiceInterface {
                     jaxbMarshaller.marshal(requestPrimitive, System.out);//for debugging purposes
                     
                     //handles getting the response and resuming
-                    RequestPrimitive processedRequest = processRequest(requestPrimitive, uriInfo);                    
+                    RequestPrimitive processedRequest = processRequest(requestPrimitive, uriInfo);               
                     asyncResponse.resume(processedRequest);
                 } catch (Exception ex) {
                     logger.error(ex.toString());

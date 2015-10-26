@@ -58,18 +58,10 @@ public class AttackerUtils
      */
     public static AttackerModel getVirtualizedAttacker(DefaultMutableTreeNode node) 
     {
-        Object nodeInfo;
-        nodeInfo = node.getUserObject();
         ReportedLwM2MClient client = requestUtil.getLwM2MClientFromTreeNode(node);
         if (client != null) 
         {
             AttackerModel attacker = getAttacker(client);
-            if(attacker == null)
-            {
-                String endpointURL = CC_StaticInitConfig.mgmntServerURL + client.getEndpoint() + "/12207/0";
-                System.out.println("Null attacker: "+endpointURL);
-                return null;
-            }
             attacker.setClient(client);
             return attacker;
         }
@@ -82,11 +74,12 @@ public class AttackerUtils
     
     private static AttackerModel getAttacker(ReportedLwM2MClient client)
     {        
-        try {
+        try 
+        {
             String endpointURL = CC_StaticInitConfig.mgmntServerURL + client.getEndpoint() + "/12207/0";
-            RequestPrimitive resp = 
-                    (RequestPrimitive) requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointURL, 
-                            Operation.RETRIEVE, null, RequestPrimitive.class);
+            RequestPrimitive resp;
+            resp = (RequestPrimitive) requestUtil.send(CC_StaticInitConfig.ccAddress, endpointURL, 
+                    Operation.RETRIEVE, null);
             if (resp == null) {
                 return null;
             }
@@ -135,10 +128,10 @@ public class AttackerUtils
                         attacker.setOnline((boolean) resource.getValue());
                         break;
                     case 4:
-                        attacker.setCenterCoordinates(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
+                        attacker.setCenterCoordinates(gson.fromJson(resource.getValue().toString(), float[].class));
                         break; 
                     case 5: 
-                        attacker.setUavPositionInBaseStation(jsonArrayUtil.getFloatArray(resource.getValue().toString()));
+                        attacker.setUavPositionInBaseStation(gson.fromJson(resource.getValue().toString(), float[].class));
                         break; 
                     case 9:
                         attacker.setAttackerLocked((boolean)resource.getValue());
@@ -152,6 +145,7 @@ public class AttackerUtils
                     default:
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 logger.error(e.getMessage());
             }
         }
@@ -205,7 +199,7 @@ public class AttackerUtils
         {
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-            requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class);
+            requestUtil.send(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data);
         }
     }
     
@@ -215,7 +209,7 @@ public class AttackerUtils
         {
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-            requestUtil.sendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class);
+            requestUtil.send(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data);
         }
     }
     
