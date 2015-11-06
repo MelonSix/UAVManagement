@@ -35,6 +35,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.enums.ThreatType;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;
 import org.mars.m2m.demo.controlcenter.uav.UAVPath;
 
@@ -44,7 +45,6 @@ import org.mars.m2m.demo.controlcenter.uav.UAVPath;
  */
 public class Threat extends Target implements Serializable {
 
-    protected int target_type = 0;
     protected float threat_range = 0;
     protected String threat_cap = "";
     protected UAVPath path_planned_at_current_time_step;
@@ -52,18 +52,19 @@ public class Threat extends Target implements Serializable {
     private float[] goal;
     private int current_index_of_planned_path = 0;
     private Rectangle threat_mbr;
+    private ThreatType threatType;
     
     public static int threat_width = 20;
     public static int threat_height = 20;
     
-    public Threat(int index, float[] coordinates, int target_type, float speed) {
+    public Threat(int index, float[] coordinates, float speed, ThreatType threatType) {
         super(index, coordinates);
-        this.target_type = target_type;
+        this.threatType = threatType;
         this.msg_type = Message.THREAT_MSG;
         this.speed = speed;
         this.path_planned_at_current_time_step = new UAVPath();
         threat_mbr=new Rectangle((int) coordinates[0] - Threat.threat_width / 2, (int) coordinates[1] - Threat.threat_height / 2, Threat.threat_width, Threat.threat_height);
-//        rrt_alg = new RRTAlg(coordinates, null, CC_StaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, CC_StaticInitConfig.rrt_iteration_times, speed, null, null, -1);
+//        rrt_alg = new RRTAlg(coordinates, null, OpStaticInitConfig.rrt_goal_toward_probability, World.bound_width, World.bound_height, OpStaticInitConfig.rrt_iteration_times, speed, null, null, -1);
     }
 
     public void resetCurrentIndexOfPath() {
@@ -101,18 +102,18 @@ public class Threat extends Target implements Serializable {
         return CC_StaticInitConfig.THREAT_NAME + this.index;//this.coordinates[0]+","+this.coordinates[1]+this.threat_range+this.threat_cap;
     }
 
-    public int getTarget_type() {
-        return target_type;
-    }
-
-    public void setTarget_type(int target_type) {
-        this.target_type = target_type;
-    }
-
     public float getThreat_range() {
         return threat_range;
     }
 
+    public ThreatType getThreatType() {
+        return threatType;
+    }
+
+    public void setThreatType(ThreatType threatType) {
+        this.threatType = threatType;
+    }
+    
     public void setThreat_range(float threat_range) {
         this.threat_range = threat_range;
     }

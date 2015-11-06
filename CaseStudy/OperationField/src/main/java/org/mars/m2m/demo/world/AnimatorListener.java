@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.ui.AnimationPanel;
+import org.mars.m2m.demo.ui.ControlPanel;
 
 /**
  *
@@ -44,13 +45,10 @@ public class AnimatorListener implements ActionListener
                 int hours = minimutes / 60;
                 minimutes=minimutes-hours*60;
                 String simulated_time_str = String.format("%1$02d:%2$02d:%3$02d", hours, minimutes, 0);
-                //ControlPanel.jFormattedTextField1.setText(simulated_time_str);
-                //ControlPanel.setTotalHistoryPathLen(world.getTotal_path_len());
+                ControlPanel.jFormattedTextField1.setText(simulated_time_str);
+                ControlPanel.setTotalHistoryPathLen(animPnl.getWorld().getTotal_path_len());
             }
             this.animPnl.updateImageAtEachIteration();
-            animPnl.repaint();
-            if (this.animPnl.getWorld().isExperiment_over()) {
-                System.exit(0);
-            }
+            animPnl.repaint();            
         }
     }

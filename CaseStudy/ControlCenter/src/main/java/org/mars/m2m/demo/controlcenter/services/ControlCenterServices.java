@@ -20,6 +20,7 @@ import org.mars.m2m.demo.controlcenter.dispatcher.BroadcastMessageDispatcher;
 import org.mars.m2m.demo.controlcenter.dispatcher.DummyMessageDispatcher;
 import org.mars.m2m.demo.controlcenter.dispatcher.MessageDispatcher;
 import org.mars.m2m.demo.controlcenter.dispatcher.RegisteredMessageDispatcher;
+import org.mars.m2m.demo.controlcenter.enums.ThreatType;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.KnowledgeAwareInterface;
@@ -234,7 +235,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
                     != null && current_attacker.getTarget_indicated_by_role().getIndex() != -1) 
             {
                 float[] dummy_threat_coord = current_attacker.getUavPositionInBaseStation();
-                Threat dummy_threat = new Threat(-1, dummy_threat_coord, 0, 0);
+                Threat dummy_threat = new Threat(-1, dummy_threat_coord, 0, ThreatType.DUMMY);
                 attackerUtils.update.setTarget_indicated_by_role(dummy_threat, current_attacker);
                 attackerUtils.update.setReplan(true, current_attacker);
                 attackerUtils.update.setSpeed(CC_StaticInitConfig.SPEED_OF_ATTACKER_IDLE, current_attacker);
@@ -361,7 +362,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     }
 
     @Override
-    public void addThreat(Threat threat) {
+    public synchronized void addThreat(Threat threat) {
         kb.addThreat(threat);
         this.need_to_assign_role = true;
     }

@@ -28,6 +28,7 @@ package org.mars.m2m.demo.world;
 import ch.qos.logback.classic.Logger;
 import java.util.ArrayList;
 import javax.swing.event.TreeModelListener;
+import org.mars.m2m.demo.enums.ThreatType;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
@@ -65,8 +66,8 @@ public class WorldKnowledge extends KnowledgeInterface {
         obstacles.add(obstacle1);
         obstacles.add(obstacle2);
 
-        Threat threat1 = new Threat(0, null, 1,2);
-        Threat threat2 = new Threat(1, null, 1,4);
+        Threat threat1 = new Threat(0, null,2,ThreatType.DUMMY);
+        Threat threat2 = new Threat(1, null,4, ThreatType.DUMMY);
         threats.add(threat1);
         threats.add(threat2);
 

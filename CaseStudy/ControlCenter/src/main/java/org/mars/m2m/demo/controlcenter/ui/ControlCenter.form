@@ -26,6 +26,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItem_ClrCCknowledge">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clear Map"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItem_ClrCCknowledgeActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
@@ -33,9 +43,6 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Control Center v1.0.0"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[900, 700]"/>
-    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[900, 700]"/>
     </Property>
@@ -154,15 +161,33 @@
           <SubComponents>
             <Container class="javax.swing.JSplitPane" name="jSplitPane1">
               <Properties>
-                <Property name="dividerLocation" type="int" value="600"/>
-                <Property name="orientation" type="int" value="0"/>
+                <Property name="dividerLocation" type="int" value="2000"/>
+                <Property name="resizeWeight" type="double" value="0.9"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private AnimationPanel animationPanel;"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="this.animationPanel = new AnimationPanel(this.controlCenterServices);&#xa;&#xa;this.jSplitPane1.add(animationPanel, JSplitPane.TOP);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="this.animationPanel = new AnimationPanel(this.controlCenterServices);&#xa;&#xa;&#xa;this.jSplitPane1.add(animationPanel, JSplitPane.TOP);"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
+                      <JSplitPaneConstraints position="right"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTree" name="JTree_ccKB">
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
             </Container>
           </SubComponents>
         </Container>

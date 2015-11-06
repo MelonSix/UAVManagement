@@ -9,7 +9,6 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -22,8 +21,6 @@ import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 import org.mars.m2m.demo.controlcenter.util.TraverseParsedXmlLwM2MClientInfo;
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;
-import org.mars.m2m.dmcore.onem2m.xsdBundle.ContentInstance;
-import org.mars.m2m.dmcore.onem2m.xsdBundle.Resource;
 import org.slf4j.LoggerFactory;
 
 /**

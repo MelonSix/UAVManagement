@@ -62,8 +62,11 @@ public class AttackerUtils
         if (client != null) 
         {
             AttackerModel attacker = getAttacker(client);
-            attacker.setClient(client);
-            return attacker;
+            if (attacker != null) {
+                attacker.setClient(client);
+                return attacker;
+            }
+            return null;
         }
         else
         {

@@ -6,7 +6,10 @@
 package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JSplitPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
@@ -34,7 +37,22 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         handleTree = new HandleTree(jTreeControlCenter);
         NewDeviceServices.setHandleTree(handleTree);
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
-        //this.animationPanel.start();
+        this.animationPanel.initComponents();
+        
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                SwingUtilities.invokeLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        JTree_ccKB.setModel(controlCenterServices.getKb());
+                    }
+                });
+            }
+        }, 500);
     }
 
     public HandleTree getHandleTree() {
@@ -57,14 +75,16 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         jTreeControlCenter = new javax.swing.JTree();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTree_ccKB = new javax.swing.JTree();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         reloadUavMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        JMenuItem_ClrCCknowledge = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Control Center v1.0.0");
-        setMaximumSize(new java.awt.Dimension(900, 700));
         setMinimumSize(new java.awt.Dimension(900, 700));
 
         ccSplitPanelTab1.setDividerLocation(150);
@@ -88,11 +108,15 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
         ccTabbedPane.addTab("UAV", ccJPanelInTab1);
 
-        jSplitPane1.setDividerLocation(600);
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane1.setDividerLocation(2000);
+        jSplitPane1.setResizeWeight(0.9);
         this.animationPanel = new AnimationPanel(this.controlCenterServices);
 
         this.jSplitPane1.add(animationPanel, JSplitPane.TOP);
+
+        jScrollPane2.setViewportView(JTree_ccKB);
+
+        jSplitPane1.setRightComponent(jScrollPane2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -125,6 +149,15 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         ccMenuBar.add(jMenu1);
 
         jMenu2.setText("Edit");
+
+        JMenuItem_ClrCCknowledge.setText("Clear Map");
+        JMenuItem_ClrCCknowledge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItem_ClrCCknowledgeActionPerformed(evt);
+            }
+        });
+        jMenu2.add(JMenuItem_ClrCCknowledge);
+
         ccMenuBar.add(jMenu2);
 
         setJMenuBar(ccMenuBar);
@@ -156,7 +189,27 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         loadUAVs.loadMgmntAdpterClients(animationPanel);
     }//GEN-LAST:event_reloadUavMenuItemActionPerformed
 
+    private void JMenuItem_ClrCCknowledgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItem_ClrCCknowledgeActionPerformed
+        synchronized(animationPanel)
+        {
+            SwingUtilities.invokeLater(new Runnable() {
+
+                @Override
+                public void run() {
+                    controlCenterServices.getConflicts().clear();
+                    controlCenterServices.getThreats().clear();
+                    controlCenterServices.getObstacles().clear();
+                   animationPanel.clearMap();
+                   animationPanel.repaint();
+                   System.out.println("Map cleared");
+                }
+            });
+        }
+    }//GEN-LAST:event_JMenuItem_ClrCCknowledgeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMenuItem_ClrCCknowledge;
+    private javax.swing.JTree JTree_ccKB;
     private javax.swing.JPanel ccJPanelInTab1;
     private javax.swing.JMenuBar ccMenuBar;
     private javax.swing.JSplitPane ccSplitPanelTab1;
@@ -167,6 +220,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private AnimationPanel animationPanel;
     private javax.swing.JTree jTreeControlCenter;

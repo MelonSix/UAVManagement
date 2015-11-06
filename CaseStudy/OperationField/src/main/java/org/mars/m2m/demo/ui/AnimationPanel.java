@@ -9,6 +9,9 @@ import ch.qos.logback.classic.Logger;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -21,7 +24,9 @@ import org.mars.m2m.demo.uav.Attacker;
 import org.mars.m2m.demo.uav.Scout;
 import org.mars.m2m.demo.uav.UAV;
 import org.mars.m2m.demo.uav.UAVBase;
+import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.util.ImageUtil;
+import org.mars.m2m.demo.util.MyPopupMenu;
 import org.mars.m2m.demo.world.AnimatorListener;
 import org.mars.m2m.demo.world.World;
 import org.slf4j.LoggerFactory;
@@ -30,15 +35,15 @@ import org.slf4j.LoggerFactory;
  *
  * @author AG BRIGHTER
  */
-public class AnimationPanel extends JPanel
+public class AnimationPanel extends JPanel implements MouseListener
 {
     private static Logger logger = (Logger) LoggerFactory.getLogger(AnimationPanel.class);
 
     /**
      * -------------window size variable---------------
      */
-    private int bound_width = 800; //The size of paint
-    private int bound_height = 600;
+    private int bound_width; //The size of paint
+    private int bound_height;
 
     /**
      * -------------internal variable---------------
@@ -86,19 +91,21 @@ public class AnimationPanel extends JPanel
     private ArrayList<Scout> scouts;
     private ArrayList<Attacker> attackers;
     private ArrayList<Threat> threats_from_world_view;
-
+    private MyPopupMenu my_popup_menu;
 
     public AnimationPanel() {
-        initComponents();
+//        initComponents();
     }
 
-    private void initComponents() {
+    public void initComponents() {
        try {
+           bound_height = 980;
+           bound_width = 1850;
             transparent_color = GraphicConfig.transparent_color;
             Color fog_of_war_color = GraphicConfig.fog_of_war_color;//Color.black;
 
             //initiate background image
-            background_image_level_1 = ImageUtil.retrieveImage("/oakland.png");
+            background_image_level_1 = ImageUtil.retrieveImage("/map.jpg");
 
             //initiate obstacle image
             obstacle_image_level_2 = createBufferedImage();
@@ -146,7 +153,7 @@ public class AnimationPanel extends JPanel
             
 
            //initiate world
-            NonStaticInitConfig init_config = new NonStaticInitConfig();
+            NonStaticInitConfig init_config = new NonStaticInitConfig(bound_width, bound_height);
             this.world = new World(init_config);            
             this.threats_from_world_view = world.getThreats();
             
@@ -158,6 +165,9 @@ public class AnimationPanel extends JPanel
             
             //Covers areas yet to be scouted by the scout UAV
             this.initFogOfWarImage();
+            
+            my_popup_menu = new MyPopupMenu(init_config.getThreats());
+            this.addMouseListener(this);
 
         } catch (/*IO*/Exception ex) {
             logger.error("{}",ex.toString());
@@ -198,7 +208,7 @@ public class AnimationPanel extends JPanel
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(background_image_level_1, 0, 0, null);
+        g.drawImage(background_image_level_1, 0, 0, getWidth(), getHeight(), null);
         g.drawImage(obstacle_image_level_2, 0, 0, null);
         g.drawImage(this.highlight_obstacle_image_level_3, 0, 0, null);
         g.drawImage(this.threat_image_level_9, 0, 0, null);
@@ -402,5 +412,81 @@ public class AnimationPanel extends JPanel
     public World getWorld() {
         return world;
     }
+
+    /** implement mouse left click action, and highlight the chosen attacker.
+     * 
+     * @param e 
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        OpStaticInitConfig.SIMULATION_ON = true;
+        int chosen_attacker_index = findChosenAttacker(e.getPoint());
+        AnimationPanel.setHighlightUAV(chosen_attacker_index);
+    }
+
+    /** find the attacker chosen by the user.
+     * 
+     * @param mouse_point
+     * @return 
+     */
+    private int findChosenAttacker(Point mouse_point) {
+        float[] mouse_point_coord = new float[]{(float) mouse_point.getX(), (float) mouse_point.getY()};
+        for (Attacker attacker : attackers) {
+            float[] center_coord = attacker.getCenter_coordinates();
+            float dist = DistanceUtil.distanceBetween(center_coord, mouse_point_coord);
+            if (dist < attacker.getUav_radar().getRadius()) {
+                return attacker.getIndex();
+            }
+        }
+        return -1;
+    }
+
+    /** implement right mouse click action, and pop up the menu for changing threat
+     * 
+     * @param e 
+     */
+    @Override
+    public void mousePressed(MouseEvent e) {
+        OpStaticInitConfig.SIMULATION_ON = false;
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            int chosen_attacker_index = findChosenAttacker(e.getPoint());
+            if (chosen_attacker_index == -1) {
+                return;
+            }
+            AnimationPanel.setHighlightUAV(chosen_attacker_index);
+            my_popup_menu.setChoosedAttackerIndex(chosen_attacker_index);
+            my_popup_menu.show(this, e.getX(), e.getY());
+            OpStaticInitConfig.SIMULATION_ON = false;
+        }
+        OpStaticInitConfig.SIMULATION_ON = true;
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
     
+    /** highlight the chosen uav.
+     * 
+     * @param uav_index 
+     */
+    public static void setHighlightUAV(int uav_index) {
+        AnimationPanel.highlight_uav_index = uav_index;
+        Attacker highlight_uav = null;
+        for (Attacker attacker : World.attackers) {
+            if (attacker.getIndex() == uav_index) {
+                highlight_uav = attacker;
+            }
+        }
+        if (highlight_uav != null) {
+            RightControlPanel.setWorldKnowledge(highlight_uav.getKb());
+        }
+    }
 }

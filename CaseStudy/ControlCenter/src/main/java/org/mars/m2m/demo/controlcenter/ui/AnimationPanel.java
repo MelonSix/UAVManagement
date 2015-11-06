@@ -33,8 +33,8 @@ public class AnimationPanel extends JPanel
     /**
      * -------------window size variable---------------
      */
-    private int bound_width = 800; //The size of paint
-    private int bound_height = 600;
+    private int bound_width; //The size of paint
+    private int bound_height;
     
     ControlCenterServices controlCenterServices;
 
@@ -80,16 +80,19 @@ public class AnimationPanel extends JPanel
 
     public AnimationPanel(ControlCenterServices ccs) {
         this.controlCenterServices = ccs;
-        initComponents();        
+//        initComponents();        
     }
 
-    private void initComponents() {
+    public void initComponents() {
        try {
+           bound_height = CC_StaticInitConfig.bound_height = 970;
+           bound_width = CC_StaticInitConfig.bound_width = 1908;
+           System.out.println("width: "+bound_width+", height: "+bound_height);
             transparent_color = GraphicConfig.transparent_color;
             Color fog_of_war_color = GraphicConfig.fog_of_war_color;//Color.black;
 
             //initiate background image
-            background_image_level_1 = ImageUtil.retrieveImage("/oakland.png");
+            background_image_level_1 = ImageUtil.retrieveImage("/map.jpg");
 
             //initiate obstacle image
             obstacle_image_level_2 = createBufferedImage();
@@ -175,6 +178,17 @@ public class AnimationPanel extends JPanel
         clearImageBeforeUpdate(threat_image_graphics);
     }
     
+    /** clear the images, which is dynamically updated.
+     * 
+     */
+    public void clearMap() {
+        clearImageBeforeUpdate(uav_image_graphics);
+        clearImageBeforeUpdate(enemy_uav_image_graphics);
+        clearImageBeforeUpdate(highlight_obstacle_image_graphics);
+        clearImageBeforeUpdate(threat_image_graphics);
+        clearImageBeforeUpdate(obstacle_image_graphics);
+    }
+    
     private void clearImageBeforeUpdate(Graphics2D graphics) {
         graphics.setColor(transparent_color);
         graphics.setBackground(transparent_color);
@@ -229,7 +243,7 @@ public class AnimationPanel extends JPanel
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(background_image_level_1, 0, 0, null);
+        g.drawImage(background_image_level_1, 0, 0, getWidth(), getHeight(), null);
         g.drawImage(obstacle_image_level_2, 0, 0, null);
         g.drawImage(this.highlight_obstacle_image_level_3, 0, 0, null);
         g.drawImage(this.threat_image_level_9, 0, 0, null);

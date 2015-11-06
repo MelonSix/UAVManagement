@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.mars.m2m.demo.enums.ThreatType;
 import org.mars.m2m.demo.model.shape.Point;
 import org.mars.m2m.demo.uav.UAVPath;
 
@@ -23,8 +24,7 @@ import org.mars.m2m.demo.uav.UAVPath;
  * @author boluo
  */
 public class Threat extends Target implements Serializable {
-
-    protected int threat_type = 0;
+    
     protected float threat_range = 0;
     protected String threat_cap = "";
     protected UAVPath path_planned_at_current_time_step;
@@ -32,13 +32,14 @@ public class Threat extends Target implements Serializable {
     private float[] goal;
     private int current_index_of_planned_path = 0;
     private Rectangle threat_mbr;
+    private ThreatType threatType;
     
     public static int threat_width = 20;
     public static int threat_height = 20;
     
-    public Threat(int index, float[] coordinates, int target_type, float speed) {
+    public Threat(int index, float[] coordinates, float speed, ThreatType threatType) {
         super(index, coordinates);
-        this.threat_type = target_type;
+        this.threatType = threatType;
         this.msg_type = Message.THREAT_MSG;
         this.speed = speed;
         this.path_planned_at_current_time_step = new UAVPath();
@@ -81,18 +82,18 @@ public class Threat extends Target implements Serializable {
         return OpStaticInitConfig.THREAT_NAME + this.index;//this.coordinates[0]+","+this.coordinates[1]+this.threat_range+this.threat_cap;
     }
 
-    public int getTarget_type() {
-        return threat_type;
-    }
-
-    public void setTarget_type(int target_type) {
-        this.threat_type = target_type;
-    }
-
     public float getThreat_range() {
         return threat_range;
     }
 
+    public ThreatType getThreatType() {
+        return threatType;
+    }
+
+    public void setThreatType(ThreatType threatType) {
+        this.threatType = threatType;
+    }
+    
     public void setThreat_range(float threat_range) {
         this.threat_range = threat_range;
     }

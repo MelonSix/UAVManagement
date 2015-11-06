@@ -96,8 +96,8 @@ public class CC_StaticInitConfig {
     
     public static String ccAddress="";
     public static String ccNotificationServiceURL="";
-    public static int bound_width=800;//simulation environment width
-    public static int bound_height=600;//simulation environment height
+    public static int bound_width;//simulation environment width
+    public static int bound_height;//simulation environment height
     public static String mgmntAdapterURL="";//URL for managment adapter
     public static String mgmntServerURL = "";
     public static String mgmntAdapterGetClientsURL = "";

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.eventHandling.caller.ReflexListenerImplCaller;
 import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.AssignScoutRoleReflexListenerImpl;
 import org.mars.m2m.demo.controlcenter.eventHandling.ListernerImpl.SendObservationReflexListenerImpl;
@@ -41,9 +42,11 @@ public class ControlCenterReflexes
      * then sends the coordinates to the UAV
      * @param connectedDevices 
      */
-    private static final ArrayList<String> configuredScouts = new ArrayList<>();
+    
     public void scoutingWaypointsReflex(final ArrayList<ReportedLwM2MClient> connectedDevices)
     {
+        CC_StaticInitConfig.currentScoutIndex.set(0);
+        final ArrayList<String> configuredScouts = new ArrayList<>();
         //gets all scouts and their respective onboard devices
         TreeMap<String, ArrayList<ReportedLwM2MClient>> scouts = 
                 uavUtil.getUAVAndOnboardDevices(uavUtil.getConnectedDevicesByCategory(connectedDevices, "scout"));

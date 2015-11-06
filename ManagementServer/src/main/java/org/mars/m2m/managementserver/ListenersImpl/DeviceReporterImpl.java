@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class DeviceReporterImpl implements DeviceReporter, AsyncServiceCallback<Response> 
 {
     private final Logger logger = (Logger) LoggerFactory.getLogger(DeviceReporterImpl.class);
-    private static int counter=0;
+    public static int counter=0;
 
     @Override
     public void reportDevice(Client c) 

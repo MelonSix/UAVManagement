@@ -58,6 +58,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+import org.mars.m2m.demo.enums.ThreatType;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
@@ -87,7 +88,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     public DatatypeProperty hasExpectedConflictTime, hasDecidedConflictTime, conflictFromRobot;
     public ObjectProperty has_region, has_polygon, has_lowerbound, has_upperbound, rdf_type;
     public DatatypeProperty hasConflictCenter, hasConflictRange;
-    public DatatypeProperty hasThreatCenter, hasThreatSpeed, hasThreatRange, hasThreatCapability, hasThreatIndex, threatEnabled;
+    public DatatypeProperty hasThreatCenter, hasThreatSpeed, hasThreatRange, hasThreatCapability, hasThreatIndex, threatEnabled, hasType;
     public DatatypeProperty has_points, hasMaxXCoordinate, hasMaxYCoordinate, hasMinXCoordinate, hasMinYCoordinate, hasObstacleIndex;
 
     public RDFNode null_node = null;
@@ -142,6 +143,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         hasThreatCapability = ontology_based_knowledge.createDatatypeProperty(base_ns + "hasThreatCapability");
         hasThreatIndex = ontology_based_knowledge.createDatatypeProperty(base_ns + "hasThreatIndex");
         threatEnabled = ontology_based_knowledge.createDatatypeProperty(base_ns + "threatEnabled");
+        hasType = ontology_based_knowledge.createDatatypeProperty(base_ns + "hasType");
 
         //class and property for conflict
         Conflict_Class = ontology_based_knowledge.createClass(base_ns + "Conflict");
@@ -162,9 +164,8 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         float[] coord = new float[2];
         coord[0] = 2;
         coord[1] = 3;
-        Threat threat = new Threat(0, coord, 0, 3);
+        Threat threat = new Threat(0, coord, 3, ThreatType.TYPE1);
         threat.setSpeed(2);
-        threat.setTarget_type(0);
         threat.setThreat_cap("aaa");
         threat.setThreat_range(2);
         threat.setEnabled(false);
@@ -173,7 +174,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         float[] coord1 = new float[2];
         coord1[0] = 1;
         coord1[0] = 2;
-        Threat threat1 = new Threat(1, coord1, 2, 4);
+        Threat threat1 = new Threat(1, coord1, 4, ThreatType.TYPE1);
         threat1.setEnabled(false);
         kb.addThreat(threat1);
         kb.removeThreat(threat1);
@@ -389,25 +390,32 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         return conflicts;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public ArrayList<Threat> getThreats() {
-        if (!this.threat_updated) {
+         if (!this.threat_updated) {
             return this.threats_cache;
         }
         ArrayList<Threat> threats = new ArrayList<>();
-        String sparql = "SELECT ?center ?speed ?range ?threatCap ?index ?threat_enabled"
-                + "{"
-                + "?threat_ind mars:hasThreatCenter ?center ."
-                + "?threat_ind mars:hasThreatSpeed ?speed ."
-                + "?threat_ind mars:hasThreatRange ?range ."
-                + "?threat_ind mars:hasThreatIndex ?index ."
-                + "?threat_ind mars:threatEnabled ?threat_enabled ."
-                + "?threat_ind mars:hasThreatCapability ?threatCap"
-                + "}";
+        String sparql = "SELECT  ?center ?speed ?range ?threatCap ?index ?threat_enabled ?threatType WHERE "+
+               " { "+
+               " { ?threat_ind mars:hasThreatCenter ?center . }"+
+               " { ?threat_ind mars:hasThreatSpeed ?speed . } "+
+               " { ?threat_ind mars:hasThreatRange ?range . } "+
+               " { ?threat_ind mars:hasThreatIndex ?index . } "+
+               " { ?threat_ind mars:threatEnabled ?threat_enabled . } "+
+               " { ?threat_ind mars:hasThreatCapability ?threatCap. } "+
+               " { ?threat_ind mars:hasType ?threatType } "+
+               " }";
         Query query = QueryFactory.create(prefix + sparql);
         QueryExecution qe = QueryExecutionFactory.create(query, ontology_based_knowledge);
         ResultSet results = qe.execSelect();
-        while (results.hasNext()) {
+        
+        while (results.hasNext()) 
+        {
             QuerySolution result = results.next();
             String raw_center_str = StringUtil.parseLiteralStr(result.get("center").toString());
             String[] coord_str = raw_center_str.split(",");
@@ -433,8 +441,10 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
             } else {
                 threat_enabled = false;
             }
-
-            Threat threat = new Threat(0, center_coord, 0, speed);
+            String raw_threat_type = StringUtil.parseLiteralStr(result.get("threatType").toString());
+            ThreatType type = ThreatType.valueOf(raw_threat_type);
+            
+            Threat threat = new Threat(0, center_coord, speed, type);
             threat.setThreat_cap(raw_therat_cap_str);
             threat.setThreat_range(range);
             threat.setIndex(threat_index);
@@ -598,6 +608,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         Literal threat_cap = ontology_based_knowledge.createTypedLiteral(threat.getThreat_cap());
         Literal threat_index = ontology_based_knowledge.createTypedLiteral(threat.getIndex());
         Literal threat_enabled = ontology_based_knowledge.createTypedLiteral(threat.isEnabled());
+        Literal threat_type = ontology_based_knowledge.createTypedLiteral(threat.getThreatType().toString());
 
         threat_individual.addProperty(hasThreatCenter, center);
         threat_individual.addProperty(hasThreatSpeed, speed);
@@ -605,6 +616,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         threat_individual.addProperty(hasThreatCapability, threat_cap);
         threat_individual.addProperty(hasThreatIndex, threat_index);
         threat_individual.addProperty(threatEnabled, threat_enabled);
+        threat_individual.addProperty(hasType, threat_type);
         this.threat_num++;
         this.threat_updated = true;
     }

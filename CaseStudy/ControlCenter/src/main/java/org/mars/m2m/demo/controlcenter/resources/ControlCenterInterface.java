@@ -99,10 +99,12 @@ public class ControlCenterInterface
                             break;
                         case THREAT:
                             Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
+                            
                             if (threat != null && !controlCenterServices.containsThreat(threat)) {
                                 threatCounter++;
                                 System.out.println("Threats num: "+threatCounter);
                                 controlCenterServices.addThreat(threat);
+                                System.out.println("Threats num from kb: "+controlCenterServices.getThreats().size());
                                 controlCenterServices.setSimulationStartable(true);
                             }
                             break;

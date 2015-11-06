@@ -37,6 +37,7 @@ import java.util.TimerTask;
 import java.util.TreeSet;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
+import org.mars.m2m.demo.enums.ThreatType;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedObstacleListenerImpl;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedThreatListenerImpl;
 import org.mars.m2m.demo.eventHandling.callerImpl.UpdateSensorValEventDispatch;
@@ -73,8 +74,8 @@ public class World {
      * ----------environment settings----------------------------
      */
     //bound of the canvas x_left_up,y_left_up,x_right_down,y_right_down
-    public static int bound_width = 400;
-    public static int bound_height = 300;
+    public static int bound_width;
+    public static int bound_height;
     public Map<Integer, Set<Integer>> locked_threat;
     private int scout_num; //The number of our scouts
     private int threat_num; //The number of enemy threats_in_world
@@ -338,7 +339,7 @@ public class World {
                                 this.num_of_threat_remained--;
                                 //this.control_center.setNeed_to_assign_role(true);
                                 float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
-                                Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
+                                Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
                                 attacker.setTarget_indicated_by_role(dummy_threat);
                                 attacker.setNeed_to_replan(true);
                                 attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
@@ -389,7 +390,7 @@ public class World {
             Attacker attacker = this.attackers.get(attacker_index);
             attacker.setFly_mode(Attacker.FLYING_MODE);
             float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
-            Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
+            Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
             attacker.setTarget_indicated_by_role(dummy_threat);
             attacker.setNeed_to_replan(true);
             attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
@@ -758,8 +759,8 @@ public class World {
     private void updateScout() {
         this.reconnaissance.updateScoutCoordinate();
     }
-
-    /** check whether the attacker should replan in  next time step. 
+    
+        /** check whether the attacker should replan in  next time step. 
      * 
      */
     private void checkReplanningAccordingToAttackerMovement() {
@@ -773,8 +774,8 @@ public class World {
                 attacker.setNeed_to_replan(true);
                 //returning to the base
                 if (attacker.getTarget_indicated_by_role().getIndex() == Threat.UAV_BASE_INDEX) {
-                    float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
-                    Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, 0);
+                    float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());                    
+                    Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
                     attacker.setTarget_indicated_by_role(dummy_threat);
                     attacker.setNeed_to_replan(true);
                     attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);

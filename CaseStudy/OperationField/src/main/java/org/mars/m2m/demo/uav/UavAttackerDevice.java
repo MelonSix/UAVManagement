@@ -67,6 +67,7 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                        }
                        return new LwM2mResponse(ResponseCode.CHANGED);
                    case 8:
+                       System.out.println("Threat: "+dataStr);
                            Threat threat = gson.fromJson(dataStr.getValue().toString(), Threat.class);
                            if (!attacker.containsThreat(threat)) 
                            {

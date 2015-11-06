@@ -9,6 +9,8 @@ import ch.qos.logback.classic.Logger;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import java.awt.Frame;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
@@ -97,7 +99,9 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new ControlCenter(controlCenterApplication.getControlCenterServices()).setVisible(true);
+                    ControlCenter ccUI = new ControlCenter(controlCenterApplication.getControlCenterServices()); //
+                    ccUI.setVisible(true);
+                    ccUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 }
             }); 
             

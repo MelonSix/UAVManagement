@@ -1,0 +1,660 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.multiagent.com.cn/robotontology/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.multiagent.com.cn/robotontology/"
+     versionIRI="http://www.multiagent.com.cn/robotontology/">
+    <Prefix name="" IRI="http://www.multiagent.com.cn/robotontology/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="AbsoluteLocation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Behavior"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Capability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="CapabilityAttribute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="CommunicationCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="CommunicationRange"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="CommunicationTarget"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ConditionalState"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Conflict"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ControlCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="CustomizedState"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="DetectionCpability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Envrionment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="LowerBoundOfRegion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Obstacle"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Point"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Polygon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Region"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="RelativeLocation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Resource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Robot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Role"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="State"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Task"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Threat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="UpperBoundOfRegion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Vector"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasAction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasBehavior"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCapability"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCapabilityAttribute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCapabilityRequirement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCommunicaitonTarget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCommunicationRange"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasConditionalState"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasConflict"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCustomizedState"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasEnvrionment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasEvent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasLowerBound"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasObstacle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasPolygon"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasReferencePoint"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasRegion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasResource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasResourceRequirement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasRole"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasState"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasTargetConditionalState"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasTask"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasThreat"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasUpperBound"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasActionName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasAltitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasCapability"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasCenter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasCommunicationProtocol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasConflictTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasContent"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasDelay"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasDirection"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasDistance"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasEventType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasExpireTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasLatitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasLongitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasMaxXCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasMaxYCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasMinXCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasMinYCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasOperationName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasRange"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasSpeed"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasTarget"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasThreatCapability"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasThreatCenter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasThreatIndex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasThreatRange"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasThreatSpeed"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasUnit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasVolume"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasXCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasYCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="threatEnabled"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="threat1"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="AbsoluteLocation"/>
+        <Class IRI="Location"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="CommunicationCapability"/>
+        <Class IRI="Capability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ControlCapability"/>
+        <Class IRI="Capability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="DetectionCpability"/>
+        <Class IRI="Capability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="RelativeLocation"/>
+        <Class IRI="Location"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="Threat"/>
+        <NamedIndividual IRI="threat1"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hasThreatCapability"/>
+        <NamedIndividual IRI="threat1"/>
+        <Literal datatypeIRI="&xsd;string"></Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hasThreatCenter"/>
+        <NamedIndividual IRI="threat1"/>
+        <Literal datatypeIRI="&xsd;string">70.90227,360.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hasThreatIndex"/>
+        <NamedIndividual IRI="threat1"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hasThreatRange"/>
+        <NamedIndividual IRI="threat1"/>
+        <Literal datatypeIRI="&xsd;float">0.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hasThreatSpeed"/>
+        <NamedIndividual IRI="threat1"/>
+        <Literal datatypeIRI="&xsd;string">5.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hasType"/>
+        <NamedIndividual IRI="threat1"/>
+        <Literal datatypeIRI="&xsd;string">TYPE3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="threatEnabled"/>
+        <NamedIndividual IRI="threat1"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasAction"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasCommunicaitonTarget"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasConflict"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasEvent"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasLocation"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasRegion"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasUpperBound"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasAction"/>
+        <Class IRI="Behavior"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasBehavior"/>
+        <Class IRI="Robot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCapability"/>
+        <Class IRI="State"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCapabilityAttribute"/>
+        <Class IRI="Capability"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCapabilityRequirement"/>
+        <Class IRI="Role"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCommunicaitonTarget"/>
+        <Class IRI="CommunicationRange"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCommunicationRange"/>
+        <Class IRI="CommunicationCapability"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasConditionalState"/>
+        <Class IRI="Action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasConditionalState"/>
+        <Class IRI="Role"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasConflict"/>
+        <Class IRI="Envrionment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCustomizedState"/>
+        <Class IRI="State"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasEnvrionment"/>
+        <Class IRI="Robot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasEvent"/>
+        <Class IRI="Robot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasLocation"/>
+        <Class IRI="State"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasLocation"/>
+        <Class IRI="Task"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasLowerBound"/>
+        <Class IRI="Region"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasObstacle"/>
+        <Class IRI="Envrionment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasPolygon"/>
+        <Class IRI="Region"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasReferencePoint"/>
+        <Class IRI="RelativeLocation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasRegion"/>
+        <Class IRI="Obstacle"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasRegion"/>
+        <Class IRI="Region"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasResource"/>
+        <Class IRI="State"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasResourceRequirement"/>
+        <Class IRI="Role"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasRole"/>
+        <Class IRI="State"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasState"/>
+        <Class IRI="Robot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasTargetConditionalState"/>
+        <Class IRI="Role"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasTask"/>
+        <Class IRI="Role"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasThreat"/>
+        <Class IRI="Envrionment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasUpperBound"/>
+        <Class IRI="Region"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasAction"/>
+        <Class IRI="Action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasBehavior"/>
+        <Class IRI="Behavior"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCapability"/>
+        <Class IRI="Capability"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCapabilityAttribute"/>
+        <Class IRI="CapabilityAttribute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCapabilityRequirement"/>
+        <Class IRI="Capability"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCommunicaitonTarget"/>
+        <Class IRI="CommunicationTarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCommunicationRange"/>
+        <Class IRI="CommunicationRange"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasConditionalState"/>
+        <Class IRI="ConditionalState"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasConflict"/>
+        <Class IRI="Conflict"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCustomizedState"/>
+        <Class IRI="CustomizedState"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasEnvrionment"/>
+        <Class IRI="Envrionment"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasEvent"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasLocation"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasLowerBound"/>
+        <Class IRI="LowerBoundOfRegion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasObstacle"/>
+        <Class IRI="Obstacle"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasPolygon"/>
+        <Class IRI="Polygon"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasReferencePoint"/>
+        <Class IRI="Point"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasRegion"/>
+        <Class IRI="Region"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasResource"/>
+        <Class IRI="Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasResourceRequirement"/>
+        <Class IRI="Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasRole"/>
+        <Class IRI="Role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasState"/>
+        <Class IRI="State"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasTargetConditionalState"/>
+        <Class IRI="ConditionalState"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasTask"/>
+        <Class IRI="Task"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasThreat"/>
+        <Class IRI="Threat"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasUpperBound"/>
+        <Class IRI="UpperBoundOfRegion"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="hasSpeed"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasActionName"/>
+        <Class IRI="Action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasCenter"/>
+        <Class IRI="Threat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasRange"/>
+        <Class IRI="Threat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasSpeed"/>
+        <Class IRI="Threat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasThreatCapability"/>
+        <Class IRI="Threat"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="hasActionName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasCenter"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasRange"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasSpeed"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasThreatCapability"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

@@ -232,6 +232,7 @@ public class MyGraphic {
         int[] upper_left_point = new int[2];
         upper_left_point[0] = (int) threat.getCoordinates()[0] - Threat.threat_width / 2;
         upper_left_point[1] = (int) threat.getCoordinates()[1] - Threat.threat_height / 2;
+        setThreatColor(graphics, threat);
         this.drawTankTarget(graphics, upper_left_point, Threat.threat_width, Threat.threat_height);
     }
 
@@ -243,5 +244,33 @@ public class MyGraphic {
 //        graphics.setColor(GraphicConfig.uav_base_color);
 //        graphics.fillRect((int) uav_base.getCoordinate()[0], (int) uav_base.getCoordinate()[1], uav_base.getBase_width(), uav_base.getBase_height());
         graphics.drawImage(uav_base.getImage(), (int) uav_base.getCoordinate()[0], (int) uav_base.getCoordinate()[1], (int) uav_base.getBase_shape().getRadius() * 2 / 3, (int) uav_base.getBase_shape().getRadius() * 2 / 3, null);
+    }
+    
+    private void setThreatColor(Graphics2D graphics, Threat threat)
+    {
+        switch(threat.getThreatType())
+        {
+            case TYPE0:
+                graphics.setColor(Color.RED);
+                break;
+            case TYPE1:
+                graphics.setColor(Color.PINK);
+                break;
+            case TYPE2:
+                graphics.setColor(Color.GREEN);
+                break;
+            case TYPE3:
+                graphics.setColor(Color.YELLOW);
+                break;
+            case TYPE4:
+                graphics.setColor(Color.ORANGE);
+                break;
+            case TYPE5:
+                graphics.setColor(Color.GRAY);
+                break;
+            default:
+                graphics.setColor(Color.BLUE);
+                break;
+        }
     }
 }

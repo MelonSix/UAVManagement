@@ -5,6 +5,7 @@
  */
 package org.mars.m2m.demo.ui;
 
+import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
 import org.mars.m2m.demo.uav.Scout;
@@ -21,6 +22,7 @@ public class FieldUI extends javax.swing.JFrame {
     public FieldUI() {
         this.animationPanel = new AnimationPanel();
         initComponents();
+        this.animationPanel.initComponents();
         //starts animation depending on scout(s) status
         boolean wait_for_scouts = true;
         boolean are_scouts_ready = false;
@@ -55,26 +57,27 @@ public class FieldUI extends javax.swing.JFrame {
     private void initComponents() {
 
         opFieldSplitPane = new javax.swing.JSplitPane();
+        rightControlPanel1 = new org.mars.m2m.demo.ui.RightControlPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 603));
         setName("UAV Operational Field"); // NOI18N
 
-        opFieldSplitPane.setDividerLocation(800);
-        opFieldSplitPane.setMaximumSize(new java.awt.Dimension(1000, 603));
-        opFieldSplitPane.setMinimumSize(new java.awt.Dimension(1000, 603));
-        opFieldSplitPane.setPreferredSize(new java.awt.Dimension(1000, 603));
-        this.opFieldSplitPane.add(animationPanel, JSplitPane.LEFT);
+        opFieldSplitPane.setDividerLocation(0);
+        opFieldSplitPane.setResizeWeight(0.1);
+        opFieldSplitPane.setMaximumSize(null);
+        this.opFieldSplitPane.add(animationPanel, JSplitPane.RIGHT);
+        opFieldSplitPane.setLeftComponent(rightControlPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
         );
 
         pack();
@@ -107,7 +110,12 @@ public class FieldUI extends javax.swing.JFrame {
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new FieldUI().setVisible(true);
+                    FieldUI opUI = new FieldUI();
+                    opUI.setVisible(true);
+                    opUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    opUI.setResizable(false);
+                    opUI.opFieldSplitPane.setDividerLocation(100);
+                    opUI.opFieldSplitPane.updateUI();
                 }
             });
         } catch (Throwable e) {
@@ -116,7 +124,8 @@ public class FieldUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSplitPane opFieldSplitPane;
+    javax.swing.JSplitPane opFieldSplitPane;
     private AnimationPanel animationPanel;
+    private org.mars.m2m.demo.ui.RightControlPanel rightControlPanel1;
     // End of variables declaration//GEN-END:variables
 }

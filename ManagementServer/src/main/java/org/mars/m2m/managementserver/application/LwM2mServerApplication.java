@@ -57,6 +57,8 @@ public class LwM2mServerApplication extends Application<Lwm2mServerConfiguration
         
         //healthchecks
         environment.healthChecks().register("Clients Resource healthcheck", new ClientsResourceHealth(lwServer));
+        
+        showUI(lwServer);
     }
     
     public void startLwm2mServer(Lwm2mServerConfiguration config)
@@ -75,6 +77,12 @@ public class LwM2mServerApplication extends Application<Lwm2mServerConfiguration
         this.lwServer.getClientRegistry().addListener(new ClientRegistryListenerImpl(lwServer));
         this.lwServer.getObservationRegistry().addListener(new ObservationListenerImpl());
         this.lwServer.start();
+    }
+    
+    public void showUI(LeshanServer lwm2mServer)
+    {
+        ConfigUI msUI = new ConfigUI(lwServer);
+        msUI.setVisible(true);
     }
     
     /**

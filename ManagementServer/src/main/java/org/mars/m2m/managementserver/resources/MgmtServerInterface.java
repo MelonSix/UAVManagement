@@ -571,7 +571,7 @@ public class MgmtServerInterface {
                 log.info("MS operation time out");
             }
         });
-        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
+        asyncResponse.setTimeout(120, TimeUnit.SECONDS);
         asyncResponse.register(new CompletionCallback() {
             @Override
             public void onComplete(Throwable throwable) {

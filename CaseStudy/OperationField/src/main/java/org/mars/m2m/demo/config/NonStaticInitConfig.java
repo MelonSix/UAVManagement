@@ -8,6 +8,7 @@ package org.mars.m2m.demo.config;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
+import org.mars.m2m.demo.enums.ThreatType;
 import org.mars.m2m.demo.uav.UAVBase;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.ObtacleUtil;
@@ -27,8 +28,8 @@ public class NonStaticInitConfig {
     private int attacker_num; //The number of our attackers
     private int scout_num; //The number of our scouts
     
-    private int bound_width=800;
-    private int bound_height=600;
+    private int bound_width;
+    private int bound_height;
     private int size_of_subteam = OpStaticInitConfig.SIZE_OF_SUBTEAM;
 
     private ArrayList<Obstacle> obstacles;
@@ -47,7 +48,9 @@ public class NonStaticInitConfig {
 
     public static int obstacle_num = 17;
 
-    public NonStaticInitConfig() {
+    public NonStaticInitConfig(int ui_width, int ui_height) {
+        this.bound_height = ui_height;
+        this.bound_width = ui_width;
         if (!OpStaticInitConfig.UI_PARAMETER_CONFIG) {
             this.enemy_num = 0;
             this.threat_num = 10;
@@ -76,11 +79,36 @@ public class NonStaticInitConfig {
                 coordinate_x = random.nextFloat() * (bound_width - 3*threat_range_from_obstacles) + 2*threat_range_from_obstacles;
                 coordinate_y = random.nextFloat() * (bound_height -3*threat_range_from_obstacles) +2*threat_range_from_obstacles;
                 Rectangle threat_mbr=new Rectangle((int)coordinate_x - (Threat.threat_width+threat_range_from_obstacles) / 2, (int) coordinate_y - (Threat.threat_height+threat_range_from_obstacles) / 2, Threat.threat_width+threat_range_from_obstacles, Threat.threat_height+threat_range_from_obstacles);
-                found = !ConflictCheckUtil.checkThreatInObstacles(obstacles, threat_mbr)&&!this.uav_base.getBase_shape().intersects(threat_mbr);
+                found = !ConflictCheckUtil.checkThreatInObstacles(obstacles, threat_mbr)
+                        &&!this.uav_base.getBase_shape().intersects(threat_mbr)
+                        && coordinate_x < bound_width && coordinate_x < bound_height
+                        && coordinate_y < bound_width && coordinate_y < bound_height;
             }
-            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, OpStaticInitConfig.STATIC_THREAT_TYPE, 5);
+            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, 5, getThreatType(i));
             threats.add(threat);
         }
+    }
+    
+    /**
+     * Uses modulo operation to select a threat type from the threat enumeration
+     * @param threatIndex
+     * @return Threat type
+     */
+    private ThreatType getThreatType(int threatIndex)
+    {
+        ThreatType[] types = ThreatType.values();
+        int selectedType = (threatIndex % types.length-1);
+        ThreatType type = null;
+        ThreatType[] values = ThreatType.values();
+        for(int i=0; i<values.length;i++)
+        {
+            if(values[i].getType() == selectedType)
+            {
+                type = values[i];
+                break;
+            }
+        }
+        return type;
     }
     
     public void initThreats1() {
@@ -95,7 +123,7 @@ public class NonStaticInitConfig {
                 coordinate_y = random.nextFloat() * (bound_height - 3 * attacker_patrol_range) + attacker_patrol_range;
                 found = !ConflictCheckUtil.checkPointInObstacles(obstacles, coordinate_x, coordinate_y);
             }
-            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, OpStaticInitConfig.STATIC_THREAT_TYPE, 5);
+            Threat threat = new Threat(i, new float[]{coordinate_x, coordinate_y}, OpStaticInitConfig.STATIC_THREAT_TYPE, getThreatType(i));
             threats.add(threat);
         }
     }

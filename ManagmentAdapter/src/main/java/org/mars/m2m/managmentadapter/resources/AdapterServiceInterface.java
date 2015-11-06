@@ -69,7 +69,7 @@ public class AdapterServiceInterface {
                         .entity("Operation time out.").build());
             }
         });
-        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
+        asyncResponse.setTimeout(120, TimeUnit.SECONDS);
         asyncResponse.register(new CompletionCallback() {
             @Override
             public void onComplete(Throwable throwable) {
