@@ -14,6 +14,7 @@ import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.util.RectangleUtil;
 import org.mars.m2m.demo.model.Target;
 import org.mars.m2m.demo.model.shape.Circle;
+import org.mars.m2m.demo.world.KnowledgeInterface;
 
 /** UAV is the common features for both scouts and attackers.
  *
@@ -29,6 +30,8 @@ public class UAV extends Unit {
     protected int speed = 5;
     protected boolean visible=true;
     protected float remained_energy=2000;
+
+    protected KnowledgeInterface kb;
         
     protected static ArrayList<Integer> occupiedPorts;
     
@@ -134,6 +137,12 @@ public class UAV extends Unit {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
+
+    public KnowledgeInterface getKb() {
+        return kb;
+    }
+    
+    
     
     //<editor-fold defaultstate="collapsed" desc="Gets an ephemeral port number">
     /**

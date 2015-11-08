@@ -97,7 +97,7 @@ public class World {
      *
      */
     public static ArrayList<Attacker> attackers;
-    private ArrayList<Scout> scouts;
+    private static ArrayList<Scout> scouts;
 //    public static ControlCenter control_center;
 
     private int total_path_len = 0;
@@ -269,8 +269,8 @@ public class World {
      *
      */
     private void initUAVs() {
-        this.scouts = new ArrayList<>();
-        World.attackers = new ArrayList<>();
+        scouts = new ArrayList<>();
+        attackers = new ArrayList<>();
         initScoutsAndAttackers();
     }
 
@@ -542,7 +542,8 @@ public class World {
                 float dist_from_attacker_to_threat = 
                         DistanceUtil.distanceBetween(scout.getCenter_coordinates(), threat.getCoordinates());
                 if (threat.isEnabled() && !scout.getKb().containsThreat(threat) 
-                        && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9) 
+                        && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9
+                        && threat.getThreatType().toString().equals(scout.getScoutType().toString())) //detects threats based on capabilities
                 {
                     scout.getKb().addThreat(threat);
                     reconnaissance.addThreat(threat);//TODO: remove this statement
@@ -748,7 +749,8 @@ public class World {
             float[] coordinate = attacker.getCenter_coordinates();
             for (Obstacle obstacle : this.getObstacles()) {
                 if (obstacle.getMbr().contains(coordinate[0], coordinate[1])) {
-                    attacker.setVisible(false);
+                    //attacker.setVisible(false);
+                    attacker.setNeed_to_replan(true);
                     this.num_of_attacker_remained--;
                     Target target = attacker.getTarget_indicated_by_role();
                     if (target != null && target.getIndex() != Target.UAV_BASE_INDEX) {
@@ -866,12 +868,12 @@ public class World {
     public static ArrayList<Attacker> getAttackers() {
         return attackers;
     }
-
+    
     public void setAttackers(ArrayList<Attacker> attackers) {
         this.attackers = attackers;
     }
 
-    public ArrayList<Scout> getScouts() {
+    public static ArrayList<Scout> getScouts() {
         return scouts;
     }
 

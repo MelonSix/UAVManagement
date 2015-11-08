@@ -5,7 +5,6 @@
  */
 package org.mars.m2m.demo.config;
 
-import java.util.ArrayList;
 import javax.swing.Timer;
 import org.mars.m2m.demo.model.Threat;
 
@@ -17,11 +16,11 @@ public class OpStaticInitConfig {
 
     public static boolean SIMULATION_ON = true; //enable simulation
 
-    public static Integer ATTACKER_NUM = 5; //The number of our attackers
+    public static Integer ATTACKER_NUM = 6; //The number of our attackers
     public static Integer SCOUT_NUM = 6; //The number of our attackers
     public static Integer ENEMY_UAV_NUM = 0; //The number of enemy uavs
     public static Integer THREAT_NUM = 40; //The number of enemy threats
-    public static Integer SIZE_OF_SUBTEAM = 2;//determines the number of attackers assigned to one threat
+    public static Integer SIZE_OF_SUBTEAM = 1;//determines the number of attackers assigned to one threat
 
     public static boolean VIEW_OBSTACLE = false; //Determine whether an obstacle is detected
     public static boolean VIEW_THREAT = false; //Determine whether a threat is detected
@@ -94,6 +93,5 @@ public class OpStaticInitConfig {
 
     public static int LOCKED_TIME_STEP_UNTIL_DESTROYED = 20;
     
-    public static ArrayList<Float> alreadyAssignedScoutingTasks = new ArrayList<>();
     
 }

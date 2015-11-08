@@ -7,7 +7,7 @@ package org.mars.m2m.demo.controlcenter.model;
 
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import java.awt.Rectangle;
-import org.mars.m2m.demo.controlcenter.uav.UAVPath;
+import org.mars.m2m.demo.controlcenter.enums.AttackerType;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
 import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
@@ -30,6 +30,7 @@ public class AttackerModel
     private final float [] uavBaseCenterCoordinates;;
     private float [] uavPositionInBaseStation;
     private boolean attackerLocked;
+    private AttackerType attackerType;
 
     public AttackerModel() {
         this.uavBaseCenterCoordinates = new float[]{60, 60};
@@ -105,6 +106,14 @@ public class AttackerModel
 
     public void setRemainedEnergy(float remainedEnergy) {
         this.remainedEnergy = remainedEnergy;
+    }
+
+    public AttackerType getAttackerType() {
+        return attackerType;
+    }
+
+    public void setAttackerType(AttackerType attackerType) {
+        this.attackerType = attackerType;
     }
     
     

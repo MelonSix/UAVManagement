@@ -58,7 +58,6 @@ import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.util.VectorUtil;
 import org.mars.m2m.demo.world.KnowledgeInterface;
 import org.mars.m2m.demo.world.OntologyBasedKnowledge;
-import org.mars.m2m.demo.world.WorldKnowledge;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.util.DeviceHelper;
@@ -93,9 +92,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     private AttackerDeviceClient attackerDeviceClient;
     private final DeviceHelper deviceHelper;
 
-    //variables for conflict planning
-    KnowledgeInterface kb;
-
     private int fly_mode = 0;
     private int hovered_time_step = 0;
     private float[] goal_for_each_iteration;
@@ -119,6 +115,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         this.gson = null;
         this.destroyedThreats = null;
         this.deviceHelper = null;
+        this.kb = null;
     }
 
     /** constructor
@@ -217,7 +214,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                         this.setVisible(false);
                     }
                     this.setNeed_to_replan(true);
-                    logger.debug("not able to plan path for this uav " + this.getIndex());
+                    System.out.println("not able to plan path for this uav " + this.getIndex());
                 }else{
                     stucked_times=0;
                 }
@@ -464,7 +461,10 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
 
     @Override
     public void addThreat(Threat threat) {
-        this.kb.addThreat(threat);
+        synchronized(kb)
+        {
+            this.kb.addThreat(threat);
+        }
     }
 
     private float[] genRandomHoveringGoalV1(float[] threat_location, float hover_radius, ArrayList<Obstacle> obstacles) {
@@ -515,10 +515,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
 
     public KnowledgeInterface getKb() {
         return kb;
-    }
-
-    public void setKb(WorldKnowledge kb) {
-        this.kb = kb;
     }
 
     public int getSpeed() {
@@ -707,10 +703,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         this.attackerDeviceClient = attackerDeviceClient;
     }
 
-    public void setKb(KnowledgeInterface kb) {
-        this.kb = kb;
-    }
-
     public void setGoal_for_each_iteration(float[] goal_for_each_iteration) {
         this.goal_for_each_iteration = goal_for_each_iteration;
     }
@@ -791,15 +783,18 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                     {
                         if(!getDestroyedThreats().contains(threat) && getFly_mode()!= Attacker.TARGET_LOCKED_MODE)
                         {
-                            setTarget_indicated_by_role(threat);
-                            setNeed_to_replan(true);
-                            setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
-                            setFly_mode(Attacker.FLYING_MODE);
+                            if (threat.getThreatType().toString().equals(getAttackerType().toString())) 
+                            {
+                                setTarget_indicated_by_role(threat);
+                                setNeed_to_replan(true);
+                                setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                                setFly_mode(Attacker.FLYING_MODE);
+                            }
                         }
                     }
                 }
             }
-        }, 5000, 5000);
+        }, 5000, 500);
     }
     
     /**

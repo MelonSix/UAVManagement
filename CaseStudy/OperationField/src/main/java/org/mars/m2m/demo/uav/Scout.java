@@ -65,6 +65,7 @@ public final class Scout extends UAV
     private int direction = 1;
     //private Reconnaissance reconnaissance;
     private int conflict_avoid = 1;
+    private int waypointPointer = 0;
 
     public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, float remained_energy, ScoutType scoutType) 
     {
@@ -187,11 +188,16 @@ public final class Scout extends UAV
      * @return 
      */
     public boolean moveToNextWaypoint() {
-        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0) {
-            current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
-        } else if(current_y_coordinate_task == null && move_at_y_coordinate_task.size()==0){
-            this.setVisible(false);
-            return false;
+        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0 
+                && waypointPointer != (move_at_y_coordinate_task.size()-1)) {
+            current_y_coordinate_task = move_at_y_coordinate_task.get(waypointPointer);
+            waypointPointer++;
+        } else if(current_y_coordinate_task == null){
+//            this.setVisible(false);
+            int randomIndex = (int)((OpStaticInitConfig.SCOUT_NUM-1) + Math.random());
+            move_at_y_coordinate_task = World.getScouts().get(randomIndex).getMove_at_y_coordinate_task();
+            waypointPointer = 0;
+            return true;
         }
         float[] next_waypoint = new float[2];
         float[] goal_waypoint = new float[2];

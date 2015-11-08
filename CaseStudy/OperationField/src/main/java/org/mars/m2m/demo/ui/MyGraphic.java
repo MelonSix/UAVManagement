@@ -47,8 +47,8 @@ public class MyGraphic {
     }
 
     public void showObstacleInFogOfWar(Graphics2D graphics, Obstacle obs) {
-        graphics.setComposite(AlphaComposite.Clear);
-        graphics.fill(obs.getMbr());
+//        graphics.setComposite(AlphaComposite.Clear);
+//        graphics.fill(obs.getMbr());
     }
 
     public void showThreatInFogOfWar(Graphics2D graphics, Threat threat) {
@@ -96,7 +96,7 @@ public class MyGraphic {
         }
 
         if (uav_highlight_color != null) {
-            graphics.setColor(uav_highlight_color);
+            graphics.setColor(Color.WHITE);
             graphics.draw(uav_radar_outter);
         }
     }
@@ -293,22 +293,22 @@ public class MyGraphic {
         switch(scout.getScoutType())
         {
             case TYPE0:
-                graphics.setColor(Color.GREEN);
-                break;
-            case TYPE1:
-                graphics.setColor(Color.CYAN);
-                break;
-            case TYPE2:
-                graphics.setColor(Color.MAGENTA);
-                break;
-            case TYPE3:
-                graphics.setColor(Color.WHITE);
-                break;
-            case TYPE4:
                 graphics.setColor(Color.RED);
                 break;
+            case TYPE1:
+                graphics.setColor(Color.PINK);
+                break;
+            case TYPE2:
+                graphics.setColor(Color.GREEN);
+                break;
+            case TYPE3:
+                graphics.setColor(Color.YELLOW);
+                break;
+            case TYPE4:
+                graphics.setColor(Color.ORANGE);
+                break;
             case TYPE5:
-                graphics.setColor(Color.DARK_GRAY);
+                graphics.setColor(Color.GRAY);
                 break;
             default:
                 graphics.setColor(scout.getCenter_color());
@@ -321,22 +321,22 @@ public class MyGraphic {
         switch(attacker.getAttackerType())
         {
             case TYPE0:
-                graphics.setColor(Color.GREEN);
-                break;
-            case TYPE1:
-                graphics.setColor(Color.CYAN);
-                break;
-            case TYPE2:
-                graphics.setColor(Color.MAGENTA);
-                break;
-            case TYPE3:
-                graphics.setColor(Color.WHITE);
-                break;
-            case TYPE4:
                 graphics.setColor(Color.RED);
                 break;
+            case TYPE1:
+                graphics.setColor(Color.PINK);
+                break;
+            case TYPE2:
+                graphics.setColor(Color.GREEN);
+                break;
+            case TYPE3:
+                graphics.setColor(Color.YELLOW);
+                break;
+            case TYPE4:
+                graphics.setColor(Color.ORANGE);
+                break;
             case TYPE5:
-                graphics.setColor(Color.DARK_GRAY);
+                graphics.setColor(Color.GRAY);
                 break;
             default:
                 graphics.setColor(attacker.getCenter_color());

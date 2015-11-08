@@ -13,6 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.Response;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
+import org.mars.m2m.demo.controlcenter.enums.AttackerType;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.Message;
@@ -25,7 +26,6 @@ import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectInstance;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectResourceUpdate;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.Resource;
 import org.mars.m2m.demo.controlcenter.services.MessageHistory;
-import org.mars.m2m.demo.controlcenter.uav.UAVPath;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceDataType;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
@@ -104,52 +104,55 @@ public class AttackerUtils
     {
         AttackerModel attacker = new AttackerModel();
         ObjectInstance objectInstance = gson.fromJson(instanceDataStr, ObjectInstance.class);
-        Content objectInstanceContent = objectInstance.getContent();
-        ArrayList<Resource> resources = objectInstanceContent.getResources();
-        for(Resource resource : resources)
+        if (!objectInstance.getStatus().contains("NO CONTENT")) 
         {
-            try 
-            {
-                switch(resource.getId()) 
-                {
-                    case 0:
-                        Double flightModeVal = (double)resource.getValue();
-                        if (!flightModeVal.isNaN()) {
-                            attacker.setFlightMode(flightModeVal.intValue());
-                        }
-                        break;
-                    case 1:
-                        Double indexVal = (double) resource.getValue();
-                        if (!indexVal.isNaN()) {
-                            attacker.setIndex(indexVal.intValue());
-                        }
-                        break;    
-                    case 2:
-                        attacker.setTarget_indicated_by_role(gson.fromJson(resource.getValue().toString(), Target.class));
-                        break;                     
-                    case 3:
-                        attacker.setOnline((boolean) resource.getValue());
-                        break;
-                    case 4:
-                        attacker.setCenterCoordinates(gson.fromJson(resource.getValue().toString(), float[].class));
-                        break; 
-                    case 5: 
-                        attacker.setUavPositionInBaseStation(gson.fromJson(resource.getValue().toString(), float[].class));
-                        break; 
-                    case 9:
-                        attacker.setAttackerLocked((boolean)resource.getValue());
-                        break;                         
-                    case 12:
-                        Double energyVal = (double)resource.getValue();
-                        if (!energyVal.isNaN()) {
-                            attacker.setRemainedEnergy(energyVal.floatValue());
-                        }
-                        break;
-                    default:
+            Content objectInstanceContent = objectInstance.getContent();
+            ArrayList<Resource> resources = objectInstanceContent.getResources();
+            for (Resource resource : resources) {
+                try {
+                    switch (resource.getId()) {
+                        case 0:
+                            Double flightModeVal = (double) resource.getValue();
+                            if (!flightModeVal.isNaN()) {
+                                attacker.setFlightMode(flightModeVal.intValue());
+                            }
+                            break;
+                        case 1:
+                            Double indexVal = (double) resource.getValue();
+                            if (!indexVal.isNaN()) {
+                                attacker.setIndex(indexVal.intValue());
+                            }
+                            break;                        
+                        case 2:
+                            attacker.setTarget_indicated_by_role(gson.fromJson(resource.getValue().toString(), Target.class));
+                            break;                        
+                        case 3:
+                            attacker.setOnline((boolean) resource.getValue());
+                            break;
+                        case 4:
+                            attacker.setCenterCoordinates(gson.fromJson(resource.getValue().toString(), float[].class));
+                            break;                        
+                        case 5:                            
+                            attacker.setUavPositionInBaseStation(gson.fromJson(resource.getValue().toString(), float[].class));
+                            break;                        
+                        case 9:
+                            attacker.setAttackerLocked((boolean) resource.getValue());
+                            break;                        
+                        case 12:
+                            Double energyVal = (double) resource.getValue();
+                            if (!energyVal.isNaN()) {
+                                attacker.setRemainedEnergy(energyVal.floatValue());
+                            }
+                            break;                        
+                        case 13:
+                            attacker.setAttackerType(AttackerType.valueOf(resource.getValue().toString()));
+                            break;
+                        default:
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    logger.error(e.getMessage());
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                logger.error(e.getMessage());
             }
         }
         return attacker;
@@ -351,15 +354,20 @@ public class AttackerUtils
         {
             if (!isMessageInMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats())) {
                 int resourceID = 8;
-                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID,
-                        new ObjectResourceUpdate(resourceID, gson.toJson(threat), ResourceDataType.STRING.toString()), 
-                        new AsyncServiceCallback<Response>() {
-
-                    @Override
-                    public void asyncServicePerformed(Response r) {
-                        addToMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
-                    }
-                });
+                
+                //checks if this attacker has the capability of destroying this threat before it sends to it
+                if (threat.getThreatType().toString().equals(attacker.getAttackerType().toString())) 
+                {
+                    AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID,
+                            new ObjectResourceUpdate(resourceID, gson.toJson(threat), ResourceDataType.STRING.toString()),
+                            new AsyncServiceCallback<Response>() {
+                                
+                                @Override
+                                public void asyncServicePerformed(Response r) {
+                                    addToMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
+                                }
+                            });
+                }
             }
         }
 

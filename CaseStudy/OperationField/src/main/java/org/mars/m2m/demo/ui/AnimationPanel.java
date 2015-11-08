@@ -320,12 +320,15 @@ public class AnimationPanel extends JPanel implements MouseListener
      */
     private void updateUAVImage() {
         for (Scout scout : this.scouts) {
+            if (scout.getIndex() == this.highlight_uav_index) {
+                virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, GraphicConfig.highlight_uav_color);
+            } else
             virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, null);
         }
         for (Attacker attacker : this.attackers) {
             if (attacker.getIndex() == this.highlight_uav_index) {
                 virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, attacker, GraphicConfig.highlight_uav_color);
-            }
+            } else
             virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, attacker, null);
 
         }
@@ -420,7 +423,7 @@ public class AnimationPanel extends JPanel implements MouseListener
     @Override
     public void mouseClicked(MouseEvent e) {
         OpStaticInitConfig.SIMULATION_ON = true;
-        int chosen_attacker_index = findChosenAttacker(e.getPoint());
+        int chosen_attacker_index = findChosenUAV(e.getPoint());
         AnimationPanel.setHighlightUAV(chosen_attacker_index);
     }
 
@@ -429,13 +432,16 @@ public class AnimationPanel extends JPanel implements MouseListener
      * @param mouse_point
      * @return 
      */
-    private int findChosenAttacker(Point mouse_point) {
+    private int findChosenUAV(Point mouse_point) {
         float[] mouse_point_coord = new float[]{(float) mouse_point.getX(), (float) mouse_point.getY()};
-        for (Attacker attacker : attackers) {
-            float[] center_coord = attacker.getCenter_coordinates();
+        ArrayList<UAV> uavs = new ArrayList<>();
+        uavs.addAll(attackers);
+        uavs.addAll(scouts);
+        for (UAV uav : uavs) {
+            float[] center_coord = uav.getCenter_coordinates();
             float dist = DistanceUtil.distanceBetween(center_coord, mouse_point_coord);
-            if (dist < attacker.getUav_radar().getRadius()) {
-                return attacker.getIndex();
+            if (dist < uav.getUav_radar().getRadius()) {
+                return uav.getIndex();
             }
         }
         return -1;
@@ -449,7 +455,7 @@ public class AnimationPanel extends JPanel implements MouseListener
     public void mousePressed(MouseEvent e) {
         OpStaticInitConfig.SIMULATION_ON = false;
         if (e.getButton() == MouseEvent.BUTTON3) {
-            int chosen_attacker_index = findChosenAttacker(e.getPoint());
+            int chosen_attacker_index = findChosenUAV(e.getPoint());
             if (chosen_attacker_index == -1) {
                 return;
             }
@@ -478,14 +484,18 @@ public class AnimationPanel extends JPanel implements MouseListener
      * @param uav_index 
      */
     public static void setHighlightUAV(int uav_index) {
+        ArrayList<UAV> uavs = new ArrayList<>();
+        uavs.addAll(World.getAttackers());
+        uavs.addAll(World.getScouts());
         AnimationPanel.highlight_uav_index = uav_index;
-        Attacker highlight_uav = null;
-        for (Attacker attacker : World.attackers) {
-            if (attacker.getIndex() == uav_index) {
-                highlight_uav = attacker;
+        UAV highlight_uav = null;
+        for (UAV uav : uavs) {
+            if (uav.getIndex() == uav_index) {
+                highlight_uav = uav;
             }
         }
-        if (highlight_uav != null) {
+        if (highlight_uav != null) 
+        {
             RightControlPanel.setWorldKnowledge(highlight_uav.getKb());
         }
     }
