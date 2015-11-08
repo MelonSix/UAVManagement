@@ -43,6 +43,7 @@ import org.mars.m2m.demo.algorithm.RRT.RRTAlg;
 import org.mars.m2m.demo.algorithm.RRT.RRTTree;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
+import org.mars.m2m.demo.enums.AttackerType;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.model.Message;
@@ -104,6 +105,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     private RRTAlg rrt_alg;
     private RRTTree rrt_tree;
     private static Logger logger = (Logger) LoggerFactory.getLogger(Attacker.class);
+    AttackerType attackerType;
 
     public static int FLYING_MODE = 0;
     public static int TARGET_LOCKED_MODE = 1;
@@ -129,7 +131,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
      * @param remained_energy
      */
     public Attacker(int index, Target target, int uav_type, float[] center_coordinates,
-                                        ArrayList<Obstacle> obstacles, float remained_energy)
+                                        ArrayList<Obstacle> obstacles, float remained_energy, AttackerType attackerType)
     {
         super(index, target, uav_type, center_coordinates, remained_energy);
         this.attackerDevice = new UavAttackerDevice(this);
@@ -137,6 +139,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         this.destroyedThreats = new ArrayList<>();
         this.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
+        this.attackerType = attackerType;
         
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], OpStaticInitConfig.attacker_radar_radius);
         this.path_planned_at_current_time_step = new UAVPath();
@@ -608,6 +611,10 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         return current_index_of_planned_path;
     }
 
+    public AttackerType getAttackerType() {
+        return attackerType;
+    }
+    
     public boolean isNeed_to_replan() {
         return need_to_replan;
     }

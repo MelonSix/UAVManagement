@@ -3,28 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mars.m2m.demo.controlcenter.enums;
+package org.mars.m2m.demo.enums;
 
 /**
  * Attacker UAV types
  * @author AG BRIGHTER
  */
 public enum AttackerType {
-    TYPE1("type1"),
-    TYPE2("type2"),
-    TYPE3("type3"),
-    TYPE4("type4"),
-    TYPE5("type5"),
-    TYPE6("type6");
+    TYPE0(0),
+    TYPE1(1),
+    TYPE2(2),
+    TYPE3(3),
+    TYPE4(4),
+    TYPE5(5);
     
-    final String name;
+    private int type;
 
-    private AttackerType(String name) {
-        this.name = name;
+    private AttackerType(int type) {
+        this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return this.name;
+    public int getType() {
+        return type;
     }
 }

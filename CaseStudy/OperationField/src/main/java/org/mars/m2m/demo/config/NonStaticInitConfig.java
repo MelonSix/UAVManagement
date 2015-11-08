@@ -96,8 +96,7 @@ public class NonStaticInitConfig {
      */
     private ThreatType getThreatType(int threatIndex)
     {
-        ThreatType[] types = ThreatType.values();
-        int selectedType = (threatIndex % types.length-1);
+        int selectedType = (threatIndex % (ThreatType.values().length-1));
         ThreatType type = null;
         ThreatType[] values = ThreatType.values();
         for(int i=0; i<values.length;i++)

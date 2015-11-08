@@ -17,6 +17,7 @@ import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.demo.LwM2mClients.FlightControlClient;
 import org.mars.m2m.demo.LwM2mClients.ObstacleSensorClient;
 import org.mars.m2m.demo.LwM2mClients.ThreatSensorClient;
+import org.mars.m2m.demo.enums.ScoutType;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.VectorUtil;
 import org.mars.m2m.demo.model.Obstacle;
@@ -55,6 +56,7 @@ public final class Scout extends UAV
     private FlightControlClient flightControlClient;
     private final DeviceHelper deviceHelper;
     private KnowledgeInterface kb;
+    ScoutType scoutType;
     
     /*Class variables */
     private float[] base_coordinate;
@@ -64,12 +66,13 @@ public final class Scout extends UAV
     //private Reconnaissance reconnaissance;
     private int conflict_avoid = 1;
 
-    public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, float remained_energy) 
+    public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, float remained_energy, ScoutType scoutType) 
     {
         super(index, null, uav_type, center_coordinates,remained_energy);
         this.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
         this.kb = new OntologyBasedKnowledge();
+        this.scoutType = scoutType;
         
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], OpStaticInitConfig.scout_radar_radius);
         this.base_coordinate = base_coordinate;
@@ -300,6 +303,10 @@ public final class Scout extends UAV
 
     public ObstacleSensorClient getObstacleSensorClient() {
         return obstacleSensorClient;
+    }
+
+    public ScoutType getScoutType() {
+        return scoutType;
     }
     
     

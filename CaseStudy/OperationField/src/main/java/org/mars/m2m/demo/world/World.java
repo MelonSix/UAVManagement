@@ -37,6 +37,8 @@ import java.util.TimerTask;
 import java.util.TreeSet;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
+import org.mars.m2m.demo.enums.AttackerType;
+import org.mars.m2m.demo.enums.ScoutType;
 import org.mars.m2m.demo.enums.ThreatType;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedObstacleListenerImpl;
 import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedThreatListenerImpl;
@@ -202,6 +204,46 @@ public class World {
             this.attacker_num = 3;
         }
     }
+    
+    /**
+     * Uses modulo operation to select a scout or attacker type
+     * @param uavIndex
+     * @return Scout type
+     */
+    private ScoutType getScoutType(int uavIndex)
+    {
+        int selectedType = (uavIndex % ScoutType.values().length);
+        ScoutType type = null;
+        ScoutType[] values = ScoutType.values();
+        for (ScoutType value : values) 
+        {
+            if (value.getType() == selectedType) {
+                type = value;
+                break;
+            }
+        }
+        return type;
+    }
+    
+    /**
+     * Uses modulo operation to select an attacker type
+     * @param uavIndex
+     * @return Attacker type
+     */
+    private AttackerType getAttackerType(int uavIndex)
+    {
+        int selectedType = (uavIndex % AttackerType.values().length);
+        AttackerType type = null;
+        AttackerType[] values = AttackerType.values();
+        for (AttackerType value : values) 
+        {
+            if (value.getType() == selectedType) {
+                type = value;
+                break;
+            }
+        }
+        return type;
+    }
 
     /**initialize the scouts and attackers, which is called by World init functions.
      * 
@@ -213,12 +255,12 @@ public class World {
         uav_base_center[1] = uav_base_coordinate[1]; //+ uav_base_height / 2;
         for (int i = 1; i <= attacker_num; i++) {
             float[] uav_init_coord = uav_base.assignUAVLocation(i);
-            Attacker attacker = new Attacker(i, null, OpStaticInitConfig.ATTACKER, uav_init_coord, null, Float.MAX_VALUE);
+            Attacker attacker = new Attacker(i, null, OpStaticInitConfig.ATTACKER, uav_init_coord, null, Float.MAX_VALUE, getAttackerType(i));
             attackers.add(attacker);
         }
 
         for (int i = 1; i <= scout_num; i++) {
-            Scout scout = new Scout(i, OpStaticInitConfig.SCOUT, uav_base_center, uav_base_center, Float.MAX_VALUE);
+            Scout scout = new Scout(i, OpStaticInitConfig.SCOUT, uav_base_center, uav_base_center, Float.MAX_VALUE, getScoutType(i));
             scouts.add(scout);
         }
     }

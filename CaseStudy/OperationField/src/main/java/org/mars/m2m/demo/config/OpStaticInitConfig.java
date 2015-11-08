@@ -27,9 +27,9 @@ public class OpStaticInitConfig {
     public static boolean VIEW_THREAT = false; //Determine whether a threat is detected
     public static boolean VIEW_ENEMY_UAV = false; //Determine whether an enemy uav is detected
 
-    public static String VIEW_OBSTACLE_ACTION_COMMAND = "显示障碍";
-    public static String VIEW_THREAT_ACTION_COMMAND = "显示威胁";
-    public static String VIEW_ENEMY_UAV_ACTION_COMMAND = "显示敌方UAV";
+    public static String VIEW_OBSTACLE_ACTION_COMMAND = "Display obstacles";
+    public static String VIEW_THREAT_ACTION_COMMAND = "Display threat";
+    public static String VIEW_ENEMY_UAV_ACTION_COMMAND = "Display enemy UAV";
 
     public static Integer MIN_SPINNER_VALUE = 0; //range of spinner,0-100
     public static Integer MAX_SPINNER_VALUE = 100;

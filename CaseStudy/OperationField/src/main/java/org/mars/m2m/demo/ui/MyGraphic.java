@@ -20,6 +20,7 @@ import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.model.shape.Circle;
 import org.mars.m2m.demo.uav.Attacker;
+import org.mars.m2m.demo.uav.Scout;
 import org.mars.m2m.demo.uav.UAV;
 import org.mars.m2m.demo.uav.UAVBase;
 import org.mars.m2m.demo.uav.UAVPath;
@@ -78,8 +79,21 @@ public class MyGraphic {
             graphics.setColor(uav_radar_color_inner);
             graphics.fill(uav_radar_inner);
         }
-        graphics.setColor(uav.getCenter_color());
-        graphics.fillPolygon(uav.getUav_center());
+        
+        if(uav instanceof Scout)
+        {            
+            setScoutColor(graphics, (Scout)uav);
+            graphics.fillPolygon(uav.getUav_center());
+        }
+        else if(uav instanceof Attacker)
+        {            
+            setAttackerColor(graphics, (Attacker)uav);
+            graphics.fillPolygon(uav.getUav_center());
+        }else
+        {
+            graphics.setColor(uav.getCenter_color());
+            graphics.fillPolygon(uav.getUav_center());
+        }
 
         if (uav_highlight_color != null) {
             graphics.setColor(uav_highlight_color);
@@ -270,6 +284,62 @@ public class MyGraphic {
                 break;
             default:
                 graphics.setColor(Color.BLUE);
+                break;
+        }
+    }
+    
+    private void setScoutColor(Graphics2D graphics, Scout scout)
+    {
+        switch(scout.getScoutType())
+        {
+            case TYPE0:
+                graphics.setColor(Color.GREEN);
+                break;
+            case TYPE1:
+                graphics.setColor(Color.CYAN);
+                break;
+            case TYPE2:
+                graphics.setColor(Color.MAGENTA);
+                break;
+            case TYPE3:
+                graphics.setColor(Color.WHITE);
+                break;
+            case TYPE4:
+                graphics.setColor(Color.RED);
+                break;
+            case TYPE5:
+                graphics.setColor(Color.DARK_GRAY);
+                break;
+            default:
+                graphics.setColor(scout.getCenter_color());
+                break;
+        }
+    }
+        
+    private void setAttackerColor(Graphics2D graphics, Attacker attacker)
+    {
+        switch(attacker.getAttackerType())
+        {
+            case TYPE0:
+                graphics.setColor(Color.GREEN);
+                break;
+            case TYPE1:
+                graphics.setColor(Color.CYAN);
+                break;
+            case TYPE2:
+                graphics.setColor(Color.MAGENTA);
+                break;
+            case TYPE3:
+                graphics.setColor(Color.WHITE);
+                break;
+            case TYPE4:
+                graphics.setColor(Color.RED);
+                break;
+            case TYPE5:
+                graphics.setColor(Color.DARK_GRAY);
+                break;
+            default:
+                graphics.setColor(attacker.getCenter_color());
                 break;
         }
     }
