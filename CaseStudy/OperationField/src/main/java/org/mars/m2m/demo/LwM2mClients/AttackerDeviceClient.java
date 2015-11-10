@@ -16,7 +16,6 @@ import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.util.Validate;
-import org.mars.m2m.demo.uav.Attacker;
 import org.mars.m2m.demo.uav.UavAttackerDevice;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;

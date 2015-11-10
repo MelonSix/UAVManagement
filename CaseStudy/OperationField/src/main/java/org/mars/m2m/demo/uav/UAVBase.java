@@ -41,28 +41,26 @@ public class UAVBase {
     /** It initiate the places for all attackers.
      * 
      */
-    public void initUAVPort() {
-        uav_port_map = new HashMap<Integer, float[]>();
-
-        int total_uav_port_num = 0;
-        for (int loop_index = 1; loop_index <= 3; loop_index++) {
-            int current_loop_num = (int) Math.floor(Math.PI * 2 * loop_index);
-            double delta_theta = Math.PI * 2 / current_loop_num;
-            int port_radius = OpStaticInitConfig.attacker_radar_radius * loop_index;
+    public final void initUAVPort() {
+        uav_port_map = new HashMap<>();
+            int port_radius = 0;
             double theta = 0;
-            for (int uav_index = total_uav_port_num; uav_index < total_uav_port_num + current_loop_num; uav_index++) {
+            for (int uav_index = 1; uav_index <= OpStaticInitConfig.ATTACKER_NUM; uav_index++)
+            {
+                double delta_theta = Math.PI * 2 / uav_index;
                 float[] coord = new float[2];
-                coord[0] = this.coordinate[0] + (float) (port_radius * Math.cos(theta));
-                coord[1] = this.coordinate[1] + (float) (port_radius * Math.sin(theta));
+                int ran_port_radius = (int)(1+(int)(Math.random()*49));
+                coord[0] = this.coordinate[0] + (float) ( ran_port_radius * Math.cos(theta));
+                coord[1] = this.coordinate[1] + (float) ( ran_port_radius * Math.sin(theta));
+//                coord[0] = this.coordinate[0] + (float) (port_radius * Math.cos(theta));
+//                coord[1] = this.coordinate[1] + (float) (port_radius * Math.sin(theta));
                 uav_port_map.put(uav_index, coord);
                 theta += delta_theta;
             }
-            total_uav_port_num += current_loop_num;
-        }
     }
 
     public float[] assignUAVLocation(int attacker_index) {
-        return uav_port_map.get(attacker_index);
+            return uav_port_map.get(attacker_index);
     }
 
     public float[] getCoordinate() {

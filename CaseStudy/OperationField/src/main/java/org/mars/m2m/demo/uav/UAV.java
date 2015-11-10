@@ -9,6 +9,7 @@ import org.mars.m2m.demo.config.GraphicConfig;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.util.VectorUtil;
 import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.util.RectangleUtil;
@@ -110,6 +111,7 @@ public class UAV extends Unit {
     }
 
     public void initColor(int uav_index) {
+        uav_index = uav_index % OpStaticInitConfig.ATTACKER_NUM;
         center_color = GraphicConfig.uav_colors.get(uav_index);
         radar_color = new Color(center_color.getRed(), center_color.getGreen(), center_color.getBlue(), 128);
     }

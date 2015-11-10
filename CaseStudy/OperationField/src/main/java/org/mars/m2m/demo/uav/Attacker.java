@@ -183,7 +183,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
             
             
             if (this.target_indicated_by_role.getIndex() == Threat.UAV_BASE_INDEX) {
-                logger.debug("find path for retunning uav");
+                logger.debug("find path for returning uav");
             } else {
                 logger.debug("find path for busy uav");
             }

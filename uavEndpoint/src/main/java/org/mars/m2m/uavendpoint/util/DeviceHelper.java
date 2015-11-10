@@ -8,6 +8,8 @@ package org.mars.m2m.uavendpoint.util;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -28,7 +30,12 @@ import org.mars.m2m.uavendpoint.omaObjects.OmaLwM2mServer;
  *
  * @author AG BRIGHTER
  */
-public class DeviceHelper {
+public class DeviceHelper 
+{
+    /**
+     * Caches already loaded models for faster processing
+     */
+    private static Map<String, LwM2mModel> lwm2mModelCache = new HashMap<>();
     
     /**
      * Stops a device already started
@@ -53,7 +60,14 @@ public class DeviceHelper {
     public static synchronized LwM2mModel getObjectModel(String objectModelStr) 
     {
         LwM2mModel customModel;        
-        customModel = LwM2mModelLoader.loadCustomObjectModel(objectModelStr);
+        if (!lwm2mModelCache.containsKey(objectModelStr)) {
+            customModel = LwM2mModelLoader.loadCustomObjectModel(objectModelStr);
+            if (customModel != null) {
+                lwm2mModelCache.put(objectModelStr, customModel);
+            }
+        }
+        else
+            return lwm2mModelCache.get(objectModelStr);
         return customModel;
     }  
         

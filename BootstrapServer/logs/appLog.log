@@ -1,75 +1,25 @@
-INFO   [09:59:27.423] [main] o.e.j.u.log -  Logging initialized @1438ms 
-INFO   [09:59:27.555] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [09:59:27.595] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [09:59:27.595] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [09:59:27.622] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [09:59:27.622] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [09:59:27.646] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [09:59:27.655] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [09:59:27.672] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [09:59:27.713] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@6c6357f9{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [09:59:27.716] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [09:59:28.272] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [16:22:27.548] [main] o.e.j.u.log -  Logging initialized @3155ms 
+INFO   [16:22:27.785] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [16:22:27.986] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [16:22:27.986] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [16:22:28.040] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [16:22:28.041] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [16:22:28.116] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [16:22:28.125] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [16:22:28.142] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [16:22:28.374] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@6c6357f9{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [16:22:28.380] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:22:29.063] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
     GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
  
-INFO   [09:59:28.274] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@35636217{/bs,null,AVAILABLE} 
-INFO   [09:59:28.280] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [16:22:29.067] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@35636217{/bs,null,AVAILABLE} 
+INFO   [16:22:29.075] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [09:59:28.286] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@64c4c01{/admin-bs,null,AVAILABLE} 
-INFO   [09:59:28.359] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@6c6357f9{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [09:59:28.359] [main] o.e.j.s.Server -  Started @2376ms 
-INFO   [11:50:03.062] [main] o.e.j.u.log -  Logging initialized @1519ms 
-INFO   [11:50:03.166] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [11:50:03.204] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [11:50:03.204] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [11:50:03.210] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [11:50:03.211] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [11:50:03.217] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [11:50:03.227] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [11:50:03.248] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [11:50:03.329] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [11:50:03.333] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [11:50:04.745] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
-    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
- 
-INFO   [11:50:04.748] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
-INFO   [11:50:04.755] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [11:50:04.762] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
-INFO   [11:50:04.819] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [11:50:04.820] [main] o.e.j.s.Server -  Started @3279ms 
-INFO   [15:46:19.129] [main] o.e.j.u.log -  Logging initialized @2909ms 
-INFO   [15:46:19.433] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [15:46:19.618] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [15:46:19.618] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
-INFO   [15:46:19.639] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
-INFO   [15:46:19.639] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
-INFO   [15:46:19.719] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
-INFO   [15:46:19.736] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
-INFO   [15:46:19.763] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
-INFO   [15:46:19.845] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:46:19.848] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [15:46:20.579] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
-
-    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
-    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
- 
-INFO   [15:46:20.581] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
-INFO   [15:46:20.594] [main] i.d.s.AdminEnvironment -  tasks = 
-
-    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
-    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
- 
-INFO   [15:46:20.599] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
-INFO   [15:46:20.707] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
-INFO   [15:46:20.707] [main] o.e.j.s.Server -  Started @4492ms 
+INFO   [16:22:29.082] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@64c4c01{/admin-bs,null,AVAILABLE} 
+INFO   [16:22:29.182] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@6c6357f9{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [16:22:29.182] [main] o.e.j.s.Server -  Started @4792ms 

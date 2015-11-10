@@ -7,7 +7,6 @@ package org.mars.m2m.uavendpoint.util;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.eclipse.leshan.client.californium.LeshanClient;
 import org.eclipse.leshan.client.californium.LeshanClientExt;
 import org.eclipse.leshan.server.bootstrap.BootstrapConfig;
 import org.mars.m2m.uavendpoint.Model.RegisteredClientDataList;
@@ -92,7 +91,7 @@ public abstract class AbstractDevice {
     /**
      * Keeps all successful registrations to different LWM2M servers of the client
      */
-    protected RegisteredClientDataList registeredClientDataList;
+    protected RegisteredClientDataList registeredClientDataList = new RegisteredClientDataList();
     
     /**
      *Implemented to start a device
