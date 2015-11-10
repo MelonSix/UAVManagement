@@ -6,7 +6,6 @@
 package org.mars.m2m.Devices;
 
 import ch.qos.logback.classic.Logger;
-import java.util.Arrays;
 import java.util.LinkedList;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;

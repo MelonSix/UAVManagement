@@ -122,7 +122,6 @@ public class BootstrapedRegistrationHandler
             
         }catch(NullPointerException nulEx)
         {
-            nulEx.printStackTrace();
             LOG.error("Error Loading bootstrap information. Registration failed");
         }
         catch (Exception e) {

@@ -8,7 +8,6 @@ package org.mars.m2m.demo.ui;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
-import org.mars.m2m.demo.uav.Scout;
 
 /**
  *
@@ -22,29 +21,32 @@ public class FieldUI extends javax.swing.JFrame {
     public FieldUI() {
         this.animationPanel = new AnimationPanel();
         initComponents();
-        this.animationPanel.initComponents();
         //starts animation depending on scout(s) status
         boolean wait_for_scouts = true;
         boolean are_scouts_ready = false;
         if(animationPanel.getWorld() == null) System.out.println("null");
-        do
-        {
-            if(this.animationPanel.getWorld().getScouts() != null) 
-            {
-                for (Scout scout : this.animationPanel.getWorld().getScouts()) {
-                    if (scout.getMove_at_y_coordinate_task().size() > 0) {
-                        are_scouts_ready = true;
-                    } else {
-                        are_scouts_ready = false;
-                    }
-                }
-                if (are_scouts_ready) {
-                    //begins animation after initialization procedures and scout waypoints are available
-                    wait_for_scouts = false;
-                    this.animationPanel.start();
-                }
-            }
-        }while(wait_for_scouts);
+        this.animationPanel.start();
+//        synchronized(animationPanel)
+//        {
+//            do
+//            {
+//                if(this.animationPanel.getScouts() != null) 
+//                {
+//                    for (Scout scout : this.animationPanel.getScouts()) {
+//                        if (scout.getMove_at_y_coordinate_task().size() > 0) {
+//                            are_scouts_ready = true;
+//                        } else {
+//                            are_scouts_ready = false;
+//                        }
+//                    }
+//                    if (are_scouts_ready) {
+//                        //begins animation after initialization procedures and scout waypoints are available
+//                        wait_for_scouts = false;
+//                        
+//                    }
+//                }
+//            }while(wait_for_scouts);
+//        }
     }
 
     /**

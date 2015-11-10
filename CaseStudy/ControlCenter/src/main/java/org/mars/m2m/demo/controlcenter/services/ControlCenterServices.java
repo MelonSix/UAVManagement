@@ -87,6 +87,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         int scout_num = HandleTree.scoutsNode.getChildCount();
         
         int index = CC_StaticInitConfig.currentScoutIndex.getAndIncrement();
+        System.out.println("currentScoutIndex: "+index);
 
         float average_region_height = CC_StaticInitConfig.bound_height * 1.0f / scout_num;
         int task_num = (int) Math.ceil(average_region_height / (CC_StaticInitConfig.scout_radar_radius * 2));

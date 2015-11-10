@@ -12,16 +12,32 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
+import javax.swing.SwingUtilities;
 import org.eclipse.leshan.core.model.LwM2mModel;
+import org.mars.m2m.demo.Devices.FlightControl;
+import org.mars.m2m.demo.Devices.ObstacleSensor;
+import org.mars.m2m.demo.Devices.ThreatSensor;
 import org.mars.m2m.demo.LwM2mClients.FlightControlClient;
 import org.mars.m2m.demo.LwM2mClients.ObstacleSensorClient;
 import org.mars.m2m.demo.LwM2mClients.ThreatSensorClient;
 import org.mars.m2m.demo.enums.ScoutType;
+import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedObstacleListenerImpl;
+import org.mars.m2m.demo.eventHandling.ListernerImpl.DetectedThreatListenerImpl;
+import org.mars.m2m.demo.eventHandling.Listerners.DetectedObstacleListener;
+import org.mars.m2m.demo.eventHandling.Listerners.DetectedThreatListener;
+import org.mars.m2m.demo.eventHandling.callerImpl.UpdateSensorValEventDispatch;
+import org.mars.m2m.demo.eventHandling.eventObject.DetectedObstacleEventObject;
+import org.mars.m2m.demo.eventHandling.eventObject.DetectedThreatEventObject;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.VectorUtil;
 import org.mars.m2m.demo.model.Obstacle;
+import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.model.shape.Circle;
+import org.mars.m2m.demo.ui.AnimationPanel;
+import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.world.KnowledgeInterface;
 import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.demo.world.World;
@@ -46,6 +62,7 @@ public final class Scout extends UAV
     ArrayList<AbstractDevice> uavOwnedDevices = new ArrayList<>();
     
     UAVConfiguration uavConfig;
+    final AnimationPanel animationPanel;
        
     /**
      * Gets the Lightweight M2M model for this UAV
@@ -66,14 +83,40 @@ public final class Scout extends UAV
     //private Reconnaissance reconnaissance;
     private int conflict_avoid = 1;
     private int waypointPointer = 0;
+    
+    /**
+     * Physical devices
+     */
+    FlightControl flightControl;
+    ObstacleSensor obstacleSensor;
+    ThreatSensor threatSensor;
+    
+    /**
+     * 
+     * @param index
+     * @param uav_type
+     * @param center_coordinates
+     * @param base_coordinate
+     * @param remained_energy
+     * @param scoutType 
+     * @param animationPanel 
+     */
 
-    public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, float remained_energy, ScoutType scoutType) 
+    public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, 
+                    float remained_energy, ScoutType scoutType,
+                    AnimationPanel animationPanel) 
     {
         super(index, null, uav_type, center_coordinates,remained_energy);
-        this.occupiedPorts = new ArrayList<>();
+        Scout.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
         this.kb = new OntologyBasedKnowledge();
         this.scoutType = scoutType;
+        this.animationPanel = animationPanel;
+        
+        //mount physical devices on scout
+        this.flightControl = new FlightControl(this);
+        this.obstacleSensor = new ObstacleSensor(this);
+        this.threatSensor = new ThreatSensor(this);
         
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], OpStaticInitConfig.scout_radar_radius);
         this.base_coordinate = base_coordinate;
@@ -85,6 +128,7 @@ public final class Scout extends UAV
                 
         //for LwM2M initialization of the UAV
         initUAV(new UAVConfiguration());
+        scoutDaemon();
     }
     
     /**
@@ -93,10 +137,11 @@ public final class Scout extends UAV
      */
     public void initUAV(UAVConfiguration config) 
     {
-        if(config == null)
-        this.uavConfig = new UAVConfiguration();
-        else
+        if(config == null) {
+            this.uavConfig = new UAVConfiguration();
+        } else {
             this.uavConfig = config;
+        }
         
         /**
          * Loads the LwM2mModel once for all devices
@@ -121,14 +166,15 @@ public final class Scout extends UAV
         DeviceStarterDetails threatDevDtls;
         threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
                 portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
-        ThreatSensorClient threatSensor = new ThreatSensorClient(uavLwM2mModel, threatDevDtls);
-        threatSensor.StartDevice();
-        deviceHelper.lwM2mClientDaemon(threatSensor);//invokes a background process for this device
+        ThreatSensorClient threatSensorCl;
+        threatSensorCl = new ThreatSensorClient(uavLwM2mModel, threatDevDtls,threatSensor);
+        threatSensorCl.StartDevice();
+        deviceHelper.lwM2mClientDaemon(threatSensorCl);//invokes a background process for this device
         //Thread.sleep(10000);
         //DeviceHelper.stopDevice(threatSensor);
         log.info("Threat sensor started");
-        uavOwnedDevices.add(threatSensor);
-        return threatSensor;
+        uavOwnedDevices.add(threatSensorCl);
+        return threatSensorCl;
     }
 //</editor-fold>
     
@@ -146,14 +192,14 @@ public final class Scout extends UAV
         DeviceStarterDetails obstacleDevDtls;
         obstacleDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
                 portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
-        ObstacleSensorClient obstacleSensor = new ObstacleSensorClient(uavLwM2mModel, obstacleDevDtls);
-        obstacleSensor.StartDevice();
-        deviceHelper.lwM2mClientDaemon(obstacleSensor);//invokes a background process for this device
+        ObstacleSensorClient obstacleSensorCl = new ObstacleSensorClient(uavLwM2mModel, obstacleDevDtls, obstacleSensor);
+        obstacleSensorCl.StartDevice();
+        deviceHelper.lwM2mClientDaemon(obstacleSensorCl);//invokes a background process for this device
         //Thread.sleep(10000);
         //DeviceHelper.stopDevice(threatSensor);
         log.info("Obstacle sensor started");
-        uavOwnedDevices.add(obstacleSensor);
-        return obstacleSensor;
+        uavOwnedDevices.add(obstacleSensorCl);
+        return obstacleSensorCl;
     }
 //</editor-fold>
     
@@ -171,14 +217,14 @@ public final class Scout extends UAV
         DeviceStarterDetails flightDevDtls;
         flightDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
                 portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
-        FlightControlClient flightControl = new FlightControlClient(uavLwM2mModel, flightDevDtls);
-        flightControl.StartDevice();
-        deviceHelper.lwM2mClientDaemon(flightControl);//invokes a background process for this device
+        FlightControlClient flightControlCl = new FlightControlClient(uavLwM2mModel, flightDevDtls, flightControl);
+        flightControlCl.StartDevice();
+        deviceHelper.lwM2mClientDaemon(flightControlCl);//invokes a background process for this device
         //Thread.sleep(10000);
         //DeviceHelper.stopDevice(threatSensor);
         log.info("Flight control started");
-        uavOwnedDevices.add(flightControl);
-        return flightControl;
+        uavOwnedDevices.add(flightControlCl);
+        return flightControlCl;
     }
 //</editor-fold>
     
@@ -187,69 +233,70 @@ public final class Scout extends UAV
      * 
      * @return 
      */
-    public boolean moveToNextWaypoint() {
-        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0 
-                && waypointPointer != (move_at_y_coordinate_task.size()-1)) {
-            current_y_coordinate_task = move_at_y_coordinate_task.get(waypointPointer);
-            waypointPointer++;
-        } else if(current_y_coordinate_task == null){
-//            this.setVisible(false);
-            int randomIndex = (int)((OpStaticInitConfig.SCOUT_NUM-1) + Math.random());
-            move_at_y_coordinate_task = World.getScouts().get(randomIndex).getMove_at_y_coordinate_task();
-            waypointPointer = 0;
-            return true;
-        }
-        float[] next_waypoint = new float[2];
-        float[] goal_waypoint = new float[2];
-        goal_waypoint[1] = current_y_coordinate_task;
-        ArrayList<Obstacle> obstacles = this.kb.getObstacles();
-        if (direction == 1) //move to the right
+    public boolean moveToNextWaypoint() 
+    {
+        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0) {
+            current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
+        } 
+        else if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() == 0) 
         {
-            goal_waypoint[0] = this.center_coordinates[0] + this.speed;
-            next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
-            if (next_waypoint[0] > World.bound_width) {
-                next_waypoint[0] -= this.speed;
-                if (move_at_y_coordinate_task.size() == 0) {
-                    current_y_coordinate_task=null;
-                    return false;
-                }
-                current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
-                goal_waypoint[1] = current_y_coordinate_task;
-                direction = 0;
-            } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-                next_waypoint[0] = this.center_coordinates[0];
-                next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
-                if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-                    conflict_avoid = -1 * conflict_avoid;
+        //this.setVisible(false);
+            //return false;
+        }
+            
+        if (current_y_coordinate_task != null) {
+            float[] next_waypoint = new float[2];
+            float[] goal_waypoint = new float[2];
+            goal_waypoint[1] = current_y_coordinate_task;
+            ArrayList<Obstacle> obstacles = this.kb.getObstacles();
+            if (direction == 1) //move to the right
+            {
+                goal_waypoint[0] = this.center_coordinates[0] + this.speed;
+                next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
+                if (next_waypoint[0] > World.bound_width) {
+                    next_waypoint[0] -= this.speed;
+                    if (move_at_y_coordinate_task.size() == 0) {
+                        current_y_coordinate_task = null;
+                        return false;
+                    }
+                    current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
+                    goal_waypoint[1] = current_y_coordinate_task;
+                    direction = 0;
+                } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                    next_waypoint[0] = this.center_coordinates[0];
                     next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                    if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                        conflict_avoid = -1 * conflict_avoid;
+                        next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                    }
                 }
             }
-        }
-
-        if (direction == 0)//move to the left
-        {
-            goal_waypoint[0] = this.center_coordinates[0] - this.speed;
-            next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
-            if (next_waypoint[0] < 0) {
-                next_waypoint[0] += this.speed;
-                if (move_at_y_coordinate_task.size() == 0) {
-                    current_y_coordinate_task=null;
-                    return false;
-                }
-                current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
-                goal_waypoint[1] = current_y_coordinate_task;
-                direction = 1;
-            } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-                next_waypoint[0] = this.center_coordinates[0];
-                next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
-                if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
-                    conflict_avoid = -1 * conflict_avoid;
+            
+            if (direction == 0)//move to the left
+            {
+                goal_waypoint[0] = this.center_coordinates[0] - this.speed;
+                next_waypoint = extendTowardGoalWithDynamics(this.center_coordinates, this.current_angle, goal_waypoint, this.speed, this.max_angle);
+                if (next_waypoint[0] < 0) {
+                    next_waypoint[0] += this.speed;
+                    if (move_at_y_coordinate_task.size() == 0) {
+                        current_y_coordinate_task = null;
+                        return false;
+                    }
+                    current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
+                    goal_waypoint[1] = current_y_coordinate_task;
+                    direction = 1;
+                } else if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                    next_waypoint[0] = this.center_coordinates[0];
                     next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                    if (ConflictCheckUtil.checkPointInObstacles(obstacles, next_waypoint[0], next_waypoint[1])) {
+                        conflict_avoid = -1 * conflict_avoid;
+                        next_waypoint[1] = this.center_coordinates[1] + conflict_avoid * this.speed;
+                    }
                 }
             }
+            this.current_angle = VectorUtil.getAngleOfVectorRelativeToXCoordinate(next_waypoint[0] - this.center_coordinates[0], next_waypoint[1] - this.center_coordinates[1]);
+            moveTo(next_waypoint[0], next_waypoint[1]);
         }
-        this.current_angle = VectorUtil.getAngleOfVectorRelativeToXCoordinate(next_waypoint[0] - this.center_coordinates[0], next_waypoint[1] - this.center_coordinates[1]);
-        moveTo(next_waypoint[0], next_waypoint[1]);
         return true;
     }
     
@@ -257,12 +304,12 @@ public final class Scout extends UAV
      * 
      * @param move_at_y_coordinate_task 
      */
-    public void setMove_at_y_coordinate_task(LinkedList<Float> move_at_y_coordinate_task) {
+    public synchronized void setMove_at_y_coordinate_task(LinkedList<Float> move_at_y_coordinate_task) {
         System.out.println("Coordinates: "+Arrays.asList(move_at_y_coordinate_task));
-        this.move_at_y_coordinate_task = move_at_y_coordinate_task;
+        this.move_at_y_coordinate_task.addAll(move_at_y_coordinate_task);
     }
 
-    public LinkedList<Float> getMove_at_y_coordinate_task() {
+    public synchronized LinkedList<Float> getMove_at_y_coordinate_task() {
         return move_at_y_coordinate_task;
     }
     
@@ -299,6 +346,7 @@ public final class Scout extends UAV
         return flightControlClient;
     }
 
+    @Override
     public KnowledgeInterface getKb() {
         return kb;
     }
@@ -315,5 +363,80 @@ public final class Scout extends UAV
         return scoutType;
     }
     
+    private void scoutDaemon()
+    {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() 
+            {
+                updateAll_local();
+            }
+        }, 5000, 500);
+    }
     
+    //simulation procesess
+    public void updateScoutCoordinate()
+    {
+        /**
+        * Gets the LwM2M client and ensures the client is registered before the scout moves
+        * else it does not move. At least the obstacle sensor should be registered
+        * */
+       AbstractDevice device = this.getObstacleSensorClient();
+       if(device.getRegistrationID() != null) {
+           this.moveToNextWaypoint();
+       }
+    }
+    
+    public void updateAll_local()
+    {
+        updateScoutCoordinate();
+        detectScoutEvent();
+    }
+    
+    /**During patrol,the scout detect event by radar.
+     * This method is used to detect/sense obstacles and threats and reports
+     * them to the {@link Reconnaissance} instance to keep all the list of discoveries
+     */
+    private void detectScoutEvent()
+    {
+        int obs_list_size;
+        obs_list_size = animationPanel.getWorld().getObstacles().size();
+        for (int i = 0; i < obs_list_size; i++) 
+        {
+            Obstacle obs = animationPanel.getWorld().getObstacles().get(i);
+            if (!getKb().containsObstacle(obs) && obs.getMbr().intersects(getUav_radar().getBounds())) {
+                getKb().addObstacle(obs);
+                updateSensorValue(obs);
+            }
+        }
+
+        //senses threats
+        int threat_list_size = animationPanel.getWorld().getThreats().size();
+        for (int i = 0; i < threat_list_size; i++) {
+            Threat threat = animationPanel.getWorld().getThreats().get(i);
+            float dist_from_attacker_to_threat = 
+                    DistanceUtil.distanceBetween(getCenter_coordinates(), threat.getCoordinates());
+            if (threat.isEnabled() && !getKb().containsThreat(threat) 
+                    && dist_from_attacker_to_threat < getUav_radar().getRadius() * 0.9
+                    && threat.getThreatType().toString().equals(getScoutType().toString())) //detects threats based on capabilities
+            {
+                getKb().addThreat(threat);
+                updateSensorValue(threat);
+            }
+        }
+    }
+    
+    private void updateSensorValue(Obstacle obs)
+    {
+        UpdateSensorValEventDispatch eventDispatch = new UpdateSensorValEventDispatch();
+        eventDispatch.addListener(new DetectedObstacleListenerImpl(), DetectedObstacleListener.class);
+        eventDispatch.updateObstacleSensorValue(new DetectedObstacleEventObject(this, obs));
+    }
+    private void updateSensorValue(Threat threat)
+    {
+        UpdateSensorValEventDispatch eventDispatch = new UpdateSensorValEventDispatch();
+        eventDispatch.addListener(new DetectedThreatListenerImpl(), DetectedThreatListener.class);
+        eventDispatch.updateThreatSensorValue(new DetectedThreatEventObject(this, threat));
+    }
 }

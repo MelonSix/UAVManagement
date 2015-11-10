@@ -40,10 +40,10 @@ public class AnimatorListener implements ActionListener
                 int simStep = this.animPnl.getSimulation_time_step();
                 this.animPnl.setSimulation_time_step(++simStep);
                     //System.out.println("timestep "+this.animPnl.getSimulation_time_step());
-                this.animPnl.getWorld().updateAll();
+                //this.animPnl.getWorld().updateAll();
                 int minimutes = this.animPnl.getSimulation_time_step();
                 int hours = minimutes / 60;
-                minimutes=minimutes-hours*60;
+                minimutes -= hours*60;
                 String simulated_time_str = String.format("%1$02d:%2$02d:%3$02d", hours, minimutes, 0);
                 ControlPanel.jFormattedTextField1.setText(simulated_time_str);
                 ControlPanel.setTotalHistoryPathLen(animPnl.getWorld().getTotal_path_len());

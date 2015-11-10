@@ -25,6 +25,7 @@
  */
 package org.mars.m2m.demo.uav;
 
+import org.mars.m2m.demo.Devices.UavAttackerDevice;
 import org.mars.m2m.demo.world.World;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
@@ -52,6 +53,7 @@ import org.mars.m2m.demo.model.Target;
 import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.model.shape.Circle;
 import org.mars.m2m.demo.model.shape.Point;
+import org.mars.m2m.demo.ui.AnimationPanel;
 import org.mars.m2m.demo.util.BoundUtil;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.DistanceUtil;
@@ -84,6 +86,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     private UavAttackerDevice attackerDevice;
         
     UAVConfiguration uavConfig;
+    AnimationPanel animationPanel;
        
     /**
      * Gets the Lightweight M2M model for this UAV
@@ -126,17 +129,22 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
      * @param center_coordinates
      * @param obstacles
      * @param remained_energy
+     * @param attackerType
+     * @param animationPanel
      */
     public Attacker(int index, Target target, int uav_type, float[] center_coordinates,
-                                        ArrayList<Obstacle> obstacles, float remained_energy, AttackerType attackerType)
+                                        ArrayList<Obstacle> obstacles, float remained_energy, AttackerType attackerType,                                        
+                                        AnimationPanel animationPanel)
     {
         super(index, target, uav_type, center_coordinates, remained_energy);
         this.attackerDevice = new UavAttackerDevice(this);
         this.gson = new Gson();
         this.destroyedThreats = new ArrayList<>();
-        this.occupiedPorts = new ArrayList<>();
+        Attacker.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
         this.attackerType = attackerType;
+        this.animationPanel = animationPanel;
+        
         
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], OpStaticInitConfig.attacker_radar_radius);
         this.path_planned_at_current_time_step = new UAVPath();
@@ -776,7 +784,8 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
-            public void run() {
+            public void run() 
+            {
                 if(kb.getThreats().size() > 0)
                 {
                     for(Threat threat : kb.getThreats())

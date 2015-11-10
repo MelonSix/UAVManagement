@@ -16,7 +16,7 @@ import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.util.Validate;
-import org.mars.m2m.Devices.ThreatSensorInCaseStudy;
+import org.mars.m2m.demo.Devices.ThreatSensor;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
@@ -36,29 +36,29 @@ import org.slf4j.LoggerFactory;
 public class ThreatSensorClient extends AbstractDevice
 {        
    private Logger log = (Logger) LoggerFactory.getLogger(ThreatSensorClient.class);
-   private ThreatSensorInCaseStudy threatSensor;
+   private ThreatSensor threatSensor;
    private Device device;
    private BootstrapedRegistrationHandler bsRegHandler;
    private LwM2mModel uavLwM2mModel;
 
    public ThreatSensorClient()
    {
-       this(null, null);
+       this(null, null, null);
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.threatSensor = new ThreatSensorInCaseStudy();
    }  
 
    /**
     * For setting up a device within the UAV
      * @param lwM2mObjModel The object model to be used by the client
     * @param lwm2mClientDetails 
+     * @param threatSensor 
     */
-   public ThreatSensorClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails)
+   public ThreatSensorClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails, ThreatSensor threatSensor)
    {
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.threatSensor = new ThreatSensorInCaseStudy();
+       this.threatSensor = threatSensor;
        try
        {
            if(lwm2mClientDetails != null)
@@ -139,7 +139,7 @@ public class ThreatSensorClient extends AbstractDevice
        }
    }        
 
-    public ThreatSensorInCaseStudy getThreatSensor() {
+    public ThreatSensor getThreatSensor() {
         return threatSensor;
     }
 

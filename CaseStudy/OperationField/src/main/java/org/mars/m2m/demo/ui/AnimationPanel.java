@@ -14,6 +14,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.swing.JPanel;
 import org.mars.m2m.demo.config.GraphicConfig;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
@@ -94,10 +99,10 @@ public class AnimationPanel extends JPanel implements MouseListener
     private MyPopupMenu my_popup_menu;
 
     public AnimationPanel() {
-//        initComponents();
+        initComponents();
     }
 
-    public void initComponents() {
+    private void initComponents() {
        try {
            bound_height = 980;
            bound_width = 1850;
@@ -154,7 +159,7 @@ public class AnimationPanel extends JPanel implements MouseListener
 
            //initiate world
             NonStaticInitConfig init_config = new NonStaticInitConfig(bound_width, bound_height);
-            this.world = new World(init_config);            
+            this.world = new World(init_config, this);            
             this.threats_from_world_view = world.getThreats();
             
             //draw obstacles
@@ -275,15 +280,18 @@ public class AnimationPanel extends JPanel implements MouseListener
      * 
      */
     public void updateImageAtEachIteration() {
-        initUAVBase(uav_image_graphics);
-//        updateTargetInUAVImageLevel(world.getThreatsForUIRendering());
-        updateThreatImage();
-        updateHighlightObstacleImage(world.getObstacles());
-        updateUAVImage();
-        updateFogOfWarImage();
-        updateUAVHistoryPath();
-        showUAVPlannedPath();
-//        showUAVPlannedTree();
+        synchronized(this)
+        {
+            initUAVBase(uav_image_graphics);
+    //        updateTargetInUAVImageLevel(world.getThreatsForUIRendering());
+            updateThreatImage();
+            updateHighlightObstacleImage(world.getObstacles());
+            updateUAVImage();
+            updateFogOfWarImage();
+            updateUAVHistoryPath();
+            showUAVPlannedPath();
+    //        showUAVPlannedTree();
+        }
     }
     
     /** paint the uav base
@@ -297,9 +305,12 @@ public class AnimationPanel extends JPanel implements MouseListener
     /** repaint the threat image.
      * 
      */
-    private void updateThreatImage() {
-        ArrayList<Threat> threats = world.getThreats();
-        for (Threat threat : threats) {
+    private synchronized void updateThreatImage() 
+    {        
+        Queue<Threat> threatsQueue = getThreatQueueList();
+        for (Iterator<Threat> it = threatsQueue.iterator(); it.hasNext();) 
+        {
+            Threat threat = it.next();
             if (!threat.isEnabled()) {
                 continue;
             }
@@ -318,20 +329,65 @@ public class AnimationPanel extends JPanel implements MouseListener
     /** repaint the uav image.
      * 
      */
-    private void updateUAVImage() {
-        for (Scout scout : this.scouts) {
-            if (scout.getIndex() == this.highlight_uav_index) {
+    private synchronized void updateUAVImage() 
+    {
+        Queue<Attacker> attackersQueue = getAttackersQueueList();        
+        Queue<Scout> scoutsQueue = getScoutsQueueList();
+        
+        for (Iterator<Scout> it = scoutsQueue.iterator(); it.hasNext();) {
+            Scout scout = it.next();
+            if (scout.getIndex() == highlight_uav_index)
+            {
                 virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, GraphicConfig.highlight_uav_color);
-            } else
-            virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, null);
+            } else {
+                virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, null);
+            }
         }
-        for (Attacker attacker : this.attackers) {
-            if (attacker.getIndex() == this.highlight_uav_index) {
+        
+        for (Iterator<Attacker> it = attackersQueue.iterator(); it.hasNext();) {
+            Attacker attacker = it.next();
+            if (attacker.getIndex() == highlight_uav_index)
+            {
                 virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, attacker, GraphicConfig.highlight_uav_color);
-            } else
-            virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, attacker, null);
-
+            } else {
+                virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, attacker, null);
+            }
         }
+    }
+
+    private Queue<Attacker> getAttackersQueueList() {
+        Queue<Attacker> attackersQueue = new ConcurrentLinkedQueue<>();
+        attackersQueue.addAll(attackers);
+        return attackersQueue;
+    }
+    
+    private Queue<Scout> getScoutsQueueList() {
+        Queue<Scout> scoutsQueue = new ConcurrentLinkedQueue<>();
+        scoutsQueue.addAll(scouts);
+        return scoutsQueue;
+    }
+    
+    private Queue<Obstacle> getObstaclesQueueList() {
+        Queue<Obstacle> obstaclesQueue = new ConcurrentLinkedQueue<>();
+        obstaclesQueue.addAll(world.getObstacles());
+        return obstaclesQueue;
+    }
+    
+    private Queue<Threat> getThreatQueueList() {
+        Queue<Threat> threatQueue = new ConcurrentLinkedQueue<>();
+        threatQueue.addAll(world.getThreats());
+        return threatQueue;
+    }
+    
+    private Queue<Threat> getDetectedThreats() {
+        Queue<Threat> threatQueue = new ConcurrentLinkedQueue<>();
+        Queue<Scout> scoutsQueue = getScoutsQueueList();
+        for (Iterator<Scout> it = scoutsQueue.iterator(); it.hasNext();) {
+            Scout scout = it.next();
+            threatQueue.addAll(scout.getKb().getThreats());
+        }
+        
+        return threatQueue;
     }
     
     /** repaint the fog of war image.
@@ -342,18 +398,29 @@ public class AnimationPanel extends JPanel implements MouseListener
         if (!OpStaticInitConfig.SHOW_FOG_OF_WAR) {
             return;
         }
-        for (Attacker attacker : this.attackers) {
+        
+        Queue<Attacker> attackersQueue = getAttackersQueueList();
+        Queue<Scout> scoutsQueue = getScoutsQueueList();
+        Queue<Obstacle> obstaclesQueue = getObstaclesQueueList();
+        Queue<Threat> threatsQueue = getDetectedThreats();
+        
+        for (Iterator<Attacker> it = attackersQueue.iterator(); it.hasNext();) {
+            Attacker attacker = it.next();
             virtualizer.drawUAVInFogOfWarInLevel3(fog_of_war_graphics, (UAV) attacker);
         }
-        for (Scout scout : this.scouts) {
+        
+        for (Iterator<Scout> it = scoutsQueue.iterator(); it.hasNext();) {
+            Scout scout = it.next();
             virtualizer.drawUAVInFogOfWarInLevel3(fog_of_war_graphics, (UAV) scout);
         }
-        ArrayList<Obstacle> obstacles = this.world.getReconnaissance().getObstacles();
-        for (Obstacle obstacle : obstacles) {
+        
+        for (Iterator<Obstacle> it = obstaclesQueue.iterator(); it.hasNext();) {
+           Obstacle obstacle = it.next();
             virtualizer.showObstacleInFogOfWar(fog_of_war_graphics, obstacle);
         }
-        ArrayList<Threat> threats = this.world.getReconnaissance().getThreats();
-        for (Threat threat : threats) {
+        
+        for (Iterator<Threat> it = threatsQueue.iterator(); it.hasNext();) {
+            Threat threat = it.next();
             virtualizer.showThreatInFogOfWar(fog_of_war_graphics, threat);
         }
     }
@@ -365,7 +432,9 @@ public class AnimationPanel extends JPanel implements MouseListener
         if (!OpStaticInitConfig.SHOW_HISTORY_PATH) {
             return;
         }
-        for (Attacker attacker : this.attackers) {
+        Queue<Attacker> attackersQueue = getAttackersQueueList();
+        for (Iterator<Attacker> it = attackersQueue.iterator(); it.hasNext();) {
+            Attacker attacker = it.next();
             if (attacker.isVisible() && attacker.getTarget_indicated_by_role() != null) {
                 virtualizer.drawUAVHistoryPath(uav_history_path_image_graphics, attacker, GraphicConfig.side_a_center_color);
             }
@@ -499,4 +568,14 @@ public class AnimationPanel extends JPanel implements MouseListener
             RightControlPanel.setWorldKnowledge(highlight_uav.getKb());
         }
     }
+
+    public ArrayList<Scout> getScouts() {
+        return scouts;
+    }
+
+    public ArrayList<Attacker> getAttackers() {
+        return attackers;
+    }
+    
+    
 }

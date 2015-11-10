@@ -16,7 +16,7 @@ import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.util.Validate;
-import org.mars.m2m.Devices.ObstacleSensor;
+import org.mars.m2m.demo.Devices.ObstacleSensor;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
@@ -39,22 +39,22 @@ public class ObstacleSensorClient  extends AbstractDevice
 
    public ObstacleSensorClient()
    {
-       this(null, null);
+       this(null, null, null);
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.obstacleSensor = new ObstacleSensor();
    }  
 
    /**
     * For setting up a device within the UAV
      * @param lwM2mObjModel The object model to be used by the client
     * @param lwm2mClientDetails 
+     * @param obstacleSensor 
     */
-   public ObstacleSensorClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails)
+   public ObstacleSensorClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails, ObstacleSensor obstacleSensor)
    {
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.obstacleSensor = new ObstacleSensor();
+       this.obstacleSensor = obstacleSensor;
        try
        {
            if(lwm2mClientDetails != null)

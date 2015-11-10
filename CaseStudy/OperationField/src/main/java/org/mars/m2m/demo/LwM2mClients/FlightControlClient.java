@@ -8,7 +8,6 @@ package org.mars.m2m.demo.LwM2mClients;
 import ch.qos.logback.classic.Logger;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.leshan.client.californium.LeshanClientExt;
@@ -17,7 +16,7 @@ import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.util.Validate;
-import org.mars.m2m.Devices.FlightControl;
+import org.mars.m2m.demo.Devices.FlightControl;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
@@ -42,13 +41,13 @@ public class FlightControlClient extends AbstractDevice
     * For setting up a device within the UAV
      * @param lwM2mObjModel The object model to be used by the client
     * @param lwm2mClientDetails 
-     * @param attacker 
+     * @param flightControl 
     */
-   public FlightControlClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails)
+   public FlightControlClient(LwM2mModel lwM2mObjModel, DeviceStarterDetails lwm2mClientDetails, FlightControl flightControl)
    {
        this.bsRegHandler = new BootstrapedRegistrationHandler();
        this.device = new Device();
-       this.flightControl = new FlightControl();
+       this.flightControl = flightControl;
        
        try
        {
