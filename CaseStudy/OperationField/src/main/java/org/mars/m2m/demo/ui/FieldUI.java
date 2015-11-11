@@ -59,17 +59,17 @@ public class FieldUI extends javax.swing.JFrame {
     private void initComponents() {
 
         opFieldSplitPane = new javax.swing.JSplitPane();
-        rightControlPanel1 = new org.mars.m2m.demo.ui.RightControlPanel();
+        sidebar1 = new org.mars.m2m.demo.ui.Sidebar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 603));
         setName("UAV Operational Field"); // NOI18N
 
-        opFieldSplitPane.setDividerLocation(0);
-        opFieldSplitPane.setResizeWeight(0.1);
+        opFieldSplitPane.setDividerLocation(250);
+        opFieldSplitPane.setResizeWeight(0.5);
         opFieldSplitPane.setMaximumSize(null);
         this.opFieldSplitPane.add(animationPanel, JSplitPane.RIGHT);
-        opFieldSplitPane.setLeftComponent(rightControlPanel1);
+        opFieldSplitPane.setLeftComponent(sidebar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,6 +128,6 @@ public class FieldUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JSplitPane opFieldSplitPane;
     private AnimationPanel animationPanel;
-    private org.mars.m2m.demo.ui.RightControlPanel rightControlPanel1;
+    private org.mars.m2m.demo.ui.Sidebar sidebar1;
     // End of variables declaration//GEN-END:variables
 }

@@ -417,7 +417,7 @@ public class World {
         }
     }
 
-    private void updateDestroyedThreats(Threat threat) {
+    public void updateDestroyedThreats(Threat threat) {
         for(Attacker attacker : World.attackers)
         {
             attacker.getDestroyedThreats().add(threat);
@@ -962,6 +962,14 @@ public class World {
         this.conflicts.add(conflict);
     }
 
+    public int getNum_of_threat_remained() {
+        return num_of_threat_remained;
+    }
+
+    public void setNum_of_threat_remained(int num_of_threat_remained) {
+        this.num_of_threat_remained = num_of_threat_remained;
+    }
+    
     public static float[] assignUAVPortInBase(int attacker_index) {
         return World.uav_base.assignUAVLocation(attacker_index);
     }

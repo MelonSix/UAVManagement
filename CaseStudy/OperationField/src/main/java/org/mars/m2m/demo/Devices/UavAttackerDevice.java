@@ -9,6 +9,7 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.SwingUtilities;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
 import org.eclipse.leshan.core.node.LwM2mResource;
@@ -23,7 +24,9 @@ import org.mars.m2m.demo.model.ObjectResourceModel;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.uav.Attacker;
+import org.mars.m2m.demo.ui.LogWindow;
 import org.mars.m2m.demo.world.World;
+import org.mars.m2m.dmcore.util.DmCommons;
 
 /**
  *
@@ -59,6 +62,45 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                            attacker.addObstacle(obstacle);
                            System.out.println("Exec: Obstacle added: " + dataStr.getValue().toString());
                        }
+                    String text = LogWindow.txtPane_obstablesTab.getText();
+                    final StringBuilder bldStr = new StringBuilder();
+                    if(text.isEmpty())
+                    {
+                        bldStr.append("Obstacle ")
+                                .append(obstacle.getIndex())
+                                .append(" received by Attacker ")
+                                .append(attacker.getIndex())
+                                        .append(" [")
+                                        .append(DmCommons.getOneM2mTimeStamp())
+                                        .append("]")
+                                .append("\n");
+                        SwingUtilities.invokeLater(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                LogWindow.txtPane_obstablesTab.setText(bldStr.toString());
+                            }
+                        });
+                    }else
+                    {bldStr.append(text)
+                                .append("\n");
+                        bldStr.append("Obstacle ")
+                                .append(obstacle.getIndex())
+                                .append(" received by Attacker ")
+                                .append(attacker.getIndex())
+                                        .append(" [")
+                                        .append(DmCommons.getOneM2mTimeStamp())
+                                        .append("]")
+                                .append("\n");
+                        SwingUtilities.invokeLater(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                LogWindow.txtPane_obstablesTab.setText(bldStr.toString());
+                            }
+                        });
+                    }
+                           LogWindow.jTabbedPane1.setSelectedIndex(1);
                        return new LwM2mResponse(ResponseCode.CHANGED);
                    case 7:
                        Conflict conflict = gson.fromJson(dataStr.getValue().toString(), Conflict.class);
@@ -70,6 +112,47 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                    case 8:
                        System.out.println("Threat: "+dataStr);
                            Threat threat = gson.fromJson(dataStr.getValue().toString(), Threat.class);
+                           
+                           String threatText = LogWindow.txtPane_threatsTab.getText();
+                            final StringBuilder bldStr2 = new StringBuilder();
+                            if(threatText.isEmpty())
+                            {
+                                bldStr2.append("Threat ")
+                                        .append(threat.getIndex())
+                                        .append(" received by Attacker ")
+                                        .append(attacker.getIndex())
+                                        .append(" [")
+                                        .append(DmCommons.getOneM2mTimeStamp())
+                                        .append("]")
+                                        .append("\n");
+                                SwingUtilities.invokeLater(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        LogWindow.txtPane_threatsTab.setText(bldStr2.toString());
+                                    }
+                                });
+                            }else
+                            {
+                                bldStr2.append(threatText)
+                                        .append("\n");
+                                bldStr2.append("Threat ")
+                                        .append(threat.getIndex())
+                                        .append(" received by Attacker ")
+                                        .append(attacker.getIndex())
+                                        .append(" [")
+                                        .append(DmCommons.getOneM2mTimeStamp())
+                                        .append("]")
+                                        .append("\n");
+                                SwingUtilities.invokeLater(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        LogWindow.txtPane_threatsTab.setText(bldStr2.toString());
+                                    }
+                                });
+                            }
+                           LogWindow.jTabbedPane1.setSelectedIndex(0);
                            if (!attacker.containsThreat(threat)) 
                            {
                                attacker.addThreat(threat);

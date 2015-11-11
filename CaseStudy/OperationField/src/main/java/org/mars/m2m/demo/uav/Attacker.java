@@ -45,6 +45,7 @@ import org.mars.m2m.demo.algorithm.RRT.RRTTree;
 import org.mars.m2m.demo.config.NonStaticInitConfig;
 import org.mars.m2m.demo.config.OpStaticInitConfig;
 import org.mars.m2m.demo.enums.AttackerType;
+import org.mars.m2m.demo.enums.ThreatType;
 import org.mars.m2m.demo.model.Conflict;
 import org.mars.m2m.demo.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.model.Message;
@@ -786,6 +787,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
             @Override
             public void run() 
             {
+                updateAll_local();
                 if(kb.getThreats().size() > 0)
                 {
                     for(Threat threat : kb.getThreats())
@@ -806,63 +808,151 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         }, 5000, 500);
     }
     
-    /**
-     * Converts the received data of a complex member variable to a JSON string     * 
-     * @param data
-     * @return 
-     */
-    private String parseValue(String data)
+    public void updateAll_local()
     {
-        StringBuilder jsonData = new StringBuilder();
-        jsonData.append("{");
-            data = StringUtils.removeStart(data, "{");
-            data = StringUtils.removeEnd(data, "}");
-            data = StringUtils.replace(data, "=", ":");
-        jsonData.append(applyRegEx(data));
-        jsonData.append("}");
-        return jsonData.toString();
+        if(visible) {
+            pathPlan();
+        }
+        setNeed_to_replan(false);
+        updateAttackerCoordinate();
+        checkReplanningAccordingToAttackerMovement();
+        checkThreatReached();
     }
     
-    /**
-     * This method is used to help in converting a complex object's data into a
-     * JSON string
-     * @param data The submitted data as a string
-     * @return The JSON equivalent of the submitted string
+    private void updateAttackerCoordinate() {
+        if (!isVisible()) {
+                return;
+            }
+            
+            boolean moved = moveToNextWaypoint();
+            if (moved) {
+                logger.debug("attacker:" + getIndex() + " moved");
+            }
+    }
+    
+    /** check whether the attacker should replan in  next time step. 
+     * 
      */
-    private String applyRegEx(String data)
-    {
-        //regular expresion for getting property names
-        String elementPart = "([\\w]*:)";
-        
-        //regular expression for getting the values 
-        String elValuePart = "(:)([\\w]*)";
-        
-        //apply regular expressions to patterns
-        Pattern elPattern = Pattern.compile(elementPart);
-        Pattern valPattern = Pattern.compile(elValuePart);
-        
-        //get matchers to use patterns to match the data/String
-        Matcher elMatcher = elPattern.matcher(data);
-        Matcher vMatcher = valPattern.matcher(data);
-        while(elMatcher.find())//handles value part
-        {   
-            String element = elMatcher.group();
-            data = StringUtils.replaceOnce(data, element, "\""+element.replace(":", "\":"));
+    private void checkReplanningAccordingToAttackerMovement() {
+        Attacker attacker = this;
+        if (!attacker.isVisible() || attacker.getTarget_indicated_by_role() == null) {
+            return;
         }
-        while (vMatcher.find( ))//handles the value part
-        {
-           String value = vMatcher.group();
-           value = StringUtils.remove(value, ":");
-           if(!StringUtils.isNumeric(value) && //not a number
-                   !StringUtils.equals(value, "true") && //not a boolean value
-                   !StringUtils.equals(value, "false") )//not a boolean value
-           {
-               if(StringUtils.isEmpty(value))
-                   data = data.replace(":,", ":null,");
-               else
-                   data = StringUtils.replaceOnce(data, value, "\""+value+"\"");
-           }
-        } 
-        return data;
+        boolean moved = attacker.isMoved_at_last_time();
+        if (!moved) 
+        {//not moved
+            attacker.setNeed_to_replan(true);
+            //returning to the base
+            if (attacker.getTarget_indicated_by_role().getIndex() == Threat.UAV_BASE_INDEX) {
+                float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());                    
+                Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
+                attacker.setTarget_indicated_by_role(dummy_threat);
+                attacker.setNeed_to_replan(true);
+                attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                attacker.setFly_mode(Attacker.FLYING_MODE);
+            } else {//have target to destroy
+                float dist_to_target = DistanceUtil.distanceBetween(attacker.getCenter_coordinates(), attacker.getTarget_indicated_by_role().getCoordinates());
+//                    logger.debug(attacker.getIndex() + " not moved and has target-------------start--------------");
+//                    logger.debug("target index:" + attacker.getTarget_indicated_by_role().getIndex());
+//                    logger.debug("target " + attacker.getTarget_indicated_by_role().getIndex() + " visible=" + this.getThreatsForUIRendering().get(attacker.getTarget_indicated_by_role().getIndex()).isEnabled());
+//                    logger.debug("dist to target:" + dist_to_target);
+//                    logger.debug("attacker mode:" + attacker.getFly_mode());
+//                    logger.debug("not moved and has target-------------end--------------");
+
+                if (attacker.getFly_mode() == Attacker.TARGET_LOCKED_MODE) {
+                    attacker.setNeed_to_replan(true);
+                } else {
+                    if (dist_to_target < attacker.getUav_radar().getRadius() / 2) {
+                        attacker.setNeed_to_replan(true);
+                        attacker.setFly_mode(Attacker.TARGET_LOCKED_MODE);
+                        attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_DESTROYING_THREAT);
+                    } else {//not reaching target
+                        attacker.setNeed_to_replan(true);
+                        attacker.setFly_mode(Attacker.FLYING_MODE);
+                        attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
+                    }
+                }
+            }
+        } else {
+                attacker.setNeed_to_replan(false);
+        }
+    }
+    
+    private void checkThreatReached() 
+    {
+        ArrayList<Obstacle> obstacles_in_the_world = animationPanel.getWorld().getObstacles();
+        Attacker attacker = this;
+        Target attacker_target = attacker.getTarget_indicated_by_role();
+        if (!attacker.isVisible()) {
+            return;
+        }
+        //Only when the attacker is in the base, its target indicated by the role is null
+        if (attacker_target == null) {
+            return;
+        }
+        int threat_index = attacker_target.getIndex();
+        //threat_index=-1 means the attacker is returning to the base
+        if (threat_index == Threat.UAV_BASE_INDEX) {
+            float[] target_coord = attacker_target.getCoordinates();
+            float[] attacker_coord = attacker.getCenter_coordinates();
+            //if the attacker reached the base
+            if (DistanceUtil.distanceBetween(attacker_coord, target_coord) < (attacker.getUav_radar().getRadius() / 3)) {
+                attacker.setTarget_indicated_by_role(null);
+                attacker.setNeed_to_replan(false);
+                return;
+            } else {
+                attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                attacker.setFly_mode(Attacker.FLYING_MODE);
+            }
+            return;
+        }
+        
+        //Otherwise, the attacker is flying toward its target
+        ArrayList<Threat> threats_in_world = animationPanel.getWorld().getThreats();
+        for (int j = 0; j < threats_in_world.size(); j++) {
+            Threat threat = threats_in_world.get(j);
+            //threat is destroyed
+            if (!threat.isEnabled()) {
+                continue;
+            }
+            //Otherwise, destroy its threat when the attacker is close to the threat
+            if (threat_index == threat.getIndex()) 
+            {
+                float distance_to_target = DistanceUtil.distanceBetween(attacker.getCenter_coordinates(), threat.getCoordinates());
+                if (distance_to_target < attacker.getUav_radar().getRadius() / 2) 
+                {
+                    if (attacker.getFly_mode() == Attacker.FLYING_MODE) 
+                    {
+                        attacker.setFly_mode(Attacker.TARGET_LOCKED_MODE);
+                        attacker.setHovered_time_step(0);
+                        threat.setMode(Threat.LOCKED_MODE);
+                        attacker.setNeed_to_replan(true);
+                        animationPanel.getWorld().lockAttackerToThreat(attacker, threat.getIndex());
+                    } else if (attacker.getFly_mode() == Attacker.TARGET_LOCKED_MODE) 
+                    {
+                        if (attacker.getHovered_time_step() < OpStaticInitConfig.LOCKED_TIME_STEP_UNTIL_DESTROYED)
+                        {
+                            attacker.increaseHovered_time_step();
+                        } 
+                        else 
+                        {
+                            threat.setEnabled(false);
+                            animationPanel.getWorld().updateDestroyedThreats(threat);
+                            animationPanel.getWorld().threatDestroyedAndUnlocked(threat.getIndex());
+                            int num_of_threat_remained = animationPanel.getWorld().getNum_of_threat_remained();
+                            animationPanel.getWorld().setNum_of_threat_remained(--num_of_threat_remained);
+                            
+                            float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
+                            Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
+                            attacker.setTarget_indicated_by_role(dummy_threat);
+                            attacker.setNeed_to_replan(true);
+                            attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+                            attacker.setFly_mode(Attacker.FLYING_MODE);
+                        }
+                    }
+                } 
+                break;
+            }
+        }
     }
 }
