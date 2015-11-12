@@ -440,6 +440,12 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         this.setNeed_to_assign_role(false);
     } 
     
+    public void invokeAttackerUavServices()
+    {
+        registerInfoRequirement();
+        shareInfoAfterRegistration();
+    }
+    
     /**
      * Gets all attackers that have been locked to a particular threat
      * @return 

@@ -186,8 +186,9 @@ public class AdapterServices
         if(serviceUtils.addToRegistry(request, this))
         {
             String data = null;//extractRequestData(request);
-
-            request.setTo(request.getTo()+"/observe");
+            System.out.println(request.getTo());
+            request.setTo(request.getTo()+"/observe");            
+            System.out.println(request.getTo());
 
             //sets the request details to be sent to the client to consume a service
             this.uriInfo = uriInfo;

@@ -58,10 +58,11 @@ public class Discovery
                 DiscoverRequest discoverRequest = new DiscoverRequest(objectId);
                 DiscoverResponse discoveryResponse = server.send(client, discoverRequest);
                 Response build;
-                if(discoveryResponse != null)        
+                if(discoveryResponse != null) {        
                     build = Response.ok(discoveryResponse.getObjectLinks()).build();
-                else
+                } else {
                     build = Response.serverError().build();
+                }
                 asyncResponse.resume(build);
             }
         }).start();        

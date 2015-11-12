@@ -1326,3 +1326,58 @@ INFO   [14:52:43.625] [pool-3-thread-4] o.e.c.c.n.Matcher -  Message is a duplic
 INFO   [14:52:43.625] [pool-3-thread-4] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=38895, Token=4b3b762e, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=scout4-b10f8bfa-2181-4665-a1e2-c8deb8312f9c"}, "" 
 INFO   [14:52:43.625] [pool-3-thread-4] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=38896, Token=4b3b762f, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=scout3-7e9caad9-7901-47dc-8845-43c9910bf869"}, "" 
 INFO   [14:52:43.625] [pool-3-thread-4] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=38890, Token=4b3b7629, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=scout10-c0a3d143-de6b-4159-bb94-d8eb36056d08"}, "" 
+INFO   [16:52:51.031] [main] o.e.j.u.log -  Logging initialized @1853ms 
+INFO   [16:52:51.149] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [16:52:51.221] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [16:52:51.221] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [16:52:51.255] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [16:52:51.255] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [16:52:51.288] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [16:52:51.295] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [16:52:51.322] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [16:52:51.371] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [16:52:51.373] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [16:52:51.967] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [16:52:51.971] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [16:52:51.979] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [16:52:51.987] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [16:52:52.114] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [16:52:52.114] [main] o.e.j.s.Server -  Started @2939ms 
+INFO   [17:51:21.229] [main] o.e.j.u.log -  Logging initialized @1340ms 
+INFO   [17:51:21.334] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [17:51:21.400] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [17:51:21.401] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [17:51:21.407] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [17:51:21.408] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [17:51:21.430] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [17:51:21.440] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [17:51:21.461] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [17:51:21.494] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:51:21.496] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [17:51:22.051] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [17:51:22.053] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1549bba7{/bs,null,AVAILABLE} 
+INFO   [17:51:22.059] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [17:51:22.065] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
+INFO   [17:51:22.122] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [17:51:22.122] [main] o.e.j.s.Server -  Started @2236ms 
+INFO   [19:14:57.430] [pool-3-thread-3] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID= 8371, Token=d90cd431, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=attacker31-e3c56240-dbcc-402e-8621-6baf13aa04a3"}, "" 
+INFO   [19:18:20.428] [pool-3-thread-4] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=43269, Token=fdc97257, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=attacker8-b0e1b60b-3986-4cfa-909c-e5101667ac4d"}, "" 
+INFO   [19:18:20.428] [pool-3-thread-2] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=43277, Token=fdc9725f, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=scout1-a14024dd-1f1a-4981-80cb-3a2613b5b996"}, "" 
+INFO   [19:18:20.429] [pool-3-thread-1] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=43249, Token=fdc97243, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=attacker5-4ff7808f-c169-4797-ba2b-be7b57ddae8e"}, "" 
+INFO   [19:23:54.342] [pool-3-thread-2] o.e.c.c.n.Matcher -  Message is a duplicate, ignore: CON-POST   MID=20609, Token=69c8a03c, OptionSet={"Uri-Path":"bs", "Uri-Query":"ep=attacker41-3d490b17-b894-4da9-8bdf-dba431041f11"}, "" 

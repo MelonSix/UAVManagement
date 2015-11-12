@@ -41,8 +41,7 @@ import org.slf4j.LoggerFactory;
 @Path("/mgmtAdapter")
 public class AdapterServiceInterface {
     
-    Logger logger = (Logger) LoggerFactory.getLogger(AdapterServiceInterface.class);
-    Operation operation;
+    Logger logger = (Logger) LoggerFactory.getLogger(AdapterServiceInterface.class);    
     ObjectMapper mapper;
 
     public AdapterServiceInterface() {
@@ -96,10 +95,10 @@ public class AdapterServiceInterface {
             {
                 try 
                 {
-                    JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
-                    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-                    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);//for debugging purposes
-                    jaxbMarshaller.marshal(requestPrimitive, System.out);//for debugging purposes
+//                    JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
+//                    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//                    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);//for debugging purposes
+//                    jaxbMarshaller.marshal(requestPrimitive, System.out);//for debugging purposes
                     
                     //handles getting the response and resuming
                     RequestPrimitive processedRequest = processRequest(requestPrimitive, uriInfo);               
@@ -142,10 +141,10 @@ public class AdapterServiceInterface {
      * @param uriInfo
      * @return 
      */
-    public RequestPrimitive processRequest(RequestPrimitive request, UriInfo uriInfo)
+    public RequestPrimitive processRequest(final RequestPrimitive request, UriInfo uriInfo)
     {
         RequestPrimitive response = null;
-        operation = DmCommons.determineOneM2mOperation(request.getOperation());
+        Operation operation = DmCommons.determineOneM2mOperation(request.getOperation());
         AdapterServices adapterSvc = new AdapterServices();
         
         try {
@@ -164,7 +163,12 @@ public class AdapterServiceInterface {
                 case DELETE:
                     response = adapterSvc.delete(request, uriInfo);
                     break;
-                case NOTIFY:                    
+                case NOTIFY: 
+                    System.out.println(request.getOperation()+", "+operation.toString());
+                    JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
+                    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+                    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);//for debugging purposes
+                    jaxbMarshaller.marshal(request, System.out);//for debugging purposes
                     response = adapterSvc.notify(request, uriInfo);
                     break;
                 default:

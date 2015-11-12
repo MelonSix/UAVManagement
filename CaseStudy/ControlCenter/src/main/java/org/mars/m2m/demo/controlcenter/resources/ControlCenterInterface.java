@@ -8,7 +8,12 @@ package org.mars.m2m.demo.controlcenter.resources;
 import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+import java.util.logging.Level;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -93,11 +98,11 @@ public class ControlCenterInterface
                     switch (Unmarshaller.determineNotificationType(notification)) {
                         case OBSTACLE:
                             Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
-                            if (obs != null && !controlCenterServices.containsObstacle(obs)) {
-                                controlCenterServices.addObstacle(obs);
-//                                controlCenterServices.setSimulationStartable(true);
-                                controlCenterServices.registerInfoRequirement();
-                                controlCenterServices.shareInfoAfterRegistration();
+                            if (obs != null && !controlCenterServices.containsObstacle(obs)) 
+                            {
+                                controlCenterServices.addObstacle(obs);                                
+                                invokeAsynchronousServices();
+                                
                             }
                             break;
                         case THREAT:
@@ -106,10 +111,8 @@ public class ControlCenterInterface
                             if (threat != null && !controlCenterServices.containsThreat(threat)) {
                                 threatCounter++;
                                 controlCenterServices.addThreat(threat);
-                                System.out.println("Threats in kb no.: "+controlCenterServices.getKb().getThreats().size());
-//                                controlCenterServices.setSimulationStartable(true);
-                                controlCenterServices.registerInfoRequirement();
-                                controlCenterServices.shareInfoAfterRegistration();
+                                System.out.println("Threats in kb no.: "+controlCenterServices.getKb().getThreats().size());                                
+                                invokeAsynchronousServices();
                             }
                             break;
                         case CONFLICT:
@@ -161,6 +164,18 @@ public class ControlCenterInterface
             @Override
             public void onDisconnect(AsyncResponse disconnected) {
                 logger.error("Client could not be contacted.");
+            }
+        });
+    }   
+    
+    private void invokeAsynchronousServices() 
+    {
+        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(new Supplier<Integer>()
+        {
+            @Override
+            public Integer get() {
+                controlCenterServices.invokeAttackerUavServices();
+                return 0;
             }
         });
     }

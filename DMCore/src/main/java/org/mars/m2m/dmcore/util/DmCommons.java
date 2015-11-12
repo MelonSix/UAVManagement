@@ -47,7 +47,7 @@ public class DmCommons {
      * @param val The integer correspondent of CRUDN operation in a request primitive
      * @return The corresponding enumeration instance of the operation
      */
-    public static Operation determineOneM2mOperation(BigInteger val)
+    public synchronized static Operation determineOneM2mOperation(BigInteger val)
     {
         switch(val.intValue())
         {

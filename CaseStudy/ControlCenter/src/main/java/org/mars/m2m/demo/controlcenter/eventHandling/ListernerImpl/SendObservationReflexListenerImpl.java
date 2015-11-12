@@ -42,7 +42,7 @@ public class SendObservationReflexListenerImpl implements ReflexListener
                 String endpointURL;
                 endpointURL = CC_StaticInitConfig.mgmntServerURL+device.getEndpoint()+"/"+
                                     object.getObjectId()+"/"+object.getObjectInstanceId()+"/0";
-
+                
                 consumerDetails.setRequest(requestUtil.
                         getRequestPrimitiveForData(Operation.NOTIFY, endpointURL, CC_StaticInitConfig.ccNotificationServiceURL, ""));
 

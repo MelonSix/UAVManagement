@@ -75,7 +75,7 @@ public class AttackerUtils
         }
     }
     
-    private static AttackerModel getAttacker(ReportedLwM2MClient client)
+    private synchronized static AttackerModel getAttacker(ReportedLwM2MClient client)
     {        
         try 
         {

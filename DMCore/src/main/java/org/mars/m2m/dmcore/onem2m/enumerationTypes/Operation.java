@@ -18,7 +18,7 @@ public enum Operation {
     DELETE(4),
     NOTIFY(5);
     
-    private final BigInteger value;
+    private BigInteger value;
     
     Operation(long opVal)
     {
