@@ -6,13 +6,7 @@
  */
 package org.mars.m2m.managementserver.core;
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.logging.Level;
 import org.eclipse.leshan.core.model.LwM2mModel;
-import org.eclipse.leshan.core.model.ObjectLoader;
-import org.eclipse.leshan.core.model.ObjectModel;
 import org.eclipse.leshan.server.client.Client;
 import org.eclipse.leshan.server.model.LwM2mModelProvider;
 import org.mars.m2m.dmcore.Loader.LwM2mModelLoader;
@@ -30,7 +24,7 @@ public class CustomObjectModel  implements LwM2mModelProvider  {
     }
     
     @Override
-    public LwM2mModel getObjectModel(Client client) {
+    public synchronized LwM2mModel getObjectModel(Client client) {
         // same model for all clients
         return model;
     }

@@ -51,32 +51,7 @@ public class NotificationResource
     public void processReceivedObservation(@Context final HttpServletRequest req, @Context UriInfo uriInfo, 
             @Suspended final AsyncResponse asyncResponse)
     {
-        //async properties
-        asyncResponse.setTimeoutHandler(new TimeoutHandler() { 
-            @Override
-            public void handleTimeout(AsyncResponse asyncResponse) {
-                asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
-                        .entity("Operation time out.").build());
-                
-            }
-        });
-        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
-        asyncResponse.register(new CompletionCallback() {
-            @Override
-            public void onComplete(Throwable throwable) {
-                if (throwable != null) 
-                {
-                    log.error("Error forwarding notification to client");
-                }
-            }            
-        });
-        asyncResponse.register(new ConnectionCallback() {
-
-            @Override
-            public void onDisconnect(AsyncResponse disconnected) {
-                log.error("Client could not be contacted.");
-            }
-        });
+        setAsyncResponseProperties(asyncResponse);
         
         //thread for each request
         new Thread(new Runnable() 
@@ -107,5 +82,34 @@ public class NotificationResource
                 }
             }
         }).start();        
+    }
+
+    private void setAsyncResponseProperties(final AsyncResponse asyncResponse) {
+        //async properties
+        asyncResponse.setTimeoutHandler(new TimeoutHandler() {
+            @Override
+            public void handleTimeout(AsyncResponse asyncResponse) {
+                asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
+                        .entity("Operation time out.").build());
+                
+            }
+        });
+        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
+        asyncResponse.register(new CompletionCallback() {
+            @Override
+            public void onComplete(Throwable throwable) {
+                if (throwable != null)
+                {
+                    log.error("Error forwarding notification to client");
+                }
+            }
+        });
+        asyncResponse.register(new ConnectionCallback() {
+            
+            @Override
+            public void onDisconnect(AsyncResponse disconnected) {
+                log.error("Client could not be contacted.");
+            }
+        });
     }
 }

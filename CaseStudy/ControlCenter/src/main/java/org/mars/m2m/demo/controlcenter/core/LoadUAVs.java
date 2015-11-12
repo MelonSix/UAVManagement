@@ -9,6 +9,10 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -17,6 +21,7 @@ import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.client.AsyncServiceConsumer;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterReflexes;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
+import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
 import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 import org.mars.m2m.demo.controlcenter.util.TraverseParsedXmlLwM2MClientInfo;
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
@@ -72,24 +77,38 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
                     @Override
                     public void run() {
                         for (ReportedLwM2MClient device : reportedLwM2MClients) {
-                            reflex.observationRequestReflex(device);
+                            reflex.observationRequestReflex(device);                            
                         }
                         
+                        ReadAttackers.readAttackerResources();
                     }
                 };
                 Thread t = new Thread(runnable);
                 t.start();
                 t.join();
+                
             } catch (InterruptedException e) {
             }
+//            ExecutorService executors = Executors.newCachedThreadPool();
+//            Future<Void> submit = executors.submit(new Callable<Void>() {
+//                
+//                @Override
+//                public Void call() throws Exception {
+//                    
+//                    return null;
+//                }
+//                
+//            });
             reflex.scoutingWaypointsReflex(connectedDevices);
+            
             
             if(connectedDevices != null && connectedDevices.size() > 0 && animationPanel != null)
             {
-               animationPanel.start();
+//               animationPanel.start();
             }
         } catch (Exception e) {
             logger.error(e.toString());
         }
     }
+    
 }

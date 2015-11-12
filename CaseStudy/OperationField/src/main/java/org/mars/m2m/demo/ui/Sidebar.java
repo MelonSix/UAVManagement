@@ -31,6 +31,9 @@ public class Sidebar extends javax.swing.JPanel {
         rightControlPanel1 = new org.mars.m2m.demo.ui.RightControlPanel();
         logWindow1 = new org.mars.m2m.demo.ui.LogWindow();
 
+        setMaximumSize(new java.awt.Dimension(200, 32767));
+        setPreferredSize(new java.awt.Dimension(200, 568));
+
         jSplitPane_sidebar.setDividerLocation(300);
         jSplitPane_sidebar.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         jSplitPane_sidebar.setLeftComponent(rightControlPanel1);

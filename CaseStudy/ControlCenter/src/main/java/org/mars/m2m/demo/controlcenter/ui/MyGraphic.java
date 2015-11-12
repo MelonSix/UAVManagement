@@ -105,7 +105,7 @@ public void drawObstacle(Graphics2D graphics, Obstacle obstacle, Color obstacle_
                 graphics.setColor(Color.PINK);
                 break;
             case TYPE2:
-                graphics.setColor(Color.GREEN);
+                graphics.setColor(Color.BLACK);
                 break;
             case TYPE3:
                 graphics.setColor(Color.YELLOW);

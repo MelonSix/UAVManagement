@@ -5,8 +5,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.eclipse.leshan.core.model.LwM2mModel;
-import org.eclipse.leshan.core.model.ObjectModel;
 import org.mars.m2m.dmcore.json.ConfigGson;
 import org.mars.m2m.managementserver.core.CustomObjectModel;
 
@@ -28,9 +28,8 @@ public class ObjectModelSpec {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getObjectModel() {        
+    public Response getObjectModel() {        
         LwM2mModel model = modelProvider.getObjectModel(null);
-        String json = this.gson.toJson(model.getObjectModels().toArray(new ObjectModel[] {}));
-        return json;
+        return Response.ok(model.getObjectModels()).build();
     }
 }

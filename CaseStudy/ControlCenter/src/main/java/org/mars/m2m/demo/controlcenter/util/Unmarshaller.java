@@ -72,6 +72,8 @@ public class Unmarshaller
                     return NotificationType.OBSTACLE;
                 case 12202:
                     return NotificationType.THREAT;
+                case 12207:
+                    return NotificationType.ATTACKER_THREAT_STATUS;
                 default:
                     return NotificationType.INVALID;
             }

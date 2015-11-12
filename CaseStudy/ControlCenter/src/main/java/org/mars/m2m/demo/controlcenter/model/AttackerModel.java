@@ -7,7 +7,9 @@ package org.mars.m2m.demo.controlcenter.model;
 
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import org.mars.m2m.demo.controlcenter.enums.AttackerType;
+import org.mars.m2m.demo.controlcenter.services.OntologyBasedKnowledge;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
 import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
@@ -16,9 +18,9 @@ import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
  *
  * @author AG BRIGHTER
  */
-public class AttackerModel 
+public class AttackerModel implements KnowledgeAwareInterface
 {
-    public ReportedLwM2MClient client;
+    private ReportedLwM2MClient client;
     
     //device resources
     private int flightMode;
@@ -31,8 +33,39 @@ public class AttackerModel
     private float [] uavPositionInBaseStation;
     private boolean attackerLocked;
     private AttackerType attackerType;
+    private KnowledgeInterface kb;
+    private boolean threatDestroyed;
+    private int speed;
 
     public AttackerModel() {
+        this.uavBaseCenterCoordinates = new float[]{60, 60};
+        this.kb = new OntologyBasedKnowledge();
+    }
+    
+    /**
+     * 
+     * @param index
+     * @param flightMode
+     * @param target
+     * @param online
+     * @param center_coordinates
+     * @param locked
+     * @param remained_energy
+     * @param attackerType 
+     */
+    public AttackerModel(int index, int flightMode, Target target, boolean online, float[] center_coordinates, boolean locked,
+            float remained_energy, AttackerType attackerType)
+    {
+        this.index = index;
+        this.flightMode = flightMode;
+        this.target_indicated_by_role = target;
+        this.online = online;
+        this.centerCoordinates = center_coordinates;
+        this.attackerLocked = locked;
+        this.remainedEnergy = remained_energy;
+        this.threatDestroyed = true;
+        this.attackerType = attackerType;
+        this.kb = new OntologyBasedKnowledge();
         this.uavBaseCenterCoordinates = new float[]{60, 60};
     }
 
@@ -139,16 +172,18 @@ public class AttackerModel
             Conflict conflict = (Conflict) msg;
             attackerUtils.execute.addConflict(conflict, this);
             attackerUtils.update.setReplan(true, this);
-        } else if (msg_type == Message.OBSTACLE_MSG) {
+        }  
+        else if (msg_type == Message.THREAT_MSG) {
+            Threat threat = (Threat) msg;
+            attackerUtils.execute.addThreat(threat,  this);
+            attackerUtils.update.setReplan(true, this);
+        }
+        else if (msg_type == Message.OBSTACLE_MSG) {
             Obstacle obstacle = (Obstacle) msg;
             attackerUtils.execute.addObstacle(obstacle, this);
             if (this.getTarget_indicated_by_role()== null || !this.isObstacleInTargetMBR(obstacle.getShape().getBounds())) {
                 attackerUtils.update.setReplan(true, this);
             }
-        } else if (msg_type == Message.THREAT_MSG) {
-            Threat threat = (Threat) msg;
-            attackerUtils.execute.addThreat(threat,  this);
-            attackerUtils.update.setReplan(true, this);
         }
     }
     
@@ -179,7 +214,93 @@ public class AttackerModel
         return rect.intersects(obstacleMinimumBoundedRectangle);
     }
 
+    @Override
     public boolean containsObstacle(Obstacle obstacle) {
         return false;//TODO: Handle this operation
+    }
+
+    @Override
+    public synchronized boolean containsThreat(Threat threat) {
+        return this.kb.containsThreat(threat);
+    }
+
+    @Override
+    public ArrayList<Obstacle> getObstacles() {
+        return this.kb.getObstacles();
+    }
+
+    @Override
+    public ArrayList<Conflict> getConflicts() {
+        return this.kb.getConflicts();
+    }
+
+    @Override
+    public synchronized ArrayList<Threat> getThreats() {
+        return this.kb.getThreats();
+    }
+
+    @Override
+    public void setObstacles(ArrayList<Obstacle> obstacles) {
+        this.kb.setObstacles(obstacles);
+    }
+
+    @Override
+    public void setConflicts(ArrayList<Conflict> conflicts) {
+        this.kb.setConflicts(conflicts);
+    }
+
+    @Override
+    public void setThreats(ArrayList<Threat> threats) {
+        this.kb.setThreats(threats);
+    }
+
+    @Override
+    public void addObstacle(Obstacle obs) {
+        if (!this.kb.containsObstacle(obs)) {
+            this.kb.addObstacle(obs);
+        }
+    }
+
+    @Override
+    public void addConflict(Conflict conflict) {
+        this.kb.addConflict(conflict);
+    }
+
+    @Override
+    public void addThreat(Threat threat) {
+        synchronized(kb)
+        {
+            this.kb.addThreat(threat);
+        }
+    }
+
+    /**
+     * @return the kb
+     */
+    public KnowledgeInterface getKb() {
+        return kb;
+    }
+
+    /**
+     * @param kb the kb to set
+     */
+    public void setKb(KnowledgeInterface kb) {
+        this.kb = kb;
+    }
+
+    public boolean isThreatDestroyed() {
+        return threatDestroyed;
+    }
+
+    public void setThreatDestroyed(boolean threatDestroyed) {
+        this.threatDestroyed = threatDestroyed;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

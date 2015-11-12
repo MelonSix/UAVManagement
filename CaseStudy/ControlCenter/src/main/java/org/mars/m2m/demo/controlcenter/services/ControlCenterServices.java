@@ -87,7 +87,6 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         int scout_num = HandleTree.scoutsNode.getChildCount();
         
         int index = CC_StaticInitConfig.currentScoutIndex.getAndIncrement();
-        System.out.println("currentScoutIndex: "+index);
 
         float average_region_height = CC_StaticInitConfig.bound_height * 1.0f / scout_num;
         int task_num = (int) Math.ceil(average_region_height / (CC_StaticInitConfig.scout_radar_radius * 2));
@@ -115,9 +114,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
      * @param assigned_role_index
      */
     private void roleAssignForAttackerWithSubTeam(int assigned_attacker_index, int assigned_role_index) 
-    {
-        System.out.println("*******************role assign***********************************\n");
-        
+    {        
         executor = Executors.newFixedThreadPool(5);
         TreeSet<Integer> assigned_attacker = new TreeSet<>();
         ArrayList<Threat> threats = kb.getThreats();
@@ -453,9 +450,30 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         ArrayList<AttackerModel> attackersList = ReadAttackers.getAttackers();
         for (AttackerModel attacker : attackersList) 
         {
-            if(attacker.isAttackerLocked())
+            if(attacker.isAttackerLocked()) {
                 locked.add(attacker.getIndex());
+            }
         }
         return locked;
+    }
+    
+    public void findAttackerAndUpdate(String addressOfNotification, boolean status)
+    {
+        /**
+         * The address of the endpoint is extracted from the received
+         * notification. e.g. http://127.0.0.1:8089/ms/clients/endpointIDhere/12207/0/14/observe
+         * The endpointID is the extracted by splitting
+         */
+        String endpoint = addressOfNotification.split("/")[5];
+        ArrayList<AttackerModel> attackers = ReadAttackers.getAttackers();
+        
+        for(AttackerModel attacker : attackers)
+        {
+            if(attacker.getClient().getEndpoint().contains(endpoint))
+            {
+                attacker.setThreatDestroyed(status);
+                break;
+            }
+        }
     }
 }

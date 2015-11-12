@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mars.m2m.demo.uav;
+package org.mars.m2m.demo.controlcenter.uav;
 
-import org.mars.m2m.demo.config.GraphicConfig;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.util.ArrayList;
-import org.mars.m2m.demo.config.OpStaticInitConfig;
-import org.mars.m2m.demo.util.VectorUtil;
-import org.mars.m2m.demo.util.DistanceUtil;
-import org.mars.m2m.demo.util.RectangleUtil;
-import org.mars.m2m.demo.model.Target;
-import org.mars.m2m.demo.model.shape.Circle;
-import org.mars.m2m.demo.world.KnowledgeInterface;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
+import org.mars.m2m.demo.controlcenter.appConfig.GraphicConfig;
+import org.mars.m2m.demo.controlcenter.model.KnowledgeInterface;
+import org.mars.m2m.demo.controlcenter.model.Target;
+import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
+import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
+import org.mars.m2m.demo.controlcenter.util.VectorUtil;
+import world.model.shape.Circle;
 
 /** UAV is the common features for both scouts and attackers.
  *
@@ -111,7 +111,7 @@ public class UAV extends Unit {
     }
 
     public void initColor(int uav_index) {
-        uav_index = uav_index % OpStaticInitConfig.ATTACKER_NUM;
+        uav_index %= CC_StaticInitConfig.ATTACKER_NUM;
         center_color = GraphicConfig.uav_colors.get(uav_index);
         radar_color = new Color(center_color.getRed(), center_color.getGreen(), center_color.getBlue(), 128);
     }
@@ -136,9 +136,9 @@ public class UAV extends Unit {
         return visible;
     }
 
-//    public void setVisible(boolean visible) {
-//        this.visible = visible;
-//    }
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public KnowledgeInterface getKb() {
         return kb;

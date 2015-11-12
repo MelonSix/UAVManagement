@@ -10,13 +10,14 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.californium.core.CoapServer;
-import org.eclipse.leshan.client.californium.LeshanClientExt;
+import org.mars.m2m.apiExtension.LeshanClientExt;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.util.Validate;
 import org.mars.m2m.demo.Devices.UavAttackerDevice;
+import org.mars.m2m.demo.eventHandling.callerImpl.InterceptRequestImpl;
 import org.mars.m2m.uavendpoint.Exceptions.DeviceStarterDetailsException;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
 import org.mars.m2m.uavendpoint.Validation.StarterValidator;
@@ -67,8 +68,9 @@ public class AttackerDeviceClient extends AbstractDevice
                StarterValidator.notNull(localHostName);
                StarterValidator.notWellKnownPort(localPort);
                StarterValidator.notNull(serverHostName);
-               if(StarterValidator.notPositive(serverPort))
+               if(StarterValidator.notPositive(serverPort)) {
                    throw new DeviceStarterDetailsException("Specified server port has to be positive");
+               }
 
                canDeviceStart.set(true);
            }
@@ -110,6 +112,7 @@ public class AttackerDeviceClient extends AbstractDevice
            CoapServer coapServer = new CoapServer();
            client = new LeshanClientExt(clientAddress, coapServer, new ArrayList<LwM2mObjectEnabler>(
                    enablers));
+           client.addInterceptor(new InterceptRequestImpl());
 
            // Start the client
            client.start();

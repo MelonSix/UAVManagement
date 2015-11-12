@@ -54,6 +54,7 @@ import org.eclipse.leshan.util.Validate;
 import org.mars.m2m.dmcore.json.ConfigGson;
 import org.mars.m2m.managementserver.core.ResponseManagement;
 import org.mars.m2m.managementserver.model.ObjectResourceUpdate;
+import org.mars.m2m.managementserver.resources.subresources.AdminResource;
 import org.mars.m2m.managementserver.resources.subresources.Discovery;
 import org.slf4j.LoggerFactory;
 
@@ -473,6 +474,16 @@ public class MgmtServerInterface {
     public Discovery performDiscovery(@PathParam("clientEndpoint") String clientEndpoint)
     {
         return new Discovery(server, clientEndpoint);
+    }
+    
+    /**
+     *For clearing the registered devices on the LWM2M server
+     * @return
+     */
+    @Path("/admin")
+    public AdminResource performDiscovery()
+    {
+        return new AdminResource(server);
     }
     
     /**

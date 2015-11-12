@@ -139,7 +139,12 @@ public class ControlCenterReflexes
         ArrayList<ObjectLink> objectLinks = device.getObjectLinks();
         for (ObjectLink obj : objectLinks) 
         {                        
-            if (obj.getObjectId() == 12202 || obj.getObjectId() == 12206) 
+            /**
+             * 12202 -> Threat sensor
+             * 12206 -> Obstacle sensor
+             * 12207 -> UAV Attacker Device
+             */
+            if (obj.getObjectId() == 12202 || obj.getObjectId() == 12206 || obj.getObjectId() == 12207) 
             {
                 WorkerThread thread = new WorkerThread(device, ThreadOperation.OBSERVATION_REFLEX);
                 executor.execute(thread);

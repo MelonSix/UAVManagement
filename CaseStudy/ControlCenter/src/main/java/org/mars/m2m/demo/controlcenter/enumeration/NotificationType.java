@@ -14,6 +14,7 @@ public enum NotificationType
     OBSTACLE("obstacle"),
     THREAT("threat"),
     CONFLICT("conflict"),
+    ATTACKER_THREAT_STATUS("isThreatDestroyed"),
     INVALID("invalid");
     private final String name;
 

@@ -27,6 +27,7 @@ import javax.xml.bind.Marshaller;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
 import org.mars.m2m.dmcore.util.DmCommons;
+import org.mars.m2m.managmentadapter.resources.subResources.AdminResource;
 import org.mars.m2m.managmentadapter.resources.subResources.ConnectedClients;
 import org.mars.m2m.managmentadapter.resources.subResources.DeviceReporting;
 import org.mars.m2m.managmentadapter.resources.subResources.NotificationResource;
@@ -126,6 +127,12 @@ public class AdapterServiceInterface {
     public ConnectedClients getConnectedClients()
     {
         return new ConnectedClients();
+    }
+    
+    @Path("/admin")
+    public AdminResource clearClients()
+    {
+        return new AdminResource();
     }
     
     /**

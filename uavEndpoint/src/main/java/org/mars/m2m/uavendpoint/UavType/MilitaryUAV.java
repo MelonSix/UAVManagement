@@ -10,7 +10,7 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.californium.core.CoapServer;
-import org.eclipse.leshan.client.californium.LeshanClientExt;
+import org.mars.m2m.apiExtension.LeshanClientExt;
 import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;

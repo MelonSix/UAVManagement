@@ -8,8 +8,10 @@ package org.mars.m2m.demo.controlcenter.ui;
 import ch.qos.logback.classic.Logger;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
@@ -49,6 +51,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                     @Override
                     public void run() {
                         JTree_ccKB.setModel(controlCenterServices.getKb());
+//                        updateGUI();
                     }
                 });
             }
@@ -57,6 +60,34 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
     public HandleTree getHandleTree() {
         return handleTree;
+    }
+    
+    private void updateGUI() 
+    {
+        SwingWorker<AnimationPanel,Void> swingWorker;
+        swingWorker = new SwingWorker<AnimationPanel, Void>() {
+            
+            @Override
+            protected AnimationPanel doInBackground() throws Exception {
+                return animationPanel;
+            }
+            
+            @Override
+            protected void done() {
+                try
+                {
+                    ControlCenterServices.time_step++;
+                    AnimationPanel panel = get();
+                    panel.clearUAVImageBeforeUpdate();
+                    panel.updateImageAtEachIteration();
+                    panel.repaint();
+                } catch (InterruptedException | ExecutionException e) {
+                    
+                }
+                
+            }
+        };
+        swingWorker.execute();
     }
 
     /**

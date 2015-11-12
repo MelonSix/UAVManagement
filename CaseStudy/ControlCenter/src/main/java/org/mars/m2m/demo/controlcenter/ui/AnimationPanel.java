@@ -157,11 +157,11 @@ public class AnimationPanel extends JPanel
     /** start the threat to drive the world and paint the graph. The thread is implemented by AnimationListener Class in this file.
      * 
      */
-    public void start() { 
-        System.out.println("starting animation listener");        
-        Timer timer = new Timer(5000, new AnimationListener(this));
-        timer.start();
-    }
+//    public void start() { 
+//        System.out.println("starting animation listener");        
+//        Timer timer = new Timer(5000, new AnimationListener(this));
+//        timer.start();
+//    }
 
     private BufferedImage createBufferedImage() {
         return new BufferedImage(CC_StaticInitConfig.bound_width, CC_StaticInitConfig.bound_height,

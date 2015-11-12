@@ -109,7 +109,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         try {
 //            ontology_based_knowledge.read(new FileInputStream(FilePathConfig.ROBOT_ONTOLOGY_TEMPLATE_FILE_PATH), null);
             ontology_based_knowledge.read(OntologyBasedKnowledge.class.getResourceAsStream(FilePathConfig.ROBOT_ONTOLOGY_TEMPLATE_FILE_PATH), null);
-            System.out.println("Ontology file successfully loaded");
+            logger.info("Ontology file successfully loaded");
         } catch (Exception ex) {
             logger.error("Ontology file could not be loaded");
             ex.printStackTrace();
@@ -614,7 +614,6 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     public void addThreat(Threat threat) {
         if (threat != null) {
             Gson gson = new Gson();
-            System.out.println(gson.toJson(threat));
             Individual threat_individual = Threat_Class.createIndividual();
             
             Literal center = ontology_based_knowledge.createTypedLiteral(threat.getCoordinates()[0] + "," + threat.getCoordinates()[1]);
@@ -638,12 +637,15 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public synchronized boolean containsThreat(Threat threat) {
+    public boolean containsThreat(Threat threat) {
         Literal threat_index = ontology_based_knowledge.createTypedLiteral(threat.getIndex());
         Selector selector = new SimpleSelector(null, hasThreatIndex, threat_index);
-        Model result_model = ontology_based_knowledge.query(selector);
+        synchronized(ontology_based_knowledge)
+        {
+            Model result_model = ontology_based_knowledge.query(selector);
+            return result_model.listStatements().hasNext();
+        }
 //        printStatements(result_model);
-        return result_model.listStatements().hasNext();
     }
 
     @Override

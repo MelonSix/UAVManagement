@@ -25,7 +25,7 @@ public class ReadAttackers
     public ReadAttackers() {
     }
     
-    public static void readAttackerResources()
+    public static synchronized void readAttackerResources()
     {   
         ArrayList<AttackerModel> attackers_partial = new ArrayList<>();
         int attacker_num = HandleTree.attackersNode.getChildCount();
@@ -37,13 +37,13 @@ public class ReadAttackers
                 try
                 {
                     AttackerModel attacker = AttackerUtils.getVirtualizedAttacker(node);
-                    if(attacker != null)
+                    if(attacker != null) {
                         attackers_partial.add(attacker);
+                    }
                 }
                 catch(NullPointerException e)
                 {
                     logger.error(e.toString());
-                    e.printStackTrace();
                 }
             }
         }

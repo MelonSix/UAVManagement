@@ -13,10 +13,11 @@
  * Contributors:
  *     Zebra Technologies - initial API and implementation
  *******************************************************************************/
-package org.eclipse.leshan.client.californium;
+package org.mars.m2m.apiExtension;
 
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -41,7 +42,8 @@ public class LeshanClientExt implements LwM2mClient {
     private final CoapServer clientSideServer;
     private final AtomicBoolean clientServerStarted = new AtomicBoolean(false);
     private CaliforniumLwM2mClientRequestSender requestSender;
-    private final List<LwM2mObjectEnabler> objectEnablers;    
+    private final List<LwM2mObjectEnabler> objectEnablers;
+    private final ArrayList<InterceptRequest> interceptors;
     
     /**
      * Modified to allow starting of server without LWM2M server address specified.
@@ -52,6 +54,7 @@ public class LeshanClientExt implements LwM2mClient {
      */
     public LeshanClientExt(final InetSocketAddress clientAddress,
             final CoapServer serverLocal, final List<LwM2mObjectEnabler> objectEnablers) {
+        this.interceptors = new ArrayList<>();
 
         Validate.notNull(clientAddress);
         Validate.notNull(serverLocal);
@@ -80,6 +83,30 @@ public class LeshanClientExt implements LwM2mClient {
     }
     
     /**
+     * Registers interceptor
+     * @param <E>
+     * @param interceptor 
+     */
+    public <E extends InterceptRequest> void addInterceptor(E interceptor)
+    {
+        if (interceptor!=null) {
+            this.interceptors.add(interceptor);
+        }
+    }
+    
+    /**
+     * de-registers interceptor
+     * @param <E>
+     * @param interceptor 
+     */
+    public <E extends InterceptRequest> void removeInterceptor(E interceptor)
+    {
+        if (interceptor!=null) {
+            this.interceptors.remove(interceptor);
+        }
+    } 
+    
+    /**
      * Creates a request sender for this client using the specified client and server addresses
      * @param clientAddress Client address
      * @param serverAddress Server address
@@ -106,6 +133,14 @@ public class LeshanClientExt implements LwM2mClient {
     public <T extends LwM2mResponse> T send(final UplinkRequest<T> request) {
         if (!clientServerStarted.get()) {
             throw new RuntimeException("Internal CoapServer is not started.");
+        }
+        if(this.interceptors != null && this.interceptors.size()>0)
+        {
+            for(Iterator<InterceptRequest> it = this.interceptors.iterator(); it.hasNext();)
+            {
+                InterceptRequest interceptor = it.next();
+                interceptor.interceptUplinkRequest(request);
+            }
         }
         return requestSender.send(request, null);
     }

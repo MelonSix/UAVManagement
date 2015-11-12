@@ -15,7 +15,6 @@ import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
-import javax.swing.SwingUtilities;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.demo.Devices.FlightControl;
 import org.mars.m2m.demo.Devices.ObstacleSensor;
@@ -40,6 +39,7 @@ import org.mars.m2m.demo.ui.AnimationPanel;
 import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.world.KnowledgeInterface;
 import org.mars.m2m.demo.world.OntologyBasedKnowledge;
+import org.mars.m2m.demo.world.Reconnaissance;
 import org.mars.m2m.demo.world.World;
 import org.mars.m2m.uavendpoint.Configuration.UAVConfiguration;
 import org.mars.m2m.uavendpoint.Model.DeviceStarterDetails;
@@ -419,7 +419,7 @@ public final class Scout extends UAV
                     DistanceUtil.distanceBetween(getCenter_coordinates(), threat.getCoordinates());
             if (threat.isEnabled() && !getKb().containsThreat(threat) 
                     && dist_from_attacker_to_threat < getUav_radar().getRadius() * 0.9
-                    && threat.getThreatType().toString().equals(getScoutType().toString())) //detects threats based on capabilities
+                    /*&& threat.getThreatType().toString().equals(getScoutType().toString())*/) //detects threats based on capabilities
             {
                 getKb().addThreat(threat);
                 updateSensorValue(threat);

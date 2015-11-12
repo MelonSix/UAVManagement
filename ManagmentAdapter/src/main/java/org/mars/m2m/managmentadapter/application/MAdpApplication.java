@@ -34,7 +34,7 @@ public class MAdpApplication extends Application<MAdpConfiguration> {
         
         //healthcheck resources
         e.healthChecks().register("Clients Resource healthcheck", new ClientsResourceHealth());
-        showGUI();
+//        showGUI();
     }
     
     @Override

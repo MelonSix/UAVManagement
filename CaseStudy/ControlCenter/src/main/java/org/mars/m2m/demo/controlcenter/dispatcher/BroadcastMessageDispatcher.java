@@ -28,8 +28,6 @@ package org.mars.m2m.demo.controlcenter.dispatcher;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.tree.DefaultMutableTreeNode;
-import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.KnowledgeAwareInterface;
@@ -37,7 +35,6 @@ import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Target;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
-import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
 
 

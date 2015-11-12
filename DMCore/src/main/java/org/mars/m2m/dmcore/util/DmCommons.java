@@ -19,7 +19,7 @@ import org.mars.m2m.dmcore.util.dateTime.XmlDateTimeType;
  */
 public class DmCommons {
     
-    private static GetXmlDateTimeObj gtXmlObj = new GetXmlDateTimeObj();
+    private static final GetXmlDateTimeObj gtXmlObj = new GetXmlDateTimeObj();
     
     /**
      * pattern is \d{4}(0[1-9]|1[0-2])(0[1-9]|[1-2]\d|30|31)T([01]\d|2[0-3])[0-5]\d[0-5]\d <br/>

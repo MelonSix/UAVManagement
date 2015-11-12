@@ -9,7 +9,6 @@ import ch.qos.logback.classic.Logger;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;

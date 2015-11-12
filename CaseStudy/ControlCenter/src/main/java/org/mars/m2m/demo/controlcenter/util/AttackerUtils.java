@@ -81,14 +81,13 @@ public class AttackerUtils
         {
             String endpointURL = CC_StaticInitConfig.mgmntServerURL + client.getEndpoint() + "/12207/0";
             RequestPrimitive resp;
-            resp = (RequestPrimitive) requestUtil.send(CC_StaticInitConfig.ccAddress, endpointURL, 
+            resp = requestUtil.send(CC_StaticInitConfig.ccAddress, endpointURL, 
                     Operation.RETRIEVE, null);
             if (resp == null) {
                 return null;
             }
             return parseDataToAttacker(resp);
         } catch (Exception e) {
-            e.printStackTrace();
             logger.error(e.getMessage());
             return null;
         }
@@ -147,10 +146,12 @@ public class AttackerUtils
                         case 13:
                             attacker.setAttackerType(AttackerType.valueOf(resource.getValue().toString()));
                             break;
+                        case 14:
+                            System.out.println("Read threat destroyed status: "+resource.getValue().toString());
+                            attacker.setThreatDestroyed((boolean) resource.getValue());
                         default:
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
                     logger.error(e.getMessage());
                 }
             }
@@ -190,13 +191,11 @@ public class AttackerUtils
         if(registry.containsKey(endpointID))
         {
             ArrayList<Message> messages = registry.get(endpointID);
-            if(messages.contains(message))
-                return true;
-            else
-                return false;
+            return messages.contains(message);
         }
-        else
+        else {
             return false;
+        }
     }
     
     public static void updateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
@@ -222,14 +221,14 @@ public class AttackerUtils
     //Asynchronous methods
     public static void asyncUpdateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate, AsyncServiceCallback<Response> callback)
     {
-        if(resourceUpdate != null && client != null)
-        {
-            String data = gson.toJson(resourceUpdate);
-            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-            System.out.println("asynUpdate: "+data);
-            //asynchronous update
-            requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class, callback);
-        }
+//        if(resourceUpdate != null && client != null)
+//        {
+//            String data = gson.toJson(resourceUpdate);
+//            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+//            System.out.println("asynUpdate: "+data);
+//            //asynchronous update
+//            requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class, callback);
+//        }
     }
     
     public static void asyncExecuteOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate,  AsyncServiceCallback<Response> callback)
@@ -260,9 +259,14 @@ public class AttackerUtils
         public void setReplan(boolean replan, AttackerModel attacker) 
         {            
             int resourceID = 10;
-            System.out.println("Replan set");
-            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, replan, 
-                                        ResourceDataType.BOOLEAN.toString()), this);
+            AttackerUtils.asyncUpdateResource(attacker.getClient(), resourceID, new ObjectResourceUpdate(resourceID, replan, 
+                                        ResourceDataType.BOOLEAN.toString()), new AsyncServiceCallback<Response>() {
+
+                @Override
+                public void asyncServicePerformed(Response t) {
+                    
+                }
+            });
         }
         
         /**
@@ -270,11 +274,17 @@ public class AttackerUtils
          * @param flightMode
          * @param attacker 
          */
-        public void setFlightMode(int flightMode, AttackerModel attacker) 
+        public void setFlightMode(final int flightMode, final AttackerModel attacker) 
         {            
             int resourceID = 0;
-            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, flightMode, 
-                                            ResourceDataType.INTEGER.toString()), this);
+            AttackerUtils.asyncUpdateResource(attacker.getClient(), resourceID, new ObjectResourceUpdate(resourceID, flightMode, 
+                                            ResourceDataType.INTEGER.toString()),  new AsyncServiceCallback<Response>() {
+
+                @Override
+                public void asyncServicePerformed(Response t) {
+                    
+                }
+            });
         }
         
         /**
@@ -282,11 +292,17 @@ public class AttackerUtils
          * @param target_indicated_by_role
          * @param attacker 
          */
-        public void setTarget_indicated_by_role(Target target_indicated_by_role, AttackerModel attacker) {
+        public void setTarget_indicated_by_role(final Target target_indicated_by_role, final AttackerModel attacker) {
             
             int resourceID = 2;
-            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, target_indicated_by_role, 
-                                            ResourceDataType.STRING.toString()), this);
+            AttackerUtils.asyncUpdateResource(attacker.getClient(), resourceID, new ObjectResourceUpdate(resourceID, target_indicated_by_role, 
+                                            ResourceDataType.STRING.toString()), new AsyncServiceCallback<Response>() {
+
+                @Override
+                public void asyncServicePerformed(Response t) {
+                    attacker.setTarget_indicated_by_role(null);
+                }
+            });
         }
         
         /**
@@ -297,8 +313,14 @@ public class AttackerUtils
         public void setSpeed(int speed, AttackerModel attacker) 
         {
             int resourceID = 11;
-            AttackerUtils.asyncUpdateResource(attacker.client, resourceID, new ObjectResourceUpdate(resourceID, speed, 
-                                            ResourceDataType.INTEGER.toString()), this);
+            AttackerUtils.asyncUpdateResource(attacker.getClient(), resourceID, new ObjectResourceUpdate(resourceID, speed, 
+                                            ResourceDataType.INTEGER.toString()), new AsyncServiceCallback<Response>() {
+
+                @Override
+                public void asyncServicePerformed(Response t) {
+                    
+                }
+            });
         }
 
         @Override
@@ -313,22 +335,24 @@ public class AttackerUtils
      */
     public class AttackerExecution /*implements AsyncServiceCallback<Response>*/
     {
-        private  Gson gson;
+        private final  Gson gson;
         public AttackerExecution() {
             gson = new Gson();
         }
         
-        public void addConflict(final Conflict conflict, final AttackerModel attacker) {
-            if(!isMessageInMessageHistory(attacker.client.getEndpoint(), conflict, MESSAGE_HISTORY.getCommunicatedConflicts()))
+        public void addConflict(final Conflict conflict, final AttackerModel attacker) 
+        {
+            if(!isMessageInMessageHistory(attacker.getClient().getEndpoint(), conflict, MESSAGE_HISTORY.getCommunicatedConflicts()))
             {
                 int resourceID = 7;
-                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID, 
+                AttackerUtils.asyncExecuteOperationOnResource(attacker.getClient(), resourceID, 
                         new ObjectResourceUpdate(resourceID, gson.toJson(conflict), ResourceDataType.STRING.toString()), 
                         new AsyncServiceCallback<Response>() {
 
                     @Override
                     public void asyncServicePerformed(Response r) {
-                        addToMessageHistory(attacker.client.getEndpoint(), conflict, MESSAGE_HISTORY.getCommunicatedConflicts());
+                        attacker.addConflict(conflict);
+                        addToMessageHistory(attacker.getClient().getEndpoint(), conflict, MESSAGE_HISTORY.getCommunicatedConflicts());
                     }
                 });
             }
@@ -336,35 +360,46 @@ public class AttackerUtils
     
         public void addObstacle(final Obstacle obstacle, final AttackerModel attacker) 
         {
-            if (!isMessageInMessageHistory(attacker.client.getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles())) {
+            if (!isMessageInMessageHistory(attacker.getClient().getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles())) {
                 int resourceID = 6;
-                AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID,
-                        new ObjectResourceUpdate(resourceID, gson.toJson(obstacle), ResourceDataType.STRING.toString()),
-                        new AsyncServiceCallback<Response>() {
-
-                    @Override
-                    public void asyncServicePerformed(Response r) {
-                        addToMessageHistory(attacker.client.getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles());
-                    }
-                });
+                if (!attacker.containsObstacle(obstacle)) 
+                {
+                    attacker.addObstacle(obstacle);
+                    AttackerUtils.asyncExecuteOperationOnResource(attacker.getClient(), resourceID,
+                            new ObjectResourceUpdate(resourceID, gson.toJson(obstacle), ResourceDataType.STRING.toString()),
+                            new AsyncServiceCallback<Response>() {
+                                
+                                @Override
+                                public void asyncServicePerformed(Response r) {
+                                    addToMessageHistory(attacker.getClient().getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles());
+                                }
+                            });
+                }
             }
         }
     
         public void addThreat(final Threat threat, final AttackerModel attacker) 
-        {
-            if (!isMessageInMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats())) {
+        {   
+//            System.out.println("Sending threat...");
+            if (!isMessageInMessageHistory(attacker.getClient().getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats())) 
+            {
+//               System.out.println("History condition passed"); 
                 int resourceID = 8;
-                
                 //checks if this attacker has the capability of destroying this threat before it sends to it
-                if (threat.getThreatType().toString().equals(attacker.getAttackerType().toString())) 
+                if (threat.getThreatType().toString().equals(attacker.getAttackerType().toString()) 
+                        && !attacker.containsThreat(threat)
+                        && attacker.isThreatDestroyed()) 
                 {
-                    AttackerUtils.asyncExecuteOperationOnResource(attacker.client, resourceID,
+//                    System.out.println("attacker condition passed"); 
+                    attacker.addThreat(threat);
+//                    System.out.println("Threat added to attacker kb. No.: "+attacker.getKb().getThreats().size()); 
+                    AttackerUtils.asyncExecuteOperationOnResource(attacker.getClient(), resourceID,
                             new ObjectResourceUpdate(resourceID, gson.toJson(threat), ResourceDataType.STRING.toString()),
                             new AsyncServiceCallback<Response>() {
                                 
                                 @Override
                                 public void asyncServicePerformed(Response r) {
-                                    addToMessageHistory(attacker.client.getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
+                                    addToMessageHistory(attacker.getClient().getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
                                 }
                             });
                 }

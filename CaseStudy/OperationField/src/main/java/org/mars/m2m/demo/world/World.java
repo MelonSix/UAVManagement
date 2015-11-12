@@ -258,7 +258,8 @@ public class World {
                 public void run() 
                 {
                     Attacker attacker;
-                    attacker = new Attacker(j, null, OpStaticInitConfig.ATTACKER, uav_init_coord, null, Float.MAX_VALUE, getAttackerType(j), animationPanel);
+                    attacker = new Attacker(j, null, OpStaticInitConfig.ATTACKER, 
+                            uav_init_coord, null, Float.MAX_VALUE, getAttackerType(j), animationPanel);
                     synchronized(attackers)
                     {
                         attackers.add(attacker);
@@ -276,7 +277,8 @@ public class World {
                 public void run() 
                 {
                     Scout scout;
-                    scout = new Scout(j, OpStaticInitConfig.SCOUT, uav_base_center, uav_base_center, Float.MAX_VALUE, getScoutType(j), animationPanel);
+                    scout = new Scout(j, OpStaticInitConfig.SCOUT, uav_base_center, 
+                            uav_base_center, Float.MAX_VALUE, getScoutType(j), animationPanel);
                     synchronized(scouts)
                     {
                         scouts.add(scout);
@@ -407,6 +409,7 @@ public class World {
                                 attacker.setNeed_to_replan(true);
                                 attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
                                 attacker.setFly_mode(Attacker.FLYING_MODE);
+                                attacker.setThreatDestroyed(true);
                             }
                         }
                     } 

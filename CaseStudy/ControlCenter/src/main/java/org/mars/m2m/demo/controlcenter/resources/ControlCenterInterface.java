@@ -78,7 +78,8 @@ public class ControlCenterInterface
     @Consumes(MediaType.APPLICATION_XML)
     public void acceptNotification(final RequestPrimitive data, @Suspended final AsyncResponse asyncResponse)
     {
-        setAsyncResponseProperties(asyncResponse);
+//        setAsyncResponseProperties(asyncResponse);
+        asyncResponse.resume(Response.accepted().build());
         new Thread(new Runnable() {
 
             @Override
@@ -94,29 +95,34 @@ public class ControlCenterInterface
                             Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
                             if (obs != null && !controlCenterServices.containsObstacle(obs)) {
                                 controlCenterServices.addObstacle(obs);
-                                controlCenterServices.setSimulationStartable(true);
+//                                controlCenterServices.setSimulationStartable(true);
+                                controlCenterServices.registerInfoRequirement();
+                                controlCenterServices.shareInfoAfterRegistration();
                             }
                             break;
                         case THREAT:
                             Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
-                            
+                            System.out.println("Threat received");
                             if (threat != null && !controlCenterServices.containsThreat(threat)) {
                                 threatCounter++;
-                                System.out.println("Threats num: "+threatCounter);
                                 controlCenterServices.addThreat(threat);
-                                System.out.println("Threats num from kb: "+controlCenterServices.getThreats().size());
-                                controlCenterServices.setSimulationStartable(true);
+                                System.out.println("Threats in kb no.: "+controlCenterServices.getKb().getThreats().size());
+//                                controlCenterServices.setSimulationStartable(true);
+                                controlCenterServices.registerInfoRequirement();
+                                controlCenterServices.shareInfoAfterRegistration();
                             }
                             break;
                         case CONFLICT:
                             break;
+                        case ATTACKER_THREAT_STATUS:
+                             boolean isThreatDestroyed = (boolean) Unmarshaller.getObjectFromNotification(notification, Boolean.class);
+                             System.out.println(isThreatDestroyed);
+                             controlCenterServices.findAttackerAndUpdate(data.getFrom(), isThreatDestroyed);                             
+                            break;
                         default:
                             logger.info("INVALID NOTIFICATION OPTION RECEIVED");
                     }
-                    asyncResponse.resume(Response.accepted().build());
                 }
-                else
-                    asyncResponse.resume(Response.status(Response.Status.NOT_ACCEPTABLE).build());
             }
         }).start();        
     }

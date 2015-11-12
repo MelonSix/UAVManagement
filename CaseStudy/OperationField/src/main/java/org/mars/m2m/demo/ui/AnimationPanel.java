@@ -336,12 +336,13 @@ public class AnimationPanel extends JPanel implements MouseListener
         
         for (Iterator<Scout> it = scoutsQueue.iterator(); it.hasNext();) {
             Scout scout = it.next();
-            if (scout.getIndex() == highlight_uav_index)
-            {
-                virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, GraphicConfig.highlight_uav_color);
-            } else {
-                virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, null);
-            }
+            virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, null);
+//            if (scout.getIndex() == highlight_uav_index)
+//            {
+//                virtualizer.drawUAVInUAVImage(uav_image_graphics, this.uav_base, scout, GraphicConfig.highlight_uav_color);
+//            } else {
+//                
+//            }
         }
         
         for (Iterator<Attacker> it = attackersQueue.iterator(); it.hasNext();) {
@@ -505,7 +506,7 @@ public class AnimationPanel extends JPanel implements MouseListener
         float[] mouse_point_coord = new float[]{(float) mouse_point.getX(), (float) mouse_point.getY()};
         ArrayList<UAV> uavs = new ArrayList<>();
         uavs.addAll(attackers);
-        uavs.addAll(scouts);
+        //uavs.addAll(scouts);
         for (UAV uav : uavs) {
             float[] center_coord = uav.getCenter_coordinates();
             float dist = DistanceUtil.distanceBetween(center_coord, mouse_point_coord);
@@ -555,7 +556,7 @@ public class AnimationPanel extends JPanel implements MouseListener
     public static void setHighlightUAV(int uav_index) {
         ArrayList<UAV> uavs = new ArrayList<>();
         uavs.addAll(World.getAttackers());
-        uavs.addAll(World.getScouts());
+        //uavs.addAll(World.getScouts());
         AnimationPanel.highlight_uav_index = uav_index;
         UAV highlight_uav = null;
         for (UAV uav : uavs) {

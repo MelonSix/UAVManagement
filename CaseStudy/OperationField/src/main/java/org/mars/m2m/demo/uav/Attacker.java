@@ -35,9 +35,6 @@ import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.apache.commons.lang3.StringUtils;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.mars.m2m.demo.LwM2mClients.AttackerDeviceClient;
 import org.mars.m2m.demo.algorithm.RRT.RRTAlg;
@@ -85,6 +82,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     private boolean lockedToThreat;
     private final ArrayList<Threat> destroyedThreats;
     private UavAttackerDevice attackerDevice;
+    private boolean threatDestroyed=true;//indicates on startup to CC that it can receive an assignment
         
     UAVConfiguration uavConfig;
     AnimationPanel animationPanel;
@@ -216,14 +214,17 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
             }
             if (shortest_path != null) {
                 Point path_dest = shortest_path.getLastWaypoint();
-                if (path_dest.getX() == this.center_coordinates[0] && path_dest.getY() == this.center_coordinates[1]) {
+                if (path_dest.getX() == this.center_coordinates[0] && path_dest.getY() == this.center_coordinates[1])
+                {
                     stucked_times++;
                     if(this.stucked_times>this.max_stucked_times)
                     {
-                        this.setVisible(false);
+                         stucked_times=0;
+                        //this.setVisible(false);
                     }
-                    this.setNeed_to_replan(true);
                     System.out.println("not able to plan path for this uav " + this.getIndex());
+                    moveAttackerToBase(this);
+                    //pathPlan();
                 }else{
                     stucked_times=0;
                 }
@@ -267,8 +268,10 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
      *
      * @return
      */
-    public boolean moveToNextWaypoint() {
-        if (this.target_indicated_by_role != null) {
+    public boolean moveToNextWaypoint() 
+    {
+        if (this.target_indicated_by_role != null) 
+        {
             current_index_of_planned_path++;
             if (path_planned_at_current_time_step.getWaypointNum() == 0 || current_index_of_planned_path >= path_planned_at_current_time_step.getWaypointNum()) {
                 this.moved_at_last_time = false;
@@ -817,6 +820,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         updateAttackerCoordinate();
         checkReplanningAccordingToAttackerMovement();
         checkThreatReached();
+        detectAttackerEvent();
     }
     
     private void updateAttackerCoordinate() {
@@ -827,6 +831,28 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
             boolean moved = moveToNextWaypoint();
             if (moved) {
                 logger.debug("attacker:" + getIndex() + " moved");
+            }
+    }
+    
+    /**During patrol,the attacker detect event by radar.
+     * 
+     */
+    private void detectAttackerEvent() 
+    {
+        Attacker attacker = this;
+        if (!attacker.isVisible()) {
+                return;
+            }
+            ArrayList<Obstacle> obstacles = animationPanel.getWorld().getObstacles();
+            int obs_list_size = obstacles.size();
+            for (int i = 0; i < obs_list_size; i++) {
+                Obstacle obs = obstacles.get(i);
+                if (obs.getMbr().intersects(attacker.getUav_radar().getBounds())) {
+                    if (!attacker.containsObstacle(obs)) {
+                        attacker.addObstacle(obs);
+                        attacker.setNeed_to_replan(true);
+                    }
+                }
             }
     }
     
@@ -942,17 +968,34 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                             int num_of_threat_remained = animationPanel.getWorld().getNum_of_threat_remained();
                             animationPanel.getWorld().setNum_of_threat_remained(--num_of_threat_remained);
                             
-                            float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
-                            Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
-                            attacker.setTarget_indicated_by_role(dummy_threat);
-                            attacker.setNeed_to_replan(true);
-                            attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
-                            attacker.setFly_mode(Attacker.FLYING_MODE);
+                            moveAttackerToBase(attacker);
                         }
                     }
                 } 
                 break;
             }
         }
+    }
+
+    private void moveAttackerToBase(Attacker attacker) {
+        float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
+        Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
+        attacker.setTarget_indicated_by_role(dummy_threat);
+        attacker.setNeed_to_replan(true);
+        attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
+        attacker.setFly_mode(Attacker.FLYING_MODE);
+        this.setThreatDestroyed(true);
+    }
+
+    public synchronized boolean isThreatDestroyed() {
+        return threatDestroyed;
+    }
+    public synchronized void resetThreatDestroyed()
+    {
+        this.threatDestroyed = false;
+    }
+    public synchronized void setThreatDestroyed(boolean threatDestroyed) {
+        this.threatDestroyed = threatDestroyed;
+        this.attackerDevice.fireResourceChange(14);
     }
 }

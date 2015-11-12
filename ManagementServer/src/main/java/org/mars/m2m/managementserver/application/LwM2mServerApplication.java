@@ -58,7 +58,7 @@ public class LwM2mServerApplication extends Application<Lwm2mServerConfiguration
         //healthchecks
         environment.healthChecks().register("Clients Resource healthcheck", new ClientsResourceHealth(lwServer));
         
-        showUI(lwServer);
+//        showUI(lwServer);
     }
     
     public void startLwm2mServer(Lwm2mServerConfiguration config)
