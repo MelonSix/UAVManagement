@@ -12,8 +12,10 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.SwingWorker;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.dispatcher.BroadcastMessageDispatcher;
@@ -29,6 +31,8 @@ import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Target;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;
+import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
+import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
 import org.slf4j.LoggerFactory;
@@ -481,5 +485,33 @@ public class ControlCenterServices implements KnowledgeAwareInterface
                 break;
             }
         }
+    }
+    
+    public void updateGUI() 
+    {
+        SwingWorker<AnimationPanel,Void> swingWorker;
+        swingWorker = new SwingWorker<AnimationPanel, Void>() {
+            
+            @Override
+            protected AnimationPanel doInBackground() throws Exception {
+                return ControlCenter.animationPanel;
+            }
+            
+            @Override
+            protected void done() {
+                try
+                {
+                    ControlCenterServices.time_step++;
+                    AnimationPanel panel = get();
+                    panel.clearUAVImageBeforeUpdate();
+                    panel.updateImageAtEachIteration();
+                    panel.repaint();
+                } catch (InterruptedException | ExecutionException e) {
+                    
+                }
+                
+            }
+        };
+        swingWorker.execute();
     }
 }

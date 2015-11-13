@@ -54,7 +54,7 @@ public class UAVBase {
                 coord[1] = this.coordinate[1] + (float) ( ran_port_radius * Math.sin(theta));
 //                coord[0] = this.coordinate[0] + (float) (port_radius * Math.cos(theta));
 //                coord[1] = this.coordinate[1] + (float) (port_radius * Math.sin(theta));
-                uav_port_map.put(uav_index, coord);
+                uav_port_map.put(uav_index, coordinate);
                 theta += delta_theta;
             }
     }

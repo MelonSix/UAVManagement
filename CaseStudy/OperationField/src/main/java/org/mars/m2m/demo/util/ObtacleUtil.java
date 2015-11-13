@@ -34,6 +34,8 @@ public class ObtacleUtil {
     private static ArrayList<Obstacle> readObstacleFromKMLInputStream(InputStream kml_input_stream) {
         ArrayList<Obstacle> obstacle_list = new ArrayList<Obstacle>();
         int obstacle_index = 0;
+        int val = (int)(5 + Math.random()*200);
+        System.out.println(val);
         try {
             SAXReader reader = new SAXReader();
             Document document = reader.read(kml_input_stream);
@@ -48,7 +50,7 @@ public class ObtacleUtil {
                 String[] coordinates = coordinate_text.split("\n");
                 for (String coordinate : coordinates) {
                     String[] coordinate_x_y = coordinate.split(",");
-                    obstacle_polygon_shape.addPoint(StringUtil.StringToFloat(coordinate_x_y[0]).intValue(), 600 - Math.abs(StringUtil.StringToFloat(coordinate_x_y[1]).intValue()));
+                    obstacle_polygon_shape.addPoint(StringUtil.StringToFloat(coordinate_x_y[0]).intValue()+val, Math.abs(StringUtil.StringToFloat(coordinate_x_y[1]).intValue()+val));
                 }
                 Obstacle obstacle = new Obstacle(obstacle_polygon_shape, obstacle_index);
                 obstacle_list.add(obstacle);

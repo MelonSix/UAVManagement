@@ -251,7 +251,7 @@ public class World {
         for (int i = 1; i <= attacker_num; i++) 
         {
             final int j=i;
-            final float[] uav_init_coord = uav_base.assignUAVLocation(i);
+            final float[] uav_init_coord = uav_base.getCoordinate()/*.assignUAVLocation(i)*/;
             new Thread(new Runnable() 
             {
                 @Override

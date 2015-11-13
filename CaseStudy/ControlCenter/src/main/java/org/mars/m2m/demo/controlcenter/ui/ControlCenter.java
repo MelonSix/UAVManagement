@@ -39,23 +39,23 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         handleTree = new HandleTree(jTreeControlCenter);
         NewDeviceServices.setHandleTree(handleTree);
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
-        this.animationPanel.initComponents();
+        ControlCenter.animationPanel.initComponents();
         
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                SwingUtilities.invokeLater(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        JTree_ccKB.setModel(controlCenterServices.getKb());
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//
+//            @Override
+//            public void run() {
+//                SwingUtilities.invokeLater(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        JTree_ccKB.setModel(controlCenterServices.getKb());
 //                        updateGUI();
-                    }
-                });
-            }
-        }, 500);
+//                    }
+//                });
+//            }
+//        }, 500, 500);
     }
 
     public HandleTree getHandleTree() {
@@ -252,8 +252,8 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSplitPane jSplitPane1;
-    private AnimationPanel animationPanel;
+    public javax.swing.JSplitPane jSplitPane1;
+    public static AnimationPanel animationPanel;
     private javax.swing.JTree jTreeControlCenter;
     private javax.swing.JMenuItem reloadUavMenuItem;
     // End of variables declaration//GEN-END:variables

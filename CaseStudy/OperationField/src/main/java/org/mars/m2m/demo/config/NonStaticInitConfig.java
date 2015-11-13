@@ -46,7 +46,7 @@ public class NonStaticInitConfig {
     
     public static int threat_range_from_obstacles=30;
 
-    public static int obstacle_num = 17;
+    public static int obstacle_num = 15;
 
     public NonStaticInitConfig(int ui_width, int ui_height) {
         this.bound_height = ui_height;

@@ -30,15 +30,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.tree.DefaultMutableTreeNode;
-import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
+import org.mars.m2m.demo.controlcenter.model.Conflict;
 import org.mars.m2m.demo.controlcenter.model.KnowledgeAwareInterface;
 import org.mars.m2m.demo.controlcenter.model.Obstacle;
 import org.mars.m2m.demo.controlcenter.model.Target;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
-import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.RectangleUtil;
 
 /**
@@ -72,7 +70,7 @@ public class RegisteredMessageDispatcher extends MessageDispatcher {
         List<Threat> threats = intelligent_unit.getThreats();
         int threat_num = threats.size();        
         ArrayList<AttackerModel> attackers = ReadAttackers.getAttackers();
-//        List<Conflict> conflicts = intelligent_unit.getConflicts();
+        List<Conflict> conflicts = intelligent_unit.getConflicts();
         
         for(AttackerModel attacker : attackers)
         {                

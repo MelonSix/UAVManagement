@@ -199,19 +199,23 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
             planning_times = OpStaticInitConfig.rrt_planning_times_for_attacker;
             boolean available_path_found = false;
             int nums_of_trap = 0;
-            for (int i = 0; i <= planning_times; i++) {
-                this.runRRT();
-                available_path_found = available_path_found || this.path_planned_at_current_time_step.pathReachEndPoint(this.target_indicated_by_role.getCoordinates());
-                if (!available_path_found && nums_of_trap < 10) {
-                    i--;
-                    nums_of_trap++;
-                    continue;
-                }
-                if (this.path_planned_at_current_time_step.getPath_length() < shotest_path_length) {
-                    shotest_path_length = this.path_planned_at_current_time_step.getPath_length();
-                    shortest_path = this.path_planned_at_current_time_step;
-                }
-            }
+            this.runRRT();
+//            for (int i = 0; i <= planning_times; i++) 
+//            {
+//                
+//                available_path_found = available_path_found 
+//                        || this.path_planned_at_current_time_step.pathReachEndPoint(this.target_indicated_by_role.getCoordinates());
+//                if (!available_path_found && nums_of_trap < 10) {
+//                    i--;
+//                    nums_of_trap++;
+//                    continue;
+//                }
+//                if (this.path_planned_at_current_time_step.getPath_length() < shotest_path_length) {
+//                    shotest_path_length = this.path_planned_at_current_time_step.getPath_length();
+//                    shortest_path = this.path_planned_at_current_time_step;
+//                }
+//            }
+            boolean blocked = false;
             if (shortest_path != null) {
                 Point path_dest = shortest_path.getLastWaypoint();
                 if (path_dest.getX() == this.center_coordinates[0] && path_dest.getY() == this.center_coordinates[1])
@@ -220,14 +224,15 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                     if(this.stucked_times>this.max_stucked_times)
                     {
                          stucked_times=0;
+                         blocked = true;
                         //this.setVisible(false);
                     }
                     System.out.println("not able to plan path for this uav " + this.getIndex());
-                    moveAttackerToBase(this);
-                    //pathPlan();
+                    moveAttackerToBase(this, false);
                 }else{
                     stucked_times=0;
                 }
+                this.runRRT();
                 this.path_planned_at_current_time_step = shortest_path;
             } else {
                 logger.error("null path");
@@ -968,7 +973,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                             int num_of_threat_remained = animationPanel.getWorld().getNum_of_threat_remained();
                             animationPanel.getWorld().setNum_of_threat_remained(--num_of_threat_remained);
                             
-                            moveAttackerToBase(attacker);
+                            moveAttackerToBase(attacker, true);
                         }
                     }
                 } 
@@ -977,14 +982,16 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         }
     }
 
-    private void moveAttackerToBase(Attacker attacker) {
+    private void moveAttackerToBase(Attacker attacker, boolean threatStatus) {
+        this.current_angle =0;
+        this.resetCurrentIndexOfPath();
         float[] dummy_threat_coord = World.assignUAVPortInBase(attacker.getIndex());
         Threat dummy_threat = new Threat(Threat.UAV_BASE_INDEX, dummy_threat_coord, 0, ThreatType.DUMMY);
         attacker.setTarget_indicated_by_role(dummy_threat);
         attacker.setNeed_to_replan(true);
         attacker.setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_IDLE);
         attacker.setFly_mode(Attacker.FLYING_MODE);
-        this.setThreatDestroyed(true);
+        this.setThreatDestroyed(threatStatus);
     }
 
     public synchronized boolean isThreatDestroyed() {

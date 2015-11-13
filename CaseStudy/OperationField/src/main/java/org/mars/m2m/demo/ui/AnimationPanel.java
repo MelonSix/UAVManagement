@@ -105,7 +105,7 @@ public class AnimationPanel extends JPanel implements MouseListener
     private void initComponents() {
        try {
            bound_height = 980;
-           bound_width = 1850;
+           bound_width = 1340;
             transparent_color = GraphicConfig.transparent_color;
             Color fog_of_war_color = GraphicConfig.fog_of_war_color;//Color.black;
 

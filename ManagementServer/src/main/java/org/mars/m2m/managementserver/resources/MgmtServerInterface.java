@@ -71,7 +71,6 @@ public class MgmtServerInterface {
     private final Gson gson;
     
     @Context private HttpServletRequest req;
-    @Context private HttpServletResponse resp;
     /**
      * Default constructor
      */
@@ -321,8 +320,7 @@ public class MgmtServerInterface {
             @Override
             public void run() {
                 String processedValResponse = null;
-                final String target = "/"+objectid+"/"+instance+"/"+(resourceid.split("/")[0]);
-                        System.out.println(objectid+", "+instance+", "+resourceid);
+                final String target = "/"+objectid+"/"+instance+"/"+resourceid;
                 Client client = server.getClientRegistry().get(clientEndpoint);
                 if(client != null)
                 {
@@ -391,13 +389,14 @@ public class MgmtServerInterface {
      * @param instance
      * @param resourceid 
      * @param asyncResponse  
+     * @param resp  
      */
     @DELETE
     @Path("/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe")
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteObservation(@PathParam("clientEndpoint") final String clientEndpoint, @PathParam("objectid") final String objectid,
                                 @PathParam("instance") final String instance, @PathParam("resourceid") final String resourceid, 
-                                @Suspended final AsyncResponse asyncResponse)
+                                @Suspended final AsyncResponse asyncResponse, final @Context HttpServletResponse resp)
     {
         setAsyncResponseProperties(asyncResponse);
         new Thread(new Runnable() {

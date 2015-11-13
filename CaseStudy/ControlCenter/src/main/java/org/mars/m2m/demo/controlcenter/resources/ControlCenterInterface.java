@@ -9,11 +9,8 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-import java.util.logging.Level;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -175,6 +172,7 @@ public class ControlCenterInterface
             @Override
             public Integer get() {
                 controlCenterServices.invokeAttackerUavServices();
+//                controlCenterServices.updateGUI();
                 return 0;
             }
         });

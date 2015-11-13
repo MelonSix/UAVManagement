@@ -61,31 +61,7 @@ public class AdapterServiceInterface {
     public void postRequest(final RequestPrimitive requestPrimitive, @Context final UriInfo uriInfo, 
             @Suspended final AsyncResponse asyncResponse, @Context final HttpServletResponse resp)
     {
-        //async properties
-        asyncResponse.setTimeoutHandler(new TimeoutHandler() { 
-            @Override
-            public void handleTimeout(AsyncResponse asyncResponse) {
-                asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
-                        .entity("Operation time out.").build());
-            }
-        });
-        asyncResponse.setTimeout(120, TimeUnit.SECONDS);
-        asyncResponse.register(new CompletionCallback() {
-            @Override
-            public void onComplete(Throwable throwable) {
-                if (throwable != null) 
-                {
-                    logger.error("Error writing to client");
-                }
-            }            
-        });
-        asyncResponse.register(new ConnectionCallback() {
-
-            @Override
-            public void onDisconnect(AsyncResponse disconnected) {
-                logger.error("Client could not be contacted.");
-            }
-        });
+        setAsyncResponseProperties(asyncResponse);
         
         //thread for each request
         new Thread(new Runnable() 
@@ -108,6 +84,34 @@ public class AdapterServiceInterface {
                 }                
             }
         }).start();        
+    }
+
+    private void setAsyncResponseProperties(final AsyncResponse asyncResponse) {
+        //async properties
+        asyncResponse.setTimeoutHandler(new TimeoutHandler() {
+            @Override
+            public void handleTimeout(AsyncResponse asyncResponse) {
+                asyncResponse.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE)
+                        .entity("Operation time out.").build());
+            }
+        });
+        asyncResponse.setTimeout(60, TimeUnit.SECONDS);
+        asyncResponse.register(new CompletionCallback() {
+            @Override
+            public void onComplete(Throwable throwable) {
+                if (throwable != null)
+                {
+                    logger.error("Error writing to client");
+                }
+            }
+        });
+        asyncResponse.register(new ConnectionCallback() {
+            
+            @Override
+            public void onDisconnect(AsyncResponse disconnected) {
+                logger.error("Client could not be contacted.");
+            }
+        });
     }
     
     @Path("/notification")
@@ -164,17 +168,12 @@ public class AdapterServiceInterface {
                     response = adapterSvc.delete(request, uriInfo);
                     break;
                 case NOTIFY: 
-                    System.out.println(request.getOperation()+", "+operation.toString());
-                    JAXBContext jaxbContext = JAXBContext.newInstance("org.mars.m2m.dmcore.onem2m.xsdBundle");
-                    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-                    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);//for debugging purposes
-                    jaxbMarshaller.marshal(request, System.out);//for debugging purposes
                     response = adapterSvc.notify(request, uriInfo);
                     break;
                 default:
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.toString());
         }
         
         return response;
