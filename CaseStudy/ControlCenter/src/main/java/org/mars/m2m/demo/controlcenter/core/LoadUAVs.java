@@ -68,16 +68,13 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
            
             connectedDevices = newDeviceServices.addNewClientsOnDemand(reportedLwM2MClients);
                 
-            //reflex operations to endpoints
-            //send observation requests before scouting starts
-            try 
-            {        
+            try {
                 Runnable runnable;
                 runnable = new Runnable() {
                     @Override
                     public void run() {
                         for (ReportedLwM2MClient device : reportedLwM2MClients) {
-                            reflex.observationRequestReflex(device);                            
+                            reflex.observationRequestReflex(device);
                         }
                         
                         ReadAttackers.readAttackerResources();
@@ -86,8 +83,8 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
                 Thread t = new Thread(runnable);
                 t.start();
                 t.join();
-                
             } catch (InterruptedException e) {
+                logger.error(e.toString());
             }
 //            ExecutorService executors = Executors.newCachedThreadPool();
 //            Future<Void> submit = executors.submit(new Callable<Void>() {
@@ -99,8 +96,7 @@ public class LoadUAVs implements AsyncServiceCallback<Response>
 //                }
 //                
 //            });
-            reflex.scoutingWaypointsReflex(connectedDevices);
-            
+            reflex.scoutingWaypointsReflex(connectedDevices);           
             
             if(connectedDevices != null && connectedDevices.size() > 0 && animationPanel != null)
             {

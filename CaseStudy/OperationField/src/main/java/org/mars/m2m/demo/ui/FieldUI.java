@@ -8,6 +8,8 @@ package org.mars.m2m.demo.ui;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
+import org.mars.m2m.demo.config.OpStaticInitConfig;
+import org.mars.m2m.demo.uav.Scout;
 
 /**
  *
@@ -21,10 +23,12 @@ public class FieldUI extends javax.swing.JFrame {
     public FieldUI() {
         this.animationPanel = new AnimationPanel();
         initComponents();
+        this.animationPanel.initComponents();
         //starts animation depending on scout(s) status
         boolean wait_for_scouts = true;
         boolean are_scouts_ready = false;
-        if(animationPanel.getWorld() == null) System.out.println("null");
+        if(animationPanel.getWorld() == null) 
+            System.out.println("null");
         this.animationPanel.start();
 //        synchronized(animationPanel)
 //        {
@@ -67,19 +71,25 @@ public class FieldUI extends javax.swing.JFrame {
 
         opFieldSplitPane.setDividerLocation(200);
         opFieldSplitPane.setResizeWeight(0.5);
-        opFieldSplitPane.setMaximumSize(null);
+        opFieldSplitPane.setMaximumSize(new java.awt.Dimension(1300, 985));
+        opFieldSplitPane.setMinimumSize(new java.awt.Dimension(1300, 985));
+        opFieldSplitPane.setPreferredSize(new java.awt.Dimension(1300, 985));
         this.opFieldSplitPane.add(animationPanel, JSplitPane.RIGHT);
+
+        sidebar1.setMaximumSize(new java.awt.Dimension(150, 997));
+        sidebar1.setMinimumSize(new java.awt.Dimension(150, 997));
+        sidebar1.setPreferredSize(new java.awt.Dimension(150, 997));
         opFieldSplitPane.setLeftComponent(sidebar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
+            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1311, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1221, Short.MAX_VALUE)
         );
 
         pack();

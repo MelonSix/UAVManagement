@@ -121,7 +121,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     }
 
     /** constructor
-     *
+     * Constructs an attacker UAV
      * @param index
      * @param target
      * @param uav_type
@@ -132,17 +132,14 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
      * @param animationPanel
      */
     public Attacker(int index, Target target, int uav_type, float[] center_coordinates,
-                                        ArrayList<Obstacle> obstacles, float remained_energy, AttackerType attackerType,                                        
-                                        AnimationPanel animationPanel)
+                                        ArrayList<Obstacle> obstacles, float remained_energy, AttackerType attackerType)
     {
         super(index, target, uav_type, center_coordinates, remained_energy);
         this.attackerDevice = new UavAttackerDevice(this);
         this.gson = new Gson();
         this.destroyedThreats = new ArrayList<>();
-        Attacker.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
         this.attackerType = attackerType;
-        this.animationPanel = animationPanel;
         
         
         this.uav_radar = new Circle(center_coordinates[0], center_coordinates[1], OpStaticInitConfig.attacker_radar_radius);
@@ -200,23 +197,24 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
             boolean available_path_found = false;
             int nums_of_trap = 0;
             this.runRRT();
-//            for (int i = 0; i <= planning_times; i++) 
-//            {
-//                
-//                available_path_found = available_path_found 
-//                        || this.path_planned_at_current_time_step.pathReachEndPoint(this.target_indicated_by_role.getCoordinates());
-//                if (!available_path_found && nums_of_trap < 10) {
-//                    i--;
-//                    nums_of_trap++;
-//                    continue;
-//                }
-//                if (this.path_planned_at_current_time_step.getPath_length() < shotest_path_length) {
-//                    shotest_path_length = this.path_planned_at_current_time_step.getPath_length();
-//                    shortest_path = this.path_planned_at_current_time_step;
-//                }
-//            }
+            for (int i = 0; i <= planning_times; i++) 
+            {
+                
+                available_path_found = available_path_found 
+                        || this.path_planned_at_current_time_step.pathReachEndPoint(this.target_indicated_by_role.getCoordinates());
+                if (!available_path_found && nums_of_trap < 10) {
+                    i--;
+                    nums_of_trap++;
+                    continue;
+                }
+                if (this.path_planned_at_current_time_step.getPath_length() < shotest_path_length) {
+                    shotest_path_length = this.path_planned_at_current_time_step.getPath_length();
+                    shortest_path = this.path_planned_at_current_time_step;
+                }
+            }
             boolean blocked = false;
-            if (shortest_path != null) {
+            if (shortest_path != null) 
+            {
                 Point path_dest = shortest_path.getLastWaypoint();
                 if (path_dest.getX() == this.center_coordinates[0] && path_dest.getY() == this.center_coordinates[1])
                 {
@@ -228,7 +226,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                         //this.setVisible(false);
                     }
                     System.out.println("not able to plan path for this uav " + this.getIndex());
-                    moveAttackerToBase(this, false);
+//                    moveAttackerToBase(this, false);
                 }else{
                     stucked_times=0;
                 }
@@ -763,11 +761,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     public void setRemained_energy(float remained_energy) {
         this.remained_energy = remained_energy;
     }
-
-    public static void setOccupiedPorts(ArrayList<Integer> occupiedPorts) {
-        UAV.occupiedPorts = occupiedPorts;
-    }
-
+    
     public static void setCenter_height(int center_height) {
         Unit.center_height = center_height;
     }
@@ -795,7 +789,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
             @Override
             public void run() 
             {
-                updateAll_local();
+//                updateAll_local();
                 if(kb.getThreats().size() > 0)
                 {
                     for(Threat threat : kb.getThreats())

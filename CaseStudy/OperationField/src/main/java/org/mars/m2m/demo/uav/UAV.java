@@ -34,7 +34,10 @@ public class UAV extends Unit {
 
     protected KnowledgeInterface kb;
         
-    protected static ArrayList<Integer> occupiedPorts;
+    /**
+     *Keeps the already assigned port numbers
+     */
+    protected final static ArrayList<Integer> occupiedPorts = new ArrayList<>();;
     
     public UAV(int index, Target target_indicated_by_role, int uav_type, float[] center_coordinates,float remained_energy) {
         super(index, target_indicated_by_role, uav_type, center_coordinates);

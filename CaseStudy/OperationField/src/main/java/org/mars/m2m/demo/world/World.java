@@ -60,6 +60,7 @@ import org.mars.m2m.demo.uav.Scout;
 import org.mars.m2m.demo.uav.UAVBase;
 import org.mars.m2m.demo.uav.UAVPath;
 import org.mars.m2m.demo.ui.AnimationPanel;
+import org.mars.m2m.demo.ui.RightControlPanel;
 import org.mars.m2m.demo.util.BoundUtil;
 import org.mars.m2m.demo.util.ConflictCheckUtil;
 import org.mars.m2m.demo.util.DistanceUtil;
@@ -89,7 +90,7 @@ public class World {
 
     private int inforshare_algorithm = 0; //distinction between information-sharing algrithm
     
-//    private Reconnaissance reconnaissance;
+    private Reconnaissance reconnaissance;
 
     //robot coordinates, robot_coordinates[1][0], robot_coordinates[1][1] represents the x, y coordinate of robot 1
     public static UAVBase uav_base;
@@ -132,14 +133,20 @@ public class World {
      * @param init_config records the simulation parameter
      * @param animationPanel
      */
-    public World(NonStaticInitConfig init_config, AnimationPanel animationPanel) {        
+    public World(NonStaticInitConfig init_config, AnimationPanel animationPanel) 
+    {
         locked_threat = new HashMap<>();
         this.conflicts = new ArrayList<>();
+        this.reconnaissance = init_config.getReconnaissance();
         initParameterFromInitConfig(init_config);
         this.num_of_threat_remained = this.threat_num;
         this.num_of_attacker_remained = this.attacker_num;
-        this.animationPanel = animationPanel;
         initUAVs();
+        this.reconnaissance.setAttackers(attackers);
+        this.reconnaissance.setScouts(scouts);
+        this.reconnaissance.setScout_speed(OpStaticInitConfig.SPEED_OF_SCOUT);
+        this.reconnaissance.setConflicts(conflicts);
+//        scoutFlight();
     }
     
     private void scoutFlight()
@@ -252,39 +259,47 @@ public class World {
         {
             final int j=i;
             final float[] uav_init_coord = uav_base.getCoordinate()/*.assignUAVLocation(i)*/;
-            new Thread(new Runnable() 
-            {
-                @Override
-                public void run() 
-                {
-                    Attacker attacker;
-                    attacker = new Attacker(j, null, OpStaticInitConfig.ATTACKER, 
-                            uav_init_coord, null, Float.MAX_VALUE, getAttackerType(j), animationPanel);
-                    synchronized(attackers)
-                    {
-                        attackers.add(attacker);
-                    }
-                }
-            }).start();
+            Attacker attacker;
+            attacker = new Attacker(j, null, OpStaticInitConfig.ATTACKER, 
+                    uav_init_coord, null, Float.MAX_VALUE, getAttackerType(j));
+            attackers.add(attacker);
+//            new Thread(new Runnable() 
+//            {
+//                @Override
+//                public void run() 
+//                {
+//                    Attacker attacker;
+//                    attacker = new Attacker(j, null, OpStaticInitConfig.ATTACKER, 
+//                            uav_init_coord, null, Float.MAX_VALUE, getAttackerType(j), animationPanel);
+//                    synchronized(attackers)
+//                    {
+//                        attackers.add(attacker);
+//                    }
+//                }
+//            }).start();
         }
 
         for (int i = 1; i <= scout_num; i++) 
         {
-            final int j=i;
-            new Thread(new Runnable() 
-            {
-                @Override
-                public void run() 
-                {
-                    Scout scout;
-                    scout = new Scout(j, OpStaticInitConfig.SCOUT, uav_base_center, 
-                            uav_base_center, Float.MAX_VALUE, getScoutType(j), animationPanel);
-                    synchronized(scouts)
-                    {
-                        scouts.add(scout);
-                    }
-                }
-            }).start();
+            Scout scout;
+            scout = new Scout(i, OpStaticInitConfig.SCOUT, uav_base_center, 
+                    uav_base_center, Float.MAX_VALUE, getScoutType(i));
+            scouts.add(scout);
+//            final int j=i;
+//            new Thread(new Runnable() 
+//            {
+//                @Override
+//                public void run() 
+//                {
+//                    Scout scout;
+//                    scout = new Scout(j, OpStaticInitConfig.SCOUT, uav_base_center, 
+//                            uav_base_center, Float.MAX_VALUE, getScoutType(j), animationPanel);
+//                    synchronized(scouts)
+//                    {
+//                        scouts.add(scout);
+//                    }
+//                }
+//            }).start();
         }
     }
 
@@ -565,9 +580,9 @@ public class World {
                 float dist_from_attacker_to_threat = 
                         DistanceUtil.distanceBetween(scout.getCenter_coordinates(), threat.getCoordinates());
                 if (threat.isEnabled() && !scout.getKb().containsThreat(threat) 
-                        && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9
-                        && threat.getThreatType().toString().equals(scout.getScoutType().toString())) //detects threats based on capabilities
-                {
+                    && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9
+                    /*&& threat.getThreatType().toString().equals(getScoutType().toString())*/) //detects threats based on capabilities
+            {
                     scout.getKb().addThreat(threat);
                     updateSensorValue(scout, threat);
                 }
@@ -728,8 +743,8 @@ public class World {
 //        logger.debug("threat terminate check over");
 //        checkNumOfAttackerDestroyed();
 //        logger.debug("uav destroyed check over");
-//        checkConflict();
-//        updateConflict();
+        checkConflict();
+        updateConflict();
 //        logger.debug("conflict update over");
 //        recordResultInLog();
 //        logger.debug("record result in log");
@@ -821,7 +836,7 @@ public class World {
      * 
      */
     private void updateScout() {
-//        this.reconnaissance.updateScoutCoordinate();
+        this.reconnaissance.updateScoutCoordinate();
     }
     
         /** check whether the attacker should replan in  next time step. 

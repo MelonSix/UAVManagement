@@ -7,12 +7,15 @@ package org.mars.m2m.demo.Devices;
 
 import ch.qos.logback.classic.Logger;
 import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.SwingUtilities;
 import org.eclipse.leshan.ResponseCode;
 import org.eclipse.leshan.client.resource.BaseInstanceEnabler;
 import org.eclipse.leshan.core.node.LwM2mResource;
 import org.eclipse.leshan.core.response.LwM2mResponse;
 import org.eclipse.leshan.core.response.ValueResponse;
 import org.mars.m2m.demo.uav.Scout;
+import org.mars.m2m.demo.ui.FieldUI;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +30,7 @@ public class FlightControl extends BaseInstanceEnabler implements DeviceExecutio
     private LinkedList<Float> move_at_x_coordinate_task;
     private boolean y_updated = false;
     final private Scout scout;
+    private static AtomicInteger atomicInteger = new AtomicInteger(0);
 
     public FlightControl() {
         this.scout = null;
@@ -60,6 +64,13 @@ public class FlightControl extends BaseInstanceEnabler implements DeviceExecutio
                 }
                 if (scout!= null) {
                     scout.setMove_at_y_coordinate_task(vals);
+                    SwingUtilities.invokeLater(new Runnable() {
+
+                        @Override
+                        public void run() {
+//                            FieldUI.jProgressBar_UavInit.setValue(atomicInteger.getAndIncrement());
+                        }
+                    });
                 }
                 return new LwM2mResponse(ResponseCode.CHANGED);
             default:

@@ -35,8 +35,6 @@ import org.mars.m2m.demo.util.VectorUtil;
 import org.mars.m2m.demo.model.Obstacle;
 import org.mars.m2m.demo.model.Threat;
 import org.mars.m2m.demo.model.shape.Circle;
-import org.mars.m2m.demo.ui.AnimationPanel;
-import org.mars.m2m.demo.util.DistanceUtil;
 import org.mars.m2m.demo.world.KnowledgeInterface;
 import org.mars.m2m.demo.world.OntologyBasedKnowledge;
 import org.mars.m2m.demo.world.Reconnaissance;
@@ -62,7 +60,6 @@ public final class Scout extends UAV
     ArrayList<AbstractDevice> uavOwnedDevices = new ArrayList<>();
     
     UAVConfiguration uavConfig;
-    final AnimationPanel animationPanel;
        
     /**
      * Gets the Lightweight M2M model for this UAV
@@ -73,6 +70,7 @@ public final class Scout extends UAV
     private FlightControlClient flightControlClient;
     private final DeviceHelper deviceHelper;
     private KnowledgeInterface kb;
+    private int waypointLength=0;
     ScoutType scoutType;
     
     /*Class variables */
@@ -103,15 +101,12 @@ public final class Scout extends UAV
      */
 
     public Scout(int index, int uav_type, float[] center_coordinates, float[] base_coordinate, 
-                    float remained_energy, ScoutType scoutType,
-                    AnimationPanel animationPanel) 
+                    float remained_energy, ScoutType scoutType) 
     {
         super(index, null, uav_type, center_coordinates,remained_energy);
-        Scout.occupiedPorts = new ArrayList<>();
         this.deviceHelper = new DeviceHelper();
         this.kb = new OntologyBasedKnowledge();
         this.scoutType = scoutType;
-        this.animationPanel = animationPanel;
         
         //mount physical devices on scout
         this.flightControl = new FlightControl(this);
@@ -128,7 +123,7 @@ public final class Scout extends UAV
                 
         //for LwM2M initialization of the UAV
         initUAV(new UAVConfiguration());
-        scoutDaemon();
+//        scoutDaemon();
     }
     
     /**
@@ -242,6 +237,10 @@ public final class Scout extends UAV
         {
         //this.setVisible(false);
             //return false;
+            for(int i=0; i<waypointLength; i++)
+            {
+                
+            }
         }
             
         if (current_y_coordinate_task != null) {
@@ -306,6 +305,7 @@ public final class Scout extends UAV
      */
     public synchronized void setMove_at_y_coordinate_task(LinkedList<Float> move_at_y_coordinate_task) {
         System.out.println("Coordinates: "+Arrays.asList(move_at_y_coordinate_task));
+        this.waypointLength = move_at_y_coordinate_task.size();
         this.move_at_y_coordinate_task.addAll(move_at_y_coordinate_task);
     }
 
@@ -400,31 +400,31 @@ public final class Scout extends UAV
      */
     private void detectScoutEvent()
     {
-        int obs_list_size;
-        obs_list_size = animationPanel.getWorld().getObstacles().size();
-        for (int i = 0; i < obs_list_size; i++) 
-        {
-            Obstacle obs = animationPanel.getWorld().getObstacles().get(i);
-            if (!getKb().containsObstacle(obs) && obs.getMbr().intersects(getUav_radar().getBounds())) {
-                getKb().addObstacle(obs);
-                updateSensorValue(obs);
-            }
-        }
-
-        //senses threats
-        int threat_list_size = animationPanel.getWorld().getThreats().size();
-        for (int i = 0; i < threat_list_size; i++) {
-            Threat threat = animationPanel.getWorld().getThreats().get(i);
-            float dist_from_attacker_to_threat = 
-                    DistanceUtil.distanceBetween(getCenter_coordinates(), threat.getCoordinates());
-            if (threat.isEnabled() && !getKb().containsThreat(threat) 
-                    && dist_from_attacker_to_threat < getUav_radar().getRadius() * 0.9
-                    /*&& threat.getThreatType().toString().equals(getScoutType().toString())*/) //detects threats based on capabilities
-            {
-                getKb().addThreat(threat);
-                updateSensorValue(threat);
-            }
-        }
+//        int obs_list_size;
+//        obs_list_size = animationPanel.getWorld().getObstacles().size();
+//        for (int i = 0; i < obs_list_size; i++) 
+//        {
+//            Obstacle obs = animationPanel.getWorld().getObstacles().get(i);
+//            if (!getKb().containsObstacle(obs) && obs.getMbr().intersects(getUav_radar().getBounds())) {
+//                getKb().addObstacle(obs);
+//                updateSensorValue(obs);
+//            }
+//        }
+//
+//        //senses threats
+//        int threat_list_size = animationPanel.getWorld().getThreats().size();
+//        for (int i = 0; i < threat_list_size; i++) {
+//            Threat threat = animationPanel.getWorld().getThreats().get(i);
+//            float dist_from_attacker_to_threat = 
+//                    DistanceUtil.distanceBetween(getCenter_coordinates(), threat.getCoordinates());
+//            if (threat.isEnabled() && !getKb().containsThreat(threat) 
+//                    && dist_from_attacker_to_threat < getUav_radar().getRadius() * 0.9
+//                    /*&& threat.getThreatType().toString().equals(getScoutType().toString())*/) //detects threats based on capabilities
+//            {
+//                getKb().addThreat(threat);
+//                updateSensorValue(threat);
+//            }
+//        }
     }
     
     private void updateSensorValue(Obstacle obs)

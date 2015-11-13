@@ -99,13 +99,13 @@ public class AnimationPanel extends JPanel implements MouseListener
     private MyPopupMenu my_popup_menu;
 
     public AnimationPanel() {
-        initComponents();
+//        initComponents();
     }
 
-    private void initComponents() {
+    public void initComponents() {
        try {
-           bound_height = 980;
-           bound_width = 1340;
+           bound_height = 1000;
+           bound_width = 1470;
             transparent_color = GraphicConfig.transparent_color;
             Color fog_of_war_color = GraphicConfig.fog_of_war_color;//Color.black;
 
@@ -175,7 +175,7 @@ public class AnimationPanel extends JPanel implements MouseListener
             this.addMouseListener(this);
 
         } catch (/*IO*/Exception ex) {
-            logger.error("{}",ex.toString());
+            logger.error("{}",ex);
         }
     }
     
@@ -200,8 +200,8 @@ public class AnimationPanel extends JPanel implements MouseListener
         this.bound_width = world.getBound_width();
         this.bound_height = world.getBound_height();
 
-        this.scouts = world.getScouts();
-        this.attackers = world.getAttackers();
+        this.scouts = World.getScouts();
+        this.attackers = World.getAttackers();
         this.uav_base = world.getUav_base();
     }
 

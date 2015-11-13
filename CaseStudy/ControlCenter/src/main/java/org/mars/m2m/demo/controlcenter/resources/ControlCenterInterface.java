@@ -80,10 +80,10 @@ public class ControlCenterInterface
     @Consumes(MediaType.APPLICATION_XML)
     public void acceptNotification(final RequestPrimitive data, @Suspended final AsyncResponse asyncResponse)
     {
-//        setAsyncResponseProperties(asyncResponse);
+        setAsyncResponseProperties(asyncResponse);
         asyncResponse.resume(Response.accepted().build());
-        new Thread(new Runnable() {
-
+        new Thread(new Runnable() 
+        {
             @Override
             public void run() 
             {
@@ -124,7 +124,8 @@ public class ControlCenterInterface
                     }
                 }
             }
-        }).start();        
+        }).start();   
+        controlCenterServices.updateGUI();
     }
     
 
@@ -172,7 +173,6 @@ public class ControlCenterInterface
             @Override
             public Integer get() {
                 controlCenterServices.invokeAttackerUavServices();
-//                controlCenterServices.updateGUI();
                 return 0;
             }
         });

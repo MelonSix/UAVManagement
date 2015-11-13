@@ -6,8 +6,6 @@
 package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
