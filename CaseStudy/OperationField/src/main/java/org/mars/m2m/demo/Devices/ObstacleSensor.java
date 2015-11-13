@@ -85,7 +85,13 @@ public class ObstacleSensor  extends BaseInstanceEnabler implements DeviceExecut
 
     public void setObstacleInJson(String obstacleInJson) {
         this.obstacleInJson = obstacleInJson;
-        fireResourceChange(0);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                fireResourceChange(0);
+            }
+        }).start();
     }
 
     public String getObstacleInJson() {

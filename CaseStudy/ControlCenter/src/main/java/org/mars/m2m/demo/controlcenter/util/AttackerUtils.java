@@ -29,7 +29,6 @@ import org.mars.m2m.demo.controlcenter.services.MessageHistory;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceDataType;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.RequestPrimitive;
-import org.mars.utils.json.jsonarrayparser.JsonArrayUtil;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -41,7 +40,6 @@ public class AttackerUtils
     private static final Logger logger = (Logger) LoggerFactory.getLogger(AttackerUtils.class);
     private static final RequestUtil requestUtil = new RequestUtil();
     private static final Gson gson = new Gson();
-    private static final JsonArrayUtil jsonArrayUtil = new JsonArrayUtil();
     public final AttackerUpdate update;
     public final AttackerExecution execute;
     public static final MessageHistory MESSAGE_HISTORY = new MessageHistory();

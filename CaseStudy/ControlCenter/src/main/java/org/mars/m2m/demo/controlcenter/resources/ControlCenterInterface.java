@@ -119,13 +119,16 @@ public class ControlCenterInterface
                              System.out.println(isThreatDestroyed);
                              controlCenterServices.findAttackerAndUpdate(data.getFrom(), isThreatDestroyed);                             
                             break;
+                        case DESTROYED_THREAT_INDEX:
+                            int index = (int) Unmarshaller.getObjectFromNotification(notification, Integer.class);
+                            controlCenterServices.addDestroyedThreatIndex(index);
+                            break;
                         default:
                             logger.info("INVALID NOTIFICATION OPTION RECEIVED");
                     }
                 }
             }
         }).start();   
-        controlCenterServices.updateGUI();
     }
     
 

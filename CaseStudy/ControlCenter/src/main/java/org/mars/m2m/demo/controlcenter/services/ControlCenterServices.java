@@ -33,6 +33,7 @@ import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;
 import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
+import static org.mars.m2m.demo.controlcenter.ui.ControlCenter.JTree_ccKB;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterServices.class);
     public static int time_step=0;
     private ExecutorService  executor;
-    private int inforshare_algorithm = 2; //distinction between information-sharing algrithm
+    private int inforshare_algorithm = 0; //distinction between information-sharing algrithm
     
     private MessageDispatcher msg_dispatcher;
     private KnowledgeInterface kb;//this is set upon initialization of the Control Center GUI so it can be accessed across board
@@ -59,6 +60,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     private int sub_team_size = 2;
     private boolean simulationStartable;
     private final AttackerUtils attackerUtils;
+    private final ArrayList<Integer> destroyedThreats;
 
     public Map<Integer, Set<Integer>> locked_threat;
 
@@ -66,6 +68,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
      * 
      */
     public ControlCenterServices() {
+        this.destroyedThreats = new ArrayList<>();
         this.attackerUtils = new AttackerUtils();
         way_point_for_uav = new HashMap<>();
         locked_threat = new HashMap<>();  
@@ -513,5 +516,16 @@ public class ControlCenterServices implements KnowledgeAwareInterface
             }
         };
         swingWorker.execute();
+    }
+
+    public synchronized ArrayList<Integer> getDestroyedThreats() {
+        return destroyedThreats;
+    }
+    public void addDestroyedThreatIndex(int index)
+    {
+        synchronized(destroyedThreats)
+        {
+            destroyedThreats.add(index);
+        }
     }
 }

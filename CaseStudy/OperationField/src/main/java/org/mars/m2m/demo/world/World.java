@@ -414,6 +414,7 @@ public class World {
                             {
                                 threat.setEnabled(false);
                                 updateDestroyedThreats(threat);
+                                attacker.setJustDestroyedThreatIndex(threat.getIndex());
                                 //this.control_center.updateThreat(threat);
                                 this.threatDestroyedAndUnlocked(threat.getIndex());
                                 this.num_of_threat_remained--;
@@ -716,7 +717,7 @@ public class World {
 //                this.control_center.setThreats(threats);
 //                this.control_center.setConflicts(conflicts);
 //            }
-//            RightControlPanel.setWorldKnowledge(World.attackers.get(0).getKb());
+            RightControlPanel.setWorldKnowledge(World.attackers.get(0).getKb());
         }
 
         updateScout();

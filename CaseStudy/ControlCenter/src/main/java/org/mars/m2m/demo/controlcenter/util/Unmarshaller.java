@@ -73,7 +73,16 @@ public class Unmarshaller
                 case 12202:
                     return NotificationType.THREAT;
                 case 12207:
-                    return NotificationType.ATTACKER_THREAT_STATUS;
+                    try {
+                        int resourceID = Integer.parseInt(notification.getPath().split("/")[3]);
+                        if (resourceID == 14) {
+                            return NotificationType.ATTACKER_THREAT_STATUS;
+                        } else if(resourceID == 15){
+                            return NotificationType.DESTROYED_THREAT_INDEX;
+                        }
+                    } catch (NumberFormatException e) {
+                        return NotificationType.INVALID;
+                    }
                 default:
                     return NotificationType.INVALID;
             }

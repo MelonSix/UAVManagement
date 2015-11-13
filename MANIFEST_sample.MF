@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: 25.25-b02 (Oracle Corporation)
+Main-Class: org.mars.m2m.demo.controlcenter.application.ControlCenterApplication
+

@@ -86,7 +86,13 @@ public class ThreatSensor extends BaseInstanceEnabler implements DeviceExecution
 
     public void setThreatInJson(String threatAsJson) {
         this.threatAsJson = threatAsJson;
-        fireResourceChange(0);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                fireResourceChange(0);
+            }
+        }).start();
     }
     
     

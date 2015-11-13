@@ -6,6 +6,8 @@
 package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
@@ -38,22 +40,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         NewDeviceServices.setHandleTree(handleTree);
         ccSplitPanelTab1.add(this.pnlRight, JSplitPane.RIGHT);
         ControlCenter.animationPanel.initComponents();
-        
-//        Timer timer = new Timer();
-//        timer.schedule(new TimerTask() {
-//
-//            @Override
-//            public void run() {
-//                SwingUtilities.invokeLater(new Runnable() {
-//
-//                    @Override
-//                    public void run() {
-//                        JTree_ccKB.setModel(controlCenterServices.getKb());
-//                        updateGUI();
-//                    }
-//                });
-//            }
-//        }, 500, 500);
     }
 
     public HandleTree getHandleTree() {
@@ -105,7 +91,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        JTree_ccKB = new javax.swing.JTree();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         reloadUavMenuItem = new javax.swing.JMenuItem();
@@ -116,7 +101,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         setTitle("Control Center v1.0.0");
         setMinimumSize(new java.awt.Dimension(900, 700));
 
-        ccSplitPanelTab1.setDividerLocation(150);
+        ccSplitPanelTab1.setDividerLocation(300);
         this.pnlLeft = new JPanelForLeftSplitPane();
         this.pnlRight = new JPanelForRightSplitPane();
 
@@ -137,7 +122,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
         ccTabbedPane.addTab("UAV", ccJPanelInTab1);
 
-        jSplitPane1.setDividerLocation(2000);
         jSplitPane1.setResizeWeight(0.9);
         this.animationPanel = new AnimationPanel(this.controlCenterServices);
 
@@ -216,6 +200,31 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private void reloadUavMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadUavMenuItemActionPerformed
         LoadUAVs loadUAVs = new LoadUAVs();
         loadUAVs.loadMgmntAdpterClients(animationPanel);
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                SwingUtilities.invokeLater(new Runnable() {
+
+                    @Override
+                    public void run() {                       
+                        controlCenterServices.updateGUI();
+                    }
+                });
+            }
+        }, 500, 500);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {                
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        JTree_ccKB.setModel(controlCenterServices.getKb()); 
+                        JTree_ccKB.updateUI();
+                    }
+                });
+            }
+        }, 1000, 5000);
     }//GEN-LAST:event_reloadUavMenuItemActionPerformed
 
     private void JMenuItem_ClrCCknowledgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItem_ClrCCknowledgeActionPerformed
@@ -238,7 +247,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMenuItem_ClrCCknowledge;
-    private javax.swing.JTree JTree_ccKB;
+    public static final javax.swing.JTree JTree_ccKB = new javax.swing.JTree();
     private javax.swing.JPanel ccJPanelInTab1;
     private javax.swing.JMenuBar ccMenuBar;
     private javax.swing.JSplitPane ccSplitPanelTab1;

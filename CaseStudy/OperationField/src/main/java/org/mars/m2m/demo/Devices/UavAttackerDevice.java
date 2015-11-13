@@ -250,6 +250,9 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                 case 14:
                     return new ValueResponse(ResponseCode.CONTENT,
                             new LwM2mResource(resourceid, Value.newBooleanValue(attacker.isThreatDestroyed())));
+                case 15:
+                    return new ValueResponse(ResponseCode.CONTENT,
+                            new LwM2mResource(resourceid, Value.newIntegerValue(attacker.getJustDestroyedThreatIndex()))); 
                default:
                    return super.read(resourceid);
            }

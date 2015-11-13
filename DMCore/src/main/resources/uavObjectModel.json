@@ -3115,6 +3115,17 @@
                 "range": "",
                 "units": "",
                 "description": "" 
+            },
+            {
+               "id": 15,
+                "name": "Target index",
+                "operations": "R",
+                "instancetype": "single",
+                "mandatory": true,
+                "type": "integer",
+                "range": "",
+                "units": "",
+                "description": "The index of the just destroyed threat" 
             }
         ]
     }

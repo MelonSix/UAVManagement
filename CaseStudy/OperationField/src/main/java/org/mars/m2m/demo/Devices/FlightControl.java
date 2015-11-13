@@ -15,7 +15,6 @@ import org.eclipse.leshan.core.node.LwM2mResource;
 import org.eclipse.leshan.core.response.LwM2mResponse;
 import org.eclipse.leshan.core.response.ValueResponse;
 import org.mars.m2m.demo.uav.Scout;
-import org.mars.m2m.demo.ui.FieldUI;
 import org.mars.m2m.uavendpoint.Interfaces.DeviceExecution;
 import org.slf4j.LoggerFactory;
 

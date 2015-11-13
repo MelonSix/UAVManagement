@@ -52,15 +52,19 @@ public class SendObservationReflexListenerImpl implements ReflexListener
             
                 if(object.getObjectId() == 12207)
                 {
-                    String endpointURL;
-                    endpointURL = CC_StaticInitConfig.mgmntServerURL+device.getEndpoint()+"/"+
-                                        object.getObjectId()+"/"+object.getObjectInstanceId()+"/14";
+                    int[] resourceIDs = {14,15};
+                    for(int i=0; i<resourceIDs.length;i++)
+                    {
+                        String endpointURL;
+                        endpointURL = CC_StaticInitConfig.mgmntServerURL+device.getEndpoint()+"/"+
+                                            object.getObjectId()+"/"+object.getObjectInstanceId()+"/"+resourceIDs[i];
 
-                    consumerDetails.setRequest(requestUtil.
-                            getRequestPrimitiveForData(Operation.NOTIFY, endpointURL, CC_StaticInitConfig.ccNotificationServiceURL, ""));
+                        consumerDetails.setRequest(requestUtil.
+                                getRequestPrimitiveForData(Operation.NOTIFY, endpointURL, CC_StaticInitConfig.ccNotificationServiceURL, ""));
 
 
-                    sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
+                        sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
+                    }
                 }
         }
     }

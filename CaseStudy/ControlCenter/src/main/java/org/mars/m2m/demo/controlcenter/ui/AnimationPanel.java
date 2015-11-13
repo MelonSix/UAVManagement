@@ -200,7 +200,7 @@ public class AnimationPanel extends JPanel
      */
     public void updateImageAtEachIteration() {
         updateThreatImage();
-        updateObstacleImage(controlCenterServices.getObstacles());
+        updateObstacleImage(controlCenterServices.getObstacles());        
     }
     
     /** update graphics of the highlighted(chosen) obstacle.
@@ -232,10 +232,13 @@ public class AnimationPanel extends JPanel
                 } else {
                     virtualizer.drawThreat(threat_image_graphics, threat, GraphicConfig.threat_color, null);
                 }
-//                int threat_index = threat.getIndex();
-//                if (this.threats_from_world_view.get(threat_index).getMode() == Threat.LOCKED_MODE) {
-//                    virtualizer.drawCombatSymbol(threat_image_graphics, threat.getCoordinates(), Threat.threat_width * 3 / 2, Color.red);
-//                }
+                int threat_index = threat.getIndex();
+                for(Integer index : controlCenterServices.getDestroyedThreats())
+                {
+                    if (index == threat_index) {
+                        virtualizer.drawCombatSymbol(threat_image_graphics, threat.getCoordinates(), Threat.threat_width * 3 / 2, Color.red);
+                    }
+                }
             }
         }
     }

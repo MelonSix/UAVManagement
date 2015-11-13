@@ -72,6 +72,7 @@ public final class Scout extends UAV
     private KnowledgeInterface kb;
     private int waypointLength=0;
     ScoutType scoutType;
+    private boolean canRegenerateYtasks=false;
     
     /*Class variables */
     private float[] base_coordinate;
@@ -230,16 +231,19 @@ public final class Scout extends UAV
      */
     public boolean moveToNextWaypoint() 
     {
-        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0) {
+        if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() > 0) 
+        {
             current_y_coordinate_task = move_at_y_coordinate_task.removeFirst();
         } 
         else if (current_y_coordinate_task == null && move_at_y_coordinate_task.size() == 0) 
         {
         //this.setVisible(false);
             //return false;
-            for(int i=0; i<waypointLength; i++)
-            {
-                
+            if (canRegenerateYtasks) {
+                for (int i = 0; i < 10; i++) {
+                    float randYcoord = (float) (Math.random() * World.bound_height);
+                    move_at_y_coordinate_task.add(randYcoord);
+                }
             }
         }
             
@@ -307,6 +311,7 @@ public final class Scout extends UAV
         System.out.println("Coordinates: "+Arrays.asList(move_at_y_coordinate_task));
         this.waypointLength = move_at_y_coordinate_task.size();
         this.move_at_y_coordinate_task.addAll(move_at_y_coordinate_task);
+        this.canRegenerateYtasks = true;
     }
 
     public synchronized LinkedList<Float> getMove_at_y_coordinate_task() {

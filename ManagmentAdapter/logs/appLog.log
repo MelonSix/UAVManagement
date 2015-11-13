@@ -1303,3 +1303,427 @@ ERROR  [13:50:07.775] [Thread-4983] o.m.m.m.r.s.NotificationResource -  java.lan
 ERROR  [13:50:38.239] [Thread-4984] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
 ERROR  [13:51:00.842] [Thread-4985] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
 ERROR  [13:51:26.799] [Thread-4986] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+INFO   [14:05:08.703] [main] o.e.j.u.log -  Logging initialized @1488ms 
+INFO   [14:05:08.782] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [14:05:08.789] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [14:05:08.804] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [14:05:08.839] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:05:08.842] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:05:09.371] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [14:05:09.377] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [14:05:09.384] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:05:09.390] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [14:05:09.441] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:05:09.441] [main] o.e.j.s.Server -  Started @2228ms 
+INFO   [14:13:17.148] [main] o.e.j.u.log -  Logging initialized @2341ms 
+INFO   [14:13:17.346] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [14:13:17.358] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [14:13:17.500] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [14:13:17.667] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:13:17.671] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:13:18.713] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [14:13:18.716] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [14:13:18.728] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:13:18.732] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [14:13:18.783] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:13:18.785] [main] o.e.j.s.Server -  Started @3992ms 
+INFO   [14:31:46.161] [main] o.e.j.u.log -  Logging initialized @1647ms 
+INFO   [14:31:46.265] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [14:31:46.274] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [14:31:46.301] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [14:31:46.353] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:31:46.356] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:31:47.750] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [14:31:47.755] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [14:31:47.761] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:31:47.767] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [14:31:47.829] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:31:47.829] [main] o.e.j.s.Server -  Started @3317ms 
+INFO   [14:34:28.642] [main] o.e.j.u.log -  Logging initialized @2194ms 
+INFO   [14:34:28.746] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [14:34:28.758] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [14:34:28.778] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [14:34:28.823] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:34:28.826] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [14:34:29.824] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [14:34:29.828] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [14:34:29.841] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [14:34:29.848] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [14:34:29.904] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [14:34:29.904] [main] o.e.j.s.Server -  Started @3460ms 
+INFO   [15:19:15.699] [main] o.e.j.u.log -  Logging initialized @1317ms 
+INFO   [15:19:15.780] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [15:19:15.787] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [15:19:15.803] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [15:19:15.846] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:19:15.849] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:19:16.421] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [15:19:16.427] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [15:19:16.437] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [15:19:16.442] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [15:19:16.496] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:19:16.497] [main] o.e.j.s.Server -  Started @2116ms 
+INFO   [15:23:53.206] [main] o.e.j.u.log -  Logging initialized @1333ms 
+INFO   [15:23:53.293] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [15:23:53.301] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [15:23:53.317] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [15:23:53.360] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:23:53.362] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:23:54.010] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [15:23:54.014] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [15:23:54.020] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [15:23:54.026] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [15:23:54.073] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:23:54.073] [main] o.e.j.s.Server -  Started @2202ms 
+ERROR  [15:28:19.026] [dw-37 - POST /ma/mgmtAdapter/] i.d.j.e.LoggingExceptionMapper -  Error handling a request: dd013a02aad0dc92 
+javax.ws.rs.ProcessingException: org.eclipse.jetty.io.EofException: Early EOF
+	at org.glassfish.jersey.message.internal.EntityInputStream.isEmpty(EntityInputStream.java:214) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.jaxb.internal.AbstractRootElementJaxbProvider.readFrom(AbstractRootElementJaxbProvider.java:131) ~[jersey-media-jaxb-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$TerminalReaderInterceptor.invokeReadFrom(ReaderInterceptorExecutor.java:260) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$TerminalReaderInterceptor.aroundReadFrom(ReaderInterceptorExecutor.java:236) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.ReaderInterceptorExecutor.proceed(ReaderInterceptorExecutor.java:156) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundReadFrom(MappableExceptionWrapperInterceptor.java:74) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.ReaderInterceptorExecutor.proceed(ReaderInterceptorExecutor.java:156) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.readFrom(MessageBodyFactory.java:1085) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.InboundMessageContext.readEntity(InboundMessageContext.java:853) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ContainerRequest.readEntity(ContainerRequest.java:270) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.internal.inject.EntityParamValueFactoryProvider$EntityValueFactory.provide(EntityParamValueFactoryProvider.java:96) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.spi.internal.ParameterValueHelper.getParameterValues(ParameterValueHelper.java:81) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$AbstractMethodParamInvoker.getParamValues(JavaResourceMethodDispatcherProvider.java:127) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$VoidOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:143) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:99) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:389) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:347) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:102) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:308) ~[jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:291) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1140) [jersey-server-2.18.jar:na]
+	at org.glassfish.jersey.servlet.WebComponent.service(WebComponent.java:403) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:386) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:334) [jersey-container-servlet-core-2.18.jar:na]
+	at org.glassfish.jersey.servlet.ServletContainer.service(ServletContainer.java:221) [jersey-container-servlet-core-2.18.jar:na]
+	at io.dropwizard.jetty.NonblockingServletHolder.handle(NonblockingServletHolder.java:49) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1669) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.UserAgentFilter.doFilter(UserAgentFilter.java:83) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlets.GzipFilter.doFilter(GzipFilter.java:300) [jetty-servlets-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jetty.BiDiGzipFilter.doFilter(BiDiGzipFilter.java:134) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.servlets.ThreadNameFilter.doFilter(ThreadNameFilter.java:29) [dropwizard-servlets-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.handle(AllowedMethodsFilter.java:43) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at io.dropwizard.jersey.filter.AllowedMethodsFilter.doFilter(AllowedMethodsFilter.java:38) [dropwizard-jersey-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1652) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:585) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1127) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1061) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at com.codahale.metrics.jetty9.InstrumentedHandler.handle(InstrumentedHandler.java:240) [metrics-jetty9-3.1.2.jar:3.1.2]
+	at io.dropwizard.jetty.ContextRoutingHandler.handle(ContextRoutingHandler.java:38) [dropwizard-jetty-0.9.0-rc1.jar:0.9.0-rc1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.RequestLogHandler.handle(RequestLogHandler.java:95) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:159) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.handle(Server.java:499) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:310) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:257) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540) [jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+Caused by: org.eclipse.jetty.io.EofException: Early EOF
+	at org.eclipse.jetty.server.HttpInput$3.noContent(HttpInput.java:506) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpInput.read(HttpInput.java:124) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.HttpInput.read(HttpInput.java:109) ~[jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.glassfish.jersey.message.internal.EntityInputStream.read(EntityInputStream.java:91) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream.read(ReaderInterceptorExecutor.java:292) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.EntityInputStream.isEmpty(EntityInputStream.java:197) ~[jersey-common-2.18.jar:na]
+	... 61 common frames omitted
+ERROR  [15:38:38.647] [jersey-client-async-executor-0] o.g.j.c.ClientRequest -  Error while committing the request output stream. 
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.8.0_25]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[na:1.8.0_25]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[na:1.8.0_25]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_25]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_25]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_25]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_25]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_25]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1167) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1103) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:997) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:931) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1281) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1256) ~[na:1.8.0_25]
+	at org.glassfish.jersey.client.HttpUrlConnector$4.getOutputStream(HttpUrlConnector.java:326) ~[jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.CommittingOutputStream.commitStream(CommittingOutputStream.java:200) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.CommittingOutputStream.commitStream(CommittingOutputStream.java:194) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.CommittingOutputStream.commit(CommittingOutputStream.java:262) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.OutboundMessageContext.commitStream(OutboundMessageContext.java:816) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.client.ClientRequest.writeEntity(ClientRequest.java:545) ~[jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector._apply(HttpUrlConnector.java:329) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector.access$000(HttpUrlConnector.java:91) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector$3.run(HttpUrlConnector.java:254) [jersey-client-2.18.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at jersey.repackaged.com.google.common.util.concurrent.MoreExecutors$DirectExecutorService.execute(MoreExecutors.java:299) [jersey-guava-2.18.jar:na]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:112) [na:1.8.0_25]
+	at jersey.repackaged.com.google.common.util.concurrent.AbstractListeningExecutorService.submit(AbstractListeningExecutorService.java:50) [jersey-guava-2.18.jar:na]
+	at jersey.repackaged.com.google.common.util.concurrent.AbstractListeningExecutorService.submit(AbstractListeningExecutorService.java:37) [jersey-guava-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector.apply(HttpUrlConnector.java:250) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.ClientRuntime$2.run(ClientRuntime.java:177) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:340) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.client.ClientRuntime$3.run(ClientRuntime.java:209) [jersey-client-2.18.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_25]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+ERROR  [15:38:45.709] [jersey-client-async-executor-0] o.g.j.c.ClientRequest -  Error while committing the request output stream. 
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.8.0_25]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[na:1.8.0_25]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[na:1.8.0_25]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_25]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_25]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_25]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_25]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_25]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[na:1.8.0_25]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1167) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1103) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:997) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:931) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1281) ~[na:1.8.0_25]
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1256) ~[na:1.8.0_25]
+	at org.glassfish.jersey.client.HttpUrlConnector$4.getOutputStream(HttpUrlConnector.java:326) ~[jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.CommittingOutputStream.commitStream(CommittingOutputStream.java:200) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.CommittingOutputStream.commitStream(CommittingOutputStream.java:194) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.CommittingOutputStream.commit(CommittingOutputStream.java:262) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.message.internal.OutboundMessageContext.commitStream(OutboundMessageContext.java:816) ~[jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.client.ClientRequest.writeEntity(ClientRequest.java:545) ~[jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector._apply(HttpUrlConnector.java:329) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector.access$000(HttpUrlConnector.java:91) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector$3.run(HttpUrlConnector.java:254) [jersey-client-2.18.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at jersey.repackaged.com.google.common.util.concurrent.MoreExecutors$DirectExecutorService.execute(MoreExecutors.java:299) [jersey-guava-2.18.jar:na]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:112) [na:1.8.0_25]
+	at jersey.repackaged.com.google.common.util.concurrent.AbstractListeningExecutorService.submit(AbstractListeningExecutorService.java:50) [jersey-guava-2.18.jar:na]
+	at jersey.repackaged.com.google.common.util.concurrent.AbstractListeningExecutorService.submit(AbstractListeningExecutorService.java:37) [jersey-guava-2.18.jar:na]
+	at org.glassfish.jersey.client.HttpUrlConnector.apply(HttpUrlConnector.java:250) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.client.ClientRuntime$2.run(ClientRuntime.java:177) [jersey-client-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:315) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:297) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:267) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:340) [jersey-common-2.18.jar:na]
+	at org.glassfish.jersey.client.ClientRuntime$3.run(ClientRuntime.java:209) [jersey-client-2.18.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_25]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+INFO   [15:48:36.974] [main] o.e.j.u.log -  Logging initialized @2619ms 
+INFO   [15:48:37.121] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [15:48:37.138] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [15:48:37.240] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [15:48:37.330] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:48:37.333] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:48:38.076] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [15:48:38.079] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [15:48:38.084] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [15:48:38.089] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [15:48:38.137] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:48:38.137] [main] o.e.j.s.Server -  Started @3786ms 
+INFO   [15:52:34.818] [main] o.e.j.u.log -  Logging initialized @1219ms 
+INFO   [15:52:34.898] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [15:52:34.905] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [15:52:34.920] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [15:52:34.956] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:52:34.959] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [15:52:35.490] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [15:52:35.494] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [15:52:35.501] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [15:52:35.507] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [15:52:35.554] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [15:52:35.555] [main] o.e.j.s.Server -  Started @1957ms 
+ERROR  [16:41:22.522] [Thread-857] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.524] [Thread-716] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.524] [Thread-896] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.525] [Thread-947] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.526] [Thread-724] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.526] [Thread-910] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.527] [Thread-774] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.527] [Thread-687] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.528] [Thread-884] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.528] [Thread-912] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.529] [Thread-926] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.529] [Thread-810] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.530] [Thread-775] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.530] [Thread-778] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.530] [Thread-688] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.530] [Thread-840] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.530] [Thread-586] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.531] [Thread-932] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.531] [Thread-897] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.531] [Thread-659] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.531] [Thread-903] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.531] [Thread-911] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.532] [Thread-838] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.532] [Thread-881] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.532] [Thread-597] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.533] [Thread-833] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.533] [Thread-818] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.537] [Thread-790] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.538] [Thread-923] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.538] [Thread-885] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.538] [Thread-927] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.539] [Thread-713] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.539] [Thread-561] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.539] [Thread-841] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.539] [Thread-592] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.539] [Thread-649] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.539] [Thread-753] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.540] [Thread-874] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.540] [Thread-588] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.540] [Thread-576] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.541] [Thread-895] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.541] [Thread-765] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.541] [Thread-883] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.541] [Thread-845] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.542] [Thread-695] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.542] [Thread-654] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.543] [Thread-715] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.543] [Thread-712] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.543] [Thread-816] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.543] [Thread-566] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-868] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-609] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-732] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-578] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-860] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-730] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-646] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-770] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.544] [Thread-628] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.545] [Thread-853] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.545] [Thread-573] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:41:22.545] [Thread-861] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.330] [Thread-5824] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.330] [Thread-5867] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.331] [Thread-5847] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.331] [Thread-5848] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.331] [Thread-5844] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.331] [Thread-5826] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.331] [Thread-5859] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.331] [Thread-5854] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.331] [Thread-5827] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.332] [Thread-5846] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.332] [Thread-5836] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.334] [Thread-5843] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.334] [Thread-5851] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.334] [Thread-5855] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.335] [Thread-5850] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.335] [Thread-5863] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.335] [Thread-5862] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.335] [Thread-5834] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.335] [Thread-5839] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.335] [Thread-5858] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.335] [Thread-5865] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.336] [Thread-5831] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.336] [Thread-5841] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.354] [Thread-5866] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.355] [Thread-5870] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.355] [Thread-5821] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.355] [Thread-5829] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.355] [Thread-5842] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.355] [Thread-5833] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.355] [Thread-5849] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.356] [Thread-5864] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.356] [Thread-5830] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.356] [Thread-5856] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.356] [Thread-5837] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.360] [Thread-5840] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [16:46:37.402] [Thread-5852] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 

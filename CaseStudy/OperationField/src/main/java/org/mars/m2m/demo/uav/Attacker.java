@@ -83,6 +83,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     private final ArrayList<Threat> destroyedThreats;
     private UavAttackerDevice attackerDevice;
     private boolean threatDestroyed=true;//indicates on startup to CC that it can receive an assignment
+    private int justDestroyedThreatIndex;
         
     UAVConfiguration uavConfig;
     AnimationPanel animationPanel;
@@ -221,10 +222,12 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                     stucked_times++;
                     if(this.stucked_times>this.max_stucked_times)
                     {
-                         stucked_times=0;
                          blocked = true;
                         //this.setVisible(false);
                     }
+                    stucked_times=0;
+                    this.speed = 5;
+                    this.current_angle=0;
                     System.out.println("not able to plan path for this uav " + this.getIndex());
 //                    moveAttackerToBase(this, false);
                 }else{
@@ -997,6 +1000,25 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
     }
     public synchronized void setThreatDestroyed(boolean threatDestroyed) {
         this.threatDestroyed = threatDestroyed;
-        this.attackerDevice.fireResourceChange(14);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                attackerDevice.fireResourceChange(14);
+            }
+        }).start();
+    }
+
+    public int getJustDestroyedThreatIndex() {
+        return justDestroyedThreatIndex;
+    }
+
+    public void setJustDestroyedThreatIndex(int justDestroyedThreatIndex) {
+        this.justDestroyedThreatIndex = justDestroyedThreatIndex;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                attackerDevice.fireResourceChange(15);
+            }
+        }).start();
     }
 }
