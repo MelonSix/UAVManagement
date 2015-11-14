@@ -6,15 +6,11 @@
 package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -101,7 +97,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel_Graph = new javax.swing.JPanel();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         reloadUavMenuItem = new javax.swing.JMenuItem();
@@ -300,7 +295,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel_Graph;
+    public static final javax.swing.JPanel jPanel_Graph = new javax.swing.JPanel();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JSplitPane jSplitPane1;

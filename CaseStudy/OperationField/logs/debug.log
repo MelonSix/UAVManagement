@@ -1200,3 +1200,15 @@ java.lang.IllegalStateException: None of the server endpoints could be started
 2015-11-15 00:36:20 - null
 2015-11-15 00:57:19 - null
 2015-11-15 02:37:53 - null
+2015-11-15 03:26:09 - Error Loading bootstrap information. Registration failed
+2015-11-15 03:28:59 - null
+2015-11-15 03:29:23 - changes 4 > initialChanges 3
+2015-11-15 03:30:02 - null
+2015-11-15 03:32:03 - null
+2015-11-15 03:32:03 - null
+2015-11-15 03:32:03 - null
+2015-11-15 03:32:04 - null
+2015-11-15 03:32:26 - changes 6 > initialChanges 5
+2015-11-15 04:33:09 - null
+2015-11-15 06:42:20 - null
+2015-11-15 06:42:21 - null

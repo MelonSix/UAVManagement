@@ -10,7 +10,10 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import org.mars.m2m.demo.controlcenter.analysis.AnalysisUI;
+import org.mars.m2m.demo.controlcenter.analysis.ChartFrame;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.health.ClientsResourceHealth;
@@ -97,9 +100,18 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
-                public void run() {
+                public void run() {final ChartFrame chartDemo = new ChartFrame();
+                    AnalysisUI analysisUI = new AnalysisUI();
                     ControlCenter ccUI = new ControlCenter(controlCenterApplication.getControlCenterServices()); //
+                    SwingUtilities.invokeLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        ControlCenter.jPanel_Graph.add(chartDemo.initSwingComponents());
+                    }
+                });
                     ccUI.setVisible(true);
+                    ccUI.add(ControlCenter.jPanel_Graph.getParent().add(AnalysisUI.performAnalysisForGraph()));
                     ccUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 }
             }); 

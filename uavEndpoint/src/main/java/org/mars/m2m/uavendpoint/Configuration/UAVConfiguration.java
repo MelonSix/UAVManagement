@@ -16,7 +16,7 @@ public class UAVConfiguration {
     /**
      * The network details of this UAV
      */
-    public String uavlocalhostAddress = "127.0.0.1";
+    public String uavlocalhostAddress = "192.168.10.100";
     public int uavlocalhostPort = 8080;
     
     /**
