@@ -34,10 +34,6 @@ public class UAV extends Unit {
 
     protected KnowledgeInterface kb;
         
-    /**
-     *Keeps the already assigned port numbers
-     */
-    protected final static ArrayList<Integer> occupiedPorts = new ArrayList<>();;
     
     public UAV(int index, Target target_indicated_by_role, int uav_type, float[] center_coordinates,float remained_energy) {
         super(index, target_indicated_by_role, uav_type, center_coordinates);
@@ -156,18 +152,22 @@ public class UAV extends Unit {
      */
     protected int selectPortNumber() 
     {
-        if(occupiedPorts != null)
+        synchronized(OpStaticInitConfig.ASSIGNED_PORTS)
         {
-            int portNumber; //range is from 49152 -> 65532
-            do
+            if(OpStaticInitConfig.ASSIGNED_PORTS != null)
             {
-                portNumber = 49152 + (int) (Math.random() * 16381);                
-            }while (occupiedPorts.contains(portNumber));
-            occupiedPorts.add(portNumber);
-            return portNumber;
+                int portNumber; //range is from 49152 -> 65532
+                do
+                {
+                    portNumber = 49152 + (int) (Math.random() * 16381);                
+                }while (OpStaticInitConfig.ASSIGNED_PORTS.contains(portNumber));
+                OpStaticInitConfig.ASSIGNED_PORTS.add(portNumber);
+                return portNumber;
+            }
+            else {
+                return -1;
+            }
         }
-        else
-            return -1;
     }
     //</editor-fold>
 

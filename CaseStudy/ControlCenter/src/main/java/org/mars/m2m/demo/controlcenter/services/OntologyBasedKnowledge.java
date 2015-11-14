@@ -421,47 +421,50 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         Query query = QueryFactory.create(prefix + sparql);
         QueryExecution qe = QueryExecutionFactory.create(query, ontology_based_knowledge);
         ResultSet results = qe.execSelect();
-        
-        while (results.hasNext()) 
+//        Queue
+        synchronized(results)
         {
-            QuerySolution result = results.next();
-            String raw_center_str = StringUtil.parseLiteralStr(result.get("center").toString());
-            String[] coord_str = raw_center_str.split(",");
-            float[] center_coord = new float[2];
-            center_coord[0] = Float.parseFloat(coord_str[0]);
-            center_coord[1] = Float.parseFloat(coord_str[1]);
+            while (results.hasNext()) 
+            {
+                QuerySolution result = results.next();
+                String raw_center_str = StringUtil.parseLiteralStr(result.get("center").toString());
+                String[] coord_str = raw_center_str.split(",");
+                float[] center_coord = new float[2];
+                center_coord[0] = Float.parseFloat(coord_str[0]);
+                center_coord[1] = Float.parseFloat(coord_str[1]);
 
-            String raw_speed_str = StringUtil.parseLiteralStr(result.get("speed").toString());
-            float speed = Float.parseFloat(raw_speed_str);
+                String raw_speed_str = StringUtil.parseLiteralStr(result.get("speed").toString());
+                float speed = Float.parseFloat(raw_speed_str);
 
-            String raw_range_str = StringUtil.parseLiteralStr(result.get("range").toString());
-            float range = Float.parseFloat(raw_range_str);
+                String raw_range_str = StringUtil.parseLiteralStr(result.get("range").toString());
+                float range = Float.parseFloat(raw_range_str);
 
-            String raw_therat_cap_str = StringUtil.parseLiteralStr(result.get("threatCap").toString());
+                String raw_therat_cap_str = StringUtil.parseLiteralStr(result.get("threatCap").toString());
 
-            String raw_threat_index = StringUtil.parseLiteralStr(result.get("index").toString());
-            Integer threat_index = Integer.parseInt(raw_threat_index);
+                String raw_threat_index = StringUtil.parseLiteralStr(result.get("index").toString());
+                Integer threat_index = Integer.parseInt(raw_threat_index);
 
-            String raw_threat_enabled_index = StringUtil.parseLiteralStr(result.get("threat_enabled").toString());
-            boolean threat_enabled = false;
-            if (raw_threat_enabled_index.equals("true")) {
-                threat_enabled = true;
-            } else {
-                threat_enabled = false;
+                String raw_threat_enabled_index = StringUtil.parseLiteralStr(result.get("threat_enabled").toString());
+                boolean threat_enabled = false;
+                if (raw_threat_enabled_index.equals("true")) {
+                    threat_enabled = true;
+                } else {
+                    threat_enabled = false;
+                }
+                String raw_threat_type = StringUtil.parseLiteralStr(result.get("threatType").toString());
+                ThreatType type = ThreatType.valueOf(raw_threat_type);
+
+                Threat threat = new Threat(0, center_coord, speed, type);
+                threat.setThreat_cap(raw_therat_cap_str);
+                threat.setThreat_range(range);
+                threat.setIndex(threat_index);
+                threat.setEnabled(threat_enabled);
+                threats.add(threat);
             }
-            String raw_threat_type = StringUtil.parseLiteralStr(result.get("threatType").toString());
-            ThreatType type = ThreatType.valueOf(raw_threat_type);
-            
-            Threat threat = new Threat(0, center_coord, speed, type);
-            threat.setThreat_cap(raw_therat_cap_str);
-            threat.setThreat_range(range);
-            threat.setIndex(threat_index);
-            threat.setEnabled(threat_enabled);
-            threats.add(threat);
+            this.threats_cache = threats;
+            this.threat_updated = false;
+            return threats;
         }
-        this.threats_cache = threats;
-        this.threat_updated = false;
-        return threats;
     }
 
     private Model deleteAllObstacles() {

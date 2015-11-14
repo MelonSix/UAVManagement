@@ -6,16 +6,21 @@
 package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
+import java.util.logging.Level;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import org.mars.m2m.demo.controlcenter.analysis.GraphDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.core.LoadUAVs;
@@ -32,12 +37,13 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenter.class);
     private final HandleTree handleTree;
     private final ControlCenterServices controlCenterServices;
+    private final File file;
     /**
      * Creates new form ControlCenter
      * @param ccs
      */
     public ControlCenter(ControlCenterServices ccs) {
-        new JFXPanel();
+        file = new File("gdata.txt");
         this.controlCenterServices = ccs;//has to come before initialization of components because the object is used in UI customized code
         initComponents();
         handleTree = new HandleTree(jTreeControlCenter);
@@ -243,6 +249,23 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                 });
             }
         }, 1000, 5000);
+                
+        CC_StaticInitConfig.CURRENT_SIMULATION_TIME.set(1);
+        CC_StaticInitConfig.TOTAL_MESSAGES_SENT.set(0);
+        Timer timer2 = new Timer();
+        timer2.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                CC_StaticInitConfig.CURRENT_SIMULATION_TIME.getAndIncrement();
+                CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP.set(0);
+                Map<Integer, Integer> gData = GraphDatastore.getMessagesPerSecondData();
+                for(Integer time : gData.keySet())
+                {
+                    System.out.println("t"+time+" : "+gData.get(time)+" messages sent");
+                }
+            }
+        }, 1000, 1000);
     }//GEN-LAST:event_reloadUavMenuItemActionPerformed
 
     private void JMenuItem_ClrCCknowledgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItem_ClrCCknowledgeActionPerformed
@@ -263,15 +286,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                 }
             });
         }
-        CC_StaticInitConfig.currentSimulationTime.set(1);
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                CC_StaticInitConfig.currentSimulationTime.getAndIncrement();
-            }
-        }, 1000, 1000);
     }//GEN-LAST:event_JMenuItem_ClrCCknowledgeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

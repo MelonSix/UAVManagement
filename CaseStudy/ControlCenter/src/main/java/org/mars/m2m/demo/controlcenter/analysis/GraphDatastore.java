@@ -5,7 +5,6 @@
  */
 package org.mars.m2m.demo.controlcenter.analysis;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,11 +20,14 @@ public class GraphDatastore
     public GraphDatastore() {        
     }
 
-    public synchronized Map<Integer, Integer> getMessagesPerSecondData() {
-        return Collections.unmodifiableMap(messagesPerSecondData);
+    public static Map<Integer, Integer> getMessagesPerSecondData() {
+        synchronized(messagesPerSecondData)
+        {
+            return messagesPerSecondData;
+        }
     }
     
-    public synchronized void clearGraphDataStore()
+    public static synchronized void clearGraphDataStore()
     {
         messagesPerSecondData.clear();
     }

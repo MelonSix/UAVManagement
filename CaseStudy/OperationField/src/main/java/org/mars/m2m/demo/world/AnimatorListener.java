@@ -33,7 +33,8 @@ public class AnimatorListener implements ActionListener
          */
         @Override
         public void actionPerformed(ActionEvent e) 
-        {            
+        {       
+            long start=System.nanoTime();
             this.animPnl.clearUAVImageBeforeUpdate();
             if (OpStaticInitConfig.SIMULATION_ON) 
             {
@@ -49,6 +50,7 @@ public class AnimatorListener implements ActionListener
                 ControlPanel.setTotalHistoryPathLen(animPnl.getWorld().getTotal_path_len());
             }
             this.animPnl.updateImageAtEachIteration();
-            animPnl.repaint();            
+            animPnl.repaint();           
+            System.out.println("whole time:"+(System.nanoTime()-start)*1e-9);
         }
     }

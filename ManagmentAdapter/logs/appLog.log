@@ -1,440 +1,367 @@
-INFO   [18:40:19.830] [main] o.e.j.u.log -  Logging initialized @1340ms 
-INFO   [18:40:19.982] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [18:40:19.990] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [18:40:20.005] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [18:40:20.040] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:40:20.045] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:40:20.760] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:11:51.870] [main] o.e.j.u.log -  Logging initialized @2344ms 
+INFO   [00:11:52.011] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:11:52.022] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:11:52.042] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:11:52.105] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:11:52.109] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:11:53.171] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [18:40:20.763] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7c3ebc6b{/ma,null,AVAILABLE} 
-INFO   [18:40:20.768] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:11:53.183] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@7c3ebc6b{/ma,null,AVAILABLE} 
+INFO   [00:11:53.194] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [18:40:20.773] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e54cb33{/admin-ma,null,AVAILABLE} 
-INFO   [18:40:20.815] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:40:20.815] [main] o.e.j.s.Server -  Started @2326ms 
-ERROR  [18:42:50.396] [Thread-212] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.398] [Thread-209] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.400] [Thread-201] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.400] [Thread-206] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.404] [Thread-208] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.414] [Thread-204] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.415] [Thread-210] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.424] [Thread-207] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.424] [Thread-211] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.424] [Thread-205] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.424] [Thread-196] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.424] [Thread-213] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.425] [Thread-199] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:50.424] [Thread-203] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.586] [Thread-217] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.646] [Thread-220] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.659] [Thread-219] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.666] [Thread-214] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.682] [Thread-222] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.701] [Thread-221] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.701] [Thread-216] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.721] [Thread-215] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.735] [Thread-224] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.739] [Thread-218] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:51.763] [Thread-223] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:52.652] [Thread-225] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:52.734] [Thread-227] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:52.829] [Thread-226] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.020] [Thread-230] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.029] [Thread-232] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.030] [Thread-231] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.327] [Thread-229] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.328] [Thread-235] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.371] [Thread-228] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.371] [Thread-234] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [18:42:53.404] [Thread-233] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-INFO   [18:43:12.714] [main] o.e.j.u.log -  Logging initialized @1388ms 
-INFO   [18:43:12.793] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [18:43:12.800] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [18:43:12.815] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [18:43:12.848] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:43:12.851] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:43:13.411] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:11:53.204] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1e54cb33{/admin-ma,null,AVAILABLE} 
+INFO   [00:11:53.261] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:11:53.261] [main] o.e.j.s.Server -  Started @3738ms 
+INFO   [00:18:18.702] [main] o.e.j.u.log -  Logging initialized @1367ms 
+INFO   [00:18:18.789] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:18:18.797] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:18:18.814] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:18:18.848] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:18:18.851] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:18:19.481] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [18:43:13.418] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [18:43:13.430] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:18:19.491] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [00:18:19.498] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [18:43:13.435] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [18:43:13.484] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [18:43:13.484] [main] o.e.j.s.Server -  Started @2160ms 
-INFO   [19:24:46.505] [main] o.e.j.u.log -  Logging initialized @1216ms 
-INFO   [19:24:46.583] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [19:24:46.590] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [19:24:46.605] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [19:24:46.637] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:24:46.639] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:24:47.176] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:18:19.504] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [00:18:19.575] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:18:19.575] [main] o.e.j.s.Server -  Started @2242ms 
+INFO   [00:19:34.388] [main] o.e.j.u.log -  Logging initialized @1392ms 
+INFO   [00:19:34.486] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:19:34.494] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:19:34.511] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:19:34.552] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:19:34.555] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:19:35.155] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [19:24:47.180] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [19:24:47.188] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:19:35.159] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [00:19:35.165] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:24:47.194] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [19:24:47.240] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:24:47.240] [main] o.e.j.s.Server -  Started @1953ms 
-INFO   [19:30:41.480] [main] o.e.j.u.log -  Logging initialized @1677ms 
-INFO   [19:30:41.666] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [19:30:41.688] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [19:30:41.733] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [19:30:41.798] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:30:41.800] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:30:42.957] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:19:35.174] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [00:19:35.227] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:19:35.228] [main] o.e.j.s.Server -  Started @2234ms 
+INFO   [00:24:56.926] [main] o.e.j.u.log -  Logging initialized @2768ms 
+INFO   [00:24:57.045] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:24:57.055] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:24:57.073] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:24:57.112] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:24:57.115] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:24:58.145] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [19:30:42.962] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [19:30:42.968] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:24:58.154] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [00:24:58.162] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:30:42.981] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [19:30:43.035] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:30:43.035] [main] o.e.j.s.Server -  Started @3234ms 
-INFO   [19:37:36.223] [main] o.e.j.u.log -  Logging initialized @1397ms 
-INFO   [19:37:36.304] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [19:37:36.312] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [19:37:36.327] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [19:37:36.359] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:37:36.361] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:37:36.921] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:24:58.167] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [00:24:58.218] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:24:58.218] [main] o.e.j.s.Server -  Started @4063ms 
+ERROR  [00:26:08.217] [Thread-484] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:11.564] [Thread-485] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:19.628] [Thread-486] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:19.822] [Thread-512] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:21.654] [Thread-739] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:24.238] [Thread-744] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:25.644] [Thread-749] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:26.272] [Thread-750] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:29.498] [Thread-751] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:30.542] [Thread-752] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:31.708] [Thread-753] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:31.755] [Thread-755] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:31.762] [Thread-757] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:32.672] [Thread-754] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:36.695] [Thread-756] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:36.986] [Thread-758] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:39.487] [Thread-759] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:44.575] [Thread-761] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:44.667] [Thread-781] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:45.669] [Thread-784] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:45.684] [Thread-770] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:45.749] [Thread-783] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:45.896] [Thread-768] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:55.853] [Thread-790] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:55.880] [Thread-788] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:55.905] [Thread-769] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:58.936] [Thread-791] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:59.090] [Thread-795] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:26:59.090] [Thread-809] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:01.092] [Thread-792] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:01.168] [Thread-807] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:02.889] [Thread-793] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:02.988] [Thread-794] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:05.330] [Thread-810] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:05.347] [Thread-806] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:05.589] [Thread-804] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:05.941] [Thread-823] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:06.089] [Thread-839] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:10.622] [Thread-824] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:10.859] [Thread-827] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:11.852] [Thread-803] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:12.852] [Thread-826] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:12.899] [Thread-828] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:14.342] [Thread-825] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:17.963] [Thread-890] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:17.995] [Thread-892] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:18.046] [Thread-895] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:18.154] [Thread-897] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:18.500] [Thread-888] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:20.249] [Thread-881] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:20.446] [Thread-911] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:20.462] [Thread-896] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:22.655] [Thread-893] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:24.383] [Thread-887] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:24.394] [Thread-899] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:24.456] [Thread-889] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:24.687] [Thread-907] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:27.133] [Thread-904] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:27.858] [Thread-908] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:27.903] [Thread-891] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:27.908] [Thread-906] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:27.913] [Thread-916] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:28.915] [Thread-905] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:30.386] [Thread-894] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:30.398] [Thread-900] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:30.402] [Thread-903] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:30.483] [Thread-912] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:30.493] [Thread-922] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:30.497] [Thread-909] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:31.537] [Thread-898] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:31.854] [Thread-920] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:32.877] [Thread-914] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:32.938] [Thread-910] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:34.951] [Thread-915] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:35.275] [Thread-918] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:35.448] [Thread-921] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:35.511] [Thread-926] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:35.538] [Thread-917] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:43.742] [Thread-925] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:44.068] [Thread-923] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:44.812] [Thread-913] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:47.922] [Thread-933] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:48.476] [Thread-929] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:49.428] [Thread-928] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:49.534] [Thread-930] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:55.623] [Thread-927] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:56.344] [Thread-934] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:56.437] [Thread-924] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:56.469] [Thread-935] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:58.206] [Thread-931] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:58.217] [Thread-942] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:58.221] [Thread-943] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.195] [Thread-937] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.252] [Thread-946] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.771] [Thread-945] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.795] [Thread-936] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.807] [Thread-940] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.815] [Thread-944] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.885] [Thread-939] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.918] [Thread-938] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:27:59.930] [Thread-932] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:28:00.930] [Thread-941] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:28:01.152] [Thread-952] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:28:01.372] [Thread-953] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:28:01.390] [Thread-966] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:28:06.608] [Thread-956] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+WARN   [00:29:06.327] [jersey-background-task-scheduler-0] o.e.j.s.HttpChannel -  Commit failed 
+java.util.concurrent.TimeoutException: Idle timeout expired: 30001/30000 ms
+	at org.eclipse.jetty.io.IdleTimeout.checkIdleTimeout(IdleTimeout.java:161) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.io.IdleTimeout$1.run(IdleTimeout.java:50) ~[jetty-io-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_25]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_25]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_25]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_25]
+ERROR  [00:29:41.478] [Thread-1293] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [00:29:41.478] [Thread-1372] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+ERROR  [00:29:41.482] [Thread-1419] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
+INFO   [00:29:54.344] [main] o.e.j.u.log -  Logging initialized @1267ms 
+INFO   [00:29:54.425] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:29:54.433] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:29:54.450] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:29:54.484] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:29:54.487] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:29:55.088] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [19:37:36.924] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [19:37:36.930] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:29:55.093] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [00:29:55.107] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:37:36.937] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [19:37:36.984] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:37:36.984] [main] o.e.j.s.Server -  Started @2159ms 
-INFO   [19:55:03.046] [main] o.e.j.u.log -  Logging initialized @1410ms 
-INFO   [19:55:03.125] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [19:55:03.132] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [19:55:03.147] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [19:55:03.178] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:55:03.181] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:55:03.717] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:29:55.114] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [00:29:55.163] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:29:55.163] [main] o.e.j.s.Server -  Started @2088ms 
+ERROR  [00:36:34.208] [Thread-1093] o.m.m.m.r.s.NotificationResource -  java.lang.UnsupportedOperationException: Not supported yet. 
+INFO   [00:39:09.816] [main] o.e.j.u.log -  Logging initialized @2102ms 
+INFO   [00:39:09.960] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:39:09.977] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:39:10.008] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:39:10.091] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:39:10.095] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:39:10.836] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [19:55:03.720] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [19:55:03.725] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:39:10.840] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [00:39:10.845] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:55:03.730] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [19:55:03.775] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [19:55:03.775] [main] o.e.j.s.Server -  Started @2142ms 
-INFO   [23:05:08.376] [main] o.e.j.u.log -  Logging initialized @1210ms 
-INFO   [23:05:08.454] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [23:05:08.462] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [23:05:08.477] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [23:05:08.511] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [23:05:08.514] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [23:05:09.065] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:39:10.850] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [00:39:10.900] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:39:10.901] [main] o.e.j.s.Server -  Started @3189ms 
+INFO   [00:53:25.021] [main] o.e.j.u.log -  Logging initialized @1920ms 
+INFO   [00:53:25.203] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:53:25.219] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:53:25.256] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:53:25.358] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:53:25.362] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:53:26.128] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [23:05:09.069] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [23:05:09.075] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:53:26.135] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [00:53:26.146] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [23:05:09.082] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [23:05:09.126] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [23:05:09.127] [main] o.e.j.s.Server -  Started @1964ms 
-ERROR  [23:07:03.174] [Thread-806] o.m.m.m.r.s.NotificationResource -  java.lang.UnsupportedOperationException: Not supported yet. 
-INFO   [23:07:08.921] [main] o.e.j.u.log -  Logging initialized @1784ms 
-INFO   [23:07:09.037] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [23:07:09.046] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [23:07:09.068] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [23:07:09.156] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [23:07:09.159] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [23:07:10.258] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:53:26.190] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [00:53:26.257] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:53:26.257] [main] o.e.j.s.Server -  Started @3161ms 
+INFO   [00:55:08.431] [main] o.e.j.u.log -  Logging initialized @1959ms 
+INFO   [00:55:08.518] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [00:55:08.526] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [00:55:08.543] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [00:55:08.577] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:55:08.580] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:55:09.179] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [23:07:10.260] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [23:07:10.265] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:55:09.183] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [00:55:09.190] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [23:07:10.272] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [23:07:10.424] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [23:07:10.424] [main] o.e.j.s.Server -  Started @3292ms 
-ERROR  [23:07:13.993] [Thread-156] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:13.993] [Thread-151] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:13.994] [Thread-148] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:13.994] [Thread-235] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:13.994] [Thread-136] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:13.994] [Thread-166] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:13.994] [Thread-161] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:13.997] [Thread-158] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.013] [Thread-223] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.013] [Thread-149] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.013] [Thread-169] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.014] [Thread-139] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.014] [Thread-177] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.014] [Thread-147] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.014] [Thread-180] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.014] [Thread-209] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.014] [Thread-191] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.015] [Thread-153] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.016] [Thread-239] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.016] [Thread-175] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.016] [Thread-179] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.017] [Thread-183] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.017] [Thread-187] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.017] [Thread-162] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.017] [Thread-131] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.017] [Thread-146] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.017] [Thread-216] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.017] [Thread-202] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.114] [Thread-165] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.114] [Thread-159] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.115] [Thread-176] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.189] [Thread-144] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.189] [Thread-195] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.191] [Thread-184] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.203] [Thread-141] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.207] [Thread-232] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.207] [Thread-206] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.208] [Thread-181] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.209] [Thread-193] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.211] [Thread-205] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.305] [Thread-227] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.305] [Thread-185] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.306] [Thread-200] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.307] [Thread-221] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.307] [Thread-201] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.307] [Thread-164] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.307] [Thread-171] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.308] [Thread-173] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.314] [Thread-189] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.314] [Thread-170] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.315] [Thread-236] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.315] [Thread-160] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.314] [Thread-242] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.315] [Thread-224] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.414] [Thread-241] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.414] [Thread-196] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.414] [Thread-152] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.489] [Thread-199] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.490] [Thread-198] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.490] [Thread-154] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.491] [Thread-208] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.491] [Thread-197] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.492] [Thread-143] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.493] [Thread-226] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.493] [Thread-163] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.494] [Thread-222] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.503] [Thread-194] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.503] [Thread-225] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.504] [Thread-155] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.504] [Thread-157] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.505] [Thread-212] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.505] [Thread-245] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.506] [Thread-137] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.507] [Thread-213] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.514] [Thread-132] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.514] [Thread-142] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.515] [Thread-207] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.515] [Thread-133] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.591] [Thread-134] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.591] [Thread-247] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.591] [Thread-140] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.592] [Thread-186] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.607] [Thread-172] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.607] [Thread-246] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.607] [Thread-135] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.607] [Thread-215] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.607] [Thread-237] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.608] [Thread-174] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.608] [Thread-145] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.608] [Thread-178] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.608] [Thread-238] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.609] [Thread-248] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.607] [Thread-192] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.614] [Thread-244] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.714] [Thread-219] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.791] [Thread-168] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.791] [Thread-150] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.791] [Thread-233] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.791] [Thread-243] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.791] [Thread-220] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.791] [Thread-210] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.801] [Thread-228] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.801] [Thread-203] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.801] [Thread-240] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.802] [Thread-204] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.803] [Thread-217] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.802] [Thread-167] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.814] [Thread-188] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.814] [Thread-214] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.814] [Thread-231] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.901] [Thread-182] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.901] [Thread-229] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.901] [Thread-190] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.902] [Thread-230] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.902] [Thread-234] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:14.902] [Thread-138] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:15.003] [Thread-249] o.m.m.m.r.AdapterServiceInterface -  javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused: connect 
-INFO   [23:10:40.951] [main] o.e.j.u.log -  Logging initialized @1954ms 
-INFO   [23:10:41.135] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
-INFO   [23:10:41.146] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
-INFO   [23:10:41.174] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
-INFO   [23:10:41.257] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [23:10:41.272] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [23:10:41.991] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:55:09.197] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [00:55:09.248] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [00:55:09.248] [main] o.e.j.s.Server -  Started @2778ms 
+ERROR  [00:56:20.215] [Thread-481] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:29.426] [Thread-489] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:29.526] [Thread-482] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:29.822] [Thread-487] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:29.892] [Thread-494] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:29.930] [Thread-483] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:30.039] [Thread-499] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:30.136] [Thread-490] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.219] [Thread-498] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.252] [Thread-496] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.267] [Thread-484] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.325] [Thread-486] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.346] [Thread-491] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.350] [Thread-492] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.409] [Thread-495] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.413] [Thread-485] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.469] [Thread-488] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.471] [Thread-497] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:35.487] [Thread-493] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:37.508] [Thread-520] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:41.391] [Thread-572] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:41.403] [Thread-521] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:41.911] [Thread-589] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:42.065] [Thread-600] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:43.561] [Thread-573] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:44.444] [Thread-588] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:44.642] [Thread-603] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:44.704] [Thread-608] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:48.773] [Thread-609] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:49.596] [Thread-601] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:49.685] [Thread-610] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:49.701] [Thread-615] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:49.780] [Thread-617] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:50.013] [Thread-612] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:50.165] [Thread-621] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:50.347] [Thread-611] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:57.145] [Thread-634] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:57.440] [Thread-633] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:57.572] [Thread-616] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:57.619] [Thread-613] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:58.636] [Thread-619] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:58.991] [Thread-620] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:59.734] [Thread-631] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:59.824] [Thread-628] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:59.839] [Thread-632] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:59.847] [Thread-614] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:56:59.928] [Thread-618] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:01.459] [Thread-625] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:02.466] [Thread-627] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:02.894] [Thread-630] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:02.919] [Thread-636] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:03.044] [Thread-639] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:03.051] [Thread-626] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:04.160] [Thread-640] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:04.950] [Thread-638] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:05.381] [Thread-641] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:05.571] [Thread-673] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:05.594] [Thread-765] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:05.641] [Thread-681] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:06.988] [Thread-815] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:08.605] [Thread-817] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:08.624] [Thread-818] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:08.640] [Thread-816] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:09.085] [Thread-819] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:11.096] [Thread-827] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:11.167] [Thread-826] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:13.915] [Thread-893] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:16.544] [Thread-981] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:18.356] [Thread-979] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:19.469] [Thread-1038] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:19.488] [Thread-1180] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:19.514] [Thread-1179] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:19.717] [Thread-1181] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:20.387] [Thread-1183] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [00:57:20.410] [Thread-1182] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+INFO   [02:36:35.518] [main] o.e.j.u.log -  Logging initialized @1212ms 
+INFO   [02:36:35.596] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [02:36:35.603] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [02:36:35.617] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [02:36:35.648] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [02:36:35.651] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [02:36:36.239] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
  
-INFO   [23:10:41.993] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
-INFO   [23:10:41.998] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [02:36:36.243] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [02:36:36.253] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [23:10:42.003] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
-INFO   [23:10:42.055] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
-INFO   [23:10:42.055] [main] o.e.j.s.Server -  Started @3062ms 
-ERROR  [23:12:20.365] [Thread-481] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:23.560] [Thread-482] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:23.644] [Thread-490] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:23.886] [Thread-487] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:25.787] [Thread-485] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:25.817] [Thread-488] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:25.861] [Thread-483] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:25.868] [Thread-486] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:25.870] [Thread-492] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:25.921] [Thread-484] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:26.096] [Thread-491] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:26.101] [Thread-489] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:29.081] [Thread-500] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:30.390] [Thread-503] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:31.115] [Thread-502] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:32.640] [Thread-505] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:32.849] [Thread-506] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:32.932] [Thread-504] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:32.993] [Thread-508] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:33.129] [Thread-510] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:33.215] [Thread-507] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:34.026] [Thread-509] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:37.804] [Thread-515] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:38.007] [Thread-516] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:38.018] [Thread-520] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:38.306] [Thread-590] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:40.718] [Thread-588] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:40.926] [Thread-577] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:41.346] [Thread-688] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:41.409] [Thread-689] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:41.482] [Thread-721] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:41.516] [Thread-648] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:43.576] [Thread-719] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:43.700] [Thread-690] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:44.732] [Thread-751] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:45.255] [Thread-757] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:45.636] [Thread-750] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:45.749] [Thread-753] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:45.936] [Thread-752] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:45.992] [Thread-749] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:46.016] [Thread-756] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:46.181] [Thread-759] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:46.221] [Thread-758] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:46.229] [Thread-762] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:47.600] [Thread-760] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:47.716] [Thread-763] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:47.730] [Thread-761] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:48.420] [Thread-764] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:48.702] [Thread-765] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:50.617] [Thread-768] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:50.857] [Thread-769] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:51.902] [Thread-770] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:51.909] [Thread-771] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:52.787] [Thread-773] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:52.894] [Thread-772] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:53.059] [Thread-774] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:53.178] [Thread-775] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:55.154] [Thread-800] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:56.332] [Thread-866] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:59.029] [Thread-914] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:59.338] [Thread-925] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:12:59.857] [Thread-940] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:00.100] [Thread-950] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:01.086] [Thread-968] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:01.113] [Thread-967] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:08.843] [Thread-1451] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:13.664] [Thread-1784] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:17.692] [Thread-2022] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:18.736] [Thread-2102] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:20.806] [Thread-2340] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:25.006] [Thread-2466] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:26.026] [Thread-2541] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:26.345] [Thread-2635] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:26.819] [Thread-2664] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:28.292] [Thread-2718] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:28.615] [Thread-2722] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:29.263] [Thread-2728] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:29.312] [Thread-2730] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:30.369] [Thread-2796] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:30.623] [Thread-2795] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:30.768] [Thread-2797] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:32.227] [Thread-2820] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:32.279] [Thread-2819] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:39.381] [Thread-3225] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:42.069] [Thread-3397] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:42.552] [Thread-3460] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:43.335] [Thread-3489] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:44.183] [Thread-3492] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:44.808] [Thread-3499] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:45.065] [Thread-3552] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:51.320] [Thread-4111] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:51.341] [Thread-4110] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:52.962] [Thread-4187] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:53.285] [Thread-4253] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:53.292] [Thread-4192] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:58.467] [Thread-4282] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:13:59.458] [Thread-4342] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:06.800] [Thread-4935] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:07.583] [Thread-5063] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:08.935] [Thread-5120] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:13.506] [Thread-5319] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:18.427] [Thread-5513] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:20.180] [Thread-5554] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:20.205] [Thread-5571] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:23.528] [Thread-5604] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:23.569] [Thread-5603] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:24.058] [Thread-5601] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:26.988] [Thread-5811] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:29.729] [Thread-5812] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:33.855] [Thread-5974] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:35.867] [Thread-6108] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:37.468] [Thread-6183] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:39.973] [Thread-6326] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:40.168] [Thread-6331] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
-ERROR  [23:14:43.897] [Thread-6626] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+INFO   [02:36:36.263] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [02:36:36.312] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [02:36:36.312] [main] o.e.j.s.Server -  Started @2008ms 

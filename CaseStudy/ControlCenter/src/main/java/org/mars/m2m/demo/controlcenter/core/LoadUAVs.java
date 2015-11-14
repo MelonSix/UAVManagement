@@ -23,6 +23,7 @@ import org.mars.m2m.demo.controlcenter.services.ControlCenterReflexes;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
 import org.mars.m2m.demo.controlcenter.services.ReadAttackers;
 import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
+import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.TraverseParsedXmlLwM2MClientInfo;
 import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.dmcore.onem2m.xsdBundle.Container;

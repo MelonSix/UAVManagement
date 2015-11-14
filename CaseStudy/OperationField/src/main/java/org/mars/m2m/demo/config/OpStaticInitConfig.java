@@ -5,6 +5,7 @@
  */
 package org.mars.m2m.demo.config;
 
+import java.util.ArrayList;
 import javax.swing.Timer;
 import org.mars.m2m.demo.model.Threat;
 
@@ -94,4 +95,8 @@ public class OpStaticInitConfig {
     public static int LOCKED_TIME_STEP_UNTIL_DESTROYED = 20;
     
     
+    /**
+     *Keeps the already assigned port numbers
+     */
+    public final static ArrayList<Integer> ASSIGNED_PORTS = new ArrayList<>();
 }

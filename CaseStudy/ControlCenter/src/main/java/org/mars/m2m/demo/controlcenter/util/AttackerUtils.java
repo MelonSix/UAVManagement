@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.Response;
+import org.mars.m2m.demo.controlcenter.analysis.GraphDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.enums.AttackerType;
@@ -199,12 +200,22 @@ public class AttackerUtils
     
     public static void updateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
     {
-        if(resourceUpdate != null && client != null)
-        {
-            String data = gson.toJson(resourceUpdate);
-            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-            requestUtil.send(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data);
-        }
+//        if(resourceUpdate != null && client != null)
+//        {
+//            String data = gson.toJson(resourceUpdate);
+//            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+//            requestUtil.send(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data);
+//            
+//            getDataForAnalysis();
+//        }
+    }
+
+    public static void getDataForAnalysis() {
+        GraphDatastore
+                .getMessagesPerSecondData()
+                .put(CC_StaticInitConfig.CURRENT_SIMULATION_TIME.get(),
+                        CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP.addAndGet(1));
+        CC_StaticInitConfig.TOTAL_MESSAGES_SENT.incrementAndGet();
     }
     
     public static void executeOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
@@ -214,20 +225,24 @@ public class AttackerUtils
             String data = gson.toJson(resourceUpdate);
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
             requestUtil.send(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data);
+            
+            getDataForAnalysis();
         }
     }
     
     //Asynchronous methods
     public static void asyncUpdateResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate, AsyncServiceCallback<Response> callback)
     {
-//        if(resourceUpdate != null && client != null)
-//        {
-//            String data = gson.toJson(resourceUpdate);
-//            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
-//            System.out.println("asynUpdate: "+data);
-//            //asynchronous update
-//            requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class, callback);
-//        }
+        if(resourceUpdate != null && client != null)
+        {
+            String data = gson.toJson(resourceUpdate);
+            String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
+            System.out.println("asynUpdate: "+data);
+            //asynchronous update
+            requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class, callback);
+            
+            getDataForAnalysis();
+        }
     }
     
     public static void asyncExecuteOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate,  AsyncServiceCallback<Response> callback)
@@ -238,6 +253,7 @@ public class AttackerUtils
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
             System.out.println("asynExec: "+data);
             requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class, callback);
+            getDataForAnalysis();
         }
     }
     

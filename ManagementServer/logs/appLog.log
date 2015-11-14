@@ -1,17 +1,17 @@
-INFO   [18:39:28.354] [main] o.e.j.u.log -  Logging initialized @1378ms 
-INFO   [18:39:28.547] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [18:39:28.571] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [18:39:28.631] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [18:39:28.631] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [18:39:28.662] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [18:39:28.663] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [18:39:28.717] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [18:39:28.724] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [18:39:28.733] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [18:39:28.752] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [18:39:28.845] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@1b822fcc{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [18:39:28.848] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:39:29.526] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:11:47.757] [main] o.e.j.u.log -  Logging initialized @1827ms 
+INFO   [00:11:48.221] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:11:48.270] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:11:48.389] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:11:48.390] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:11:48.409] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:11:48.411] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:11:48.562] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:11:48.568] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:11:48.579] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:11:48.619] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:11:49.115] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@1b822fcc{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:11:49.118] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:11:50.861] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -25,32 +25,96 @@ INFO   [18:39:29.526] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [18:39:29.530] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
-INFO   [18:39:29.534] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:11:50.865] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@36b310aa{/ms,null,AVAILABLE} 
+INFO   [00:11:50.870] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [18:39:29.540] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
-INFO   [18:39:29.602] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1b822fcc{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [18:39:29.602] [main] o.e.j.s.Server -  Started @2628ms 
-INFO   [18:42:32.933] [pool-5-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=41888, Token=8b64c2d2, OptionSet={"Observe":0, "Uri-Path":["12207","0","14"]}, "" 
-INFO   [18:42:36.492] [pool-5-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=41883, Token=8b64c2cd, OptionSet={"Uri-Path":["12207","0"]}, "" 
-INFO   [18:42:44.589] [pool-5-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-GET    MID=41885, Token=8b64c2d0, OptionSet={"Observe":0, "Uri-Path":["12207","0","14"]}, "" 
-INFO   [18:42:57.560] [main] o.e.j.u.log -  Logging initialized @2251ms 
-INFO   [18:42:57.871] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [18:42:57.890] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [18:42:57.946] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [18:42:57.946] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [18:42:57.960] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [18:42:57.963] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [18:42:58.069] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [18:42:58.079] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [18:42:58.207] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [18:42:58.245] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [18:42:58.514] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [18:42:58.517] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [18:43:00.244] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:11:50.877] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@2a32fb6{/admin-ms,null,AVAILABLE} 
+INFO   [00:11:50.939] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@1b822fcc{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:11:50.939] [main] o.e.j.s.Server -  Started @5012ms 
+ERROR  [00:18:03.654] [Thread-443] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-408] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-402] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-444] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-400] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-406] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-381] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-420] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-394] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-405] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-389] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.654] [Thread-379] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.698] [Thread-412] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.698] [Thread-441] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.698] [Thread-396] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.698] [Thread-439] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.698] [Thread-378] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-383] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-417] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-423] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-442] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-418] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-399] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.698] [Thread-411] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-404] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-392] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-382] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.699] [Thread-393] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-421] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-387] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-386] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-384] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-435] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-415] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-432] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.710] [Thread-445] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-416] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-426] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-434] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-391] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-407] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-390] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-410] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-436] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-385] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-388] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-430] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-428] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-422] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-440] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-401] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.729] [Thread-398] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.728] [Thread-433] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-409] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-413] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-438] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-425] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-431] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-397] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-395] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-403] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.811] [Thread-429] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.853] [Thread-424] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.853] [Thread-414] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.853] [Thread-437] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.853] [Thread-419] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:18:03.853] [Thread-427] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [00:18:09.839] [main] o.e.j.u.log -  Logging initialized @1433ms 
+INFO   [00:18:10.006] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:18:10.023] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:18:10.071] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:18:10.071] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:18:10.077] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:18:10.078] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:18:10.103] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:18:10.115] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:18:10.125] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:18:10.150] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:18:10.249] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:18:10.252] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:18:10.951] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -64,45 +128,29 @@ INFO   [18:43:00.244] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [18:43:00.257] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [18:43:00.266] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:18:10.955] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [00:18:10.968] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [18:43:00.283] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [18:43:00.366] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [18:43:00.366] [main] o.e.j.s.Server -  Started @5059ms 
-ERROR  [18:45:20.516] [Thread-763] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:45:35.476] [Thread-1119] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:45:35.476] [Thread-1118] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:45:36.618] [Thread-1120] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:45:38.618] [Thread-1121] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:02.816] [Thread-1639] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:02.819] [Thread-1637] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:02.876] [Thread-1638] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:02.876] [Thread-1640] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:02.976] [Thread-1642] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:03.118] [Thread-1641] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:24.518] [Thread-1922] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:25.376] [Thread-1924] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:25.376] [Thread-1923] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:46:26.918] [Thread-1925] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [18:47:25.018] [Thread-2794] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-INFO   [19:24:42.897] [main] o.e.j.u.log -  Logging initialized @1326ms 
-INFO   [19:24:43.082] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:24:43.105] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [19:24:43.152] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [19:24:43.152] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [19:24:43.197] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [19:24:43.199] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [19:24:43.261] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:24:43.268] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [19:24:43.279] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [19:24:43.296] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [19:24:43.412] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:24:43.415] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:24:44.150] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:18:10.974] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [00:18:11.029] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:18:11.029] [main] o.e.j.s.Server -  Started @2625ms 
+INFO   [00:19:30.685] [main] o.e.j.u.log -  Logging initialized @1807ms 
+INFO   [00:19:30.865] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:19:30.881] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:19:30.946] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:19:30.947] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:19:30.952] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:19:30.953] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:19:30.971] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:19:30.978] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:19:30.987] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:19:31.017] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:19:31.313] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:19:31.319] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:19:32.728] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -116,29 +164,29 @@ INFO   [19:24:44.150] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [19:24:44.153] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [19:24:44.165] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:19:32.732] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [00:19:32.737] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:24:44.171] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [19:24:44.236] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:24:44.236] [main] o.e.j.s.Server -  Started @2667ms 
-INFO   [19:30:44.477] [main] o.e.j.u.log -  Logging initialized @1304ms 
-INFO   [19:30:44.616] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:30:44.630] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [19:30:44.666] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [19:30:44.666] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [19:30:44.672] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [19:30:44.673] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [19:30:44.697] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:30:44.703] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [19:30:44.723] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [19:30:44.745] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [19:30:44.856] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:30:44.860] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:30:45.513] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:19:32.742] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [00:19:32.826] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:19:32.826] [main] o.e.j.s.Server -  Started @3962ms 
+INFO   [00:24:54.024] [main] o.e.j.u.log -  Logging initialized @4359ms 
+INFO   [00:24:54.255] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:24:54.290] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:24:54.362] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:24:54.362] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:24:54.371] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:24:54.374] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:24:54.421] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:24:54.446] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:24:54.458] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:24:54.477] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:24:54.661] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:24:54.665] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:24:55.912] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -152,33 +200,490 @@ INFO   [19:30:45.513] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [19:30:45.517] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [19:30:45.522] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:24:55.915] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [00:24:55.945] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:30:45.527] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [19:30:45.573] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:30:45.573] [main] o.e.j.s.Server -  Started @2402ms 
-ERROR  [19:34:41.078] [Thread-1547] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:34:41.388] [Thread-1548] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:34:42.077] [Thread-1550] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:34:42.185] [Thread-1549] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-INFO   [19:37:33.523] [main] o.e.j.u.log -  Logging initialized @1939ms 
-INFO   [19:37:33.835] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:37:33.868] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [19:37:33.964] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [19:37:33.965] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [19:37:34.044] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [19:37:34.045] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [19:37:34.155] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:37:34.162] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [19:37:34.219] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [19:37:34.252] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [19:37:34.381] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:37:34.384] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:37:35.360] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:24:55.954] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [00:24:56.087] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:24:56.087] [main] o.e.j.s.Server -  Started @6424ms 
+INFO   [00:28:58.010] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4484, Token=20d12b5a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:28:58.337] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4509, Token=20d12b73, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:28:58.458] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4486, Token=20d12b5c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:28:58.857] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4576, Token=20d12bb6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:00.228] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4490, Token=20d12b60, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:00.439] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4503, Token=20d12b6d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:00.560] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4530, Token=20d12b88, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:00.619] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4504, Token=20d12b6e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.226] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4586, Token=20d12bc0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.430] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4464, Token=20d12b46, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.438] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4556, Token=20d12ba2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.499] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4533, Token=20d12b8c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.500] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4510, Token=20d12b74, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.579] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4489, Token=20d12b5f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.713] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4573, Token=20d12bb3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:01.936] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4517, Token=20d12b7b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:02.027] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4462, Token=20d12b44, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:02.483] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4487, Token=20d12b5d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:02.770] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4502, Token=20d12b6c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:02.905] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4567, Token=20d12bad, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:03.319] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4513, Token=20d12b77, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:03.536] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4467, Token=20d12b49, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:03.630] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4575, Token=20d12bb5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:03.659] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4541, Token=20d12b93, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:03.974] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4589, Token=20d12bc3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:04.259] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4585, Token=20d12bbf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:04.448] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4476, Token=20d12b52, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:04.816] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4497, Token=20d12b67, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:04.876] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4583, Token=20d12bbd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:04.936] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4552, Token=20d12b9e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:04.995] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4473, Token=20d12b4f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:05.090] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4592, Token=20d12bc7, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 426 bytes 
+INFO   [00:29:05.203] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4500, Token=20d12b6a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:05.619] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4594, Token=20d12bc8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:05.828] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4537, Token=20d12b8f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:05.842] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4571, Token=20d12bb1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:06.149] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4566, Token=20d12bac, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:06.359] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4488, Token=20d12b5e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:06.954] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4550, Token=20d12b9c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:07.348] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4531, Token=20d12b8a, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 427 bytes 
+INFO   [00:29:07.442] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4540, Token=20d12b92, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:07.669] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4547, Token=20d12b97, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:07.778] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4587, Token=20d12bc1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:07.788] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4553, Token=20d12b9f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:07.990] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4516, Token=20d12b7a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:08.188] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4493, Token=20d12b63, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:08.315] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4554, Token=20d12ba0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:08.451] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4499, Token=20d12b69, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:08.966] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4578, Token=20d12bb8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.094] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4522, Token=20d12b80, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.095] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4581, Token=20d12bbc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.294] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4622, Token=20d12be4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.297] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4661, Token=20d12c0b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.387] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4646, Token=20d12bfc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.528] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4690, Token=20d12c28, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.554] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4682, Token=20d12c20, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.572] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4525, Token=20d12b83, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 426 bytes 
+INFO   [00:29:09.686] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4708, Token=20d12c3a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.739] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4608, Token=20d12bd6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:09.919] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4677, Token=20d12c1b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.029] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4508, Token=20d12b72, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.066] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4873, Token=20d12cdf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.158] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4521, Token=20d12b7f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.189] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4523, Token=20d12b81, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.310] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4832, Token=20d12cb6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.441] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4520, Token=20d12b7e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.597] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4729, Token=20d12c4f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.772] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4598, Token=20d12bcc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.804] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4595, Token=20d12bc9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.867] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4917, Token=20d12d0b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.926] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4803, Token=20d12c99, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.951] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4478, Token=20d12b54, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:10.958] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4807, Token=20d12c9d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.034] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4768, Token=20d12c76, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.092] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4747, Token=20d12c61, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.107] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4463, Token=20d12b45, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.123] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4750, Token=20d12c64, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.156] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4760, Token=20d12c6e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.177] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4518, Token=20d12b7c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.184] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4652, Token=20d12c02, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.287] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4679, Token=20d12c1d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.324] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4707, Token=20d12c39, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.330] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4498, Token=20d12b68, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.369] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4734, Token=20d12c54, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.402] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4751, Token=20d12c65, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.520] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4670, Token=20d12c14, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.565] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4627, Token=20d12be9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.641] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4603, Token=20d12bd1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.674] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4512, Token=20d12b76, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.679] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4607, Token=20d12bd5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.712] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4731, Token=20d12c52, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.722] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4471, Token=20d12b4d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.775] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4625, Token=20d12be7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.803] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4878, Token=20d12ce4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.888] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4805, Token=20d12c9b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.895] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4722, Token=20d12c46, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:11.902] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4774, Token=20d12c7d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.021] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4657, Token=20d12c07, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.022] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4621, Token=20d12be3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.056] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4773, Token=20d12c7c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.144] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4673, Token=20d12c17, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 426 bytes 
+INFO   [00:29:12.329] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4715, Token=20d12c41, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.346] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4477, Token=20d12b53, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.425] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4557, Token=20d12ba3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.455] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4727, Token=20d12c4d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.484] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4529, Token=20d12b87, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.532] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4686, Token=20d12c24, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.548] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4724, Token=20d12c4a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.577] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4720, Token=20d12c47, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.625] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4685, Token=20d12c23, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.753] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4602, Token=20d12bd0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.761] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4850, Token=20d12cc8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.774] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4545, Token=20d12b98, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.781] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4564, Token=20d12baa, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.867] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4543, Token=20d12b95, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.917] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4857, Token=20d12ccf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.967] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4565, Token=20d12bab, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:12.983] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4741, Token=20d12c5b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.013] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4732, Token=20d12c51, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.040] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4864, Token=20d12cd6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.155] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4528, Token=20d12b86, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 426 bytes 
+INFO   [00:29:13.344] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4798, Token=20d12c94, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.357] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4770, Token=20d12c78, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.446] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4877, Token=20d12ce3, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 426 bytes 
+INFO   [00:29:13.498] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4797, Token=20d12c93, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.550] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4623, Token=20d12be5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.574] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4763, Token=20d12c71, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.620] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4784, Token=20d12c86, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.827] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4470, Token=20d12b4c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:13.946] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4752, Token=20d12c66, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.067] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4880, Token=20d12ce6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.126] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4861, Token=20d12cd3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.195] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4772, Token=20d12c7a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.202] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4697, Token=20d12c2f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.256] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4600, Token=20d12bce, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.305] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4466, Token=20d12b48, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.395] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4514, Token=20d12b78, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 427 bytes 
+INFO   [00:29:14.532] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4570, Token=20d12bb0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.627] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4895, Token=20d12cf5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.666] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4777, Token=20d12c7f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.757] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4482, Token=20d12b58, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.769] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4791, Token=20d12c8d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.784] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4579, Token=20d12bb9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.820] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4505, Token=20d12b6f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.933] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4888, Token=20d12cee, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:14.988] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4515, Token=20d12b79, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.011] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4684, Token=20d12c22, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.124] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4539, Token=20d12b91, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.181] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4893, Token=20d12cf3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.234] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4705, Token=20d12c37, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 427 bytes 
+INFO   [00:29:15.301] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4846, Token=20d12cc4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.335] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4601, Token=20d12bcf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.533] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4678, Token=20d12c1c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.621] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4755, Token=20d12c69, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 426 bytes 
+INFO   [00:29:15.640] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4596, Token=20d12bca, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.652] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4568, Token=20d12bae, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.659] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4574, Token=20d12bb4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.680] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4737, Token=20d12c57, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.790] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4701, Token=20d12c32, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.836] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4746, Token=20d12c60, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:15.986] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4851, Token=20d12cc9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.004] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4469, Token=20d12b4b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.148] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4771, Token=20d12c79, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.225] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4688, Token=20d12c26, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.245] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4527, Token=20d12b85, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.327] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4860, Token=20d12cd2, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 427 bytes 
+INFO   [00:29:16.332] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4735, Token=20d12c55, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.391] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4640, Token=20d12bf6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.398] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4754, Token=20d12c68, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.473] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4908, Token=20d12d02, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.497] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4615, Token=20d12bdd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.497] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4524, Token=20d12b82, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.513] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4847, Token=20d12cc5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.516] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4649, Token=20d12bff, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.606] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4534, Token=20d12b89, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.648] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4614, Token=20d12bdc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.777] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4474, Token=20d12b50, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:16.984] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4674, Token=20d12c18, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.008] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4863, Token=20d12cd5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.045] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4757, Token=20d12c6b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.105] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4900, Token=20d12cfa, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.125] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4704, Token=20d12c36, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.332] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4662, Token=20d12c0c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.434] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4630, Token=20d12bec, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.445] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4879, Token=20d12ce5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.538] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4885, Token=20d12cec, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.554] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4538, Token=20d12b90, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.754] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4496, Token=20d12b66, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.796] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4762, Token=20d12c70, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:17.837] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4532, Token=20d12b8b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.127] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4894, Token=20d12cf4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.262] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4492, Token=20d12b62, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.316] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4641, Token=20d12bf7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.378] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4639, Token=20d12bf5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.385] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4485, Token=20d12b5b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.398] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4913, Token=20d12d07, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.443] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4775, Token=20d12c7b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.617] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4716, Token=20d12c42, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.724] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4778, Token=20d12c80, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.748] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4642, Token=20d12bf8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.809] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4714, Token=20d12c40, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:18.930] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4829, Token=20d12cb3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.022] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4838, Token=20d12cbc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.075] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4501, Token=20d12b6b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.338] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4610, Token=20d12bd8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.378] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4479, Token=20d12b55, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.400] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4892, Token=20d12cf2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.460] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4828, Token=20d12cb2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.460] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4867, Token=20d12cd9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.525] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4739, Token=20d12c59, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.565] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4481, Token=20d12b57, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.601] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4519, Token=20d12b7d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.636] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4703, Token=20d12c35, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.651] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4907, Token=20d12d01, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.682] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4769, Token=20d12c77, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:19.700] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4801, Token=20d12c97, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.013] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4925, Token=20d12d13, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.079] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4871, Token=20d12cdd, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 426 bytes 
+INFO   [00:29:20.150] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4631, Token=20d12bed, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.187] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4702, Token=20d12c34, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.247] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4480, Token=20d12b56, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.325] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4611, Token=20d12bd9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.451] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4637, Token=20d12bf3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.451] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4580, Token=20d12bba, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.483] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4889, Token=20d12cef, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.505] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4555, Token=20d12ba1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.535] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4546, Token=20d12b99, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.547] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4902, Token=20d12cfc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.567] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4912, Token=20d12d06, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.663] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4914, Token=20d12d08, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.694] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4812, Token=20d12ca2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.719] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4507, Token=20d12b71, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.835] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4535, Token=20d12b8d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:20.853] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4855, Token=20d12ccd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.060] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4905, Token=20d12cff, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.074] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4654, Token=20d12c04, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.322] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4616, Token=20d12bde, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.363] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4882, Token=20d12ce8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.370] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4511, Token=20d12b75, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.376] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4597, Token=20d12bcb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.631] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4840, Token=20d12cbe, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.691] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4862, Token=20d12cd4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.838] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4664, Token=20d12c0e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:21.962] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4911, Token=20d12d05, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.150] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4815, Token=20d12ca5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.182] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4915, Token=20d12d09, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.227] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4645, Token=20d12bfb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.236] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4572, Token=20d12bb2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.262] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4743, Token=20d12c5d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.292] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4761, Token=20d12c6f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.381] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4756, Token=20d12c6a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.388] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4542, Token=20d12b94, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.460] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4706, Token=20d12c38, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.619] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4475, Token=20d12b51, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.686] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4569, Token=20d12baf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.813] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4744, Token=20d12c5e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.813] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4561, Token=20d12ba7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.849] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4472, Token=20d12b4e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.922] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4866, Token=20d12cd8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:22.934] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4559, Token=20d12ba5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.028] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4659, Token=20d12c09, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.089] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4656, Token=20d12c06, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.102] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4825, Token=20d12caf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.132] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4680, Token=20d12c1e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.275] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4709, Token=20d12c3b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.293] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4465, Token=20d12b47, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.429] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4644, Token=20d12bfa, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.582] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4671, Token=20d12c15, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.732] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4764, Token=20d12c72, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.955] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4713, Token=20d12c3f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:23.973] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4551, Token=20d12b9d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:24.365] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4563, Token=20d12ba9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:24.481] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4856, Token=20d12cce, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:24.729] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4852, Token=20d12cca, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:24.763] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4562, Token=20d12ba8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:24.792] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4881, Token=20d12ce7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:24.905] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4667, Token=20d12c11, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:24.914] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4494, Token=20d12b64, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.154] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4788, Token=20d12c8a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.154] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4468, Token=20d12b4a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.161] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4843, Token=20d12cc1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.246] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4785, Token=20d12c87, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.296] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4635, Token=20d12bf1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.311] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4790, Token=20d12c8c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.319] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4638, Token=20d12bf4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.340] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4792, Token=20d12c8e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.345] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4922, Token=20d12d10, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.412] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4726, Token=20d12c4c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.494] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4628, Token=20d12beb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.544] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4549, Token=20d12b9b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.602] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4626, Token=20d12be8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.647] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4689, Token=20d12c27, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.686] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4827, Token=20d12cb1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.750] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4842, Token=20d12cc0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.815] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4883, Token=20d12ce9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.848] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4618, Token=20d12be0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:25.978] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4632, Token=20d12bee, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.024] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4544, Token=20d12b96, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.113] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4491, Token=20d12b61, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.149] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4821, Token=20d12cab, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.293] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4483, Token=20d12b59, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.328] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4577, Token=20d12bb7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.342] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4875, Token=20d12ce1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.407] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4658, Token=20d12c08, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.429] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4802, Token=20d12c98, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.534] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4560, Token=20d12ba6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.538] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4903, Token=20d12cfd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.544] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4619, Token=20d12be1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.653] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4733, Token=20d12c53, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.713] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4526, Token=20d12b84, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.804] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4495, Token=20d12b65, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.861] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4582, Token=20d12bbb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.934] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4613, Token=20d12bdb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.953] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4506, Token=20d12b70, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:26.958] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4591, Token=20d12bc5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.049] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4835, Token=20d12cb9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.058] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4653, Token=20d12c03, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.172] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4833, Token=20d12cb7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.331] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4604, Token=20d12bd2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.369] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4758, Token=20d12c6c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.492] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4766, Token=20d12c74, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.511] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4809, Token=20d12c9f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.573] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4824, Token=20d12cae, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.605] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4816, Token=20d12ca6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.609] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4836, Token=20d12cba, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.612] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4593, Token=20d12bc6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.825] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4669, Token=20d12c13, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.917] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4817, Token=20d12ca7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:27.940] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4558, Token=20d12ba4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.322] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4834, Token=20d12cb8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.333] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4620, Token=20d12be2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.414] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4548, Token=20d12b9a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.534] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4795, Token=20d12c91, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.621] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4588, Token=20d12bc2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.704] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4776, Token=20d12c7e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.716] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4666, Token=20d12c10, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.852] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4609, Token=20d12bd7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.916] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4869, Token=20d12cdb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:28.934] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4536, Token=20d12b8e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.014] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4742, Token=20d12c5c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.041] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4590, Token=20d12bc4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.261] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4676, Token=20d12c1a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.349] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4721, Token=20d12c48, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.621] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4808, Token=20d12c9e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.729] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4633, Token=20d12bef, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.755] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4660, Token=20d12c0a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.846] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4612, Token=20d12bda, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:29.981] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4584, Token=20d12bbe, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.078] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4683, Token=20d12c21, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.084] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4799, Token=20d12c95, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.121] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4853, Token=20d12ccb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.154] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4872, Token=20d12cde, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.284] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4759, Token=20d12c6d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.373] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4898, Token=20d12cf8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.459] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4921, Token=20d12d0f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.496] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4899, Token=20d12cf9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.523] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4848, Token=20d12cc6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.677] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4839, Token=20d12cbd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.746] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4870, Token=20d12cdc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.763] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4906, Token=20d12d00, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.931] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4901, Token=20d12cfb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:30.996] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4753, Token=20d12c67, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.087] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4617, Token=20d12bdf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.151] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4897, Token=20d12cf7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.363] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4605, Token=20d12bd4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.416] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4789, Token=20d12c8b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.632] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4687, Token=20d12c25, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.766] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4711, Token=20d12c3d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.884] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4820, Token=20d12ca9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:31.960] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4691, Token=20d12c2a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.100] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4806, Token=20d12c9c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.162] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4810, Token=20d12ca0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.221] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4782, Token=20d12c85, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.233] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4890, Token=20d12cf0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.374] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4910, Token=20d12d04, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.390] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4736, Token=20d12c56, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.461] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4698, Token=20d12c30, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.473] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4814, Token=20d12ca4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.699] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4740, Token=20d12c5a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.892] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4651, Token=20d12c01, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.919] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4749, Token=20d12c63, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.928] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4699, Token=20d12c31, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:32.953] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4655, Token=20d12c05, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:33.009] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4725, Token=20d12c4b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:33.042] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4886, Token=20d12ced, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:33.224] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4884, Token=20d12cea, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:33.266] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4663, Token=20d12c0d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:33.622] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4924, Token=20d12d12, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:33.715] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4918, Token=20d12d0c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:33.915] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4781, Token=20d12c83, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.153] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4718, Token=20d12c44, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.208] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4822, Token=20d12cac, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.384] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4696, Token=20d12c2e, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 427 bytes 
+INFO   [00:29:34.384] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4695, Token=20d12c2d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.521] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4826, Token=20d12cb0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.526] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4887, Token=20d12ceb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.593] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4767, Token=20d12c75, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.686] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4693, Token=20d12c29, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.805] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4648, Token=20d12bfe, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:34.835] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4865, Token=20d12cd7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.013] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4793, Token=20d12c8f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.333] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4643, Token=20d12bf9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.364] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4624, Token=20d12be6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.420] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4831, Token=20d12cb5, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.697] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4823, Token=20d12cad, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.712] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4636, Token=20d12bf2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.789] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4819, Token=20d12caa, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.830] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4606, Token=20d12bd3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.882] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4818, Token=20d12ca8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.912] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4668, Token=20d12c12, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.971] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4787, Token=20d12c88, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.978] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4845, Token=20d12cc3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:35.980] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4719, Token=20d12c45, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.204] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4765, Token=20d12c73, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.214] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4700, Token=20d12c33, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.319] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4837, Token=20d12cbb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.385] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4874, Token=20d12ce0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.437] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4786, Token=20d12c89, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.463] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4681, Token=20d12c1f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.724] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4923, Token=20d12d11, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.783] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4919, Token=20d12d0d, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:36.952] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4634, Token=20d12bf0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:37.200] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4694, Token=20d12c2c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:37.356] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4779, Token=20d12c81, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:37.410] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4730, Token=20d12c50, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:37.495] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4813, Token=20d12ca3, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:37.716] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-POST   MID= 4844, Token=20d12cc2, OptionSet={"Uri-Path":["12207","0","8"], "Content-Format":"unknown/1543"}, "{"id":8,"value":"{\"".. 427 bytes 
+INFO   [00:29:37.811] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4672, Token=20d12c16, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:37.816] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4748, Token=20d12c62, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.049] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4629, Token=20d12bea, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.080] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4909, Token=20d12d03, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.090] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4841, Token=20d12cbf, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.090] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4796, Token=20d12c92, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.093] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4712, Token=20d12c3e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.214] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4868, Token=20d12cda, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.334] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4920, Token=20d12d0e, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.339] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4650, Token=20d12c00, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.372] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4896, Token=20d12cf6, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.460] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4859, Token=20d12cd1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.494] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4710, Token=20d12c3c, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.530] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4692, Token=20d12c2b, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.554] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4599, Token=20d12bcd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.611] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4811, Token=20d12ca1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.870] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4745, Token=20d12c5f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:38.898] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4891, Token=20d12cf1, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.085] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4738, Token=20d12c58, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.142] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4849, Token=20d12cc7, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.165] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4783, Token=20d12c84, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.201] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4717, Token=20d12c43, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.275] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4675, Token=20d12c19, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.302] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4723, Token=20d12c49, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.315] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4665, Token=20d12c0f, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.359] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4854, Token=20d12ccc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.446] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4800, Token=20d12c96, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.515] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4876, Token=20d12ce2, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.708] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4916, Token=20d12d0a, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.728] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4830, Token=20d12cb4, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.828] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4647, Token=20d12bfd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:39.856] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4858, Token=20d12cd0, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:40.099] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4904, Token=20d12cfe, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:40.457] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID= 4780, Token=20d12c82, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [00:29:45.143] [main] o.e.j.u.log -  Logging initialized @1317ms 
+INFO   [00:29:45.295] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:29:45.313] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:29:45.353] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:29:45.353] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:29:45.359] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:29:45.360] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:29:45.380] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:29:45.386] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:29:45.395] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:29:45.412] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:29:45.507] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:29:45.511] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:29:46.276] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -192,29 +697,54 @@ INFO   [19:37:35.360] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [19:37:35.365] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [19:37:35.371] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:29:46.282] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [00:29:46.302] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:37:35.379] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [19:37:35.425] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:37:35.425] [main] o.e.j.s.Server -  Started @3845ms 
-INFO   [19:55:00.390] [main] o.e.j.u.log -  Logging initialized @1700ms 
-INFO   [19:55:00.720] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:55:00.786] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [19:55:00.861] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [19:55:00.862] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [19:55:00.869] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [19:55:00.871] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [19:55:01.016] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [19:55:01.022] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [19:55:01.033] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [19:55:01.086] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [19:55:01.261] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:55:01.264] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [19:55:02.199] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:29:46.311] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [00:29:46.387] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:29:46.389] [main] o.e.j.s.Server -  Started @2564ms 
+ERROR  [00:35:56.514] [Thread-690] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:10.092] [Thread-778] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:10.715] [Thread-779] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:12.903] [Thread-781] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:13.063] [Thread-780] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:13.215] [Thread-782] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:14.715] [Thread-783] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.391] [Thread-777] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.391] [Thread-688] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.391] [Thread-610] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.391] [Thread-762] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.391] [Thread-691] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.403] [Thread-682] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.403] [Thread-687] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.403] [Thread-764] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.403] [Thread-614] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.403] [Thread-689] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.414] [Thread-761] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.414] [Thread-793] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.414] [Thread-684] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.463] [Thread-776] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.463] [Thread-1230] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.463] [Thread-765] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.463] [Thread-683] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:36:35.463] [Thread-784] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [00:39:11.789] [main] o.e.j.u.log -  Logging initialized @1471ms 
+INFO   [00:39:11.932] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:39:11.946] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:39:11.983] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:39:11.984] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:39:11.989] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:39:11.990] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:39:12.012] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:39:12.018] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:39:12.028] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:39:12.044] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:39:12.131] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:39:12.134] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:39:12.720] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -228,89 +758,72 @@ INFO   [19:55:02.199] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [19:55:02.202] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [19:55:02.208] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:39:12.724] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [00:39:12.730] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [19:55:02.225] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [19:55:02.277] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [19:55:02.277] [main] o.e.j.s.Server -  Started @3595ms 
-ERROR  [19:58:08.909] [Thread-445] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:58:31.610] [Thread-590] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-667] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-547] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-587] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-557] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-523] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-504] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-573] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-499] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-442] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-672] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-528] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-657] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-670] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.209] [Thread-661] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.231] [Thread-673] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.231] [Thread-542] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.231] [Thread-626] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.231] [Thread-517] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.231] [Thread-589] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.231] [Thread-543] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-555] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-666] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-500] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-575] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-443] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-507] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-591] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.232] [Thread-660] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.231] [Thread-674] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.251] [Thread-505] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.251] [Thread-581] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.251] [Thread-527] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.251] [Thread-675] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.251] [Thread-586] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-501] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-548] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-662] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-509] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-512] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-574] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-583] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-503] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-556] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.252] [Thread-595] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-653] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-671] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-658] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-669] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-526] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-502] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-668] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-506] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-582] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-592] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-659] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-441] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-444] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [19:59:04.268] [Thread-588] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-INFO   [23:05:05.008] [main] o.e.j.u.log -  Logging initialized @1497ms 
-INFO   [23:05:05.182] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [23:05:05.199] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [23:05:05.241] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [23:05:05.241] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [23:05:05.247] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [23:05:05.248] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [23:05:05.270] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [23:05:05.276] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [23:05:05.291] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [23:05:05.311] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [23:05:05.471] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [23:05:05.475] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [23:05:06.630] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:39:12.737] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [00:39:12.784] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:39:12.784] [main] o.e.j.s.Server -  Started @2469ms 
+ERROR  [00:40:37.617] [Thread-392] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:40:38.183] [Thread-393] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:40:38.348] [Thread-394] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-363] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-387] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-551] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-378] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-637] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-543] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-650] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.049] [Thread-383] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-645] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-640] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-646] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-386] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-384] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-648] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-461] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-641] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.079] [Thread-644] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.149] [Thread-544] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-542] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-389] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-539] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-385] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-547] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-379] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-587] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-638] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-382] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.150] [Thread-396] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-541] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-374] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-540] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-391] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-523] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-546] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-649] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-545] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-395] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.217] [Thread-381] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.250] [Thread-537] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [00:41:12.617] [Thread-651] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [00:53:20.823] [main] o.e.j.u.log -  Logging initialized @1620ms 
+INFO   [00:53:20.990] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:53:21.011] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:53:21.069] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:53:21.069] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:53:21.076] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:53:21.076] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:53:21.101] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:53:21.107] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:53:21.118] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:53:21.170] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:53:21.273] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:53:21.277] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:53:22.605] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -324,40 +837,29 @@ INFO   [23:05:06.630] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [23:05:06.634] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [23:05:06.655] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:53:22.609] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [00:53:22.619] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [23:05:06.665] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [23:05:06.719] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [23:05:06.719] [main] o.e.j.s.Server -  Started @3212ms 
-ERROR  [23:06:43.291] [Thread-557] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:06:54.801] [Thread-673] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.302] [Thread-674] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.302] [Thread-648] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.389] [Thread-671] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.390] [Thread-675] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.390] [Thread-650] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.403] [Thread-652] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.418] [Thread-647] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.418] [Thread-651] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:07:04.418] [Thread-670] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-INFO   [23:07:15.105] [main] o.e.j.u.log -  Logging initialized @3265ms 
-INFO   [23:07:15.256] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [23:07:15.270] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [23:07:15.308] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [23:07:15.309] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [23:07:15.315] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [23:07:15.315] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [23:07:15.332] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [23:07:15.339] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [23:07:15.349] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [23:07:15.366] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [23:07:15.456] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [23:07:15.460] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [23:07:16.113] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:53:22.627] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [00:53:22.688] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:53:22.688] [main] o.e.j.s.Server -  Started @3488ms 
+INFO   [00:55:06.352] [main] o.e.j.u.log -  Logging initialized @2844ms 
+INFO   [00:55:06.611] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:55:06.634] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [00:55:06.691] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [00:55:06.692] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [00:55:06.708] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [00:55:06.709] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [00:55:06.728] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [00:55:06.740] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [00:55:06.755] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [00:55:06.786] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [00:55:06.918] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:55:06.925] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [00:55:07.863] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -371,38 +873,30 @@ INFO   [23:07:16.113] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [23:07:16.116] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [23:07:16.121] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [00:55:07.870] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [00:55:07.876] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [23:07:16.126] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [23:07:16.167] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [23:07:16.167] [main] o.e.j.s.Server -  Started @4330ms 
-ERROR  [23:08:55.360] [Thread-467] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:08:55.360] [Thread-469] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:08:55.367] [Thread-468] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:08:55.376] [Thread-464] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:08:55.376] [Thread-470] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:09:31.342] [Thread-765] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:09:31.460] [Thread-766] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:09:32.561] [Thread-767] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:09:33.076] [Thread-768] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-INFO   [23:10:42.916] [main] o.e.j.u.log -  Logging initialized @1538ms 
-INFO   [23:10:43.064] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [23:10:43.078] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
-INFO   [23:10:43.115] [main] o.e.c.c.CoapServer -  Starting server 
-INFO   [23:10:43.115] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
-INFO   [23:10:43.122] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
-INFO   [23:10:43.123] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
-INFO   [23:10:43.143] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
-INFO   [23:10:43.150] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
-INFO   [23:10:43.161] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
-INFO   [23:10:43.178] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
-INFO   [23:10:43.266] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [23:10:43.269] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
-INFO   [23:10:43.861] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+INFO   [00:55:07.881] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [00:55:07.931] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [00:55:07.931] [main] o.e.j.s.Server -  Started @4439ms 
+ERROR  [00:56:34.148] [Thread-392] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [02:36:31.556] [main] o.e.j.u.log -  Logging initialized @1281ms 
+INFO   [02:36:31.754] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [02:36:31.782] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [02:36:31.828] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [02:36:31.828] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [02:36:31.840] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [02:36:31.843] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [02:36:31.870] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [02:36:31.877] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [02:36:31.889] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [02:36:31.918] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [02:36:32.038] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [02:36:32.042] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [02:36:32.915] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
 
     GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
@@ -416,21 +910,35 @@ INFO   [23:10:43.861] [main] i.d.j.DropwizardResourceConfig -  The following pat
     POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
     GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
  
-INFO   [23:10:43.864] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
-INFO   [23:10:43.869] [main] i.d.s.AdminEnvironment -  tasks = 
+INFO   [02:36:32.918] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [02:36:32.923] [main] i.d.s.AdminEnvironment -  tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
  
-INFO   [23:10:43.873] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
-INFO   [23:10:43.914] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
-INFO   [23:10:43.915] [main] o.e.j.s.Server -  Started @2539ms 
-ERROR  [23:12:37.037] [Thread-467] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:12:37.045] [Thread-468] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:12:37.159] [Thread-469] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:12:37.357] [Thread-470] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:12:37.459] [Thread-471] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:12:37.537] [Thread-472] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:13:56.846] [Thread-4149] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:13:57.359] [Thread-4151] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
-ERROR  [23:13:57.552] [Thread-4150] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [02:36:32.928] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [02:36:32.973] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [02:36:32.973] [main] o.e.j.s.Server -  Started @2700ms 
+ERROR  [02:38:10.773] [Thread-444] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:11.067] [Thread-448] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:11.085] [Thread-449] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:11.093] [Thread-446] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:11.093] [Thread-445] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:11.167] [Thread-447] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:11.278] [Thread-450] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:52.665] [Thread-1080] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:38:52.685] [Thread-1078] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:14.565] [Thread-1827] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:14.696] [Thread-1826] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:26.966] [Thread-2070] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:46.466] [Thread-2505] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:47.651] [Thread-2507] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:47.694] [Thread-2506] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:47.765] [Thread-2508] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [02:39:47.867] [Thread-2509] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [02:41:07.264] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=42292, Token=a38f9ebb, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [02:41:16.285] [pool-4-thread-2] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=42293, Token=a38f9ebc, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [02:41:18.234] [pool-4-thread-3] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=42294, Token=a38f9ebd, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [02:41:19.634] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=42289, Token=a38f9eb9, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [02:41:23.074] [pool-4-thread-4] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=42291, Token=a38f9eba, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 
+INFO   [02:41:23.694] [pool-4-thread-1] o.e.c.c.n.s.ReliabilityLayer -  Timeout: retransmission limit reached, exchange failed, message: CON-PUT    MID=42290, Token=a38f9eb8, OptionSet={"Uri-Path":["12207","0","10"], "Content-Format":"unknown/1541"}, "1" 

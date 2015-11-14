@@ -681,10 +681,6 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
         return remained_energy;
     }
 
-    public static ArrayList<Integer> getOccupiedPorts() {
-        return occupiedPorts;
-    }
-
     public static int getCenter_height() {
         return center_height;
     }

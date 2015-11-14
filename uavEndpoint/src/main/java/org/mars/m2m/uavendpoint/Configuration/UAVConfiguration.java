@@ -5,7 +5,6 @@
  */
 package org.mars.m2m.uavendpoint.Configuration;
 
-import org.mars.m2m.uavendpoint.Model.UavLwm2mServer;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -18,6 +18,7 @@ import org.mars.m2m.dmcore.model.ReportedLwM2MClient;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.util.RequestUtil;
 import org.mars.m2m.demo.controlcenter.model.FlightControlWaypoints;
+import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.slf4j.LoggerFactory;
 
@@ -74,6 +75,9 @@ public class AssignScoutRoleReflexListenerImpl implements ReflexListener
         
         sc.handlePost(CC_StaticInitConfig.mgmntAdapterURL, consumerDetails.getRequest(), MediaType.APPLICATION_XML);
         logger.info("Scouting info sent: {},to: {}",data,device.getAddress());
+        
+        //records the communication
+        AttackerUtils.getDataForAnalysis();
     }
 
     @Override
