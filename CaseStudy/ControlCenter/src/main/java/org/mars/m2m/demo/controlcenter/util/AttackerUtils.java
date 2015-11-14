@@ -25,6 +25,7 @@ import org.mars.m2m.demo.controlcenter.model.endpointModel.Content;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectInstance;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.ObjectResourceUpdate;
 import org.mars.m2m.demo.controlcenter.model.endpointModel.Resource;
+import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.MessageHistory;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.Operation;
 import org.mars.m2m.dmcore.onem2m.enumerationTypes.ResourceDataType;
@@ -384,22 +385,42 @@ public class AttackerUtils
 //               System.out.println("History condition passed"); 
                 int resourceID = 8;
                 //checks if this attacker has the capability of destroying this threat before it sends to it
-                if (threat.getThreatType().toString().equals(attacker.getAttackerType().toString()) 
-                        && !attacker.containsThreat(threat)
-                        && attacker.isThreatDestroyed()) 
+                if (!attacker.containsThreat(threat) && attacker.isThreatDestroyed()) 
                 {
+                    if(ControlCenterServices.inforshare_algorithm == CC_StaticInitConfig.BROADCAST_INFOSHARE)
+                    {
 //                    System.out.println("attacker condition passed"); 
-                    attacker.addThreat(threat);
-//                    System.out.println("Threat added to attacker kb. No.: "+attacker.getKb().getThreats().size()); 
-                    AttackerUtils.asyncExecuteOperationOnResource(attacker.getClient(), resourceID,
-                            new ObjectResourceUpdate(resourceID, gson.toJson(threat), ResourceDataType.STRING.toString()),
-                            new AsyncServiceCallback<Response>() {
-                                
-                                @Override
-                                public void asyncServicePerformed(Response r) {
-                                    addToMessageHistory(attacker.getClient().getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
-                                }
-                            });
+                        attacker.addThreat(threat);
+    //                    System.out.println("Threat added to attacker kb. No.: "+attacker.getKb().getThreats().size()); 
+                        AttackerUtils.asyncExecuteOperationOnResource(attacker.getClient(), resourceID,
+                                new ObjectResourceUpdate(resourceID, gson.toJson(threat), ResourceDataType.STRING.toString()),
+                                new AsyncServiceCallback<Response>() {
+
+                                    @Override
+                                    public void asyncServicePerformed(Response r) {
+                                        addToMessageHistory(attacker.getClient().getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
+                                    }
+                                });
+                    }
+                    else if(ControlCenterServices.inforshare_algorithm == CC_StaticInitConfig.REGISTER_BASED_INFORSHARE)
+                    {
+                        if(threat.getThreatType().toString().equals(attacker.getAttackerType().toString()))
+                        {
+    //                    System.out.println("attacker condition passed"); 
+                            attacker.addThreat(threat);
+        //                    System.out.println("Threat added to attacker kb. No.: "+attacker.getKb().getThreats().size()); 
+                            AttackerUtils.asyncExecuteOperationOnResource(attacker.getClient(), resourceID,
+                                    new ObjectResourceUpdate(resourceID, gson.toJson(threat), ResourceDataType.STRING.toString()),
+                                    new AsyncServiceCallback<Response>() {
+
+                                        @Override
+                                        public void asyncServicePerformed(Response r) {
+                                            addToMessageHistory(attacker.getClient().getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats());
+                                        }
+                                    });  
+                        }
+
+                    }
                 }
             }
         }

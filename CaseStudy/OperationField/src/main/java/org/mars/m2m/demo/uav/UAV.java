@@ -154,13 +154,15 @@ public class UAV extends Unit {
      * Gets a port number within the range 49152 to 65532
      * @return Port number
      */
-    protected int selectPortNumber() {
+    protected int selectPortNumber() 
+    {
         if(occupiedPorts != null)
         {
-            int portNumber = 49152 + (int) (Math.random() * 16381); //range is from 49152 -> 65532
-            while (occupiedPorts.contains(portNumber)) {
-                portNumber = 49152 + (int) (Math.random() * 16381);
-            }
+            int portNumber; //range is from 49152 -> 65532
+            do
+            {
+                portNumber = 49152 + (int) (Math.random() * 16381);                
+            }while (occupiedPorts.contains(portNumber));
             occupiedPorts.add(portNumber);
             return portNumber;
         }

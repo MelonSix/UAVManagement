@@ -799,13 +799,13 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
                     {
                         if(!getDestroyedThreats().contains(threat) && getFly_mode()!= Attacker.TARGET_LOCKED_MODE)
                         {
-                            if (threat.getThreatType().toString().equals(getAttackerType().toString())) 
-                            {
+//                            if (threat.getThreatType().toString().equals(getAttackerType().toString())) 
+//                            {
                                 setTarget_indicated_by_role(threat);
                                 setNeed_to_replan(true);
                                 setSpeed(OpStaticInitConfig.SPEED_OF_ATTACKER_ON_TASK);
                                 setFly_mode(Attacker.FLYING_MODE);
-                            }
+//                            }
                         }
                     }
                 }

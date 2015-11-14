@@ -22,4 +22,6 @@ logging:
       maxFileSize: 10MB
 lwm2mserverAddress:
 lwm2mserverportnum: 0
+deviceReportingUrl: http://127.0.0.1:8070/ma/mgmtAdapter/processDeviceReporting
+notificationReportingUrl: http://127.0.0.1:8070/ma/mgmtAdapter/notification
 ---

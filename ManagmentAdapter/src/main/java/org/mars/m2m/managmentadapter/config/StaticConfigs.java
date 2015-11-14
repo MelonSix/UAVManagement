@@ -16,5 +16,5 @@ public class StaticConfigs
      * <br/>
      * E.g. Control center
      */
-    public static final String DEVICE_REPORTING_URL = "http://localhost:8170/cc/reportConnectedDevice";
+//    public static final String DEVICE_REPORTING_URL = "http://localhost:8170/cc/reportConnectedDevice";
 }

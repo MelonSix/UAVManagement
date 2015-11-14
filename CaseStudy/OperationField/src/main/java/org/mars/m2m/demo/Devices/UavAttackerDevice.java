@@ -197,11 +197,11 @@ public class UavAttackerDevice extends BaseInstanceEnabler implements DeviceExec
                 System.out.println("Fly mode write: " + resource.getValue().value.toString());
                 return new LwM2mResponse(ResponseCode.CHANGED);
            case 2:               
-//                String data = parseValue(resource.getValue().value.toString());
-//                Threat target = gson.fromJson(data, Threat.class);
-//                attacker.setTarget_indicated_by_role(target);
-//                attacker.setLockedToThreat(true);
-//                System.out.println("target indicated by role write: " + data);
+                String data = parseValue(resource.getValue().value.toString());
+                Threat target = gson.fromJson(data, Threat.class);
+                attacker.setTarget_indicated_by_role(target);
+                attacker.setLockedToThreat(true);
+                System.out.println("target indicated by role write: " + data);
                return new LwM2mResponse(ResponseCode.CHANGED);
            case 10:
                 attacker.setNeed_to_replan(Boolean.valueOf(resource.getValue().value.toString()));

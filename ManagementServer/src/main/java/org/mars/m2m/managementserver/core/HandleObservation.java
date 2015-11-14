@@ -7,6 +7,7 @@ package org.mars.m2m.managementserver.core;
 
 import javax.ws.rs.core.MediaType;
 import org.mars.m2m.managementserver.client.ServiceConsumer;
+import org.mars.m2m.managementserver.configs.StaticConfigs;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -28,7 +29,7 @@ public class HandleObservation implements Runnable
     @Override
     public void run() {
         try {
-            consumer.handlePost("http://localhost:8070/ma/mgmtAdapter/notification", entity_data, MediaType.APPLICATION_JSON);
+            consumer.handlePost(StaticConfigs.NOTIFICATION_REPORTING_URL, entity_data, MediaType.APPLICATION_JSON);
         } catch (Exception e) {
             log.error(e.getMessage());
         }

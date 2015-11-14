@@ -105,4 +105,6 @@ public class CC_StaticInitConfig {
     
     public static int FLYING_MODE = 0;
     public static int TARGET_LOCKED_MODE = 1;
+    public static AtomicInteger currentSimulationTime = new AtomicInteger(1);
+    
 }

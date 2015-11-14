@@ -16,5 +16,10 @@ public class StaticConfigs
      * <br/>
      * E.g. Management Adapter
      */
-    public static final String DEVICE_REPORTING_URL = "http://localhost:8070/ma/mgmtAdapter/processDeviceReporting";
+    public static String DEVICE_REPORTING_URL;
+    
+    /**
+     * The address of the exposed management adapter service to receive a notification
+     */
+    public static String NOTIFICATION_REPORTING_URL;
 }

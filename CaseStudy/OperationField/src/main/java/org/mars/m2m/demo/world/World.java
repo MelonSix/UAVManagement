@@ -742,7 +742,7 @@ public class World {
 //        logger.debug("replanning check over");
         checkThreatReached();
 //        logger.debug("threat terminate check over");
-//        checkNumOfAttackerDestroyed();
+        checkNumOfAttackerDestroyed();
 //        logger.debug("uav destroyed check over");
         checkConflict();
         updateConflict();

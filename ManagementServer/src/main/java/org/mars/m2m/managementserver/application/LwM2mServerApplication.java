@@ -14,6 +14,7 @@ import org.eclipse.leshan.server.californium.impl.LeshanServer;
 import org.mars.m2m.managementserver.ListenersImpl.ClientRegistryListenerImpl;
 import org.mars.m2m.managementserver.ListenersImpl.ObservationListenerImpl;
 import org.mars.m2m.managementserver.applicationConfiguration.Lwm2mServerConfiguration;
+import org.mars.m2m.managementserver.configs.StaticConfigs;
 import org.mars.m2m.managementserver.core.CustomObjectModel;
 import org.mars.m2m.managementserver.health.ClientsResourceHealth;
 import org.mars.m2m.managementserver.resources.MgmtServerInterface;
@@ -43,6 +44,7 @@ public class LwM2mServerApplication extends Application<Lwm2mServerConfiguration
     
     @Override
     public void run(Lwm2mServerConfiguration configuration, Environment environment) throws Exception {
+              initStaticConfigMembers(configuration);
               
         //lwm2m server
         startLwm2mServer(configuration);
@@ -93,6 +95,11 @@ public class LwM2mServerApplication extends Application<Lwm2mServerConfiguration
     public static void main(String[] args) throws Exception 
     {
         new LwM2mServerApplication().run(args);
+    }
+
+    private void initStaticConfigMembers(Lwm2mServerConfiguration configuration) {
+        StaticConfigs.DEVICE_REPORTING_URL = configuration.getDeviceReportingUrl();
+        StaticConfigs.NOTIFICATION_REPORTING_URL = configuration.getNotificationReportingUrl();
     }
     
 }

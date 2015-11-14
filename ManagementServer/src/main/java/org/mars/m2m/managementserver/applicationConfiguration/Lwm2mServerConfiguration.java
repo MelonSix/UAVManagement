@@ -15,6 +15,8 @@ public class Lwm2mServerConfiguration extends Configuration  {
     
     private String lwm2mserverAddress;
     private int lwm2mserverportnum;
+    private String deviceReportingUrl;
+    private String notificationReportingUrl;
 
     public String getLwm2mserverAddress() {
         return lwm2mserverAddress;
@@ -30,6 +32,22 @@ public class Lwm2mServerConfiguration extends Configuration  {
 
     public void setLwm2mserverportnum(int lwm2mserverportnum) {
         this.lwm2mserverportnum = lwm2mserverportnum;
+    }
+
+    public String getDeviceReportingUrl() {
+        return deviceReportingUrl;
+    }
+
+    public void setDeviceReportingUrl(String deviceReportingUrl) {
+        this.deviceReportingUrl = deviceReportingUrl;
+    }
+
+    public String getNotificationReportingUrl() {
+        return notificationReportingUrl;
+    }
+
+    public void setNotificationReportingUrl(String notificationReportingUrl) {
+        this.notificationReportingUrl = notificationReportingUrl;
     }
     
     

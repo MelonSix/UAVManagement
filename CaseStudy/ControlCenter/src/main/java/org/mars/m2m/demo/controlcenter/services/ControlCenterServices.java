@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import javax.swing.SwingWorker;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
@@ -33,7 +32,6 @@ import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.model.shape.Point;
 import org.mars.m2m.demo.controlcenter.ui.AnimationPanel;
 import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
-import static org.mars.m2m.demo.controlcenter.ui.ControlCenter.JTree_ccKB;
 import org.mars.m2m.demo.controlcenter.util.AttackerUtils;
 import org.mars.m2m.demo.controlcenter.util.DistanceUtil;
 import org.slf4j.LoggerFactory;
@@ -47,7 +45,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterServices.class);
     public static int time_step=0;
     private ExecutorService  executor;
-    private int inforshare_algorithm = 0; //distinction between information-sharing algrithm
+    public static int inforshare_algorithm = 0; //distinction between information-sharing algrithm
     
     private MessageDispatcher msg_dispatcher;
     private KnowledgeInterface kb;//this is set upon initialization of the Control Center GUI so it can be accessed across board
@@ -73,15 +71,15 @@ public class ControlCenterServices implements KnowledgeAwareInterface
         way_point_for_uav = new HashMap<>();
         locked_threat = new HashMap<>();  
         kb = new OntologyBasedKnowledge();
-                    
-        //share information in different ways
-        if (this.inforshare_algorithm == CC_StaticInitConfig.BROADCAST_INFOSHARE) {
-            this.msg_dispatcher = new BroadcastMessageDispatcher(this);
-        } else if (this.inforshare_algorithm == CC_StaticInitConfig.REGISTER_BASED_INFORSHARE) {
-            this.msg_dispatcher = new RegisteredMessageDispatcher(this);
-        } else if (this.inforshare_algorithm == CC_StaticInitConfig.NONE_INFORSHARE) {
-            this.msg_dispatcher = new DummyMessageDispatcher(this);
-        }
+        this.msg_dispatcher = new BroadcastMessageDispatcher(this);            
+//        //share information in different ways
+//        if (this.inforshare_algorithm == CC_StaticInitConfig.BROADCAST_INFOSHARE) {
+//            
+//        } else if (this.inforshare_algorithm == CC_StaticInitConfig.REGISTER_BASED_INFORSHARE) {
+//            this.msg_dispatcher = new RegisteredMessageDispatcher(this);
+//        } else if (this.inforshare_algorithm == CC_StaticInitConfig.NONE_INFORSHARE) {
+//            this.msg_dispatcher = new DummyMessageDispatcher(this);
+//        }
     }
     
     
@@ -122,7 +120,6 @@ public class ControlCenterServices implements KnowledgeAwareInterface
      */
     private void roleAssignForAttackerWithSubTeam(int assigned_attacker_index, int assigned_role_index) 
     {        
-        executor = Executors.newFixedThreadPool(5);
         TreeSet<Integer> assigned_attacker = new TreeSet<>();
         ArrayList<Threat> threats = kb.getThreats();
         ArrayList<AttackerModel> attackersList = ReadAttackers.getAttackers();

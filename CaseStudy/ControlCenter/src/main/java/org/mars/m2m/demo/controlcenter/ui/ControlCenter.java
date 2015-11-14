@@ -9,11 +9,14 @@ import ch.qos.logback.classic.Logger;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.core.LoadUAVs;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
@@ -34,6 +37,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
      * @param ccs
      */
     public ControlCenter(ControlCenterServices ccs) {
+        new JFXPanel();
         this.controlCenterServices = ccs;//has to come before initialization of components because the object is used in UI customized code
         initComponents();
         handleTree = new HandleTree(jTreeControlCenter);
@@ -91,6 +95,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel_Graph = new javax.swing.JPanel();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         reloadUavMenuItem = new javax.swing.JMenuItem();
@@ -143,6 +148,19 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         );
 
         ccTabbedPane.addTab("Field", jPanel2);
+
+        javax.swing.GroupLayout jPanel_GraphLayout = new javax.swing.GroupLayout(jPanel_Graph);
+        jPanel_Graph.setLayout(jPanel_GraphLayout);
+        jPanel_GraphLayout.setHorizontalGroup(
+            jPanel_GraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 895, Short.MAX_VALUE)
+        );
+        jPanel_GraphLayout.setVerticalGroup(
+            jPanel_GraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 651, Short.MAX_VALUE)
+        );
+
+        ccTabbedPane.addTab("Graph", jPanel_Graph);
 
         jMenu1.setText("Management");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -240,9 +258,20 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                    animationPanel.clearMap();
                    animationPanel.repaint();
                    System.out.println("Map cleared");
+                   
+                    
                 }
             });
         }
+        CC_StaticInitConfig.currentSimulationTime.set(1);
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                CC_StaticInitConfig.currentSimulationTime.getAndIncrement();
+            }
+        }, 1000, 1000);
     }//GEN-LAST:event_JMenuItem_ClrCCknowledgeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -257,6 +286,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel_Graph;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JSplitPane jSplitPane1;
