@@ -15,21 +15,30 @@ import java.util.Map;
 public class ChartDatastore 
 {
     //Map<Time,NumberOfMessagesSent>
-    private static final Map<Integer,Integer> messagesPerSecondData = new HashMap<>();;
+    private static final Map<Integer,Integer> messagesPerSecondData_broadcast = new HashMap<>();
+    private static final Map<Integer,Integer> messagesPerSecondData_register = new HashMap<>();
 
     public ChartDatastore() {        
     }
 
-    public static Map<Integer, Integer> getMessagesPerSecondData() {
-        synchronized(messagesPerSecondData)
+    public static Map<Integer, Integer> getMessagesPerSecondData_broadcast() {
+        synchronized(messagesPerSecondData_broadcast)
         {
-            return messagesPerSecondData;
+            return messagesPerSecondData_broadcast;
+        }
+    }
+
+    public static Map<Integer, Integer> getMessagesPerSecondData_register() {
+        synchronized(messagesPerSecondData_register)
+        {
+            return messagesPerSecondData_register;
         }
     }
     
     public static synchronized void clearGraphDataStore()
     {
-        messagesPerSecondData.clear();
+        messagesPerSecondData_broadcast.clear();
+        messagesPerSecondData_register.clear();
     }
     
 }

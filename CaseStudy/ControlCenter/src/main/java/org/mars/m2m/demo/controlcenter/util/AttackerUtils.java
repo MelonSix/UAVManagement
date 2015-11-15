@@ -210,13 +210,22 @@ public class AttackerUtils
 //        }
     }
 
-    public static void getDataForAnalysis() {
+    public static void getDataForAnalysis_broadcast() 
+    {
         System.out.println("Current simulation time: "+CC_StaticInitConfig.CURRENT_SIMULATION_TIME.get());
         ChartDatastore
-                .getMessagesPerSecondData()
+                .getMessagesPerSecondData_broadcast()
                 .put(CC_StaticInitConfig.CURRENT_SIMULATION_TIME.get(),
-                        CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP.addAndGet(1));
-        CC_StaticInitConfig.TOTAL_MESSAGES_SENT.incrementAndGet();
+                        CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP_broadcast.addAndGet(1));
+    }
+    
+    public static void getDataForAnalysis_registerbased() 
+    {
+        System.out.println("Current simulation time: "+CC_StaticInitConfig.CURRENT_SIMULATION_TIME.get());
+        ChartDatastore
+                .getMessagesPerSecondData_register()
+                .put(CC_StaticInitConfig.CURRENT_SIMULATION_TIME.get(),
+                        CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP_registerbased.addAndGet(1));
     }
     
     public static void executeOperationOnResource(ReportedLwM2MClient client, int resourceID, ObjectResourceUpdate resourceUpdate)
@@ -227,7 +236,6 @@ public class AttackerUtils
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
             requestUtil.send(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data);
             
-            getDataForAnalysis();
         }
     }
     
@@ -242,7 +250,6 @@ public class AttackerUtils
             //asynchronous update
             requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.UPDATE, data, RequestPrimitive.class, callback);
             
-            getDataForAnalysis();
         }
     }
     
@@ -254,7 +261,7 @@ public class AttackerUtils
             String endpointUrl = CC_StaticInitConfig.mgmntServerURL+client.getEndpoint()+"/12207/0/"+resourceID;
             System.out.println("asynExec: "+data);
             requestUtil.asyncSendToEndpoint(CC_StaticInitConfig.ccAddress, endpointUrl, Operation.CREATE, data, RequestPrimitive.class, callback);
-            getDataForAnalysis();
+           
         }
     }
     
@@ -380,6 +387,7 @@ public class AttackerUtils
                 int resourceID = 6;
                 if (!attacker.containsObstacle(obstacle)) 
                 {
+                    checkConditionForChartData(null, null);
                     attacker.addObstacle(obstacle);
                     AttackerUtils.asyncExecuteOperationOnResource(attacker.getClient(), resourceID,
                             new ObjectResourceUpdate(resourceID, gson.toJson(obstacle), ResourceDataType.STRING.toString()),
@@ -404,8 +412,9 @@ public class AttackerUtils
                 //checks if this attacker has the capability of destroying this threat before it sends to it
                 if (!attacker.containsThreat(threat) && attacker.isThreatDestroyed()) 
                 {
+                    checkConditionForChartData(threat, attacker);
                     if(ControlCenterServices.inforshare_algorithm == CC_StaticInitConfig.BROADCAST_INFOSHARE)
-                    {
+                    {                        
 //                    System.out.println("attacker condition passed"); 
                         attacker.addThreat(threat);
     //                    System.out.println("Threat added to attacker kb. No.: "+attacker.getKb().getThreats().size()); 
@@ -423,6 +432,9 @@ public class AttackerUtils
                     {
                         if(threat.getThreatType().toString().equals(attacker.getAttackerType().toString()))
                         {
+                            getDataForAnalysis_registerbased();
+                            CC_StaticInitConfig.TOTAL_MESSAGES_SENT.incrementAndGet();
+                            
     //                    System.out.println("attacker condition passed"); 
                             attacker.addThreat(threat);
         //                    System.out.println("Threat added to attacker kb. No.: "+attacker.getKb().getThreats().size()); 
@@ -446,5 +458,16 @@ public class AttackerUtils
         public void asyncServicePerformed(Response response) {
         logger.info("Attacker execution operation performed");
         }*/
+    }
+    
+    public void checkConditionForChartData(Threat threat, AttackerModel attacker)
+    {
+        getDataForAnalysis_broadcast();
+        CC_StaticInitConfig.TOTAL_MESSAGES_SENT.incrementAndGet();
+        if (threat != null && attacker != null) {
+            if (threat.getThreatType().toString().equals(attacker.getAttackerType().toString())) {
+                getDataForAnalysis_registerbased();
+            }
+        }
     }
 }

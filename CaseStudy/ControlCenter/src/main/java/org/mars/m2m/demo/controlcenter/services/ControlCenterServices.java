@@ -45,7 +45,7 @@ public class ControlCenterServices implements KnowledgeAwareInterface
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenterServices.class);
     public static int time_step=0;
     private ExecutorService  executor;
-    public static int inforshare_algorithm = 0; //distinction between information-sharing algrithm
+    public static int inforshare_algorithm = 2; //distinction between information-sharing algrithm
     
     private MessageDispatcher msg_dispatcher;
     private KnowledgeInterface kb;//this is set upon initialization of the Control Center GUI so it can be accessed across board

@@ -9,12 +9,11 @@ import ch.qos.logback.classic.Logger;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import javafx.scene.chart.BarChart;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import org.jfree.chart.ChartFrame;
 import org.mars.m2m.demo.controlcenter.analysis.AnalysisUI;
-import org.mars.m2m.demo.controlcenter.analysis.BarChart;
-import org.mars.m2m.demo.controlcenter.analysis.ChartFrame;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.health.ClientsResourceHealth;
@@ -101,9 +100,7 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
-                public void run() {final ChartFrame chartDemo = new ChartFrame();
-                    AnalysisUI analysisUI = new AnalysisUI();
-                    BarChart barChart = new BarChart();
+                public void run() {
                     ControlCenter ccUI = new ControlCenter(controlCenterApplication.getControlCenterServices()); 
                     ccUI.setVisible(true);
                     ccUI.setExtendedState(JFrame.MAXIMIZED_BOTH);

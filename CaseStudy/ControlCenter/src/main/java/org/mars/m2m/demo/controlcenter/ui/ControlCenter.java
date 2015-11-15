@@ -97,11 +97,11 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        JTree_ccKB = new javax.swing.JTree();
         ccMenuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        viewBroadChartMenuItem = new javax.swing.JMenu();
         reloadUavMenuItem = new javax.swing.JMenuItem();
-        viewChartMenuItem = new javax.swing.JMenuItem();
+        viewRegChartMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         JMenuItem_ClrCCknowledge = new javax.swing.JMenuItem();
 
@@ -152,10 +152,10 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
         ccTabbedPane.addTab("Field", jPanel2);
 
-        jMenu1.setText("Management");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        viewBroadChartMenuItem.setText("Management");
+        viewBroadChartMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                viewBroadChartMenuItemActionPerformed(evt);
             }
         });
 
@@ -165,17 +165,25 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                 reloadUavMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(reloadUavMenuItem);
+        viewBroadChartMenuItem.add(reloadUavMenuItem);
 
-        viewChartMenuItem.setText("View Chart");
-        viewChartMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        viewRegChartMenuItem.setText("View Register-based Chart");
+        viewRegChartMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewChartMenuItemActionPerformed(evt);
+                viewRegChartMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(viewChartMenuItem);
+        viewBroadChartMenuItem.add(viewRegChartMenuItem);
 
-        ccMenuBar.add(jMenu1);
+        jMenuItem1.setText("View Broadcast chart");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        viewBroadChartMenuItem.add(jMenuItem1);
+
+        ccMenuBar.add(viewBroadChartMenuItem);
 
         jMenu2.setText("Edit");
 
@@ -209,9 +217,9 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void viewBroadChartMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBroadChartMenuItemActionPerformed
         
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_viewBroadChartMenuItemActionPerformed
 
     private void reloadUavMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadUavMenuItemActionPerformed
         LoadUAVs loadUAVs = new LoadUAVs();
@@ -252,15 +260,8 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                 int current_simulation_time
                         = CC_StaticInitConfig.CURRENT_SIMULATION_TIME.incrementAndGet();
                 System.out.println("Current simulation timestep: "+current_simulation_time);
-                CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP.set(0);
-                Map<Integer, Integer> gData = ChartDatastore.getMessagesPerSecondData();
-                synchronized(gData)
-                {
-                    for(Integer time : gData.keySet())
-                    {
-                        System.out.println("t"+time+" : "+gData.get(time)+" messages sent");
-                    }
-                }
+                CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP_broadcast.set(0);
+                CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP_registerbased.set(0);
             }
         }, 1000, 1000);
     }//GEN-LAST:event_reloadUavMenuItemActionPerformed
@@ -285,38 +286,50 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         }
     }//GEN-LAST:event_JMenuItem_ClrCCknowledgeActionPerformed
 
-    private void viewChartMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewChartMenuItemActionPerformed
+    private void viewRegChartMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegChartMenuItemActionPerformed
         
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
-                AnalysisChart analysisChart = new AnalysisChart();
+                AnalysisChart analysisChart = new AnalysisChart(CC_StaticInitConfig.REGISTER_BASED_INFORSHARE, "Register-Based Information Sharing");
                 analysisChart.setVisible(true);
             }
         });
         
-    }//GEN-LAST:event_viewChartMenuItemActionPerformed
+    }//GEN-LAST:event_viewRegChartMenuItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                AnalysisChart analysisChart = new AnalysisChart(CC_StaticInitConfig.BROADCAST_INFOSHARE, "Broadcast Information Sharing");
+                analysisChart.setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMenuItem_ClrCCknowledge;
-    private javax.swing.JTree JTree_ccKB;
+    public static final javax.swing.JTree JTree_ccKB = new javax.swing.JTree();
     private javax.swing.JPanel ccJPanelInTab1;
     private javax.swing.JMenuBar ccMenuBar;
     private javax.swing.JSplitPane ccSplitPanelTab1;
     private JPanelForLeftSplitPane pnlLeft;
     private JPanelForRightSplitPane pnlRight;
     private javax.swing.JTabbedPane ccTabbedPane;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSplitPane jSplitPane1;
+    public javax.swing.JSplitPane jSplitPane1;
     public static AnimationPanel animationPanel;
     private javax.swing.JTree jTreeControlCenter;
     private javax.swing.JMenuItem reloadUavMenuItem;
-    private javax.swing.JMenuItem viewChartMenuItem;
+    private javax.swing.JMenu viewBroadChartMenuItem;
+    private javax.swing.JMenuItem viewRegChartMenuItem;
     // End of variables declaration//GEN-END:variables
 
     @Override

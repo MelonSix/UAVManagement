@@ -8,8 +8,6 @@ package org.mars.m2m.demo.ui;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
-import org.mars.m2m.demo.config.OpStaticInitConfig;
-import org.mars.m2m.demo.uav.Scout;
 
 /**
  *
@@ -17,6 +15,8 @@ import org.mars.m2m.demo.uav.Scout;
  */
 public class FieldUI extends javax.swing.JFrame {
 
+    private boolean canStartAnimation = false;
+    
     /**
      * Creates new form FieldUI
      */
@@ -64,6 +64,10 @@ public class FieldUI extends javax.swing.JFrame {
 
         opFieldSplitPane = new javax.swing.JSplitPane();
         sidebar1 = new org.mars.m2m.demo.ui.Sidebar();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jmenuitem_config = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 603));
@@ -81,6 +85,23 @@ public class FieldUI extends javax.swing.JFrame {
         sidebar1.setPreferredSize(new java.awt.Dimension(150, 997));
         opFieldSplitPane.setLeftComponent(sidebar1);
 
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        jmenuitem_config.setText("Configuration");
+        jmenuitem_config.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuitem_configActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmenuitem_config);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,11 +110,16 @@ public class FieldUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1221, Short.MAX_VALUE)
+            .addComponent(opFieldSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmenuitem_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuitem_configActionPerformed
+        ConfigDialog dialog = new ConfigDialog(this, true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jmenuitem_configActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +162,10 @@ public class FieldUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jmenuitem_config;
     javax.swing.JSplitPane opFieldSplitPane;
     private AnimationPanel animationPanel;
     private org.mars.m2m.demo.ui.Sidebar sidebar1;

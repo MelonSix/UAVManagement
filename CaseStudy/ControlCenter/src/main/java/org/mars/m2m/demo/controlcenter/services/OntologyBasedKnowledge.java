@@ -58,6 +58,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import org.mars.m2m.demo.controlcenter.appConfig.FilePathConfig;
 import org.mars.m2m.demo.controlcenter.enums.ThreatType;
 import org.mars.m2m.demo.controlcenter.model.Conflict;
@@ -421,7 +422,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
         Query query = QueryFactory.create(prefix + sparql);
         QueryExecution qe = QueryExecutionFactory.create(query, ontology_based_knowledge);
         ResultSet results = qe.execSelect();
-//        Queue
+        
         synchronized(results)
         {
             while (results.hasNext()) 

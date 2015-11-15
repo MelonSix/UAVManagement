@@ -30,12 +30,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
+import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 
 public class AnalysisChart extends JFrame
 {        
-    public AnalysisChart() 
+    private int inforSharingAlg;
+    private String algStr;
+    
+    public AnalysisChart(int inforSharingAlg, String algStr) 
     {
-        super("Messages Chart");
+        super("Messages Chart - "+algStr);
+        this.inforSharingAlg = inforSharingAlg;
+        this.algStr = algStr;
         // This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
         JPanel jpanel = new JPanel();
@@ -67,24 +73,26 @@ public class AnalysisChart extends JFrame
         }
     }
 
-    private static void initFX(JFXPanel fxPanel) {
+    private void initFX(JFXPanel fxPanel) {
         // This method is invoked on the JavaFX thread
         Scene scene = createScene();
         fxPanel.setScene(scene);
     }
 
-    private static Scene createScene() 
+    private Scene createScene() 
     {
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc =  new BarChart<>(xAxis,yAxis);
-        bc.setTitle("Sent Messages Summary");
+        bc.setTitle("Sent Messages Summary - "+this.algStr);
         xAxis.setLabel("Time (t)");       
         yAxis.setLabel("Messages (m)");
         
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Messages sent to UAVs at time t of simulation");  
-        Map<Integer, Integer> gData = ChartDatastore.getMessagesPerSecondData();
+        Map<Integer, Integer> gData = (inforSharingAlg==CC_StaticInitConfig.BROADCAST_INFOSHARE)?
+                                        ChartDatastore.getMessagesPerSecondData_broadcast():
+                                        ChartDatastore.getMessagesPerSecondData_register();
         for(Integer t : gData.keySet())
         {
             series1.getData().add(new XYChart.Data(String.valueOf(t), gData.get(t)));

@@ -77,7 +77,7 @@ public class AssignScoutRoleReflexListenerImpl implements ReflexListener
         logger.info("Scouting info sent: {},to: {}",data,device.getAddress());
         
         //records the communication
-        AttackerUtils.getDataForAnalysis();
+//        AttackerUtils.getDataForAnalysis();
     }
 
     @Override
