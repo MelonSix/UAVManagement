@@ -604,7 +604,7 @@ public final class Attacker extends UAV implements KnowledgeAwareInterface
          */
         DeviceStarterDetails attackerDevDtls;
         attackerDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
-                portNumber, "192.168.10.100", 5683, "attacker"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "192.168.10.199", 5070);
+                portNumber, "127.0.0.1", 5683, "attacker"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
         AttackerDeviceClient uavAttackerDevice = new AttackerDeviceClient(uavLwM2mModel, attackerDevDtls, attackerDevice);
         uavAttackerDevice.StartDevice();
         deviceHelper.lwM2mClientDaemon(uavAttackerDevice);//invokes a background process for this device

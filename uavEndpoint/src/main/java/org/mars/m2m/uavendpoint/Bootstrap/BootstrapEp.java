@@ -41,7 +41,7 @@ public class BootstrapEp
         bootstrapRequest.accept(ccrb);
         coapRequest = ccrb.getRequest();
         //System.out.println("Req uri: "+coapRequest.getURI());
-        coapRequest.setURI("coap://192.168.10.199:"+serverAddress.getPort()+"/bs?ep="+endpointName);
+//        coapRequest.setURI("coap://192.168.10.199:"+serverAddress.getPort()+"/bs?ep="+endpointName);
         System.out.println("Req uri: "+coapRequest.getURI());
         coapRequest.send();
         coapResponse = coapRequest.waitForResponse();  

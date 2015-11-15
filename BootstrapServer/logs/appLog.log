@@ -1268,3 +1268,282 @@ INFO   [03:17:49.982] [main] i.d.s.AdminEnvironment -  tasks =
 INFO   [03:17:49.988] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1aa99005{/admin-bs,null,AVAILABLE} 
 INFO   [03:17:50.037] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@591e58fa{HTTP/1.1}{0.0.0.0:8075} 
 INFO   [03:17:50.037] [main] o.e.j.s.Server -  Started @2024ms 
+INFO   [05:19:24.138] [main] o.e.j.u.log -  Logging initialized @4597ms 
+INFO   [05:19:24.596] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [05:19:24.875] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [05:19:24.876] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [05:19:24.987] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [05:19:24.988] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [05:19:25.037] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [05:19:25.059] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [05:19:25.108] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [05:19:25.190] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@5fb97279{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [05:19:25.201] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [05:19:27.256] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [05:19:27.258] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@63fdffcd{/bs,null,AVAILABLE} 
+INFO   [05:19:27.267] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [05:19:27.282] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@11de56e6{/admin-bs,null,AVAILABLE} 
+INFO   [05:19:27.391] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@5fb97279{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [05:19:27.392] [main] o.e.j.s.Server -  Started @7863ms 
+ERROR  [05:34:31.474] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker1-8894e8fb-e9dd-4dbb-8096-555ae895012d 
+ERROR  [05:34:31.544] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker2-a433a919-c235-4cb8-b731-ca12f160307c 
+ERROR  [05:34:31.544] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker3-3a1e0445-3b26-4480-8ee8-492cab31cd6f 
+ERROR  [05:34:31.576] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker4-5a6ec2cd-3b60-4101-953b-3a6c652c9984 
+ERROR  [05:34:31.591] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker5-5807d20d-50a0-4cfd-a504-d580e56215aa 
+ERROR  [05:34:31.614] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker6-c08df70e-7590-441c-8a82-8fe964e61424 
+ERROR  [05:34:31.637] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker7-0bb5141c-c1ff-4e80-90d2-495f92675e50 
+ERROR  [05:34:31.646] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker8-aa95ee63-216d-4b90-b9b3-effe894fe679 
+ERROR  [05:34:31.661] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker9-b02a8341-7869-40f2-ad0e-47838761e6d3 
+ERROR  [05:34:31.661] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker10-6640c3b8-0527-447f-bb17-c42c6b12d5a6 
+ERROR  [05:34:31.677] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker11-c06909a6-9d7b-477e-876f-bbc9580deda4 
+ERROR  [05:34:31.693] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker12-73b703c5-7c8f-45a9-9657-bc15f8faed7c 
+ERROR  [05:34:31.708] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker13-d0694a62-6f24-4d0a-b5f1-9a8b96979ce9 
+ERROR  [05:34:31.756] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker14-d6994950-087b-469d-9f43-ce6715714781 
+ERROR  [05:34:31.765] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker15-622c580a-643c-4e93-a913-1c9c10a5f452 
+ERROR  [05:34:31.883] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker16-63ebb2b5-bc52-46b3-9d7b-05b0113b1655 
+ERROR  [05:34:31.896] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker17-091c9bab-8e4b-4ccc-aa42-c7bc5c258df6 
+ERROR  [05:34:31.897] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker18-f62d223c-1e9e-4f71-bcd3-c9b4386b4754 
+ERROR  [05:34:31.918] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker19-c987e5e8-f119-4f0d-872e-13a56249d567 
+ERROR  [05:34:31.920] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker20-2c0b00e8-9b0f-468e-b165-632e1fd2edeb 
+ERROR  [05:34:31.935] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker21-9e1abe9c-4305-41d3-ae4f-7ff357a7e932 
+ERROR  [05:34:31.935] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker22-535b3ca8-1cb3-4c7b-aa47-961802e0e176 
+ERROR  [05:34:31.951] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker23-5a126d0a-b1e2-4c95-8158-dbd3d948bd1a 
+ERROR  [05:34:31.951] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker24-7cb1c67f-a4b4-4ae5-890e-fcc1b421ec85 
+ERROR  [05:34:31.967] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker25-2174c6fa-6e7c-417e-8253-921d325745b7 
+ERROR  [05:34:31.982] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker26-a05e7ee4-9d4e-49c8-bbc8-200db140d4c8 
+ERROR  [05:34:32.090] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker27-4c0c8b14-3544-4a77-bfdd-3c3377c99b8d 
+ERROR  [05:34:32.109] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker28-03e51bfd-2088-4f24-a373-7c900fa53870 
+ERROR  [05:34:32.121] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker29-c45a859e-0f31-466f-b628-b3360d39532b 
+ERROR  [05:34:32.195] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker30-9726336a-8b62-4499-9bea-672fecf4302b 
+ERROR  [05:34:32.211] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker31-f23661b0-aec0-433e-a5d8-bda79a3ae118 
+ERROR  [05:34:32.264] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker32-fa9d0b4b-8598-4e04-ab3f-a0063767407b 
+ERROR  [05:34:32.264] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker33-6f5b48e1-5e44-4e43-bb84-072d0fbda2f7 
+ERROR  [05:34:32.280] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker34-8b10b197-f8d4-4fe8-81ed-3522998cc875 
+ERROR  [05:34:32.295] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker35-b84105fb-02a4-4940-aed3-623dae4d328f 
+ERROR  [05:34:32.295] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker36-f95aadf3-9156-4a0b-8663-26cdb29f3b93 
+ERROR  [05:34:32.311] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker37-c998c37b-e3fc-4923-82f3-2d63b9b742da 
+ERROR  [05:34:32.311] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker38-1af179f8-0e25-471d-85e7-9c42d9edbddf 
+ERROR  [05:34:32.327] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker39-1f3c2a23-2a5b-468f-b51f-54fa0400f12e 
+ERROR  [05:34:32.344] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker40-d415b804-c138-4a12-802c-c90746ee01b9 
+ERROR  [05:34:32.353] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker41-959d5d6b-cd2f-4f5d-88e6-cb811b23ba9a 
+ERROR  [05:34:32.360] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker42-3d63fbf6-0a70-4d2c-8c99-22c05a09a7b4 
+ERROR  [05:34:32.368] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker43-cad9ce57-62b2-4322-85b3-0eab0a24b838 
+ERROR  [05:34:32.375] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker44-d81561b6-924b-4241-a662-59478e76fa6f 
+ERROR  [05:34:32.382] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker45-a8514b11-074d-40ef-80a2-ba96bc56f897 
+ERROR  [05:34:32.398] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker46-bc6a37fa-24f5-4a98-940f-c9c7fad25df9 
+ERROR  [05:34:32.414] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker47-14937173-e2a1-470e-9ca1-a4fddf32f770 
+ERROR  [05:34:32.445] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker48-a273c59a-4073-4a35-b36a-18951c5ae3b2 
+ERROR  [05:34:32.445] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker49-b34fc39c-1a9d-4637-a1dc-f911b8e12ef8 
+ERROR  [05:34:32.466] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker50-1a34e944-5a18-48b2-88ed-a854d9c0d7f7 
+ERROR  [05:34:32.474] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker51-3dca2534-154d-408e-8cb4-6b6d309b8b5d 
+ERROR  [05:34:32.481] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker52-c1f8b7e9-a612-442e-8fc5-7001123f2139 
+ERROR  [05:34:32.722] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker53-2f1ed896-f696-4160-96f9-6e58d3ce426d 
+ERROR  [05:34:32.746] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker54-9f5eb251-fc94-45ad-9f24-991638b47ed8 
+ERROR  [05:34:32.746] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker55-e16d1139-6690-4568-84b9-da7d91ff65ee 
+ERROR  [05:34:32.761] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker56-5e69a7ae-26d2-4dd6-b242-8a199df229b6 
+ERROR  [05:34:32.761] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker57-2b7530d9-9bc2-42e6-8f3c-7ffad5948f04 
+ERROR  [05:34:32.777] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker58-d4af1fc6-fa33-47ab-a095-331abf0f1e84 
+ERROR  [05:34:32.792] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker59-17abfede-cd51-4fa4-b9fd-d36eaeaed6ce 
+ERROR  [05:34:32.792] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker60-b4ae0304-bd4a-44e4-8d4f-a1d76f2b17d4 
+ERROR  [05:34:32.811] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker61-6f7c69fc-e541-4c66-aab7-bf8911400755 
+ERROR  [05:34:32.827] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker62-3c4f3bc5-4327-4103-86ee-18e457b90375 
+ERROR  [05:34:32.834] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker63-87287b01-837c-410b-a83c-0b6a29d523f4 
+ERROR  [05:34:32.850] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker64-006585b2-5793-4cbf-9474-0d346f9b50bb 
+ERROR  [05:34:32.865] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker65-0d6aa466-cc60-4a8a-b70e-9b98250f4c13 
+ERROR  [05:34:32.865] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker66-03422c86-464b-458f-b9a3-e89aa1a70ed7 
+ERROR  [05:34:32.881] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker67-bebee27c-625d-4cf2-94d0-5056612f2af4 
+ERROR  [05:34:32.891] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker68-c4338ada-3dbf-4250-aca3-e0916de73c94 
+ERROR  [05:34:32.896] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker69-11106472-8486-4172-958a-99ae8d7061ba 
+ERROR  [05:34:32.896] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker70-ba9721eb-fed0-49ab-ac56-b0ca6b53417c 
+ERROR  [05:34:32.912] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker71-4a4e8afe-2770-4327-b446-d3f856950a07 
+ERROR  [05:34:32.940] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker72-ebfcc010-4113-4cd9-b1e5-4212d71263df 
+ERROR  [05:34:32.948] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker73-d6585860-1c29-4066-b8da-3786beee47be 
+ERROR  [05:34:32.956] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker74-971cde77-32b7-400a-be6d-c59956749712 
+ERROR  [05:34:32.963] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker75-a1801b05-f4f0-4f66-8a63-68c01ca9d778 
+ERROR  [05:34:32.968] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker76-897421fa-9a9b-4db1-9ca9-9b5a65f80f4a 
+ERROR  [05:34:32.968] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker77-04ebf83a-1cd3-41a0-8fd3-6f9cc92706a9 
+ERROR  [05:34:32.999] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker78-1faf1b13-e6e6-4e9d-bf68-6715b9d4b2ed 
+ERROR  [05:34:33.015] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker79-abe0dc2a-f33a-4184-8bfc-cb968288c7fe 
+ERROR  [05:34:33.046] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker80-28353fd0-768a-41d1-97c2-702a30955823 
+ERROR  [05:34:33.311] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker81-acbdaa2c-f609-4712-b53a-413d53a0780e 
+ERROR  [05:34:33.322] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker82-750f966f-3245-41e0-a105-63e26173e2b6 
+ERROR  [05:34:33.329] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker83-bb292a43-229d-4b01-ac9d-5d076d1e3ac2 
+ERROR  [05:34:33.336] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker84-fad9578a-0b33-462e-89f4-6ac8f1cfc477 
+ERROR  [05:34:33.336] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker85-5720fd47-1fc7-432c-94a6-c4235496f3e2 
+ERROR  [05:34:33.352] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker86-6a5216a8-6572-4223-810b-2bc0b1400060 
+ERROR  [05:34:33.352] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker87-a6440a64-122a-45f4-8da2-9ffbab980102 
+ERROR  [05:34:33.352] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker88-3806dada-6a33-4567-a4ed-85a3f945714a 
+ERROR  [05:34:33.367] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker89-7d421ded-4c82-4ff5-a232-d9bc28d6529a 
+ERROR  [05:34:33.367] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker90-fd09bcd2-cf44-46f2-8314-6f31f189d531 
+ERROR  [05:34:33.383] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker91-d87fa9b8-7fae-49d0-90a4-7d16919673b1 
+ERROR  [05:34:33.383] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker92-10044257-2854-4e51-80ac-a6632ffb0c8d 
+ERROR  [05:34:33.383] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker93-efdb8b2c-b9c8-420e-845c-8d187d855e16 
+ERROR  [05:34:33.398] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker94-3a513474-abab-4401-bcba-8eae9b67c21c 
+ERROR  [05:34:33.414] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker95-abc03958-93f3-4212-a493-4ab4b60746a9 
+ERROR  [05:34:33.453] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker96-359827d3-0c4b-4f7b-baba-f41fab0e1138 
+ERROR  [05:34:33.453] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker97-54c26652-8d70-4eab-9a39-c0cf659138bb 
+ERROR  [05:34:33.469] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker98-beaa50f2-1000-422a-8cdd-60670cdad5a4 
+ERROR  [05:34:33.469] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker99-5d9e5023-64b7-4d2f-9b67-a39ede368589 
+ERROR  [05:34:33.485] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker100-c1039969-84cd-4761-b04e-a4000cea73bc 
+ERROR  [05:34:33.688] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout1-32e490b4-a638-4465-9c81-d3412249b8c3 
+ERROR  [05:34:33.688] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout1-38a76340-0de1-4e7b-b98f-1e703013f091 
+ERROR  [05:34:33.703] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout1-38dae566-719f-4bdc-9f3d-e3ef649a8ed7 
+ERROR  [05:34:33.703] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout2-6192879c-2cb4-4f07-bd30-0e58c2ac2877 
+ERROR  [05:34:33.719] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout2-69ed0560-e7c8-4b81-8217-3b5a83f9b742 
+ERROR  [05:34:33.719] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout2-48df69f9-6eb1-459b-afb1-88f1397a7ed0 
+ERROR  [05:34:33.735] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout3-bd5665f8-abaa-458b-8adf-613bd98ca96e 
+ERROR  [05:34:33.852] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout3-b1726f1a-6258-4692-bcbb-b17cba01cc78 
+ERROR  [05:34:33.852] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout3-bb2ad5d4-b145-4a64-be82-11a1961adccc 
+ERROR  [05:34:33.868] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout4-3e7f0e42-c944-4543-85cd-2add34a0070b 
+ERROR  [05:34:33.868] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout4-e76f2a4c-2629-4df8-9521-a7a7ddba1d47 
+ERROR  [05:34:33.938] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout4-1db30513-65fa-41b8-8840-4bb1d1e37cb5 
+ERROR  [05:34:33.938] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout5-6ceb5cd8-c542-463c-be69-2c28b9bf243a 
+ERROR  [05:34:33.954] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout5-8c40c3d7-7324-4d94-bdc9-7640a52e0820 
+ERROR  [05:34:33.954] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout5-5066a740-89ef-4831-93b1-58b34841e1a0 
+ERROR  [05:34:33.970] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout6-928e5ad4-27c0-45af-b82c-696a87ac3053 
+ERROR  [05:34:33.970] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout6-7ef55650-5015-47dc-be09-a45601ce8455 
+ERROR  [05:34:33.970] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout6-56f76492-34c4-4c75-9d87-1e0e39149b8b 
+ERROR  [05:34:33.985] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout7-9328370b-fc97-42e5-8fb4-113436b4cff1 
+ERROR  [05:34:33.985] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout7-1688b825-0598-4cfa-a0b2-61fd85f56368 
+ERROR  [05:34:33.985] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout7-4a52312f-808b-4e1d-83bf-8cee014f7985 
+ERROR  [05:34:34.001] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout8-c3b336b0-1529-4458-ab8a-5bb71dab4c24 
+ERROR  [05:34:34.001] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout8-8cad8766-57d1-4bb5-8a14-1c4af8fe58f8 
+ERROR  [05:34:34.001] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout8-d4ae9f2f-cbc5-4224-8537-67551f44dc6f 
+ERROR  [05:34:34.017] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout9-7171299d-fc20-42ec-8453-2119e9d59d1d 
+ERROR  [05:34:34.017] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for scout9-7fe812b8-0e8f-4a62-a3c6-1ac10a0e5512 
+ERROR  [05:34:34.032] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for scout9-aef6932d-0c97-4d3e-b2ee-565649cc2161 
+ERROR  [05:34:34.119] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout10-e06c4950-ecb3-4d11-b2e3-9d7404c96799 
+ERROR  [05:34:34.119] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for scout10-a78b9029-b23e-4ac0-85aa-f37c897feac6 
+ERROR  [05:34:34.139] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for scout10-77ef69ea-76a0-414f-8667-e727b368a9f4 
+ERROR  [05:34:36.613] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker1-8894e8fb-e9dd-4dbb-8096-555ae895012d 
+ERROR  [05:34:36.613] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker4-5a6ec2cd-3b60-4101-953b-3a6c652c9984 
+ERROR  [05:34:36.613] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker3-3a1e0445-3b26-4480-8ee8-492cab31cd6f 
+ERROR  [05:34:36.613] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker2-a433a919-c235-4cb8-b731-ca12f160307c 
+ERROR  [05:34:36.665] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker5-5807d20d-50a0-4cfd-a504-d580e56215aa 
+ERROR  [05:34:36.700] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker10-6640c3b8-0527-447f-bb17-c42c6b12d5a6 
+ERROR  [05:34:36.700] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker7-0bb5141c-c1ff-4e80-90d2-495f92675e50 
+ERROR  [05:34:36.700] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker9-b02a8341-7869-40f2-ad0e-47838761e6d3 
+ERROR  [05:34:36.716] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker6-c08df70e-7590-441c-8a82-8fe964e61424 
+ERROR  [05:34:36.716] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker8-aa95ee63-216d-4b90-b9b3-effe894fe679 
+ERROR  [05:34:36.732] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker11-c06909a6-9d7b-477e-876f-bbc9580deda4 
+ERROR  [05:34:36.732] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker12-73b703c5-7c8f-45a9-9657-bc15f8faed7c 
+ERROR  [05:34:36.732] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker13-d0694a62-6f24-4d0a-b5f1-9a8b96979ce9 
+ERROR  [05:34:36.779] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker14-d6994950-087b-469d-9f43-ce6715714781 
+ERROR  [05:34:36.896] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker15-622c580a-643c-4e93-a913-1c9c10a5f452 
+ERROR  [05:34:36.950] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker17-091c9bab-8e4b-4ccc-aa42-c7bc5c258df6 
+ERROR  [05:34:36.966] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker18-f62d223c-1e9e-4f71-bcd3-c9b4386b4754 
+ERROR  [05:34:36.982] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker20-2c0b00e8-9b0f-468e-b165-632e1fd2edeb 
+ERROR  [05:34:36.982] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker16-63ebb2b5-bc52-46b3-9d7b-05b0113b1655 
+ERROR  [05:34:36.982] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker21-9e1abe9c-4305-41d3-ae4f-7ff357a7e932 
+ERROR  [05:34:37.043] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker23-5a126d0a-b1e2-4c95-8158-dbd3d948bd1a 
+ERROR  [05:34:37.044] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker19-c987e5e8-f119-4f0d-872e-13a56249d567 
+ERROR  [05:34:37.044] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker24-7cb1c67f-a4b4-4ae5-890e-fcc1b421ec85 
+ERROR  [05:34:37.045] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker22-535b3ca8-1cb3-4c7b-aa47-961802e0e176 
+ERROR  [05:34:37.045] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker25-2174c6fa-6e7c-417e-8253-921d325745b7 
+ERROR  [05:34:37.092] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker26-a05e7ee4-9d4e-49c8-bbc8-200db140d4c8 
+ERROR  [05:34:37.107] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker27-4c0c8b14-3544-4a77-bfdd-3c3377c99b8d 
+ERROR  [05:34:37.123] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker28-03e51bfd-2088-4f24-a373-7c900fa53870 
+ERROR  [05:34:37.142] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker29-c45a859e-0f31-466f-b628-b3360d39532b 
+ERROR  [05:34:37.230] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker30-9726336a-8b62-4499-9bea-672fecf4302b 
+ERROR  [05:34:37.295] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker31-f23661b0-aec0-433e-a5d8-bda79a3ae118 
+ERROR  [05:34:37.300] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker33-6f5b48e1-5e44-4e43-bb84-072d0fbda2f7 
+ERROR  [05:34:37.301] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker34-8b10b197-f8d4-4fe8-81ed-3522998cc875 
+ERROR  [05:34:37.301] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker32-fa9d0b4b-8598-4e04-ab3f-a0063767407b 
+ERROR  [05:34:37.315] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker36-f95aadf3-9156-4a0b-8663-26cdb29f3b93 
+ERROR  [05:34:37.317] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker37-c998c37b-e3fc-4923-82f3-2d63b9b742da 
+ERROR  [05:34:37.318] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for attacker38-1af179f8-0e25-471d-85e7-9c42d9edbddf 
+ERROR  [05:34:37.324] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker35-b84105fb-02a4-4940-aed3-623dae4d328f 
+ERROR  [05:34:37.332] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker39-1f3c2a23-2a5b-468f-b51f-54fa0400f12e 
+ERROR  [05:34:37.353] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker40-d415b804-c138-4a12-802c-c90746ee01b9 
+ERROR  [05:34:37.368] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker41-959d5d6b-cd2f-4f5d-88e6-cb811b23ba9a 
+ERROR  [05:34:37.368] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker42-3d63fbf6-0a70-4d2c-8c99-22c05a09a7b4 
+ERROR  [05:34:37.412] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker45-a8514b11-074d-40ef-80a2-ba96bc56f897 
+ERROR  [05:34:37.413] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker44-d81561b6-924b-4241-a662-59478e76fa6f 
+ERROR  [05:34:37.414] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker43-cad9ce57-62b2-4322-85b3-0eab0a24b838 
+ERROR  [05:34:37.416] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker46-bc6a37fa-24f5-4a98-940f-c9c7fad25df9 
+ERROR  [05:34:37.452] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for attacker49-b34fc39c-1a9d-4637-a1dc-f911b8e12ef8 
+ERROR  [05:34:37.468] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker50-1a34e944-5a18-48b2-88ed-a854d9c0d7f7 
+ERROR  [05:34:37.483] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker47-14937173-e2a1-470e-9ca1-a4fddf32f770 
+ERROR  [05:34:37.483] [pool-3-thread-3] o.m.m.b.c.BsResource -  No bootstrap config for attacker48-a273c59a-4073-4a35-b36a-18951c5ae3b2 
+ERROR  [05:34:37.483] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for attacker51-3dca2534-154d-408e-8cb4-6b6d309b8b5d 
+ERROR  [05:37:33.094] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:37:38.106] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:37:43.114] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:37:48.104] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:37:53.112] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:37:58.108] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:03.111] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:08.122] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:13.116] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:18.121] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:23.126] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:28.125] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:33.145] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:38.132] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:43.147] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:48.138] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:53.143] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:38:58.148] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:39:03.147] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:39:08.151] [pool-3-thread-1] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:39:13.159] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:39:18.156] [pool-3-thread-4] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+ERROR  [05:39:23.160] [pool-3-thread-2] o.m.m.b.c.BsResource -  No bootstrap config for missileDispatcher 
+INFO   [05:51:15.001] [main] o.e.j.u.log -  Logging initialized @2848ms 
+INFO   [05:51:15.191] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [05:51:15.288] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [05:51:15.289] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [05:51:15.298] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [05:51:15.299] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [05:51:15.337] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [05:51:15.353] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [05:51:15.383] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [05:51:15.503] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@5fb97279{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [05:51:15.519] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [05:51:16.666] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [05:51:16.672] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@63fdffcd{/bs,null,AVAILABLE} 
+INFO   [05:51:16.689] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [05:51:16.708] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@11de56e6{/admin-bs,null,AVAILABLE} 
+INFO   [05:51:16.953] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@5fb97279{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [05:51:16.954] [main] o.e.j.s.Server -  Started @4806ms 
+INFO   [10:49:04.458] [main] o.e.j.u.log -  Logging initialized @5623ms 
+INFO   [10:49:05.098] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [10:49:05.269] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [10:49:05.270] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5070 
+INFO   [10:49:05.351] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at /0.0.0.0:5073 
+INFO   [10:49:05.353] [main] o.m.m.b.c.BsServer -  LW-M2M server started 
+INFO   [10:49:05.459] [main] i.d.s.ServerFactory -  Starting BootstrapServerApplication 
+INFO   [10:49:05.503] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /bs 
+INFO   [10:49:05.581] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-bs 
+INFO   [10:49:05.771] [main] o.e.j.s.SetUIDListener -  Opened BootstrapServerApplication@5fb97279{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [10:49:05.792] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [10:49:07.646] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    / (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+    GET     /{endpoint} (org.mars.m2m.bootstrapserver.Resources.BootstrapEndpoint)
+ 
+INFO   [10:49:07.653] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@63fdffcd{/bs,null,AVAILABLE} 
+INFO   [10:49:07.662] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [10:49:07.673] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@11de56e6{/admin-bs,null,AVAILABLE} 
+INFO   [10:49:08.038] [main] o.e.j.s.ServerConnector -  Started BootstrapServerApplication@5fb97279{HTTP/1.1}{0.0.0.0:8075} 
+INFO   [10:49:08.038] [main] o.e.j.s.Server -  Started @9205ms 

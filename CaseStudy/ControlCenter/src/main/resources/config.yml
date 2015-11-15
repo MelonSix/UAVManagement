@@ -21,8 +21,8 @@ logging:
       timeZone: UTC+8
       maxFileSize: 10MB
       
-controlCenter_address: http://192.168.10.100:8170
-controlCenter_notificationURL: http://192.168.10.100:8170/cc/notification/
-mgmntServerURL: http://192.168.10.199:8089/ms/clients/
-mgmntAdapterURL: http://192.168.10.199:8070/ma/mgmtAdapter/
-mgmntAdapterGetClients: http://192.168.10.199:8070/ma/mgmtAdapter/connectedClients
+controlCenter_address: http://127.0.0.1:8170
+controlCenter_notificationURL: http://127.0.0.1:8170/cc/notification/
+mgmntServerURL: http://127.0.0.1:8089/ms/clients/
+mgmntAdapterURL: http://127.0.0.1:8070/ma/mgmtAdapter/
+mgmntAdapterGetClients: http://127.0.0.1:8070/ma/mgmtAdapter/connectedClients

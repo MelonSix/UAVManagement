@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.Response;
-import org.mars.m2m.demo.controlcenter.analysis.GraphDatastore;
+import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.enums.AttackerType;
@@ -211,7 +211,8 @@ public class AttackerUtils
     }
 
     public static void getDataForAnalysis() {
-        GraphDatastore
+        System.out.println("Current simulation time: "+CC_StaticInitConfig.CURRENT_SIMULATION_TIME.get());
+        ChartDatastore
                 .getMessagesPerSecondData()
                 .put(CC_StaticInitConfig.CURRENT_SIMULATION_TIME.get(),
                         CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP.addAndGet(1));

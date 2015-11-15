@@ -59,7 +59,7 @@ public class AnalysisUI
  
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Messages sent at Time t");  
-        Map<Integer, Integer> gData = GraphDatastore.getMessagesPerSecondData();
+        Map<Integer, Integer> gData = ChartDatastore.getMessagesPerSecondData();
         for(Integer t : gData.keySet())
         {
             System.out.println("asdfas");

@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import org.mars.m2m.demo.controlcenter.analysis.AnalysisUI;
+import org.mars.m2m.demo.controlcenter.analysis.BarChart;
 import org.mars.m2m.demo.controlcenter.analysis.ChartFrame;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
@@ -102,16 +103,9 @@ public class ControlCenterApplication extends Application<ControlCenterConfigura
                 @Override
                 public void run() {final ChartFrame chartDemo = new ChartFrame();
                     AnalysisUI analysisUI = new AnalysisUI();
-                    ControlCenter ccUI = new ControlCenter(controlCenterApplication.getControlCenterServices()); //
-                    SwingUtilities.invokeLater(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        ControlCenter.jPanel_Graph.add(chartDemo.initSwingComponents());
-                    }
-                });
+                    BarChart barChart = new BarChart();
+                    ControlCenter ccUI = new ControlCenter(controlCenterApplication.getControlCenterServices()); 
                     ccUI.setVisible(true);
-                    ccUI.add(ControlCenter.jPanel_Graph.getParent().add(AnalysisUI.performAnalysisForGraph()));
                     ccUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 }
             }); 

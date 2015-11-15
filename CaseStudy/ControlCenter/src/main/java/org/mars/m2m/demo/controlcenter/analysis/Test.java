@@ -17,7 +17,9 @@ public class Test {
         
                     ChartFrame chartDemo = new ChartFrame();
         final JFXPanel fxPanel = new JFXPanel();
-        frame.getContentPane().add(chartDemo.initSwingComponents());
+        BarChart barChart = new BarChart();
+        frame.add(barChart.creatJFreeChart());
+        //frame.getContentPane().add(chartDemo.initSwingComponents());
         frame.setSize(850, 650);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

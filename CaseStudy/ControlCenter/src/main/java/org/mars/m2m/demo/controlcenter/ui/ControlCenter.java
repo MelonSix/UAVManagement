@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import org.mars.m2m.demo.controlcenter.analysis.GraphDatastore;
+import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.core.LoadUAVs;
@@ -97,9 +97,11 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane2 = new javax.swing.JScrollPane();
+        JTree_ccKB = new javax.swing.JTree();
         ccMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         reloadUavMenuItem = new javax.swing.JMenuItem();
+        viewChartMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         JMenuItem_ClrCCknowledge = new javax.swing.JMenuItem();
 
@@ -150,19 +152,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
         ccTabbedPane.addTab("Field", jPanel2);
 
-        javax.swing.GroupLayout jPanel_GraphLayout = new javax.swing.GroupLayout(jPanel_Graph);
-        jPanel_Graph.setLayout(jPanel_GraphLayout);
-        jPanel_GraphLayout.setHorizontalGroup(
-            jPanel_GraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 895, Short.MAX_VALUE)
-        );
-        jPanel_GraphLayout.setVerticalGroup(
-            jPanel_GraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 651, Short.MAX_VALUE)
-        );
-
-        ccTabbedPane.addTab("Graph", jPanel_Graph);
-
         jMenu1.setText("Management");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +166,14 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
             }
         });
         jMenu1.add(reloadUavMenuItem);
+
+        viewChartMenuItem.setText("View Chart");
+        viewChartMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewChartMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(viewChartMenuItem);
 
         ccMenuBar.add(jMenu1);
 
@@ -252,12 +249,17 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
             @Override
             public void run() {
-                CC_StaticInitConfig.CURRENT_SIMULATION_TIME.getAndIncrement();
+                int current_simulation_time
+                        = CC_StaticInitConfig.CURRENT_SIMULATION_TIME.incrementAndGet();
+                System.out.println("Current simulation timestep: "+current_simulation_time);
                 CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP.set(0);
-                Map<Integer, Integer> gData = GraphDatastore.getMessagesPerSecondData();
-                for(Integer time : gData.keySet())
+                Map<Integer, Integer> gData = ChartDatastore.getMessagesPerSecondData();
+                synchronized(gData)
                 {
-                    System.out.println("t"+time+" : "+gData.get(time)+" messages sent");
+                    for(Integer time : gData.keySet())
+                    {
+                        System.out.println("t"+time+" : "+gData.get(time)+" messages sent");
+                    }
                 }
             }
         }, 1000, 1000);
@@ -283,9 +285,22 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         }
     }//GEN-LAST:event_JMenuItem_ClrCCknowledgeActionPerformed
 
+    private void viewChartMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewChartMenuItemActionPerformed
+        
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                AnalysisChart analysisChart = new AnalysisChart();
+                analysisChart.setVisible(true);
+            }
+        });
+        
+    }//GEN-LAST:event_viewChartMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMenuItem_ClrCCknowledge;
-    public static final javax.swing.JTree JTree_ccKB = new javax.swing.JTree();
+    private javax.swing.JTree JTree_ccKB;
     private javax.swing.JPanel ccJPanelInTab1;
     private javax.swing.JMenuBar ccMenuBar;
     private javax.swing.JSplitPane ccSplitPanelTab1;
@@ -295,13 +310,13 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;
-    public static final javax.swing.JPanel jPanel_Graph = new javax.swing.JPanel();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane1;
     public static AnimationPanel animationPanel;
     private javax.swing.JTree jTreeControlCenter;
     private javax.swing.JMenuItem reloadUavMenuItem;
+    private javax.swing.JMenuItem viewChartMenuItem;
     // End of variables declaration//GEN-END:variables
 
     @Override

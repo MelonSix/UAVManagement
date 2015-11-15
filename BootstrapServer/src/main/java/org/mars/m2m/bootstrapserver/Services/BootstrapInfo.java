@@ -42,7 +42,7 @@ public class BootstrapInfo {
         String password = "mypassword";
         String publicKey = "pubKey";
         BootstrapConfig.ServerSecurity serverSecurity = new BootstrapConfig.ServerSecurity();
-        serverSecurity.uri = "coap://192.168.10.199:5683";
+        serverSecurity.uri = "coap://127.0.0.1:5683";
         serverSecurity.bootstrapServer = false;
         serverSecurity.securityMode = SecurityMode.PSK;
         serverSecurity.serverPublicKeyOrId = publicKey.getBytes();

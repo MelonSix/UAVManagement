@@ -161,7 +161,7 @@ public final class Scout extends UAV
          */
         DeviceStarterDetails threatDevDtls;
         threatDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
-                portNumber, "192.168.10.100", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "192.168.10.199", 5070);
+                portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
         ThreatSensorClient threatSensorCl;
         threatSensorCl = new ThreatSensorClient(uavLwM2mModel, threatDevDtls,threatSensor);
         threatSensorCl.StartDevice();
@@ -187,7 +187,7 @@ public final class Scout extends UAV
          */
         DeviceStarterDetails obstacleDevDtls;
         obstacleDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
-                portNumber, "192.168.10.100", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "192.168.10.199", 5070);
+                portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
         ObstacleSensorClient obstacleSensorCl = new ObstacleSensorClient(uavLwM2mModel, obstacleDevDtls, obstacleSensor);
         obstacleSensorCl.StartDevice();
         deviceHelper.lwM2mClientDaemon(obstacleSensorCl);//invokes a background process for this device
@@ -212,7 +212,7 @@ public final class Scout extends UAV
          */
         DeviceStarterDetails flightDevDtls;
         flightDevDtls = new DeviceStarterDetails(uavConfig.getUavlocalhostAddress(),
-                portNumber, "192.168.10.100", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "192.168.10.199", 5070);
+                portNumber, "127.0.0.1", 5683, "scout"+this.index+"-"+UUID.randomUUID().toString(), uavConfig, "127.0.0.1", 5070);
         FlightControlClient flightControlCl = new FlightControlClient(uavLwM2mModel, flightDevDtls, flightControl);
         flightControlCl.StartDevice();
         deviceHelper.lwM2mClientDaemon(flightControlCl);//invokes a background process for this device
