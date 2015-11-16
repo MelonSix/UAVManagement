@@ -5,8 +5,11 @@
  */
 package org.mars.m2m.demo.controlcenter.analysis;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
@@ -14,30 +17,30 @@ import java.util.TreeMap;
  */
 public class ChartDatastore 
 {
-    private final Map<Integer,Integer> messagesPerSecondData_broadcast;
-    private final Map<Integer,Integer> messagesPerSecondData_register;
-    
-    private final Map<Integer,Integer> totalMessages_broadcast;
-    private final Map<Integer,Integer> totoalMessages_infoShare;
+    private final Lock classLock = new ReentrantLock(true);
+    private static final Map<Integer,Integer> messagesPerSecondData_broadcast = new TreeMap<>();
+    private static final Map<Integer,Integer> messagesPerSecondData_register = new TreeMap<>();
 
     public ChartDatastore() {        
-        this.totoalMessages_infoShare = new TreeMap<>();
-        this.totalMessages_broadcast = new TreeMap<>();
-        this.messagesPerSecondData_register = new TreeMap<>();
-        this.messagesPerSecondData_broadcast = new TreeMap<>();
     }
 
     public Map<Integer, Integer> getMessagesPerSecondData_broadcast() {
-        synchronized(messagesPerSecondData_broadcast)
+        classLock.lock();
+        try 
         {
-            return messagesPerSecondData_broadcast;
+            return Collections.unmodifiableMap(messagesPerSecondData_broadcast);
+        } finally {
+            classLock.unlock();
         }
     }
 
     public Map<Integer, Integer> getMessagesPerSecondData_register() {
-        synchronized(messagesPerSecondData_register)
+        classLock.lock();
+        try 
         {
-            return messagesPerSecondData_register;
+            return Collections.unmodifiableMap(messagesPerSecondData_register);
+        } finally {
+            classLock.unlock();
         }
     }
     
@@ -46,21 +49,84 @@ public class ChartDatastore
         messagesPerSecondData_broadcast.clear();
         messagesPerSecondData_register.clear();
     }
-
-    public Map<Integer, Integer> getTotalMessages_broadcast() {
-        synchronized(totalMessages_broadcast)
+    
+    public void putBroadcastRecord(int t, int v)
+    {
+        classLock.lock();
+        try 
         {
-            System.out.println("broadcast size: "+totalMessages_broadcast.size());
-            return totalMessages_broadcast;
-        }
-    }
-
-    public Map<Integer, Integer> getTotoalMessages_infoShare() {
-        synchronized(totoalMessages_infoShare)
+            if(messagesPerSecondData_broadcast.containsKey(t))
+            {
+                int currentVal = messagesPerSecondData_broadcast.get(t);
+                ++currentVal;
+                messagesPerSecondData_broadcast.put(t, currentVal);
+            }
+            else
+            {
+                messagesPerSecondData_broadcast.put(t, v);
+            }
+        } finally 
         {
-            System.out.println("infoshare size: "+totoalMessages_infoShare.size());
-            return totoalMessages_infoShare;
+            classLock.unlock();
         }
     }
     
+    public void putRegisterInfoShareRecord(int t, int v)
+    {
+        classLock.lock();
+        try 
+        {
+            if(messagesPerSecondData_register.containsKey(t))
+            {
+                int currentVal = messagesPerSecondData_register.get(t);
+                ++currentVal;
+                messagesPerSecondData_register.put(t, currentVal);
+            }
+            else
+            {
+                messagesPerSecondData_register.put(t, v);
+            }
+        } finally 
+        {
+            classLock.unlock();
+        }
+    }
+    
+    public Map<Integer, Integer> getTotalMessagesSentInTimestep_broadcast()
+    {
+        classLock.lock();
+        try 
+        {
+            Map<Integer, Integer> syncData = Collections.synchronizedMap(messagesPerSecondData_broadcast);
+            Map<Integer,Integer> totalMessages = new TreeMap<>();
+            int total = 0;
+            for(Integer t : syncData.keySet())
+            {
+                total += syncData.get(t);
+                totalMessages.put(t, total);
+            }
+            return totalMessages;
+        } finally {
+            classLock.unlock();
+        }
+    }
+    
+    public Map<Integer, Integer> getTotalMessagesSentInTimestep_register()
+    {
+        classLock.lock();
+        try 
+        {
+            Map<Integer, Integer> syncData = Collections.synchronizedMap(messagesPerSecondData_register);
+            Map<Integer,Integer> totalMessages = new TreeMap<>();
+            int total = 0;
+            for(Integer t : syncData.keySet())
+            {
+                total += syncData.get(t);
+                totalMessages.put(t, total);
+            }
+            return totalMessages;
+        } finally {
+            classLock.unlock();
+        }
+    }
 }

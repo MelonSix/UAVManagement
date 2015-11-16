@@ -9,8 +9,11 @@ import ch.qos.logback.classic.Logger;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.Response;
+import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.enums.AttackerType;
@@ -44,6 +47,7 @@ public class AttackerUtils
     public final AttackerUpdate update;
     public final AttackerExecution execute;
     public static final MessageHistory MESSAGE_HISTORY = new MessageHistory();
+    public static ExecutorService executor = Executors.newCachedThreadPool();
     
     public AttackerUtils() {
         this.update = new AttackerUpdate();
@@ -378,7 +382,14 @@ public class AttackerUtils
                             });
                     
                     attacker.addObstacle(obstacle);
-                    AnalysisUtils.recordObstacleCommunication();
+                    
+                    //records data for chart
+                    executor.submit(new Runnable() {
+                        @Override
+                        public void run() {
+                            AnalysisUtils.recordObstacleCommunication();
+                        }
+                    });
                 }
             }
         }
@@ -421,7 +432,14 @@ public class AttackerUtils
                         }
 
                     }
-                    AnalysisUtils.recordThreatCommunication(threat, attacker);
+                    
+                    //records data for chart
+                    executor.submit(new Runnable() {
+                        @Override
+                        public void run() {                            
+                            AnalysisUtils.recordThreatCommunication(threat, attacker);
+                        }
+                    });
                 }
             }
         }

@@ -94,17 +94,16 @@ public class AnalysisBarChart extends JFrame
         
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Messages sent to UAVs at time t of simulation");  
-        synchronized(ControlCenter.chartDatastore)
-        {            
-            Map<Integer, Integer> gData = (inforSharingAlg==CC_StaticInitConfig.BROADCAST_INFOSHARE)?
-                                            ControlCenter.chartDatastore.getMessagesPerSecondData_broadcast():
-                                            ControlCenter.chartDatastore.getMessagesPerSecondData_register();
-            Map<Integer, Integer> gDataSync = Collections.synchronizedMap(gData);
-            for(Integer t : gDataSync.keySet())
-            {
-                series1.getData().add(new XYChart.Data(String.valueOf(t), gData.get(t)));
-            }   
-        }  
+        
+        ChartDatastore chartDatastore = new ChartDatastore();
+        Map<Integer, Integer> gData = (inforSharingAlg==CC_StaticInitConfig.BROADCAST_INFOSHARE)?
+                                        chartDatastore.getMessagesPerSecondData_broadcast():
+                                        chartDatastore.getMessagesPerSecondData_register();
+        Map<Integer, Integer> gDataSync = Collections.synchronizedMap(gData);
+        for(Integer t : gDataSync.keySet())
+        {
+            series1.getData().add(new XYChart.Data(String.valueOf(t), gData.get(t)));
+        } 
         
         bc.getData().addAll(series1);
         Scene scene  = new Scene(bc,800,600);

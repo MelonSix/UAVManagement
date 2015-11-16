@@ -137,7 +137,7 @@ public class AsyncServiceConsumer
 
             @Override
             public void failed(Throwable throwable) {
-                logger.error("Not supported yet."); 
+                logger.error(throwable.getMessage()); 
             }
         });
     }

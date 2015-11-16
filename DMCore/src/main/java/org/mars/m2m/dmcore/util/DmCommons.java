@@ -29,8 +29,12 @@ public class DmCommons {
     public static String getOneM2mTimeStamp()
     {
         String timestamp = null;
-        XmlDateTimeType dt = gtXmlObj.prepareXmlDateTime(null);
-        timestamp = dt.getDate().toString().replace("-", "")+"T"+dt.getTime().toString().replace(":", "");
+        try 
+        {
+            XmlDateTimeType dt = gtXmlObj.prepareXmlDateTime(null);
+            timestamp = dt.getDate().toString().replace("-", "") + "T" + dt.getTime().toString().replace(":", "");
+        } catch (java.lang.NullPointerException e) {
+        }
         return timestamp;
     }
     

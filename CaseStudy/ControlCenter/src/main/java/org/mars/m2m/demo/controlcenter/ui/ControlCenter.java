@@ -16,7 +16,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import org.mars.m2m.demo.controlcenter.analysis.AnalysisUI_LineChart;
 import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
@@ -191,7 +190,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         viewBroadChartMenuItem.add(jSeparator1);
 
         jMenuItem_brdcstTotal.setText("View Broadcast total");
-        jMenuItem_brdcstTotal.setEnabled(false);
         jMenuItem_brdcstTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_brdcstTotalActionPerformed(evt);
@@ -200,7 +198,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         viewBroadChartMenuItem.add(jMenuItem_brdcstTotal);
 
         jMenuItem_infoshare.setText("View Information sharing total");
-        jMenuItem_infoshare.setEnabled(false);
         jMenuItem_infoshare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_infoshareActionPerformed(evt);
@@ -288,9 +285,9 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                 int current_simulation_time
                         = ControlCenter.CURRENT_SIMULATION_TIME.incrementAndGet();
                 System.out.println("Current simulation timestep: "+current_simulation_time);
-                chartDatastore.getMessagesPerSecondData_broadcast().put(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
-                chartDatastore.getMessagesPerSecondData_register().put(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
-                AnalysisUtils.recordCommunication();
+                chartDatastore.putBroadcastRecord(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
+                chartDatastore.putRegisterInfoShareRecord(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
+//                AnalysisUtils.recordCommunication();
             }
         }, 1000, 1000);
     }

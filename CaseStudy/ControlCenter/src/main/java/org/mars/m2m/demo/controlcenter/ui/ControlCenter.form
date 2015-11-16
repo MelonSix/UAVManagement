@@ -41,7 +41,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_brdcstTotal">
               <Properties>
                 <Property name="text" type="java.lang.String" value="View Broadcast total"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_brdcstTotalActionPerformed"/>
@@ -50,7 +49,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_infoshare">
               <Properties>
                 <Property name="text" type="java.lang.String" value="View Information sharing total"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_infoshareActionPerformed"/>
