@@ -7,21 +7,23 @@ package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
 import java.io.File;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import org.mars.m2m.demo.controlcenter.analysis.AnalysisUI_LineChart;
 import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.core.LoadUAVs;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
+import org.mars.m2m.demo.controlcenter.util.AnalysisUtils;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -31,15 +33,16 @@ import org.slf4j.LoggerFactory;
 public final class ControlCenter extends javax.swing.JFrame implements TreeSelectionListener
 {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlCenter.class);
+    public static AtomicInteger CURRENT_SIMULATION_TIME = new AtomicInteger(0);
     private final HandleTree handleTree;
     private final ControlCenterServices controlCenterServices;
-    private final File file;
+    public final static ChartDatastore chartDatastore = new ChartDatastore();
+    
     /**
      * Creates new form ControlCenter
      * @param ccs
      */
     public ControlCenter(ControlCenterServices ccs) {
-        file = new File("gdata.txt");
         this.controlCenterServices = ccs;//has to come before initialization of components because the object is used in UI customized code
         initComponents();
         handleTree = new HandleTree(jTreeControlCenter);
@@ -102,6 +105,9 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         reloadUavMenuItem = new javax.swing.JMenuItem();
         viewRegChartMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem_brdcstTotal = new javax.swing.JMenuItem();
+        jMenuItem_infoshare = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         JMenuItem_ClrCCknowledge = new javax.swing.JMenuItem();
 
@@ -167,7 +173,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
         });
         viewBroadChartMenuItem.add(reloadUavMenuItem);
 
-        viewRegChartMenuItem.setText("View Register-based Chart");
+        viewRegChartMenuItem.setText("View Information sharing Chart");
         viewRegChartMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewRegChartMenuItemActionPerformed(evt);
@@ -182,6 +188,25 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
             }
         });
         viewBroadChartMenuItem.add(jMenuItem1);
+        viewBroadChartMenuItem.add(jSeparator1);
+
+        jMenuItem_brdcstTotal.setText("View Broadcast total");
+        jMenuItem_brdcstTotal.setEnabled(false);
+        jMenuItem_brdcstTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_brdcstTotalActionPerformed(evt);
+            }
+        });
+        viewBroadChartMenuItem.add(jMenuItem_brdcstTotal);
+
+        jMenuItem_infoshare.setText("View Information sharing total");
+        jMenuItem_infoshare.setEnabled(false);
+        jMenuItem_infoshare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_infoshareActionPerformed(evt);
+            }
+        });
+        viewBroadChartMenuItem.add(jMenuItem_infoshare);
 
         ccMenuBar.add(viewBroadChartMenuItem);
 
@@ -250,21 +275,25 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
             }
         }, 1000, 5000);
                 
-        CC_StaticInitConfig.CURRENT_SIMULATION_TIME.set(1);
-        CC_StaticInitConfig.TOTAL_MESSAGES_SENT.set(0);
+        invokeAnalysisDataCollection();
+    }//GEN-LAST:event_reloadUavMenuItemActionPerformed
+
+    private void invokeAnalysisDataCollection() {
+        //For chartdata processes per second
         Timer timer2 = new Timer();
         timer2.schedule(new TimerTask() {
-
+            
             @Override
             public void run() {
                 int current_simulation_time
-                        = CC_StaticInitConfig.CURRENT_SIMULATION_TIME.incrementAndGet();
+                        = ControlCenter.CURRENT_SIMULATION_TIME.incrementAndGet();
                 System.out.println("Current simulation timestep: "+current_simulation_time);
-                CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP_broadcast.set(0);
-                CC_StaticInitConfig.TOTAL_MESSAGES_SENT_IN_CURRENT_SIMULATION_TIMESTEP_registerbased.set(0);
+                chartDatastore.getMessagesPerSecondData_broadcast().put(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
+                chartDatastore.getMessagesPerSecondData_register().put(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
+                AnalysisUtils.recordCommunication();
             }
         }, 1000, 1000);
-    }//GEN-LAST:event_reloadUavMenuItemActionPerformed
+    }
 
     private void JMenuItem_ClrCCknowledgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItem_ClrCCknowledgeActionPerformed
         synchronized(animationPanel)
@@ -292,7 +321,7 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
             @Override
             public void run() {
-                AnalysisChart analysisChart = new AnalysisChart(CC_StaticInitConfig.REGISTER_BASED_INFORSHARE, "Register-Based Information Sharing");
+                AnalysisBarChart analysisChart = new AnalysisBarChart(CC_StaticInitConfig.REGISTER_BASED_INFORSHARE, "Information Sharing");
                 analysisChart.setVisible(true);
             }
         });
@@ -304,11 +333,33 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
 
             @Override
             public void run() {
-                AnalysisChart analysisChart = new AnalysisChart(CC_StaticInitConfig.BROADCAST_INFOSHARE, "Broadcast Information Sharing");
+                AnalysisBarChart analysisChart = new AnalysisBarChart(CC_StaticInitConfig.BROADCAST_INFOSHARE, "Broadcast");
                 analysisChart.setVisible(true);
             }
         });
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem_brdcstTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_brdcstTotalActionPerformed
+       SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                AnalysisUI_LineChart analysisChart = new AnalysisUI_LineChart(CC_StaticInitConfig.BROADCAST_INFOSHARE, "Broadcast");
+                analysisChart.setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jMenuItem_brdcstTotalActionPerformed
+
+    private void jMenuItem_infoshareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_infoshareActionPerformed
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                AnalysisUI_LineChart analysisChart = new AnalysisUI_LineChart(CC_StaticInitConfig.REGISTER_BASED_INFORSHARE, "Information sharing");
+                analysisChart.setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jMenuItem_infoshareActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMenuItem_ClrCCknowledge;
@@ -321,9 +372,12 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
     private javax.swing.JTabbedPane ccTabbedPane;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem_brdcstTotal;
+    private javax.swing.JMenuItem jMenuItem_infoshare;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     public javax.swing.JSplitPane jSplitPane1;
     public static AnimationPanel animationPanel;
     private javax.swing.JTree jTreeControlCenter;

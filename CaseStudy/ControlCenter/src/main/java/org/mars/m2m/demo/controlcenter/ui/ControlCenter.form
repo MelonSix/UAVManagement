@@ -22,7 +22,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="viewRegChartMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="View Register-based Chart"/>
+                <Property name="text" type="java.lang.String" value="View Information sharing Chart"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewRegChartMenuItemActionPerformed"/>
@@ -34,6 +34,26 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_brdcstTotal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="View Broadcast total"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_brdcstTotalActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_infoshare">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="View Information sharing total"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_infoshareActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

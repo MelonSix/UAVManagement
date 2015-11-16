@@ -91,32 +91,30 @@ public class ControlCenterInterface
                 {
                     String content = Unmarshaller.getJsonContent(data);
                     Notification notification = Unmarshaller.getNotificationObject(content);
-                    System.out.println("notification received: "+content);
-                    switch (Unmarshaller.determineNotificationType(notification)) {
+//                    System.out.println("notification received: "+content);
+                    switch (Unmarshaller.determineNotificationType(notification))
+                    {
                         case OBSTACLE:
                             Obstacle obs = (Obstacle) Unmarshaller.getObjectFromNotification(notification, Obstacle.class);
                             if (obs != null && !controlCenterServices.containsObstacle(obs)) 
                             {
-                                controlCenterServices.addObstacle(obs);                                
-                                invokeAsynchronousServices();
+                                controlCenterServices.addObstacle(obs);  
                                 
                             }
                             break;
                         case THREAT:
                             Threat threat = (Threat) Unmarshaller.getObjectFromNotification(notification, Threat.class);
-                            System.out.println("Threat received");
+//                            System.out.println("Threat received");
                             if (threat != null && !controlCenterServices.containsThreat(threat)) {
                                 threatCounter++;
                                 controlCenterServices.addThreat(threat);
-                                System.out.println("Threats in kb no.: "+controlCenterServices.getKb().getThreats().size());                                
-                                invokeAsynchronousServices();
+//                                System.out.println("Threats in kb no.: "+controlCenterServices.getKb().getThreats().size());
                             }
                             break;
                         case CONFLICT:
                             break;
                         case ATTACKER_THREAT_STATUS:
                              boolean isThreatDestroyed = (boolean) Unmarshaller.getObjectFromNotification(notification, Boolean.class);
-                             System.out.println(isThreatDestroyed);
                              controlCenterServices.findAttackerAndUpdate(data.getFrom(), isThreatDestroyed);                             
                             break;
                         case DESTROYED_THREAT_INDEX:
@@ -127,8 +125,9 @@ public class ControlCenterInterface
                             logger.info("INVALID NOTIFICATION OPTION RECEIVED");
                     }
                 }
+                invokeAsynchronousServices();   
             }
-        }).start();   
+        }).start();
     }
     
 

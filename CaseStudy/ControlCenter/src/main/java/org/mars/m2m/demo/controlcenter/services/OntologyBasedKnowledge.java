@@ -644,9 +644,9 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     public boolean containsThreat(Threat threat) {
         Literal threat_index = ontology_based_knowledge.createTypedLiteral(threat.getIndex());
         Selector selector = new SimpleSelector(null, hasThreatIndex, threat_index);
-        synchronized(ontology_based_knowledge)
+        Model result_model = ontology_based_knowledge.query(selector);
+        synchronized(result_model)
         {
-            Model result_model = ontology_based_knowledge.query(selector);
             return result_model.listStatements().hasNext();
         }
 //        printStatements(result_model);

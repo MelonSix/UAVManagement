@@ -13,7 +13,7 @@ import javafx.scene.chart.BarChart;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import org.jfree.chart.ChartFrame;
-import org.mars.m2m.demo.controlcenter.analysis.AnalysisUI;
+import org.mars.m2m.demo.controlcenter.analysis.AnalysisUI_BarChart;
 import org.mars.m2m.demo.controlcenter.appConfig.ControlCenterConfiguration;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.health.ClientsResourceHealth;
