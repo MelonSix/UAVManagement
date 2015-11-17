@@ -386,7 +386,7 @@ public class AttackerUtils
                     executor.submit(new Runnable() {
                         @Override
                         public void run() {
-                            AnalysisUtils.recordObstacleCommunication();
+                            AnalysisUtils.recordObstacleCommunication(obstacle, attacker);
                         }
                     });
                 }

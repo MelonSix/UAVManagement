@@ -1073,3 +1073,105 @@ ERROR  [12:03:58.247] [Thread-846] o.m.m.m.r.s.NotificationResource -  java.lang
 ERROR  [12:03:59.132] [Thread-847] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
 ERROR  [12:04:01.841] [Thread-848] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
 ERROR  [12:04:02.807] [Thread-849] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+INFO   [18:26:14.804] [main] o.e.j.u.log -  Logging initialized @1276ms 
+INFO   [18:26:14.883] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [18:26:14.898] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [18:26:14.914] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [18:26:14.945] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:26:14.945] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:26:15.779] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [18:26:15.779] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [18:26:15.779] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:26:15.794] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [18:26:15.841] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [18:26:15.841] [main] o.e.j.s.Server -  Started @2311ms 
+INFO   [19:31:19.992] [main] o.e.j.u.log -  Logging initialized @1580ms 
+INFO   [19:31:20.070] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [19:31:20.085] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [19:31:20.101] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [19:31:20.132] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [19:31:20.132] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [19:31:20.731] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [19:31:20.731] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [19:31:20.731] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [19:31:20.747] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [19:31:20.794] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [19:31:20.794] [main] o.e.j.s.Server -  Started @2385ms 
+ERROR  [19:36:18.621] [Thread-486] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:23.871] [Thread-667] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:32.237] [Thread-698] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:33.973] [Thread-726] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:34.890] [Thread-727] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:38.924] [Thread-744] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:42.939] [Thread-1103] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:42.948] [Thread-1104] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:46.053] [Thread-1316] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:51.232] [Thread-1317] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:36:59.134] [Thread-1318] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:08.701] [Thread-1867] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:10.776] [Thread-2045] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:21.290] [Thread-2246] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:26.037] [Thread-2511] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:28.492] [Thread-2540] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:31.558] [Thread-2541] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:34.154] [Thread-2849] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:35.975] [Thread-2853] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:40.084] [Thread-3125] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:41.072] [Thread-3126] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:41.285] [Thread-3127] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:43.005] [Thread-3170] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:43.655] [Thread-3171] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:48.062] [Thread-3247] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:48.083] [Thread-3248] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:51.740] [Thread-3514] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:53.365] [Thread-3515] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:54.809] [Thread-3516] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:54.825] [Thread-3517] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:37:58.341] [Thread-3538] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:00.722] [Thread-3539] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:01.390] [Thread-3542] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:02.380] [Thread-3543] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:03.484] [Thread-3559] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:05.200] [Thread-3560] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:08.534] [Thread-3564] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:09.510] [Thread-3572] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:10.781] [Thread-3575] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:11.496] [Thread-3576] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:12.702] [Thread-3579] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:12.713] [Thread-3578] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:15.581] [Thread-3586] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:15.633] [Thread-3587] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+ERROR  [19:38:18.685] [Thread-3588] o.m.m.m.r.s.NotificationResource -  java.lang.NullPointerException 
+INFO   [19:38:30.977] [main] o.e.j.u.log -  Logging initialized @1216ms 
+INFO   [19:38:31.055] [main] i.d.s.ServerFactory -  Starting MAdpApplication 
+INFO   [19:38:31.071] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ma 
+INFO   [19:38:31.086] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ma 
+INFO   [19:38:31.118] [main] o.e.j.s.SetUIDListener -  Opened MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [19:38:31.118] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [19:38:31.704] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    POST    /mgmtAdapter (org.mars.m2m.managmentadapter.resources.AdapterServiceInterface)
+ 
+INFO   [19:38:31.704] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@1931d99{/ma,null,AVAILABLE} 
+INFO   [19:38:31.704] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [19:38:31.720] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@33cbfa57{/admin-ma,null,AVAILABLE} 
+INFO   [19:38:31.766] [main] o.e.j.s.ServerConnector -  Started MAdpApplication@5bf22f18{HTTP/1.1}{0.0.0.0:8070} 
+INFO   [19:38:31.766] [main] o.e.j.s.Server -  Started @2007ms 

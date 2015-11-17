@@ -276,3 +276,119 @@ INFO   [12:02:31.954] [main] i.d.s.AdminEnvironment -  tasks =
 INFO   [12:02:31.970] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
 INFO   [12:02:32.064] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
 INFO   [12:02:32.064] [main] o.e.j.s.Server -  Started @2781ms 
+INFO   [18:26:09.738] [main] o.e.j.u.log -  Logging initialized @1341ms 
+INFO   [18:26:09.894] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:26:09.910] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [18:26:09.957] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [18:26:09.972] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [18:26:09.972] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [18:26:09.972] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [18:26:10.019] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [18:26:10.019] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [18:26:10.035] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [18:26:10.051] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [18:26:10.155] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:26:10.160] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [18:26:11.070] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [18:26:11.086] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [18:26:11.086] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [18:26:11.102] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [18:26:11.149] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [18:26:11.149] [main] o.e.j.s.Server -  Started @2752ms 
+ERROR  [18:28:09.171] [Thread-448] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [18:28:10.091] [Thread-449] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [18:28:15.482] [Thread-450] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [18:28:17.982] [Thread-451] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [18:28:18.042] [Thread-452] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [18:28:19.793] [Thread-453] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [19:31:17.748] [main] o.e.j.u.log -  Logging initialized @2195ms 
+INFO   [19:31:18.029] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:31:18.060] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [19:31:18.107] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [19:31:18.107] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [19:31:18.123] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [19:31:18.123] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [19:31:18.154] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:31:18.154] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [19:31:18.170] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [19:31:18.217] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [19:31:18.404] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:31:18.404] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [19:31:19.255] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [19:31:19.270] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [19:31:19.270] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [19:31:19.302] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [19:31:19.364] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:31:19.364] [main] o.e.j.s.Server -  Started @3816ms 
+ERROR  [19:37:14.842] [Thread-1809] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+ERROR  [19:37:14.843] [Thread-1810] o.m.m.m.c.HandleObservation -  java.net.ConnectException: Connection refused: connect 
+INFO   [19:42:45.196] [main] o.e.j.u.log -  Logging initialized @1292ms 
+INFO   [19:42:45.352] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:42:45.368] [main] o.e.c.c.n.c.NetworkConfig -  Loading standard properties from file Californium.properties 
+INFO   [19:42:45.415] [main] o.e.c.c.CoapServer -  Starting server 
+INFO   [19:42:45.415] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5683 
+INFO   [19:42:45.430] [main] o.e.c.c.n.CoAPEndpoint -  Starting endpoint at 0.0.0.0/0.0.0.0:5684 
+INFO   [19:42:45.430] [main] o.e.l.s.c.i.LeshanServer -  LW-M2M server started 
+INFO   [19:42:45.446] [main] o.m.m.d.L.LwM2mModelLoader -  file /uavObjectModel.json successfully loaded 
+INFO   [19:42:45.446] [main] i.d.s.ServerFactory -  Starting LwM2mServerApplication 
+INFO   [19:42:45.462] [main] i.d.s.SimpleServerFactory -  Registering jersey handler with root path prefix: /ms 
+INFO   [19:42:45.477] [main] i.d.s.SimpleServerFactory -  Registering admin handler with root path prefix: /admin-ms 
+INFO   [19:42:45.571] [main] o.e.j.s.SetUIDListener -  Opened LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:42:45.587] [main] o.e.j.s.Server -  jetty-9.2.11.v20150529 
+INFO   [19:42:46.165] [main] i.d.j.DropwizardResourceConfig -  The following paths were found for the configured resources:
+
+    GET     /clients (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/ (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    PUT     /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid} (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    DELETE  /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    POST    /clients/{clientEndpoint}/{objectid}/{instance}/{resourceid}/observe (org.mars.m2m.managementserver.resources.MgmtServerInterface)
+    GET     /objectspecs (org.mars.m2m.managementserver.resources.ObjectModelSpec)
+ 
+INFO   [19:42:46.165] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@76c387f9{/ms,null,AVAILABLE} 
+INFO   [19:42:46.180] [main] i.d.s.AdminEnvironment -  tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+ 
+INFO   [19:42:46.180] [main] o.e.j.s.h.ContextHandler -  Started i.d.j.MutableServletContextHandler@6107165{/admin-ms,null,AVAILABLE} 
+INFO   [19:42:46.227] [main] o.e.j.s.ServerConnector -  Started LwM2mServerApplication@24a1c17f{HTTP/1.1}{0.0.0.0:8089} 
+INFO   [19:42:46.227] [main] o.e.j.s.Server -  Started @2323ms 

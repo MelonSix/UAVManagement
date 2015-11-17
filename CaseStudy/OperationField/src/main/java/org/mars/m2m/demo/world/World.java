@@ -84,6 +84,8 @@ public class World {
     private int scout_num; //The number of our scouts
     private int threat_num; //The number of enemy threats_in_world
     private int attacker_num; //The number of our attackers
+    private final Set<Integer> detectedObstacles = new TreeSet<>();
+    private final Set<Integer> detectedThreats = new TreeSet<>();
 
     private float threat_radius = 100;
     private float attacker_patrol_range; //The patrol range of scout 
@@ -567,25 +569,38 @@ public class World {
             int obs_list_size = this.getObstacles().size();
             for (int i = 0; i < obs_list_size; i++) 
             {
-                Obstacle obs = this.getObstacles().get(i);
-                if (!scout.getKb().containsObstacle(obs) && obs.getMbr().intersects(scout.getUav_radar().getBounds())) {
-                    scout.getKb().addObstacle(obs);
-                    updateSensorValue(scout, obs);
+                synchronized(this.detectedObstacles)
+                {
+                    Obstacle obs = this.getObstacles().get(i);
+                    if (!scout.getKb().containsObstacle(obs) 
+                            && obs.getMbr().intersects(scout.getUav_radar().getBounds())
+                            && !this.detectedObstacles.contains(obs.getIndex())) {
+                        scout.getKb().addObstacle(obs);
+                        updateSensorValue(scout, obs);
+
+                        this.detectedObstacles.add(obs.getIndex());
+                    }
                 }
             }
             
             //senses threats
             int threat_list_size = this.getThreats().size();
-            for (int i = 0; i < threat_list_size; i++) {
-                Threat threat = this.getThreats().get(i);
-                float dist_from_attacker_to_threat = 
-                        DistanceUtil.distanceBetween(scout.getCenter_coordinates(), threat.getCoordinates());
-                if (threat.isEnabled() && !scout.getKb().containsThreat(threat) 
-                    && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9
-                    /*&& threat.getThreatType().toString().equals(getScoutType().toString())*/) //detects threats based on capabilities
+            for (int i = 0; i < threat_list_size; i++)
             {
-                    scout.getKb().addThreat(threat);
-                    updateSensorValue(scout, threat);
+                synchronized(this.detectedThreats)
+                {
+                    Threat threat = this.getThreats().get(i);
+                    float dist_from_attacker_to_threat = 
+                            DistanceUtil.distanceBetween(scout.getCenter_coordinates(), threat.getCoordinates());
+                    if (threat.isEnabled() && !scout.getKb().containsThreat(threat) 
+                        && dist_from_attacker_to_threat < scout.getUav_radar().getRadius() * 0.9
+                            && !this.detectedThreats.contains(threat.getIndex())
+                        /*&& threat.getThreatType().toString().equals(getScoutType().toString())*/) //detects threats based on capabilities
+                    {
+                        scout.getKb().addThreat(threat);
+                        updateSensorValue(scout, threat);
+                        this.detectedThreats.add(threat.getIndex());
+                    }
                 }
             }
         }
