@@ -125,7 +125,6 @@ public class FieldUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        try {
             /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -151,14 +150,11 @@ public class FieldUI extends javax.swing.JFrame {
                     FieldUI opUI = new FieldUI();
                     opUI.setVisible(true);
                     opUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    opUI.setResizable(false);
-                    opUI.opFieldSplitPane.setDividerLocation(100);
+//                    opUI.setResizable(false);
+//                    opUI.opFieldSplitPane.setDividerLocation(100);
                     opUI.opFieldSplitPane.updateUI();
                 }
             });
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

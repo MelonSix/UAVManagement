@@ -28,7 +28,7 @@ public class ChartDatastore
         classLock.lock();
         try 
         {
-            return Collections.unmodifiableMap(messagesPerSecondData_broadcast);
+            return messagesPerSecondData_broadcast;
         } finally {
             classLock.unlock();
         }
@@ -38,7 +38,7 @@ public class ChartDatastore
         classLock.lock();
         try 
         {
-            return Collections.unmodifiableMap(messagesPerSecondData_register);
+            return messagesPerSecondData_register;
         } finally {
             classLock.unlock();
         }

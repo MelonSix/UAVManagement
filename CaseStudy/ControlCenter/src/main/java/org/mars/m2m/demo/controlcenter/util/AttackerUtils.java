@@ -13,7 +13,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.ws.rs.core.Response;
-import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.callback.AsyncServiceCallback;
 import org.mars.m2m.demo.controlcenter.enums.AttackerType;
@@ -365,7 +364,7 @@ public class AttackerUtils
             }
         }
     
-        public void addObstacle(final Obstacle obstacle, final AttackerModel attacker) 
+        public synchronized void addObstacle(final Obstacle obstacle, final AttackerModel attacker) 
         {
             if (!isMessageInMessageHistory(attacker.getClient().getEndpoint(), obstacle, MESSAGE_HISTORY.getCommunicatedObstacles())) {
                 int resourceID = 6;
@@ -394,7 +393,7 @@ public class AttackerUtils
             }
         }
     
-        public void addThreat(final Threat threat, final AttackerModel attacker) 
+        public synchronized void addThreat(final Threat threat, final AttackerModel attacker) 
         {   
             if (!isMessageInMessageHistory(attacker.getClient().getEndpoint(), threat, MESSAGE_HISTORY.getCommunicatedThreats())) 
             {

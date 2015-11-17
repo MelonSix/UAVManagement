@@ -20,7 +20,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
 import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
-import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
 
 /**
  *
@@ -28,8 +27,8 @@ import org.mars.m2m.demo.controlcenter.ui.ControlCenter;
  */
 public class AnalysisUI_LineChart extends JFrame
 {
-    private int inforSharingAlg;
-    private String algStr;
+    private final int inforSharingAlg;
+    private final String algStr;
     
     public AnalysisUI_LineChart(int inforSharingAlg, String algStr) 
     {
@@ -79,7 +78,8 @@ public class AnalysisUI_LineChart extends JFrame
     {
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
-        yAxis.setUpperBound(1000);
+//        yAxis.setUpperBound(1000);
+//        yAxis.setAutoRanging(false);
         final LineChart<Number,Number> lineChart =  new LineChart<>(xAxis,yAxis);
         lineChart.setTitle("Totoal Communication - "+this.algStr);
         xAxis.setLabel("Time (t)");       
@@ -99,6 +99,7 @@ public class AnalysisUI_LineChart extends JFrame
         } 
         
         lineChart.getData().addAll(series1);
+        lineChart.setAnimated(false);
         Scene scene  = new Scene(lineChart,800,600);
         return scene;
     }

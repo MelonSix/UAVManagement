@@ -6,7 +6,6 @@
 package org.mars.m2m.demo.controlcenter.ui;
 
 import ch.qos.logback.classic.Logger;
-import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
@@ -22,7 +21,6 @@ import org.mars.m2m.demo.controlcenter.core.HandleTree;
 import org.mars.m2m.demo.controlcenter.core.LoadUAVs;
 import org.mars.m2m.demo.controlcenter.services.ControlCenterServices;
 import org.mars.m2m.demo.controlcenter.services.NewDeviceServices;
-import org.mars.m2m.demo.controlcenter.util.AnalysisUtils;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -287,7 +285,6 @@ public final class ControlCenter extends javax.swing.JFrame implements TreeSelec
                 System.out.println("Current simulation timestep: "+current_simulation_time);
                 chartDatastore.putBroadcastRecord(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
                 chartDatastore.putRegisterInfoShareRecord(ControlCenter.CURRENT_SIMULATION_TIME.get(), 0);
-//                AnalysisUtils.recordCommunication();
             }
         }, 1000, 1000);
     }

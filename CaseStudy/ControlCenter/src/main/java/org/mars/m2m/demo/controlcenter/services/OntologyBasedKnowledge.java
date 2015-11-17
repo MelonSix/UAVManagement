@@ -615,7 +615,7 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public void addThreat(Threat threat) {
+    public synchronized void addThreat(Threat threat) {
         if (threat != null) {
             Gson gson = new Gson();
             Individual threat_individual = Threat_Class.createIndividual();
@@ -641,14 +641,11 @@ public final class OntologyBasedKnowledge extends KnowledgeInterface {
     }
 
     @Override
-    public boolean containsThreat(Threat threat) {
+    public synchronized boolean containsThreat(Threat threat) {
         Literal threat_index = ontology_based_knowledge.createTypedLiteral(threat.getIndex());
         Selector selector = new SimpleSelector(null, hasThreatIndex, threat_index);
         Model result_model = ontology_based_knowledge.query(selector);
-        synchronized(result_model)
-        {
-            return result_model.listStatements().hasNext();
-        }
+        return result_model.listStatements().hasNext();
 //        printStatements(result_model);
     }
 

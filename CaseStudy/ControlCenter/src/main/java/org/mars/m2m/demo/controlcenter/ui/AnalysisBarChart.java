@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
@@ -35,8 +37,9 @@ import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 
 public class AnalysisBarChart extends JFrame
 {        
-    private int inforSharingAlg;
-    private String algStr;
+    Lock lock = new ReentrantLock();
+    private final int inforSharingAlg;
+    private final String algStr;
     
     public AnalysisBarChart(int inforSharingAlg, String algStr) 
     {
@@ -84,29 +87,37 @@ public class AnalysisBarChart extends JFrame
 
     private Scene createScene() 
     {
-        final CategoryAxis xAxis = new CategoryAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        yAxis.setUpperBound(200);
-        final BarChart<String,Number> bc =  new BarChart<>(xAxis,yAxis);
-        bc.setTitle("Communication - "+this.algStr);
-        xAxis.setLabel("Time (t)");       
-        yAxis.setLabel("Messages (m)");
-        
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Messages sent to UAVs at time t of simulation");  
-        
-        ChartDatastore chartDatastore = new ChartDatastore();
-        Map<Integer, Integer> gData = (inforSharingAlg==CC_StaticInitConfig.BROADCAST_INFOSHARE)?
-                                        chartDatastore.getMessagesPerSecondData_broadcast():
-                                        chartDatastore.getMessagesPerSecondData_register();
-        Map<Integer, Integer> gDataSync = Collections.synchronizedMap(gData);
-        for(Integer t : gDataSync.keySet())
+        lock.lock();
+        try 
         {
-            series1.getData().add(new XYChart.Data(String.valueOf(t), gData.get(t)));
-        } 
-        
-        bc.getData().addAll(series1);
-        Scene scene  = new Scene(bc,800,600);
-        return scene;
+            final CategoryAxis xAxis = new CategoryAxis();
+            final NumberAxis yAxis = new NumberAxis();
+//            yAxis.setUpperBound(500);
+//            yAxis.setAutoRanging(false);
+            final BarChart<String,Number> bc =  new BarChart<>(xAxis,yAxis);
+            bc.setTitle("Communication - "+this.algStr);
+            xAxis.setLabel("Time (t)");
+            yAxis.setLabel("Messages (m)");
+            
+            XYChart.Series series1 = new XYChart.Series();
+            series1.setName("Messages sent to UAVs at time t of simulation");
+            
+            ChartDatastore chartDatastore = new ChartDatastore();
+            Map<Integer, Integer> gData = (inforSharingAlg==CC_StaticInitConfig.BROADCAST_INFOSHARE)?
+                    chartDatastore.getMessagesPerSecondData_broadcast():
+                    chartDatastore.getMessagesPerSecondData_register();
+            Map<Integer, Integer> gDataSync = Collections.synchronizedMap(gData);
+            for(Integer t : gDataSync.keySet())
+            {
+                series1.getData().add(new XYChart.Data(String.valueOf(t), gData.get(t)));
+            }
+            
+            bc.getData().addAll(series1);
+            bc.setAnimated(false);
+            Scene scene  = new Scene(bc,800,600);
+            return scene;
+        } finally {
+            lock.unlock();
+        }
     }
 }

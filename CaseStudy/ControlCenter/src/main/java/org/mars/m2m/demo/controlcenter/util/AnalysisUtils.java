@@ -5,11 +5,9 @@
  */
 package org.mars.m2m.demo.controlcenter.util;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import org.mars.m2m.demo.controlcenter.analysis.ChartDatastore;
-import org.mars.m2m.demo.controlcenter.appConfig.CC_StaticInitConfig;
 import org.mars.m2m.demo.controlcenter.model.AttackerModel;
 import org.mars.m2m.demo.controlcenter.model.Threat;
 import org.mars.m2m.demo.controlcenter.ui.ControlCenter;

@@ -1,0 +1,237 @@
+2015-11-15 03:21:14 - file /uavObjectModel.json successfully loaded
+2015-11-15 03:21:14 - Started execution in military uav run method
+2015-11-15 03:21:14 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 03:21:14 - UAV manager started
+2015-11-15 03:21:14 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 03:21:14 - Threat sensor started
+2015-11-15 03:21:55 - file /uavObjectModel.json successfully loaded
+2015-11-15 03:21:55 - Started execution in military uav run method
+2015-11-15 03:21:55 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 03:21:55 - UAV manager started
+2015-11-15 03:21:55 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 03:21:55 - Threat sensor started
+2015-11-15 03:22:00 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 03:22:00 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 03:22:43 - file /uavObjectModel.json successfully loaded
+2015-11-15 03:22:43 - Started execution in military uav run method
+2015-11-15 03:22:43 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.1995070/bs?ep=UAV Manager: Illegal character in query at index 35: coap://192.168.10.1995070/bs?ep=UAV Manager
+2015-11-15 03:22:43 - UAV manager started
+2015-11-15 03:22:43 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.1995070/bs?ep=Threat sensor: Illegal character in query at index 38: coap://192.168.10.1995070/bs?ep=Threat sensor
+2015-11-15 03:22:43 - Threat sensor started
+2015-11-15 03:22:48 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.1995070/bs?ep=UAV Manager: Illegal character in query at index 35: coap://192.168.10.1995070/bs?ep=UAV Manager
+2015-11-15 03:22:48 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.1995070/bs?ep=Threat sensor: Illegal character in query at index 38: coap://192.168.10.1995070/bs?ep=Threat sensor
+2015-11-15 03:24:21 - file /uavObjectModel.json successfully loaded
+2015-11-15 03:24:21 - Started execution in military uav run method
+2015-11-15 03:24:22 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 03:24:22 - UAV manager started
+2015-11-15 03:24:22 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 03:24:22 - Threat sensor started
+2015-11-15 03:26:51 - file /uavObjectModel.json successfully loaded
+2015-11-15 03:26:51 - Started execution in military uav run method
+2015-11-15 03:26:51 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 03:26:51 - UAV manager started
+2015-11-15 03:26:51 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 03:26:51 - Threat sensor started
+2015-11-15 03:26:51 - Missile dispatcher started
+2015-11-15 03:26:51 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 03:26:51 - Temperature sensor started
+2015-11-15 03:26:51 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 03:26:51 - Altitude sensor started
+2015-11-15 03:26:56 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 03:26:56 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 03:26:56 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 03:26:56 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:32:49 - file /uavObjectModel.json successfully loaded
+2015-11-15 05:32:49 - Started execution in military uav run method
+2015-11-15 05:37:32 - file /uavObjectModel.json successfully loaded
+2015-11-15 05:37:32 - Started execution in military uav run method
+2015-11-15 05:37:32 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:37:32 - UAV manager started
+2015-11-15 05:37:33 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:37:33 - Threat sensor started
+2015-11-15 05:37:33 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:37:33 - Missile dispatcher started
+2015-11-15 05:37:33 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:37:33 - Temperature sensor started
+2015-11-15 05:37:33 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:37:33 - Altitude sensor started
+2015-11-15 05:37:37 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:37:38 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:37:38 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:37:38 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:37:38 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:37:42 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:37:43 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:37:43 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:37:43 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:37:43 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:37:47 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:37:48 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:37:48 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:37:48 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:37:48 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:37:52 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:37:53 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:37:53 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:37:53 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:37:53 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:37:57 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:37:58 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:37:58 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:37:58 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:37:58 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:02 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:03 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:03 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:03 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:03 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:08 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:12 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:13 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:13 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:13 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:13 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:18 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:23 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:28 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:28 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:28 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:28 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:28 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:33 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:33 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:33 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:33 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:33 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:38 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:38 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:38 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:38 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:38 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:43 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:43 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:43 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:43 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:43 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:48 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:48 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:48 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:48 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:48 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:53 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:53 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:53 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:53 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:53 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:38:58 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:38:58 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:38:58 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:38:58 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:38:58 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:39:03 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:39:03 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:39:03 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:39:03 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:39:03 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:39:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:39:08 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:39:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:39:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:39:08 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:39:13 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:39:13 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:39:13 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:39:13 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:39:13 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:39:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:39:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:39:18 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:39:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:39:18 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:39:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=UAV Manager: Illegal character in query at index 31: coap://127.0.0.1:5070/bs?ep=UAV Manager
+2015-11-15 05:39:23 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:39:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Threat sensor: Illegal character in query at index 34: coap://127.0.0.1:5070/bs?ep=Threat sensor
+2015-11-15 05:39:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 32: coap://127.0.0.1:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:39:23 - java.lang.IllegalArgumentException: Failed to set uri coap://127.0.0.1:5070/bs?ep=Altitude sensor: Illegal character in query at index 36: coap://127.0.0.1:5070/bs?ep=Altitude sensor
+2015-11-15 05:39:27 - file /uavObjectModel.json successfully loaded
+2015-11-15 05:39:27 - Started execution in military uav run method
+2015-11-15 05:39:27 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:39:27 - UAV manager started
+2015-11-15 05:39:27 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:39:27 - Threat sensor started
+2015-11-15 05:39:32 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:39:32 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:39:37 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:39:37 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:39:42 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:39:42 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:39:47 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:39:47 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:39:52 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:39:52 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:39:57 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:39:57 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:02 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:02 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:07 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:07 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:12 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:12 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:17 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:17 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:22 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:22 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:27 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:27 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:32 - Error Loading bootstrap information. Registration failed
+2015-11-15 05:40:32 - Missile dispatcher started
+2015-11-15 05:40:32 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:40:32 - Temperature sensor started
+2015-11-15 05:40:32 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:40:32 - Altitude sensor started
+2015-11-15 05:40:32 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:32 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:37 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:40:37 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:40:37 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:37 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:42 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:40:42 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:40:42 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:42 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:47 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:40:47 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:40:47 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:47 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:52 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:40:52 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:40:52 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:52 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:40:57 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:40:57 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:40:57 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:40:57 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:41:02 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:41:02 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:41:02 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:41:02 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:41:07 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:41:07 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:41:07 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:41:07 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor
+2015-11-15 05:41:12 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor: Illegal character in query at index 37: coap://192.168.10.199:5070/bs?ep=IPSO Temperature sensor
+2015-11-15 05:41:12 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Altitude sensor: Illegal character in query at index 41: coap://192.168.10.199:5070/bs?ep=Altitude sensor
+2015-11-15 05:41:12 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=UAV Manager: Illegal character in query at index 36: coap://192.168.10.199:5070/bs?ep=UAV Manager
+2015-11-15 05:41:12 - java.lang.IllegalArgumentException: Failed to set uri coap://192.168.10.199:5070/bs?ep=Threat sensor: Illegal character in query at index 39: coap://192.168.10.199:5070/bs?ep=Threat sensor

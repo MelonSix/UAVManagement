@@ -216,7 +216,7 @@ public class AttackerModel implements KnowledgeAwareInterface
 
     @Override
     public boolean containsObstacle(Obstacle obstacle) {
-        return false;//TODO: Handle this operation
+        return this.kb.containsObstacle(obstacle);
     }
 
     @Override
